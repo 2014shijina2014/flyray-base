@@ -1,0 +1,16 @@
+package me.flyray.open.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+/** 
+* @author: bolei
+* @date：2017年2月21日 下午3:50:24 
+* @description：系统机构部门
+*/
+
+@RestController
+@RequestMapping("/sys/org")
+public class SysOrgController extends AbstractController{
+
+}

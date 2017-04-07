@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="flyray-open-web">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="flyray-rbac-common-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-rbac-common/flyray-rbac-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="flyray-rbac-shiro-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-rbac-shiro/flyray-rbac-shiro">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="flyray-rbac-gen-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-rbac-gen/flyray-rbac-gen">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="flyray-rbac-schedule-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-rbac-schedule/flyray-rbac-schedule">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="flyray-rbac-api-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-rbac-api/flyray-rbac-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="flyray-rbac"/>
+        <property name="java-output-path" value="/flyray-open-web/target/classes"/>
+    </wb-module>
+</project-modules>

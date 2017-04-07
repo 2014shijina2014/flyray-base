@@ -1,0 +1,28 @@
+package me.flyray.merchant.service;
+
+import java.util.List;
+import java.util.Map;
+
+import me.flyray.merchant.entity.SysOrgEntity;
+import me.flyray.merchant.entity.SysRoleEntity;
+
+/** 
+* @author: bolei
+* @date：2017年3月12日 上午11:36:14 
+* @description：机构部门管理
+*/
+
+public interface SysOrgService {
+
+	SysOrgEntity queryObject(Long orgId);
+	
+	List<SysOrgEntity> queryList(Map<String, Object> map);
+	
+	int queryTotal(Map<String, Object> map);
+	
+	void save(SysOrgEntity org);
+	
+	void update(SysOrgEntity org);
+	
+	void deleteBatch(Long[] orgIds);
+}

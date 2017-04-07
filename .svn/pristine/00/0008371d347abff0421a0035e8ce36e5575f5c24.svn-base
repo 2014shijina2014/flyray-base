@@ -1,0 +1,11 @@
+package me.flyray.crm.api.domain;
+
+/** 
+* @author: bolei
+* @date：2017年3月1日 下午8:50:31 
+* @description：商户扩展信息实体
+*/
+
+public class MerchantExt {
+
+}

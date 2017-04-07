@@ -1,0 +1,11 @@
+package me.flyray.crm.api.service;
+
+/** 
+* @author: bolei
+* @date：2017年3月1日 下午8:45:47 
+* @description：会员基础信息操作接口 
+*/
+
+public interface CustomerBaseService {
+
+}

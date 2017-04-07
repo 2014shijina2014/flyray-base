@@ -1,0 +1,11 @@
+package me.flyray.cms.api;
+
+import java.util.List;
+
+import me.flyray.cms.model.User;
+
+public interface UserService {
+
+	public List<User> displayAllUser();
+	
+}

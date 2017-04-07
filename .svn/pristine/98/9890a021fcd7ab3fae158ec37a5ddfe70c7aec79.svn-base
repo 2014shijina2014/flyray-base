@@ -1,0 +1,11 @@
+package me.flyray.crm.model;
+
+/** 
+* @author: bolei
+* @date：2017年3月6日 下午9:55:17 
+* @description：客户授权登陆信息 
+*/
+
+public class CustomerAuth {
+
+}

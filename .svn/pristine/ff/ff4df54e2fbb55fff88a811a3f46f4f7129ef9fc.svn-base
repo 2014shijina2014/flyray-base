@@ -1,0 +1,11 @@
+package me.flyray.crm.api.service;
+
+/** 
+* @author: bolei
+* @date：2017年3月1日 下午8:49:03 
+* @description：会员标签接口
+*/
+
+public interface CustomerTagService {
+
+}

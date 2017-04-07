@@ -1,0 +1,31 @@
+package me.flyray.rest.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import me.flyray.rest.api.UserService;
+import me.flyray.rest.dao.UserDao;
+import me.flyray.rest.model.User;
+
+@Service("userService")
+public class UserServiceImpl implements UserService {
+
+	@Autowired
+	private UserDao userDao;
+	
+	public List<User> displayAllUser() {
+		System.out.println(userDao);
+		for (int i = 0; i < 20; i++) {
+			System.out.println(i);
+		}
+		List<User> users = userDao.queryUser();
+		for(User user : users) {
+			System.out.println(user.toString());
+		}
+		
+		return users;
+	}
+
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+	   <groupId>me.flyray</groupId>
+	   <artifactId>flyray-parent</artifactId>
+	   <version>0.0.1-SNAPSHOT</version>
+ 	</parent>
+	<artifactId>flyray-cms</artifactId>
+	<packaging>pom</packaging>
+	<name>flyray-cms</name>
+	<url>http://maven.apache.org</url>
+	<modules>
+		<module>flyray-cms-web</module>
+    	<module>flyray-cms-service</module>
+    	<module>flyray-cms-common</module>
+    	<module>flyray-cms-api</module>
+	</modules>
+	<build>
+    	<finalName>flyray-cms</finalName>
+  	</build>
+  	<description>飞雷内容管理系统模块</description>
+</project>

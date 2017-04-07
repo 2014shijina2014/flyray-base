@@ -1,0 +1,11 @@
+package me.flyray.crm.api.domain;
+
+/** 
+* @author: bolei
+* @date：2017年3月1日 下午8:43:20 
+* @description：商户基础信息实体
+*/
+
+public class MerchantBase {
+
+}

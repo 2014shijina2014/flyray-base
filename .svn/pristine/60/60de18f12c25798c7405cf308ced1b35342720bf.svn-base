@@ -1,0 +1,11 @@
+package me.flyray.crm.api.domain;
+
+/** 
+* @author: bolei
+* @date：2017年3月1日 下午9:05:04 
+* @description：会员卡实体 
+*/
+
+public class VipCard {
+
+}

@@ -1,0 +1,11 @@
+package me.flyray.crm.api.domain;
+
+/** 
+* @author: bolei
+* @date：2017年3月1日 下午8:26:26 
+* @description：客户（会员）扩展信息
+*/
+
+public class CustomerExt {
+
+}

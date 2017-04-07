@@ -1,0 +1,11 @@
+package me.flyray.crm.api.domain;
+
+/** 
+* @author: bolei
+* @date：2017年3月1日 下午8:40:49 
+* @description：优惠券实体
+*/
+
+public class Coupon {
+
+}

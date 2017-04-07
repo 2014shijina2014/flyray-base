@@ -1,0 +1,11 @@
+package me.flyray.cms.model;
+
+/** 
+* @author: bolei
+* @date：2017年3月6日 下午10:20:39 
+* @description：活动 
+*/
+
+public class Activity {
+
+}

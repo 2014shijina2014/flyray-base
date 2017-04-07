@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>me.flyray</groupId>
+  <artifactId>flyray-parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>flyray-parent</name>
+  <description>飞雷系统</description>
+  <modules>
+  	<module>flyray-crm</module>
+  	<module>flyray-pay</module>
+    <module>flyray-common</module>
+    <module>flyray-cms</module>
+    <module>flyray-erp</module>
+    <module>flyray-merchant-web</module>
+    <module>flyray-open-web</module>
+    <module>flyray-operation-web</module>
+    <module>flyray-rbac</module>
+  </modules>
+  
+  <properties>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<flyray.core.version>0.0.1-SNAPSHOT</flyray.core.version>
+  </properties>
+	
+  <build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<!-- true:跳过测试 -->
+					<skip>true</skip>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat8-maven-plugin</artifactId>
+				<version>2.1</version>
+				<configuration>
+					<path>/</path>
+					<charset>UTF-8</charset>
+					<port>80</port>
+					<uriEncoding>UTF-8</uriEncoding>
+				</configuration>
+			</plugin>
+		</plugins>
+		<!-- <resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/*.js</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources> -->
+		<finalName>flyray-parent</finalName>
+	</build>
+</project>

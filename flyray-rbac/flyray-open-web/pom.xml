@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+		<groupId>me.flyray</groupId>
+		<artifactId>flyray-rbac</artifactId>
+		<version>${flyray-rbac-version}</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>flyray-open-web</artifactId>
+	<packaging>war</packaging>
+    <description>开发平台</description>
+	
+	<dependencies>
+        <dependency>
+            <groupId>me.flyray</groupId>
+            <artifactId>flyray-rbac-common</artifactId>
+            <version>${flyray-rbac-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>me.flyray</groupId>
+            <artifactId>flyray-rbac-shiro</artifactId>
+            <version>${flyray-rbac-version}</version>
+        </dependency>
+		<dependency>
+            <groupId>me.flyray</groupId>
+            <artifactId>flyray-rbac-gen</artifactId>
+            <version>${flyray-rbac-version}</version>
+        </dependency>
+		<dependency>
+            <groupId>me.flyray</groupId>
+            <artifactId>flyray-rbac-schedule</artifactId>
+            <version>${flyray-rbac-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>me.flyray</groupId>
+            <artifactId>flyray-rbac-api</artifactId>
+            <version>${flyray-rbac-version}</version>
+        </dependency>
+    </dependencies>
+	<build>
+		<finalName>flyray-open-web</finalName>
+	</build>
+	
+</project>

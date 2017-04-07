@@ -1,0 +1,11 @@
+package me.flyray.crm.api.service;
+
+/** 
+* @author: bolei
+* @date：2017年3月1日 下午8:51:24 
+* @description：商户扩展信息接口
+*/
+
+public interface MerchantExtService {
+
+}

@@ -1,0 +1,11 @@
+package me.flyray.erp.api.domain;
+
+/** 
+* @author: bolei
+* @date：2017年3月1日 下午8:59:16 
+* @description：采购记录实体
+*/
+
+public class PurchaseRecord {
+
+}

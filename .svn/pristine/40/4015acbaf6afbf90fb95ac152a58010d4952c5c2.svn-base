@@ -1,0 +1,13 @@
+package me.flyray.merchant.dao;
+
+import me.flyray.merchant.entity.SysOrgEntity;
+
+/** 
+* @author: bolei
+* @date：2017年3月12日 上午11:47:37 
+* @description：机构部门 
+*/
+
+public interface SysOrgDao extends BaseDao<SysOrgEntity>{
+
+}

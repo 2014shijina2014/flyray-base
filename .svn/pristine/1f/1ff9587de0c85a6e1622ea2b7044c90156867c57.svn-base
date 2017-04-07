@@ -1,0 +1,148 @@
+$(function () {
+    $("#jqGrid").jqGrid({
+        url: '../sys/org/list',
+        datatype: "json",
+        colModel: [
+            { label: '机构部门ID', name: 'orgId', width: 45, key: true },
+			{ label: '机构部门编号', name: 'orgNo', width: 75 },
+			{ label: '机构部门名称', name: 'orgName', width: 80 },
+			{ label: '上级机构部门', name: 'parentId', width: 50 },
+			{ label: '创建人', name: 'createBy', width: 45 },
+			{ label: '创建时间', name: 'createTime', width: 70},
+			{ label: '最后更新人', name: 'lastUpdateBy', width: 70 },
+			{ label: '最后更新时间', name: 'lastUpdateTime', width: 100 },
+			{ label: '机构部门排序', name: 'orgLevel', width: 60 }
+        ],
+		viewrecords: true,
+        height: 385,
+        rowNum: 10,
+		rowList : [10,30,50],
+        rownumbers: true, 
+        rownumWidth: 25, 
+        autowidth:true,
+        multiselect: true,
+        pager: "#jqGridPager",
+        jsonReader : {
+            root: "page.list",
+            page: "page.currPage",
+            total: "page.totalPage",
+            records: "page.totalCount"
+        },
+        prmNames : {
+            page:"page", 
+            rows:"limit", 
+            order: "order"
+        },
+        gridComplete:function(){
+        	//隐藏grid底部滚动条
+        	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" }); 
+        }
+    });
+});
+
+var setting = {
+	data: {
+		simpleData: {
+			enable: true,
+			idKey: "orgId",
+			pIdKey: "parentId",
+			rootPId: -1
+		},
+		key: {
+			url:"nourl"
+		}
+	},
+	check:{
+		enable:true,
+		nocheckInherit:true
+	}
+};
+var ztree;
+	
+var vm = new Vue({
+	el:'#rrapp',
+	data:{
+		q:{
+			orgName: null
+		},
+		showList: true,
+		title:null,
+		org:{}
+	},
+	methods: {
+		query: function () {
+			vm.reload();
+		},
+		add: function(){
+			vm.showList = false;
+			vm.title = "新增";
+			vm.org = {};
+		},
+		update: function () {
+			var orgId = getSelectedRow();
+			if(orgId == null){
+				return ;
+			}
+			
+			$.get("../sys/org/info/"+orgId, function(r){
+				vm.showList = false;
+                vm.title = "修改";
+				vm.org = r.org;
+			});
+		},
+		del: function (event) {
+			var orgIds = getSelectedRows();
+			if(orgIds == null){
+				return ;
+			}
+			
+			confirm('确定要删除选中的记录？', function(){
+				$.ajax({
+					type: "POST",
+				    url: "../sys/org/delete",
+				    data: JSON.stringify(roleIds),
+				    success: function(r){
+						if(r.code == 0){
+							alert('操作成功', function(index){
+								$("#jqGrid").trigger("reloadGrid");
+							});
+						}else{
+							alert(r.msg);
+						}
+					}
+				});
+			});
+		},
+		getOrg: function(orgId){
+            $.get("../sys/org/info/"+orgId, function(o){
+            	vm.org = o.org;
+    		});
+		},
+		saveOrUpdate: function (event) {
+			
+			var url = vm.org.orgId == null ? "../sys/org/save" : "../sys/org/update";
+			$.ajax({
+				type: "POST",
+			    url: url,
+			    data: JSON.stringify(vm.org),
+			    success: function(r){
+			    	if(r.code === 0){
+						alert('操作成功', function(index){
+							vm.reload();
+						});
+					}else{
+						alert(r.msg);
+					}
+				}
+			});
+		},
+	    reload: function (event) {
+	    	vm.showList = true;
+			var page = $("#jqGrid").jqGrid('getGridParam','page');
+			$("#jqGrid").jqGrid('setGridParam',{ 
+                postData:{'orgName': vm.q.orgName},
+                page:page
+            }).trigger("reloadGrid");
+		}
+	}
+});

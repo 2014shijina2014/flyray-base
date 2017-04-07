@@ -1,0 +1,119 @@
+package me.flyray.merchant.controller;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import me.flyray.merchant.entity.SysOrgEntity;
+import me.flyray.merchant.entity.SysRoleEntity;
+import me.flyray.merchant.service.SysOrgService;
+import me.flyray.merchant.utils.PageUtils;
+import me.flyray.merchant.utils.R;
+
+/** 
+* @author: bolei
+* @date：2017年3月12日 上午11:32:44 
+* @description：机构部门管理
+*/
+
+@RestController
+@RequestMapping("/sys/org")
+@Controller
+public class SysOrgController extends AbstractController{
+
+	@Autowired
+	private SysOrgService sysOrgService;
+	
+	
+	/**
+	 * 机构部门列表
+	 */
+	@RequestMapping("/list")
+	@RequiresPermissions("sys:role:list")
+	public R list(String orgName, Integer page, Integer limit){
+		Map<String, Object> map = new HashMap<>();
+		map.put("orgName", orgName);
+		map.put("offset", (page - 1) * limit);
+		map.put("limit", limit);
+		
+		//查询列表数据
+		List<SysOrgEntity> list = sysOrgService.queryList(map);
+		int total = sysOrgService.queryTotal(map);
+		
+		PageUtils pageUtil = new PageUtils(list, total, limit, page);
+		
+		return R.ok().put("page", pageUtil);
+	}
+	
+	/**
+	 * 机构部门列表
+	 */
+	@RequestMapping("/select")
+	@RequiresPermissions("sys:org:select")
+	public R select(){
+		//查询列表数据
+		List<SysOrgEntity> list = sysOrgService.queryList(new HashMap<String, Object>());
+		
+		return R.ok().put("list", list);
+	}
+	
+	/**
+	 * 机构部门信息
+	 */
+	@RequestMapping("/info/{roleId}")
+	@RequiresPermissions("sys:org:info")
+	public R info(@PathVariable("orgId") Long orgId){
+		SysOrgEntity org = sysOrgService.queryObject(orgId);
+		return R.ok().put("org", org);
+	}
+	
+	/**
+	 * 保存机构部门
+	 */
+	@RequestMapping("/save")
+	@RequiresPermissions("sys:org:save")
+	public R save(@RequestBody SysOrgEntity org){
+		if(StringUtils.isBlank(org.getOrgName())){
+			return R.error("角色名称不能为空");
+		}
+		
+		sysOrgService.save(org);
+		
+		return R.ok();
+	}
+	
+	/**
+	 * 修改机构部门
+	 */
+	@RequestMapping("/update")
+	@RequiresPermissions("sys:org:update")
+	public R update(@RequestBody SysOrgEntity org){
+		if(StringUtils.isBlank(org.getOrgName())){
+			return R.error("角色名称不能为空");
+		}
+		
+		sysOrgService.update(org);
+		
+		return R.ok();
+	}
+	
+	/**
+	 * 删除角色
+	 */
+	@RequestMapping("/delete")
+	@RequiresPermissions("sys:org:delete")
+	public R delete(@RequestBody Long[] orgIds){
+		sysOrgService.deleteBatch(orgIds);
+		
+		return R.ok();
+	}
+}

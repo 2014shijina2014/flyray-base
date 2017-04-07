@@ -1,0 +1,5 @@
+me\flyray\rest\model\User.class
+me\flyray\rest\api\ApiProvider.class
+me\flyray\rest\model\TestUser.class
+me\flyray\rest\model\BaseModel.class
+me\flyray\rest\model\Parameter.class
