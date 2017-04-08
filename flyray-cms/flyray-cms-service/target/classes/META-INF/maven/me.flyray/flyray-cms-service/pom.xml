@@ -21,11 +21,11 @@
 			<version>${project.version}</version>
 		</dependency>
 		
-		<!-- <dependency>
+		<dependency>
 			<groupId>me.flyray</groupId>
 			<artifactId>flyray-cms-dao</artifactId>
 			<version>${project.version}</version>
-		</dependency> -->
+		</dependency>
 		
 		<dependency>
 			<groupId>me.flyray</groupId>

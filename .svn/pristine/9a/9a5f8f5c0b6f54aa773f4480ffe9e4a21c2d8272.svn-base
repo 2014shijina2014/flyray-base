@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="me.flyray.cms.dao.UserDao">
+<mapper namespace="me.flyray.cms.dao.ActivityDao">
 
 	<!-- 查询所有用户,分页 -->
-	<select id="queryUser" resultType="me.flyray.cms.model.User">
+	<select id="queryUser" resultType="me.flyray.cms.model.Activity">
 		select * from user 		
 	</select>
   
