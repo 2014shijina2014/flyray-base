@@ -32,6 +32,12 @@
 			<artifactId>flyray-cms-util</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>me.flyray</groupId>
+			<artifactId>flyray-rest-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>

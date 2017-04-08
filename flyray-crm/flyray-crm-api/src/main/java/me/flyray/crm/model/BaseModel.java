@@ -1,14 +1,11 @@
 package me.flyray.crm.model;
 
-/** 
-* @author: bolei
-* @date：2017年3月12日 下午5:07:58 
-* @description：类说明 
-*/
+import java.io.Serializable;
 
-public class BaseModel {
-
-	private String merchantNo;
+@SuppressWarnings("serial")
+public abstract class BaseModel implements Serializable {
+	
+private String merchantNo;
 	
 	private String orgNo;
 

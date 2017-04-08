@@ -26,6 +26,13 @@
 			<artifactId>flyray-rest-dao</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>me.flyray</groupId>
+			<artifactId>flyray-crm-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
 
 		<dependency>
 			<groupId>junit</groupId>
