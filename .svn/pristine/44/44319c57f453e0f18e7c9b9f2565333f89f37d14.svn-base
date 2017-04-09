@@ -24,22 +24,26 @@ public class PayOrderServiceImpl implements PayOrderService{
 	
 	@Override
 	public List<PayOrder> queryList(Map<String, Object> map) {
-		return payOrderDao.queryList(map);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int queryTotal(Map<String, Object> map) {
-		return payOrderDao.queryTotal(map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public void save(PayOrder payOrder) {
-		payOrderDao.save(payOrder);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void update(PayOrder payOrder) {
-		payOrderDao.update(payOrder);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override

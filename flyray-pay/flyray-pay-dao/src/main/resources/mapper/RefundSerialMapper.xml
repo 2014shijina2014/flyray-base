@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.flyray.pay.dao.RefundSerialDao">
+
+	<!-- 查询所有退款流水,分页 -->
+	<select id="queryRefundSerial" resultType="me.flyray.pay.model.RefundSerial">
+		select * from refund_serial		
+	</select>
+	
+	<select id="queryObject" resultType="me.flyray.pay.model.RefundSerial">
+		select * from refund_serial where id = #{value}
+	</select>
+
+	<select id="queryList" resultType="me.flyray.pay.model.RefundSerial">
+		select * from refund_serial order by id desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from refund_serial 
+	</select>
+	 
+	<insert id="save" parameterType="me.flyray.pay.model.RefundSerial" useGeneratedKeys="true" keyProperty="id">
+		insert into refund_serial
+		(
+			`url`, 
+			`create_date`
+		)
+		values
+		(
+			#{url}, 
+			#{createDate}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="me.flyray.pay.model.RefundSerial">
+		update refund_serial 
+		<set>
+			<if test="url != null">`url` = #{url}, </if>
+			<if test="createDate != null">`create_date` = #{createDate}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from refund_serial where id = #{value}
+	</delete>
+  
+</mapper>

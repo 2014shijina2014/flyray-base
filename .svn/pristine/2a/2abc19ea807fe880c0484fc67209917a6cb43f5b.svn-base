@@ -24,32 +24,38 @@ public class PayChannelConfigServiceImpl implements PayChannelConfigService{
 	
 	@Override
 	public PayChannelConfig queryObject(Long id) {
-		return payChannelConfigDao.queryObject(id);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<PayChannelConfig> queryList(Map<String, Object> map) {
-		return payChannelConfigDao.queryList(map);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int queryTotal(Map<String, Object> map) {
-		return payChannelConfigDao.queryTotal(map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public void save(PayChannelConfig payChannelConfig) {
-		payChannelConfigDao.save(payChannelConfig);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void update(PayChannelConfig payChannelConfig) {
-		payChannelConfigDao.update(payChannelConfig);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void deleteBatch(Long[] ids) {
 		// TODO Auto-generated method stub
+		
 	}
 
 	

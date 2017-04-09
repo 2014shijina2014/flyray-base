@@ -24,22 +24,26 @@ public class RefundOrderServiceImpl implements RefundOrderService{
 	
 	@Override
 	public List<RefundOrder> queryList(Map<String, Object> map) {
-		return refundOrderDao.queryList(map);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int queryTotal(Map<String, Object> map) {
-		return refundOrderDao.queryTotal(map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public void save(RefundOrder refundOrder) {
-		refundOrderDao.save(refundOrder);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void update(RefundOrder refundOrder) {
-		refundOrderDao.update(refundOrder);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override

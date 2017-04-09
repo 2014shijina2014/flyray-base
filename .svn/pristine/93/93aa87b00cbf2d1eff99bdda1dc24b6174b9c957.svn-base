@@ -3,6 +3,7 @@ package me.flyray.pay.api;
 import java.util.List;
 import java.util.Map;
 
+import me.flyray.pay.model.PayChannelConfig;
 import me.flyray.pay.model.PayChannelInterface;
 
 /** 
@@ -13,7 +14,7 @@ import me.flyray.pay.model.PayChannelInterface;
 
 public interface PayChannelInterfaceService {
 
-	PayChannelInterface queryObject(Long id);
+PayChannelConfig queryObject(Long id);
 	
 	List<PayChannelInterface> queryList(Map<String, Object> map);
 	

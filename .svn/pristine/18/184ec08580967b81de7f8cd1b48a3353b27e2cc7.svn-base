@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.flyray.pay.dao.PaySerialDao">
+
+	<!-- 查询所有 支付流水,分页 -->
+	<select id="queryPaySerial" resultType="me.flyray.pay.model.PaySerial">
+		select * from pay_serial 		
+	</select>
+  
+</mapper>

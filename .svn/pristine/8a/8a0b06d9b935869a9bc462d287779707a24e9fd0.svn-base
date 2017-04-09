@@ -24,22 +24,26 @@ public class PayChannelServiceImpl implements PayChannelService{
 	
 	@Override
 	public List<PayChannel> queryList(Map<String, Object> map) {
-		return payChannelDao.queryList(map);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int queryTotal(Map<String, Object> map) {
-		return payChannelDao.queryTotal(map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public void save(PayChannel payChannel) {
-		payChannelDao.save(payChannel);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void update(PayChannel payChannel) {
-		payChannelDao.update(payChannel);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.flyray.pay.dao.PayChannelDao">
+
+	<select id="queryObject" resultType="me.flyray.pay.model.PayChannel">
+		select * from pay_channel where id = #{value}
+	</select>
+
+	<select id="queryList" resultType="me.flyray.pay.model.PayChannel">
+		select * from pay_channel order by id desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from pay_channel 
+	</select>
+	 
+	<insert id="save" parameterType="me.flyray.pay.model.PayChannel" useGeneratedKeys="true" keyProperty="id">
+		insert into pay_channel
+		(
+			`url`, 
+			`create_date`
+		)
+		values
+		(
+			#{url}, 
+			#{createDate}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="me.flyray.pay.model.PayChannel">
+		update pay_channel 
+		<set>
+			<if test="url != null">`url` = #{url}, </if>
+			<if test="createDate != null">`create_date` = #{createDate}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from pay_channel where id = #{value}
+	</delete>
+  
+</mapper>

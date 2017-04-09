@@ -24,22 +24,26 @@ public class RefundSerialServiceImpl implements RefundSerialService{
 	
 	@Override
 	public List<RefundSerial> queryList(Map<String, Object> map) {
-		return refundSerialDao.queryList(map);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int queryTotal(Map<String, Object> map) {
-		return refundSerialDao.queryTotal(map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public void save(RefundSerial refundSerial) {
-		refundSerialDao.save(refundSerial);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void update(RefundSerial refundSerial) {
-		refundSerialDao.update(refundSerial);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override

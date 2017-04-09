@@ -21,31 +21,36 @@ import me.flyray.pay.model.PayChannelInterface;
 public class PayChannelInterfaceServiceImpl implements PayChannelInterfaceService{
 
 	@Autowired
-	private PayChannelInterfaceDao payChannelInterfaceDao;
+	private PayChannelInterfaceDao PayChannelInterfaceDao;
 	
 	@Override
-	public PayChannelInterface queryObject(Long id) {
-		return payChannelInterfaceDao.queryObject(id);
+	public PayChannelConfig queryObject(Long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<PayChannelInterface> queryList(Map<String, Object> map) {
-		return payChannelInterfaceDao.queryList(map);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int queryTotal(Map<String, Object> map) {
-		return payChannelInterfaceDao.queryTotal(map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public void save(PayChannelInterface payChannelInterface) {
-		payChannelInterfaceDao.save(payChannelInterface);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void update(PayChannelInterface payChannelInterface) {
-		payChannelInterfaceDao.update(payChannelInterface);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
@@ -53,7 +58,5 @@ public class PayChannelInterfaceServiceImpl implements PayChannelInterfaceServic
 		// TODO Auto-generated method stub
 		
 	}
-
-	
 
 }

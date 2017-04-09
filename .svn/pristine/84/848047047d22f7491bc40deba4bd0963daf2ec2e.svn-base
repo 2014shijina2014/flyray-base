@@ -24,22 +24,26 @@ public class PaySerialServiceImpl implements PaySerialService{
 	
 	@Override
 	public List<PaySerial> queryList(Map<String, Object> map) {
-		return paySerialDao.queryList(map);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public int queryTotal(Map<String, Object> map) {
-		return paySerialDao.queryTotal(map);
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
 	public void save(PaySerial paySerial) {
-		paySerialDao.save(paySerial);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void update(PaySerial paySerial) {
-		paySerialDao.update(paySerial);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
