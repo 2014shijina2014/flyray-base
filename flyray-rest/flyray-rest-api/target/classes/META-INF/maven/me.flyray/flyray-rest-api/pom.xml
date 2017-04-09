@@ -13,5 +13,21 @@
   <name>flyray-rest-api</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+  	<!-- mybatis -->
+	<dependency>
+		<groupId>com.baomidou</groupId>
+		<artifactId>mybatis-plus</artifactId>
+		<version>2.0.2</version>
+		<exclusions>
+				<exclusion> 
+		            <artifactId>org.mybatis</artifactId>  
+		            <groupId>mybatis</groupId>  
+		        </exclusion>
+		        <exclusion> 
+		            <artifactId>org.mybatis</artifactId>  
+		            <groupId>mybatis-spring</groupId>  
+		        </exclusion>
+	        </exclusions>
+	</dependency>
   </dependencies>
 </project>
