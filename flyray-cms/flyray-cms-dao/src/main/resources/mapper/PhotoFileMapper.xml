@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.flyray.cms.dao.PhotoFileDao">
+
+	<!-- 查询保存信息 -->
+	<select id="query" resultType="me.flyray.cms.model.PhotoFile">
+		select * from crm_photo_file
+	</select>
+	<!-- 保存图片信息  -->
+	<insert id="insert" parameterType="me.flyray.cms.model.PhotoFile">
+		<selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">  
+                SELECT LAST_INSERT_ID()  
+         </selectKey>
+		insert into crm_photo_file
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="fileName != null and fileName != ''">
+				FILE_NAME,
+			</if>
+			<if test="path != null and path != ''">
+				PATH,
+			</if>
+			<if test="addDate != null and addDate != ''">
+				ADD_DATE,
+			</if>
+			<if test="id != null and id != ''">
+				ID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="fileName != null and fileName != ''">
+				#{fileName,jdbcType=VARCHAR},
+			</if>
+			<if test="path != null and path != ''">
+				#{path,jdbcType=VARCHAR},
+			</if>
+			<if test="addDate != null and addDate != ''">
+				#{addDate,jdbcType=VARCHAR},
+			</if>
+			<if test="id != null and id != ''">
+				#{id,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+
+
+</mapper>

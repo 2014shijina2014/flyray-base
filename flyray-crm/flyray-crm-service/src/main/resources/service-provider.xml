@@ -24,7 +24,7 @@
 
     <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
 
-    <dubbo:protocol name="dubbo" port="10100"/>
+    <dubbo:protocol name="dubbo" port="10105"/>
 
 	<dubbo:service interface="me.flyray.crm.api.UserService" ref="userService"  protocol="dubbo" timeout="1200000"/>
 	

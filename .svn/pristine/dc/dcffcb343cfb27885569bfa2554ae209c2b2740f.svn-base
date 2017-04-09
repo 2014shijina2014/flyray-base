@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.flyray.crm.dao.CustomerAuthDao">
+
+	<select id="queryObject" resultType="me.flyray.crm.model.CustomerAuth">
+		select * from crm_customer_auth where id = #{value}
+	</select>
+
+	<select id="queryList" resultType="me.flyray.crm.model.CustomerAuth">
+		select * from crm_customer_auth order by id desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from crm_customer_auth 
+	</select>
+	 
+	<insert id="save" parameterType="me.flyray.crm.model.CustomerAuth" useGeneratedKeys="true" keyProperty="id">
+		insert into crm_customer_auth
+		(
+			`url`, 
+			`create_date`
+		)
+		values
+		(
+			#{url}, 
+			#{createDate}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="me.flyray.crm.model.CustomerAuth">
+		update crm_customer_auth 
+		<set>
+			<if test="url != null">`url` = #{url}, </if>
+			<if test="createDate != null">`create_date` = #{createDate}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from crm_customer_auth where id = #{value}
+	</delete>
+  
+</mapper>
