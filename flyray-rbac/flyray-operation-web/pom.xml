@@ -35,6 +35,13 @@
             <artifactId>flyray-rbac-api</artifactId>
             <version>${flyray-rbac-version}</version>
         </dependency>
+        
+        <dependency>
+			<groupId>me.flyray</groupId>
+			<artifactId>flyray-rest-api</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
     </dependencies>
 	<build>
 		<finalName>flyray-operation-web</finalName>

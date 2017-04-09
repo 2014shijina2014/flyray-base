@@ -11,6 +11,7 @@
 		<module>flyray-common</module>
 		<module>flyray-message</module>
 		<module>flyray-rest</module>
+		<module>flyray-rbac</module>
 		<module>flyray-crm</module>
 		<module>flyray-erp</module>
 		<module>flyray-pay</module>

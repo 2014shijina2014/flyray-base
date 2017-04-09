@@ -36,7 +36,7 @@
 		<dependency>
 			<groupId>me.flyray</groupId>
 			<artifactId>flyray-rest-api</artifactId>
-			<version>${project.version}</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>

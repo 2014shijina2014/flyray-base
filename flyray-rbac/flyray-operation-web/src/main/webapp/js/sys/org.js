@@ -1,16 +1,18 @@
 $(function () {
     $("#jqGrid").jqGrid({
-        url: '../${pathName}/list',
+        url: '../sys/org/list',
         datatype: "json",
         colModel: [			
-#foreach($column in $columns)
-#if($column.columnName == $pk.columnName)
-			{ label: '${column.attrname}', name: '${column.attrname}', index: '${column.columnName}', width: 50, key: true },
-#else
-			{ label: '${column.comments}', name: '${column.attrname}', index: '${column.columnName}', width: 80 }#if($velocityCount != $columns.size()), #end
+			{ label: '组织机构ID', name: 'orgId', index: "org_id", width: 45, key: true },
+			{ label: '组织机构编号', name: 'orgNo', width: 75 },
+			{ label: '机构部门名称', name: 'orgName', width: 90 },
+			{ label: '所属机构部门', name: 'parentId', width: 100 },
+			{ label: '创建人', name: 'createBy', width: 80 },
+			{ label: '创建时间', name: 'createTime', width: 80},
+			{ label: '最后修改人', name: 'lastUpdateBy', width: 80},
+			{ label: '最后修改时间', name: 'lastUpdateTime', width: 80},
+			{ label: '机构部门排序号', name: 'orgLevel', width: 80},
 			
-#end			
-#end
         ],
 		viewrecords: true,
         height: 385,
@@ -42,9 +44,15 @@ $(function () {
 var vm = new Vue({
 	el:'#rrapp',
 	data:{
+		q:{
+			orgName: null
+		},
 		showList: true,
-		title: null,
-		${classname}: {}
+		title:null,
+		org:{
+			orgName:null,
+			parentId:0,
+		}
 	},
 	methods: {
 		query: function () {
@@ -53,24 +61,47 @@ var vm = new Vue({
 		add: function(){
 			vm.showList = false;
 			vm.title = "新增";
-			vm.${classname} = {};
 		},
-		update: function (event) {
-			var $pk.attrname = getSelectedRow();
-			if($pk.attrname == null){
+		update: function () {
+			var orgId = getSelectedRow();
+			if(orgId == null){
 				return ;
 			}
+			
 			vm.showList = false;
             vm.title = "修改";
-            
-            vm.getInfo(${pk.attrname})
+			
+			vm.getOrg(orgId);
+		},
+		del: function () {
+			var orgIds = getSelectedRows();
+			if(orgIds == null){
+				return ;
+			}
+			
+			confirm('确定要删除选中的记录？', function(){
+				$.ajax({
+					type: "POST",
+				    url: "../sys/org/delete",
+				    data: JSON.stringify(orgIds),
+				    success: function(r){
+						if(r.code == 0){
+							alert('操作成功', function(index){
+                                vm.reload();
+							});
+						}else{
+							alert(r.msg);
+						}
+					}
+				});
+			});
 		},
 		saveOrUpdate: function (event) {
-			var url = vm.${classname}.${pk.attrname} == null ? "../${pathName}/save" : "../${pathName}/update";
+			var url = vm.org.orgId == null ? "../sys/org/save" : "../sys/org/update";
 			$.ajax({
 				type: "POST",
 			    url: url,
-			    data: JSON.stringify(vm.${classname}),
+			    data: JSON.stringify(vm.org),
 			    success: function(r){
 			    	if(r.code === 0){
 						alert('操作成功', function(index){
@@ -82,38 +113,16 @@ var vm = new Vue({
 				}
 			});
 		},
-		del: function (event) {
-			var ${pk.attrname}s = getSelectedRows();
-			if(${pk.attrname}s == null){
-				return ;
-			}
-			
-			confirm('确定要删除选中的记录？', function(){
-				$.ajax({
-					type: "POST",
-				    url: "../${pathName}/delete",
-				    data: JSON.stringify(${pk.attrname}s),
-				    success: function(r){
-						if(r.code == 0){
-							alert('操作成功', function(index){
-								$("#jqGrid").trigger("reloadGrid");
-							});
-						}else{
-							alert(r.msg);
-						}
-					}
-				});
+		getOrg: function(orgId){
+			$.get("../sys/org/info/"+orgId, function(r){
+				vm.org = r.org;
 			});
-		},
-		getInfo: function(${pk.attrname}){
-			$.get("../${pathName}/info/"+${pk.attrname}, function(r){
-                vm.${classname} = r.${classname};
-            });
 		},
 		reload: function (event) {
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{ 
+                postData:{'orgName': vm.q.orgName},
                 page:page
             }).trigger("reloadGrid");
 		}
