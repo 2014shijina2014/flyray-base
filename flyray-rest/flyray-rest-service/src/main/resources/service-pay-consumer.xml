@@ -6,7 +6,11 @@
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 	
 	<!-- flyray-rest作为 crm、erp、pay的唯一消费者 -->
-	
-    <dubbo:reference id="customerBaseService" interface="me.flyray.crm.api.CustomerBaseService"/>
+	<!-- 支付通道配置 -->
+    <dubbo:reference id="payChannelConfigService" interface="me.flyray.pay.api.PayChannelConfigService"/>
+    <!-- 支付通道接口-->
+    <dubbo:reference id="payChannelInterfaceService" interface="me.flyray.pay.api.PayChannelInterfaceService"/>
+    <!-- 支付通道 -->
+    <dubbo:reference id="payChannelService" interface="me.flyray.pay.api.PayChannelService"/>
 
 </beans>

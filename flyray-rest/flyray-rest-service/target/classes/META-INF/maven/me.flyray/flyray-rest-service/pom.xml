@@ -33,6 +33,17 @@
 			<version>${project.version}</version>
 		</dependency>
 		
+		<dependency>
+			<groupId>me.flyray</groupId>
+			<artifactId>flyray-pay-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>me.flyray</groupId>
+			<artifactId>flyray-erp-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>

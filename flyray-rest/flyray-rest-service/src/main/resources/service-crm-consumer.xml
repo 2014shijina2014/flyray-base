@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	
+	<!-- flyray-rest作为 crm、erp、pay的唯一消费者 -->
+	<!-- 客户基本信息 -->
+    <dubbo:reference id="customerBaseService" interface="me.flyray.crm.api.CustomerBaseService"/>
+    <!-- 客户第三方授权信息 -->
+    <dubbo:reference id="customerAuthService" interface="me.flyray.crm.api.CustomerAuthService"/>
+    <!-- 客户账户信息 -->
+    <dubbo:reference id="customerAccountService" interface="me.flyray.crm.api.CustomerAccountService"/>
+	<!-- 商户基本信息 -->
+    <dubbo:reference id="merchantBaseService" interface="me.flyray.crm.api.MerchantBaseService"/>
+	<!-- 商户账户信息 -->
+    <dubbo:reference id="merchantAccountService" interface="me.flyray.crm.api.MerchantAccountService"/>
+
+</beans>
