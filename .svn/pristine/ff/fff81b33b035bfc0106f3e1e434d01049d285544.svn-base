@@ -172,7 +172,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>flyray-pay-web</finalName>
+		<finalName>flyray-pay</finalName>
 
 		<plugins>
 			<plugin>
