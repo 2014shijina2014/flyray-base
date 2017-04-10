@@ -30,3 +30,20 @@
 ![组织结构](flyray-doc/projectStructures.png)
 ### 商户中心
 ![组织结构](flyray-doc/merchant.png)
+
+##运行流程
+### 1、javaweb开发环境配置
+自己解决
+
+### 2、下载工程导入eclipse
+
+### 3、导入各个工程对应的数据文件和修改数据库用户名密码
+
+### 4、下载安装zookeeper并启动
+
+### 4、先启动flyray-crm、flyray-erp、flyray-pay中对应的web工程，然后启动flyray-rest下面的web
+
+### 5、启动具体应用flyray-cms下的web或是flyray-merchant-web、flyray-operation-web、flyray-open-web
+
+细节慢慢补充
+如有遗漏 请在群中给我**反馈**。
