@@ -18,13 +18,12 @@ import me.flyray.rbac.entity.SysConfigEntity;
 import me.flyray.rbac.utils.PageUtils;
 import me.flyray.rbac.utils.R;
 import me.flyray.rest.api.ApiProvider;
-import me.flyray.rest.model.BaseModel;
 import me.flyray.rest.model.Parameter;
 
 /** 
 * @author: bolei
 * @date：2017年4月9日 下午2:47:03 
-* @description：类说明 
+* @description：支付通道处理
 */
 
 @RestController

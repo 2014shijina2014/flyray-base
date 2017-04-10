@@ -3,10 +3,13 @@ package me.flyray.crm.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import me.flyray.crm.api.CustomerAuthService;
+import me.flyray.crm.dao.CustomerAuthDao;
 import me.flyray.crm.model.CustomerAuth;
+import me.flyray.crm.model.CustomerBase;
 
 /** 
 * @author: bolei
