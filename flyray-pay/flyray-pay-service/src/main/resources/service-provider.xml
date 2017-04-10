@@ -27,5 +27,7 @@
     <dubbo:protocol name="dubbo" port="10103"/>
 
 	<dubbo:service interface="me.flyray.pay.api.PayChannelConfigService" ref="payChannelConfigService"  protocol="dubbo" timeout="1200000"/>
+	
+	<dubbo:service interface="me.flyray.pay.api.PayChannelService" ref="payChannelService"  protocol="dubbo" timeout="1200000"/>
 
 </beans>

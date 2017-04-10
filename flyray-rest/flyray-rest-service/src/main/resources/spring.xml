@@ -23,7 +23,11 @@
 
 	<import resource="classpath*:service-provider.xml" />
 	
-	<import resource="classpath*:service-consumer.xml" />
+	<import resource="classpath*:service-crm-consumer.xml" />
+	
+	<import resource="classpath*:service-pay-consumer.xml" />
+	
+	<import resource="classpath*:service-erp-consumer.xml" />
 
 	<!-- MVC配置 <import resource="spring-mvc.xml" /> AOP配置 <import resource="spring-aop.xml" 
 		/> -->
