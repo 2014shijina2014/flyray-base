@@ -46,7 +46,7 @@
 				<scope>test</scope>
 			</dependency>
 
-			<!-- Spring3框架 -->
+			<!-- Spring4框架 -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-context</artifactId>

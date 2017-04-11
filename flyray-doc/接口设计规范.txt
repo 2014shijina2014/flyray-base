@@ -10,7 +10,14 @@
     },
     "status": "200",
     "code": -1,
-    "msg": "api error"
+    "msg": "api error",
+    "paginantion": {
+        "pageNo": "1",
+        "pageSize": "10",
+        "orderBy": "orderBy"，
+         "totalCounts":null,
+        "totalPages":null
+    }
 }
 
 接口请求参数格式
@@ -19,6 +26,13 @@
     "name": "200",
     "password": -1,
     "page_size": "10",
-    "page_no": "1"
+    "page_no": "1",
+    "paginantion": {
+        "pageNo": "1",
+        "pageSize": "10",
+        "orderBy": "orderBy"，
+         "totalCounts":null,
+        "totalPages":null
+    }
 }
 

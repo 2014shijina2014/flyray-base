@@ -13,7 +13,7 @@
 		http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
 	<tx:annotation-driven />
-	<context:property-placeholder location="classpath:db.properties" />
+	<context:property-placeholder ignore-unresolvable="true" location="classpath*:*.properties"/>
 	
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">

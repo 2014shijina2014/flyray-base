@@ -11,6 +11,7 @@
 			classpath:spring-jdbc.xml
 			classpath*:renren-*.xml
 			classpath*:service-consumer.xml
+			classpath*:spring-redis.xml
 		</param-value>
 	</context-param>
 	
