@@ -13,7 +13,7 @@ import me.flyray.crm.model.CustomerAuth;
 
 public interface CustomerAuthDao {
 
-	CustomerAuth queryObject(Long customerNo);
+	CustomerAuth queryObject(CustomerAuth customerAuth);
 	
 	List<CustomerAuth> queryList(Map<String, Object> map);
 	

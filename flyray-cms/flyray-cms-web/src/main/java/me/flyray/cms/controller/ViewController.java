@@ -20,9 +20,7 @@ public class ViewController {
 	
 	@RequestMapping(value="/view", method = RequestMethod.GET)
 	public ModelAndView view(String id){
-		System.out.println(id);
 		String path = viewService.view(id);
-		System.out.println(path);
 		return new ModelAndView("view","message",path);
 	}
 	

@@ -1,13 +1,17 @@
 package me.flyray.crm.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import me.flyray.common.BeanUtil;
 import me.flyray.crm.api.CustomerBaseService;
+import me.flyray.crm.dao.CustomerAuthDao;
 import me.flyray.crm.dao.CustomerBaseDao;
+import me.flyray.crm.model.CustomerAuth;
 import me.flyray.crm.model.CustomerBase;
 
 /** 
@@ -23,41 +27,72 @@ public class CustomerBaseServiceImpl implements CustomerBaseService{
 	private CustomerBaseDao customerBaseDao;
 	
 	@Override
-	public CustomerBase queryObject(Long customerId) {
-		for (int i = 0; i < 10; i++) {
-			System.out.println("终于调通统一dubbo服务入口了");
+	public List<Map<String, Object>> queryList(Map<String, Object> map) {
+		
+		List<Map<String, Object>> resultMaps = new ArrayList<>();
+		try {
+			List<CustomerBase> customerBases= customerBaseDao.queryList(map);
+			for (CustomerBase customerBase : customerBases) {
+				Map<String, Object> resultMap = BeanUtil.objectToMap(customerBase);
+				resultMaps.add(resultMap);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		return null;
-	}
-
-	@Override
-	public List<CustomerBase> queryList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return null;
+		return resultMaps;
+		
 	}
 
 	@Override
 	public int queryTotal(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return 0;
+		return customerBaseDao.queryTotal(map);
 	}
 
 	@Override
-	public void save(CustomerBase customerBase) {
+	public void save(Map<String, Object> map) {
+		if (map == null)     
+            return;
+		try {
+			CustomerBase customerBase = (CustomerBase)BeanUtil.mapToObject(map, CustomerBase.class);
+			customerBaseDao.save(customerBase);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void update(Map<String, Object> map) {
+		if (map == null)     
+            return;
+		try {
+			CustomerBase customerBase = (CustomerBase)BeanUtil.mapToObject(map, CustomerBase.class);
+			customerBaseDao.update(customerBase);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void deleteBatch(Long[] ids) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void update(CustomerBase customerBase) {
-		// TODO Auto-generated method stub
+	public Map<String, Object> queryObject(Map<String, Object> map) {
 		
-	}
-
-	@Override
-	public void deleteBatch(Long[] customerIds) {
-		// TODO Auto-generated method stub
+		if (map == null)     
+            return null;
+		Map<String, Object> resultMap = null;
+		try {
+			CustomerBase customerBase = (CustomerBase)BeanUtil.mapToObject(map, CustomerBase.class);
+			resultMap = BeanUtil.objectToMap(customerBaseDao.queryObject(customerBase));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
+		return resultMap;
 	}
 
 }

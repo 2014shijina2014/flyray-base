@@ -13,13 +13,15 @@ import me.flyray.crm.model.MerchantBase;
 
 public interface MerchantBaseService {
 
-	MerchantBase queryObject(Long merchantId);
+List<Map<String, Object>> queryList(Map<String, Object> map);
 	
-	List<MerchantBase> queryList(Map<String, Object> map);
+	Map<String, Object> queryObject(Map<String, Object> map);
 	
-	void save(MerchantBase merchantBase);
+	int queryTotal(Map<String, Object> map);
 	
-	void update(MerchantBase merchantBase);
+	void save(Map<String, Object> map);
+	
+	void update(Map<String, Object> map);
 	
 	void deleteBatch(Long[] ids);
 }

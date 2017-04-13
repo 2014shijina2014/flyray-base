@@ -26,8 +26,14 @@
 
     <dubbo:protocol name="dubbo" port="10105"/>
 
-	<dubbo:service interface="me.flyray.crm.api.UserService" ref="userService"  protocol="dubbo" timeout="1200000"/>
-	
 	<dubbo:service interface="me.flyray.crm.api.CustomerBaseService" ref="customerBaseService"  protocol="dubbo" timeout="1200000"/>
+	
+	<dubbo:service interface="me.flyray.crm.api.CustomerAccountService" ref="customerAccountService"  protocol="dubbo" timeout="1200000"/>
+	
+	<dubbo:service interface="me.flyray.crm.api.CustomerAuthService" ref="customerAuthService"  protocol="dubbo" timeout="1200000"/>
+	
+	<dubbo:service interface="me.flyray.crm.api.MerchantAccountService" ref="merchantAccountService"  protocol="dubbo" timeout="1200000"/>
+	
+	<dubbo:service interface="me.flyray.crm.api.MerchantBaseService" ref="merchantBaseService"  protocol="dubbo" timeout="1200000"/>
 
 </beans>

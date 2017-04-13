@@ -12,16 +12,17 @@ import me.flyray.crm.model.CustomerAuth;
 */
 
 public interface CustomerAuthService {
-
-	CustomerAuth queryObject(Long customerNo);
 	
-	List<CustomerAuth> queryList(Map<String, Object> map);
+	List<Map<String, Object>> queryList(Map<String, Object> map);
+	
+	Map<String, Object> queryObject(Map<String, Object> map);
 	
 	int queryTotal(Map<String, Object> map);
 	
-	void save(CustomerAuth customerAuth);
+	void save(Map<String, Object> map);
 	
-	void update(CustomerAuth customerAuth);
+	void update(Map<String, Object> map);
 	
 	void deleteBatch(Long[] ids);
+
 }

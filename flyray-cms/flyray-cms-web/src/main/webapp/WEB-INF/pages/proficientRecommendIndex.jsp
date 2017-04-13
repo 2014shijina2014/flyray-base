@@ -7,10 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  
 <title>Insert title here</title>  
 </head>  
-<body>  
-    <h1>springMVC包装类上传文件</h1>
-    <form name="userForm2" action="uploadToCloud.do" enctype="multipart/form-data" method="post"">  
-        <div id="newUpload2">
+<body>
+    <h1>上传推荐</h1>
+    <form name="userForm2" action="proficientRecommend.do" enctype="multipart/form-data" method="post"">
+    	customerNo: <input type="text" name="customerNo"/><br/>  
+        <div>
             <input type="file" name="file">
         </div>
         <input type="submit" value="上传" >

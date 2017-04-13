@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.flyray.cms.dao.ProficientRecommendDao">
+
+	<select id="queryObject" resultType="me.flyray.cms.model.ProficientRecommend">
+		select * from crm_proficient_recommend 
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+
+	<select id="queryList" resultType="me.flyray.cms.model.ProficientRecommend"
+		parameterType="java.util.Map">
+		select * from crm_proficient_recommend order by id desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+
+	<select id="query" resultType="me.flyray.cms.model.ProficientRecommend"
+		parameterType="java.util.Map">
+		select * from crm_proficient_recommend
+		<where>
+			1 = 1
+			<if test="customerNo != null and customerNo !=''">
+				AND customer_no = #{customerNo,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<select id="queryTotal" resultType="int">
+		select count(*) from
+		crm_proficient_recommend
+	</select>
+
+	<insert id="save" parameterType="me.flyray.cms.model.ProficientRecommend"
+		useGeneratedKeys="true" keyProperty="id">
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != ''">
+				id,
+			</if>
+			<if test="customerNo != null and customerNo != ''">
+				customer_no,
+			</if>
+			<if test="recommendDate != null and recommendDate != ''">
+				recommend_date,
+			</if>
+			<if test="recommendPhotoFile != null and recommendPhotoFile != ''">
+				recommend_photo_file,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="customerNo != null">
+				#{customerNo,jdbcType=VARCHAR},
+			</if>
+			<if test="recommendDate != null">
+				#{recommendDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="recommendPhotoFile != null">
+				#{recommendPhotoFile,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update" parameterType="me.flyray.cms.model.ProficientRecommend">
+		update crm_proficient_recommend
+		<set>
+			<if test="customerNo != null and customerNo != ''">
+				customer_no = #{customerNo,jdbcType=VARCHAR},
+			</if>
+			<if test="recommendDate != null">
+				recommend_date = #{recommendDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="recommendPhotoFile != null and recommendPhotoFile != ''">
+				recommend_photo_file =
+				#{recommendPhotoFile,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<update id="updateByBizKeys" parameterType="me.flyray.cms.model.ProficientRecommend">
+		update crm_proficient_recommend
+		<set>
+			<if test="recommendDate != null">
+				recommend_date =#{recommendDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="recommendPhotoFile != null and recommendPhotoFile != ''">
+				recommend_photo_file
+				=#{recommendPhotoFile,jdbcType=VARCHAR},
+			</if>
+		</set>
+		<trim prefix="WHERE" suffixOverrides="AND">
+			<if test="customerNo != null and customerNo != ''">customer_no = #{customerNo} AND</if>
+		</trim>
+	</update>
+	<delete id="delete">
+		delete from crm_proficient_recommend
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+
+</mapper>

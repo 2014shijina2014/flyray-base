@@ -13,15 +13,15 @@ import me.flyray.crm.model.CustomerBase;
 
 public interface CustomerBaseService {
 
-	CustomerBase queryObject(Long customerId);
+	List<Map<String, Object>> queryList(Map<String, Object> map);
 	
-	List<CustomerBase> queryList(Map<String, Object> map);
+	Map<String, Object> queryObject(Map<String, Object> map);
 	
 	int queryTotal(Map<String, Object> map);
 	
-	void save(CustomerBase customerBase);
+	void save(Map<String, Object> map);
 	
-	void update(CustomerBase customerBase);
+	void update(Map<String, Object> map);
 	
-	void deleteBatch(Long[] customerIds);
+	void deleteBatch(Long[] ids);
 }

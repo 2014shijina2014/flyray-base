@@ -1,9 +1,9 @@
-package me.flyray.crm.dao;
+package me.flyray.cms.dao;
 
 import java.util.List;
 import java.util.Map;
 
-import me.flyray.crm.model.CustomerBase;
+import me.flyray.cms.model.CustomerBase;
 
 /** 
 * @author: bolei
@@ -13,9 +13,11 @@ import me.flyray.crm.model.CustomerBase;
 
 public interface CustomerBaseDao {
 
-	CustomerBase queryObject(CustomerBase customerBase);
+	CustomerBase queryObject(Long customerId);
 	
 	List<CustomerBase> queryList(Map<String, Object> map);
+	
+	List<CustomerBase> query(Map<String, Object> map);
 	
 	int queryTotal(Map<String, Object> map);
 	
