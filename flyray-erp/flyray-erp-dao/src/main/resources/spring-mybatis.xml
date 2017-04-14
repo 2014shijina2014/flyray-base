@@ -16,45 +16,32 @@
       
     <!-- 加载配置文件 -->
 	<context:property-placeholder location="classpath:config.properties" />
+	
 	<!-- 配置数据源 -->
-	<bean name="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
-		init-method="init" destroy-method="close">
-		<property name="driverClassName" value="${jdbc_driverClassName}" />
-		<property name="url" value="${jdbc_url}" />
-		<property name="username" value="${jdbc_username}" />
-		<property name="password" value="${jdbc_password}" />
-
-		<!-- 初始化连接大小 -->
-		<property name="initialSize" value="1" />
-		<!-- 连接池最大使用连接数量 -->
-		<property name="maxActive" value="20" />
-		<!-- 连接池最大空闲 -->
-		<!-- <property name="maxIdle" value="20" /> -->
-		<!-- 连接池最小空闲 -->
-		<property name="minIdle" value="1" />
-		<!-- 获取连接最大等待时间 -->
-		<property name="maxWait" value="60000" />
-
-		<!-- <property name="poolPreparedStatements" value="true" /> <property 
-			name="maxPoolPreparedStatementPerConnectionSize" value="33" /> -->
-
-		<property name="validationQuery" value="${validationQuery}" />
-		<property name="testOnBorrow" value="false" />
-		<property name="testOnReturn" value="false" />
-		<property name="testWhileIdle" value="true" />
-
-		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-		<property name="timeBetweenEvictionRunsMillis" value="60000" />
-		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
-		<property name="minEvictableIdleTimeMillis" value="25200000" />
-
-		<!-- 打开removeAbandoned功能 -->
-		<property name="removeAbandoned" value="true" />
-		<!-- 1800秒，也就是30分钟 -->
-		<property name="removeAbandonedTimeout" value="1800" />
-		<!-- 关闭abanded连接时输出错误日志 -->
-		<property name="logAbandoned" value="true" />
-		<!-- 监控数据库 -->
+	<bean id="abstractDataSource" abstract="true" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
+          destroy-method="close">
+        <property name="driverClassName" value="${jdbc_driverClassName}"/>
+        <!-- 基本属性 url、user、password -->
+        <property name="url" value="${jdbc_url}"/>
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="1"/>
+        <property name="minIdle" value="10"/>
+        <property name="maxActive" value="20"/>
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="60000"/>
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
+        <property name="validationQuery" value="SELECT 'x'"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="testOnBorrow" value="false"/>
+        <property name="testOnReturn" value="false"/>
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>
+        <property name="connectionProperties" value="config.decrypt=true" />
+        <!-- 监控数据库 -->
 		<!-- <property name="filters" value="stat" /> -->
 		<property name="filters" value="log4j" />
 		<property name="proxyFilters">
@@ -62,32 +49,50 @@
 				<ref bean="log-filter" />
 			</list>
 		</property>
-	</bean>
-
+    </bean>
+       
 	<bean id="log-filter" class="com.alibaba.druid.filter.logging.Log4jFilter">
 		<property name="statementExecutableSqlLogEnable" value="true" />
 	</bean>
+	
+	<bean id="flyrayDataSourceRead"  parent="abstractDataSource">
+        <property name="username" value="${jdbc_username}"/>
+        <property name="password" value="${jdbc_password}"/>
+     </bean>
 
+     <bean id="flyrayDataSourceWrite"  parent="abstractDataSource">
+        <property name="username" value="${jdbc_username}"/>
+        <property name="password" value="${jdbc_password}"/>
+     </bean>
+
+     <bean id="flyrayDataSource"  class="me.flyray.erp.config.DynamicDataSource">
+        <property name="writeDataSource"  ref="flyrayDataSourceWrite"></property>
+        <property name="readDataSource" ref="flyrayDataSourceRead"></property>
+     </bean>
+
+     <tx:annotation-driven transaction-manager="transactionManager"/>
+
+     <bean id="transactionManager" class="me.flyray.erp.config.DynamicDataSourceTransactionManager">
+        <property name="dataSource" ref="flyrayDataSource"/>
+     </bean>
 
 	<!-- myBatis文件 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
+		<!-- 实例化sqlSessionFactory时需要使用上述配置好的数据源以及SQL映射文件 -->
+        <property name="dataSource" ref="flyrayDataSource"/>
 		<property name="mapperLocations" value="classpath*:mapper/*Mapper.xml" />
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+       	<property name="plugins">
+          <array>
+            <bean class="me.flyray.erp.config.DynamicPlugin" />
+          </array>
+        </property>
 	</bean>
 	<!-- spring与mybatis整合配置，扫描所有dao -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="me.flyray.erp.dao" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 	</bean>
-
-	<!-- 配置事务管理器 -->
-	<bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-
-	<!-- 注解方式配置事物 -->
-	<!-- <tx:annotation-driven transaction-manager="transactionManager" /> -->
 
 	<!-- 拦截器方式配置事物 -->
 	<tx:advice id="transactionAdvice" transaction-manager="transactionManager">
@@ -120,7 +125,6 @@
 			advice-ref="transactionAdvice" />
 	</aop:config>
 
-
 	<!-- 配置druid监控spring jdbc -->
 	<bean id="druid-stat-interceptor"
 		class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor"></bean>
@@ -128,7 +132,7 @@
 		scope="prototype">
 		<property name="patterns">
 			<list>
-				<value>me.flyray.erp.service.impl</value>
+				<value>me.flyray.erp.service</value>
 			</list>
 		</property>
 	</bean>

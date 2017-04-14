@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import me.flyray.common.BeanUtil;
 import me.flyray.crm.api.MerchantBaseService;
 import me.flyray.crm.dao.MerchantBaseDao;
-import me.flyray.crm.model.CustomerBase;
 import me.flyray.crm.model.MerchantBase;
 
 /** 
@@ -18,6 +18,7 @@ import me.flyray.crm.model.MerchantBase;
 * @description：商户基础信息
 */
 
+@Service("merchantBaseService")
 public class MerchantBaseServiceImpl implements MerchantBaseService{
 
 	@Autowired

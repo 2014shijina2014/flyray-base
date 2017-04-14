@@ -9,9 +9,7 @@ import org.springframework.stereotype.Service;
 
 import me.flyray.common.BeanUtil;
 import me.flyray.crm.api.CustomerBaseService;
-import me.flyray.crm.dao.CustomerAuthDao;
 import me.flyray.crm.dao.CustomerBaseDao;
-import me.flyray.crm.model.CustomerAuth;
 import me.flyray.crm.model.CustomerBase;
 
 /** 

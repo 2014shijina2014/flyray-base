@@ -44,9 +44,9 @@
 
 ### 4、下载安装zookeeper并启动
 
-### 4、先启动flyray-crm、flyray-erp、flyray-pay中对应的web工程，然后启动flyray-rest下面的web
+### 5、先启动flyray-crm、flyray-erp、flyray-pay中对应的web工程，然后启动flyray-rest下面的web
 
-### 5、启动具体应用flyray-cms下的web或是flyray-merchant-web、flyray-operation-web、flyray-open-web
+### 6、启动flyray-cms下的web或是flyray-merchant-web、flyray-operation-web、flyray-open-web
 
 细节慢慢补充
 如有遗漏 请在群中给我**反馈**。
