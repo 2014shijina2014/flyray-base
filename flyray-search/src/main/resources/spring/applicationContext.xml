@@ -1,0 +1,53 @@
+<?xml version= "1.0" encoding ="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:elasticsearch="http://www.springframework.org/schema/data/elasticsearch"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+	     http://www.springframework.org/schema/data/elasticsearch 
+	     http://www.springframework.org/schema/data/elasticsearch/spring-elasticsearch.xsd">
+
+    <context:component-scan base-package="me.flyray.search.rocketmq">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <context:annotation-config/>
+
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:application.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--AOP-->
+    <bean id="logAspect" class="me.flyray.search.aspect.LogAspect"/>
+    <aop:config>
+        <aop:aspect id="received" ref="logAspect">
+            <aop:pointcut id="receivedService"
+                          expression="execution(* me.flyray.search.rocketmq.service..*.*(..))"/>
+            <aop:around pointcut-ref="receivedService" method="around"/>
+        </aop:aspect>
+    </aop:config>
+
+    <aop:aspectj-autoproxy/>
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    
+    <elasticsearch:transport-client id="client"
+		cluster-nodes="127.0.0.1:9300" cluster-name="elasticsearch" />
+
+	<bean name="elasticsearchTemplate"
+		class="org.springframework.data.elasticsearch.core.ElasticsearchTemplate">
+		<constructor-arg name="client" ref="client" />
+	</bean>
+	
+	<elasticsearch:repositories
+            base-package="me.flyray.search.repository"/>
+
+</beans>

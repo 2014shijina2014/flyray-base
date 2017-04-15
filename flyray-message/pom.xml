@@ -117,7 +117,7 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.3</version>
                 <configuration>
-                    <warName>gd-user</warName>
+                    <warName>flyray-message</warName>
                 </configuration>
             </plugin>
         </plugins>
