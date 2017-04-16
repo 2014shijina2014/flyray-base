@@ -17,6 +17,7 @@ import me.flyray.cms.model.CustomerBase;
 import me.flyray.cms.model.ProficientRecommend;
 import me.flyray.cms.service.QiniuCloudServiceImpl;
 import me.flyray.cms.util.Base64Util;
+import me.flyray.cms.util.DateUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+
+import com.qiniu.util.StringUtils;
 
 @Controller
 public class ProficientRecommendController {
@@ -76,9 +79,11 @@ public class ProficientRecommendController {
             }  
         }
 		
+        String recommendDate = DateUtils.format(new Date(), "yyyy-MM-dd");
         ProficientRecommend proficientRecommend = new ProficientRecommend();
         proficientRecommend.setCustomerNo(customerNo);
-        proficientRecommend.setRecommendDate(new Date());
+        proficientRecommend.setRecommendTime(new Date());
+        proficientRecommend.setRecommendDate(recommendDate);
         proficientRecommend.setRecommendPhotoFile(id);
         proficientRecommendDao.save(proficientRecommend);
         
@@ -90,7 +95,11 @@ public class ProficientRecommendController {
 	
 	@RequestMapping(value="/viewRecommend")
 	public Map<String,Object> viewRecommend(HttpServletRequest request,HttpServletResponse response) throws IllegalStateException, IOException {
-		String customerNo = request.getParameter("customerNo");  
+		String customerNo = request.getParameter("customerNo");
+		String recommendDate = request.getParameter("recommendDate");
+		if(StringUtils.isNullOrEmpty(customerNo)){
+			throw new RuntimeException("客户号不能为空");
+		}
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("customerNo", customerNo);
 		List<CustomerBase> list = customerBaseDao.query(map);
@@ -100,6 +109,7 @@ public class ProficientRecommendController {
 		if(list.size() < 1){
 			throw new RuntimeException("会员信息不存在");
 		}
+		map.put("recommendDate", recommendDate);
 		List<ProficientRecommend> listRecommend = proficientRecommendDao.queryList(map);
 		return ResponseHelper.success(listRecommend, "00", "请求数据成功");
 	}

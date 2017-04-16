@@ -1,6 +1,7 @@
 package me.flyray.cms.dto;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import me.flyray.cms.util.BeanUtil;
@@ -23,7 +24,12 @@ public class ResponseHelper {
 			if (clazz instanceof Map) {
 				map.put("data", clazz);
 				return map;
-			}else {
+			}if (clazz instanceof List) {
+				Map<String,Object> reMap = new HashMap<String, Object>();
+				reMap.put("list", clazz);
+				return reMap;
+			}
+			else {
 				map.put("data", BeanUtil.objectToMap(clazz));
 			}
 		} catch (Exception e) {

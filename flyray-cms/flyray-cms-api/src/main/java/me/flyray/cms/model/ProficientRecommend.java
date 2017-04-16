@@ -19,7 +19,11 @@ public class ProficientRecommend {
 	/**
 	 * 推荐日期
 	 */
-	private Date recommendDate;
+	private String recommendDate;
+	/**
+	 * 推荐时间
+	 */
+	private Date recommendTime;
 	/**
 	 * 推荐
 	 */
@@ -36,11 +40,18 @@ public class ProficientRecommend {
 	public void setCustomerNo(String customerNo) {
 		this.customerNo = customerNo;
 	}
-	public Date getRecommendDate() {
+	
+	public String getRecommendDate() {
 		return recommendDate;
 	}
-	public void setRecommendDate(Date recommendDate) {
+	public void setRecommendDate(String recommendDate) {
 		this.recommendDate = recommendDate;
+	}
+	public Date getRecommendTime() {
+		return recommendTime;
+	}
+	public void setRecommendTime(Date recommendTime) {
+		this.recommendTime = recommendTime;
 	}
 	public String getRecommendPhotoFile() {
 		return recommendPhotoFile;

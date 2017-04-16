@@ -19,3 +19,42 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 
 
+CREATE TABLE
+    crm_customer_base_extend
+    (
+        customer_no VARCHAR(60) NOT NULL COMMENT '客户号',
+        follow_customer_no VARCHAR(60) NOT NULL COMMENT '关注客户号'
+    )
+    ENGINE=InnoDB DEFAULT CHARSET=utf8;
+    
+CREATE TABLE
+    crm_customer_proficient
+    (
+        customer_no VARCHAR(60) NOT NULL COMMENT '客户号',
+        cert_photo_file_no VARCHAR(20) NOT NULL COMMENT '身份证正面照片',
+        leval VARCHAR(2) NOT NULL COMMENT '专家等级：00-普通；01-热门'
+    )
+    ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE
+    crm_photo_file
+    (
+        id INT NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        file_name VARCHAR(200) NOT NULL COMMENT '文件名',
+        path VARCHAR(200) NOT NULL COMMENT '路径',
+        add_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
+        PRIMARY KEY (id)
+    )
+    ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE
+    crm_proficient_recommend
+    (
+        id INT NOT NULL AUTO_INCREMENT COMMENT '主键id',
+        customer_no VARCHAR(60) NOT NULL COMMENT '客户号',
+        recommend_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '推荐时间',
+        recommend_photo_file VARCHAR(200) NOT NULL COMMENT '推荐位置',
+        PRIMARY KEY (id)
+    )
+    ENGINE=InnoDB DEFAULT CHARSET=utf8;
+

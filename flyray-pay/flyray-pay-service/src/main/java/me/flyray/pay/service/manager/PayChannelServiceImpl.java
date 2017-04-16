@@ -1,11 +1,11 @@
 package me.flyray.pay.service.manager;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.jdbc.Null;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +22,8 @@ import me.flyray.pay.model.PayChannel;
 
 @Service("payChannelService")
 public class PayChannelServiceImpl implements PayChannelService{
+	
+	private static final Logger logger = LoggerFactory.getLogger(PayChannelServiceImpl.class);
 	
 	@Autowired
 	private PayChannelDao payChannelDao;

@@ -4,11 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
 
-import me.flyray.cms.dao.PhotoFileDao;
-import me.flyray.cms.model.PhotoFile;
-import me.flyray.cms.util.RRException;
-
 import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +15,10 @@ import com.qiniu.http.Response;
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
+
+import me.flyray.cms.dao.PhotoFileDao;
+import me.flyray.cms.model.PhotoFile;
+import me.flyray.cms.util.RRException;
 
 /** 
 * @author: bolei
@@ -27,6 +29,7 @@ import com.qiniu.util.Auth;
 @Service("qiniuCloudServiceImpl")
 public class QiniuCloudServiceImpl extends CloudStorageService {
 
+	private static final Logger logger = LoggerFactory.getLogger(QiniuCloudServiceImpl.class);
 	
 	@Autowired
 	public PhotoFileDao photoFileDao;
@@ -67,8 +70,8 @@ public class QiniuCloudServiceImpl extends CloudStorageService {
         photoFile.setAddDate(new Date());
         photoFile.setFileName(path);
         photoFile.setPath(filePath);
-        int ss = photoFileDao.insert(photoFile);
-        return Integer.valueOf(ss).toString();
+        photoFileDao.insert(photoFile);
+        return Integer.valueOf(photoFile.getId()).toString();
     }
 
     @Override

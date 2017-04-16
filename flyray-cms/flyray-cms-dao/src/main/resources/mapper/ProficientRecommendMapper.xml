@@ -11,7 +11,12 @@
 
 	<select id="queryList" resultType="me.flyray.cms.model.ProficientRecommend"
 		parameterType="java.util.Map">
-		select * from crm_proficient_recommend order by id desc
+		select * from crm_proficient_recommend 
+		<trim prefix="WHERE" suffixOverrides="AND">
+			<if test="recommendDate != null and recommendDate != ''">recommend_date = #{recommendDate} AND</if>
+			<if test="customerNo != null and customerNo != ''">customer_no = #{customerNo} AND</if>
+		</trim>
+		order by id desc
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
@@ -36,6 +41,10 @@
 
 	<insert id="save" parameterType="me.flyray.cms.model.ProficientRecommend"
 		useGeneratedKeys="true" keyProperty="id">
+		<selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER">  
+                SELECT LAST_INSERT_ID()  
+         </selectKey>
+		insert into crm_proficient_recommend
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null and id != ''">
 				id,
@@ -46,21 +55,27 @@
 			<if test="recommendDate != null and recommendDate != ''">
 				recommend_date,
 			</if>
+			<if test="recommendTime != null and recommendTime != ''">
+				recommend_time,
+			</if>
 			<if test="recommendPhotoFile != null and recommendPhotoFile != ''">
 				recommend_photo_file,
 			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="id != null">
+			<if test="id != null and id != ''">
 				#{id,jdbcType=INTEGER},
 			</if>
-			<if test="customerNo != null">
+			<if test="customerNo != null and customerNo != ''">
 				#{customerNo,jdbcType=VARCHAR},
 			</if>
-			<if test="recommendDate != null">
-				#{recommendDate,jdbcType=TIMESTAMP},
+			<if test="recommendDate != null and recommendDate != ''">
+				#{recommendDate,jdbcType=VARCHAR},
 			</if>
-			<if test="recommendPhotoFile != null">
+			<if test="recommendTime != null and recommendTime != ''">
+				#{recommendTime,jdbcType=TIMESTAMP},
+			</if>
+			<if test="recommendPhotoFile != null and recommendPhotoFile != ''">
 				#{recommendPhotoFile,jdbcType=VARCHAR},
 			</if>
 		</trim>
@@ -73,7 +88,7 @@
 				customer_no = #{customerNo,jdbcType=VARCHAR},
 			</if>
 			<if test="recommendDate != null">
-				recommend_date = #{recommendDate,jdbcType=TIMESTAMP},
+				recommend_date = #{recommendDate,jdbcType=VARCHAR},
 			</if>
 			<if test="recommendPhotoFile != null and recommendPhotoFile != ''">
 				recommend_photo_file =

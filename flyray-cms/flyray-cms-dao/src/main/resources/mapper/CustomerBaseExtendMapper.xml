@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.flyray.cms.dao.CustomerBaseExtendDao">
+
+	<!-- 查询保存信息 -->
+	<select id="query" resultType="me.flyray.cms.model.CustomerBaseExtend">
+		select * from crm_customer_base_extend
+	</select>
+	
+	<select id="findById" resultType="me.flyray.cms.model.CustomerBaseExtend" parameterType="java.lang.Integer">
+		select * from crm_customer_base_extend
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	
+	<!-- 保存图片信息  -->
+	<insert id="insert" parameterType="me.flyray.cms.model.CustomerBaseExtend">
+		insert into crm_customer_base_extend
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="fileName != null and fileName != ''">
+				FILE_NAME,
+			</if>
+			<if test="path != null and path != ''">
+				PATH,
+			</if>
+			<if test="addDate != null and addDate != ''">
+				ADD_DATE,
+			</if>
+			<if test="id != null and id != ''">
+				ID,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="fileName != null and fileName != ''">
+				#{fileName,jdbcType=VARCHAR},
+			</if>
+			<if test="path != null and path != ''">
+				#{path,jdbcType=VARCHAR},
+			</if>
+			<if test="addDate != null and addDate != ''">
+				#{addDate,jdbcType=VARCHAR},
+			</if>
+			<if test="id != null and id != ''">
+				#{id,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+
+
+</mapper>

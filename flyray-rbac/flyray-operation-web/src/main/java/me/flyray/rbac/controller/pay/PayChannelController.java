@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +32,8 @@ import me.flyray.rest.model.Parameter;
 @RequestMapping("/pay/payChannel")
 public class PayChannelController extends AbstractController {
 
+	private static final Logger logger = LoggerFactory.getLogger(PayChannelController.class);
+	
 	@Autowired
 	private ApiProvider apiProvider;
 	
@@ -77,7 +81,9 @@ public class PayChannelController extends AbstractController {
 
 		Parameter parameter = new Parameter("payChannelService", "save");
 		Map<String, Object> map = new HashMap<>();
-		map.put("payChannelNo", "");
+		map.put("payChannelNo", params.get("payChannelNo"));
+		map.put("payCompanyNo", params.get("payCompanyNo"));
+		map.put("feeRatio", params.get("feeRatio"));
 		parameter.setMap(map);
 		apiProvider.execute(parameter);
 		

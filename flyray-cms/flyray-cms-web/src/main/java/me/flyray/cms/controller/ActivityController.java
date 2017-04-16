@@ -2,6 +2,8 @@ package me.flyray.cms.controller;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +22,8 @@ import me.flyray.cms.util.BeanUtil;
 @RequestMapping("/activity")
 public class ActivityController {
 
+	private static final Logger logger = LoggerFactory.getLogger(ActivityController.class);
+	
 	/**
 	 * 保存活动
 	 */
