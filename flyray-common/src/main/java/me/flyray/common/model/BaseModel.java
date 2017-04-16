@@ -1,4 +1,4 @@
-package me.flyray.crm.model;
+package me.flyray.common.model;
 
 import java.io.Serializable;
 

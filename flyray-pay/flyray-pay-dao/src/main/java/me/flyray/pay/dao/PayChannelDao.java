@@ -1,8 +1,6 @@
 package me.flyray.pay.dao;
 
-import java.util.List;
-import java.util.Map;
-
+import me.flyray.common.dao.BaseDao;
 import me.flyray.pay.model.PayChannel;
 
 /** 
@@ -11,18 +9,6 @@ import me.flyray.pay.model.PayChannel;
 * @description：支付通道
 */
 
-public interface PayChannelDao {
+public interface PayChannelDao extends BaseDao<PayChannel>{
 
-	List<PayChannel> queryList(Map<String, Object> map);
-	
-	PayChannel queryObject(PayChannel payChannel);
-	
-	int queryTotal(Map<String, Object> map);
-	
-	void save(PayChannel payChannel);
-	
-	void update(PayChannel payChannel);
-
-	PayChannel queryById(Long id);
-	
 }

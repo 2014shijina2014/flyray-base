@@ -1,8 +1,6 @@
 package me.flyray.crm.dao;
 
-import java.util.List;
-import java.util.Map;
-
+import me.flyray.common.dao.BaseDao;
 import me.flyray.crm.model.CustomerAuth;
 
 /** 
@@ -11,16 +9,6 @@ import me.flyray.crm.model.CustomerAuth;
 * @description：客户授权
 */
 
-public interface CustomerAuthDao {
+public interface CustomerAuthDao extends BaseDao<CustomerAuth>{
 
-	CustomerAuth queryObject(CustomerAuth customerAuth);
-	
-	List<CustomerAuth> queryList(Map<String, Object> map);
-	
-	int queryTotal(Map<String, Object> map);
-	
-	void save(CustomerAuth customerAuth);
-	
-	void update(CustomerAuth customerAuth);
-	
 }

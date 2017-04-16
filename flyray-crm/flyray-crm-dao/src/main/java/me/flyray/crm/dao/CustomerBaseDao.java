@@ -1,8 +1,6 @@
 package me.flyray.crm.dao;
 
-import java.util.List;
-import java.util.Map;
-
+import me.flyray.common.dao.BaseDao;
 import me.flyray.crm.model.CustomerBase;
 
 /** 
@@ -11,18 +9,6 @@ import me.flyray.crm.model.CustomerBase;
 * @description：客户基础信息
 */
 
-public interface CustomerBaseDao {
+public interface CustomerBaseDao extends BaseDao<CustomerBase>{
 
-	CustomerBase queryObject(CustomerBase customerBase);
-	
-	List<CustomerBase> queryList(Map<String, Object> map);
-	
-	int queryTotal(Map<String, Object> map);
-	
-	void save(CustomerBase customerBase);
-	
-	void update(CustomerBase customerBase);
-	
-	void deleteBatch(Long[] customerIds);
-	
 }

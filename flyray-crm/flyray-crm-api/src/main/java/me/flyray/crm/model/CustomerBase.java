@@ -2,6 +2,8 @@ package me.flyray.crm.model;
 
 import java.util.Date;
 
+import me.flyray.common.model.BaseModel;
+
 /** 
 * @author: bolei
 * @date：2017年3月6日 下午9:53:42 
