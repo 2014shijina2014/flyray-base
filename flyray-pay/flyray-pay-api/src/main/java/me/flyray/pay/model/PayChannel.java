@@ -1,5 +1,7 @@
 package me.flyray.pay.model;
 
+import java.math.BigDecimal;
+
 /** 
 * @author: bolei
 * @date：2017年3月6日 下午10:11:02 
@@ -11,7 +13,7 @@ public class PayChannel {
 	/**
 	 * 自增id
 	 */
-	private Long id;
+	private Integer id;
 	
 	/**
 	 *  支付通道编号
@@ -28,11 +30,11 @@ public class PayChannel {
 	 */
 	private String feeRatio;
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -59,5 +61,4 @@ public class PayChannel {
 	public void setFeeRatio(String feeRatio) {
 		this.feeRatio = feeRatio;
 	}
-	
 }

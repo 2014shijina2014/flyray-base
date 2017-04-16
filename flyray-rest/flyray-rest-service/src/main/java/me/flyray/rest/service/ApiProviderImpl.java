@@ -27,7 +27,7 @@ import me.flyray.rest.model.TestUser;
 @Service("apiProvider")
 public class ApiProviderImpl implements ApplicationContextAware, ApiProvider{
 
-	protected Logger logger = LoggerFactory.getLogger(getClass());
+	private static final Logger logger = LoggerFactory.getLogger(ApiProviderImpl.class);
 	
 	private ApplicationContext applicationContext;
 
@@ -38,7 +38,9 @@ public class ApiProviderImpl implements ApplicationContextAware, ApiProvider{
 	@Override
 	public Parameter execute(Parameter parameter) {
 		
-		logger.info("请求：{}", JSON.toJSONString(parameter));
+		logger.info("请求flyray-rest参数：{}", JSON.toJSONString(parameter));
+		logger.info("调用服务名称：{}",parameter.getService());
+		logger.info("调用服务方法：{}",parameter.getMethod());
 		Object service = applicationContext.getBean(parameter.getService());
 		logger.info("根据请求服务实例化对象：{}",service);
 		try {
@@ -49,19 +51,23 @@ public class ApiProviderImpl implements ApplicationContextAware, ApiProvider{
 			Object result = null;
 			MethodAccess methodAccess = MethodAccess.get(service.getClass());
 			if (id != null) {
+				logger.info("调用服务参数：{}",parameter.getId());
 				result = methodAccess.invoke(service, parameter.getMethod(), parameter.getId());
 			} else if (model != null) {
+				logger.info("调用服务参数：{}",parameter.getModel());
 				result = methodAccess.invoke(service, parameter.getMethod(), parameter.getModel());
 			} else if (list != null) {
+				logger.info("调用服务参数：{}",parameter.getList());
 				result = methodAccess.invoke(service, parameter.getMethod(), parameter.getList());
 			} else if (map != null) {
+				logger.info("调用服务参数：{}",parameter.getMap());
 				result = methodAccess.invoke(service, parameter.getMethod(), parameter.getMap());
 			} else {
 				result = methodAccess.invoke(service, parameter.getMethod());
 			}
 			if (result != null) {
 				Parameter response = new Parameter(result);
-				logger.info("响应：{}", JSON.toJSONString(response));
+				logger.info("rest-api响应：{}", JSON.toJSONString(response));
 				return response;
 			}
 			logger.info("空响应");
@@ -71,11 +77,12 @@ public class ApiProviderImpl implements ApplicationContextAware, ApiProvider{
 		}
 	}
 
+	/**
+	 * just test
+	 */
 	@Override
 	public Parameter execute(TestUser parameter) {
-		// TODO Auto-generated method stub
 		logger.info("请求：{}", JSON.toJSONString(parameter));
-		
 		return null;
 	}
 

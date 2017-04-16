@@ -39,13 +39,14 @@ var vm = new Vue({
 	el:'#rrapp',
 	data:{
 		q:{
-			orgName: null
+			payChannelNo: null
 		},
 		showList: true,
 		title:null,
-		org:{
-			orgName:null,
-			parentId:0,
+		payChannel:{
+			payChannelNo:null,
+			payCompanyNo:null,
+			feeRatio:null,
 		}
 	},
 	methods: {
@@ -57,27 +58,27 @@ var vm = new Vue({
 			vm.title = "新增";
 		},
 		update: function () {
-			var orgId = getSelectedRow();
-			if(orgId == null){
+			var id = getSelectedRow();
+			if(id == null){
 				return ;
 			}
 			
 			vm.showList = false;
             vm.title = "修改";
 			
-			vm.getOrg(orgId);
+			vm.getPayChannel(id);
 		},
 		del: function () {
-			var orgIds = getSelectedRows();
-			if(orgIds == null){
+			var ids = getSelectedRows();
+			if(ids == null){
 				return ;
 			}
 			
 			confirm('确定要删除选中的记录？', function(){
 				$.ajax({
 					type: "POST",
-				    url: "../sys/org/delete",
-				    data: JSON.stringify(orgIds),
+				    url: "../pay/payChannel/delete",
+				    data: JSON.stringify(ids),
 				    success: function(r){
 						if(r.code == 0){
 							alert('操作成功', function(index){
@@ -91,11 +92,11 @@ var vm = new Vue({
 			});
 		},
 		saveOrUpdate: function (event) {
-			var url = vm.org.orgId == null ? "../sys/org/save" : "../sys/org/update";
+			var url = vm.payChannel.id == null ? "../pay/payChannel/save" : "../pay/payChannel/update";
 			$.ajax({
 				type: "POST",
 			    url: url,
-			    data: JSON.stringify(vm.org),
+			    data: JSON.stringify(vm.payChannel),
 			    success: function(r){
 			    	if(r.code === 0){
 						alert('操作成功', function(index){
@@ -107,9 +108,9 @@ var vm = new Vue({
 				}
 			});
 		},
-		getOrg: function(orgId){
-			$.get("../sys/org/info/"+orgId, function(r){
-				vm.org = r.org;
+		getPayChannel: function(id){
+			$.get("../pay/payChannel/info/"+id, function(r){
+				vm.payChannel = r.payChannel;
 			});
 		},
 		reload: function (event) {

@@ -5,7 +5,11 @@
 <mapper namespace="me.flyray.pay.dao.PayChannelDao">
 
 	<select id="queryObject" resultType="me.flyray.pay.model.PayChannel">
-		select * from pay_channel where id = #{value}
+		select * from pay_channel where id = #{id}
+	</select>
+
+	<select id="queryById" resultType="me.flyray.pay.model.PayChannel">
+		select * from pay_channel where id = #{id}
 	</select>
 
 	<select id="queryList" resultType="me.flyray.pay.model.PayChannel">
@@ -18,25 +22,28 @@
  	<select id="queryTotal" resultType="int">
 		select count(*) from pay_channel 
 	</select>
-	 
+	
 	<insert id="save" parameterType="me.flyray.pay.model.PayChannel" useGeneratedKeys="true" keyProperty="id">
 		insert into pay_channel
 		(
-			`url`, 
-			`create_date`
+			`pay_channel_no`,
+			`pay_company_no`, 
+			`fee_ratio`
 		)
 		values
 		(
-			#{url}, 
-			#{createDate}
+			#{payChannelNo},
+			#{payCompanyNo},
+			#{feeRatio}
 		)
 	</insert>
 	 
 	<update id="update" parameterType="me.flyray.pay.model.PayChannel">
 		update pay_channel 
 		<set>
-			<if test="url != null">`url` = #{url}, </if>
-			<if test="createDate != null">`create_date` = #{createDate}</if>
+			<if test="payChannelNo != null">`pay_channel_no` = #{payChannelNo}, </if>
+			<if test="payCompanyNo != null">`pay_company_no` = #{payCompanyNo},</if>
+			<if test="feeRatio != null">`fee_ratio` = #{feeRatio}</if>
 		</set>
 		where id = #{id}
 	</update>

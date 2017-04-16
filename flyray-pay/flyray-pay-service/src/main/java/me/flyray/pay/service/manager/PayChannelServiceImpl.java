@@ -17,7 +17,7 @@ import me.flyray.pay.model.PayChannel;
 /** 
 * @author: bolei
 * @date：2017年4月6日 下午10:57:07 
-* @description：付通道
+* @description：支付通道
 */
 
 @Service("payChannelService")
@@ -52,6 +52,7 @@ public class PayChannelServiceImpl implements PayChannelService{
 
 	@Override
 	public void save(Map<String, Object> map) {
+		logger.info("flyray-pay保存支付通道信息----：{}",map);
 		if (map == null)     
             return;
 		try {
@@ -60,11 +61,11 @@ public class PayChannelServiceImpl implements PayChannelService{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 	@Override
 	public void update(Map<String, Object> map) {
+		logger.info("flyray-pay更新支付通道信息----请求参数：{}",map);
 		if (map == null)     
             return;
 		try {
@@ -83,7 +84,7 @@ public class PayChannelServiceImpl implements PayChannelService{
 
 	@Override
 	public Map<String, Object> queryObject(Map<String, Object> map) {
-		
+		logger.info("flyray-pay查询支付通道信息----请求参数：{}",map);
 		if (map == null)     
             return null;
 		Map<String, Object> resultMap = null;
@@ -94,6 +95,19 @@ public class PayChannelServiceImpl implements PayChannelService{
 			e.printStackTrace();
 		}
 		
+		return resultMap;
+	}
+
+	@Override
+	public Map<String, Object> queryById(Long id) {
+		logger.info("flyray-pay根据ID查询支付通道信息----请求参数：{}",id);
+		Map<String, Object> resultMap = null;
+		try {
+			resultMap = BeanUtil.objectToMap(payChannelDao.queryById(id));
+		} catch (Exception e) {
+			e.printStackTrace();
+		};
+		logger.info("flyray-pay根据ID查询支付通道信息----返回参数参数：{}",resultMap);
 		return resultMap;
 	}
 

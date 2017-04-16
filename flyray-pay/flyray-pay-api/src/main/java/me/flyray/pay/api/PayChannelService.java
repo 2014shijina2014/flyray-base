@@ -17,6 +17,8 @@ public interface PayChannelService {
 	
 	Map<String, Object> queryObject(Map<String, Object> map);
 	
+	Map<String, Object> queryById(Long id);
+	
 	int queryTotal(Map<String, Object> map);
 	
 	void save(Map<String, Object> map);

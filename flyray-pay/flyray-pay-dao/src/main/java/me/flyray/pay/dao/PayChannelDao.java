@@ -22,5 +22,7 @@ public interface PayChannelDao {
 	void save(PayChannel payChannel);
 	
 	void update(PayChannel payChannel);
+
+	PayChannel queryById(Long id);
 	
 }

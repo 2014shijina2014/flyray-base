@@ -44,14 +44,15 @@ public class PayChannelController extends AbstractController {
 	@RequiresPermissions("pay:payChannel:list")
 	public R list(@RequestParam Map<String, Object> params){
 		//查询列表数据
+		logger.info("flyray-operation请求查询支付通道列表---请求参数:{}",params);
 		Parameter parameter = new Parameter("payChannelService", "queryList");
 		Map<String, Object> map = new HashMap<>();
-		map.put("payChannelNo", "");
+		map.put("payChannelNo", params.get("payChannelNo"));
 		parameter.setMap(map);
 		List<?> list = apiProvider.execute(parameter).getList();
 		int total = list.size();
+		logger.info("flyray-operation请求查询支付通道列表---查询结果size:{}",total);
 		PageUtils pageUtil = new PageUtils(list, total, 10, 1);
-		
 		return R.ok().put("page", pageUtil);
 	}
 	
@@ -62,13 +63,12 @@ public class PayChannelController extends AbstractController {
 	@RequestMapping("/info/{id}")
 	@RequiresPermissions("pay:payChannel:info")
 	public R info(@PathVariable("id") Long id){
-		
-		Parameter parameter = new Parameter("payChannelService", "queryObject");
-		Map<String, Object> map = new HashMap<>();
-		map.put("payChannelNo", "");
-		parameter.setMap(map);
-		Map<?, ?> map1 = apiProvider.execute(parameter).getMap();
-		return R.ok().put("payChannel", map1);
+		logger.info("flyray-operation请求查询支付通道信息---请求参数:{}",id);
+		Parameter parameter = new Parameter("payChannelService", "queryById");
+		parameter.setId(id);
+		Map<?, ?> map = apiProvider.execute(parameter).getMap();
+		logger.info("flyray-operation请求查询支付通道信息---返回参数:{}",map);
+		return R.ok().put("payChannel", map);
 	}
 	
 	/**
@@ -77,8 +77,9 @@ public class PayChannelController extends AbstractController {
 	@SysLog("保存配置")
 	@RequestMapping("/save")
 	@RequiresPermissions("pay:payChannel:save")
-	public R save(@RequestParam Map<String, Object> params){
-
+	public R save(@RequestBody Map<String, Object> params){
+		
+		logger.info("flyray-operation保存支付通道信息---请求参数：{}",params);
 		Parameter parameter = new Parameter("payChannelService", "save");
 		Map<String, Object> map = new HashMap<>();
 		map.put("payChannelNo", params.get("payChannelNo"));
@@ -86,8 +87,8 @@ public class PayChannelController extends AbstractController {
 		map.put("feeRatio", params.get("feeRatio"));
 		parameter.setMap(map);
 		apiProvider.execute(parameter);
-		
 		return R.ok();
+		
 	}
 	
 	/**
@@ -96,11 +97,15 @@ public class PayChannelController extends AbstractController {
 	@SysLog("修改配置")
 	@RequestMapping("/update")
 	@RequiresPermissions("pay:payChannel:update")
-	public R update(@RequestBody SysConfigEntity config){
+	public R update(@RequestBody Map<String, Object> params){
 		
+		logger.info("flyray-operation修改支付通道信息---请求参数{}",params);
 		Parameter parameter = new Parameter("payChannelService", "update");
 		Map<String, Object> map = new HashMap<>();
-		map.put("payChannelNo", "");
+		map.put("payChannelNo", params.get("payChannelNo"));
+		map.put("payCompanyNo", params.get("payCompanyNo"));
+		map.put("feeRatio", params.get("feeRatio"));
+		map.put("id", params.get("id"));
 		parameter.setMap(map);
 		apiProvider.execute(parameter);
 		
@@ -117,7 +122,7 @@ public class PayChannelController extends AbstractController {
 		
 		Parameter parameter = new Parameter("payChannelService", "deleteBatch");
 		Map<String, Object> map = new HashMap<>();
-		map.put("ids", "");
+		map.put("ids", ids);
 		parameter.setMap(map);
 		apiProvider.execute(parameter);
 		
