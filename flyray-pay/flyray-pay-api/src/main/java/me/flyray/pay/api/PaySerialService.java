@@ -1,9 +1,6 @@
 package me.flyray.pay.api;
 
-import java.util.List;
-import java.util.Map;
-
-import me.flyray.pay.model.PaySerial;
+import me.flyray.common.service.BaseService;
 
 /** 
 * @author: bolei
@@ -11,16 +8,6 @@ import me.flyray.pay.model.PaySerial;
 * @description：支付流水
 */
 
-public interface PaySerialService {
+public interface PaySerialService extends BaseService{
 
-	List<PaySerial> queryList(Map<String, Object> map);
-	
-	int queryTotal(Map<String, Object> map);
-	
-	void save(PaySerial paySerial);
-	
-	void update(PaySerial paySerial);
-	
-	void deleteBatch(Long[] ids);
-	
 }

@@ -1,9 +1,6 @@
 package me.flyray.pay.api;
 
-import java.util.List;
-import java.util.Map;
-
-import me.flyray.pay.model.RefundSerial;
+import me.flyray.common.service.BaseService;
 
 /** 
 * @author: bolei
@@ -11,16 +8,6 @@ import me.flyray.pay.model.RefundSerial;
 * @description：退款流水
 */
 
-public interface RefundSerialService {
+public interface RefundSerialService extends BaseService{
 
-	List<RefundSerial> queryList(Map<String, Object> map);
-	
-	int queryTotal(Map<String, Object> map);
-	
-	void save(RefundSerial refundSerial);
-	
-	void update(RefundSerial refundSerial);
-	
-	void deleteBatch(Long[] ids);
-	
 }

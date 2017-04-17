@@ -2,7 +2,7 @@ package me.flyray.erp.service;
 
 import org.springframework.stereotype.Service;
 
-import me.flyray.erp.api.GoodsService;
+import me.flyray.erp.api.ProductService;
 
 /** 
 * @author: bolei
@@ -11,6 +11,6 @@ import me.flyray.erp.api.GoodsService;
 */
 
 @Service("goodsService")
-public class GoodsServiceImpl implements GoodsService{
+public class ProductServiceImpl implements ProductService{
 
 }

@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import me.flyray.common.service.AbstractBaseService;
+import me.flyray.pay.api.PayOrderService;
 import me.flyray.pay.api.PaySerialService;
 import me.flyray.pay.dao.PaySerialDao;
 import me.flyray.pay.model.PaySerial;
@@ -17,35 +19,9 @@ import me.flyray.pay.model.PaySerial;
 */
 
 @Service("paySerialService")
-public class PaySerialServiceImpl implements PaySerialService{
+public class PaySerialServiceImpl extends AbstractBaseService<PaySerial> implements PaySerialService{
 
 	@Autowired
 	private PaySerialDao paySerialDao;
 	
-	@Override
-	public List<PaySerial> queryList(Map<String, Object> map) {
-		return paySerialDao.queryList(map);
-	}
-
-	@Override
-	public int queryTotal(Map<String, Object> map) {
-		return paySerialDao.queryTotal(map);
-	}
-
-	@Override
-	public void save(PaySerial paySerial) {
-		paySerialDao.save(paySerial);
-	}
-
-	@Override
-	public void update(PaySerial paySerial) {
-		paySerialDao.update(paySerial);
-	}
-
-	@Override
-	public void deleteBatch(Long[] ids) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

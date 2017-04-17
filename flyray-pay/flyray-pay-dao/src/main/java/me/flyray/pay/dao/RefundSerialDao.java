@@ -1,8 +1,6 @@
 package me.flyray.pay.dao;
 
-import java.util.List;
-import java.util.Map;
-
+import me.flyray.common.dao.BaseDao;
 import me.flyray.pay.model.RefundSerial;
 
 /** 
@@ -11,14 +9,6 @@ import me.flyray.pay.model.RefundSerial;
 * @description：退款流水
 */
 
-public interface RefundSerialDao {
+public interface RefundSerialDao extends BaseDao<RefundSerial>{
 
-	List<RefundSerial> queryList(Map<String, Object> map);
-	
-	int queryTotal(Map<String, Object> map);
-	
-	void save(RefundSerial refundSerial);
-	
-	void update(RefundSerial refundSerial);
-	
 }

@@ -1,8 +1,6 @@
 package me.flyray.pay.dao;
 
-import java.util.List;
-import java.util.Map;
-
+import me.flyray.common.dao.BaseDao;
 import me.flyray.pay.model.RefundOrder;
 
 /** 
@@ -11,14 +9,6 @@ import me.flyray.pay.model.RefundOrder;
 * @description：退款订单
 */
 
-public interface RefundOrderDao {
+public interface RefundOrderDao extends BaseDao<RefundOrder> {
 
-	List<RefundOrder> queryList(Map<String, Object> map);
-	
-	int queryTotal(Map<String, Object> map);
-	
-	void save(RefundOrder refundOrder);
-	
-	void update(RefundOrder refundOrder);
-	
 }

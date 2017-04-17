@@ -6,6 +6,6 @@ package me.flyray.erp.dao;
 * @description：商品分类 
 */
 
-public interface GoodsCategaryDao {
+public interface ProductCategaryDao {
 
 }

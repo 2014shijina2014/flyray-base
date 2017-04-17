@@ -1,9 +1,6 @@
 package me.flyray.pay.api;
 
-import java.util.List;
-import java.util.Map;
-
-import me.flyray.pay.model.PayChannelConfig;
+import me.flyray.common.service.BaseService;
 
 /** 
 * @author: bolei
@@ -11,17 +8,6 @@ import me.flyray.pay.model.PayChannelConfig;
 * @description： 支付通道配置
 */
 
-public interface PayChannelConfigService {
+public interface PayChannelConfigService extends BaseService{
 
-	PayChannelConfig queryObject(Long id);
-	
-	List<PayChannelConfig> queryList(Map<String, Object> map);
-	
-	int queryTotal(Map<String, Object> map);
-	
-	void save(PayChannelConfig payChannelConfig);
-	
-	void update(PayChannelConfig payChannelConfig);
-	
-	void deleteBatch(Long[] ids);
 }

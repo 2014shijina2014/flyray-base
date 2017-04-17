@@ -6,6 +6,6 @@ package me.flyray.erp.api;
 * @description：商品分类
 */
 
-public interface GoodsCategaryService {
+public interface ProductCategaryService {
 
 }

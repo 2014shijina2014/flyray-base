@@ -1,14 +1,11 @@
 package me.flyray.pay.service.manager;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import me.flyray.common.service.AbstractBaseService;
 import me.flyray.pay.api.PayOrderService;
 import me.flyray.pay.dao.PayOrderDao;
-import me.flyray.pay.model.PayOrder;
 
 /** 
 * @author: bolei
@@ -17,35 +14,9 @@ import me.flyray.pay.model.PayOrder;
 */
 
 @Service("payOrderService")
-public class PayOrderServiceImpl implements PayOrderService{
+public class PayOrderServiceImpl extends AbstractBaseService<PayOrderService> implements PayOrderService{
 
 	@Autowired
 	private PayOrderDao payOrderDao;
 	
-	@Override
-	public List<PayOrder> queryList(Map<String, Object> map) {
-		return payOrderDao.queryList(map);
-	}
-
-	@Override
-	public int queryTotal(Map<String, Object> map) {
-		return payOrderDao.queryTotal(map);
-	}
-
-	@Override
-	public void save(PayOrder payOrder) {
-		payOrderDao.save(payOrder);
-	}
-
-	@Override
-	public void update(PayOrder payOrder) {
-		payOrderDao.update(payOrder);
-	}
-
-	@Override
-	public void deleteBatch(Long[] ids) {
-		// TODO Auto-generated method stub
-		
-	}
-
 }

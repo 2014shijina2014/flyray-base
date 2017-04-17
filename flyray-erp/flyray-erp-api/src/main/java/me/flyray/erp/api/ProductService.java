@@ -6,6 +6,6 @@ package me.flyray.erp.api;
 * @description：商品
 */
 
-public interface GoodsService {
+public interface ProductService {
 
 }

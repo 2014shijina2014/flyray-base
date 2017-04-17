@@ -6,6 +6,6 @@ package me.flyray.erp.dao;
 * @description：商品
 */
 
-public interface GoodsDao {
+public interface ProductDao {
 
 }

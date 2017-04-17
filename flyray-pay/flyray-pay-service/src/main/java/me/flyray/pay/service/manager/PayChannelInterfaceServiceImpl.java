@@ -1,14 +1,11 @@
 package me.flyray.pay.service.manager;
 
-import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import me.flyray.common.service.AbstractBaseService;
 import me.flyray.pay.api.PayChannelInterfaceService;
 import me.flyray.pay.dao.PayChannelInterfaceDao;
-import me.flyray.pay.model.PayChannelConfig;
 import me.flyray.pay.model.PayChannelInterface;
 
 /** 
@@ -18,42 +15,9 @@ import me.flyray.pay.model.PayChannelInterface;
 */
 
 @Service("payChannelInterfaceService")
-public class PayChannelInterfaceServiceImpl implements PayChannelInterfaceService{
+public class PayChannelInterfaceServiceImpl extends AbstractBaseService<PayChannelInterface> implements PayChannelInterfaceService{
 
 	@Autowired
 	private PayChannelInterfaceDao payChannelInterfaceDao;
 	
-	@Override
-	public PayChannelInterface queryObject(Long id) {
-		return payChannelInterfaceDao.queryObject(id);
-	}
-
-	@Override
-	public List<PayChannelInterface> queryList(Map<String, Object> map) {
-		return payChannelInterfaceDao.queryList(map);
-	}
-
-	@Override
-	public int queryTotal(Map<String, Object> map) {
-		return payChannelInterfaceDao.queryTotal(map);
-	}
-
-	@Override
-	public void save(PayChannelInterface payChannelInterface) {
-		payChannelInterfaceDao.save(payChannelInterface);
-	}
-
-	@Override
-	public void update(PayChannelInterface payChannelInterface) {
-		payChannelInterfaceDao.update(payChannelInterface);
-	}
-
-	@Override
-	public void deleteBatch(Long[] ids) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-
 }
