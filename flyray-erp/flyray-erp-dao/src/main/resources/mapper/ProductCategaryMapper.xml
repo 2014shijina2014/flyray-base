@@ -2,29 +2,29 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="me.flyray.crm.dao.CustomerAuthDao">
+<mapper namespace="me.flyray.erp.dao.ProductCategaryDao">
 
-	<select id="queryObject" resultType="me.flyray.crm.model.CustomerAuth">
-		select * from crm_customer_auth where id = #{id}
+	<select id="queryObject" resultType="me.flyray.erp.model.ProductCategary">
+		select * from erp_product_categary where id = #{id}
 	</select>
 	
-	<select id="queryById" resultType="me.flyray.crm.model.CustomerAuth">
-		select * from crm_customer_auth where id = #{id}
+	<select id="queryById" resultType="me.flyray.erp.model.ProductCategary">
+		select * from erp_product_categary where id = #{id}
 	</select>
 
-	<select id="queryList" resultType="me.flyray.crm.model.CustomerAuth">
-		select * from crm_customer_auth order by id desc
+	<select id="queryList" resultType="me.flyray.erp.model.ProductCategary">
+		select * from erp_product_categary order by id desc
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
 	</select>
 	
  	<select id="queryTotal" resultType="int">
-		select count(*) from crm_customer_auth 
+		select count(*) from erp_product_categary 
 	</select>
 	
-	<insert id="save" parameterType="me.flyray.crm.model.CustomerAuth" useGeneratedKeys="true" keyProperty="id">
-		insert into crm_customer_auth
+	<insert id="save" parameterType="me.flyray.erp.model.ProductCategary" useGeneratedKeys="true" keyProperty="id">
+		insert into erp_product_categary
 		(
 			`customer_no`, 
 			`identity_type`, 
@@ -40,8 +40,8 @@
 		)
 	</insert>
 	 
-	<update id="update" parameterType="me.flyray.crm.model.CustomerAuth">
-		update crm_customer_auth 
+	<update id="update" parameterType="me.flyray.erp.model.ProductCategary">
+		update erp_product_categary 
 		<set>
 			<if test="customerNo != null">`customer_no` = #{customerNo}, </if>
 			<if test="identityType != null">`identity_type` = #{identityType},</if>
@@ -52,7 +52,7 @@
 	</update>
 	
 	<delete id="delete">
-		delete from crm_customer_auth where id = #{id}
+		delete from erp_product_categary where id = #{id}
 	</delete>
   
 </mapper>

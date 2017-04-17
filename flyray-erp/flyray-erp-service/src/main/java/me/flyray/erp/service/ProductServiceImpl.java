@@ -1,8 +1,12 @@
 package me.flyray.erp.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import me.flyray.common.service.AbstractBaseService;
 import me.flyray.erp.api.ProductService;
+import me.flyray.erp.dao.ProductDao;
+import me.flyray.erp.model.Product;
 
 /** 
 * @author: bolei
@@ -11,6 +15,8 @@ import me.flyray.erp.api.ProductService;
 */
 
 @Service("goodsService")
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl extends AbstractBaseService<Product> implements ProductService{
 
+	@Autowired
+	private ProductDao productDao;
 }

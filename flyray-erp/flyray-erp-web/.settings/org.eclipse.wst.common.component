@@ -136,6 +136,9 @@
         <dependent-module archiveName="dubbo-rpc-avro-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-rpc-avro/dubbo-rpc-avro">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="flyray-common-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-common/flyray-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/flyray-erp-web/target/classes"/>
         <property name="context-root" value="flyray-erp-web"/>
     </wb-module>

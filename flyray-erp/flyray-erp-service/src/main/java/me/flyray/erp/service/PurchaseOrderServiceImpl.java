@@ -1,8 +1,12 @@
 package me.flyray.erp.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import me.flyray.common.service.AbstractBaseService;
 import me.flyray.erp.api.PurchaseOrderService;
+import me.flyray.erp.dao.PurchaseOrderDao;
+import me.flyray.erp.model.PurchaseOrder;
 
 /** 
 * @author: bolei
@@ -11,6 +15,8 @@ import me.flyray.erp.api.PurchaseOrderService;
 */
 
 @Service("purchaseOrderService")
-public class PurchaseOrderServiceImpl implements PurchaseOrderService{
+public class PurchaseOrderServiceImpl extends AbstractBaseService<PurchaseOrder> implements PurchaseOrderService{
 
+	@Autowired
+	private PurchaseOrderDao purchaseOrderDao;
 }

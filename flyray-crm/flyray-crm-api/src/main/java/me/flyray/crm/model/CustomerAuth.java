@@ -12,7 +12,7 @@ public class CustomerAuth {
 	/**
 	 * 客户（会员）Id
 	 */
-	private Long id;
+	private Integer id;
 	
 	/**
 	 * 客户（会员）编号
@@ -34,11 +34,11 @@ public class CustomerAuth {
 	 */
 	private String credential;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

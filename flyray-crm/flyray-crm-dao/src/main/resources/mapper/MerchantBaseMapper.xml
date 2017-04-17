@@ -7,6 +7,10 @@
 	<select id="queryObject" resultType="me.flyray.crm.model.MerchantBase">
 		select * from crm_merchant_base where id = #{value}
 	</select>
+	
+	<select id="queryById" resultType="me.flyray.crm.model.MerchantBase">
+		select * from crm_merchant_base where id = #{id}
+	</select>
 
 	<select id="queryList" resultType="me.flyray.crm.model.MerchantBase">
 		select * from crm_merchant_base order by id desc
@@ -18,31 +22,46 @@
  	<select id="queryTotal" resultType="int">
 		select count(*) from crm_merchant_base 
 	</select>
-	 
+	
 	<insert id="save" parameterType="me.flyray.crm.model.MerchantBase" useGeneratedKeys="true" keyProperty="id">
 		insert into crm_merchant_base
 		(
-			`url`, 
-			`create_date`
+			`merchant_no`, 
+			`org_no`,
+			`merchant_name`,
+			`brief_intro`,
+			`merchant_address`,
+			`merchant_phone`,
+			`merchant_logo`
 		)
 		values
 		(
-			#{url}, 
-			#{createDate}
+			#{merchantNo}, 
+			#{orgNo}, 
+			#{merchantName}, 
+			#{briefIntro}, 
+			#{merchantAddress},
+			#{merchantPhone},
+			#{merchantLogo}
 		)
 	</insert>
 	 
 	<update id="update" parameterType="me.flyray.crm.model.MerchantBase">
 		update crm_merchant_base 
 		<set>
-			<if test="url != null">`url` = #{url}, </if>
-			<if test="createDate != null">`create_date` = #{createDate}</if>
+			<if test="merchantNo != null">`merchant_no` = #{merchantNo}, </if>
+			<if test="orgNo != null">`org_no` = #{orgNo}, </if>
+			<if test="merchantName != null">`merchant_name` = #{merchantName}, </if>
+			<if test="briefIntro != null">`brief_intro` = #{briefIntro}, </if>
+			<if test="merchantAddress != null">`merchant_address` = #{merchantAddress}, </if>
+			<if test="merchantPhone != null">`merchant_phone` = #{merchantPhone}, </if>
+			<if test="merchantLogo != null">`merchant_logo` = #{merchantLogo}</if>
 		</set>
 		where id = #{id}
 	</update>
 	
 	<delete id="delete">
-		delete from crm_merchant_base where id = #{value}
+		delete from crm_merchant_base where id = #{id}
 	</delete>
   
 </mapper>

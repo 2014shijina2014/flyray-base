@@ -11,7 +11,7 @@ public class MerchantBase {
 	/**
 	 * 商户自增ID
 	 */
-	private Long id;
+	private Integer id;
 	
 	/**
 	 * 商户号
@@ -48,12 +48,11 @@ public class MerchantBase {
 	 */
 	private String merchantLogo;
 
-
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

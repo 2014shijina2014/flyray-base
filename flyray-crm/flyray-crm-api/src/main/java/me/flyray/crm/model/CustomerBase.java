@@ -15,7 +15,7 @@ public class CustomerBase extends BaseModel{
 	/**
 	 * 客户自增ID
 	 */
-	private Long id;
+	private Integer id;
 	
 	/**
 	 * 客户编号
@@ -62,13 +62,22 @@ public class CustomerBase extends BaseModel{
 	 */
 	
 	private String avatar;
+	
+	/**
+	 * 商户号
+	 */
+	private String merchantNo;
+	
+	/**
+	 * 机构号
+	 */
+	private String orgNo;
 
-
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -142,6 +151,22 @@ public class CustomerBase extends BaseModel{
 
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
+	}
+
+	public String getMerchantNo() {
+		return merchantNo;
+	}
+
+	public void setMerchantNo(String merchantNo) {
+		this.merchantNo = merchantNo;
+	}
+
+	public String getOrgNo() {
+		return orgNo;
+	}
+
+	public void setOrgNo(String orgNo) {
+		this.orgNo = orgNo;
 	}
 	
 }
