@@ -26,27 +26,36 @@
 	<insert id="save" parameterType="me.flyray.erp.model.PurchaseOrder" useGeneratedKeys="true" keyProperty="id">
 		insert into erp_purchase_order
 		(
-			`customer_no`, 
-			`identity_type`, 
-			`identifier`, 
-			`credential`
+			`org_id`, 
+			`merchant_no`, 
+			`purchase_name`, 
+			`purchase_des`,
+			`total_price`,
+			`purchase_amout`,
+			`unit_price`
 		)
 		values
 		(
-			#{customerNo}, 
-			#{identityType},
-			#{identifier},
-			#{credential}
+			#{orgId}, 
+			#{merchantNo},
+			#{purchaseName},
+			#{purchaseDes},
+			#{totalPrice},
+			#{purchaseAmout},
+			#{unitPrice}
 		)
 	</insert>
 	 
 	<update id="update" parameterType="me.flyray.erp.model.PurchaseOrder">
 		update erp_purchase_order 
 		<set>
-			<if test="customerNo != null">`customer_no` = #{customerNo}, </if>
-			<if test="identityType != null">`identity_type` = #{identityType},</if>
-			<if test="identifier != null">`identifier` = #{identifier},</if>
-			<if test="credential != null">`credential` = #{credential}</if>
+			<if test="orgId != null">`org_id` = #{orgId}, </if>
+			<if test="merchantNo != null">`merchant_no` = #{merchantNo},</if>
+			<if test="purchaseName != null">`purchase_name` = #{purchaseName},</if>
+			<if test="purchaseDes != null">`purchase_des` = #{purchaseDes},</if>
+			<if test="totalPrice != null">`total_price` = #{totalPrice},</if>
+			<if test="purchaseAmout != null">`purchase_amout` = #{purchaseAmout},</if>
+			<if test="unitPrice != null">`unit_price` = #{unitPrice}</if>
 		</set>
 		where id = #{id}
 	</update>

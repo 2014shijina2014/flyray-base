@@ -26,27 +26,24 @@
 	<insert id="save" parameterType="me.flyray.erp.model.ProductCategary" useGeneratedKeys="true" keyProperty="id">
 		insert into erp_product_categary
 		(
-			`customer_no`, 
-			`identity_type`, 
-			`identifier`, 
-			`credential`
+			`org_id`, 
+			`merchant_no`, 
+			`categary_name`
 		)
 		values
 		(
-			#{customerNo}, 
-			#{identityType},
-			#{identifier},
-			#{credential}
+			#{orgId}, 
+			#{merchantNo},
+			#{categaryName}
 		)
 	</insert>
 	 
 	<update id="update" parameterType="me.flyray.erp.model.ProductCategary">
 		update erp_product_categary 
 		<set>
-			<if test="customerNo != null">`customer_no` = #{customerNo}, </if>
-			<if test="identityType != null">`identity_type` = #{identityType},</if>
-			<if test="identifier != null">`identifier` = #{identifier},</if>
-			<if test="credential != null">`credential` = #{credential}</if>
+			<if test="orgId != null">`org_id` = #{orgId}, </if>
+			<if test="merchantNo != null">`merchant_no` = #{merchantNo},</if>
+			<if test="categaryName != null">`categary_name` = #{categaryName}</if>
 		</set>
 		where id = #{id}
 	</update>
