@@ -72,26 +72,26 @@ var vm = new Vue({
 			vm.title = "新增";
 		},
 		update: function () {
-			var orgId = getSelectedRow();
-			if(orgId == null){
+			var id = getSelectedRow();
+			if(id == null){
 				return ;
 			}
 			
 			vm.showList = false;
             vm.title = "修改";
 			
-			vm.getOrg(orgId);
+			vm.getCustomer(id);
 		},
 		del: function () {
-			var orgIds = getSelectedRows();
-			if(orgIds == null){
+			var ids = getSelectedRows();
+			if(ids == null){
 				return ;
 			}
 			
 			confirm('确定要删除选中的记录？', function(){
 				$.ajax({
 					type: "POST",
-				    url: "../sys/org/delete",
+				    url: "../crm/customer/delete",
 				    data: JSON.stringify(orgIds),
 				    success: function(r){
 						if(r.code == 0){
@@ -106,11 +106,11 @@ var vm = new Vue({
 			});
 		},
 		saveOrUpdate: function (event) {
-			var url = vm.org.orgId == null ? "../sys/org/save" : "../sys/org/update";
+			var url = vm.customer.id == null ? "../crm/customer/save" : "../crm/customer/update";
 			$.ajax({
 				type: "POST",
 			    url: url,
-			    data: JSON.stringify(vm.org),
+			    data: JSON.stringify(vm.customer),
 			    success: function(r){
 			    	if(r.code === 0){
 						alert('操作成功', function(index){
@@ -123,15 +123,15 @@ var vm = new Vue({
 			});
 		},
 		getOrg: function(orgId){
-			$.get("../sys/org/info/"+orgId, function(r){
-				vm.org = r.org;
+			$.get("../crm/customer/info/"+id, function(r){
+				vm.customer = r.customer;
 			});
 		},
 		reload: function (event) {
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{ 
-                postData:{'orgName': vm.q.orgName},
+                postData:{'customerNo': vm.q.customerNo},
                 page:page
             }).trigger("reloadGrid");
 		}

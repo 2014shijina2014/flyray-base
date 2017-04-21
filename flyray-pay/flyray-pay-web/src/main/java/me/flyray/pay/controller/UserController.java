@@ -2,6 +2,7 @@ package me.flyray.pay.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import me.flyray.pay.api.UserService;
 import me.flyray.pay.model.User;
+import me.flyray.pay.service.manager.PayChannelServiceImpl;
 
 
 
@@ -19,12 +21,20 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private PayChannelServiceImpl payChannelServiceImpl;
 	
 	@ResponseBody
 	@RequestMapping(value="/displayAllUser", method = RequestMethod.GET)
 	public HashMap<String, List<User>> displayAllUser() {
 		HashMap<String, List<User>> map = new HashMap<String, List<User>>();
-		map.put("users", userService.displayAllUser());
+		//map.put("users", userService.displayAllUser());
+		Map<String, Object> map1 = new HashMap<>();
+		map1.put("payChannelNo", "payChannelNo");
+		map1.put("payCompanyNo", "payCompanyNo");
+		map1.put("feeRatio", "1");
+		payChannelServiceImpl.save(map1);
+		
 		return map;
 	}
 

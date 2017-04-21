@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import me.flyray.common.service.AbstractBaseService;
 import me.flyray.pay.api.PayOrderService;
 import me.flyray.pay.dao.PayOrderDao;
+import me.flyray.pay.model.PayOrder;
 
 /** 
 * @author: bolei
@@ -14,7 +15,7 @@ import me.flyray.pay.dao.PayOrderDao;
 */
 
 @Service("payOrderService")
-public class PayOrderServiceImpl extends AbstractBaseService<PayOrderService> implements PayOrderService{
+public class PayOrderServiceImpl extends AbstractBaseService<PayOrder> implements PayOrderService{
 
 	@Autowired
 	private PayOrderDao payOrderDao;

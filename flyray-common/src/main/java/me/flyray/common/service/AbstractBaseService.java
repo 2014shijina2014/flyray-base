@@ -1,5 +1,6 @@
 package me.flyray.common.service;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -47,8 +48,8 @@ public abstract class AbstractBaseService<T> implements BaseService{
 		if (map == null)     
             return;
 		try {
-			@SuppressWarnings("rawtypes")
-			Class clazz = getClass();
+			@SuppressWarnings("unchecked")
+			Class<T> clazz = (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0]; 
 			@SuppressWarnings("unchecked")
 			T t = (T)BeanUtil.mapToObject(map, clazz);
 			baseDao.save(t);

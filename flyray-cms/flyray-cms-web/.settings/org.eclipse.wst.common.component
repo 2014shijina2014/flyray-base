@@ -145,6 +145,9 @@
         <dependent-module archiveName="zkclient-0.8.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/zkclient/zkclient">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="flyray-common-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-common/flyray-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/flyray-cms-web/target/classes"/>
         <property name="context-root" value="flyray-cms-web"/>
     </wb-module>

@@ -77,11 +77,20 @@ public class CustomerController extends AbstractController {
 	@SysLog("保存客户会员")
 	@RequestMapping("/save")
 	@RequiresPermissions("crm:customer:save")
-	public R save(@RequestParam Map<String, Object> params){
+	public R save(@RequestBody Map<String, Object> params){
 
 		Parameter parameter = new Parameter("customerBaseService", "save");
 		Map<String, Object> map = new HashMap<>();
-		map.put("payChannelNo", "");
+		map.put("customerNo", params.get("customerNo"));
+		map.put("merchantNo", params.get("merchantNo"));
+		map.put("custName", params.get("custName"));
+		map.put("address", params.get("address"));
+		map.put("nickname", params.get("nickname"));
+		map.put("orgNo", params.get("orgNo"));
+		map.put("phone", params.get("phone"));
+		map.put("age", params.get("age"));
+		map.put("sex", params.get("sex"));
+		map.put("avatar", params.get("avatar"));
 		parameter.setMap(map);
 		apiProvider.execute(parameter);
 		
@@ -94,11 +103,21 @@ public class CustomerController extends AbstractController {
 	@SysLog("修改客户会员")
 	@RequestMapping("/update")
 	@RequiresPermissions("crm:customer:update")
-	public R update(@RequestBody SysConfigEntity config){
+	public R update(@RequestBody Map<String, Object> params){
 		
 		Parameter parameter = new Parameter("customerBaseService", "update");
 		Map<String, Object> map = new HashMap<>();
-		map.put("payChannelNo", "");
+		map.put("customerNo", params.get("customerNo"));
+		map.put("merchantNo", params.get("merchantNo"));
+		map.put("custName", params.get("custName"));
+		map.put("address", params.get("address"));
+		map.put("nickname", params.get("nickname"));
+		map.put("orgNo", params.get("orgNo"));
+		map.put("phone", params.get("phone"));
+		map.put("age", params.get("age"));
+		map.put("sex", params.get("sex"));
+		map.put("avatar", params.get("avatar"));
+		map.put("id", params.get("id"));
 		parameter.setMap(map);
 		apiProvider.execute(parameter);
 		

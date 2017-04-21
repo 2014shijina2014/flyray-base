@@ -42,7 +42,7 @@
 		(
 			#{customerNo}, 
 			#{custName},
-			#{nickName},
+			#{nickname},
 			#{phone},
 			#{sex},
 			#{address},
@@ -59,7 +59,7 @@
 		<set>
 			<if test="customerNo != null">`customer_no` = #{customerNo}, </if>
 			<if test="custName != null">`cust_name` = #{custName}, </if>
-			<if test="nickName != null">`nickname` = #{nickName}, </if>
+			<if test="nickname != null">`nickname` = #{nickname}, </if>
 			<if test="phone != null">`phone` = #{phone}, </if>
 			<if test="sex != null">`sex` = #{sex}, </if>
 			<if test="address != null">`address` = #{address}, </if>

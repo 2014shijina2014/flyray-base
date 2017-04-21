@@ -10,15 +10,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import me.flyray.cms.dao.CustomerBaseDao;
-import me.flyray.cms.dao.ProficientRecommendDao;
-import me.flyray.cms.dto.ResponseHelper;
-import me.flyray.cms.model.CustomerBase;
-import me.flyray.cms.model.ProficientRecommend;
-import me.flyray.cms.service.QiniuCloudServiceImpl;
-import me.flyray.cms.util.Base64Util;
-import me.flyray.cms.util.DateUtils;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,12 +20,16 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.qiniu.util.StringUtils;
 
+import me.flyray.cms.dao.ProficientRecommendDao;
+import me.flyray.cms.dto.ResponseHelper;
+import me.flyray.cms.model.ProficientRecommend;
+import me.flyray.cms.service.QiniuCloudServiceImpl;
+import me.flyray.cms.util.Base64Util;
+import me.flyray.cms.util.DateUtils;
+
 @Controller
 public class ProficientRecommendController {
 
-	@Autowired
-	private CustomerBaseDao customerBaseDao;
-	
 	@Autowired
 	private QiniuCloudServiceImpl qiniuCloudService;
 	
@@ -51,7 +46,7 @@ public class ProficientRecommendController {
 		String customerNo = request.getParameter("customerNo");  
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("customerNo", customerNo);
-		List<CustomerBase> list = customerBaseDao.query(map);
+		List<Map<String, Object>> list = null;
 		if(list.size() > 1){
 			throw new RuntimeException("会员信息不唯一");
 		}
@@ -102,7 +97,7 @@ public class ProficientRecommendController {
 		}
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("customerNo", customerNo);
-		List<CustomerBase> list = customerBaseDao.query(map);
+		List<Map<String, Object>> list = null;
 		if(list.size() > 1){
 			throw new RuntimeException("会员信息不唯一");
 		}

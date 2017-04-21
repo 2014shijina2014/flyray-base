@@ -26,7 +26,6 @@
 		<dependency>
 			<groupId>me.flyray</groupId>
 			<artifactId>flyray-common</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 

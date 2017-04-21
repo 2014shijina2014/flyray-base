@@ -2,15 +2,13 @@ package me.flyray.crm.model;
 
 import java.util.Date;
 
-import me.flyray.common.model.BaseModel;
-
 /** 
 * @author: bolei
 * @date：2017年3月6日 下午9:53:42 
 * @description：客户基础信息
 */
 
-public class CustomerBase extends BaseModel{
+public class CustomerBase{
 
 	/**
 	 * 客户自增ID
@@ -30,12 +28,12 @@ public class CustomerBase extends BaseModel{
 	/**
 	 * 客户昵称
 	 */
-	private String nickName;
+	private String nickname;
 	
 	/**
 	 * 客户电话
 	 */
-	private int phone;
+	private String phone;
 	
 	/**
 	 * 客户性别
@@ -50,7 +48,7 @@ public class CustomerBase extends BaseModel{
 	/**
 	 * 客户年龄
 	 */
-	private int age;
+	private String age;
 	
 	/**
 	 * 客户生日
@@ -97,19 +95,19 @@ public class CustomerBase extends BaseModel{
 		this.custName = custName;
 	}
 
-	public String getNickName() {
-		return nickName;
+	public String getNickname() {
+		return nickname;
 	}
 
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
@@ -129,11 +127,11 @@ public class CustomerBase extends BaseModel{
 		this.address = address;
 	}
 
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 

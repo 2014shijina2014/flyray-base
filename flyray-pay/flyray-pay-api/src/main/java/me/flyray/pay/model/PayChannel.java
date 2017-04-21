@@ -1,7 +1,5 @@
 package me.flyray.pay.model;
 
-import java.math.BigDecimal;
-
 /** 
 * @author: bolei
 * @date：2017年3月6日 下午10:11:02 
