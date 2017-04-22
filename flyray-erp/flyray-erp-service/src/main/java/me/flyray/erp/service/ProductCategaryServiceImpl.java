@@ -14,7 +14,7 @@ import me.flyray.erp.model.ProductCategary;
 * @description：商品分类
 */
 
-@Service("goodsCategaryService")
+@Service("productCategaryService")
 public class ProductCategaryServiceImpl extends AbstractBaseService<ProductCategary> implements ProductCategaryService{
 
 	@Autowired

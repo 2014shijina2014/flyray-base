@@ -1,19 +1,12 @@
 $(function () {
     $("#jqGrid").jqGrid({
-        url: '../crm/customer/list',
+        url: '../erp/productCategary/list',
         datatype: "json",
         colModel: [			
 			{ label: 'ID', name: 'id', index: "id", width: 45, key: true },
-			{ label: '客户号', name: 'customerNo', width: 75 },
-			{ label: '客户名称', name: 'custName', width: 50 },
-			{ label: '客户电话', name: 'phone', width: 50 },
-			{ label: '客户性别', name: 'sex', width: 50 },
-			{ label: '客户地址', name: 'address', width: 50 },
-			{ label: '客户昵称', name: 'nickname', width: 50 },
-			{ label: '客户年龄', name: 'age', width: 50 },
-			{ label: '客户生日', name: 'birthday', width: 50 },
+			{ label: '所属机构', name: 'orgId', width: 75 },
 			{ label: '所属商户', name: 'merchantNo', width: 50 },
-			{ label: '所属机构', name: 'orgNo', width: 50 },
+			{ label: '商品类名', name: 'categaryName', width: 50 },
         ],
 		viewrecords: true,
         height: 385,
@@ -46,21 +39,14 @@ var vm = new Vue({
 	el:'#rrapp',
 	data:{
 		q:{
-			customerNo: null
+			categaryName: null
 		},
 		showList: true,
 		title:null,
-		customer:{
-			customerNo:null,
-			custName:null,
-			phone:null,
-			sex:null,
-			address:null,
-			nickname:null,
-			age:null,
-			birthday:null,
+		productCategary:{
+			orgId:null,
 			merchantNo:null,
-			orgNo:null,
+			categaryName:null,
 		}
 	},
 	methods: {
@@ -80,7 +66,7 @@ var vm = new Vue({
 			vm.showList = false;
             vm.title = "修改";
 			
-			vm.getCustomer(id);
+			vm.getProductCategary(id);
 		},
 		del: function () {
 			var ids = getSelectedRows();
@@ -91,7 +77,7 @@ var vm = new Vue({
 			confirm('确定要删除选中的记录？', function(){
 				$.ajax({
 					type: "POST",
-				    url: "../crm/customer/delete",
+				    url: "../erp/productCategary/delete",
 				    data: JSON.stringify(orgIds),
 				    success: function(r){
 						if(r.code == 0){
@@ -106,11 +92,11 @@ var vm = new Vue({
 			});
 		},
 		saveOrUpdate: function (event) {
-			var url = vm.customer.id == null ? "../crm/customer/save" : "../crm/customer/update";
+			var url = vm.productCategary.id == null ? "../erp/productCategary/save" : "../erp/productCategary/update";
 			$.ajax({
 				type: "POST",
 			    url: url,
-			    data: JSON.stringify(vm.customer),
+			    data: JSON.stringify(vm.productCategary),
 			    success: function(r){
 			    	if(r.code === 0){
 						alert('操作成功', function(index){
@@ -122,16 +108,16 @@ var vm = new Vue({
 				}
 			});
 		},
-		getCustomer: function(orgId){
-			$.get("../crm/customer/info/"+id, function(r){
-				vm.customer = r.customer;
+		getProductCategary: function(orgId){
+			$.get("../erp/productCategary/info/"+id, function(r){
+				vm.productCategary = r.productCategary;
 			});
 		},
 		reload: function (event) {
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{ 
-                postData:{'customerNo': vm.q.customerNo},
+                postData:{'categaryName': vm.q.categaryName},
                 page:page
             }).trigger("reloadGrid");
 		}

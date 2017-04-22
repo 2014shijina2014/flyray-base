@@ -26,7 +26,9 @@
 
     <dubbo:protocol name="dubbo" port="10104"/>
 
-	<dubbo:service interface="me.flyray.erp.api.GoodsCategaryService" ref="goodsCategaryService"  protocol="dubbo" timeout="1200000"/>
+	<dubbo:service interface="me.flyray.erp.api.ProductCategaryService" ref="productCategaryService"  protocol="dubbo" timeout="1200000"/>
+	
+	<dubbo:service interface="me.flyray.erp.api.ProductService" ref="productService"  protocol="dubbo" timeout="1200000"/>
 	
 
 </beans>

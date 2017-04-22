@@ -15,3 +15,5 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `username` (`username`) USING BTREE,
   UNIQUE KEY `chinesename` (`chinesename`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
+

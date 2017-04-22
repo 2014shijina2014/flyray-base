@@ -6,6 +6,10 @@
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 	
 	<!-- flyray-rest作为 crm、erp、pay的唯一消费者 -->
+	<!-- 商品分类信息 -->
+    <dubbo:reference id="productCategaryService" interface="me.flyray.erp.api.ProductCategaryService"/>
+	<!-- 商品信息 -->
+    <dubbo:reference id="productService" interface="me.flyray.erp.api.ProductService"/>
 	
 
 </beans>

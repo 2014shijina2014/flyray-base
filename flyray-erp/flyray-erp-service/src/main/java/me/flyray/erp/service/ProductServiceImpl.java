@@ -14,7 +14,7 @@ import me.flyray.erp.model.Product;
 * @description：商品 
 */
 
-@Service("goodsService")
+@Service("productService")
 public class ProductServiceImpl extends AbstractBaseService<Product> implements ProductService{
 
 	@Autowired
