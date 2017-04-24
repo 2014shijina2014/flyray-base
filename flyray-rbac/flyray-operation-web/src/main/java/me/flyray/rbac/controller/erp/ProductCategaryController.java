@@ -61,11 +61,8 @@ private static final Logger logger = LoggerFactory.getLogger(ProductCategaryCont
 	@RequestMapping("/info/{id}")
 	@RequiresPermissions("erp:productCategary:info")
 	public R info(@PathVariable("id") Long id){
-		
-		Parameter parameter = new Parameter("productCategaryService", "queryObject");
-		Map<String, Object> map = new HashMap<>();
-		map.put("payChannelNo", "");
-		parameter.setMap(map);
+		Parameter parameter = new Parameter("productCategaryService", "queryById");
+		parameter.setId(id);
 		Map<?, ?> map1 = apiProvider.execute(parameter).getMap();
 		return R.ok().put("payChannel", map1);
 	}
@@ -77,19 +74,11 @@ private static final Logger logger = LoggerFactory.getLogger(ProductCategaryCont
 	@RequestMapping("/save")
 	@RequiresPermissions("erp:productCategary:save")
 	public R save(@RequestBody Map<String, Object> params){
-
 		Parameter parameter = new Parameter("productCategaryService", "save");
 		Map<String, Object> map = new HashMap<>();
-		map.put("customerNo", params.get("customerNo"));
+		map.put("orgId", params.get("orgId"));
 		map.put("merchantNo", params.get("merchantNo"));
-		map.put("custName", params.get("custName"));
-		map.put("address", params.get("address"));
-		map.put("nickname", params.get("nickname"));
-		map.put("orgNo", params.get("orgNo"));
-		map.put("phone", params.get("phone"));
-		map.put("age", params.get("age"));
-		map.put("sex", params.get("sex"));
-		map.put("avatar", params.get("avatar"));
+		map.put("categaryName", params.get("categaryName"));
 		parameter.setMap(map);
 		apiProvider.execute(parameter);
 		
@@ -103,20 +92,12 @@ private static final Logger logger = LoggerFactory.getLogger(ProductCategaryCont
 	@RequestMapping("/update")
 	@RequiresPermissions("erp:productCategary:update")
 	public R update(@RequestBody Map<String, Object> params){
-		
 		Parameter parameter = new Parameter("productCategaryService", "update");
 		Map<String, Object> map = new HashMap<>();
-		map.put("customerNo", params.get("customerNo"));
-		map.put("merchantNo", params.get("merchantNo"));
-		map.put("custName", params.get("custName"));
-		map.put("address", params.get("address"));
-		map.put("nickname", params.get("nickname"));
-		map.put("orgNo", params.get("orgNo"));
-		map.put("phone", params.get("phone"));
-		map.put("age", params.get("age"));
-		map.put("sex", params.get("sex"));
-		map.put("avatar", params.get("avatar"));
 		map.put("id", params.get("id"));
+		map.put("orgId", params.get("orgId"));
+		map.put("merchantNo", params.get("merchantNo"));
+		map.put("categaryName", params.get("categaryName"));
 		parameter.setMap(map);
 		apiProvider.execute(parameter);
 		

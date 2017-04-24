@@ -63,10 +63,8 @@ public class MerchantController extends AbstractController {
 	@RequiresPermissions("crm:merchant:info")
 	public R info(@PathVariable("id") Long id){
 		
-		Parameter parameter = new Parameter("merchantBaseService", "queryObject");
-		Map<String, Object> map = new HashMap<>();
-		map.put("payChannelNo", "");
-		parameter.setMap(map);
+		Parameter parameter = new Parameter("merchantBaseService", "queryById");
+		parameter.setId(id);
 		Map<?, ?> map1 = apiProvider.execute(parameter).getMap();
 		return R.ok().put("payChannel", map1);
 	}

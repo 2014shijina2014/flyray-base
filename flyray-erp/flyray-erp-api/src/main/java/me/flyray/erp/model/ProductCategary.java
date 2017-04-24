@@ -16,17 +16,17 @@ public class ProductCategary {
 	/**
 	 * 机构ID
 	 */
-	private Integer orgId;
+	private String orgId;
 	
 	/**
 	 * 商户号
 	 */
-	private Integer merchantNo;
+	private String merchantNo;
 	
 	/**
 	 * 商品分类名称
 	 */
-	private Integer categaryName;
+	private String categaryName;
 
 	public Integer getId() {
 		return id;
@@ -36,28 +36,28 @@ public class ProductCategary {
 		this.id = id;
 	}
 
-	public Integer getOrgId() {
+	public String getOrgId() {
 		return orgId;
 	}
 
-	public void setOrgId(Integer orgId) {
+	public void setOrgId(String orgId) {
 		this.orgId = orgId;
 	}
 
-	public Integer getMerchantNo() {
+	public String getMerchantNo() {
 		return merchantNo;
 	}
 
-	public void setMerchantNo(Integer merchantNo) {
+	public void setMerchantNo(String merchantNo) {
 		this.merchantNo = merchantNo;
 	}
 
-	public Integer getCategaryName() {
+	public String getCategaryName() {
 		return categaryName;
 	}
 
-	public void setCategaryName(Integer categaryName) {
+	public void setCategaryName(String categaryName) {
 		this.categaryName = categaryName;
 	}
-	
+
 }

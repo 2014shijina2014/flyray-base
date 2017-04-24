@@ -63,10 +63,8 @@ public class CustomerController extends AbstractController {
 	@RequiresPermissions("crm:customer:info")
 	public R info(@PathVariable("id") Long id){
 		
-		Parameter parameter = new Parameter("customerBaseService", "queryObject");
-		Map<String, Object> map = new HashMap<>();
-		map.put("payChannelNo", "");
-		parameter.setMap(map);
+		Parameter parameter = new Parameter("customerBaseService", "queryById");
+		parameter.setId(id);
 		Map<?, ?> map1 = apiProvider.execute(parameter).getMap();
 		return R.ok().put("payChannel", map1);
 	}
