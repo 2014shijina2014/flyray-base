@@ -7,8 +7,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import me.flyray.common.BeanUtil;
 import me.flyray.common.service.AbstractBaseService;
+import me.flyray.common.utils.BeanUtils;
 import me.flyray.crm.api.CustomerAuthService;
 import me.flyray.crm.dao.CustomerAuthDao;
 import me.flyray.crm.model.CustomerAuth;

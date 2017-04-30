@@ -19,5 +19,15 @@ public class PayOrderServiceImpl extends AbstractBaseService<PayOrder> implement
 
 	@Autowired
 	private PayOrderDao payOrderDao;
+
+	@Override
+	public void insert(PayOrder payOrder) {
+		payOrderDao.save(payOrder);
+	}
+
+	@Override
+	public PayOrder queryByPayOrder(PayOrder payOrder) {
+		return payOrderDao.queryObject(payOrder);
+	}
 	
 }

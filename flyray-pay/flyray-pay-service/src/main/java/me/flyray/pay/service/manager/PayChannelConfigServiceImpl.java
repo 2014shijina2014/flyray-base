@@ -22,5 +22,11 @@ public class PayChannelConfigServiceImpl extends AbstractBaseService<PayChannelC
 
 	@Autowired
 	private PayChannelConfigDao payChannelConfigDao;
+
+	@Override
+	public PayChannelConfig getPayChannelConfig(String merchantNo, String payChannelNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

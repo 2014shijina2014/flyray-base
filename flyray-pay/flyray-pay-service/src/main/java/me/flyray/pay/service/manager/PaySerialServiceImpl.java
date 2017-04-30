@@ -23,5 +23,10 @@ public class PaySerialServiceImpl extends AbstractBaseService<PaySerial> impleme
 
 	@Autowired
 	private PaySerialDao paySerialDao;
+
+	@Override
+	public void insert(PaySerial paySerial) {
+		paySerialDao.save(paySerial);
+	}
 	
 }

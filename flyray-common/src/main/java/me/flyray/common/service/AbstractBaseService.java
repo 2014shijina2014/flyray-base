@@ -7,8 +7,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import me.flyray.common.BeanUtil;
 import me.flyray.common.dao.BaseDao;
+import me.flyray.common.utils.BeanUtils;
 
 /** 
 * @author: bolei
@@ -28,7 +28,7 @@ public abstract class AbstractBaseService<T> implements BaseService{
 		try {
 			List<T> ts= baseDao.queryList(map);
 			for (T t : ts) {
-				Map<String, Object> resultMap = BeanUtil.objectToMap(t);
+				Map<String, Object> resultMap = BeanUtils.objectToMap(t);
 				resultMaps.add(resultMap);
 			}
 		} catch (Exception e) {
@@ -51,7 +51,7 @@ public abstract class AbstractBaseService<T> implements BaseService{
 			@SuppressWarnings("unchecked")
 			Class<T> clazz = (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0]; 
 			@SuppressWarnings("unchecked")
-			T t = (T)BeanUtil.mapToObject(map, clazz);
+			T t = (T)BeanUtils.mapToObject(map, clazz);
 			baseDao.save(t);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,7 +67,7 @@ public abstract class AbstractBaseService<T> implements BaseService{
 			@SuppressWarnings("rawtypes")
 			Class clazz = getClass();
 			@SuppressWarnings("unchecked")
-			T t = (T)BeanUtil.mapToObject(map, clazz);
+			T t = (T)BeanUtils.mapToObject(map, clazz);
 			baseDao.update(t);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -90,8 +90,8 @@ public abstract class AbstractBaseService<T> implements BaseService{
 			@SuppressWarnings("rawtypes")
 			Class clazz = getClass();
 			@SuppressWarnings("unchecked")
-			T t = (T)BeanUtil.mapToObject(map, clazz);
-			resultMap = BeanUtil.objectToMap(baseDao.queryObject(t));
+			T t = (T)BeanUtils.mapToObject(map, clazz);
+			resultMap = BeanUtils.objectToMap(baseDao.queryObject(t));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -103,7 +103,7 @@ public abstract class AbstractBaseService<T> implements BaseService{
 	public Map<String, Object> queryById(Long id) {
 		Map<String, Object> resultMap = null;
 		try {
-			resultMap = BeanUtil.objectToMap(baseDao.queryById(id));
+			resultMap = BeanUtils.objectToMap(baseDao.queryById(id));
 		} catch (Exception e) {
 			e.printStackTrace();
 		};

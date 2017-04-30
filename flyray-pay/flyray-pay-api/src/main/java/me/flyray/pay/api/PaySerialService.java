@@ -1,6 +1,7 @@
 package me.flyray.pay.api;
 
 import me.flyray.common.service.BaseService;
+import me.flyray.pay.model.PaySerial;
 
 /** 
 * @author: bolei
@@ -9,5 +10,7 @@ import me.flyray.common.service.BaseService;
 */
 
 public interface PaySerialService extends BaseService{
+
+	void insert(PaySerial paySerial);
 
 }

@@ -3,7 +3,7 @@ package me.flyray.pay.servicetest;
 import java.util.HashMap;
 import java.util.Map;
 
-import me.flyray.common.BeanUtil;
+import me.flyray.common.utils.BeanUtils;
 import me.flyray.pay.model.PayChannel;
 
 /** 
@@ -22,7 +22,7 @@ public class ReflectionTest {
 			map.put("payChannelNo", "2");
 			map.put("payCompanyNo", "3");
 			map.put("feeRatio", 1);
-			PayChannel payChannel = (PayChannel)BeanUtil.mapToObject(map, PayChannel.class);
+			PayChannel payChannel = (PayChannel)BeanUtils.mapToObject(map, PayChannel.class);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -1,6 +1,7 @@
 package me.flyray.pay.api;
 
 import me.flyray.common.service.BaseService;
+import me.flyray.pay.model.PayOrder;
 
 /** 
 * @author: bolei
@@ -9,5 +10,9 @@ import me.flyray.common.service.BaseService;
 */
 
 public interface PayOrderService extends BaseService{
+
+	void insert(PayOrder payOrder);
+
+	PayOrder queryByPayOrder(PayOrder payOrder);
 
 }

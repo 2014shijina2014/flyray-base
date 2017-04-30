@@ -13,7 +13,7 @@ public abstract class AbstractRequest {
     /**
      * 商户号
      */
-    private String acceptBizNo;
+    private String merchantNo;
     /**
      * 支付通道编号
      */
@@ -23,15 +23,15 @@ public abstract class AbstractRequest {
      */
     private Map<String,Object> extra;
 
-    public String getAcceptBizNo() {
-        return acceptBizNo;
-    }
+    public String getMerchantNo() {
+		return merchantNo;
+	}
 
-    public void setAcceptBizNo(String acceptBizNo) {
-        this.acceptBizNo = acceptBizNo;
-    }
+	public void setMerchantNo(String merchantNo) {
+		this.merchantNo = merchantNo;
+	}
 
-    public String getPayChannelNo() {
+	public String getPayChannelNo() {
         return payChannelNo;
     }
 

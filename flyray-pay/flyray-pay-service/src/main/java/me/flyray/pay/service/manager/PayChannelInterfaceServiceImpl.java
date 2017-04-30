@@ -19,5 +19,11 @@ public class PayChannelInterfaceServiceImpl extends AbstractBaseService<PayChann
 
 	@Autowired
 	private PayChannelInterfaceDao payChannelInterfaceDao;
+
+	@Override
+	public PayChannelInterface getPayChannelInterface(String payChannelNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

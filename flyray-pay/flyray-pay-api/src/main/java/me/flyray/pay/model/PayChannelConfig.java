@@ -33,6 +33,21 @@ public class PayChannelConfig {
 	 */
 	private String merchantNo;
 	
+	/**
+	 * 微信商户号
+	 */
+	private String merAccount;
+	
+	/**
+	 * 商户key
+	 */
+	private String merKey;
+	
+	/**
+	 * 商户 签名类型
+	 */
+	private String SingType;
+	
 	public Long getId() {
 		return id;
 	}
@@ -72,4 +87,29 @@ public class PayChannelConfig {
 	public void setMerchantNo(String merchantNo) {
 		this.merchantNo = merchantNo;
 	}
+
+	public String getMerAccount() {
+		return merAccount;
+	}
+
+	public void setMerAccount(String merAccount) {
+		this.merAccount = merAccount;
+	}
+
+	public String getMerKey() {
+		return merKey;
+	}
+
+	public void setMerKey(String merKey) {
+		this.merKey = merKey;
+	}
+
+	public String getSingType() {
+		return SingType;
+	}
+
+	public void setSingType(String singType) {
+		SingType = singType;
+	}
+
 }

@@ -1,4 +1,4 @@
-package me.flyray.common;
+package me.flyray.common.utils;
 
 import java.beans.BeanInfo;
 import java.beans.Introspector;
@@ -12,12 +12,12 @@ import java.util.Map;
 /** 
 * @author: bolei
 * @date：2017年3月7日 下午10:04:01 
-* @description：类说明 
+* @description：bean map 转换类
 */
 
-public class BeanUtil {
+public class BeanUtils {
 
-	public BeanUtil()
+	public BeanUtils()
     {
     }
 
