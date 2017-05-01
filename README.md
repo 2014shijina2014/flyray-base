@@ -31,6 +31,8 @@
 ### 接口总线系统
 对外暴露统一规范的接口，包括各个子系统的交互接口示例图：
 ![组织结构](flyray-doc/projectStructures.png)
+### 运营中心
+![组织结构](flyray-doc/operation.png)
 ### 商户中心
 ![组织结构](flyray-doc/merchant.png)
 

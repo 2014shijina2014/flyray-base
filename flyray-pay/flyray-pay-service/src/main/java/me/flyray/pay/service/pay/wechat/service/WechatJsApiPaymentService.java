@@ -87,7 +87,12 @@ public class WechatJsApiPaymentService implements PayObjectService<OnlinePayment
 		reqElement.setOpenid((String) request.getExtra().get("openId"));
 
 		// 获取签名信息
-		reqElement.setSign(wechatSignatureService.sign(reqElement, channelConfig));
+		try {
+			reqElement.setSign(wechatSignatureService.sign(reqElement, channelConfig));
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 
 		String xmlStr = null;
 		try {

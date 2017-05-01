@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import me.flyray.common.utils.BeanUtils;
 import me.flyray.pay.model.PayChannelConfig;
 import me.flyray.pay.service.pay.wechat.domain.RequestElement;
 
@@ -16,14 +17,13 @@ import me.flyray.pay.service.pay.wechat.domain.RequestElement;
 @Service("wechatSignatureService")
 public class WechatSignatureService {
 
-	public String sign(RequestElement reqElement, PayChannelConfig channelConfig) {
-		// TODO Auto-generated method stub
-		return null;
+	public String sign(Object obj, PayChannelConfig channelConfig) throws Exception {
+		return toSign(BeanUtils.objectToMap(obj), channelConfig);
 	}
 
-	public Object toSign(Map<String, Object> signMap, PayChannelConfig channelConfig) {
-		// TODO Auto-generated method stub
+	public String toSign(Map<String, Object> sPara, PayChannelConfig channelConfig) {
 		return null;
+		
 	}
 
 }
