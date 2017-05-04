@@ -9,6 +9,7 @@
 	<!-- 其子模块如下 -->
 	<modules>
 		<module>flyray-common</module>
+		<module>flyray-common-config</module>
 		<module>flyray-message</module>
 		<module>flyray-rest</module>
 		<module>flyray-search</module>
