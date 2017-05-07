@@ -1,8 +1,0 @@
-me\flyray\erp\model\Goods.class
-me\flyray\erp\model\User.class
-me\flyray\erp\model\GoodsCategary.class
-me\flyray\erp\api\GoodsService.class
-me\flyray\erp\model\PurchaseOrder.class
-me\flyray\erp\api\GoodsCategaryService.class
-me\flyray\erp\api\UserService.class
-me\flyray\erp\api\PurchaseOrderService.class
