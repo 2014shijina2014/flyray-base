@@ -14,15 +14,12 @@
 	  http://www.springframework.org/schema/util
       http://www.springframework.org/schema/util/spring-util-3.2.xsd">
       
-    <!-- 加载配置文件 -->
-	<context:property-placeholder location="classpath:config.properties" />
-	
 	<!-- 配置数据源 -->
 	<bean id="abstractDataSource" abstract="true" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
           destroy-method="close">
-        <property name="driverClassName" value="${jdbc_driverClassName}"/>
+        <property name="driverClassName" value="${erp_jdbc_driverClassName}"/>
         <!-- 基本属性 url、user、password -->
-        <property name="url" value="${jdbc_url}"/>
+        <property name="url" value="${erp_jdbc_url}"/>
         <!-- 配置初始化大小、最小、最大 -->
         <property name="initialSize" value="1"/>
         <property name="minIdle" value="10"/>
@@ -56,13 +53,13 @@
 	</bean>
 	
 	<bean id="flyrayDataSourceRead"  parent="abstractDataSource">
-        <property name="username" value="${jdbc_username}"/>
-        <property name="password" value="${jdbc_password}"/>
+        <property name="username" value="${erp_read_jdbc_username}"/>
+        <property name="password" value="${erp_read_jdbc_password}"/>
      </bean>
 
      <bean id="flyrayDataSourceWrite"  parent="abstractDataSource">
-        <property name="username" value="${jdbc_username}"/>
-        <property name="password" value="${jdbc_password}"/>
+        <property name="username" value="${erp_write_jdbc_username}"/>
+        <property name="password" value="${erp_write_jdbc_password}"/>
      </bean>
 
      <bean id="flyrayDataSource"  class="me.flyray.erp.config.DynamicDataSource">

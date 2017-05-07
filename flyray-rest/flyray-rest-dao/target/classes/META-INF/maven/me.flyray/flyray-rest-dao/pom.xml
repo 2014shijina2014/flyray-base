@@ -19,6 +19,12 @@
 			<artifactId>flyray-rest-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>me.flyray</groupId>
+			<artifactId>flyray-common-config</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 
 		<!-- 由于flyray-rest-parent使用dependencyMangement管理依赖，所以此处只需如此配置即可 -->
 		<!-- 添加junit单元测试包 -->

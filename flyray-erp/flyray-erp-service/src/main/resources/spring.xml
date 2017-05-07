@@ -6,8 +6,8 @@
 		http://www.springframework.org/schema/context 
 		http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<!-- 引入属性文件,config.properties位于src/main/resources目录下 
-	<context:property-placeholder location="classpath:config.properties" />-->
+	<!-- 引入属性文件,config.properties位于src/main/resources目录下 -->
+	<context:property-placeholder location="classpath*:*.properties" />
 
 	<!-- 扫描文件（自动将servicec层注入）
 	扫描指定package下所有带有如@controller,@services,@resource,并把所注释的注册为Spring Beans -->

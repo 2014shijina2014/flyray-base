@@ -20,9 +20,9 @@
 	<!-- 配置数据源 -->
 	<bean id="abstractDataSource" abstract="true" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
           destroy-method="close">
-        <property name="driverClassName" value="${jdbc_driverClassName}"/>
+        <property name="driverClassName" value="${crm_jdbc_driverClassName}"/>
         <!-- 基本属性 url、user、password -->
-        <property name="url" value="${jdbc_url}"/>
+        <property name="url" value="${crm_jdbc_url}"/>
         <!-- 配置初始化大小、最小、最大 -->
         <property name="initialSize" value="1"/>
         <property name="minIdle" value="10"/>
@@ -56,13 +56,13 @@
 	</bean>
 	
 	<bean id="flyrayDataSourceRead"  parent="abstractDataSource">
-        <property name="username" value="${jdbc_username}"/>
-        <property name="password" value="${jdbc_password}"/>
+        <property name="username" value="${crm_read_jdbc_username}"/>
+        <property name="password" value="${crm_read_jdbc_password}"/>
      </bean>
 
      <bean id="flyrayDataSourceWrite"  parent="abstractDataSource">
-        <property name="username" value="${jdbc_username}"/>
-        <property name="password" value="${jdbc_password}"/>
+        <property name="username" value="${crm_write_jdbc_username}"/>
+        <property name="password" value="${crm_write_jdbc_password}"/>
      </bean>
 
      <bean id="flyrayDataSource"  class="me.flyray.crm.config.DynamicDataSource">
