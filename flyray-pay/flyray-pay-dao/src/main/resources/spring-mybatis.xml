@@ -20,9 +20,7 @@
 	<!-- 配置数据源 -->
 	<bean id="abstractDataSource" abstract="true" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
           destroy-method="close">
-        <property name="driverClassName" value="${jdbc_driverClassName}"/>
-        <!-- 基本属性 url、user、password -->
-        <property name="url" value="${jdbc_url}"/>
+        <property name="driverClassName" value="${pay_jdbc_driverClassName}"/>
         <!-- 配置初始化大小、最小、最大 -->
         <property name="initialSize" value="1"/>
         <property name="minIdle" value="10"/>
@@ -56,13 +54,17 @@
 	</bean>
 	
 	<bean id="flyrayDataSourceRead"  parent="abstractDataSource">
-        <property name="username" value="${jdbc_username}"/>
-        <property name="password" value="${jdbc_password}"/>
+		<!-- 基本属性 url、user、password -->
+        <property name="url" value="${pay_read_jdbc_url}"/>
+        <property name="username" value="${pay_read_jdbc_username}"/>
+        <property name="password" value="${pay_read_jdbc_password}"/>
      </bean>
 
      <bean id="flyrayDataSourceWrite"  parent="abstractDataSource">
-        <property name="username" value="${jdbc_username}"/>
-        <property name="password" value="${jdbc_password}"/>
+     	<!-- 基本属性 url、user、password -->
+        <property name="url" value="${pay_write_jdbc_url}"/>
+        <property name="username" value="${pay_write_jdbc_username}"/>
+        <property name="password" value="${pay_write_jdbc_password}"/>
      </bean>
 
      <bean id="flyrayDataSource"  class="me.flyray.pay.config.DynamicDataSource">

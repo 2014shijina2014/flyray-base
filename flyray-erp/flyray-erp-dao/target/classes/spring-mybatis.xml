@@ -18,8 +18,6 @@
 	<bean id="abstractDataSource" abstract="true" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
           destroy-method="close">
         <property name="driverClassName" value="${erp_jdbc_driverClassName}"/>
-        <!-- 基本属性 url、user、password -->
-        <property name="url" value="${erp_jdbc_url}"/>
         <!-- 配置初始化大小、最小、最大 -->
         <property name="initialSize" value="1"/>
         <property name="minIdle" value="10"/>
@@ -53,11 +51,14 @@
 	</bean>
 	
 	<bean id="flyrayDataSourceRead"  parent="abstractDataSource">
+		<!-- 基本属性 url、user、password -->
+        <property name="url" value="${erp_read_jdbc_url}"/>
         <property name="username" value="${erp_read_jdbc_username}"/>
         <property name="password" value="${erp_read_jdbc_password}"/>
      </bean>
 
      <bean id="flyrayDataSourceWrite"  parent="abstractDataSource">
+     	<property name="url" value="${erp_write_jdbc_url}"/>
         <property name="username" value="${erp_write_jdbc_username}"/>
         <property name="password" value="${erp_write_jdbc_password}"/>
      </bean>
