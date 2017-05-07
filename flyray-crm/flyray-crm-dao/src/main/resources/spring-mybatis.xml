@@ -14,9 +14,6 @@
 	  http://www.springframework.org/schema/util
       http://www.springframework.org/schema/util/spring-util-3.2.xsd">
       
-    <!-- 加载配置文件 -->
-	<context:property-placeholder location="classpath:config.properties" />
-	
 	<!-- 配置数据源 -->
 	<bean id="abstractDataSource" abstract="true" class="com.alibaba.druid.pool.DruidDataSource" init-method="init"
           destroy-method="close">
