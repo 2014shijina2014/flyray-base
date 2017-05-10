@@ -1,7 +1,5 @@
 package me.flyray.cms.model;
 
-import me.flyray.common.model.BaseModel;
-
 /**
  * @author huo.xq
  *	客户专家表

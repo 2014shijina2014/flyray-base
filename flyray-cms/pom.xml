@@ -21,14 +21,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<tomcat.url>http://127.0.0.1:8888/manager</tomcat.url>
 	</properties>
-	
-	<dependencies>
-		<dependency>
-			<groupId>me.flyray</groupId>
-			<artifactId>flyray-common</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-	</dependencies>
 
 	<dependencyManagement>
 		<dependencies>

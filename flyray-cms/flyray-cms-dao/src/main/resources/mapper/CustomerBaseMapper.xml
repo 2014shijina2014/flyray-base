@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.flyray.cms.dao.CustomerBaseDao">
+
+	<select id="queryObject" resultType="me.flyray.cms.model.CustomerBase">
+		select * from
+		crm_customer_base where id = #{value}
+	</select>
+
+	<select id="queryList" resultType="me.flyray.cms.model.CustomerBase"
+		parameterType="java.util.Map">
+		select * from crm_customer_base order by id desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+
+	<select id="query" resultType="me.flyray.cms.model.CustomerBase"
+		parameterType="java.util.Map">
+		select * from crm_customer_base
+		<trim prefix="WHERE" suffixOverrides="AND">
+			<if test="customerId != null and customerId != ''">customer_id = #{customerId} AND</if>
+			<if test="customerNo != null and customerNo != ''">customer_no = #{customerNo} AND</if>
+		</trim>
+	</select>
+	
+	<select id="queryOne" resultType="me.flyray.cms.model.CustomerBase">
+		select * from crm_customer_base
+		where customer_no = #{customerNo}
+	</select>
+
+	<select id="queryTotal" resultType="int">
+		select count(*) from
+		crm_customer_base
+	</select>
+
+	<insert id="save" parameterType="me.flyray.cms.model.CustomerBase">
+		insert into crm_customer_base
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+		
+			<if test="headImgUrl != null and headImgUrl != ''">
+				head_img_url,
+			</if>
+			<if test="openId != null and openId != ''">
+				open_id,
+			</if>
+			<if test="customerId != null and customerId != ''">
+				customer_id,
+			</if>
+			<if test="customerNo != null and customerNo != ''">
+				customer_no,
+			</if>
+			<if test="custName != null and custName != ''">
+				cust_name,
+			</if>
+			<if test="phone != null and phone != ''">
+				phone,
+			</if>
+			<if test="sex != null and sex != ''">
+				sex,
+			</if>
+			<if test="address != null and address != ''">
+				address,
+			</if>
+			<if test="nickName != null and nickName != ''">
+				nickname,
+			</if>
+			<if test="age != null and age != ''">
+				age,
+			</if>
+			<if test="birthday != null and birthday != ''">
+				birthday,
+			</if>
+			<if test="merchantNo != null and merchantNo != ''">
+				merchant_no,
+			</if>
+			<if test="orgNo != null and orgNo != ''">
+				org_no,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="headImgUrl != null and headImgUrl != ''">
+				#{headImgUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="openId != null and openId != ''">
+				#{openId,jdbcType=VARCHAR},
+			</if>
+			<if test="customerId != null and customerId != ''">
+				#{customerId,jdbcType=INTEGER},
+			</if>
+			<if test="customerNo != null and customerNo != ''">
+				#{customerNo,jdbcType=VARCHAR},
+			</if>
+			<if test="custName != null and  custName!= ''">
+				#{custName,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null and phone != ''">
+				#{phone,jdbcType=INTEGER},
+			</if>
+			<if test="sex != null and  sex!= ''">
+				#{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null and address != ''">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="nickName != null and nickName != ''">
+				#{nickName,jdbcType=VARCHAR},
+			</if>
+			<if test="age != null and age != ''">
+				#{age,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null and birthday != ''">
+				#{birthday,jdbcType=VARCHAR},
+			</if>
+			<if test="merchantNo != null and merchantNo != ''">
+				#{merchantNo,jdbcType=VARCHAR},
+			</if>
+			<if test="orgNo != null and orgNo != ''">
+				#{orgNo,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+
+	<update id="update" parameterType="me.flyray.cms.model.CustomerBase">
+		update crm_customer_base
+		<set>
+			<if test="customerNo != null and customerNo != ''">
+				customer_no = #{customerNo,jdbcType=VARCHAR},
+			</if>
+			<if test="custName != null and custName != ''">
+				cust_name = #{custName,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null and sex != ''">
+				sex = #{sex,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null and address != ''">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="nickName != null and nickName != ''">
+				nickname = #{nickName,jdbcType=VARCHAR},
+			</if>
+			<if test="age != null and age != ''">
+				age = #{age,jdbcType=VARCHAR},
+			</if>
+			<if test="birthday != null and birthday != ''">
+				birthday = #{birthday,jdbcType=VARCHAR},
+			</if>
+			<if test="merchantNo != null and merchantNo != ''">
+				merchant_no = #{merchantNo,jdbcType=VARCHAR},
+			</if>
+			<if test="orgNo != null and orgNo != ''">
+				org_no = #{orgNo,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where customer_id = #{customerId,jdbcType=INTEGER}
+	</update>
+
+	<delete id="delete">
+		delete from crm_customer_base where id = #{value}
+	</delete>
+
+</mapper>

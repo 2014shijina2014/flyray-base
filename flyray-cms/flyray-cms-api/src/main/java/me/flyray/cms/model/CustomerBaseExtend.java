@@ -1,6 +1,5 @@
 package me.flyray.cms.model;
 
-import me.flyray.common.model.BaseModel;
 
 /**
  * 客户关注表

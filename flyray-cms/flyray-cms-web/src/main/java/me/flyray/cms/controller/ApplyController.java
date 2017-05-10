@@ -10,6 +10,13 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import me.flyray.cms.dao.CustomerBaseDao;
+import me.flyray.cms.dao.CustomerProficientDao;
+import me.flyray.cms.model.CustomerBase;
+import me.flyray.cms.model.CustomerProficient;
+import me.flyray.cms.service.QiniuCloudServiceImpl;
+import me.flyray.cms.util.Base64Util;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,16 +25,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import me.flyray.cms.dao.CustomerProficientDao;
-import me.flyray.cms.model.CustomerProficient;
-import me.flyray.cms.service.QiniuCloudServiceImpl;
-import me.flyray.cms.util.Base64Util;
-
 @Controller
 public class ApplyController {
 
 	@Autowired
 	private QiniuCloudServiceImpl qiniuCloudService;
+	@Autowired
+	private CustomerBaseDao customerBaseDao;
 	@Autowired
 	private CustomerProficientDao customerProficientDao;
 	
@@ -45,7 +49,7 @@ public class ApplyController {
         //
         Map<String,Object> map = new HashMap<String, Object>();
         map.put("customerNo", customerNo);
-        List<Map<String, Object>> list = null;
+        List<CustomerBase> list = customerBaseDao.query(map);
         if(list.size() > 1){
         	throw new RuntimeException("会员信息不唯一");
         }
@@ -79,11 +83,11 @@ public class ApplyController {
         customerProficientDao.save(customerProficient);
         
         //更新用户信息
-        /*CustomerBase customerBase =list.get(0);
+        CustomerBase customerBase =list.get(0);
         customerBase.setCustomerNo(customerNo);
         customerBase.setCustName(custName);
         customerBase.setPhone(phone);
-        customerBaseDao.update(customerBase);*/
+        customerBaseDao.update(customerBase);
 		return null;
 	}
 	
