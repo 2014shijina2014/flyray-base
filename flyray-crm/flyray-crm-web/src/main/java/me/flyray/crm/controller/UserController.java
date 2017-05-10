@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import me.flyray.crm.api.UserService;
+import me.flyray.crm.api.CustomerAccountService;
+import me.flyray.crm.model.CustomerAccount;
 import me.flyray.crm.model.User;
 
 
@@ -22,13 +23,14 @@ public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@Autowired
-	private UserService userService;
+	private CustomerAccountService customerAccountService;
 	
 	@ResponseBody
 	@RequestMapping(value="/displayAllUser", method = RequestMethod.GET)
 	public HashMap<String, List<User>> displayAllUser() {
 		HashMap<String, List<User>> map = new HashMap<String, List<User>>();
-		map.put("users", userService.displayAllUser());
+		CustomerAccount customerAccount = new CustomerAccount();
+		customerAccountService.openAccount(customerAccount);
 		return map;
 	}
 

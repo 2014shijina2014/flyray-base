@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import me.flyray.common.exception.BusinessException;
 import me.flyray.common.service.SpringContextHolder;
@@ -28,7 +29,7 @@ import me.flyray.pay.model.PaySerial;
 * @date：2017年4月30日 上午10:43:54 
 * @description：支付逻辑处理  
 */
-
+@Transactional
 @Service("paymentHandleService")
 public class PaymentHandleServiceImpl implements PaymentHandleService{
 
@@ -49,6 +50,7 @@ public class PaymentHandleServiceImpl implements PaymentHandleService{
 	 * 3、创建支付流水
 	 */
 	@Override
+	@Transactional( rollbackFor={Exception.class}) 
 	public PaymentHandleResponse pay(PaymentHandleRequest request) {
 		
 		logger.info("获取支付通道对象 start");

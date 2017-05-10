@@ -17,7 +17,7 @@ public class CustomerAuth {
 	/**
 	 * 客户（会员）编号
 	 */
-	private Long customerNo;
+	private String customerNo;
 	
 	/**
 	 * 登录类型（手机号 邮箱 用户名）或第三方应用名称（微信 微博等）
@@ -42,11 +42,11 @@ public class CustomerAuth {
 		this.id = id;
 	}
 
-	public Long getCustomerNo() {
+	public String getCustomerNo() {
 		return customerNo;
 	}
 
-	public void setCustomerNo(Long customerNo) {
+	public void setCustomerNo(String customerNo) {
 		this.customerNo = customerNo;
 	}
 

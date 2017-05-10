@@ -22,6 +22,12 @@
 		
 		<dependency>
 			<groupId>me.flyray</groupId>
+			<artifactId>flyray-pay-util</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>me.flyray</groupId>
 			<artifactId>flyray-common</artifactId>
 		</dependency>
 
