@@ -1,0 +1,2358 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-common:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\pom.xml, line 37, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-common-config:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\pom.xml, line 37, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-rest-dao:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-rest:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-rest\pom.xml, line 235, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-rest-service:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-rest:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-rest\pom.xml, line 235, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-rest-api:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-rest:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-rest\pom.xml, line 235, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-rest-web:war:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-rest:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-rest\pom.xml, line 235, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-rest-util:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-rest:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-rest\pom.xml, line 235, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-rest:pom:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 235, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-rbac-common:jar:2.0.0
+[WARNING] 'version' contains an expression but should be a constant. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 5, column 11
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 276, column 12
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-resources-plugin is missing. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 287, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-rbac-shiro:jar:2.0.0
+[WARNING] 'version' contains an expression but should be a constant. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 5, column 11
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 276, column 12
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-resources-plugin is missing. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 287, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-rbac-schedule:jar:2.0.0
+[WARNING] 'version' contains an expression but should be a constant. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 5, column 11
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 276, column 12
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-resources-plugin is missing. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 287, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-rbac-gen:jar:2.0.0
+[WARNING] 'version' contains an expression but should be a constant. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 5, column 11
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 276, column 12
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-resources-plugin is missing. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 287, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-rbac-api:jar:2.0.0
+[WARNING] 'version' contains an expression but should be a constant. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 5, column 11
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 276, column 12
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-resources-plugin is missing. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 287, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-open-web:war:2.0.0
+[WARNING] 'version' contains an expression but should be a constant. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 5, column 11
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 276, column 12
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-resources-plugin is missing. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 287, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-operation-web:war:2.0.0
+[WARNING] 'version' contains an expression but should be a constant. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 5, column 11
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 276, column 12
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-resources-plugin is missing. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 287, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-merchant-web:war:2.0.0
+[WARNING] 'version' contains an expression but should be a constant. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 5, column 11
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 276, column 12
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-resources-plugin is missing. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 287, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-rbac:pom:2.0.0
+[WARNING] 'version' contains an expression but should be a constant. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 5, column 11
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 276, column 12
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-resources-plugin is missing. @ me.flyray:flyray-rbac:${flyray-rbac-version}, F:\workspase\flyray-parent\flyray-rbac\pom.xml, line 287, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-crm-dao:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-crm:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-crm\pom.xml, line 243, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-crm-service:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-crm:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-crm\pom.xml, line 243, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-crm-api:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-crm:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-crm\pom.xml, line 243, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-crm-web:war:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-crm:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-crm\pom.xml, line 243, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-crm-util:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-crm:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-crm\pom.xml, line 243, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-crm:pom:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 243, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-erp-dao:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-erp:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-erp\pom.xml, line 243, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-erp-service:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-erp:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-erp\pom.xml, line 243, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-erp-api:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-erp:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-erp\pom.xml, line 243, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-erp-web:war:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-erp:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-erp\pom.xml, line 243, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-erp-util:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-erp:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-erp\pom.xml, line 243, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-erp:pom:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 243, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-pay-dao:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-pay:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-pay\pom.xml, line 250, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-pay-service:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-pay:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-pay\pom.xml, line 250, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-pay-api:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-pay:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-pay\pom.xml, line 250, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-pay-web:war:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-pay:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-pay\pom.xml, line 250, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-pay-util:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-pay:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-pay\pom.xml, line 250, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-pay:pom:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 250, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-cms-dao:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-cms:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-cms\pom.xml, line 235, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-cms-service:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-cms:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-cms\pom.xml, line 235, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-cms-api:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-cms:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-cms\pom.xml, line 235, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-cms-web:war:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-cms:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-cms\pom.xml, line 235, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-cms-util:jar:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ me.flyray:flyray-cms:0.0.1-SNAPSHOT, F:\workspase\flyray-parent\flyray-cms\pom.xml, line 235, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray-cms:pom:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 235, column 12
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for me.flyray:flyray:pom:0.0.1-SNAPSHOT
+[WARNING] 'build.plugins.plugin.version' for org.apache.maven.plugins:maven-compiler-plugin is missing. @ line 37, column 12
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] flyray
+[INFO] flyray-common
+[INFO] flyray-common-config
+[INFO] flyray-message
+[INFO] flyray-rest
+[INFO] flyray-rest-api
+[INFO] flyray-rest-dao
+[INFO] flyray-crm
+[INFO] flyray-crm-api
+[INFO] flyray-pay
+[INFO] flyray-pay-api
+[INFO] flyray-erp
+[INFO] flyray-erp-api
+[INFO] flyray-rest-service
+[INFO] flyray-rest-web
+[INFO] flyray-rest-util
+[INFO] flyray-search
+[INFO] flyray-rbac-common
+[INFO] flyray-rbac-shiro
+[INFO] flyray-rbac-schedule
+[INFO] flyray-rbac-gen
+[INFO] flyray-rbac-api
+[INFO] flyray-open-web
+[INFO] flyray-operation-web
+[INFO] flyray-merchant-web
+[INFO] flyray-rbac
+[INFO] flyray-crm-dao
+[INFO] flyray-crm-service
+[INFO] flyray-crm-web
+[INFO] flyray-crm-util
+[INFO] flyray-erp-dao
+[INFO] flyray-erp-service
+[INFO] flyray-erp-web
+[INFO] flyray-erp-util
+[INFO] flyray-pay-dao
+[INFO] flyray-pay-util
+[INFO] flyray-pay-service
+[INFO] flyray-pay-web
+[INFO] flyray-cms
+[INFO] flyray-cms-util
+[INFO] flyray-cms-api
+[INFO] flyray-cms-dao
+[INFO] flyray-cms-service
+[INFO] flyray-cms-web
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray ---
+[INFO] me.flyray:flyray:pom:0.0.1-SNAPSHOT
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-common 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-common ---
+[INFO] me.flyray:flyray-common:jar:0.0.1-SNAPSHOT
+[INFO] +- junit:junit:jar:4.12:compile
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:compile
+[INFO] +- javax.mail:mail:jar:1.4.3:compile
+[INFO] |  \- javax.activation:activation:jar:1.1:compile
+[INFO] +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO] |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] \- commons-codec:commons-codec:jar:1.9:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-common-config 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-common-config ---
+[INFO] me.flyray:flyray-common-config:jar:0.0.1-SNAPSHOT
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-message 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-message ---
+[INFO] me.flyray.message:flyray-message:war:1.0-SNAPSHOT
+[INFO] +- org.apache.rocketmq:rocketmq-client:jar:4.0.0-incubating:compile
+[INFO] |  \- org.apache.rocketmq:rocketmq-common:jar:4.0.0-incubating:compile
+[INFO] |     \- org.apache.rocketmq:rocketmq-remoting:jar:4.0.0-incubating:compile
+[INFO] |        +- com.alibaba:fastjson:jar:1.2.12:compile
+[INFO] |        \- io.netty:netty-all:jar:4.0.36.Final:compile
+[INFO] +- org.springframework:spring-core:jar:4.3.4.RELEASE:compile
+[INFO] |  \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] +- org.springframework:spring-beans:jar:4.3.4.RELEASE:compile
+[INFO] +- org.springframework:spring-context:jar:4.3.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.3.4.RELEASE:compile
+[INFO] +- org.springframework:spring-web:jar:4.3.4.RELEASE:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.3.4.RELEASE:compile
+[INFO] +- org.springframework:spring-aop:jar:4.3.4.RELEASE:compile
+[INFO] +- org.springframework:spring-aspects:jar:4.3.4.RELEASE:compile
+[INFO] |  \- org.aspectj:aspectjweaver:jar:1.8.9:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.12:compile
+[INFO] +- ch.qos.logback:logback-core:jar:1.1.2:compile
+[INFO] +- ch.qos.logback:logback-classic:jar:1.1.2:compile
+[INFO] +- org.aspectj:aspectjrt:jar:1.6.11:compile
+[INFO] +- com.google.guava:guava:jar:18.0:compile
+[INFO] \- org.apache.commons:commons-lang3:jar:3.4:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-rest 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-rest ---
+[INFO] me.flyray:flyray-rest:pom:0.0.1-SNAPSHOT
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-rest-api 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-rest-api ---
+[INFO] me.flyray:flyray-rest-api:jar:0.0.1-SNAPSHOT
+[INFO] \- com.baomidou:mybatis-plus:jar:2.0.2:compile
+[INFO]    +- org.mybatis:mybatis-spring:jar:1.2.0:compile
+[INFO]    \- org.mybatis:mybatis:jar:3.2.1:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-rest-dao 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-rest-dao ---
+[INFO] me.flyray:flyray-rest-dao:jar:0.0.1-SNAPSHOT
+[INFO] +- me.flyray:flyray-rest-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  \- com.baomidou:mybatis-plus:jar:2.0.2:compile
+[INFO] +- me.flyray:flyray-common-config:jar:0.0.1-SNAPSHOT:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- org.springframework:spring-test:jar:4.2.4.RELEASE:test
+[INFO] |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO] |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-orm:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-web:jar:4.2.4.RELEASE:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-core:jar:2.8.5:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-databind:jar:2.8.5:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-annotations:jar:2.8.5:compile
+[INFO] +- cglib:cglib:jar:3.2.4:compile
+[INFO] |  +- org.ow2.asm:asm:jar:5.1:compile
+[INFO] |  \- org.apache.ant:ant:jar:1.9.6:compile
+[INFO] |     \- org.apache.ant:ant-launcher:jar:1.9.6:compile
+[INFO] +- org.aspectj:aspectjrt:jar:1.6.11:compile
+[INFO] +- org.aspectj:aspectjweaver:jar:1.8.7:compile
+[INFO] +- org.mybatis:mybatis:jar:3.2.1:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.2.0:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.2.4.RELEASE:compile
+[INFO] +- mysql:mysql-connector-java:jar:5.1.34:compile
+[INFO] +- commons-dbcp:commons-dbcp:jar:1.4:compile
+[INFO] |  \- commons-pool:commons-pool:jar:1.5.4:compile
+[INFO] +- com.alibaba:druid:jar:1.0.13:compile
+[INFO] |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] \- org.slf4j:slf4j-log4j12:jar:1.7.5:compile
+[INFO]    +- org.slf4j:slf4j-api:jar:1.7.5:compile
+[INFO]    \- log4j:log4j:jar:1.2.17:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-crm 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-crm ---
+[INFO] me.flyray:flyray-crm:pom:0.0.1-SNAPSHOT
+[INFO] \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO]    +- junit:junit:jar:4.12:test
+[INFO]    |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO]    +- javax.mail:mail:jar:1.4.3:compile
+[INFO]    |  \- javax.activation:activation:jar:1.1:compile
+[INFO]    +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO]    |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO]    |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO]    +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO]    |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO]    |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO]    |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO]    \- commons-codec:commons-codec:jar:1.9:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-crm-api 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-crm-api ---
+[INFO] me.flyray:flyray-crm-api:jar:0.0.1-SNAPSHOT
+[INFO] \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO]    +- junit:junit:jar:4.12:test
+[INFO]    |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO]    +- javax.mail:mail:jar:1.4.3:compile
+[INFO]    |  \- javax.activation:activation:jar:1.1:compile
+[INFO]    +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO]    |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO]    |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO]    +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO]    |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO]    |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO]    |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO]    \- commons-codec:commons-codec:jar:1.9:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-pay 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-pay ---
+[INFO] me.flyray:flyray-pay:pom:0.0.1-SNAPSHOT
+[INFO] \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO]    +- junit:junit:jar:4.12:test
+[INFO]    |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO]    +- javax.mail:mail:jar:1.4.3:compile
+[INFO]    |  \- javax.activation:activation:jar:1.1:compile
+[INFO]    +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO]    |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO]    |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO]    +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO]    |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO]    |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO]    |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO]    \- commons-codec:commons-codec:jar:1.9:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-pay-api 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-pay-api ---
+[INFO] me.flyray:flyray-pay-api:jar:0.0.1-SNAPSHOT
+[INFO] \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO]    +- junit:junit:jar:4.12:test
+[INFO]    |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO]    +- javax.mail:mail:jar:1.4.3:compile
+[INFO]    |  \- javax.activation:activation:jar:1.1:compile
+[INFO]    +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO]    |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO]    |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO]    +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO]    |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO]    |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO]    |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO]    \- commons-codec:commons-codec:jar:1.9:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-erp 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-erp ---
+[INFO] me.flyray:flyray-erp:pom:0.0.1-SNAPSHOT
+[INFO] \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO]    +- junit:junit:jar:4.12:test
+[INFO]    |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO]    +- javax.mail:mail:jar:1.4.3:compile
+[INFO]    |  \- javax.activation:activation:jar:1.1:compile
+[INFO]    +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO]    |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO]    |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO]    +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO]    |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO]    |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO]    |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO]    \- commons-codec:commons-codec:jar:1.9:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-erp-api 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-erp-api ---
+[INFO] me.flyray:flyray-erp-api:jar:0.0.1-SNAPSHOT
+[INFO] \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO]    +- junit:junit:jar:4.12:test
+[INFO]    |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO]    +- javax.mail:mail:jar:1.4.3:compile
+[INFO]    |  \- javax.activation:activation:jar:1.1:compile
+[INFO]    +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO]    |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO]    |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO]    +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO]    |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO]    |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO]    |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO]    \- commons-codec:commons-codec:jar:1.9:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-rest-service 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-rest-service ---
+[INFO] me.flyray:flyray-rest-service:jar:0.0.1-SNAPSHOT
+[INFO] +- me.flyray:flyray-rest-dao:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- me.flyray:flyray-rest-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  \- com.baomidou:mybatis-plus:jar:2.0.2:compile
+[INFO] |  +- me.flyray:flyray-common-config:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-orm:jar:4.2.4.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-tx:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-webmvc:jar:4.2.4.RELEASE:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-core:jar:2.8.5:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.8.5:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-annotations:jar:2.8.5:compile
+[INFO] |  +- cglib:cglib:jar:3.2.4:compile
+[INFO] |  |  \- org.apache.ant:ant:jar:1.9.6:compile
+[INFO] |  |     \- org.apache.ant:ant-launcher:jar:1.9.6:compile
+[INFO] |  +- org.aspectj:aspectjrt:jar:1.6.11:compile
+[INFO] |  +- org.aspectj:aspectjweaver:jar:1.8.7:compile
+[INFO] |  +- org.mybatis:mybatis:jar:3.2.1:compile
+[INFO] |  +- org.mybatis:mybatis-spring:jar:1.2.0:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:4.2.4.RELEASE:compile
+[INFO] |  +- mysql:mysql-connector-java:jar:5.1.34:compile
+[INFO] |  +- commons-dbcp:commons-dbcp:jar:1.4:compile
+[INFO] |  +- com.alibaba:druid:jar:1.0.13:compile
+[INFO] |  |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] |  \- org.slf4j:slf4j-log4j12:jar:1.7.5:compile
+[INFO] |     \- log4j:log4j:jar:1.2.17:compile
+[INFO] +- me.flyray:flyray-crm-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO] |     +- javax.mail:mail:jar:1.4.3:compile
+[INFO] |     |  \- javax.activation:activation:jar:1.1:compile
+[INFO] |     \- commons-codec:commons-codec:jar:1.9:compile
+[INFO] +- me.flyray:flyray-pay-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] +- me.flyray:flyray-erp-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- com.alibaba:dubbo:jar:2.8.5-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO] |  +- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  +- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] |  +- io.netty:netty:jar:3.9.9.Final:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-core:jar:2.5:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-api:jar:2.5:compile
+[INFO] |  +- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  +- javax.servlet:javax.servlet-api:jar:3.1.0:compile
+[INFO] |  +- org.springframework:spring-web:jar:4.2.4.RELEASE:compile
+[INFO] |  +- commons-pool:commons-pool:jar:1.6:compile
+[INFO] |  +- org.apache.curator:curator-framework:jar:2.5.0:compile
+[INFO] |  +- org.apache.curator:curator-client:jar:2.5.0:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.15:compile
+[INFO] |  \- com.google.guava:guava:jar:16.0.1:compile
+[INFO] +- org.apache.zookeeper:zookeeper:jar:3.4.8:compile
+[INFO] |  \- jline:jline:jar:0.9.94:compile
+[INFO] +- com.alibaba:zkclient:jar:0.8.1-SNAPSHOT:compile
+[INFO] +- com.alibaba:fastjson:jar:1.2.28:compile
+[INFO] \- com.esotericsoftware:reflectasm:jar:1.11.3:compile
+[INFO]    \- org.ow2.asm:asm:jar:5.0.4:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-rest-web 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-rest-web ---
+[INFO] me.flyray:flyray-rest-web:war:0.0.1-SNAPSHOT
+[INFO] +- me.flyray:flyray-rest-service:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- me.flyray:flyray-rest-dao:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  +- me.flyray:flyray-rest-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  |  \- com.baomidou:mybatis-plus:jar:2.0.2:compile
+[INFO] |  |  +- me.flyray:flyray-common-config:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  +- com.fasterxml.jackson.core:jackson-core:jar:2.8.5:compile
+[INFO] |  |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.8.5:compile
+[INFO] |  |  +- com.fasterxml.jackson.core:jackson-annotations:jar:2.8.5:compile
+[INFO] |  |  +- org.mybatis:mybatis:jar:3.2.1:compile
+[INFO] |  |  +- org.mybatis:mybatis-spring:jar:1.2.0:compile
+[INFO] |  |  +- mysql:mysql-connector-java:jar:5.1.34:compile
+[INFO] |  |  +- commons-dbcp:commons-dbcp:jar:1.4:compile
+[INFO] |  |  \- com.alibaba:druid:jar:1.0.13:compile
+[INFO] |  |     +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  |     \- com.alibaba:tools:jar:1.8.0:system
+[INFO] |  +- me.flyray:flyray-crm-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |     +- junit:junit:jar:4.12:test
+[INFO] |  |     |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] |  |     \- javax.mail:mail:jar:1.4.3:compile
+[INFO] |  |        \- javax.activation:activation:jar:1.1:compile
+[INFO] |  +- me.flyray:flyray-pay-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- me.flyray:flyray-erp-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- com.alibaba:dubbo:jar:2.8.5-SNAPSHOT:compile
+[INFO] |  |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  |  +- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  |  +- io.netty:netty:jar:3.9.9.Final:compile
+[INFO] |  |  +- org.apache.logging.log4j:log4j-core:jar:2.5:compile
+[INFO] |  |  +- org.apache.logging.log4j:log4j-api:jar:2.5:compile
+[INFO] |  |  +- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  |  +- javax.servlet:javax.servlet-api:jar:3.1.0:compile
+[INFO] |  |  +- commons-pool:commons-pool:jar:1.6:compile
+[INFO] |  |  +- org.apache.curator:curator-framework:jar:2.5.0:compile
+[INFO] |  |  +- org.apache.curator:curator-client:jar:2.5.0:compile
+[INFO] |  |  \- com.google.guava:guava:jar:16.0.1:compile
+[INFO] |  +- org.apache.zookeeper:zookeeper:jar:3.4.8:compile
+[INFO] |  |  \- jline:jline:jar:0.9.94:compile
+[INFO] |  +- com.alibaba:zkclient:jar:0.8.1-SNAPSHOT:compile
+[INFO] |  +- com.alibaba:fastjson:jar:1.2.28:compile
+[INFO] |  \- com.esotericsoftware:reflectasm:jar:1.11.3:compile
+[INFO] +- org.springframework:spring-test:jar:4.2.4.RELEASE:test
+[INFO] |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-orm:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-web:jar:4.2.4.RELEASE:compile
+[INFO] +- cglib:cglib:jar:3.2.4:compile
+[INFO] |  +- org.ow2.asm:asm:jar:5.1:compile
+[INFO] |  \- org.apache.ant:ant:jar:1.9.6:compile
+[INFO] |     \- org.apache.ant:ant-launcher:jar:1.9.6:compile
+[INFO] +- org.aspectj:aspectjrt:jar:1.6.11:compile
+[INFO] +- org.aspectj:aspectjweaver:jar:1.8.7:compile
+[INFO] +- org.springframework:spring-context-support:jar:4.2.4.RELEASE:compile
+[INFO] +- org.freemarker:freemarker:jar:2.3.20:compile
+[INFO] +- joda-time:joda-time:jar:2.6:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.5:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.5:compile
+[INFO] |  \- log4j:log4j:jar:1.2.17:compile
+[INFO] +- net.sf.json-lib:json-lib:jar:jdk15:2.4:compile
+[INFO] |  +- commons-beanutils:commons-beanutils:jar:1.8.0:compile
+[INFO] |  +- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] |  +- commons-lang:commons-lang:jar:2.5:compile
+[INFO] |  \- net.sf.ezmorph:ezmorph:jar:1.0.6:compile
+[INFO] +- org.codehaus.jackson:jackson-mapper-asl:jar:1.9.13:compile
+[INFO] |  \- org.codehaus.jackson:jackson-core-asl:jar:1.9.13:compile
+[INFO] +- com.google.code.gson:gson:jar:2.2.4:compile
+[INFO] +- javax.servlet:servlet-api:jar:2.5:provided
+[INFO] +- javax.servlet.jsp:jsp-api:jar:2.1:provided
+[INFO] +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO] +- commons-io:commons-io:jar:2.4:compile
+[INFO] +- commons-codec:commons-codec:jar:1.9:compile
+[INFO] +- com.github.pagehelper:pagehelper:jar:3.7.4:compile
+[INFO] |  \- com.github.jsqlparser:jsqlparser:jar:0.9.1:compile
+[INFO] \- javax.servlet:jstl:jar:1.2:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-rest-util 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-rest-util ---
+[INFO] me.flyray:flyray-rest-util:jar:0.0.1-SNAPSHOT
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] \- javax.mail:mail:jar:1.4.3:compile
+[INFO]    \- javax.activation:activation:jar:1.1:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-search 1.0-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-search ---
+[INFO] me.flyray.search:flyray-search:war:1.0-SNAPSHOT
+[INFO] +- org.apache.rocketmq:rocketmq-client:jar:4.0.0-incubating:compile
+[INFO] |  \- org.apache.rocketmq:rocketmq-common:jar:4.0.0-incubating:compile
+[INFO] |     \- org.apache.rocketmq:rocketmq-remoting:jar:4.0.0-incubating:compile
+[INFO] |        +- com.alibaba:fastjson:jar:1.2.12:compile
+[INFO] |        \- io.netty:netty-all:jar:4.0.36.Final:compile
+[INFO] +- org.springframework:spring-core:jar:4.3.4.RELEASE:compile
+[INFO] |  \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] +- org.springframework:spring-beans:jar:4.3.4.RELEASE:compile
+[INFO] +- org.springframework:spring-context:jar:4.3.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.3.4.RELEASE:compile
+[INFO] +- org.springframework:spring-web:jar:4.3.4.RELEASE:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.3.4.RELEASE:compile
+[INFO] +- org.springframework:spring-aop:jar:4.3.4.RELEASE:compile
+[INFO] +- org.springframework:spring-aspects:jar:4.3.4.RELEASE:compile
+[INFO] |  \- org.aspectj:aspectjweaver:jar:1.8.9:compile
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.12:compile
+[INFO] +- ch.qos.logback:logback-core:jar:1.1.2:compile
+[INFO] +- ch.qos.logback:logback-classic:jar:1.1.2:compile
+[INFO] +- org.aspectj:aspectjrt:jar:1.6.11:compile
+[INFO] +- com.google.guava:guava:jar:18.0:compile
+[INFO] +- org.apache.commons:commons-lang3:jar:3.4:compile
+[INFO] \- org.springframework.data:spring-data-elasticsearch:jar:2.0.4.RELEASE:compile
+[INFO]    +- org.springframework:spring-tx:jar:4.2.8.RELEASE:compile
+[INFO]    +- org.springframework.data:spring-data-commons:jar:1.12.4.RELEASE:compile
+[INFO]    +- commons-lang:commons-lang:jar:2.6:compile
+[INFO]    +- joda-time:joda-time:jar:2.9.4:compile
+[INFO]    +- org.elasticsearch:elasticsearch:jar:2.2.0:compile
+[INFO]    |  +- org.apache.lucene:lucene-core:jar:5.4.1:compile
+[INFO]    |  +- org.apache.lucene:lucene-backward-codecs:jar:5.4.1:compile
+[INFO]    |  +- org.apache.lucene:lucene-analyzers-common:jar:5.4.1:compile
+[INFO]    |  +- org.apache.lucene:lucene-queries:jar:5.4.1:compile
+[INFO]    |  +- org.apache.lucene:lucene-memory:jar:5.4.1:compile
+[INFO]    |  +- org.apache.lucene:lucene-highlighter:jar:5.4.1:compile
+[INFO]    |  +- org.apache.lucene:lucene-queryparser:jar:5.4.1:compile
+[INFO]    |  |  \- org.apache.lucene:lucene-sandbox:jar:5.4.1:compile
+[INFO]    |  +- org.apache.lucene:lucene-suggest:jar:5.4.1:compile
+[INFO]    |  |  \- org.apache.lucene:lucene-misc:jar:5.4.1:compile
+[INFO]    |  +- org.apache.lucene:lucene-join:jar:5.4.1:compile
+[INFO]    |  |  \- org.apache.lucene:lucene-grouping:jar:5.4.1:compile
+[INFO]    |  +- org.apache.lucene:lucene-spatial:jar:5.4.1:compile
+[INFO]    |  |  +- org.apache.lucene:lucene-spatial3d:jar:5.4.1:compile
+[INFO]    |  |  \- com.spatial4j:spatial4j:jar:0.5:compile
+[INFO]    |  +- org.elasticsearch:securesm:jar:1.0:compile
+[INFO]    |  +- com.carrotsearch:hppc:jar:0.7.1:compile
+[INFO]    |  +- org.joda:joda-convert:jar:1.2:compile
+[INFO]    |  +- com.fasterxml.jackson.dataformat:jackson-dataformat-smile:jar:2.6.2:compile
+[INFO]    |  +- com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:jar:2.6.2:compile
+[INFO]    |  |  \- org.yaml:snakeyaml:jar:1.15:compile
+[INFO]    |  +- com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:jar:2.6.2:compile
+[INFO]    |  +- io.netty:netty:jar:3.10.5.Final:compile
+[INFO]    |  +- com.ning:compress-lzf:jar:1.0.2:compile
+[INFO]    |  +- com.tdunning:t-digest:jar:3.0:compile
+[INFO]    |  +- org.hdrhistogram:HdrHistogram:jar:2.1.6:compile
+[INFO]    |  +- commons-cli:commons-cli:jar:1.3.1:compile
+[INFO]    |  \- com.twitter:jsr166e:jar:1.1.0:compile
+[INFO]    +- com.fasterxml.jackson.core:jackson-core:jar:2.6.7:compile
+[INFO]    +- com.fasterxml.jackson.core:jackson-databind:jar:2.6.7:compile
+[INFO]    |  \- com.fasterxml.jackson.core:jackson-annotations:jar:2.6.0:compile
+[INFO]    \- org.slf4j:jcl-over-slf4j:jar:1.7.21:runtime
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-rbac-common 2.0.0
+[INFO] ------------------------------------------------------------------------
+Downloading: http://maven.aliyun.com/nexus/content/groups/public/com/qiniu/qiniu-java-sdk/maven-metadata.xml
+Downloading: https://repo.maven.apache.org/maven2/com/qiniu/qiniu-java-sdk/maven-metadata.xml
+2/2 KB            Downloaded: http://maven.aliyun.com/nexus/content/groups/public/com/qiniu/qiniu-java-sdk/maven-metadata.xml (2 KB at 1.7 KB/sec)
+2/2 KB            Downloaded: https://repo.maven.apache.org/maven2/com/qiniu/qiniu-java-sdk/maven-metadata.xml (2 KB at 0.3 KB/sec)
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-rbac-common ---
+[INFO] me.flyray:flyray-rbac-common:jar:2.0.0
+[INFO] +- com.qiniu:qiniu-java-sdk:jar:7.2.6:compile
+[INFO] |  +- com.qiniu:happy-dns-java:jar:0.1.4:compile
+[INFO] |  +- com.google.code.gson:gson:jar:2.6.2:compile
+[INFO] |  \- com.squareup.okhttp3:okhttp:jar:3.3.1:compile
+[INFO] |     \- com.squareup.okio:okio:jar:1.8.0:compile
+[INFO] +- com.aliyun.oss:aliyun-sdk-oss:jar:2.5.0:compile
+[INFO] |  +- org.apache.httpcomponents:httpclient:jar:4.4.1:compile
+[INFO] |  +- org.jdom:jdom:jar:1.1:compile
+[INFO] |  \- net.sf.json-lib:json-lib:jar:jdk15:2.4:compile
+[INFO] |     \- net.sf.ezmorph:ezmorph:jar:1.0.6:compile
+[INFO] +- com.qcloud:cos_api:jar:4.4:compile
+[INFO] |  +- org.apache.httpcomponents:httpcore:jar:4.4.3:compile
+[INFO] |  +- org.apache.httpcomponents:httpmime:jar:4.5.1:compile
+[INFO] |  \- org.json:json:jar:20140107:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- javax.servlet:javax.servlet-api:jar:3.1.0:provided
+[INFO] +- org.mybatis:mybatis:jar:3.4.1:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.3.0:compile
+[INFO] +- org.hibernate:hibernate-validator:jar:5.4.1.Final:compile
+[INFO] |  +- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] |  +- org.jboss.logging:jboss-logging:jar:3.3.0.Final:compile
+[INFO] |  \- com.fasterxml:classmate:jar:1.3.1:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-expression:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.springframework:spring-web:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-context-support:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-aop:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-aspects:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.aspectj:aspectjweaver:jar:1.8.9:compile
+[INFO] +- org.springframework:spring-test:jar:4.3.7.RELEASE:test
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.19:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.19:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- mysql:mysql-connector-java:jar:5.1.38:compile
+[INFO] +- com.alibaba:druid:jar:1.0.28:compile
+[INFO] |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] +- commons-lang:commons-lang:jar:2.6:compile
+[INFO] +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO] +- commons-io:commons-io:jar:2.5:compile
+[INFO] +- com.alibaba:fastjson:jar:1.2.30:compile
+[INFO] +- commons-codec:commons-codec:jar:1.10:compile
+[INFO] +- commons-configuration:commons-configuration:jar:1.10:compile
+[INFO] |  \- commons-logging:commons-logging:jar:1.1.1:compile
+[INFO] +- org.apache.shiro:shiro-core:jar:1.3.2:compile
+[INFO] |  \- commons-beanutils:commons-beanutils:jar:1.8.3:compile
+[INFO] +- org.apache.shiro:shiro-spring:jar:1.3.2:compile
+[INFO] |  \- org.apache.shiro:shiro-web:jar:1.3.2:compile
+[INFO] +- com.github.axet:kaptcha:jar:0.0.9:compile
+[INFO] |  \- com.jhlabs:filters:jar:2.0.235:compile
+[INFO] +- org.apache.velocity:velocity:jar:1.7:compile
+[INFO] |  \- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] +- org.apache.velocity:velocity-tools:jar:2.0:compile
+[INFO] |  \- commons-digester:commons-digester:jar:1.8:compile
+[INFO] +- jstl:jstl:jar:1.2:compile
+[INFO] +- taglibs:standard:jar:1.1.2:compile
+[INFO] \- org.freemarker:freemarker:jar:2.3.23:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-rbac-shiro 2.0.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-rbac-shiro ---
+[INFO] me.flyray:flyray-rbac-shiro:jar:2.0.0
+[INFO] +- me.flyray:flyray-rbac-common:jar:2.0.0:compile
+[INFO] |  +- com.qiniu:qiniu-java-sdk:jar:7.2.6:compile (version selected from constraint [7.2.0,7.2.99])
+[INFO] |  |  +- com.qiniu:happy-dns-java:jar:0.1.4:compile
+[INFO] |  |  +- com.google.code.gson:gson:jar:2.6.2:compile
+[INFO] |  |  \- com.squareup.okhttp3:okhttp:jar:3.3.1:compile
+[INFO] |  |     \- com.squareup.okio:okio:jar:1.8.0:compile
+[INFO] |  +- com.aliyun.oss:aliyun-sdk-oss:jar:2.5.0:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpclient:jar:4.4.1:compile
+[INFO] |  |  +- org.jdom:jdom:jar:1.1:compile
+[INFO] |  |  \- net.sf.json-lib:json-lib:jar:jdk15:2.4:compile
+[INFO] |  |     \- net.sf.ezmorph:ezmorph:jar:1.0.6:compile
+[INFO] |  \- com.qcloud:cos_api:jar:4.4:compile
+[INFO] |     +- org.apache.httpcomponents:httpcore:jar:4.4.3:compile
+[INFO] |     +- org.apache.httpcomponents:httpmime:jar:4.5.1:compile
+[INFO] |     \- org.json:json:jar:20140107:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- javax.servlet:javax.servlet-api:jar:3.1.0:provided
+[INFO] +- org.mybatis:mybatis:jar:3.4.1:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.3.0:compile
+[INFO] +- org.hibernate:hibernate-validator:jar:5.4.1.Final:compile
+[INFO] |  +- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] |  +- org.jboss.logging:jboss-logging:jar:3.3.0.Final:compile
+[INFO] |  \- com.fasterxml:classmate:jar:1.3.1:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-expression:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.springframework:spring-web:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-context-support:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-aop:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-aspects:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.aspectj:aspectjweaver:jar:1.8.9:compile
+[INFO] +- org.springframework:spring-test:jar:4.3.7.RELEASE:test
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.19:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.19:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- mysql:mysql-connector-java:jar:5.1.38:compile
+[INFO] +- com.alibaba:druid:jar:1.0.28:compile
+[INFO] |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] +- commons-lang:commons-lang:jar:2.6:compile
+[INFO] +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO] +- commons-io:commons-io:jar:2.5:compile
+[INFO] +- com.alibaba:fastjson:jar:1.2.30:compile
+[INFO] +- commons-codec:commons-codec:jar:1.10:compile
+[INFO] +- commons-configuration:commons-configuration:jar:1.10:compile
+[INFO] |  \- commons-logging:commons-logging:jar:1.1.1:compile
+[INFO] +- org.apache.shiro:shiro-core:jar:1.3.2:compile
+[INFO] |  \- commons-beanutils:commons-beanutils:jar:1.8.3:compile
+[INFO] +- org.apache.shiro:shiro-spring:jar:1.3.2:compile
+[INFO] |  \- org.apache.shiro:shiro-web:jar:1.3.2:compile
+[INFO] +- com.github.axet:kaptcha:jar:0.0.9:compile
+[INFO] |  \- com.jhlabs:filters:jar:2.0.235:compile
+[INFO] +- org.apache.velocity:velocity:jar:1.7:compile
+[INFO] |  \- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] +- org.apache.velocity:velocity-tools:jar:2.0:compile
+[INFO] |  \- commons-digester:commons-digester:jar:1.8:compile
+[INFO] +- jstl:jstl:jar:1.2:compile
+[INFO] +- taglibs:standard:jar:1.1.2:compile
+[INFO] \- org.freemarker:freemarker:jar:2.3.23:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-rbac-schedule 2.0.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-rbac-schedule ---
+[INFO] me.flyray:flyray-rbac-schedule:jar:2.0.0
+[INFO] +- me.flyray:flyray-rbac-common:jar:2.0.0:compile
+[INFO] |  +- com.qiniu:qiniu-java-sdk:jar:7.2.6:compile (version selected from constraint [7.2.0,7.2.99])
+[INFO] |  |  +- com.qiniu:happy-dns-java:jar:0.1.4:compile
+[INFO] |  |  +- com.google.code.gson:gson:jar:2.6.2:compile
+[INFO] |  |  \- com.squareup.okhttp3:okhttp:jar:3.3.1:compile
+[INFO] |  |     \- com.squareup.okio:okio:jar:1.8.0:compile
+[INFO] |  +- com.aliyun.oss:aliyun-sdk-oss:jar:2.5.0:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpclient:jar:4.4.1:compile
+[INFO] |  |  +- org.jdom:jdom:jar:1.1:compile
+[INFO] |  |  \- net.sf.json-lib:json-lib:jar:jdk15:2.4:compile
+[INFO] |  |     \- net.sf.ezmorph:ezmorph:jar:1.0.6:compile
+[INFO] |  \- com.qcloud:cos_api:jar:4.4:compile
+[INFO] |     +- org.apache.httpcomponents:httpcore:jar:4.4.3:compile
+[INFO] |     +- org.apache.httpcomponents:httpmime:jar:4.5.1:compile
+[INFO] |     \- org.json:json:jar:20140107:compile
+[INFO] +- org.quartz-scheduler:quartz:jar:2.2.3:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- javax.servlet:javax.servlet-api:jar:3.1.0:provided
+[INFO] +- org.mybatis:mybatis:jar:3.4.1:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.3.0:compile
+[INFO] +- org.hibernate:hibernate-validator:jar:5.4.1.Final:compile
+[INFO] |  +- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] |  +- org.jboss.logging:jboss-logging:jar:3.3.0.Final:compile
+[INFO] |  \- com.fasterxml:classmate:jar:1.3.1:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-expression:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.springframework:spring-web:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-context-support:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-aop:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-aspects:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.aspectj:aspectjweaver:jar:1.8.9:compile
+[INFO] +- org.springframework:spring-test:jar:4.3.7.RELEASE:test
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.19:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.19:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- mysql:mysql-connector-java:jar:5.1.38:compile
+[INFO] +- com.alibaba:druid:jar:1.0.28:compile
+[INFO] |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] +- commons-lang:commons-lang:jar:2.6:compile
+[INFO] +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO] +- commons-io:commons-io:jar:2.5:compile
+[INFO] +- com.alibaba:fastjson:jar:1.2.30:compile
+[INFO] +- commons-codec:commons-codec:jar:1.10:compile
+[INFO] +- commons-configuration:commons-configuration:jar:1.10:compile
+[INFO] |  \- commons-logging:commons-logging:jar:1.1.1:compile
+[INFO] +- org.apache.shiro:shiro-core:jar:1.3.2:compile
+[INFO] |  \- commons-beanutils:commons-beanutils:jar:1.8.3:compile
+[INFO] +- org.apache.shiro:shiro-spring:jar:1.3.2:compile
+[INFO] |  \- org.apache.shiro:shiro-web:jar:1.3.2:compile
+[INFO] +- com.github.axet:kaptcha:jar:0.0.9:compile
+[INFO] |  \- com.jhlabs:filters:jar:2.0.235:compile
+[INFO] +- org.apache.velocity:velocity:jar:1.7:compile
+[INFO] |  \- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] +- org.apache.velocity:velocity-tools:jar:2.0:compile
+[INFO] |  \- commons-digester:commons-digester:jar:1.8:compile
+[INFO] +- jstl:jstl:jar:1.2:compile
+[INFO] +- taglibs:standard:jar:1.1.2:compile
+[INFO] \- org.freemarker:freemarker:jar:2.3.23:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-rbac-gen 2.0.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-rbac-gen ---
+[INFO] me.flyray:flyray-rbac-gen:jar:2.0.0
+[INFO] +- me.flyray:flyray-rbac-common:jar:2.0.0:compile
+[INFO] |  +- com.qiniu:qiniu-java-sdk:jar:7.2.6:compile (version selected from constraint [7.2.0,7.2.99])
+[INFO] |  |  +- com.qiniu:happy-dns-java:jar:0.1.4:compile
+[INFO] |  |  +- com.google.code.gson:gson:jar:2.6.2:compile
+[INFO] |  |  \- com.squareup.okhttp3:okhttp:jar:3.3.1:compile
+[INFO] |  |     \- com.squareup.okio:okio:jar:1.8.0:compile
+[INFO] |  +- com.aliyun.oss:aliyun-sdk-oss:jar:2.5.0:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpclient:jar:4.4.1:compile
+[INFO] |  |  +- org.jdom:jdom:jar:1.1:compile
+[INFO] |  |  \- net.sf.json-lib:json-lib:jar:jdk15:2.4:compile
+[INFO] |  |     \- net.sf.ezmorph:ezmorph:jar:1.0.6:compile
+[INFO] |  \- com.qcloud:cos_api:jar:4.4:compile
+[INFO] |     +- org.apache.httpcomponents:httpcore:jar:4.4.3:compile
+[INFO] |     +- org.apache.httpcomponents:httpmime:jar:4.5.1:compile
+[INFO] |     \- org.json:json:jar:20140107:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- javax.servlet:javax.servlet-api:jar:3.1.0:provided
+[INFO] +- org.mybatis:mybatis:jar:3.4.1:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.3.0:compile
+[INFO] +- org.hibernate:hibernate-validator:jar:5.4.1.Final:compile
+[INFO] |  +- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] |  +- org.jboss.logging:jboss-logging:jar:3.3.0.Final:compile
+[INFO] |  \- com.fasterxml:classmate:jar:1.3.1:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-expression:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.springframework:spring-web:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-context-support:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-aop:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-aspects:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.aspectj:aspectjweaver:jar:1.8.9:compile
+[INFO] +- org.springframework:spring-test:jar:4.3.7.RELEASE:test
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.19:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.19:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- mysql:mysql-connector-java:jar:5.1.38:compile
+[INFO] +- com.alibaba:druid:jar:1.0.28:compile
+[INFO] |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] +- commons-lang:commons-lang:jar:2.6:compile
+[INFO] +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO] +- commons-io:commons-io:jar:2.5:compile
+[INFO] +- com.alibaba:fastjson:jar:1.2.30:compile
+[INFO] +- commons-codec:commons-codec:jar:1.10:compile
+[INFO] +- commons-configuration:commons-configuration:jar:1.10:compile
+[INFO] |  \- commons-logging:commons-logging:jar:1.1.1:compile
+[INFO] +- org.apache.shiro:shiro-core:jar:1.3.2:compile
+[INFO] |  \- commons-beanutils:commons-beanutils:jar:1.8.3:compile
+[INFO] +- org.apache.shiro:shiro-spring:jar:1.3.2:compile
+[INFO] |  \- org.apache.shiro:shiro-web:jar:1.3.2:compile
+[INFO] +- com.github.axet:kaptcha:jar:0.0.9:compile
+[INFO] |  \- com.jhlabs:filters:jar:2.0.235:compile
+[INFO] +- org.apache.velocity:velocity:jar:1.7:compile
+[INFO] |  \- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] +- org.apache.velocity:velocity-tools:jar:2.0:compile
+[INFO] |  \- commons-digester:commons-digester:jar:1.8:compile
+[INFO] +- jstl:jstl:jar:1.2:compile
+[INFO] +- taglibs:standard:jar:1.1.2:compile
+[INFO] \- org.freemarker:freemarker:jar:2.3.23:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-rbac-api 2.0.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-rbac-api ---
+[INFO] me.flyray:flyray-rbac-api:jar:2.0.0
+[INFO] +- me.flyray:flyray-rbac-common:jar:2.0.0:compile
+[INFO] |  +- com.qiniu:qiniu-java-sdk:jar:7.2.6:compile (version selected from constraint [7.2.0,7.2.99])
+[INFO] |  |  +- com.qiniu:happy-dns-java:jar:0.1.4:compile
+[INFO] |  |  +- com.google.code.gson:gson:jar:2.6.2:compile
+[INFO] |  |  \- com.squareup.okhttp3:okhttp:jar:3.3.1:compile
+[INFO] |  |     \- com.squareup.okio:okio:jar:1.8.0:compile
+[INFO] |  +- com.aliyun.oss:aliyun-sdk-oss:jar:2.5.0:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpclient:jar:4.4.1:compile
+[INFO] |  |  +- org.jdom:jdom:jar:1.1:compile
+[INFO] |  |  \- net.sf.json-lib:json-lib:jar:jdk15:2.4:compile
+[INFO] |  |     \- net.sf.ezmorph:ezmorph:jar:1.0.6:compile
+[INFO] |  \- com.qcloud:cos_api:jar:4.4:compile
+[INFO] |     +- org.apache.httpcomponents:httpcore:jar:4.4.3:compile
+[INFO] |     +- org.apache.httpcomponents:httpmime:jar:4.5.1:compile
+[INFO] |     \- org.json:json:jar:20140107:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- javax.servlet:javax.servlet-api:jar:3.1.0:provided
+[INFO] +- org.mybatis:mybatis:jar:3.4.1:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.3.0:compile
+[INFO] +- org.hibernate:hibernate-validator:jar:5.4.1.Final:compile
+[INFO] |  +- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] |  +- org.jboss.logging:jboss-logging:jar:3.3.0.Final:compile
+[INFO] |  \- com.fasterxml:classmate:jar:1.3.1:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-expression:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.springframework:spring-web:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-context-support:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-aop:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-aspects:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.aspectj:aspectjweaver:jar:1.8.9:compile
+[INFO] +- org.springframework:spring-test:jar:4.3.7.RELEASE:test
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.19:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.19:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- mysql:mysql-connector-java:jar:5.1.38:compile
+[INFO] +- com.alibaba:druid:jar:1.0.28:compile
+[INFO] |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] +- commons-lang:commons-lang:jar:2.6:compile
+[INFO] +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO] +- commons-io:commons-io:jar:2.5:compile
+[INFO] +- com.alibaba:fastjson:jar:1.2.30:compile
+[INFO] +- commons-codec:commons-codec:jar:1.10:compile
+[INFO] +- commons-configuration:commons-configuration:jar:1.10:compile
+[INFO] |  \- commons-logging:commons-logging:jar:1.1.1:compile
+[INFO] +- org.apache.shiro:shiro-core:jar:1.3.2:compile
+[INFO] |  \- commons-beanutils:commons-beanutils:jar:1.8.3:compile
+[INFO] +- org.apache.shiro:shiro-spring:jar:1.3.2:compile
+[INFO] |  \- org.apache.shiro:shiro-web:jar:1.3.2:compile
+[INFO] +- com.github.axet:kaptcha:jar:0.0.9:compile
+[INFO] |  \- com.jhlabs:filters:jar:2.0.235:compile
+[INFO] +- org.apache.velocity:velocity:jar:1.7:compile
+[INFO] |  \- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] +- org.apache.velocity:velocity-tools:jar:2.0:compile
+[INFO] |  \- commons-digester:commons-digester:jar:1.8:compile
+[INFO] +- jstl:jstl:jar:1.2:compile
+[INFO] +- taglibs:standard:jar:1.1.2:compile
+[INFO] \- org.freemarker:freemarker:jar:2.3.23:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-open-web 2.0.0
+[INFO] ------------------------------------------------------------------------
+Downloading: http://maven.aliyun.com/nexus/content/groups/public/me/flyray/flyray-rest-api/0.0.1-SNAPSHOT/maven-metadata.xml
+         [INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-open-web ---
+[INFO] me.flyray:flyray-open-web:war:2.0.0
+[INFO] +- me.flyray:flyray-rbac-common:jar:2.0.0:compile
+[INFO] |  +- com.qiniu:qiniu-java-sdk:jar:7.2.6:compile (version selected from constraint [7.2.0,7.2.99])
+[INFO] |  |  +- com.qiniu:happy-dns-java:jar:0.1.4:compile
+[INFO] |  |  +- com.google.code.gson:gson:jar:2.6.2:compile
+[INFO] |  |  \- com.squareup.okhttp3:okhttp:jar:3.3.1:compile
+[INFO] |  |     \- com.squareup.okio:okio:jar:1.8.0:compile
+[INFO] |  +- com.aliyun.oss:aliyun-sdk-oss:jar:2.5.0:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpclient:jar:4.4.1:compile
+[INFO] |  |  +- org.jdom:jdom:jar:1.1:compile
+[INFO] |  |  \- net.sf.json-lib:json-lib:jar:jdk15:2.4:compile
+[INFO] |  |     \- net.sf.ezmorph:ezmorph:jar:1.0.6:compile
+[INFO] |  \- com.qcloud:cos_api:jar:4.4:compile
+[INFO] |     +- org.apache.httpcomponents:httpcore:jar:4.4.3:compile
+[INFO] |     +- org.apache.httpcomponents:httpmime:jar:4.5.1:compile
+[INFO] |     \- org.json:json:jar:20140107:compile
+[INFO] +- me.flyray:flyray-rbac-shiro:jar:2.0.0:compile
+[INFO] +- me.flyray:flyray-rbac-gen:jar:2.0.0:compile
+[INFO] +- me.flyray:flyray-rbac-schedule:jar:2.0.0:compile
+[INFO] |  \- org.quartz-scheduler:quartz:jar:2.2.3:compile
+[INFO] +- me.flyray:flyray-rbac-api:jar:2.0.0:compile
+[INFO] +- me.flyray:flyray-rest-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  \- com.baomidou:mybatis-plus:jar:2.0.2:compile
+[INFO] +- com.alibaba:dubbo:jar:2.8.5-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  +- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] |  +- io.netty:netty:jar:3.9.9.Final:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-core:jar:2.5:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-api:jar:2.5:compile
+[INFO] |  +- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  +- org.springframework:spring-web:jar:4.2.4.RELEASE:compile
+[INFO] |  +- commons-pool:commons-pool:jar:1.6:compile
+[INFO] |  +- org.apache.curator:curator-framework:jar:2.5.0:compile
+[INFO] |  +- org.apache.curator:curator-client:jar:2.5.0:compile
+[INFO] |  \- com.google.guava:guava:jar:16.0.1:compile
+[INFO] +- org.apache.zookeeper:zookeeper:jar:3.4.8:compile
+[INFO] |  \- jline:jline:jar:0.9.94:compile
+[INFO] +- com.alibaba:zkclient:jar:0.8.1-SNAPSHOT:compile
+[INFO] +- org.springframework.data:spring-data-redis:jar:1.8.0.RELEASE:compile
+[INFO] |  +- org.springframework.data:spring-data-keyvalue:jar:1.2.0.RELEASE:compile
+[INFO] |  |  \- org.springframework.data:spring-data-commons:jar:1.13.0.RELEASE:compile
+[INFO] |  +- org.springframework:spring-tx:jar:4.3.6.RELEASE:compile
+[INFO] |  +- org.springframework:spring-oxm:jar:4.3.6.RELEASE:compile
+[INFO] |  \- org.slf4j:jcl-over-slf4j:jar:1.7.22:runtime
+[INFO] +- redis.clients:jedis:jar:2.9.0:compile
+[INFO] |  \- org.apache.commons:commons-pool2:jar:2.4.2:compile
+[INFO] +- org.jeecg:easypoi-base:jar:2.3.1:compile
+[INFO] |  +- org.apache.poi:poi:jar:3.10-FINAL:compile
+[INFO] |  +- org.apache.poi:poi-ooxml:jar:3.10-FINAL:compile
+[INFO] |  |  \- dom4j:dom4j:jar:1.6.1:compile
+[INFO] |  |     \- xml-apis:xml-apis:jar:1.0.b2:compile
+[INFO] |  +- org.apache.poi:poi-ooxml-schemas:jar:3.10-FINAL:compile
+[INFO] |  |  \- org.apache.xmlbeans:xmlbeans:jar:2.3.0:compile
+[INFO] |  |     \- stax:stax-api:jar:1.0.1:compile
+[INFO] |  +- org.apache.commons:commons-lang3:jar:3.2.1:compile
+[INFO] |  \- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] +- org.jeecg:easypoi-web:jar:2.3.1:compile
+[INFO] +- org.jeecg:easypoi-annotation:jar:2.3.1:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- javax.servlet:javax.servlet-api:jar:3.1.0:provided
+[INFO] +- org.mybatis:mybatis:jar:3.4.1:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.3.0:compile
+[INFO] +- org.hibernate:hibernate-validator:jar:5.4.1.Final:compile
+[INFO] |  +- org.jboss.logging:jboss-logging:jar:3.3.0.Final:compile
+[INFO] |  \- com.fasterxml:classmate:jar:1.3.1:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-context-support:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-aop:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-aspects:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.aspectj:aspectjweaver:jar:1.8.9:compile
+[INFO] +- org.springframework:spring-test:jar:4.3.7.RELEASE:test
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.19:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.19:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- mysql:mysql-connector-java:jar:5.1.38:compile
+[INFO] +- com.alibaba:druid:jar:1.0.28:compile
+[INFO] |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] +- commons-lang:commons-lang:jar:2.6:compile
+[INFO] +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO] +- commons-io:commons-io:jar:2.5:compile
+[INFO] +- com.alibaba:fastjson:jar:1.2.30:compile
+[INFO] +- commons-codec:commons-codec:jar:1.10:compile
+[INFO] +- commons-configuration:commons-configuration:jar:1.10:compile
+[INFO] +- org.apache.shiro:shiro-core:jar:1.3.2:compile
+[INFO] |  \- commons-beanutils:commons-beanutils:jar:1.8.3:compile
+[INFO] +- org.apache.shiro:shiro-spring:jar:1.3.2:compile
+[INFO] |  \- org.apache.shiro:shiro-web:jar:1.3.2:compile
+[INFO] +- com.github.axet:kaptcha:jar:0.0.9:compile
+[INFO] |  \- com.jhlabs:filters:jar:2.0.235:compile
+[INFO] +- org.apache.velocity:velocity:jar:1.7:compile
+[INFO] |  \- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] +- org.apache.velocity:velocity-tools:jar:2.0:compile
+[INFO] |  \- commons-digester:commons-digester:jar:1.8:compile
+[INFO] +- jstl:jstl:jar:1.2:compile
+[INFO] +- taglibs:standard:jar:1.1.2:compile
+[INFO] \- org.freemarker:freemarker:jar:2.3.23:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-operation-web 2.0.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-operation-web ---
+[INFO] me.flyray:flyray-operation-web:war:2.0.0
+[INFO] +- me.flyray:flyray-rbac-common:jar:2.0.0:compile
+[INFO] |  +- com.qiniu:qiniu-java-sdk:jar:7.2.6:compile (version selected from constraint [7.2.0,7.2.99])
+[INFO] |  |  +- com.qiniu:happy-dns-java:jar:0.1.4:compile
+[INFO] |  |  +- com.google.code.gson:gson:jar:2.6.2:compile
+[INFO] |  |  \- com.squareup.okhttp3:okhttp:jar:3.3.1:compile
+[INFO] |  |     \- com.squareup.okio:okio:jar:1.8.0:compile
+[INFO] |  +- com.aliyun.oss:aliyun-sdk-oss:jar:2.5.0:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpclient:jar:4.4.1:compile
+[INFO] |  |  +- org.jdom:jdom:jar:1.1:compile
+[INFO] |  |  \- net.sf.json-lib:json-lib:jar:jdk15:2.4:compile
+[INFO] |  |     \- net.sf.ezmorph:ezmorph:jar:1.0.6:compile
+[INFO] |  \- com.qcloud:cos_api:jar:4.4:compile
+[INFO] |     +- org.apache.httpcomponents:httpcore:jar:4.4.3:compile
+[INFO] |     +- org.apache.httpcomponents:httpmime:jar:4.5.1:compile
+[INFO] |     \- org.json:json:jar:20140107:compile
+[INFO] +- me.flyray:flyray-rbac-shiro:jar:2.0.0:compile
+[INFO] +- me.flyray:flyray-rbac-gen:jar:2.0.0:compile
+[INFO] +- me.flyray:flyray-rbac-schedule:jar:2.0.0:compile
+[INFO] |  \- org.quartz-scheduler:quartz:jar:2.2.3:compile
+[INFO] +- me.flyray:flyray-rbac-api:jar:2.0.0:compile
+[INFO] +- me.flyray:flyray-rest-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  \- com.baomidou:mybatis-plus:jar:2.0.2:compile
+[INFO] +- com.alibaba:dubbo:jar:2.8.5-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  +- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] |  +- io.netty:netty:jar:3.9.9.Final:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-core:jar:2.5:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-api:jar:2.5:compile
+[INFO] |  +- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  +- org.springframework:spring-web:jar:4.2.4.RELEASE:compile
+[INFO] |  +- commons-pool:commons-pool:jar:1.6:compile
+[INFO] |  +- org.apache.curator:curator-framework:jar:2.5.0:compile
+[INFO] |  +- org.apache.curator:curator-client:jar:2.5.0:compile
+[INFO] |  \- com.google.guava:guava:jar:16.0.1:compile
+[INFO] +- org.apache.zookeeper:zookeeper:jar:3.4.8:compile
+[INFO] |  \- jline:jline:jar:0.9.94:compile
+[INFO] +- com.alibaba:zkclient:jar:0.8.1-SNAPSHOT:compile
+[INFO] +- org.springframework.data:spring-data-redis:jar:1.8.0.RELEASE:compile
+[INFO] |  +- org.springframework.data:spring-data-keyvalue:jar:1.2.0.RELEASE:compile
+[INFO] |  |  \- org.springframework.data:spring-data-commons:jar:1.13.0.RELEASE:compile
+[INFO] |  +- org.springframework:spring-tx:jar:4.3.6.RELEASE:compile
+[INFO] |  +- org.springframework:spring-oxm:jar:4.3.6.RELEASE:compile
+[INFO] |  \- org.slf4j:jcl-over-slf4j:jar:1.7.22:runtime
+[INFO] +- redis.clients:jedis:jar:2.9.0:compile
+[INFO] |  \- org.apache.commons:commons-pool2:jar:2.4.2:compile
+[INFO] +- org.jeecg:easypoi-base:jar:2.3.1:compile
+[INFO] |  +- org.apache.poi:poi:jar:3.10-FINAL:compile
+[INFO] |  +- org.apache.poi:poi-ooxml:jar:3.10-FINAL:compile
+[INFO] |  |  \- dom4j:dom4j:jar:1.6.1:compile
+[INFO] |  |     \- xml-apis:xml-apis:jar:1.0.b2:compile
+[INFO] |  +- org.apache.poi:poi-ooxml-schemas:jar:3.10-FINAL:compile
+[INFO] |  |  \- org.apache.xmlbeans:xmlbeans:jar:2.3.0:compile
+[INFO] |  |     \- stax:stax-api:jar:1.0.1:compile
+[INFO] |  +- org.apache.commons:commons-lang3:jar:3.2.1:compile
+[INFO] |  \- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] +- org.jeecg:easypoi-web:jar:2.3.1:compile
+[INFO] +- org.jeecg:easypoi-annotation:jar:2.3.1:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- javax.servlet:javax.servlet-api:jar:3.1.0:provided
+[INFO] +- org.mybatis:mybatis:jar:3.4.1:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.3.0:compile
+[INFO] +- org.hibernate:hibernate-validator:jar:5.4.1.Final:compile
+[INFO] |  +- org.jboss.logging:jboss-logging:jar:3.3.0.Final:compile
+[INFO] |  \- com.fasterxml:classmate:jar:1.3.1:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-context-support:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-aop:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-aspects:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.aspectj:aspectjweaver:jar:1.8.9:compile
+[INFO] +- org.springframework:spring-test:jar:4.3.7.RELEASE:test
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.19:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.19:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- mysql:mysql-connector-java:jar:5.1.38:compile
+[INFO] +- com.alibaba:druid:jar:1.0.28:compile
+[INFO] |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] +- commons-lang:commons-lang:jar:2.6:compile
+[INFO] +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO] +- commons-io:commons-io:jar:2.5:compile
+[INFO] +- com.alibaba:fastjson:jar:1.2.30:compile
+[INFO] +- commons-codec:commons-codec:jar:1.10:compile
+[INFO] +- commons-configuration:commons-configuration:jar:1.10:compile
+[INFO] +- org.apache.shiro:shiro-core:jar:1.3.2:compile
+[INFO] |  \- commons-beanutils:commons-beanutils:jar:1.8.3:compile
+[INFO] +- org.apache.shiro:shiro-spring:jar:1.3.2:compile
+[INFO] |  \- org.apache.shiro:shiro-web:jar:1.3.2:compile
+[INFO] +- com.github.axet:kaptcha:jar:0.0.9:compile
+[INFO] |  \- com.jhlabs:filters:jar:2.0.235:compile
+[INFO] +- org.apache.velocity:velocity:jar:1.7:compile
+[INFO] |  \- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] +- org.apache.velocity:velocity-tools:jar:2.0:compile
+[INFO] |  \- commons-digester:commons-digester:jar:1.8:compile
+[INFO] +- jstl:jstl:jar:1.2:compile
+[INFO] +- taglibs:standard:jar:1.1.2:compile
+[INFO] \- org.freemarker:freemarker:jar:2.3.23:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-merchant-web 2.0.0
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-merchant-web ---
+[INFO] me.flyray:flyray-merchant-web:war:2.0.0
+[INFO] +- me.flyray:flyray-rbac-common:jar:2.0.0:compile
+[INFO] |  +- com.qiniu:qiniu-java-sdk:jar:7.2.6:compile (version selected from constraint [7.2.0,7.2.99])
+[INFO] |  |  +- com.qiniu:happy-dns-java:jar:0.1.4:compile
+[INFO] |  |  +- com.google.code.gson:gson:jar:2.6.2:compile
+[INFO] |  |  \- com.squareup.okhttp3:okhttp:jar:3.3.1:compile
+[INFO] |  |     \- com.squareup.okio:okio:jar:1.8.0:compile
+[INFO] |  +- com.aliyun.oss:aliyun-sdk-oss:jar:2.5.0:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpclient:jar:4.4.1:compile
+[INFO] |  |  +- org.jdom:jdom:jar:1.1:compile
+[INFO] |  |  \- net.sf.json-lib:json-lib:jar:jdk15:2.4:compile
+[INFO] |  |     \- net.sf.ezmorph:ezmorph:jar:1.0.6:compile
+[INFO] |  \- com.qcloud:cos_api:jar:4.4:compile
+[INFO] |     +- org.apache.httpcomponents:httpcore:jar:4.4.3:compile
+[INFO] |     +- org.apache.httpcomponents:httpmime:jar:4.5.1:compile
+[INFO] |     \- org.json:json:jar:20140107:compile
+[INFO] +- me.flyray:flyray-rbac-shiro:jar:2.0.0:compile
+[INFO] +- me.flyray:flyray-rbac-gen:jar:2.0.0:compile
+[INFO] +- me.flyray:flyray-rbac-schedule:jar:2.0.0:compile
+[INFO] |  \- org.quartz-scheduler:quartz:jar:2.2.3:compile
+[INFO] +- me.flyray:flyray-rbac-api:jar:2.0.0:compile
+[INFO] +- me.flyray:flyray-rest-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  \- com.baomidou:mybatis-plus:jar:2.0.2:compile
+[INFO] +- com.alibaba:dubbo:jar:2.8.5-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  +- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] |  +- io.netty:netty:jar:3.9.9.Final:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-core:jar:2.5:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-api:jar:2.5:compile
+[INFO] |  +- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  +- org.springframework:spring-web:jar:4.2.4.RELEASE:compile
+[INFO] |  +- commons-pool:commons-pool:jar:1.6:compile
+[INFO] |  +- org.apache.curator:curator-framework:jar:2.5.0:compile
+[INFO] |  +- org.apache.curator:curator-client:jar:2.5.0:compile
+[INFO] |  \- com.google.guava:guava:jar:16.0.1:compile
+[INFO] +- org.apache.zookeeper:zookeeper:jar:3.4.8:compile
+[INFO] |  \- jline:jline:jar:0.9.94:compile
+[INFO] +- com.alibaba:zkclient:jar:0.8.1-SNAPSHOT:compile
+[INFO] +- org.springframework.data:spring-data-redis:jar:1.8.0.RELEASE:compile
+[INFO] |  +- org.springframework.data:spring-data-keyvalue:jar:1.2.0.RELEASE:compile
+[INFO] |  |  \- org.springframework.data:spring-data-commons:jar:1.13.0.RELEASE:compile
+[INFO] |  +- org.springframework:spring-tx:jar:4.3.6.RELEASE:compile
+[INFO] |  +- org.springframework:spring-oxm:jar:4.3.6.RELEASE:compile
+[INFO] |  \- org.slf4j:jcl-over-slf4j:jar:1.7.22:runtime
+[INFO] +- redis.clients:jedis:jar:2.9.0:compile
+[INFO] |  \- org.apache.commons:commons-pool2:jar:2.4.2:compile
+[INFO] +- org.jeecg:easypoi-base:jar:2.3.1:compile
+[INFO] |  +- org.apache.poi:poi:jar:3.10-FINAL:compile
+[INFO] |  +- org.apache.poi:poi-ooxml:jar:3.10-FINAL:compile
+[INFO] |  |  \- dom4j:dom4j:jar:1.6.1:compile
+[INFO] |  |     \- xml-apis:xml-apis:jar:1.0.b2:compile
+[INFO] |  +- org.apache.poi:poi-ooxml-schemas:jar:3.10-FINAL:compile
+[INFO] |  |  \- org.apache.xmlbeans:xmlbeans:jar:2.3.0:compile
+[INFO] |  |     \- stax:stax-api:jar:1.0.1:compile
+[INFO] |  +- org.apache.commons:commons-lang3:jar:3.2.1:compile
+[INFO] |  \- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] +- org.jeecg:easypoi-web:jar:2.3.1:compile
+[INFO] +- org.jeecg:easypoi-annotation:jar:2.3.1:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- javax.servlet:javax.servlet-api:jar:3.1.0:provided
+[INFO] +- org.mybatis:mybatis:jar:3.4.1:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.3.0:compile
+[INFO] +- org.hibernate:hibernate-validator:jar:5.4.1.Final:compile
+[INFO] |  +- org.jboss.logging:jboss-logging:jar:3.3.0.Final:compile
+[INFO] |  \- com.fasterxml:classmate:jar:1.3.1:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-context-support:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-aop:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-aspects:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.aspectj:aspectjweaver:jar:1.8.9:compile
+[INFO] +- org.springframework:spring-test:jar:4.3.7.RELEASE:test
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.19:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.19:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- mysql:mysql-connector-java:jar:5.1.38:compile
+[INFO] +- com.alibaba:druid:jar:1.0.28:compile
+[INFO] |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] +- commons-lang:commons-lang:jar:2.6:compile
+[INFO] +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO] +- commons-io:commons-io:jar:2.5:compile
+[INFO] +- com.alibaba:fastjson:jar:1.2.30:compile
+[INFO] +- commons-codec:commons-codec:jar:1.10:compile
+[INFO] +- commons-configuration:commons-configuration:jar:1.10:compile
+[INFO] +- org.apache.shiro:shiro-core:jar:1.3.2:compile
+[INFO] |  \- commons-beanutils:commons-beanutils:jar:1.8.3:compile
+[INFO] +- org.apache.shiro:shiro-spring:jar:1.3.2:compile
+[INFO] |  \- org.apache.shiro:shiro-web:jar:1.3.2:compile
+[INFO] +- com.github.axet:kaptcha:jar:0.0.9:compile
+[INFO] |  \- com.jhlabs:filters:jar:2.0.235:compile
+[INFO] +- org.apache.velocity:velocity:jar:1.7:compile
+[INFO] |  \- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] +- org.apache.velocity:velocity-tools:jar:2.0:compile
+[INFO] |  \- commons-digester:commons-digester:jar:1.8:compile
+[INFO] +- jstl:jstl:jar:1.2:compile
+[INFO] +- taglibs:standard:jar:1.1.2:compile
+[INFO] \- org.freemarker:freemarker:jar:2.3.23:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-rbac 2.0.0
+[INFO] ------------------------------------------------------------------------
+Downloading: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-compiler-plugin/maven-metadata.xml
+990/990 B               Downloaded: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-compiler-plugin/maven-metadata.xml (990 B at 0.6 KB/sec)
+Downloading: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-resources-plugin/maven-metadata.xml
+839/839 B               Downloaded: http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/plugins/maven-resources-plugin/maven-metadata.xml (839 B at 5.0 KB/sec)
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-rbac ---
+[INFO] me.flyray:flyray-rbac:pom:2.0.0
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- javax.servlet:javax.servlet-api:jar:3.1.0:provided
+[INFO] +- org.mybatis:mybatis:jar:3.4.1:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.3.0:compile
+[INFO] +- org.hibernate:hibernate-validator:jar:5.4.1.Final:compile
+[INFO] |  +- javax.validation:validation-api:jar:1.1.0.Final:compile
+[INFO] |  +- org.jboss.logging:jboss-logging:jar:3.3.0.Final:compile
+[INFO] |  \- com.fasterxml:classmate:jar:1.3.1:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.3.7.RELEASE:compile
+[INFO] |  +- org.springframework:spring-expression:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.springframework:spring-web:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-context-support:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-aop:jar:4.3.7.RELEASE:compile
+[INFO] +- org.springframework:spring-aspects:jar:4.3.7.RELEASE:compile
+[INFO] |  \- org.aspectj:aspectjweaver:jar:1.8.9:compile
+[INFO] +- org.springframework:spring-test:jar:4.3.7.RELEASE:test
+[INFO] +- org.slf4j:slf4j-api:jar:1.7.19:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.19:compile
+[INFO] +- log4j:log4j:jar:1.2.17:compile
+[INFO] +- mysql:mysql-connector-java:jar:5.1.38:compile
+[INFO] +- com.alibaba:druid:jar:1.0.28:compile
+[INFO] |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] +- commons-lang:commons-lang:jar:2.6:compile
+[INFO] +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO] +- commons-io:commons-io:jar:2.5:compile
+[INFO] +- com.alibaba:fastjson:jar:1.2.30:compile
+[INFO] +- commons-codec:commons-codec:jar:1.10:compile
+[INFO] +- commons-configuration:commons-configuration:jar:1.10:compile
+[INFO] |  \- commons-logging:commons-logging:jar:1.1.1:compile
+[INFO] +- org.apache.shiro:shiro-core:jar:1.3.2:compile
+[INFO] |  \- commons-beanutils:commons-beanutils:jar:1.8.3:compile
+[INFO] +- org.apache.shiro:shiro-spring:jar:1.3.2:compile
+[INFO] |  \- org.apache.shiro:shiro-web:jar:1.3.2:compile
+[INFO] +- com.github.axet:kaptcha:jar:0.0.9:compile
+[INFO] |  \- com.jhlabs:filters:jar:2.0.235:compile
+[INFO] +- org.apache.velocity:velocity:jar:1.7:compile
+[INFO] |  \- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] +- org.apache.velocity:velocity-tools:jar:2.0:compile
+[INFO] |  \- commons-digester:commons-digester:jar:1.8:compile
+[INFO] +- jstl:jstl:jar:1.2:compile
+[INFO] +- taglibs:standard:jar:1.1.2:compile
+[INFO] \- org.freemarker:freemarker:jar:2.3.23:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-crm-dao 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-crm-dao ---
+[INFO] me.flyray:flyray-crm-dao:jar:0.0.1-SNAPSHOT
+[INFO] +- me.flyray:flyray-crm-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] +- me.flyray:flyray-common-config:jar:0.0.1-SNAPSHOT:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- org.springframework:spring-test:jar:4.2.4.RELEASE:test
+[INFO] |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO] |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-orm:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-web:jar:4.2.4.RELEASE:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-core:jar:2.8.5:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-databind:jar:2.8.5:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-annotations:jar:2.8.5:compile
+[INFO] +- cglib:cglib:jar:2.2:compile
+[INFO] |  \- asm:asm:jar:3.1:compile
+[INFO] +- org.aspectj:aspectjrt:jar:1.6.11:compile
+[INFO] +- org.aspectj:aspectjweaver:jar:1.8.7:compile
+[INFO] +- org.mybatis:mybatis:jar:3.2.1:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.2.0:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.2.4.RELEASE:compile
+[INFO] +- mysql:mysql-connector-java:jar:5.1.34:compile
+[INFO] +- commons-dbcp:commons-dbcp:jar:1.4:compile
+[INFO] |  \- commons-pool:commons-pool:jar:1.5.4:compile
+[INFO] +- com.alibaba:druid:jar:1.0.13:compile
+[INFO] |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.5:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.5:compile
+[INFO] |  \- log4j:log4j:jar:1.2.17:compile
+[INFO] \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO]    +- javax.mail:mail:jar:1.4.3:compile
+[INFO]    |  \- javax.activation:activation:jar:1.1:compile
+[INFO]    \- commons-codec:commons-codec:jar:1.9:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-crm-service 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-crm-service ---
+[INFO] me.flyray:flyray-crm-service:jar:0.0.1-SNAPSHOT
+[INFO] +- me.flyray:flyray-crm-dao:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- me.flyray:flyray-crm-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- me.flyray:flyray-common-config:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-orm:jar:4.2.4.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-tx:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-webmvc:jar:4.2.4.RELEASE:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-core:jar:2.8.5:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.8.5:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-annotations:jar:2.8.5:compile
+[INFO] |  +- cglib:cglib:jar:2.2:compile
+[INFO] |  |  \- asm:asm:jar:3.1:compile
+[INFO] |  +- org.aspectj:aspectjrt:jar:1.6.11:compile
+[INFO] |  +- org.aspectj:aspectjweaver:jar:1.8.7:compile
+[INFO] |  +- org.mybatis:mybatis:jar:3.2.1:compile
+[INFO] |  +- org.mybatis:mybatis-spring:jar:1.2.0:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:4.2.4.RELEASE:compile
+[INFO] |  +- mysql:mysql-connector-java:jar:5.1.34:compile
+[INFO] |  +- commons-dbcp:commons-dbcp:jar:1.4:compile
+[INFO] |  +- com.alibaba:druid:jar:1.0.13:compile
+[INFO] |  |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] |  \- org.slf4j:slf4j-log4j12:jar:1.7.5:compile
+[INFO] |     \- log4j:log4j:jar:1.2.17:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- com.alibaba:dubbo:jar:2.8.5-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO] |  +- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  +- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] |  +- io.netty:netty:jar:3.9.9.Final:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-core:jar:2.5:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-api:jar:2.5:compile
+[INFO] |  +- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  +- javax.servlet:javax.servlet-api:jar:3.1.0:compile
+[INFO] |  +- org.springframework:spring-web:jar:4.2.4.RELEASE:compile
+[INFO] |  +- commons-pool:commons-pool:jar:1.6:compile
+[INFO] |  +- org.apache.curator:curator-framework:jar:2.5.0:compile
+[INFO] |  +- org.apache.curator:curator-client:jar:2.5.0:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.15:compile
+[INFO] |  \- com.google.guava:guava:jar:16.0.1:compile
+[INFO] +- org.apache.zookeeper:zookeeper:jar:3.4.8:compile
+[INFO] |  \- jline:jline:jar:0.9.94:compile
+[INFO] +- com.alibaba:zkclient:jar:0.8.1-SNAPSHOT:compile
+[INFO] \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO]    +- javax.mail:mail:jar:1.4.3:compile
+[INFO]    |  \- javax.activation:activation:jar:1.1:compile
+[INFO]    \- commons-codec:commons-codec:jar:1.9:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-crm-web 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-crm-web ---
+[INFO] me.flyray:flyray-crm-web:war:0.0.1-SNAPSHOT
+[INFO] +- me.flyray:flyray-crm-service:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- me.flyray:flyray-crm-dao:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  +- me.flyray:flyray-crm-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  +- me.flyray:flyray-common-config:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  +- com.fasterxml.jackson.core:jackson-core:jar:2.8.5:compile
+[INFO] |  |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.8.5:compile
+[INFO] |  |  +- com.fasterxml.jackson.core:jackson-annotations:jar:2.8.5:compile
+[INFO] |  |  +- org.mybatis:mybatis:jar:3.2.1:compile
+[INFO] |  |  +- org.mybatis:mybatis-spring:jar:1.2.0:compile
+[INFO] |  |  +- mysql:mysql-connector-java:jar:5.1.34:compile
+[INFO] |  |  +- commons-dbcp:commons-dbcp:jar:1.4:compile
+[INFO] |  |  \- com.alibaba:druid:jar:1.0.13:compile
+[INFO] |  |     +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  |     \- com.alibaba:tools:jar:1.8.0:system
+[INFO] |  +- com.alibaba:dubbo:jar:2.8.5-SNAPSHOT:compile
+[INFO] |  |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  |  +- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  |  +- io.netty:netty:jar:3.9.9.Final:compile
+[INFO] |  |  +- org.apache.logging.log4j:log4j-core:jar:2.5:compile
+[INFO] |  |  +- org.apache.logging.log4j:log4j-api:jar:2.5:compile
+[INFO] |  |  +- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  |  +- javax.servlet:javax.servlet-api:jar:3.1.0:compile
+[INFO] |  |  +- commons-pool:commons-pool:jar:1.6:compile
+[INFO] |  |  +- org.apache.curator:curator-framework:jar:2.5.0:compile
+[INFO] |  |  +- org.apache.curator:curator-client:jar:2.5.0:compile
+[INFO] |  |  \- com.google.guava:guava:jar:16.0.1:compile
+[INFO] |  +- org.apache.zookeeper:zookeeper:jar:3.4.8:compile
+[INFO] |  |  \- jline:jline:jar:0.9.94:compile
+[INFO] |  \- com.alibaba:zkclient:jar:0.8.1-SNAPSHOT:compile
+[INFO] +- org.springframework:spring-test:jar:4.2.4.RELEASE:test
+[INFO] |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-orm:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-web:jar:4.2.4.RELEASE:compile
+[INFO] +- cglib:cglib:jar:2.2:compile
+[INFO] |  \- asm:asm:jar:3.1:compile
+[INFO] +- org.aspectj:aspectjrt:jar:1.6.11:compile
+[INFO] +- org.aspectj:aspectjweaver:jar:1.8.7:compile
+[INFO] +- org.springframework:spring-context-support:jar:4.2.4.RELEASE:compile
+[INFO] +- org.freemarker:freemarker:jar:2.3.20:compile
+[INFO] +- joda-time:joda-time:jar:2.6:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.5:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.5:compile
+[INFO] |  \- log4j:log4j:jar:1.2.17:compile
+[INFO] +- net.sf.json-lib:json-lib:jar:jdk15:2.4:compile
+[INFO] |  +- commons-beanutils:commons-beanutils:jar:1.8.0:compile
+[INFO] |  +- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] |  +- commons-lang:commons-lang:jar:2.5:compile
+[INFO] |  \- net.sf.ezmorph:ezmorph:jar:1.0.6:compile
+[INFO] +- org.codehaus.jackson:jackson-mapper-asl:jar:1.9.13:compile
+[INFO] |  \- org.codehaus.jackson:jackson-core-asl:jar:1.9.13:compile
+[INFO] +- com.google.code.gson:gson:jar:2.2.4:compile
+[INFO] +- javax.servlet:servlet-api:jar:2.5:provided
+[INFO] +- javax.servlet.jsp:jsp-api:jar:2.1:provided
+[INFO] +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO] +- commons-io:commons-io:jar:2.4:compile
+[INFO] +- commons-codec:commons-codec:jar:1.9:compile
+[INFO] +- com.github.pagehelper:pagehelper:jar:3.7.4:compile
+[INFO] |  \- com.github.jsqlparser:jsqlparser:jar:0.9.1:compile
+[INFO] +- javax.servlet:jstl:jar:1.2:compile
+[INFO] \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO]    +- junit:junit:jar:4.12:test
+[INFO]    |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO]    \- javax.mail:mail:jar:1.4.3:compile
+[INFO]       \- javax.activation:activation:jar:1.1:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-crm-util 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-crm-util ---
+[INFO] me.flyray:flyray-crm-util:jar:0.0.1-SNAPSHOT
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- javax.mail:mail:jar:1.4.3:compile
+[INFO] |  \- javax.activation:activation:jar:1.1:compile
+[INFO] \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO]    +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO]    |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO]    |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO]    +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO]    |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO]    |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO]    |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO]    \- commons-codec:commons-codec:jar:1.9:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-erp-dao 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-erp-dao ---
+[INFO] me.flyray:flyray-erp-dao:jar:0.0.1-SNAPSHOT
+[INFO] +- me.flyray:flyray-erp-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] +- me.flyray:flyray-common-config:jar:0.0.1-SNAPSHOT:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- org.springframework:spring-test:jar:4.2.4.RELEASE:test
+[INFO] |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO] |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-orm:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-web:jar:4.2.4.RELEASE:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-core:jar:2.8.5:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-databind:jar:2.8.5:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-annotations:jar:2.8.5:compile
+[INFO] +- cglib:cglib:jar:2.2:compile
+[INFO] |  \- asm:asm:jar:3.1:compile
+[INFO] +- org.aspectj:aspectjrt:jar:1.6.11:compile
+[INFO] +- org.aspectj:aspectjweaver:jar:1.8.7:compile
+[INFO] +- org.mybatis:mybatis:jar:3.2.1:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.2.0:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.2.4.RELEASE:compile
+[INFO] +- mysql:mysql-connector-java:jar:5.1.34:compile
+[INFO] +- commons-dbcp:commons-dbcp:jar:1.4:compile
+[INFO] |  \- commons-pool:commons-pool:jar:1.5.4:compile
+[INFO] +- com.alibaba:druid:jar:1.0.13:compile
+[INFO] |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.5:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.5:compile
+[INFO] |  \- log4j:log4j:jar:1.2.17:compile
+[INFO] \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO]    +- javax.mail:mail:jar:1.4.3:compile
+[INFO]    |  \- javax.activation:activation:jar:1.1:compile
+[INFO]    \- commons-codec:commons-codec:jar:1.9:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-erp-service 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-erp-service ---
+[INFO] me.flyray:flyray-erp-service:jar:0.0.1-SNAPSHOT
+[INFO] +- me.flyray:flyray-erp-dao:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- me.flyray:flyray-erp-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- me.flyray:flyray-common-config:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-orm:jar:4.2.4.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-tx:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-webmvc:jar:4.2.4.RELEASE:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-core:jar:2.8.5:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.8.5:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-annotations:jar:2.8.5:compile
+[INFO] |  +- cglib:cglib:jar:2.2:compile
+[INFO] |  |  \- asm:asm:jar:3.1:compile
+[INFO] |  +- org.aspectj:aspectjrt:jar:1.6.11:compile
+[INFO] |  +- org.aspectj:aspectjweaver:jar:1.8.7:compile
+[INFO] |  +- org.mybatis:mybatis:jar:3.2.1:compile
+[INFO] |  +- org.mybatis:mybatis-spring:jar:1.2.0:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:4.2.4.RELEASE:compile
+[INFO] |  +- mysql:mysql-connector-java:jar:5.1.34:compile
+[INFO] |  +- commons-dbcp:commons-dbcp:jar:1.4:compile
+[INFO] |  +- com.alibaba:druid:jar:1.0.13:compile
+[INFO] |  |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] |  \- org.slf4j:slf4j-log4j12:jar:1.7.5:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- com.alibaba:dubbo:jar:2.8.5-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO] |  +- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  +- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] |  +- io.netty:netty:jar:3.9.9.Final:compile
+[INFO] |  +- log4j:log4j:jar:1.2.17:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-core:jar:2.5:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-api:jar:2.5:compile
+[INFO] |  +- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  +- javax.servlet:javax.servlet-api:jar:3.1.0:compile
+[INFO] |  +- org.springframework:spring-web:jar:4.2.4.RELEASE:compile
+[INFO] |  +- commons-pool:commons-pool:jar:1.6:compile
+[INFO] |  +- org.apache.curator:curator-framework:jar:2.5.0:compile
+[INFO] |  +- org.apache.curator:curator-client:jar:2.5.0:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.15:compile
+[INFO] |  \- com.google.guava:guava:jar:16.0.1:compile
+[INFO] +- com.101tec:zkclient:jar:0.5:compile
+[INFO] |  \- org.apache.zookeeper:zookeeper:jar:3.4.3:compile
+[INFO] |     +- jline:jline:jar:0.9.94:compile
+[INFO] |     \- org.jboss.netty:netty:jar:3.2.2.Final:compile
+[INFO] \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO]    +- javax.mail:mail:jar:1.4.3:compile
+[INFO]    |  \- javax.activation:activation:jar:1.1:compile
+[INFO]    \- commons-codec:commons-codec:jar:1.9:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-erp-web 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-erp-web ---
+[INFO] me.flyray:flyray-erp-web:war:0.0.1-SNAPSHOT
+[INFO] +- me.flyray:flyray-erp-service:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- me.flyray:flyray-erp-dao:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  +- me.flyray:flyray-erp-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  +- me.flyray:flyray-common-config:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  +- com.fasterxml.jackson.core:jackson-core:jar:2.8.5:compile
+[INFO] |  |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.8.5:compile
+[INFO] |  |  +- com.fasterxml.jackson.core:jackson-annotations:jar:2.8.5:compile
+[INFO] |  |  +- org.mybatis:mybatis:jar:3.2.1:compile
+[INFO] |  |  +- org.mybatis:mybatis-spring:jar:1.2.0:compile
+[INFO] |  |  +- mysql:mysql-connector-java:jar:5.1.34:compile
+[INFO] |  |  +- commons-dbcp:commons-dbcp:jar:1.4:compile
+[INFO] |  |  \- com.alibaba:druid:jar:1.0.13:compile
+[INFO] |  |     +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  |     \- com.alibaba:tools:jar:1.8.0:system
+[INFO] |  +- com.alibaba:dubbo:jar:2.8.5-SNAPSHOT:compile
+[INFO] |  |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  |  +- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  |  +- io.netty:netty:jar:3.9.9.Final:compile
+[INFO] |  |  +- org.apache.logging.log4j:log4j-core:jar:2.5:compile
+[INFO] |  |  +- org.apache.logging.log4j:log4j-api:jar:2.5:compile
+[INFO] |  |  +- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  |  +- javax.servlet:javax.servlet-api:jar:3.1.0:compile
+[INFO] |  |  +- commons-pool:commons-pool:jar:1.6:compile
+[INFO] |  |  +- org.apache.curator:curator-framework:jar:2.5.0:compile
+[INFO] |  |  +- org.apache.curator:curator-client:jar:2.5.0:compile
+[INFO] |  |  \- com.google.guava:guava:jar:16.0.1:compile
+[INFO] |  \- com.101tec:zkclient:jar:0.5:compile
+[INFO] |     \- org.apache.zookeeper:zookeeper:jar:3.4.3:compile
+[INFO] |        +- jline:jline:jar:0.9.94:compile
+[INFO] |        \- org.jboss.netty:netty:jar:3.2.2.Final:compile
+[INFO] +- org.springframework:spring-test:jar:4.2.4.RELEASE:test
+[INFO] |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-orm:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-web:jar:4.2.4.RELEASE:compile
+[INFO] +- cglib:cglib:jar:2.2:compile
+[INFO] |  \- asm:asm:jar:3.1:compile
+[INFO] +- org.aspectj:aspectjrt:jar:1.6.11:compile
+[INFO] +- org.aspectj:aspectjweaver:jar:1.8.7:compile
+[INFO] +- org.springframework:spring-context-support:jar:4.2.4.RELEASE:compile
+[INFO] +- org.freemarker:freemarker:jar:2.3.20:compile
+[INFO] +- joda-time:joda-time:jar:2.6:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.5:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.5:compile
+[INFO] |  \- log4j:log4j:jar:1.2.17:compile
+[INFO] +- net.sf.json-lib:json-lib:jar:jdk15:2.4:compile
+[INFO] |  +- commons-beanutils:commons-beanutils:jar:1.8.0:compile
+[INFO] |  +- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] |  +- commons-lang:commons-lang:jar:2.5:compile
+[INFO] |  \- net.sf.ezmorph:ezmorph:jar:1.0.6:compile
+[INFO] +- org.codehaus.jackson:jackson-mapper-asl:jar:1.9.13:compile
+[INFO] |  \- org.codehaus.jackson:jackson-core-asl:jar:1.9.13:compile
+[INFO] +- com.google.code.gson:gson:jar:2.2.4:compile
+[INFO] +- javax.servlet:servlet-api:jar:2.5:provided
+[INFO] +- javax.servlet.jsp:jsp-api:jar:2.1:provided
+[INFO] +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO] +- commons-io:commons-io:jar:2.4:compile
+[INFO] +- commons-codec:commons-codec:jar:1.9:compile
+[INFO] +- com.github.pagehelper:pagehelper:jar:3.7.4:compile
+[INFO] |  \- com.github.jsqlparser:jsqlparser:jar:0.9.1:compile
+[INFO] +- javax.servlet:jstl:jar:1.2:compile
+[INFO] \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO]    +- junit:junit:jar:4.12:test
+[INFO]    |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO]    \- javax.mail:mail:jar:1.4.3:compile
+[INFO]       \- javax.activation:activation:jar:1.1:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-erp-util 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-erp-util ---
+[INFO] me.flyray:flyray-erp-util:jar:0.0.1-SNAPSHOT
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- javax.mail:mail:jar:1.4.3:compile
+[INFO] |  \- javax.activation:activation:jar:1.1:compile
+[INFO] \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO]    +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO]    |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO]    |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO]    +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO]    |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO]    |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO]    |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO]    \- commons-codec:commons-codec:jar:1.9:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-pay-dao 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-pay-dao ---
+[INFO] me.flyray:flyray-pay-dao:jar:0.0.1-SNAPSHOT
+[INFO] +- me.flyray:flyray-pay-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] +- me.flyray:flyray-common-config:jar:0.0.1-SNAPSHOT:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- org.springframework:spring-test:jar:4.2.4.RELEASE:test
+[INFO] |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO] |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-orm:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-web:jar:4.2.4.RELEASE:compile
+[INFO] +- cglib:cglib:jar:2.2:compile
+[INFO] |  \- asm:asm:jar:3.1:compile
+[INFO] +- org.aspectj:aspectjrt:jar:1.6.11:compile
+[INFO] +- org.aspectj:aspectjweaver:jar:1.8.7:compile
+[INFO] +- org.mybatis:mybatis:jar:3.2.1:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.2.0:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.2.4.RELEASE:compile
+[INFO] +- mysql:mysql-connector-java:jar:5.1.34:compile
+[INFO] +- commons-dbcp:commons-dbcp:jar:1.4:compile
+[INFO] |  \- commons-pool:commons-pool:jar:1.5.4:compile
+[INFO] +- com.alibaba:druid:jar:1.0.13:compile
+[INFO] |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.5:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.5:compile
+[INFO] |  \- log4j:log4j:jar:1.2.17:compile
+[INFO] \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO]    +- javax.mail:mail:jar:1.4.3:compile
+[INFO]    |  \- javax.activation:activation:jar:1.1:compile
+[INFO]    \- commons-codec:commons-codec:jar:1.9:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-pay-util 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-pay-util ---
+[INFO] me.flyray:flyray-pay-util:jar:0.0.1-SNAPSHOT
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- javax.mail:mail:jar:1.4.3:compile
+[INFO] |  \- javax.activation:activation:jar:1.1:compile
+[INFO] +- org.apache.rocketmq:rocketmq-client:jar:4.0.0-incubating:compile
+[INFO] |  +- org.apache.rocketmq:rocketmq-common:jar:4.0.0-incubating:compile
+[INFO] |  |  \- org.apache.rocketmq:rocketmq-remoting:jar:4.0.0-incubating:compile
+[INFO] |  |     +- com.alibaba:fastjson:jar:1.2.12:compile
+[INFO] |  |     \- io.netty:netty-all:jar:4.0.36.Final:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.5:compile
+[INFO] |  \- org.apache.commons:commons-lang3:jar:3.4:compile
+[INFO] \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO]    +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO]    |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO]    |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO]    +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO]    |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO]    |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO]    |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO]    \- commons-codec:commons-codec:jar:1.9:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-pay-service 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-pay-service ---
+[INFO] me.flyray:flyray-pay-service:jar:0.0.1-SNAPSHOT
+[INFO] +- me.flyray:flyray-pay-dao:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- me.flyray:flyray-pay-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- me.flyray:flyray-common-config:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-orm:jar:4.2.4.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-tx:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-webmvc:jar:4.2.4.RELEASE:compile
+[INFO] |  +- cglib:cglib:jar:2.2:compile
+[INFO] |  |  \- asm:asm:jar:3.1:compile
+[INFO] |  +- org.aspectj:aspectjrt:jar:1.6.11:compile
+[INFO] |  +- org.aspectj:aspectjweaver:jar:1.8.7:compile
+[INFO] |  +- org.mybatis:mybatis:jar:3.2.1:compile
+[INFO] |  +- org.mybatis:mybatis-spring:jar:1.2.0:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:4.2.4.RELEASE:compile
+[INFO] |  +- mysql:mysql-connector-java:jar:5.1.34:compile
+[INFO] |  +- commons-dbcp:commons-dbcp:jar:1.4:compile
+[INFO] |  +- com.alibaba:druid:jar:1.0.13:compile
+[INFO] |  |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] |  \- org.slf4j:slf4j-log4j12:jar:1.7.5:compile
+[INFO] +- me.flyray:flyray-pay-util:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- javax.mail:mail:jar:1.4.3:compile
+[INFO] |  |  \- javax.activation:activation:jar:1.1:compile
+[INFO] |  \- org.apache.rocketmq:rocketmq-client:jar:4.0.0-incubating:compile
+[INFO] |     +- org.apache.rocketmq:rocketmq-common:jar:4.0.0-incubating:compile
+[INFO] |     |  \- org.apache.rocketmq:rocketmq-remoting:jar:4.0.0-incubating:compile
+[INFO] |     |     +- com.alibaba:fastjson:jar:1.2.12:compile
+[INFO] |     |     \- io.netty:netty-all:jar:4.0.36.Final:compile
+[INFO] |     \- org.apache.commons:commons-lang3:jar:3.4:compile
+[INFO] +- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  \- commons-codec:commons-codec:jar:1.9:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- com.alibaba:dubbo:jar:2.8.5-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO] |  +- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  +- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] |  +- io.netty:netty:jar:3.9.9.Final:compile
+[INFO] |  +- log4j:log4j:jar:1.2.17:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-core:jar:2.5:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-api:jar:2.5:compile
+[INFO] |  +- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  +- javax.servlet:javax.servlet-api:jar:3.1.0:compile
+[INFO] |  +- org.springframework:spring-web:jar:4.2.4.RELEASE:compile
+[INFO] |  +- commons-pool:commons-pool:jar:1.6:compile
+[INFO] |  +- org.apache.curator:curator-framework:jar:2.5.0:compile
+[INFO] |  +- org.apache.curator:curator-client:jar:2.5.0:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.15:compile
+[INFO] |  \- com.google.guava:guava:jar:16.0.1:compile
+[INFO] +- com.101tec:zkclient:jar:0.5:compile
+[INFO] |  \- org.apache.zookeeper:zookeeper:jar:3.4.3:compile
+[INFO] |     +- jline:jline:jar:0.9.94:compile
+[INFO] |     \- org.jboss.netty:netty:jar:3.2.2.Final:compile
+[INFO] +- com.squareup.okhttp3:okhttp:jar:3.3.1:compile
+[INFO] |  \- com.squareup.okio:okio:jar:1.8.0:compile
+[INFO] \- org.apache.httpcomponents:httpclient:jar:4.3.4:compile
+[INFO]    \- org.apache.httpcomponents:httpcore:jar:4.3.2:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-pay-web 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-pay-web ---
+[INFO] me.flyray:flyray-pay-web:war:0.0.1-SNAPSHOT
+[INFO] +- me.flyray:flyray-pay-service:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- me.flyray:flyray-pay-dao:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  +- me.flyray:flyray-pay-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  +- me.flyray:flyray-common-config:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  +- org.mybatis:mybatis:jar:3.2.1:compile
+[INFO] |  |  +- org.mybatis:mybatis-spring:jar:1.2.0:compile
+[INFO] |  |  +- mysql:mysql-connector-java:jar:5.1.34:compile
+[INFO] |  |  +- commons-dbcp:commons-dbcp:jar:1.4:compile
+[INFO] |  |  \- com.alibaba:druid:jar:1.0.13:compile
+[INFO] |  |     +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  |     \- com.alibaba:tools:jar:1.8.0:system
+[INFO] |  +- me.flyray:flyray-pay-util:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  \- org.apache.rocketmq:rocketmq-client:jar:4.0.0-incubating:compile
+[INFO] |  |     +- org.apache.rocketmq:rocketmq-common:jar:4.0.0-incubating:compile
+[INFO] |  |     |  \- org.apache.rocketmq:rocketmq-remoting:jar:4.0.0-incubating:compile
+[INFO] |  |     |     +- com.alibaba:fastjson:jar:1.2.12:compile
+[INFO] |  |     |     \- io.netty:netty-all:jar:4.0.36.Final:compile
+[INFO] |  |     \- org.apache.commons:commons-lang3:jar:3.4:compile
+[INFO] |  +- com.alibaba:dubbo:jar:2.8.5-SNAPSHOT:compile
+[INFO] |  |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  |  +- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  |  +- io.netty:netty:jar:3.9.9.Final:compile
+[INFO] |  |  +- org.apache.logging.log4j:log4j-core:jar:2.5:compile
+[INFO] |  |  +- org.apache.logging.log4j:log4j-api:jar:2.5:compile
+[INFO] |  |  +- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  |  +- javax.servlet:javax.servlet-api:jar:3.1.0:compile
+[INFO] |  |  +- commons-pool:commons-pool:jar:1.6:compile
+[INFO] |  |  +- org.apache.curator:curator-framework:jar:2.5.0:compile
+[INFO] |  |  +- org.apache.curator:curator-client:jar:2.5.0:compile
+[INFO] |  |  \- com.google.guava:guava:jar:16.0.1:compile
+[INFO] |  +- com.101tec:zkclient:jar:0.5:compile
+[INFO] |  |  \- org.apache.zookeeper:zookeeper:jar:3.4.3:compile
+[INFO] |  |     +- jline:jline:jar:0.9.94:compile
+[INFO] |  |     \- org.jboss.netty:netty:jar:3.2.2.Final:compile
+[INFO] |  +- com.squareup.okhttp3:okhttp:jar:3.3.1:compile
+[INFO] |  |  \- com.squareup.okio:okio:jar:1.8.0:compile
+[INFO] |  \- org.apache.httpcomponents:httpclient:jar:4.3.4:compile
+[INFO] |     \- org.apache.httpcomponents:httpcore:jar:4.3.2:compile
+[INFO] +- org.springframework:spring-test:jar:4.2.4.RELEASE:test
+[INFO] |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-orm:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-web:jar:4.2.4.RELEASE:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-core:jar:2.8.3:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-databind:jar:2.8.3:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-annotations:jar:2.8.3:compile
+[INFO] +- cglib:cglib:jar:2.2:compile
+[INFO] |  \- asm:asm:jar:3.1:compile
+[INFO] +- org.aspectj:aspectjrt:jar:1.6.11:compile
+[INFO] +- org.aspectj:aspectjweaver:jar:1.8.7:compile
+[INFO] +- org.springframework:spring-context-support:jar:4.2.4.RELEASE:compile
+[INFO] +- org.freemarker:freemarker:jar:2.3.20:compile
+[INFO] +- joda-time:joda-time:jar:2.6:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.5:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.5:compile
+[INFO] |  \- log4j:log4j:jar:1.2.17:compile
+[INFO] +- net.sf.json-lib:json-lib:jar:jdk15:2.4:compile
+[INFO] |  +- commons-beanutils:commons-beanutils:jar:1.8.0:compile
+[INFO] |  +- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] |  +- commons-lang:commons-lang:jar:2.5:compile
+[INFO] |  \- net.sf.ezmorph:ezmorph:jar:1.0.6:compile
+[INFO] +- org.codehaus.jackson:jackson-mapper-asl:jar:1.9.13:compile
+[INFO] |  \- org.codehaus.jackson:jackson-core-asl:jar:1.9.13:compile
+[INFO] +- com.google.code.gson:gson:jar:2.2.4:compile
+[INFO] +- javax.servlet:servlet-api:jar:2.5:provided
+[INFO] +- javax.servlet.jsp:jsp-api:jar:2.1:provided
+[INFO] +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO] +- commons-io:commons-io:jar:2.4:compile
+[INFO] +- commons-codec:commons-codec:jar:1.9:compile
+[INFO] +- com.github.pagehelper:pagehelper:jar:3.7.4:compile
+[INFO] |  \- com.github.jsqlparser:jsqlparser:jar:0.9.1:compile
+[INFO] +- javax.servlet:jstl:jar:1.2:compile
+[INFO] \- me.flyray:flyray-common:jar:0.0.1-SNAPSHOT:compile
+[INFO]    +- junit:junit:jar:4.12:test
+[INFO]    |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO]    \- javax.mail:mail:jar:1.4.3:compile
+[INFO]       \- javax.activation:activation:jar:1.1:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-cms 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-cms ---
+[INFO] me.flyray:flyray-cms:pom:0.0.1-SNAPSHOT
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-cms-util 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-cms-util ---
+[INFO] me.flyray:flyray-cms-util:jar:0.0.1-SNAPSHOT
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] \- javax.mail:mail:jar:1.4.3:compile
+[INFO]    \- javax.activation:activation:jar:1.1:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-cms-api 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-cms-api ---
+[INFO] me.flyray:flyray-cms-api:jar:0.0.1-SNAPSHOT
+[INFO] \- me.flyray:flyray-cms-util:jar:0.0.1-SNAPSHOT:compile
+[INFO]    \- javax.mail:mail:jar:1.4.3:compile
+[INFO]       \- javax.activation:activation:jar:1.1:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-cms-dao 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-cms-dao ---
+[INFO] me.flyray:flyray-cms-dao:jar:0.0.1-SNAPSHOT
+[INFO] +- me.flyray:flyray-cms-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  \- me.flyray:flyray-cms-util:jar:0.0.1-SNAPSHOT:compile
+[INFO] |     \- javax.mail:mail:jar:1.4.3:compile
+[INFO] |        \- javax.activation:activation:jar:1.1:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- org.springframework:spring-test:jar:4.2.4.RELEASE:test
+[INFO] |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] |     \- commons-logging:commons-logging:jar:1.2:compile
+[INFO] +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO] |  |  \- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-orm:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-web:jar:4.2.4.RELEASE:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-core:jar:2.8.5:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-databind:jar:2.8.5:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-annotations:jar:2.8.5:compile
+[INFO] +- cglib:cglib:jar:2.2:compile
+[INFO] |  \- asm:asm:jar:3.1:compile
+[INFO] +- org.aspectj:aspectjrt:jar:1.6.11:compile
+[INFO] +- org.aspectj:aspectjweaver:jar:1.8.7:compile
+[INFO] +- org.mybatis:mybatis:jar:3.2.1:compile
+[INFO] +- org.mybatis:mybatis-spring:jar:1.2.0:compile
+[INFO] +- org.springframework:spring-jdbc:jar:4.2.4.RELEASE:compile
+[INFO] +- mysql:mysql-connector-java:jar:5.1.34:compile
+[INFO] +- commons-dbcp:commons-dbcp:jar:1.4:compile
+[INFO] |  \- commons-pool:commons-pool:jar:1.5.4:compile
+[INFO] +- com.alibaba:druid:jar:1.0.13:compile
+[INFO] |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] \- org.slf4j:slf4j-log4j12:jar:1.7.5:compile
+[INFO]    +- org.slf4j:slf4j-api:jar:1.7.5:compile
+[INFO]    \- log4j:log4j:jar:1.2.17:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-cms-service 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-cms-service ---
+[INFO] me.flyray:flyray-cms-service:jar:0.0.1-SNAPSHOT
+[INFO] +- me.flyray:flyray-cms-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] +- me.flyray:flyray-cms-dao:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-orm:jar:4.2.4.RELEASE:compile
+[INFO] |  |  \- org.springframework:spring-tx:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-webmvc:jar:4.2.4.RELEASE:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-core:jar:2.8.5:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-databind:jar:2.8.5:compile
+[INFO] |  +- com.fasterxml.jackson.core:jackson-annotations:jar:2.8.5:compile
+[INFO] |  +- cglib:cglib:jar:2.2:compile
+[INFO] |  |  \- asm:asm:jar:3.1:compile
+[INFO] |  +- org.aspectj:aspectjrt:jar:1.6.11:compile
+[INFO] |  +- org.aspectj:aspectjweaver:jar:1.8.7:compile
+[INFO] |  +- org.mybatis:mybatis:jar:3.2.1:compile
+[INFO] |  +- org.mybatis:mybatis-spring:jar:1.2.0:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:4.2.4.RELEASE:compile
+[INFO] |  +- mysql:mysql-connector-java:jar:5.1.34:compile
+[INFO] |  +- commons-dbcp:commons-dbcp:jar:1.4:compile
+[INFO] |  +- com.alibaba:druid:jar:1.0.13:compile
+[INFO] |  |  +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  |  \- com.alibaba:tools:jar:1.8.0:system
+[INFO] |  \- org.slf4j:slf4j-log4j12:jar:1.7.5:compile
+[INFO] |     \- log4j:log4j:jar:1.2.17:compile
+[INFO] +- me.flyray:flyray-cms-util:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  \- javax.mail:mail:jar:1.4.3:compile
+[INFO] |     \- javax.activation:activation:jar:1.1:compile
+[INFO] +- me.flyray:flyray-rest-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  \- com.baomidou:mybatis-plus:jar:2.0.2:compile
+[INFO] +- junit:junit:jar:4.12:test
+[INFO] |  \- org.hamcrest:hamcrest-core:jar:1.3:test
+[INFO] +- com.alibaba:dubbo:jar:2.8.5-SNAPSHOT:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO] |  +- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  +- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] |  +- io.netty:netty:jar:3.9.9.Final:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-core:jar:2.5:compile
+[INFO] |  +- org.apache.logging.log4j:log4j-api:jar:2.5:compile
+[INFO] |  +- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  +- javax.servlet:javax.servlet-api:jar:3.1.0:compile
+[INFO] |  +- org.springframework:spring-web:jar:4.2.4.RELEASE:compile
+[INFO] |  +- commons-pool:commons-pool:jar:1.6:compile
+[INFO] |  +- org.apache.curator:curator-framework:jar:2.5.0:compile
+[INFO] |  +- org.apache.curator:curator-client:jar:2.5.0:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.15:compile
+[INFO] |  \- com.google.guava:guava:jar:16.0.1:compile
+[INFO] +- org.apache.zookeeper:zookeeper:jar:3.4.8:compile
+[INFO] |  \- jline:jline:jar:0.9.94:compile
+[INFO] +- com.alibaba:zkclient:jar:0.8.1-SNAPSHOT:compile
+[INFO] +- com.github.binarywang:weixin-java-mp:jar:2.5.0:compile
+[INFO] |  +- com.github.binarywang:weixin-java-common:jar:2.5.0:compile
+[INFO] |  |  \- com.thoughtworks.xstream:xstream:jar:1.4.7:compile
+[INFO] |  |     +- xmlpull:xmlpull:jar:1.1.3.1:compile
+[INFO] |  |     \- xpp3:xpp3_min:jar:1.1.4c:compile
+[INFO] |  +- io.rest-assured:xml-path:jar:3.0.1:compile
+[INFO] |  |  +- org.codehaus.groovy:groovy-xml:jar:2.4.6:compile
+[INFO] |  |  +- org.codehaus.groovy:groovy:jar:2.4.6:compile
+[INFO] |  |  +- io.rest-assured:rest-assured-common:jar:3.0.1:compile
+[INFO] |  |  \- org.ccil.cowan.tagsoup:tagsoup:jar:1.2.1:compile
+[INFO] |  +- com.github.binarywang:qrcode-utils:jar:1.0:compile
+[INFO] |  |  +- com.google.zxing:core:jar:3.2.1:compile
+[INFO] |  |  \- ch.qos.logback:logback-classic:jar:1.1.7:compile
+[INFO] |  |     \- ch.qos.logback:logback-core:jar:1.1.7:compile
+[INFO] |  +- org.apache.httpcomponents:httpclient:jar:4.5:compile
+[INFO] |  |  \- org.apache.httpcomponents:httpcore:jar:4.4.1:compile
+[INFO] |  +- org.apache.httpcomponents:httpmime:jar:4.5:compile
+[INFO] |  +- com.google.code.gson:gson:jar:2.2.4:compile
+[INFO] |  +- commons-codec:commons-codec:jar:1.9:compile
+[INFO] |  +- commons-io:commons-io:jar:2.4:compile
+[INFO] |  \- org.apache.commons:commons-lang3:jar:3.5:compile
+[INFO] \- com.qiniu:qiniu-java-sdk:jar:7.2.6:compile
+[INFO]    +- com.qiniu:happy-dns-java:jar:0.1.4:compile
+[INFO]    \- com.squareup.okhttp3:okhttp:jar:3.3.1:compile
+[INFO]       \- com.squareup.okio:okio:jar:1.8.0:compile
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building flyray-cms-web 0.0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:tree (default-cli) @ flyray-cms-web ---
+[INFO] me.flyray:flyray-cms-web:war:0.0.1-SNAPSHOT
+[INFO] +- me.flyray:flyray-cms-service:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- me.flyray:flyray-cms-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  +- me.flyray:flyray-cms-dao:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  +- org.mybatis:mybatis:jar:3.2.1:compile
+[INFO] |  |  +- org.mybatis:mybatis-spring:jar:1.2.0:compile
+[INFO] |  |  +- mysql:mysql-connector-java:jar:5.1.34:compile
+[INFO] |  |  +- commons-dbcp:commons-dbcp:jar:1.4:compile
+[INFO] |  |  \- com.alibaba:druid:jar:1.0.13:compile
+[INFO] |  |     +- com.alibaba:jconsole:jar:1.8.0:system
+[INFO] |  |     \- com.alibaba:tools:jar:1.8.0:system
+[INFO] |  +- me.flyray:flyray-cms-util:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  \- javax.mail:mail:jar:1.4.3:compile
+[INFO] |  |     \- javax.activation:activation:jar:1.1:compile
+[INFO] |  +- me.flyray:flyray-rest-api:jar:0.0.1-SNAPSHOT:compile
+[INFO] |  |  \- com.baomidou:mybatis-plus:jar:2.0.2:compile
+[INFO] |  +- com.alibaba:dubbo:jar:2.8.5-SNAPSHOT:compile
+[INFO] |  |  +- commons-logging:commons-logging:jar:1.2:compile
+[INFO] |  |  +- aopalliance:aopalliance:jar:1.0:compile
+[INFO] |  |  +- io.netty:netty:jar:3.9.9.Final:compile
+[INFO] |  |  +- org.apache.logging.log4j:log4j-core:jar:2.5:compile
+[INFO] |  |  +- org.apache.logging.log4j:log4j-api:jar:2.5:compile
+[INFO] |  |  +- org.javassist:javassist:jar:3.15.0-GA:compile
+[INFO] |  |  +- javax.servlet:javax.servlet-api:jar:3.1.0:compile
+[INFO] |  |  +- commons-pool:commons-pool:jar:1.6:compile
+[INFO] |  |  +- org.apache.curator:curator-framework:jar:2.5.0:compile
+[INFO] |  |  +- org.apache.curator:curator-client:jar:2.5.0:compile
+[INFO] |  |  \- com.google.guava:guava:jar:16.0.1:compile
+[INFO] |  +- org.apache.zookeeper:zookeeper:jar:3.4.8:compile
+[INFO] |  |  \- jline:jline:jar:0.9.94:compile
+[INFO] |  +- com.alibaba:zkclient:jar:0.8.1-SNAPSHOT:compile
+[INFO] |  +- com.github.binarywang:weixin-java-mp:jar:2.5.0:compile
+[INFO] |  |  +- com.github.binarywang:weixin-java-common:jar:2.5.0:compile
+[INFO] |  |  |  \- com.thoughtworks.xstream:xstream:jar:1.4.7:compile
+[INFO] |  |  |     +- xmlpull:xmlpull:jar:1.1.3.1:compile
+[INFO] |  |  |     \- xpp3:xpp3_min:jar:1.1.4c:compile
+[INFO] |  |  +- io.rest-assured:xml-path:jar:3.0.1:compile
+[INFO] |  |  |  +- org.codehaus.groovy:groovy-xml:jar:2.4.6:compile
+[INFO] |  |  |  +- org.codehaus.groovy:groovy:jar:2.4.6:compile
+[INFO] |  |  |  +- io.rest-assured:rest-assured-common:jar:3.0.1:compile
+[INFO] |  |  |  \- org.ccil.cowan.tagsoup:tagsoup:jar:1.2.1:compile
+[INFO] |  |  +- com.github.binarywang:qrcode-utils:jar:1.0:compile
+[INFO] |  |  |  +- com.google.zxing:core:jar:3.2.1:compile
+[INFO] |  |  |  \- ch.qos.logback:logback-classic:jar:1.1.7:compile
+[INFO] |  |  |     \- ch.qos.logback:logback-core:jar:1.1.7:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpclient:jar:4.5:compile
+[INFO] |  |  |  \- org.apache.httpcomponents:httpcore:jar:4.4.1:compile
+[INFO] |  |  +- org.apache.httpcomponents:httpmime:jar:4.5:compile
+[INFO] |  |  \- org.apache.commons:commons-lang3:jar:3.5:compile
+[INFO] |  \- com.qiniu:qiniu-java-sdk:jar:7.2.6:compile
+[INFO] |     +- com.qiniu:happy-dns-java:jar:0.1.4:compile
+[INFO] |     \- com.squareup.okhttp3:okhttp:jar:3.3.1:compile
+[INFO] |        \- com.squareup.okio:okio:jar:1.8.0:compile
+[INFO] +- org.springframework:spring-test:jar:4.2.4.RELEASE:test
+[INFO] |  \- org.springframework:spring-core:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-context:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-aop:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-beans:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-expression:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-orm:jar:4.2.4.RELEASE:compile
+[INFO] |  +- org.springframework:spring-jdbc:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-tx:jar:4.2.4.RELEASE:compile
+[INFO] +- org.springframework:spring-webmvc:jar:4.2.4.RELEASE:compile
+[INFO] |  \- org.springframework:spring-web:jar:4.2.4.RELEASE:compile
+[INFO] +- com.alibaba:fastjson:jar:1.2.23:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-databind:jar:2.8.5:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-core:jar:2.8.5:compile
+[INFO] +- com.fasterxml.jackson.core:jackson-annotations:jar:2.8.5:compile
+[INFO] +- cglib:cglib:jar:2.2:compile
+[INFO] |  \- asm:asm:jar:3.1:compile
+[INFO] +- org.aspectj:aspectjrt:jar:1.6.11:compile
+[INFO] +- org.aspectj:aspectjweaver:jar:1.8.7:compile
+[INFO] +- org.springframework:spring-context-support:jar:4.2.4.RELEASE:compile
+[INFO] +- org.freemarker:freemarker:jar:2.3.20:compile
+[INFO] +- joda-time:joda-time:jar:2.6:compile
+[INFO] +- org.slf4j:slf4j-log4j12:jar:1.7.5:compile
+[INFO] |  +- org.slf4j:slf4j-api:jar:1.7.5:compile
+[INFO] |  \- log4j:log4j:jar:1.2.17:compile
+[INFO] +- net.sf.json-lib:json-lib:jar:jdk15:2.4:compile
+[INFO] |  +- commons-beanutils:commons-beanutils:jar:1.8.0:compile
+[INFO] |  +- commons-collections:commons-collections:jar:3.2.1:compile
+[INFO] |  +- commons-lang:commons-lang:jar:2.5:compile
+[INFO] |  \- net.sf.ezmorph:ezmorph:jar:1.0.6:compile
+[INFO] +- org.codehaus.jackson:jackson-mapper-asl:jar:1.9.13:compile
+[INFO] |  \- org.codehaus.jackson:jackson-core-asl:jar:1.9.13:compile
+[INFO] +- com.google.code.gson:gson:jar:2.2.4:compile
+[INFO] +- javax.servlet:servlet-api:jar:2.5:provided
+[INFO] +- javax.servlet.jsp:jsp-api:jar:2.1:provided
+[INFO] +- commons-fileupload:commons-fileupload:jar:1.3.1:compile
+[INFO] +- commons-io:commons-io:jar:2.4:compile
+[INFO] +- commons-codec:commons-codec:jar:1.9:compile
+[INFO] +- com.github.pagehelper:pagehelper:jar:3.7.4:compile
+[INFO] |  \- com.github.jsqlparser:jsqlparser:jar:0.9.1:compile
+[INFO] \- javax.servlet:jstl:jar:1.2:compile
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] flyray ............................................. SUCCESS [  7.573 s]
+[INFO] flyray-common ...................................... SUCCESS [  0.324 s]
+[INFO] flyray-common-config ............................... SUCCESS [  0.004 s]
+[INFO] flyray-message ..................................... SUCCESS [  0.598 s]
+[INFO] flyray-rest ........................................ SUCCESS [  0.008 s]
+[INFO] flyray-rest-api .................................... SUCCESS [  0.096 s]
+[INFO] flyray-rest-dao .................................... SUCCESS [  0.280 s]
+[INFO] flyray-crm ......................................... SUCCESS [  0.060 s]
+[INFO] flyray-crm-api ..................................... SUCCESS [  0.012 s]
+[INFO] flyray-pay ......................................... SUCCESS [  0.020 s]
+[INFO] flyray-pay-api ..................................... SUCCESS [  0.012 s]
+[INFO] flyray-erp ......................................... SUCCESS [  0.016 s]
+[INFO] flyray-erp-api ..................................... SUCCESS [  0.016 s]
+[INFO] flyray-rest-service ................................ SUCCESS [  0.956 s]
+[INFO] flyray-rest-web .................................... SUCCESS [  0.312 s]
+[INFO] flyray-rest-util ................................... SUCCESS [  0.012 s]
+[INFO] flyray-search ...................................... SUCCESS [  0.360 s]
+[INFO] flyray-rbac-common ................................. SUCCESS [  7.480 s]
+[INFO] flyray-rbac-shiro .................................. SUCCESS [  0.140 s]
+[INFO] flyray-rbac-schedule ............................... SUCCESS [  0.152 s]
+[INFO] flyray-rbac-gen .................................... SUCCESS [  0.076 s]
+[INFO] flyray-rbac-api .................................... SUCCESS [  0.084 s]
+[INFO] flyray-open-web .................................... SUCCESS [  0.448 s]
+[INFO] flyray-operation-web ............................... SUCCESS [  0.052 s]
+[INFO] flyray-merchant-web ................................ SUCCESS [  0.052 s]
+[INFO] flyray-rbac ........................................ SUCCESS [  2.057 s]
+[INFO] flyray-crm-dao ..................................... SUCCESS [  0.060 s]
+[INFO] flyray-crm-service ................................. SUCCESS [  0.084 s]
+[INFO] flyray-crm-web ..................................... SUCCESS [  0.092 s]
+[INFO] flyray-crm-util .................................... SUCCESS [  0.012 s]
+[INFO] flyray-erp-dao ..................................... SUCCESS [  0.028 s]
+[INFO] flyray-erp-service ................................. SUCCESS [  0.140 s]
+[INFO] flyray-erp-web ..................................... SUCCESS [  0.084 s]
+[INFO] flyray-erp-util .................................... SUCCESS [  0.052 s]
+[INFO] flyray-pay-dao ..................................... SUCCESS [  0.032 s]
+[INFO] flyray-pay-util .................................... SUCCESS [  0.024 s]
+[INFO] flyray-pay-service ................................. SUCCESS [  0.152 s]
+[INFO] flyray-pay-web ..................................... SUCCESS [  0.306 s]
+[INFO] flyray-cms ......................................... SUCCESS [  0.004 s]
+[INFO] flyray-cms-util .................................... SUCCESS [  0.012 s]
+[INFO] flyray-cms-api ..................................... SUCCESS [  0.028 s]
+[INFO] flyray-cms-dao ..................................... SUCCESS [  0.040 s]
+[INFO] flyray-cms-service ................................. SUCCESS [  0.760 s]
+[INFO] flyray-cms-web ..................................... SUCCESS [  0.092 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 26.338 s
+[INFO] Finished at: 2017-05-13T16:55:43+08:00
+[INFO] Final Memory: 33M/160M
+[INFO] ------------------------------------------------------------------------
