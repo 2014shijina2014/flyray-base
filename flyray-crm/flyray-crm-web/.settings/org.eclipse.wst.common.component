@@ -16,6 +16,132 @@
         <dependent-module archiveName="flyray-common-config-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-common-config/flyray-common-config">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="dubbo-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo/dubbo">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-config-api-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-config-api/dubbo-config-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-registry-api-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-registry-api/dubbo-registry-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-cluster-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-cluster/dubbo-cluster">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-monitor-api-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-monitor-api/dubbo-monitor-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-remoting-api-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-remoting-api/dubbo-remoting-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-filter-validation-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-filter-validation/dubbo-filter-validation">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-filter-cache-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-filter-cache/dubbo-filter-cache">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-config-spring-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-config-spring/dubbo-config-spring">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-remoting-netty-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-remoting-netty/dubbo-remoting-netty">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-remoting-mina-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-remoting-mina/dubbo-remoting-mina">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-remoting-grizzly-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-remoting-grizzly/dubbo-remoting-grizzly">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-remoting-p2p-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-remoting-p2p/dubbo-remoting-p2p">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-remoting-http-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-remoting-http/dubbo-remoting-http">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-common-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-common/dubbo-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="hessian-lite-3.2.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/hessian-lite/hessian-lite">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-rpc-default-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-rpc-default/dubbo-rpc-default">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-rpc-api-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-rpc-api/dubbo-rpc-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-container-api-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-container-api/dubbo-container-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-rpc-injvm-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-rpc-injvm/dubbo-rpc-injvm">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-rpc-rmi-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-rpc-rmi/dubbo-rpc-rmi">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-rpc-hessian-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-rpc-hessian/dubbo-rpc-hessian">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-rpc-http-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-rpc-http/dubbo-rpc-http">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-rpc-webservice-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-rpc-webservice/dubbo-rpc-webservice">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-rpc-memcached-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-rpc-memcached/dubbo-rpc-memcached">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-rpc-redis-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-rpc-redis/dubbo-rpc-redis">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-rpc-rest-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-rpc-rest/dubbo-rpc-rest">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-registry-default-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-registry-default/dubbo-registry-default">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-registry-multicast-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-registry-multicast/dubbo-registry-multicast">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-registry-zookeeper-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-registry-zookeeper/dubbo-registry-zookeeper">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-remoting-zookeeper-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-remoting-zookeeper/dubbo-remoting-zookeeper">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-registry-redis-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-registry-redis/dubbo-registry-redis">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-monitor-default-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-monitor-default/dubbo-monitor-default">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-container-spring-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-container-spring/dubbo-container-spring">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-container-javaconfig-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-container-javaconfig/dubbo-container-javaconfig">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-container-jetty-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-container-jetty/dubbo-container-jetty">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-container-log4j-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-container-log4j/dubbo-container-log4j">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-container-logback-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-container-logback/dubbo-container-logback">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-rpc-thrift2-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-rpc-thrift2/dubbo-rpc-thrift2">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-rpc-grpc-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-rpc-grpc/dubbo-rpc-grpc">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="dubbo-rpc-avro-2.8.5-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/dubbo-rpc-avro/dubbo-rpc-avro">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="zkclient-0.8.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/zkclient/zkclient">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="flyray-common-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-common/flyray-common">
             <dependency-type>uses</dependency-type>
         </dependent-module>

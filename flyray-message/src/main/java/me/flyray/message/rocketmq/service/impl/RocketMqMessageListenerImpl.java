@@ -14,7 +14,6 @@ import me.flyray.message.rocketmq.service.RocketMqMessageListener;
 
 /**
  * 消息处理实现类
- * Created by zhongcy on 2017-02-22.
  */
 @Service
 public class RocketMqMessageListenerImpl implements RocketMqMessageListener {

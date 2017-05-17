@@ -28,6 +28,8 @@
 	<import resource="classpath*:service-pay-consumer.xml" />
 	
 	<import resource="classpath*:service-erp-consumer.xml" />
+	
+	<import resource="classpath*:service-cms-consumer.xml" />
 
 	<!-- MVC配置 <import resource="spring-mvc.xml" /> AOP配置 <import resource="spring-aop.xml" 
 		/> -->

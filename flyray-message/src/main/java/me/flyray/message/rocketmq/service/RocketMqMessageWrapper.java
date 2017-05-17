@@ -11,7 +11,6 @@ import java.util.List;
 
 /**
  * 封装通用逻辑
- * Created by zhongcy on 2017-02-22.
  */
 @Service
 public class RocketMqMessageWrapper implements MessageListenerConcurrently {

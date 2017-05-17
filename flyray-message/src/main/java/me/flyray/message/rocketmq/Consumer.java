@@ -17,7 +17,6 @@ import me.flyray.message.rocketmq.service.RocketMqMessageWrapper;
 
 /**
  * 消息消费者
- * Created by zhongcy on 2017-02-22.
  */
 @Component
 public class Consumer {

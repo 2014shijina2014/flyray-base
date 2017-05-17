@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 /**
  * 配置文件值
- * Created by zhongcy on 2017-02-22.
  */
 @Component
 public class Configuration {

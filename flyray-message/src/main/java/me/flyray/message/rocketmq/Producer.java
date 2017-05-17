@@ -14,7 +14,6 @@ import me.flyray.message.rocketmq.config.Configuration;
 
 /**
  * 生产者
- * Created by zhongcy on 2017-02-22.
  */
 @Component
 public class Producer {
