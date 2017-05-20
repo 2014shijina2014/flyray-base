@@ -1,0 +1,97 @@
+
+/*TABLET DEVICE*/
+@media only screen and (max-width:768px) { 
+.navbar-default .navbar-nav > li > a {
+margin-top: 10px;
+padding: 8px;
+}  
+.navbar-brand img {
+    margin-left: 10px;
+}
+.hero-text h2 {
+font-size: 40px;
+line-height: 40px;
+}   
+.single-slide-item h2 {
+font-size: 40px;
+line-height: 40px;
+}
+.single_about h4 { font-size: 15px }
+.single_team {
+  margin-bottom: 40px;
+}
+.play-video{ margin-left: -63px;}  
+.pricing-table { margin-bottom: 30px }  
+.single_address {
+  margin-left: 0;
+}
+.footer_social ul li a { font-size: 12px }  
+
+}
+
+/*MOBILE 480PX DEVICE*/
+@media only screen and (max-width:480px) { 
+.menu-top { 
+background-color: #fff; 
+color: #fff !important;
+margin-left: 0px; }
+.navbar-default .navbar-nav > li > a { color: #313131  !important }
+.top-info-right ul { float: left } 
+.hero-text h2 {
+padding-top: 200px;
+font-size: 30px;
+line-height: 40px;
+}
+
+.single-slide-item h2 {
+padding-top: 200px;
+font-size: 30px;
+line-height: 40px;
+}
+
+.single_why_img img { margin: 30px 0 }
+.play-video{ margin-left: -55px;}
+.single_testimonial {margin-bottom:30px;}
+.actions {margin-bottom: 30px;}  
+.footer_copyright {text-align: center;}
+.footer_social {
+  float: none;
+  text-align: center;
+}
+}
+
+/*IPHONE 375PX DEVICE*/
+@media only screen and (max-width:375px) { 
+.play-video{ margin-left: -53px;}
+}
+
+/*MOBILE 360PX DEVICE*/
+@media only screen and (max-width:360px) { 
+
+
+.hero-text h2 {
+font-size: 26px;
+line-height: 34px;
+}
+.single-slide-item h2 {
+font-size: 26px;
+line-height: 34px;
+} 
+.footer_social ul li a { font-size: 14px }
+
+}
+
+/*MOBILE 320PX DEVICE*/
+@media only screen and (max-width:320px) { 
+
+.video-container h1 { font-size: 20px }
+
+
+
+}
+
+
+
+
+
+
