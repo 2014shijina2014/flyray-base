@@ -11,12 +11,10 @@ import me.flyray.crm.model.MerchantAcount;
 * @date：2017年4月15日 上午2:10:39 
 * @description：类说明 
 */
-@Transactional
 @Service("merchantAccountService")
 public class MerchantAccountServiceImpl implements MerchantAccountService{
 
 	@Override
-	@Transactional( rollbackFor={Exception.class}) 
 	public void openAccount(MerchantAcount merchantAcount) {
 		// TODO Auto-generated method stub
 		

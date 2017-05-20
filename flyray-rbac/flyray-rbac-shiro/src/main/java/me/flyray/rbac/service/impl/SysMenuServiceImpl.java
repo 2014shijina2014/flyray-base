@@ -1,12 +1,5 @@
 package me.flyray.rbac.service.impl;
 
-import me.flyray.rbac.dao.SysMenuDao;
-import me.flyray.rbac.entity.SysMenuEntity;
-import me.flyray.rbac.service.SysMenuService;
-import me.flyray.rbac.service.SysRoleMenuService;
-import me.flyray.rbac.service.SysUserService;
-import me.flyray.rbac.utils.Constant.MenuType;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +7,13 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import me.flyray.rbac.dao.SysMenuDao;
+import me.flyray.rbac.entity.SysMenuEntity;
+import me.flyray.rbac.service.SysMenuService;
+import me.flyray.rbac.service.SysRoleMenuService;
+import me.flyray.rbac.service.SysUserService;
+import me.flyray.rbac.utils.Constant.MenuType;
 
 
 @Service("sysMenuService")

@@ -29,7 +29,6 @@ import me.flyray.pay.model.PaySerial;
 * @date：2017年4月30日 上午10:43:54 
 * @description：支付逻辑处理  
 */
-@Transactional
 @Service("paymentHandleService")
 public class PaymentHandleServiceImpl implements PaymentHandleService{
 
@@ -50,7 +49,6 @@ public class PaymentHandleServiceImpl implements PaymentHandleService{
 	 * 3、创建支付流水
 	 */
 	@Override
-	@Transactional( rollbackFor={Exception.class}) 
 	public PaymentHandleResponse pay(PaymentHandleRequest request) {
 		
 		logger.info("获取支付通道对象 start");

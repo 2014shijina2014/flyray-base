@@ -1,10 +1,5 @@
 package me.flyray.rbac.shiro;
 
-import me.flyray.rbac.entity.SysMenuEntity;
-import me.flyray.rbac.entity.SysUserEntity;
-import me.flyray.rbac.service.SysMenuService;
-import me.flyray.rbac.service.SysUserService;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -25,6 +20,11 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import me.flyray.rbac.entity.SysMenuEntity;
+import me.flyray.rbac.entity.SysUserEntity;
+import me.flyray.rbac.service.SysMenuService;
+import me.flyray.rbac.service.SysUserService;
 
 /**
  * 认证

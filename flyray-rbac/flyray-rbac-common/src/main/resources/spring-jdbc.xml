@@ -13,6 +13,8 @@
 		http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
 
 	<tx:annotation-driven />
+	<!-- <context:property-placeholder location="classpath:db.properties" /> -->
+	<!-- 加载多个配置文件 -->
 	<context:property-placeholder ignore-unresolvable="true" location="classpath*:*.properties"/>
 	
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"

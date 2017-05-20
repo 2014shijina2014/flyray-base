@@ -1,12 +1,12 @@
 package me.flyray.rbac.oss;
 
-import org.apache.commons.lang.StringUtils;
-
-import me.flyray.rbac.utils.DateUtils;
-
 import java.io.InputStream;
 import java.util.Date;
 import java.util.UUID;
+
+import org.apache.commons.lang.StringUtils;
+
+import me.flyray.rbac.utils.DateUtils;
 
 /**
  * 云存储(支持七牛、阿里云、腾讯云、又拍云)

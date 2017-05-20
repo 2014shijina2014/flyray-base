@@ -1,13 +1,13 @@
 package me.flyray.rbac.api;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import me.flyray.rbac.annotation.IgnoreAuth;
 import me.flyray.rbac.annotation.LoginUser;
 import me.flyray.rbac.entity.UserEntity;
 import me.flyray.rbac.utils.R;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * API测试接口

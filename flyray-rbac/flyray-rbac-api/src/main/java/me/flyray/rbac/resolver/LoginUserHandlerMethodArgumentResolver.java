@@ -1,16 +1,16 @@
 package me.flyray.rbac.resolver;
 
-import me.flyray.rbac.annotation.LoginUser;
-import me.flyray.rbac.entity.UserEntity;
-import me.flyray.rbac.interceptor.AuthorizationInterceptor;
-import me.flyray.rbac.service.UserService;
-
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
+
+import me.flyray.rbac.annotation.LoginUser;
+import me.flyray.rbac.entity.UserEntity;
+import me.flyray.rbac.interceptor.AuthorizationInterceptor;
+import me.flyray.rbac.service.UserService;
 
 /**
  * 有@LoginUser注解的方法参数，注入当前登录用户

@@ -1,10 +1,10 @@
 package me.flyray.rbac.controller;
 
-import me.flyray.rbac.entity.SysUserEntity;
-import me.flyray.rbac.utils.ShiroUtils;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import me.flyray.rbac.entity.SysUserEntity;
+import me.flyray.rbac.utils.ShiroUtils;
 
 /**
  * Controller公共组件

@@ -23,7 +23,6 @@ import me.flyray.pay.util.mq.Producer;
 * @date：2017年5月7日 下午10:51:29 
 * @description：类说明 
 */
-@Transactional
 @Service("completePayService")
 public class CompletePayServiceImpl implements CompletePayService{
 
@@ -36,7 +35,6 @@ public class CompletePayServiceImpl implements CompletePayService{
     private Producer producer;
     
 	@Override
-	@Transactional( rollbackFor={Exception.class}) 
 	public CompletePayResponse CompletePay(CompletePayRequest request) {
 		// TODO Auto-generated method stub
 		CompletePayResponse response = new CompletePayResponse();

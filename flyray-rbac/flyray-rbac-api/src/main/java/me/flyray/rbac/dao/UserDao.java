@@ -1,6 +1,5 @@
 package me.flyray.rbac.dao;
 
-import me.flyray.rbac.dao.BaseDao;
 import me.flyray.rbac.entity.UserEntity;
 
 /**

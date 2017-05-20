@@ -1,13 +1,9 @@
 package me.flyray.rbac.aop;
 
-import com.alibaba.fastjson.JSON;
+import java.lang.reflect.Method;
+import java.util.Date;
 
-import me.flyray.rbac.annotation.SysLog;
-import me.flyray.rbac.entity.SysLogEntity;
-import me.flyray.rbac.service.SysLogService;
-import me.flyray.rbac.utils.HttpContextUtils;
-import me.flyray.rbac.utils.IPUtils;
-import me.flyray.rbac.utils.ShiroUtils;
+import javax.servlet.http.HttpServletRequest;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -17,9 +13,14 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.http.HttpServletRequest;
-import java.lang.reflect.Method;
-import java.util.Date;
+import com.alibaba.fastjson.JSON;
+
+import me.flyray.rbac.annotation.SysLog;
+import me.flyray.rbac.entity.SysLogEntity;
+import me.flyray.rbac.service.SysLogService;
+import me.flyray.rbac.utils.HttpContextUtils;
+import me.flyray.rbac.utils.IPUtils;
+import me.flyray.rbac.utils.ShiroUtils;
 
 
 /**

@@ -1,11 +1,11 @@
 package me.flyray.rbac.oss;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+
 import com.aliyun.oss.OSSClient;
 
 import me.flyray.rbac.utils.RRException;
-
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 
 /**
  * 阿里云存储

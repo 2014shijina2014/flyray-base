@@ -1,8 +1,5 @@
 package me.flyray.rbac.controller;
 
-import me.flyray.rbac.utils.R;
-import me.flyray.rbac.utils.ShiroUtils;
-
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -26,6 +23,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
+
+import me.flyray.rbac.utils.R;
+import me.flyray.rbac.utils.ShiroUtils;
 
 /**
  * 登录相关

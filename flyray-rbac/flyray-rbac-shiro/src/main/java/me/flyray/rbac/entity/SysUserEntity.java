@@ -1,14 +1,14 @@
 package me.flyray.rbac.entity;
 
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import me.flyray.rbac.validator.group.AddGroup;
 import me.flyray.rbac.validator.group.UpdateGroup;
-
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 
 /**
  * 系统用户

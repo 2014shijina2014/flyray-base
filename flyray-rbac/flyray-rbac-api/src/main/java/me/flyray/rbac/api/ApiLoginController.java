@@ -1,17 +1,17 @@
 package me.flyray.rbac.api;
 
-import me.flyray.rbac.annotation.IgnoreAuth;
-import me.flyray.rbac.service.TokenService;
-import me.flyray.rbac.service.UserService;
-import me.flyray.rbac.utils.R;
-import me.flyray.rbac.validator.Assert;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
+import me.flyray.rbac.annotation.IgnoreAuth;
+import me.flyray.rbac.service.TokenService;
+import me.flyray.rbac.service.UserService;
+import me.flyray.rbac.utils.R;
+import me.flyray.rbac.validator.Assert;
 
 /**
  * API登录授权

@@ -7,7 +7,7 @@
 	</select> 
 
 	<select id="queryList" resultType="me.flyray.rbac.entity.ScheduleJobEntity" >
-		select * from schedule_job
+		select * from schedule_job 
 		<where>
 			<if test="beanName != null and beanName.trim() != ''">
 				bean_name like concat('%', #{beanName}, '%') 

@@ -1,11 +1,5 @@
 package me.flyray.rbac.service.impl;
 
-import me.flyray.rbac.dao.ScheduleJobDao;
-import me.flyray.rbac.entity.ScheduleJobEntity;
-import me.flyray.rbac.service.ScheduleJobService;
-import me.flyray.rbac.utils.ScheduleUtils;
-import me.flyray.rbac.utils.Constant.ScheduleStatus;
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +12,12 @@ import org.quartz.Scheduler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import me.flyray.rbac.dao.ScheduleJobDao;
+import me.flyray.rbac.entity.ScheduleJobEntity;
+import me.flyray.rbac.service.ScheduleJobService;
+import me.flyray.rbac.utils.Constant.ScheduleStatus;
+import me.flyray.rbac.utils.ScheduleUtils;
 
 @Service("scheduleJobService")
 public class ScheduleJobServiceImpl implements ScheduleJobService {
@@ -50,7 +50,7 @@ public class ScheduleJobServiceImpl implements ScheduleJobService {
 
 	@Override
 	public List<ScheduleJobEntity> queryList(Map<String, Object> map) {
-		return schedulerJobDao.queryList(map);
+		return null;/*schedulerJobDao.queryList(map);*/
 	}
 
 	@Override

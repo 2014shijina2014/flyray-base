@@ -1,8 +1,5 @@
 package me.flyray.rbac.utils;
 
-import me.flyray.rbac.entity.ScheduleJobEntity;
-import me.flyray.rbac.utils.Constant.ScheduleStatus;
-
 import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;
 import org.quartz.JobBuilder;
@@ -13,6 +10,9 @@ import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.TriggerBuilder;
 import org.quartz.TriggerKey;
+
+import me.flyray.rbac.entity.ScheduleJobEntity;
+import me.flyray.rbac.utils.Constant.ScheduleStatus;
 
 /**
  * 定时任务工具类

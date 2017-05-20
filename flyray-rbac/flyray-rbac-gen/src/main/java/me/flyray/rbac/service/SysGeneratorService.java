@@ -25,4 +25,3 @@ public interface SysGeneratorService {
 	 */
 	byte[] generatorCode(String[] tableNames);
 }
-

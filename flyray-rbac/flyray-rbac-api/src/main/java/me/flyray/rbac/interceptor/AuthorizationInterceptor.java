@@ -1,9 +1,7 @@
 package me.flyray.rbac.interceptor;
 
-import me.flyray.rbac.annotation.IgnoreAuth;
-import me.flyray.rbac.entity.TokenEntity;
-import me.flyray.rbac.service.TokenService;
-import me.flyray.rbac.utils.RRException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +9,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import me.flyray.rbac.annotation.IgnoreAuth;
+import me.flyray.rbac.entity.TokenEntity;
+import me.flyray.rbac.service.TokenService;
+import me.flyray.rbac.utils.RRException;
 
 /**
  * 权限(Token)验证

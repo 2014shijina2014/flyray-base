@@ -1,5 +1,19 @@
 package me.flyray.rbac.controller;
 
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.alibaba.fastjson.JSON;
+
 import me.flyray.rbac.entity.SysOssEntity;
 import me.flyray.rbac.oss.CloudStorageConfig;
 import me.flyray.rbac.oss.OSSFactory;
@@ -16,22 +30,8 @@ import me.flyray.rbac.validator.group.AliyunGroup;
 import me.flyray.rbac.validator.group.QcloudGroup;
 import me.flyray.rbac.validator.group.QiniuGroup;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-
-import com.alibaba.fastjson.JSON;
-
-
-/**
+/**	
  * 文件上传
  * 
  * @author chenshun

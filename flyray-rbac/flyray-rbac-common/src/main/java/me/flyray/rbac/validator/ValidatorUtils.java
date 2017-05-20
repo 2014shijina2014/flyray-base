@@ -1,12 +1,12 @@
 package me.flyray.rbac.validator;
 
+import java.util.Set;
+
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
 import me.flyray.rbac.utils.RRException;
-
-import java.util.Set;
 
 /**
  * hibernate-validator校验工具类
