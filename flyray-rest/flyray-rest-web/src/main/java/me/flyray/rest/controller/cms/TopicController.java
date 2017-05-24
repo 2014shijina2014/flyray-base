@@ -1,4 +1,4 @@
-package me.flyray.cms.controller;
+package me.flyray.rest.controller.cms;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

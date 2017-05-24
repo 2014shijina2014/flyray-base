@@ -1,4 +1,4 @@
-package me.flyray.cms.controller;
+package me.flyray.rest.controller.cms;
 
 import java.util.Map;
 
