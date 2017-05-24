@@ -1,4 +1,6 @@
 .DS_Store 
+/.settings
+/.svn
 /target
 */target
 **/target
