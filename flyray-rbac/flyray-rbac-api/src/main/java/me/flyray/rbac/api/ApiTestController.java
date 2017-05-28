@@ -1,7 +1,7 @@
 package me.flyray.rbac.api;
 
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import me.flyray.rbac.annotation.IgnoreAuth;
@@ -23,7 +23,7 @@ public class ApiTestController {
     /**
      * 获取用户信息
      */
-    @GetMapping("userInfo")
+	@RequestMapping(value="userInfo",method = RequestMethod.GET)
     public R userInfo(@LoginUser UserEntity user){
 
         return R.ok().put("user", user);
@@ -33,7 +33,7 @@ public class ApiTestController {
      * 忽略Token验证测试
      */
     @IgnoreAuth
-    @GetMapping("notToken")
+    @RequestMapping(value="notToken",method = RequestMethod.GET)
     public R notToken(){
 
         return R.ok().put("message", "无需token也能访问。。。");

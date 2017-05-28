@@ -1,12 +1,11 @@
 package me.flyray.rbac.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import me.flyray.rbac.annotation.IgnoreAuth;
 import me.flyray.rbac.entity.UserEntity;
 import me.flyray.rbac.service.UserService;
 import me.flyray.rbac.utils.R;
@@ -27,8 +26,7 @@ public class ApiRegisterController {
     /**
      * 注册
      */
-    @IgnoreAuth
-    @PostMapping("register")
+    @RequestMapping(value="register",method = RequestMethod.POST)
     public R register(@RequestBody UserEntity user){
         Assert.isBlank(user.getMobile(), "手机号不能为空");
         Assert.isBlank(user.getPassword(), "密码不能为空");

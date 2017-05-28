@@ -3,11 +3,10 @@ package me.flyray.rbac.api;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import me.flyray.rbac.annotation.IgnoreAuth;
 import me.flyray.rbac.service.TokenService;
 import me.flyray.rbac.service.UserService;
 import me.flyray.rbac.utils.R;
@@ -31,8 +30,7 @@ public class ApiLoginController {
     /**
      * 登录
      */
-    @IgnoreAuth
-    @PostMapping("login")
+    @RequestMapping(value="login",method = RequestMethod.POST)
     public R login(String mobile, String password){
         Assert.isBlank(mobile, "手机号不能为空");
         Assert.isBlank(password, "密码不能为空");
