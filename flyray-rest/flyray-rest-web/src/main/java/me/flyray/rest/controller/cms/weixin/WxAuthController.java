@@ -26,8 +26,8 @@ public class WxAuthController {
 
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 	
-	@Autowired
-	private WeixinCommonService weixinCommonService;
+	/*@Autowired
+	private WeixinCommonService weixinCommonService;*/
 	
 	
 	/**
@@ -45,7 +45,7 @@ public class WxAuthController {
 		Map<String, Object> requestMap = new HashMap<>();
 		requestMap.put("code", code);
 		requestMap.put("merchantNo", merchantNo);
-		Map<String, Object> userMap = weixinCommonService.getOauthUserInfo(requestMap);
+		Map<String, Object> userMap = null;//weixinCommonService.getOauthUserInfo(requestMap);
         
 	} 
 	

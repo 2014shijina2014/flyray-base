@@ -21,7 +21,7 @@
 	<!-- IoC配置 -->
 	<import resource="classpath*:spring-mybatis.xml" />
 
-	<import resource="classpath*:service-consumer.xml" />
+	<import resource="classpath*:service-provider.xml" />
 
 	<!-- MVC配置 <import resource="spring-mvc.xml" /> AOP配置 <import resource="spring-aop.xml" 
 		/> -->

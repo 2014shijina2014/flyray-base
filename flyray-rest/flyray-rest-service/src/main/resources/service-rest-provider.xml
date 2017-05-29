@@ -20,12 +20,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
-    <dubbo:application name="flyray-rest-service-provider" owner="programmer" organization="dubbox"/>
-
-    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
-
-    <dubbo:protocol name="dubbo" port="10106"/>
-	
 	<!-- dubbo 服务统一入口 -->
 	<dubbo:service interface="me.flyray.rest.api.ApiProvider" ref="apiProvider"  protocol="dubbo" timeout="1200000"/>
 	

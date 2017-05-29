@@ -21,7 +21,9 @@
 	<!-- IoC配置 -->
 	<import resource="classpath*:spring-mybatis.xml" />
 
-	<import resource="classpath*:service-provider.xml" />
+    <import resource="classpath*:dubbo.xml" />
+
+	<import resource="classpath*:service-rest-provider.xml" />
 	
 	<import resource="classpath*:service-crm-consumer.xml" />
 	

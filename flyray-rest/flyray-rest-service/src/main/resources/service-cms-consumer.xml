@@ -7,10 +7,10 @@
 	
 	<!-- flyray-rest作为 crm、erp、pay的唯一消费者 -->
 	<!-- 活动信息 -->
-    <dubbo:reference id="activityService" interface="me.flyray.cms.api.ActivityService"/>
+    <!-- <dubbo:reference id="activityService" interface="me.flyray.cms.api.ActivityService"/>
     
-    <!-- 微信信息处理 -->
-    <dubbo:reference id="weixinCommonService" interface="me.flyray.cms.api.WeixinCommonService"/>
+    微信信息处理
+    <dubbo:reference id="weixinCommonService" interface="me.flyray.cms.api.WeixinCommonService"/> -->
     
     
 </beans>
