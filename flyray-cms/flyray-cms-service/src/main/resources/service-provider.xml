@@ -22,9 +22,10 @@
 
     <dubbo:application name="flyray-cms-service-provider" owner="programmer" organization="dubbox"/>
 
-    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+    <dubbo:registry address="${dubbo.registry.address}"/>
 
-    <dubbo:protocol name="dubbo" port="2222"/>
+	<!-- 在dubbo的配置文件中指定服务启动的绑定Ip dubbo.protocol.host 与dns有关-->
+    <dubbo:protocol host="${dubbo.host.protocol}" name="dubbo" port="${cms.dubbo.port}"/>
 
 	<dubbo:service interface="me.flyray.cms.api.ActivityService" ref="activityService"  protocol="dubbo" timeout="1200000"/>
 	

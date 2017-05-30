@@ -22,10 +22,10 @@
 
     <dubbo:application name="flyray-crm-service-provider" owner="programmer" organization="dubbox"/>
 
-    <dubbo:registry address="zookeeper://192.168.1.107:2181"/>
+	<dubbo:registry address="${dubbo.registry.address}"/>
 
 	<!-- 在dubbo的配置文件中指定服务启动的绑定Ip dubbo.protocol.host 与dns有关-->
-    <dubbo:protocol host="192.168.1.107" name="dubbo" port="10105"/>
+    <dubbo:protocol host="${dubbo.protocol.host}" name="dubbo" port="${crm.dubbo.port}"/>
 
 	<dubbo:service interface="me.flyray.crm.api.CustomerBaseService" ref="customerBaseService"  protocol="dubbo" timeout="1200000"/>
 	

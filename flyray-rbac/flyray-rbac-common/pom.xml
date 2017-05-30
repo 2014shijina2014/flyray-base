@@ -13,9 +13,17 @@
 		<qiniu-version>[7.2.0, 7.2.99]</qiniu-version>
 		<aliyun-oss-version>2.5.0</aliyun-oss-version>
 		<qcloud-cos-version>4.4</qcloud-cos-version>
+		<flyray.version>0.0.1-SNAPSHOT</flyray.version>
 	</properties>
 
 	<dependencies>
+		
+		<dependency>
+			<groupId>me.flyray</groupId>
+			<artifactId>flyray-common-config</artifactId>
+			<version>${flyray.version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>com.qiniu</groupId>
 			<artifactId>qiniu-java-sdk</artifactId>
