@@ -2,6 +2,8 @@
 
 　　使用Spring+SpringMVC+Mybatis+dubbox 开发的一套分布式基础框架，提供支付、对账、清结算、客户管理、营销活动、库存管理、搜索模块、rocketmq做统一的消息队列中心
 
+[项目主页](http://www.flyray.me)
+
 有兴趣、想学习部署的可以加群交流
 ![qq群](flyray-doc/qq.png)
 
