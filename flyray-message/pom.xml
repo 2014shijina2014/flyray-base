@@ -13,9 +13,17 @@
         <spring.version>4.3.4.RELEASE</spring.version>
         <logback.version>1.1.2</logback.version>
         <slf4j.version>1.7.12</slf4j.version>
+        <flyray.version>0.0.1-SNAPSHOT</flyray.version>
     </properties>
 
     <dependencies>
+    
+    	<dependency>
+			<groupId>me.flyray</groupId>
+			<artifactId>flyray-common-config</artifactId>
+			<version>${flyray.version}</version>
+		</dependency>
+		
         <!-- RocketMQ -->
         <!-- <dependency>
             <groupId>org.apache.rocketmq</groupId>
