@@ -16,6 +16,8 @@ import me.flyray.crm.model.CustomerBase;
 * @date：2017年4月15日 上午2:09:29 
 * @description：类说明 
 */
+
+@Transactional
 @Service("customerAccountService")
 public class CustomerAccountServiceImpl implements CustomerAccountService{
 
@@ -24,10 +26,11 @@ public class CustomerAccountServiceImpl implements CustomerAccountService{
 	@Autowired
 	private CustomerBaseDao customerBaseDao;
 	
+	
 	@Override
+	@Transactional( rollbackFor={Exception.class})
 	public void openAccount(CustomerAccount customerAccount) {
 		// TODO Auto-generated method stub
-		
 		CustomerBase customerBase = new CustomerBase();
 		customerBase.setAddress("333");
 		customerBase.setAge("33");
