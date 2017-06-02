@@ -25,7 +25,7 @@
     <dubbo:registry address="${dubbo.registry.address}"/>
 
 	<!-- 在dubbo的配置文件中指定服务启动的绑定Ip dubbo.protocol.host 与dns有关-->
-    <dubbo:protocol host="${dubbo.host.protocol}" name="dubbo" port="${cms.dubbo.port}"/>
+    <dubbo:protocol host="${dubbo.protocol.host}" name="dubbo" port="${cms.dubbo.port}"/>
 
 	<dubbo:service interface="me.flyray.cms.api.ActivityService" ref="activityService"  protocol="dubbo" timeout="1200000"/>
 	
