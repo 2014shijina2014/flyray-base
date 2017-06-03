@@ -46,7 +46,7 @@
     	 <!--义webAppRootKey 以免项目之间的名称冲突-->	
     <context-param>
 		<param-name>webAppRootKey</param-name>
-		<param-value>pms.root</param-value>
+		<param-value>rest.root</param-value>
 	</context-param>
 		<!-- 日志页面的刷新间隔 -->
     <context-param>
