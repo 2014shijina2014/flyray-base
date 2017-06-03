@@ -15,6 +15,11 @@
 		
 		<dependency>
 			<groupId>me.flyray</groupId>
+			<artifactId>flyray-rest-util</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>me.flyray</groupId>
 			<artifactId>flyray-rest-service</artifactId>
 			<version>${project.version}</version>
 		</dependency>
@@ -98,17 +103,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
-		<!-- json数据 -->
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-		</dependency>
-		<!-- JSON 相关jar end -->
 
 		<!-- Servlet -->
 		<dependency>

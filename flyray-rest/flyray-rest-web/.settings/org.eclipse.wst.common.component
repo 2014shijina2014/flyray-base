@@ -4,6 +4,9 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="flyray-rest-util-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-rest-util/flyray-rest-util">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="flyray-rest-service-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-rest-service/flyray-rest-service">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -29,9 +32,6 @@
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="flyray-cms-api-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-cms-api/flyray-cms-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="flyray-cms-util-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-cms-util/flyray-cms-util">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/flyray-rest-web/target/classes"/>

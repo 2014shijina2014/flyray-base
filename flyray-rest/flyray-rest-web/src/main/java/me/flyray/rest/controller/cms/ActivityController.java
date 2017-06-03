@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import me.flyray.cms.dto.ResponseHelper;
 import me.flyray.cms.model.Activity;
-import me.flyray.cms.util.BeanUtil;
+import me.flyray.rest.util.BeanUtil;
+import me.flyray.rest.util.ResponseHelper;
 
 /** 
 * @author: bolei

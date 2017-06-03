@@ -121,17 +121,6 @@
 			</exclusions>
 		</dependency>
 
-		<!-- json数据 -->
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-		</dependency>
-		<!-- JSON 相关jar end -->
-
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>

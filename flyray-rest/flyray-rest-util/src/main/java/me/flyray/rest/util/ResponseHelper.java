@@ -1,10 +1,8 @@
-package me.flyray.cms.dto;
+package me.flyray.rest.util;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import me.flyray.cms.util.BeanUtil;
 
 /** 
 * @author: bolei

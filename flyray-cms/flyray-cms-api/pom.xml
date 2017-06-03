@@ -13,10 +13,10 @@
   <name>flyray-cms-api</name>
   <url>http://maven.apache.org</url>
   <dependencies>
-  	<dependency>
+  	<!-- <dependency>
 		<groupId>me.flyray</groupId>
 		<artifactId>flyray-cms-util</artifactId>
 		<version>${project.version}</version>
-	</dependency>
+	</dependency> -->
   </dependencies>
 </project>

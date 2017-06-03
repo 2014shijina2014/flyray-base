@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import me.flyray.cms.dto.ResponseHelper;
+import me.flyray.rest.util.ResponseHelper;
 
 @Controller
 public class ProficientRecommendController {
