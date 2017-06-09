@@ -1,4 +1,5 @@
 -- 菜单
+
 CREATE TABLE `sys_menu` (
   `menu_id` bigint NOT NULL AUTO_INCREMENT,
   `parent_id` bigint COMMENT '父菜单ID，一级菜单为0',
@@ -12,6 +13,7 @@ CREATE TABLE `sys_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='菜单管理';
 
 -- 系统用户
+
 CREATE TABLE `sys_user` (
   `user_id` bigint NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL COMMENT '用户名',
@@ -26,6 +28,7 @@ CREATE TABLE `sys_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统用户';
 
 -- 角色
+
 CREATE TABLE `sys_role` (
   `role_id` bigint NOT NULL AUTO_INCREMENT,
   `role_name` varchar(100) COMMENT '角色名称',
@@ -36,6 +39,7 @@ CREATE TABLE `sys_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='角色';
 
 -- 用户与角色对应关系
+
 CREATE TABLE `sys_user_role` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `user_id` bigint COMMENT '用户ID',
@@ -44,6 +48,7 @@ CREATE TABLE `sys_user_role` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户与角色对应关系';
 
 -- 角色与菜单对应关系
+
 CREATE TABLE `sys_role_menu` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `role_id` bigint COMMENT '角色ID',
@@ -53,6 +58,7 @@ CREATE TABLE `sys_role_menu` (
 
 
 -- 系统配置信息
+
 CREATE TABLE `sys_config` (
 	`id` bigint NOT NULL AUTO_INCREMENT,
 	`key` varchar(50) COMMENT 'key',
@@ -64,6 +70,7 @@ CREATE TABLE `sys_config` (
 ) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='系统配置信息表';
 
 -- 系统日志
+
 CREATE TABLE `sys_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) COMMENT '用户名',
@@ -77,6 +84,7 @@ CREATE TABLE `sys_log` (
 
 
 -- 文件上传
+
 CREATE TABLE `sys_oss` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `url` varchar(200) COMMENT 'URL地址',
@@ -85,8 +93,9 @@ CREATE TABLE `sys_oss` (
 ) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='文件上传';
 
 
--- 初始数据 
-INSERT INTO `sys_user` (`user_id`, `username`, `password`, `email`, `mobile`, `status`, `create_time`) VALUES ('1', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'root@renren.io', '13612345678', '1', '2016-11-11 11:11:11');
+-- 初始数据
+
+INSERT INTO `sys_user` (`user_id`, `username`, `password`, `email`, `mobile`, `status`, `create_user_id`, `create_time`) VALUES ('1', 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'root@renren.io', '13612345678', '1', '1', '2016-11-11 11:11:11');
 INSERT INTO `sys_menu` (`menu_id`, `parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`) VALUES ('1', '0', '系统管理', NULL, NULL, '0', 'fa fa-cog', '0');
 INSERT INTO `sys_menu` (`menu_id`, `parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`) VALUES ('2', '1', '管理员列表', 'sys/user.html', NULL, '1', 'fa fa-user', '1');
 INSERT INTO `sys_menu` (`menu_id`, `parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`) VALUES ('3', '1', '角色管理', 'sys/role.html', NULL, '1', 'fa fa-user-secret', '2');
@@ -116,10 +125,14 @@ INSERT INTO `sys_config` (`key`, `value`, `status`, `remark`) VALUES ('CLOUD_STO
 
 
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 -- API接口相关SQL，如果不使用renren-api模块，则不用执行下面SQL -------------------------------------------------------------------------------------------------------------
+
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
 -- 用户表
+
 CREATE TABLE `tb_user` (
   `user_id` bigint NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL COMMENT '用户名',
@@ -131,6 +144,7 @@ CREATE TABLE `tb_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户';
 
 -- 用户Token表
+
 CREATE TABLE `tb_token` (
   `user_id` bigint NOT NULL,
   `token` varchar(100) NOT NULL COMMENT 'token',
@@ -141,14 +155,18 @@ CREATE TABLE `tb_token` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户Token';
 
 -- 账号：13612345678  密码：admin
+
 INSERT INTO `tb_user` (`username`, `mobile`, `password`, `create_time`) VALUES ('mark', '13612345678', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', '2017-03-23 22:37:41');
 
 
 
 
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 -- 代码生成器相关SQL，如果不使用renren-gen模块，则不用执行下面SQL -------------------------------------------------------------------------------------------------------------
+
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 INSERT INTO `sys_menu` (`menu_id`, `parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`) VALUES ('28', '1', '代码生成器', 'sys/generator.html', 'sys:generator:list,sys:generator:code', '1', 'fa fa-rocket', '8');
 
@@ -158,10 +176,14 @@ INSERT INTO `sys_menu` (`menu_id`, `parent_id`, `name`, `url`, `perms`, `type`, 
 
 
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 -- 定时任务相关表结构，如果不使用renren-schedule模块，则不用执行下面SQL -------------------------------------------------------------------------------------------------------------
+
 -- ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
 -- 初始化菜单数据
+
 INSERT INTO `sys_menu` (`menu_id`, `parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`) VALUES ('6', '1', '定时任务', 'sys/schedule.html', NULL, '1', 'fa fa-tasks', '5');
 INSERT INTO `sys_menu` (`menu_id`, `parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`) VALUES ('7', '6', '查看', NULL, 'sys:schedule:list,sys:schedule:info', '2', NULL, '0');
 INSERT INTO `sys_menu` (`menu_id`, `parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`) VALUES ('8', '6', '新增', NULL, 'sys:schedule:save', '2', NULL, '0');
@@ -173,6 +195,7 @@ INSERT INTO `sys_menu` (`menu_id`, `parent_id`, `name`, `url`, `perms`, `type`, 
 INSERT INTO `sys_menu` (`menu_id`, `parent_id`, `name`, `url`, `perms`, `type`, `icon`, `order_num`) VALUES ('14', '6', '日志列表', NULL, 'sys:schedule:log', '2', NULL, '0');
 
 -- 定时任务
+
 CREATE TABLE `schedule_job` (
   `job_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '任务id',
   `bean_name` varchar(200) DEFAULT NULL COMMENT 'spring bean名称',
@@ -186,6 +209,7 @@ CREATE TABLE `schedule_job` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='定时任务';
 
 -- 定时任务日志
+
 CREATE TABLE `schedule_job_log` (
   `log_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '任务日志id',
   `job_id` bigint(20) NOT NULL COMMENT '任务id',
@@ -207,6 +231,7 @@ INSERT INTO `schedule_job` (`bean_name`, `method_name`, `params`, `cron_expressi
 
 
 --  quartz自带表结构
+
 CREATE TABLE QRTZ_JOB_DETAILS(
 SCHED_NAME VARCHAR(120) NOT NULL,
 JOB_NAME VARCHAR(200) NOT NULL,
