@@ -78,17 +78,17 @@
     <!--Spring MVC Config Mapping -->
     <servlet-mapping>
         <servlet-name>spring</servlet-name>
-        <url-pattern>*.do</url-pattern>
+        <url-pattern>/*</url-pattern>
+        <!-- <url-pattern>*.do</url-pattern> -->
     </servlet-mapping>
-    <servlet-mapping>
+    <!-- <servlet-mapping>
 		<servlet-name>spring</servlet-name>
 		<url-pattern>*.json</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>spring</servlet-name>
 		<url-pattern>*.shtml</url-pattern>
-	</servlet-mapping>
- 
+	</servlet-mapping> -->
  
     <welcome-file-list>
         <welcome-file>/LoginController/login.do</welcome-file>

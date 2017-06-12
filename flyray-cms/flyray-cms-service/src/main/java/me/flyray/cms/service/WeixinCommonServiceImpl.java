@@ -36,6 +36,7 @@ public class WeixinCommonServiceImpl implements WeixinCommonService{
 	public Map<String, Object> getOauthUserInfo(Map<String, Object> param) {
 		Map<String, Object> resultMap = null;
 		try {
+			logger.info("请求微信授权信息------{}",param);
 			WxMpOAuth2AccessToken wxMpOAuth2AccessToken = weixinService.oauth2getAccessToken((String)param.get("code"));
 			WxMpUser wxMpUser = weixinService.oauth2getUserInfo(wxMpOAuth2AccessToken, null);
 			resultMap = BeanUtil.objectToMap(wxMpUser);
