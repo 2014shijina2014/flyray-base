@@ -69,7 +69,13 @@
             <artifactId>zkclient</artifactId>
             <version>0.8.1-SNAPSHOT</version>
         </dependency>
-
+        
+        <!-- 微信依赖 -->
+        <dependency>
+		  <groupId>com.github.binarywang</groupId>
+		  <artifactId>weixin-java-mp</artifactId>
+		  <version>2.5.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>

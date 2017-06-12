@@ -1,4 +1,4 @@
-package me.flyray.cms.service;
+package me.flyray.crm.service;
 
 import java.util.Map;
 
@@ -13,8 +13,8 @@ import me.chanjar.weixin.mp.bean.result.WxMpOAuth2AccessToken;
 import me.chanjar.weixin.mp.bean.result.WxMpUser;
 import me.chanjar.weixin.mp.bean.template.WxMpTemplateData;
 import me.chanjar.weixin.mp.bean.template.WxMpTemplateMessage;
-import me.flyray.cms.api.WeixinCommonService;
-import me.flyray.cms.util.BeanUtil;
+import me.flyray.common.utils.BeanUtils;
+import me.flyray.crm.api.WeixinCommonService;
 
 /** 
 * @author: bolei
@@ -39,7 +39,7 @@ public class WeixinCommonServiceImpl implements WeixinCommonService{
 			logger.info("请求微信授权信息------{}",param);
 			WxMpOAuth2AccessToken wxMpOAuth2AccessToken = weixinService.oauth2getAccessToken((String)param.get("code"));
 			WxMpUser wxMpUser = weixinService.oauth2getUserInfo(wxMpOAuth2AccessToken, null);
-			resultMap = BeanUtil.objectToMap(wxMpUser);
+			resultMap = BeanUtils.objectToMap(wxMpUser);
 			logger.info("微信授权用户信息------{}",resultMap);
 			/* 将用户信息保存到数据库 */
 		} catch (Exception e) {

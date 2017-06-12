@@ -4,6 +4,8 @@
 
 [项目主页](http://www.flyray.me)
 
+[cms前端工程](https://git.oschina.net/boleixiongdi/flyray-cms-ui)
+
 有兴趣、想学习部署的可以加群交流
 ![qq群](flyray-doc/qq.png)
 

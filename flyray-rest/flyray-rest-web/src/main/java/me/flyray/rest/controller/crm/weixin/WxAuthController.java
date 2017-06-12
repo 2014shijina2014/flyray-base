@@ -1,4 +1,4 @@
-package me.flyray.rest.controller.cms.weixin;
+package me.flyray.rest.controller.crm.weixin;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import me.flyray.cms.api.WeixinCommonService;
+import me.flyray.crm.api.WeixinCommonService;
 import me.flyray.rest.util.ResponseHelper;
 
 /** 

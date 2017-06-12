@@ -1,4 +1,4 @@
-package me.flyray.cms.service;
+package me.flyray.crm.service;
 
 import org.springframework.stereotype.Service;
 

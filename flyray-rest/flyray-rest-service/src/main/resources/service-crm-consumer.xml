@@ -16,5 +16,7 @@
     <dubbo:reference id="merchantBaseService" interface="me.flyray.crm.api.MerchantBaseService"/>
 	<!-- 商户账户信息 -->
     <dubbo:reference id="merchantAccountService" interface="me.flyray.crm.api.MerchantAccountService"/>
+    <!-- 微信信息处理 -->
+    <dubbo:reference id="weixinCommonService" interface="me.flyray.crm.api.WeixinCommonService"/>
     
 </beans>

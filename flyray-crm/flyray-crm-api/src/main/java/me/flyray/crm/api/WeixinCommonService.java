@@ -1,4 +1,4 @@
-package me.flyray.cms.api;
+package me.flyray.crm.api;
 
 import java.util.Map;
 
