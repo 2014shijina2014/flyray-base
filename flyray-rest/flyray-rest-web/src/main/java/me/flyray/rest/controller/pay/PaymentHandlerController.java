@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import me.flyray.pay.api.PaymentHandlerService;
 import me.flyray.pay.dto.CreateOrderRequst;
 import me.flyray.pay.dto.PayOrderRequest;
+import me.flyray.rest.util.ResponseHelper;
 
 /** 
 * @author: bolei
@@ -39,8 +40,11 @@ public class PaymentHandlerController {
 	public Map<String, Object> create(@RequestBody Map<String, String> param) {
 		logger.info("请求创建支付订单---start---{}",param);
 		CreateOrderRequst createOrder = new CreateOrderRequst();
+		createOrder.setCustomerNo((String)param.get("customerNo"));
+		createOrder.setMerchantNo((String)param.get("merchantNo"));
+		createOrder.setPayOrderNo((String)param.get("payOrderNo"));
 		paymentHandlerService.createOrder(createOrder);
-		return null;
+		return ResponseHelper.success(createOrder, "00", "创建支付订单成功");
 	}
 	
 	/**
@@ -52,8 +56,12 @@ public class PaymentHandlerController {
 	public Map<String, Object> pay(@RequestBody Map<String, String> param) {
 		logger.info("请求支付---start---{}",param);
 		PayOrderRequest payRequest = new PayOrderRequest();
+		payRequest.setPayOrderNo((String)param.get("payOrderNo"));
+		payRequest.setBankCode((String)param.get("bankCode"));
+		payRequest.setPayChannelNo((String)param.get("payChannelNo"));
+		payRequest.setPayMethod((String)param.get("payMethod"));
 		paymentHandlerService.pay(payRequest);
-		return null;
+		return ResponseHelper.success(null, "00", "支付请求成功");
 	}
 	
 	/**

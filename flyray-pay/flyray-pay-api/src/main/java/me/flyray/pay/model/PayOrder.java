@@ -57,7 +57,7 @@ public class PayOrder {
 	private String payMethod;
 	
 	/**
-	 * 交易状态（未支付、支付中、支付失败、支付成功、已部分退款、已退款）
+	 * 交易状态（未支付、支付中、支付失败、支付成功、已部分退款、已退款、已关闭）
 	 */
 	private String orderStatus;
 	

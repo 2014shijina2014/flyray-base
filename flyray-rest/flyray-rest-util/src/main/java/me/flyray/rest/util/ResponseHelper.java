@@ -19,13 +19,14 @@ public class ResponseHelper {
 		map.put("status", "200");
 		map.put("msg", msg);
 		try {
+			if (clazz == null) {
+				return map;
+			}
 			if (clazz instanceof Map) {
 				map.put("data", clazz);
 				return map;
 			}if (clazz instanceof List) {
-				Map<String,Object> reMap = new HashMap<String, Object>();
-				reMap.put("list", clazz);
-				return reMap;
+				map.put("data", clazz);
 			}
 			else {
 				map.put("data", BeanUtil.objectToMap(clazz));

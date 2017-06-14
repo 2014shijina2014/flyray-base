@@ -59,7 +59,7 @@ public class WxAuthController {
 		Map<String, Object> userMap = weixinCommonService.getOauthUserInfo(requestMap);
 		logger.info("通过code获取用户授权信息------end------{}",userMap);
 		if (userMap == null) {
-			return ResponseHelper.success(userMap, "01", "调用微信授权是吧");
+			return ResponseHelper.success(userMap, "01", "调用微信授权失败");
 		}
 		
 		/*wxMpUser.getCity()

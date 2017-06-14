@@ -84,10 +84,11 @@ public class PaymentHandlerServiceImpl implements PaymentHandlerService{
 		PaySerial paySerial = new PaySerial();
 		paySerial.setPayOrderNo(payOrderNo);
 		paySerialService.insert(paySerial);
-		logger.info("支付请求创建订单 end");
+		logger.info("支付请求写支付流水 end");
 		
 		PayOrderResponse response = new PayOrderResponse();
 		Map<String,Object> retMap = getPayObject(payOrder, payChannel, paySerial, null);
+		logger.info("支付请求创建订单---end---{}",retMap);
 		return response;
 	}
 
@@ -136,9 +137,9 @@ public class PaymentHandlerServiceImpl implements PaymentHandlerService{
 	@Override
 	public CreateOrderResponse createOrder(CreateOrderRequst requst) {
 		PayOrder payOrder = new PayOrder();
-		payOrder.setPayOrderNo("");
+		payOrder.setPayOrderNo(requst.getPayOrderNo());
+		payOrder.setCustomerNo(requst.getCustomerNo());
 		payOrderService.save(payOrder);
-		// TODO Auto-generated method stub
 		return null;
 	}
 
