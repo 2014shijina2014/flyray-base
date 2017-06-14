@@ -34,9 +34,9 @@ import org.xml.sax.SAXException;
 
 import me.flyray.common.exception.BusinessException;
 import me.flyray.pay.api.PayChannelConfigService;
-import me.flyray.pay.api.RefundHandleService;
-import me.flyray.pay.dto.RefundHandleRequest;
-import me.flyray.pay.dto.RefundHandleResponse;
+import me.flyray.pay.api.RefundHandlerService;
+import me.flyray.pay.dto.RefundRequest;
+import me.flyray.pay.dto.RefundResponse;
 import me.flyray.pay.model.PayChannelConfig;
 import me.flyray.pay.service.pay.wechat.service.WechatSignatureService;
 import me.flyray.pay.service.pay.wechat.util.WechatPayConfig;
@@ -53,7 +53,7 @@ import okhttp3.Response;
 */
 
 @Service("wechatRefundService")
-public class WechatRefundService implements RefundHandleService{
+public class WechatRefundService implements RefundHandlerService{
 
 	private static final Logger logger = LoggerFactory.getLogger(WechatRefundService.class);
 	
@@ -65,14 +65,14 @@ public class WechatRefundService implements RefundHandleService{
     private WechatPayConfig wechatPayConfig;
 	
 	@Override
-	public RefundHandleResponse refund(RefundHandleRequest request) {
+	public RefundResponse refund(RefundRequest request) {
 		PayChannelConfig channelConfig = payChannelConfigService.getPayChannelConfig(request.getMerchantNo(),request.getPayChannelNo());
         if (channelConfig == null) {
             throw new BusinessException("支付通道参数未配置");
         }
         logger.info("支付通道配置信息：{}", channelConfig);
         
-        RefundHandleResponse refundResponse = new RefundHandleResponse();
+        RefundResponse refundResponse = new RefundResponse();
         
         WechatRefundRequest wechatRefundRequest = new WechatRefundRequest();
         wechatRefundRequest.setAppid(channelConfig.getMerAccount());

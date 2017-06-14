@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import me.flyray.common.exception.BusinessException;
 import me.flyray.common.service.SpringContextHolder;
@@ -15,10 +14,12 @@ import me.flyray.pay.api.PayChannelInterfaceService;
 import me.flyray.pay.api.PayObjectService;
 import me.flyray.pay.api.PayOrderService;
 import me.flyray.pay.api.PaySerialService;
-import me.flyray.pay.api.PaymentHandleService;
+import me.flyray.pay.api.PaymentHandlerService;
+import me.flyray.pay.dto.CreateOrderRequst;
+import me.flyray.pay.dto.CreateOrderResponse;
 import me.flyray.pay.dto.OnlinePaymentRequest;
-import me.flyray.pay.dto.PaymentHandleRequest;
-import me.flyray.pay.dto.PaymentHandleResponse;
+import me.flyray.pay.dto.PayOrderRequest;
+import me.flyray.pay.dto.PayOrderResponse;
 import me.flyray.pay.model.PayChannel;
 import me.flyray.pay.model.PayChannelInterface;
 import me.flyray.pay.model.PayOrder;
@@ -29,10 +30,10 @@ import me.flyray.pay.model.PaySerial;
 * @date：2017年4月30日 上午10:43:54 
 * @description：支付逻辑处理  
 */
-@Service("paymentHandleService")
-public class PaymentHandleServiceImpl implements PaymentHandleService{
+@Service("paymentHandlerService")
+public class PaymentHandlerServiceImpl implements PaymentHandlerService{
 
-	private static final Logger logger = LoggerFactory.getLogger(PaymentHandleServiceImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(PaymentHandlerServiceImpl.class);
 	
 	@Autowired
 	private PayOrderService payOrderService;
@@ -49,7 +50,7 @@ public class PaymentHandleServiceImpl implements PaymentHandleService{
 	 * 3、创建支付流水
 	 */
 	@Override
-	public PaymentHandleResponse pay(PaymentHandleRequest request) {
+	public PayOrderResponse pay(PayOrderRequest request) {
 		
 		logger.info("获取支付通道对象 start");
 		PayChannel payChannel = payRouteService.getRoute(request.getBankCode(), request.getPayMethod(), request.getMerchantNo());
@@ -85,7 +86,7 @@ public class PaymentHandleServiceImpl implements PaymentHandleService{
 		paySerialService.insert(paySerial);
 		logger.info("支付请求创建订单 end");
 		
-		PaymentHandleResponse response = new PaymentHandleResponse();
+		PayOrderResponse response = new PayOrderResponse();
 		Map<String,Object> retMap = getPayObject(payOrder, payChannel, paySerial, null);
 		return response;
 	}
@@ -129,6 +130,16 @@ public class PaymentHandleServiceImpl implements PaymentHandleService{
         
         return payObjectService.pay(request);
         
+	}
+
+
+	@Override
+	public CreateOrderResponse createOrder(CreateOrderRequst requst) {
+		PayOrder payOrder = new PayOrder();
+		payOrder.setPayOrderNo("");
+		payOrderService.save(payOrder);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

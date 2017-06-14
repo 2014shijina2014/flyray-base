@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 
 import me.flyray.pay.api.PayOrderHandleService;
 import me.flyray.pay.api.PayOrderService;
-import me.flyray.pay.dto.PayOrderHandleRequest;
-import me.flyray.pay.dto.PayOrderHandleResponse;
+import me.flyray.pay.dto.PayOrderRequest;
+import me.flyray.pay.dto.PayOrderResponse;
 import me.flyray.pay.model.PayOrder;
 
 /** 
@@ -22,11 +22,11 @@ public class PayOrderHandleServiceImpl implements PayOrderHandleService{
 	private PayOrderService payOrderService;
 	
 	@Override
-	public PayOrderHandleResponse createPayOrder(PayOrderHandleRequest request) {
+	public PayOrderResponse createPayOrder(PayOrderRequest request) {
 		
 		PayOrder payOrder = new PayOrder();
 		payOrder.setMerchantNo("");
-		payOrderService.insert(payOrder);
+		payOrderService.save(payOrder);
 		
 		return null;
 	}

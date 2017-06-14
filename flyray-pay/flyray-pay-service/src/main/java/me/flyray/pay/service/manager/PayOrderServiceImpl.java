@@ -21,7 +21,7 @@ public class PayOrderServiceImpl extends AbstractBaseService<PayOrder> implement
 	private PayOrderDao payOrderDao;
 
 	@Override
-	public void insert(PayOrder payOrder) {
+	public void save(PayOrder payOrder) {
 		payOrderDao.save(payOrder);
 	}
 

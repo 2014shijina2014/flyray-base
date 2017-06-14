@@ -6,6 +6,6 @@ package me.flyray.pay.dto;
 * @description：支付订单相应
 */
 
-public class PayOrderHandleResponse {
+public class PayOrderResponse {
 
 }

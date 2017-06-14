@@ -26,9 +26,13 @@
 
 	<!-- 在dubbo的配置文件中指定服务启动的绑定Ip dubbo.protocol.host 与dns有关-->
     <dubbo:protocol host="${dubbo.protocol.host}" name="dubbo" port="${pay.dubbo.port}"/>
-
+	<!-- 支付通道配置 -->
 	<dubbo:service interface="me.flyray.pay.api.PayChannelConfigService" ref="payChannelConfigService"  protocol="dubbo" timeout="1200000"/>
-	
+	<!-- 支付通道 -->
 	<dubbo:service interface="me.flyray.pay.api.PayChannelService" ref="payChannelService"  protocol="dubbo" timeout="1200000"/>
-
+	<!-- 支付处理 -->
+	<dubbo:service interface="me.flyray.pay.api.PaymentHandlerService" ref="paymentHandlerService"  protocol="dubbo" timeout="1200000"/>
+	<!-- 退款处理 -->
+	<dubbo:service interface="me.flyray.pay.api.RefundHandlerService" ref="refundHandlerService"  protocol="dubbo" timeout="1200000"/>
+	
 </beans>

@@ -6,6 +6,6 @@ package me.flyray.pay.dto;
 * @description：类说明 
 */
 
-public class RefundHandleResponse {
+public class RefundResponse {
 
 }

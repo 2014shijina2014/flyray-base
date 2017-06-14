@@ -1,6 +1,7 @@
 package me.flyray.crm.api;
 
 import me.flyray.common.service.BaseService;
+import me.flyray.crm.model.CustomerBase;
 
 /** 
 * @author: bolei
@@ -10,5 +11,5 @@ import me.flyray.common.service.BaseService;
 
 public interface CustomerBaseService extends BaseService{
 
-	
+	void save(CustomerBase customerBase);
 }

@@ -1,6 +1,7 @@
 package me.flyray.crm.api;
 
 import me.flyray.common.service.BaseService;
+import me.flyray.crm.model.CustomerAuth;
 
 /** 
 * @author: bolei
@@ -9,5 +10,7 @@ import me.flyray.common.service.BaseService;
 */
 
 public interface CustomerAuthService extends BaseService{
+
+	void save(CustomerAuth customerAuth);
 	
 }

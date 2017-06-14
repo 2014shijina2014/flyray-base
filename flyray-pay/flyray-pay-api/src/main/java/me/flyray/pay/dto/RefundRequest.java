@@ -6,7 +6,7 @@ package me.flyray.pay.dto;
 * @description：退款请求
 */
 
-public class RefundHandleRequest {
+public class RefundRequest {
 
 	private String merchantNo;
 	

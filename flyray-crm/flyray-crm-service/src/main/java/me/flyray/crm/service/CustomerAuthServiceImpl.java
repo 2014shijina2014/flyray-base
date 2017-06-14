@@ -24,6 +24,11 @@ public class CustomerAuthServiceImpl extends AbstractBaseService<CustomerAuth> i
 
 	@Autowired
 	private CustomerAuthDao customerAuthDao;
+
+	@Override
+	public void save(CustomerAuth customerAuth) {
+		customerAuthDao.save(customerAuth);
+	}
 	
 	
 }

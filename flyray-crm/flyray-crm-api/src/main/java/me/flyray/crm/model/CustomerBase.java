@@ -41,6 +41,11 @@ public class CustomerBase{
 	private String sex;
 	
 	/**
+	 * 客户身份证号
+	 */
+	private String identityCard;
+	
+	/**
 	 * 客户住址
 	 */
 	private String address;
@@ -117,6 +122,14 @@ public class CustomerBase{
 
 	public void setSex(String sex) {
 		this.sex = sex;
+	}
+	
+	public String getIdentityCard() {
+		return identityCard;
+	}
+
+	public void setIdentityCard(String identityCard) {
+		this.identityCard = identityCard;
 	}
 
 	public String getAddress() {

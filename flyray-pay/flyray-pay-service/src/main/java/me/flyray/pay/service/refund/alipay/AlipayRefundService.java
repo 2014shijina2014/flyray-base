@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 
 import me.flyray.common.exception.BusinessException;
 import me.flyray.pay.api.PayChannelConfigService;
-import me.flyray.pay.api.RefundHandleService;
-import me.flyray.pay.dto.RefundHandleRequest;
-import me.flyray.pay.dto.RefundHandleResponse;
+import me.flyray.pay.api.RefundHandlerService;
+import me.flyray.pay.dto.RefundRequest;
+import me.flyray.pay.dto.RefundResponse;
 import me.flyray.pay.model.PayChannelConfig;
 import me.flyray.pay.service.pay.alipay.util.AliPayConfig;
 import me.flyray.pay.service.pay.alipay.util.AlipayConfigDecorator;
@@ -24,7 +24,7 @@ import me.flyray.pay.service.pay.alipay.util.AlipaySubmit;
 */
 
 @Service("alipayRefundService")
-public class AlipayRefundService implements RefundHandleService{
+public class AlipayRefundService implements RefundHandlerService{
 	
 	@Autowired
     private AliPayConfig aliPayConfig;
@@ -36,7 +36,7 @@ public class AlipayRefundService implements RefundHandleService{
     private String url;
 
 	@Override
-	public RefundHandleResponse refund(RefundHandleRequest request) {
+	public RefundResponse refund(RefundRequest request) {
 		String notifyUrl = aliPayConfig.getBackCallbackUrl() + "alipayRefundCallback.api";
         
         PayChannelConfig channelConfig = payChannelConfigService.getPayChannelConfig(request.getMerchantNo(), request.getPayChannelNo());
@@ -58,11 +58,11 @@ public class AlipayRefundService implements RefundHandleService{
         
         sParaTemp.put("detail_data", detailData);
         String sHtmlText = AlipaySubmit.buildRequest(sParaTemp,"get","确认",alipayConfigDecorator);
-        RefundHandleResponse refundResponse = new RefundHandleResponse();
+        RefundResponse refundResponse = new RefundResponse();
         return refundResponse;
 	}
 	
-	private String getDetailData(RefundHandleRequest refundRequest){
+	private String getDetailData(RefundRequest refundRequest){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("^");
         stringBuilder.append("^");

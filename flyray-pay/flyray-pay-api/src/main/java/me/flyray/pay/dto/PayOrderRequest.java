@@ -2,35 +2,46 @@ package me.flyray.pay.dto;
 
 /** 
 * @author: bolei
-* @date：2017年2月23日 下午12:29:35 
-* @description：支付请求对象
+* @date：2017年4月30日 下午1:22:10 
+* @description：支付订单请求
 */
 
-public class PaymentHandleRequest {
+public class PayOrderRequest {
 
 	/**
+
 	 * 支付通道编号
+
 	 */
 	private String payChannelNo;
 	
 	/**
+
 	 * 银行编号
+
 	 */
 	private String bankCode;
 	
 	/**
+
 	 * 支付方式
+
 	 */
 	private String payMethod;
 	
 	/**
+
 	 * 商户号
+
 	 */
 	private String merchantNo;
 	
 	/**
+
 	 * 支付订单号
+
 	 * @return
+
 	 */
 	private String payOrderNo;
 	
@@ -73,5 +84,4 @@ public class PaymentHandleRequest {
 	public void setPayOrderNo(String payOrderNo) {
 		this.payOrderNo = payOrderNo;
 	}
-	
 }

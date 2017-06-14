@@ -1,7 +1,7 @@
 package me.flyray.pay.api;
 
-import me.flyray.pay.dto.PayOrderHandleRequest;
-import me.flyray.pay.dto.PayOrderHandleResponse;
+import me.flyray.pay.dto.PayOrderRequest;
+import me.flyray.pay.dto.PayOrderResponse;
 
 /** 
 * @author: bolei
@@ -14,5 +14,5 @@ public interface PayOrderHandleService {
 	/**
 	 * 创建支付订单
 	 */
-	public PayOrderHandleResponse createPayOrder(PayOrderHandleRequest request);
+	public PayOrderResponse createPayOrder(PayOrderRequest request);
 }

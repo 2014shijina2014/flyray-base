@@ -24,5 +24,10 @@ public class CustomerBaseServiceImpl extends AbstractBaseService<CustomerBase> i
 	@Autowired
 	private CustomerBaseDao customerBaseDao;
 
+	@Override
+	public void save(CustomerBase customerBase) {
+		customerBaseDao.save(customerBase);
+	}
+
 
 }

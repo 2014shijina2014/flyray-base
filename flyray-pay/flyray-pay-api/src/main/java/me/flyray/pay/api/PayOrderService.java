@@ -11,8 +11,8 @@ import me.flyray.pay.model.PayOrder;
 
 public interface PayOrderService extends BaseService{
 
-	void insert(PayOrder payOrder);
-
 	PayOrder queryByPayOrder(PayOrder payOrder);
+
+	void save(PayOrder payOrder);
 
 }
