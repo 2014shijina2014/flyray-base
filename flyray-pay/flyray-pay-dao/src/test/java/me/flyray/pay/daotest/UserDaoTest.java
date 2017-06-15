@@ -2,7 +2,7 @@ package me.flyray.pay.daotest;
 
 import static org.junit.Assert.assertNotNull;
 
-import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,8 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import me.flyray.pay.dao.UserDao;
-import me.flyray.pay.model.User;
+import me.flyray.pay.dao.PayChannelConfigDao;
 
 
 @RunWith(SpringJUnit4ClassRunner.class) 
@@ -21,7 +20,7 @@ import me.flyray.pay.model.User;
 public class UserDaoTest {
 	
 	@Autowired
-	private UserDao userDao;
+	private PayChannelConfigDao payChannelConfigDao;
 	
 /*	@Before
 	public void setUp() {
@@ -30,7 +29,7 @@ public class UserDaoTest {
 	
 	@Test
 	public void testQueryUser() {
-		List<User> users = userDao.queryUser();
+		Map<String, Object> users = payChannelConfigDao.queryById(Long.valueOf(1));
 		assertNotNull(users);
 	}
 

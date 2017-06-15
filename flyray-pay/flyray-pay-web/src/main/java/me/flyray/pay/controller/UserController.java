@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import me.flyray.pay.api.UserService;
-import me.flyray.pay.model.User;
+import me.flyray.pay.model.PayChannel;
 import me.flyray.pay.service.manager.PayChannelServiceImpl;
 
 
@@ -20,14 +19,12 @@ import me.flyray.pay.service.manager.PayChannelServiceImpl;
 public class UserController {
 	
 	@Autowired
-	private UserService userService;
-	@Autowired
 	private PayChannelServiceImpl payChannelServiceImpl;
 	
 	@ResponseBody
 	@RequestMapping(value="/displayAllUser", method = RequestMethod.GET)
-	public HashMap<String, List<User>> displayAllUser() {
-		HashMap<String, List<User>> map = new HashMap<String, List<User>>();
+	public HashMap<String, List<PayChannel>> displayAllUser() {
+		HashMap<String, List<PayChannel>> map = new HashMap<String, List<PayChannel>>();
 		//map.put("users", userService.displayAllUser());
 		Map<String, Object> map1 = new HashMap<>();
 		map1.put("payChannelNo", "payChannelNo");
