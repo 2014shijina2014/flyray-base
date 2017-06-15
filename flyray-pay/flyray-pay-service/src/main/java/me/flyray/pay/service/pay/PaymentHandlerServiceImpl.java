@@ -108,14 +108,14 @@ public class PaymentHandlerServiceImpl implements PaymentHandlerService{
             throw new BusinessException("查询支付通道接口为null");
         }
         
-        logger.info("查询支付通道接口,支付接口:{}",payChannelInterface.getPayServiceName());
+        logger.info("查询支付通道接口,支付接口:{}",payChannelInterface.getServiceName());
         
-        if(!(SpringContextHolder.getBean(payChannelInterface.getPayServiceName()) instanceof PayObjectService)){
+        if(!(SpringContextHolder.getBean(payChannelInterface.getServiceName()) instanceof PayObjectService)){
             logger.error("查询支付通道接口未实现PayObjectService,支付通道编号:{}",payChannel.getPayChannelNo());
             throw new BusinessException("查询支付通道接口未实现PayObjectService");
         }
         
-        PayObjectService<OnlinePaymentRequest> payObjectService =  SpringContextHolder.getBean(payChannelInterface.getPayServiceName());
+        PayObjectService<OnlinePaymentRequest> payObjectService =  SpringContextHolder.getBean(payChannelInterface.getServiceName());
         
         OnlinePaymentRequest request = new OnlinePaymentRequest();
         
