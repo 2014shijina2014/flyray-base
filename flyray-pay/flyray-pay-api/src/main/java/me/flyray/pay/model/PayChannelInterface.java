@@ -19,14 +19,14 @@ public class PayChannelInterface {
 	private String payChannelNo;
 	
 	/**
-	 * 支付接口名称
+	 * 交易类型 支付 退款 支付查询 退款查询
 	 */
-	private String payServiceName;
+	private String tradeType;
 	
 	/**
-	 * 退款接口名称
+	 * 接口名称
 	 */
-	private String RefundServiceName;
+	private String serviceName;
 
 	public Long getId() {
 		return id;
@@ -44,20 +44,20 @@ public class PayChannelInterface {
 		this.payChannelNo = payChannelNo;
 	}
 
-	public String getPayServiceName() {
-		return payServiceName;
+	public String getTradeType() {
+		return tradeType;
 	}
 
-	public void setPayServiceName(String payServiceName) {
-		this.payServiceName = payServiceName;
+	public void setTradeType(String tradeType) {
+		this.tradeType = tradeType;
 	}
 
-	public String getRefundServiceName() {
-		return RefundServiceName;
+	public String getServiceName() {
+		return serviceName;
 	}
 
-	public void setRefundServiceName(String refundServiceName) {
-		RefundServiceName = refundServiceName;
+	public void setServiceName(String serviceName) {
+		this.serviceName = serviceName;
 	}
-	
+
 }
