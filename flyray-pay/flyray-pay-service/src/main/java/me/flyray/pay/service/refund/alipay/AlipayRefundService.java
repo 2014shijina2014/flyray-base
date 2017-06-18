@@ -24,7 +24,7 @@ import me.flyray.pay.service.pay.alipay.util.AlipaySubmit;
 */
 
 @Service("alipayRefundService")
-public class AlipayRefundService implements RefundHandlerService{
+public class AlipayRefundService{
 	
 	@Autowired
     private AliPayConfig aliPayConfig;
@@ -35,7 +35,6 @@ public class AlipayRefundService implements RefundHandlerService{
     @Value("${ali.refund.no.pwd.url}")
     private String url;
 
-	@Override
 	public RefundResponse refund(RefundRequest request) {
 		String notifyUrl = aliPayConfig.getBackCallbackUrl() + "alipayRefundCallback.api";
         

@@ -53,7 +53,7 @@ import okhttp3.Response;
 */
 
 @Service("wechatRefundService")
-public class WechatRefundService implements RefundHandlerService{
+public class WechatRefundService{
 
 	private static final Logger logger = LoggerFactory.getLogger(WechatRefundService.class);
 	
@@ -64,7 +64,6 @@ public class WechatRefundService implements RefundHandlerService{
     @Autowired
     private WechatPayConfig wechatPayConfig;
 	
-	@Override
 	public RefundResponse refund(RefundRequest request) {
 		PayChannelConfig channelConfig = payChannelConfigService.getPayChannelConfig(request.getMerchantNo(),request.getPayChannelNo());
         if (channelConfig == null) {

@@ -12,5 +12,10 @@
     <dubbo:reference id="payChannelInterfaceService" interface="me.flyray.pay.api.PayChannelInterfaceService"/>
     <!-- 支付通道 -->
     <dubbo:reference id="payChannelService" interface="me.flyray.pay.api.PayChannelService"/>
+    <!-- 支付处理 -->
+    <dubbo:reference id="paymentHandlerService" interface="me.flyray.pay.api.PaymentHandlerService"/>
+    <!-- 退款处理 -->
+    <dubbo:reference id="refundHandlerService" interface="me.flyray.pay.api.RefundHandlerService"/>
+    
 
 </beans>
