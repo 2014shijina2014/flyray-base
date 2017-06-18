@@ -37,6 +37,6 @@
 	
 	<dubbo:service interface="me.flyray.crm.api.MerchantBaseService" ref="merchantBaseService"  protocol="dubbo" timeout="1200000"/>
 
-	<dubbo:service interface="me.flyray.cms.api.WeixinCommonService" ref="weixinCommonService"  protocol="dubbo" timeout="1200000"/>
+	<dubbo:service interface="me.flyray.crm.api.WeixinCommonService" ref="weixinCommonService"  protocol="dubbo" timeout="1200000"/>
 	
 </beans>
