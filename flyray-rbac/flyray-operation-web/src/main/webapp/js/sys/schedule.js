@@ -123,6 +123,7 @@ var vm = new Vue({
 				$.ajax({
 					type: "POST",
 				    url: "../sys/schedule/pause",
+				    contentType: "application/json",
 				    data: JSON.stringify(jobIds),
 				    success: function(r){
 						if(r.code == 0){

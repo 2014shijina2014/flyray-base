@@ -134,9 +134,11 @@ var vm = new Vue({
 		},
 		saveOrUpdate: function (event) {
 			var url = vm.menu.menuId == null ? "../sys/menu/save" : "../sys/menu/update";
+			alert(JSON.stringify(vm.menu));
 			$.ajax({
 				type: "POST",
 			    url: url,
+			    contentType: "application/json",
 			    data: JSON.stringify(vm.menu),
 			    success: function(r){
 			    	if(r.code === 0){
