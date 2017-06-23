@@ -372,6 +372,19 @@ CREATE TABLE `sys_user_role` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户与角色对应关系';
 
+DROP TABLE IF EXISTS `sys_dict`;
+
+CREATE TABLE `sys_dict` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `sort_no` int(11) DEFAULT NULL COMMENT '排序编号',
+  `parent_id` int(11) DEFAULT NULL COMMENT '父级字典',
+  `dict_name` varchar(255) DEFAULT NULL COMMENT '名称',
+  `dict_type` varchar(255) DEFAULT NULL COMMENT '类型',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统字典表';
+
+
+
 /*Data for the table `sys_user_role` */
 
 /*Table structure for table `tb_token` */

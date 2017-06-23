@@ -15,8 +15,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 /** 
 * @author: bolei
-* @date：Jun 22, 2017 8:31:58 AM 
-* @description：类描述
+* @date：Jun 22, 2017 8:31:58 AM
+* @description：用装饰模式来修改请求中的参数
 */
 
 public class ModifyParametersFilter extends OncePerRequestFilter{
@@ -34,7 +34,8 @@ public class ModifyParametersFilter extends OncePerRequestFilter{
     private class ModifyParametersWrapper extends HttpServletRequestWrapper {
         private Map<String, String[]> parameterMap; // 所有参数的Map集合
  
-        public ModifyParametersWrapper(HttpServletRequest request) {
+        @SuppressWarnings("unchecked")
+		public ModifyParametersWrapper(HttpServletRequest request) {
             super(request);
             parameterMap = request.getParameterMap();
         }
