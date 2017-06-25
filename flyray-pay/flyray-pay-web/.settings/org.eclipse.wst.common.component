@@ -13,13 +13,13 @@
         <dependent-module archiveName="flyray-pay-api-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-pay-api/flyray-pay-api">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="flyray-common-config-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-common-config/flyray-common-config">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="flyray-pay-util-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-pay-util/flyray-pay-util">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="flyray-common-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-common/flyray-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="flyray-common-config-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-common-config/flyray-common-config">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/flyray-pay-web/target/classes"/>
