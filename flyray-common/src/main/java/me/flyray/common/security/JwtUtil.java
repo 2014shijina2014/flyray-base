@@ -181,6 +181,10 @@ public class JwtUtil {
 	}
 
 	public static void main(String[] args) throws Exception {
+		
+		//生成签名算法Key文件
+		//generateKey("/home/bolei/software/jwt/SignatureAlgorithmKey.txt");
+		
 		// TODO Auto-generated method stub
 	    //组织自定义载荷
 	    List<JwtClaimItems> jwtClaimItems = new ArrayList<JwtClaimItems>();
@@ -204,7 +208,7 @@ public class JwtUtil {
 	    		  )
 	    	);	    
 	    jwtClaimItems.add(jwtClaimItem);
-	    Key key=JwtUtil.getKey("E://tmp/SignatureAlgorithmKey.txt");
+	    Key key=JwtUtil.getKey("/home/bolei/software/jwt/SignatureAlgorithmKey.txt");
 	    //int expireMins=30 * 24 * 60;// 30天的有效日期 分钟
 	    int expireMins=24 * 60;// 分钟数
 
@@ -229,19 +233,13 @@ public class JwtUtil {
 				claims.get("PL4"));
 	   String PL0= (String)claims.get("PL0"); //_userId
 	   if (PL0 != null) 
-	  	   logger.info("==agKey:{} RealValue:{} ThreeDesValue:{}",
-	  			 "PL0",ThreeDes.from3DESAndBase64(
-		    	    		PL0,
-				    		  HexStrFromToStr.encode("床老前顽明童月光")
-				    		  ),PL0);
+	  	   logger.info("==agKey:{} RealValue:{} ThreeDesValue:{}","PL0",
+	  			   ThreeDes.from3DESAndBase64(PL0, HexStrFromToStr.encode("床老前顽明童月光")),PL0);
 	   
 	   String PL1= (String)claims.get("PL1"); //_userName
 	    
-	   if (PL1 != null) 
-	  	   logger.info("==agKey:{} RealValue:{} ThreeDesValue:{}",
-	  			 "PL1",ThreeDes.from3DESAndBase64(
-		    	    		PL1,
-				    		  HexStrFromToStr.encode("床老前顽明童月光")
-				    		  ),PL1);
+	   if (PL1 != null)
+	  	   logger.info("==agKey:{} RealValue:{} ThreeDesValue:{}", "PL1",
+	  			   ThreeDes.from3DESAndBase64(PL1,HexStrFromToStr.encode("床老前顽明童月光")),PL1);
 	}
 }
