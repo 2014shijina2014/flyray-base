@@ -22,7 +22,7 @@ public interface PaymentHandlerService {
 	
 	/**
 	 *  支付统一下单
-	 *  创建支付订单s
+	 *  创建支付订单
 	 */
 	public CreateOrderResponse createOrder(CreateOrderRequst requst);
 }

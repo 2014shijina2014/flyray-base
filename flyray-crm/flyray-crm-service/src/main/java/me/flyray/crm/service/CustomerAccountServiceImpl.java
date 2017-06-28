@@ -1,5 +1,7 @@
 package me.flyray.crm.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,6 +42,24 @@ public class CustomerAccountServiceImpl implements CustomerAccountService{
 		customerAuth.setCredential("test");
 		customerAuth.setCustomerNo("343");
 		customerAuthDao.save(customerAuth);
+	}
+
+	@Override
+	public void deposit(CustomerAccount customerAccount) {
+		// TODO Auto-generated method stub
+		//记账明细
+	}
+
+	@Override
+	public void withdraw(CustomerAccount customerAccount) {
+		// TODO Auto-generated method stub
+		//记账明细
+	}
+
+	@Override
+	public void transfer(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		//记账明细
 	}
 
 }

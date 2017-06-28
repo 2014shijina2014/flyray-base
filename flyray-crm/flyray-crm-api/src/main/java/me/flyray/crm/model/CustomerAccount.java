@@ -20,7 +20,7 @@ public class CustomerAccount {
 	private String custAccountNo;
 	
 	/**
-	 *  账户类型
+	 *  账户类型 数据库字典表维护
 	 */
 	private String accountType;
 	
@@ -33,6 +33,11 @@ public class CustomerAccount {
 	 * 冻结值
 	 */
 	private String freezeValue;
+	
+	/**
+	 * 账户状态
+	 */
+	private String status;
 
 	public String getCustomerNo() {
 		return customerNo;
@@ -72,6 +77,14 @@ public class CustomerAccount {
 
 	public void setFreezeValue(String freezeValue) {
 		this.freezeValue = freezeValue;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 }
