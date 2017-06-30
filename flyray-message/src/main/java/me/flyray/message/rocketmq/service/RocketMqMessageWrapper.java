@@ -17,7 +17,10 @@ public class RocketMqMessageWrapper implements MessageListenerConcurrently {
 
     @Autowired
     private RocketMqMessageListener rocketMqMessageListener;
-
+    
+    /**
+     * 返回消费结果
+     */
     @Override
     public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> list, ConsumeConcurrentlyContext consumeConcurrentlyContext) {
         if (rocketMqMessageListener.onMessage(list, consumeConcurrentlyContext)) {

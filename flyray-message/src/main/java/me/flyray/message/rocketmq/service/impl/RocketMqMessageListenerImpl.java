@@ -22,7 +22,9 @@ public class RocketMqMessageListenerImpl implements RocketMqMessageListener {
 
     @Override
     public boolean onMessage(List<MessageExt> messages, ConsumeConcurrentlyContext Context) {
+    	
         messages.forEach(messageExt -> logger.info(StringUtils.toEncodedString(messageExt.getBody(), Charset.defaultCharset())));
-        return true;
+        //返回false则意味着消息消费失败 消息会一直通知
+        return false;
     }
 }

@@ -36,6 +36,7 @@ public class RocketMqController {
     public String sendMessage(String msg) throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
         logger.info("send msg:{}", msg);
         Message message = new Message(config.getTopic(), config.getTag(), msg.getBytes());
+        message.setDelayTimeLevel(3);
         SendResult result = producer.getDefaultMQProducer().send(message);
         if (result.getSendStatus() == SendStatus.SEND_OK) {
             return SUCCESS;

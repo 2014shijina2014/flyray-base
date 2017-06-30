@@ -46,7 +46,7 @@ public class Consumer {
         //设置为集群消费(区别于广播消费)
         defaultMQPushConsumer.setMessageModel(MessageModel.CLUSTERING);
 
-        //注册监听
+        //注册监听 保证消费成功
         defaultMQPushConsumer.registerMessageListener(rocketMqMessageWrapper);
 
         //关闭VIP通道，避免接收不了消息
