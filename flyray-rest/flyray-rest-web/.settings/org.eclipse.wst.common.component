@@ -25,15 +25,6 @@
         <dependent-module archiveName="flyray-common-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-common/flyray-common">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="flyray-pay-api-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-pay-api/flyray-pay-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="flyray-erp-api-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-erp-api/flyray-erp-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="flyray-cms-api-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-cms-api/flyray-cms-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="java-output-path" value="/flyray-rest-web/target/classes"/>
         <property name="context-root" value="flyray-rest-web"/>
     </wb-module>

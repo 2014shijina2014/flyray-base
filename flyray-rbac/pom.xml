@@ -12,7 +12,6 @@
 		<module>flyray-rbac-schedule</module> <!-- 定时任务模块 -->
 		<module>flyray-rbac-gen</module> <!-- 代码生成器模块 -->
 		<module>flyray-rbac-api</module> <!-- API模块 -->
-		<module>flyray-rbac-service</module> <!-- API模块实现 -->
 		<module>flyray-open-web</module> <!-- 开发平台模块 -->
 		<module>flyray-operation-web</module> <!-- 运营平台模块 -->
 		<module>flyray-merchant-web</module> <!-- 商户平台模块 -->

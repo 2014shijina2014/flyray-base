@@ -43,6 +43,7 @@ var vm = new Vue({
 		getMenuList: function (event) {
 			$.getJSON("sys/menu/user?_"+$.now(), function(r){
 				vm.menuList = r.menuList;
+				window.permissions = r.permissions;
 			});
 		},
 		getUser: function(){

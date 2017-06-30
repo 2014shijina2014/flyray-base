@@ -7,6 +7,6 @@
 	
 	<!-- flyray-rest作为 crm、erp、pay的唯一消费者 -->
 	<!-- 活动信息 -->
-    <dubbo:reference id="activityService" interface="me.flyray.cms.api.ActivityService"/>
-    
+    <!-- <dubbo:reference id="activityService" interface="me.flyray.cms.api.ActivityService"/>
+     -->
 </beans>
