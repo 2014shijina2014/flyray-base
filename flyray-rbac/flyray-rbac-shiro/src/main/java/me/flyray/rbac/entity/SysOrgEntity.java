@@ -26,7 +26,7 @@ public class SysOrgEntity {
 	/**
 	 * 所属机构部门
 	 */
-	private String parentId;
+	private Long parentId;
 	
 	/**
 	 * 创建人user_id
@@ -53,6 +53,11 @@ public class SysOrgEntity {
 	 * 机构部门排序号
 	 */
 	private Integer orgSort;
+	
+	/**
+	 * ztree属性
+	 */
+	private Boolean open;
 
 	public Long getId() {
 		return id;
@@ -78,11 +83,11 @@ public class SysOrgEntity {
 		this.orgName = orgName;
 	}
 
-	public String getParentId() {
+	public Long getParentId() {
 		return parentId;
 	}
 
-	public void setParentId(String parentId) {
+	public void setParentId(Long parentId) {
 		this.parentId = parentId;
 	}
 
@@ -125,5 +130,14 @@ public class SysOrgEntity {
 	public void setOrgSort(Integer orgSort) {
 		this.orgSort = orgSort;
 	}
+
+	public Boolean getOpen() {
+		return open;
+	}
+
+	public void setOpen(Boolean open) {
+		this.open = open;
+	}
+	
 	
 }

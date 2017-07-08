@@ -7,15 +7,14 @@
 	
 	<!-- flyray-rest作为 crm、erp、pay的唯一消费者 -->
 	<!-- 支付通道配置 -->
-    <!-- <dubbo:reference id="payChannelConfigService" interface="me.flyray.pay.api.PayChannelConfigService"/>
-    支付通道接口
+    <dubbo:reference id="payChannelConfigService" interface="me.flyray.pay.api.PayChannelConfigService"/>
+    <!-- 支付通道接口 -->
     <dubbo:reference id="payChannelInterfaceService" interface="me.flyray.pay.api.PayChannelInterfaceService"/>
-    支付通道
+    <!-- 支付通道 -->
     <dubbo:reference id="payChannelService" interface="me.flyray.pay.api.PayChannelService"/>
-    支付处理
+    <!-- 支付处理 -->
     <dubbo:reference id="paymentHandlerService" interface="me.flyray.pay.api.PaymentHandlerService"/>
-    退款处理
+    <!-- 退款处理 -->
     <dubbo:reference id="refundHandlerService" interface="me.flyray.pay.api.RefundHandlerService"/>
-     -->
 
 </beans>

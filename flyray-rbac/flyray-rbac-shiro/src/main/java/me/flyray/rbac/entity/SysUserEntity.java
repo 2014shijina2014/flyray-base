@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -68,6 +70,17 @@ public class SysUserEntity implements Serializable {
 	 * 创建时间
 	 */
 	private Date createTime;
+	
+	/**
+	 * 组织机构ID
+	 */
+	@NotNull(message="组织机构不能为空", groups = {AddGroup.class, UpdateGroup.class})
+	private Long orgId;
+
+	/**
+	 * 组织机构名称
+	 */
+	private String orgName;
 
 	/**
 	 * 设置：
@@ -179,6 +192,22 @@ public class SysUserEntity implements Serializable {
 	 */
 	public Date getCreateTime() {
 		return createTime;
+	}
+	
+	public Long getOrgId() {
+		return orgId;
+	}
+
+	public void setOrgId(Long orgId) {
+		this.orgId = orgId;
+	}
+
+	public String getOrgName() {
+		return orgName;
+	}
+
+	public void setOrgName(String orgName) {
+		this.orgName = orgName;
 	}
 
 	public List<Long> getRoleIdList() {

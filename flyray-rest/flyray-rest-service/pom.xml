@@ -14,12 +14,6 @@
 
 	<!-- 依赖于mvn-dao模块 -->
 	<dependencies>
-	
-		<!-- <dependency>
-			<groupId>me.flyray</groupId>
-			<artifactId>flyray-rest-api</artifactId>
-			<version>${project.version}</version>
-		</dependency> -->
 		
 		<dependency>
 			<groupId>me.flyray</groupId>
@@ -33,13 +27,13 @@
 			<version>${project.version}</version>
 		</dependency>
 		
-		<!-- <dependency>
+		<dependency>
 			<groupId>me.flyray</groupId>
 			<artifactId>flyray-pay-api</artifactId>
 			<version>${project.version}</version>
-		</dependency> -->
+		</dependency>
 		
-		<!-- <dependency>
+		<dependency>
 			<groupId>me.flyray</groupId>
 			<artifactId>flyray-erp-api</artifactId>
 			<version>${project.version}</version>
@@ -49,7 +43,7 @@
 			<groupId>me.flyray</groupId>
 			<artifactId>flyray-cms-api</artifactId>
 			<version>${project.version}</version>
-		</dependency> -->
+		</dependency>
 		
 		<dependency>
 			<groupId>junit</groupId>

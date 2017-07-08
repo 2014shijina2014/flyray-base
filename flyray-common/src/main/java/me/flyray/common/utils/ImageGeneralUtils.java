@@ -232,7 +232,7 @@ public class ImageGeneralUtils {
          );
          
          BufferedImage b = tt.loadImageLocal("/home/bolei/Desktop/flyray333.jpg");  
-         BufferedImage c = tt.loadImageLocal("/home/bolei/Desktop/assets/qrcode_for_gh_da446bd3733c_258.jpg");  
+         BufferedImage c = tt.loadImageLocal("/home/bolei/Desktop/assets/22.jpg");  
        //将多张图片合在一起  
         tt.writeImageLocal("/home/bolei/Desktop/flyray444.jpg", tt.modifyImagetogeter(c, b));  
         System.out.println("success");  
