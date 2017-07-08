@@ -6,9 +6,11 @@ import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import me.flyray.rbac.entity.SysOrgEntity;
 import me.flyray.rbac.service.SysOrgService;
@@ -21,6 +23,8 @@ import me.flyray.rbac.utils.R;
 * @description：组织机构
 */
 
+@RestController
+@RequestMapping("/sys/org")
 public class SysOrgController extends AbstractController {
 
 	@Autowired
@@ -37,9 +41,9 @@ public class SysOrgController extends AbstractController {
 		if(getUserId() != Constant.SUPER_ADMIN){
 			map.put("orgFilter", sysOrgService.getSubOrgIdList(getOrgId()));
 		}
-		List<SysOrgEntity> deptList = sysOrgService.queryList(map);
+		List<SysOrgEntity> orgList = sysOrgService.queryList(map);
 
-		return deptList;
+		return orgList;
 	}
 
 	/**
@@ -51,7 +55,7 @@ public class SysOrgController extends AbstractController {
 		Map<String, Object> map = new HashMap<>();
 		//如果不是超级管理员，则只能查询本部门及子部门数据
 		if(getUserId() != Constant.SUPER_ADMIN){
-			map.put("deptFilter", sysOrgService.getSubOrgIdList(getOrgId()));
+			map.put("orgFilter", sysOrgService.getSubOrgIdList(getOrgId()));
 		}
 		List<SysOrgEntity> orgList = sysOrgService.queryList(map);
 
@@ -59,7 +63,7 @@ public class SysOrgController extends AbstractController {
 		if(getUserId() == Constant.SUPER_ADMIN){
 			SysOrgEntity root = new SysOrgEntity();
 			root.setOrgId(0L);
-			root.setOrgName("一级部门");
+			root.setName("一级部门");
 			root.setParentId(-1L);
 			root.setOpen(true);
 			orgList.add(root);
