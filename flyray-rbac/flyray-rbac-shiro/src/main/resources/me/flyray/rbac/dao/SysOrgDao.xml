@@ -4,21 +4,21 @@
 <mapper namespace="me.flyray.rbac.dao.SysOrgDao">
 
 	<select id="queryObject" resultType="me.flyray.rbac.entity.SysOrgEntity">
-		select * from sys_dept where dept_id = #{value} and del_flag = 0
+		select * from sys_org where org_id = #{value} and status_flag = 0
 	</select>
 
 	<select id="queryList" resultType="me.flyray.rbac.entity.SysOrgEntity">
-		select d.*,(select p.name from sys_dept p where p.dept_id = d.parent_id) as parentName
-		from sys_dept d where d.del_flag = 0
-		<if test="deptFilter != null">
-			and d.dept_id in (${deptFilter})
+		select d.*,(select p.orgName from sys_org p where p.org_id = d.parent_id) as parentName
+		from sys_org d where d.status_flag = 0
+		<if test="orgFilter != null">
+			and d.org_id in (${orgFilter})
 		</if>
         <choose>
             <when test="sidx != null and sidx.trim() != ''">
                 order by d.${sidx} ${order}
             </when>
 			<otherwise>
-                order by d.order_num asc
+                order by d.org_level asc
 			</otherwise>
         </choose>
 		<if test="offset != null and limit != null">
@@ -27,36 +27,50 @@
 	</select>
 	 
 	<insert id="save" parameterType="me.flyray.rbac.entity.SysOrgEntity" useGeneratedKeys="true" keyProperty="orgId">
-		insert into sys_dept
+		insert into sys_org
 		(
 			`parent_id`, 
-			`name`, 
-			`order_num`
+			`org_no`,
+			`org_name`, 
+			`org_level`,
+			`create_by`,
+			`create_time`,
+			`last_update_by`,
+			`last_update_time`
 		)
 		values
 		(
 			#{parentId}, 
-			#{name}, 
-			#{orderNum}
+			`orgNo`,
+			#{orgName}, 
+			#{orgLevel},
+			#{createBy},
+			#{createTime},
+			#{lastUpdateBy},
+			#{lastUpdateTime}
 		)
 	</insert>
 	 
 	<update id="update" parameterType="me.flyray.rbac.entity.SysOrgEntity">
-		update sys_dept 
+		update sys_org 
 		<set>
 			<if test="parentId != null">`parent_id` = #{parentId}, </if>
-			<if test="name != null">`name` = #{name}, </if>
-			<if test="orderNum != null">`order_num` = #{orderNum}</if>
+			<if test="orgName != null">`org_name` = #{orgName}, </if>
+			<if test="orgLevel != null">`org_level` = #{orgLevel}</if>
+			<if test="createBy != null">`create_by` = #{createBy}</if>
+			<if test="createTime != null">`create_time` = #{createTime}</if>
+			<if test="lastUpdateBy != null">`last_update_by` = #{lastUpdateBy}</if>
+			<if test="lastUpdateTime != null">`last_update_time` = #{lastUpdateTime}</if>
 		</set>
-		where dept_id = #{deptId}
+		where org_id = #{orgId}
 	</update>
 	
 	<update id="delete">
-		update sys_dept set del_flag = -1 where dept_id = #{value}
+		update sys_org set status_flag = -1 where org_id = #{value}
 	</update>
 	
 	<select id="queryOrgIdList" resultType="long">
-		select dept_id from sys_dept where parent_id = #{value}
+		select org_id from sys_org where parent_id = #{value}
 	</select>
 
 </mapper>

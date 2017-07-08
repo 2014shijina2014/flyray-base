@@ -1,131 +1,169 @@
-$(function () {
-    $("#jqGrid").jqGrid({
-        url: '../sys/org/list',
-        datatype: "json",
-        colModel: [			
-			{ label: '组织机构ID', name: 'orgId', index: "org_id", width: 45, key: true },
-			{ label: '组织机构编号', name: 'orgNo', width: 75 },
-			{ label: '机构部门名称', name: 'orgName', width: 90 },
-			{ label: '所属机构部门', name: 'parentId', width: 100 },
-			{ label: '创建人', name: 'createBy', width: 80 },
-			{ label: '创建时间', name: 'createTime', width: 80},
-			{ label: '最后修改人', name: 'lastUpdateBy', width: 80},
-			{ label: '最后修改时间', name: 'lastUpdateTime', width: 80},
-			{ label: '机构部门排序号', name: 'orgLevel', width: 80},
-			
-        ],
-		viewrecords: true,
-        height: 385,
-        rowNum: 10,
-		rowList : [10,30,50],
-        rownumbers: true, 
-        rownumWidth: 25, 
-        autowidth:true,
-        multiselect: true,
-        pager: "#jqGridPager",
-        jsonReader : {
-            root: "page.list",
-            page: "page.currPage",
-            total: "page.totalPage",
-            records: "page.totalCount"
+var setting = {
+    data: {
+        simpleData: {
+            enable: true,
+            idKey: "orgId",
+            pIdKey: "parentId",
+            rootPId: -1
         },
-        prmNames : {
-            page:"page", 
-            rows:"limit", 
-            order: "order"
-        },
-        gridComplete:function(){
-        	//隐藏grid底部滚动条
-        	$("#jqGrid").closest(".ui-jqgrid-bdiv").css({ "overflow-x" : "hidden" }); 
+        key: {
+            url:"nourl"
         }
-    });
-});
+    }
+};
+var ztree;
 
 var vm = new Vue({
-	el:'#rrapp',
-	data:{
-		q:{
-			orgName: null
-		},
-		showList: true,
-		title:null,
-		org:{
-			orgName:null,
-			parentId:0,
-		}
-	},
-	methods: {
-		query: function () {
-			vm.reload();
-		},
-		add: function(){
-			vm.showList = false;
-			vm.title = "新增";
-		},
-		update: function () {
-			var orgId = getSelectedRow();
-			if(orgId == null){
-				return ;
-			}
-			
-			vm.showList = false;
-            vm.title = "修改";
-			
-			vm.getOrg(orgId);
-		},
-		del: function () {
-			var orgIds = getSelectedRows();
-			if(orgIds == null){
-				return ;
-			}
-			
-			confirm('确定要删除选中的记录？', function(){
-				$.ajax({
-					type: "POST",
-				    url: "../sys/org/delete",
-				    data: JSON.stringify(orgIds),
-				    success: function(r){
-						if(r.code == 0){
-							alert('操作成功', function(index){
+    el:'#rrapp',
+    data:{
+        showList: true,
+        title: null,
+        org:{
+            parentName:null,
+            parentId:0,
+            orgLevel:0
+        }
+    },
+    methods: {
+        getOrg: function(){
+            //加载部门树
+            $.get(baseURL + "sys/org/select", function(r){
+                ztree = $.fn.zTree.init($("#orgTree"), setting, r.orgList);
+                var node = ztree.getNodeByParam("orgId", vm.org.parentId);
+                ztree.selectNode(node);
+
+                vm.org.parentName = node.name;
+            })
+        },
+        add: function(){
+            vm.showList = false;
+            vm.title = "新增";
+            vm.org = {parentName:null,parentId:0,orgLevel:0};
+            vm.getOrg();
+        },
+        update: function () {
+            var orgId = getOrgId();
+            if(orgId == null){
+                return ;
+            }
+
+            $.get(baseURL + "sys/org/info/"+orgId, function(r){
+                vm.showList = false;
+                vm.title = "修改";
+                vm.org = r.org;
+
+                vm.getOrg();
+            });
+        },
+        del: function () {
+            var orgId = getOrgId();
+            if(orgId == null){
+                return ;
+            }
+
+            confirm('确定要删除选中的记录？', function(){
+                $.ajax({
+                    type: "POST",
+                    url: baseURL + "sys/org/delete",
+                    data: "orgId=" + orgId,
+                    success: function(r){
+                        if(r.code === 0){
+                            alert('操作成功', function(){
                                 vm.reload();
-							});
-						}else{
-							alert(r.msg);
-						}
-					}
-				});
-			});
-		},
-		saveOrUpdate: function (event) {
-			var url = vm.org.orgId == null ? "../sys/org/save" : "../sys/org/update";
-			$.ajax({
-				type: "POST",
-			    url: url,
-			    contentType: "application/json",
-			    data: JSON.stringify(vm.org),
-			    success: function(r){
-			    	if(r.code === 0){
-						alert('操作成功', function(index){
-							vm.reload();
-						});
-					}else{
-						alert(r.msg);
-					}
-				}
-			});
-		},
-		getOrg: function(orgId){
-			$.get("../sys/org/info/"+orgId, function(r){
-				vm.org = r.org;
-			});
-		},
-		reload: function (event) {
-			vm.showList = true;
-			var page = $("#jqGrid").jqGrid('getGridParam','page');
-			$("#jqGrid").jqGrid('setGridParam',{ 
-                postData:{'orgName': vm.q.orgName},
-                page:page
-            }).trigger("reloadGrid");
-		}
-	}
+                            });
+                        }else{
+                            alert(r.msg);
+                        }
+                    }
+                });
+            });
+        },
+        saveOrUpdate: function (event) {
+            var url = vm.org.orgId == null ? "sys/org/save" : "sys/org/update";
+            $.ajax({
+                type: "POST",
+                url: baseURL + url,
+                contentType: "application/json",
+                data: JSON.stringify(vm.org),
+                success: function(r){
+                    if(r.code === 0){
+                        alert('操作成功', function(){
+                            vm.reload();
+                        });
+                    }else{
+                        alert(r.msg);
+                    }
+                }
+            });
+        },
+        orgTree: function(){
+            layer.open({
+                type: 1,
+                offset: '50px',
+                skin: 'layui-layer-molv',
+                title: "选择组织机构",
+                area: ['300px', '450px'],
+                shade: 0,
+                shadeClose: false,
+                content: jQuery("#orgLayer"),
+                btn: ['确定', '取消'],
+                btn1: function (index) {
+                    var node = ztree.getSelectedNodes();
+                    //选择上级部门
+                    vm.org.parentId = node[0].orgId;
+                    vm.org.parentName = node[0].name;
+
+                    layer.close(index);
+                }
+            });
+        },
+        reload: function () {
+            vm.showList = true;
+            Org.table.refresh();
+        }
+    }
+});
+
+
+var Org = {
+    id: "orgTable",
+    table: null,
+    layerIndex: -1
+};
+
+/**
+ * 初始化表格的列
+ */
+Org.initColumn = function () {
+    var columns = [
+        {field: 'selectItem', radio: true},
+        {title: '部门ID', field: 'orgId', visible: false, align: 'center', valign: 'middle', width: '80px'},
+        {title: '部门名称', field: 'orgName', align: 'center', valign: 'middle', sortable: true, width: '180px'},
+        {title: '上级部门', field: 'parentName', align: 'center', valign: 'middle', sortable: true, width: '100px'},
+        {title: '排序号', field: 'orgLevel', align: 'center', valign: 'middle', sortable: true, width: '100px'}]
+    return columns;
+};
+
+
+function getOrgId () {
+    var selected = $('#orgTable').bootstrapTreeTable('getSelections');
+    if (selected.length == 0) {
+        alert("请选择一条记录");
+        return false;
+    } else {
+        return selected[0].id;
+    }
+}
+
+
+$(function () {
+    var colunms = Org.initColumn();
+    var table = new TreeTable(Org.id, baseURL + "sys/org/list", colunms);
+    table.setExpandColumn(2);
+    table.setIdField("orgId");
+    table.setCodeField("orgId");
+    table.setParentCodeField("parentId");
+    table.setExpandAll(false);
+    table.init();
+    Org.table = table;
 });

@@ -58,7 +58,7 @@ public class SysOrgController extends AbstractController {
 		//添加一级部门
 		if(getUserId() == Constant.SUPER_ADMIN){
 			SysOrgEntity root = new SysOrgEntity();
-			root.setId(0L);
+			root.setOrgId(0L);
 			root.setOrgName("一级部门");
 			root.setParentId(-1L);
 			root.setOpen(true);
