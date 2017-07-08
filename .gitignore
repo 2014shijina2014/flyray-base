@@ -11,3 +11,5 @@ target
 .svn
 .svn/
 */.svn
+flyray-common-config/
+./flyray-common-config
