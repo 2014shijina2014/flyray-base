@@ -1,4 +1,4 @@
-package me.flyray.message.rocketmq.controller;
+package me.flyray.message.controller;
 
 import org.apache.rocketmq.client.exception.MQBrokerException;
 import org.apache.rocketmq.client.exception.MQClientException;
