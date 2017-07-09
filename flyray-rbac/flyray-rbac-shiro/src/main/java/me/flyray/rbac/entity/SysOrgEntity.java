@@ -1,5 +1,7 @@
 package me.flyray.rbac.entity;
 
+import java.util.List;
+
 /** 
 * @author: bolei
 * @date：Jun 25, 2017 2:41:26 PM 
@@ -21,7 +23,7 @@ public class SysOrgEntity {
 	/**
 	 * 机构部门名称
 	 */
-	private String orgName;
+	private String name;
 	
 	/**
 	 * 所属机构部门
@@ -54,6 +56,9 @@ public class SysOrgEntity {
 	 */
 	private Integer orgSort;
 	
+	//上级部门名称
+	private String parentName;
+	
 	/**
 	 * ztree属性
 	 */
@@ -63,6 +68,8 @@ public class SysOrgEntity {
 	 * 状态
 	 */
 	private Boolean statusFlag;
+	
+	private List<?> list;
 
 	public Long getOrgId() {
 		return orgId;
@@ -80,12 +87,12 @@ public class SysOrgEntity {
 		this.orgNo = orgNo;
 	}
 
-	public String getOrgName() {
-		return orgName;
+	public String getName() {
+		return name;
 	}
 
-	public void setOrgName(String orgName) {
-		this.orgName = orgName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Long getParentId() {
@@ -151,5 +158,22 @@ public class SysOrgEntity {
 	public void setStatusFlag(Boolean statusFlag) {
 		this.statusFlag = statusFlag;
 	}
+
+	public String getParentName() {
+		return parentName;
+	}
+
+	public void setParentName(String parentName) {
+		this.parentName = parentName;
+	}
+
+	public List<?> getList() {
+		return list;
+	}
+
+	public void setList(List<?> list) {
+		this.list = list;
+	}
+	
 	
 }

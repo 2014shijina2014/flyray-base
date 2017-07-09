@@ -21,7 +21,7 @@ var vm = new Vue({
         org:{
             parentName:null,
             parentId:0,
-            orgLevel:0
+            orgSort:0
         }
     },
     methods: {
@@ -38,7 +38,7 @@ var vm = new Vue({
         add: function(){
             vm.showList = false;
             vm.title = "新增";
-            vm.org = {parentName:null,parentId:0,orgLevel:0};
+            vm.org = {parentName:null,parentId:0,orgSort:0};
             vm.getOrg();
         },
         update: function () {
@@ -140,7 +140,7 @@ Org.initColumn = function () {
         {title: '部门ID', field: 'orgId', visible: false, align: 'center', valign: 'middle', width: '80px'},
         {title: '部门名称', field: 'orgName', align: 'center', valign: 'middle', sortable: true, width: '180px'},
         {title: '上级部门', field: 'parentName', align: 'center', valign: 'middle', sortable: true, width: '100px'},
-        {title: '排序号', field: 'orgLevel', align: 'center', valign: 'middle', sortable: true, width: '100px'}]
+        {title: '排序号', field: 'orgSort', align: 'center', valign: 'middle', sortable: true, width: '100px'}]
     return columns;
 };
 

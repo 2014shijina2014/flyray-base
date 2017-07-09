@@ -15,12 +15,6 @@
 	<!-- 依赖于mvn-dao模块 -->
 	<dependencies>
 	
-		<!-- <dependency>
-			<groupId>me.flyray</groupId>
-			<artifactId>flyray-erp-api</artifactId>
-			<version>${project.version}</version>
-		</dependency> -->
-		
 		<dependency>
 			<groupId>me.flyray</groupId>
 			<artifactId>flyray-erp-dao</artifactId>
