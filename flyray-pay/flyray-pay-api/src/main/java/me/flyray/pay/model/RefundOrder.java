@@ -55,6 +55,11 @@ public class RefundOrder {
 	 * 退款原因
 	 */
 	private String refundReason;
+	
+	/**
+	 * 商户订单号 商户传
+	 */
+	private String outTradeNo;
 
 	public Long getId() {
 		return id;
@@ -126,6 +131,14 @@ public class RefundOrder {
 
 	public void setRefundReason(String refundReason) {
 		this.refundReason = refundReason;
+	}
+
+	public String getOutTradeNo() {
+		return outTradeNo;
+	}
+
+	public void setOutTradeNo(String outTradeNo) {
+		this.outTradeNo = outTradeNo;
 	}
 	
 }

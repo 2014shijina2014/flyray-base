@@ -13,12 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import me.flyray.crm.api.CustomerAuthService;
-import me.flyray.crm.api.CustomerBaseService;
 import me.flyray.crm.api.WeixinCommonService;
-import me.flyray.crm.model.CustomerAuth;
 import me.flyray.crm.model.CustomerBase;
 import me.flyray.rest.util.ResponseHelper;
-import me.flyray.rest.util.UUIDGenerator;
 
 /** 
 * @author: bolei
@@ -35,8 +32,6 @@ public class WxAuthController {
 	private WeixinCommonService weixinCommonService;
 	@Autowired
 	private CustomerAuthService customerAuthService;
-	@Autowired
-	private CustomerBaseService customerBaseService;
 	
 	/**
 	 * 通过code获取用户授权信息
@@ -62,44 +57,13 @@ public class WxAuthController {
 			return ResponseHelper.success(userMap, "01", "调用微信授权失败");
 		}
 		
-		/*wxMpUser.getCity()
-		wxMpUser.getCountry()
-		wxMpUser.getGroupId()
-		wxMpUser.getHeadImgUrl()
-		wxMpUser.getLanguage()
-		wxMpUser.getNickname()
-		wxMpUser.getOpenId()
-		wxMpUser.getProvince()
-		wxMpUser.getRemark()
-		wxMpUser.getSex()
-		wxMpUser.getSubscribe()
-		wxMpUser.getTagIds()
-		wxMpUser.getUnionId()*/
+		/*wxMpUser.getCity() wxMpUser.getCountry()
+		wxMpUser.getGroupId() wxMpUser.getHeadImgUrl() wxMpUser.getLanguage() wxMpUser.getNickname()
+		wxMpUser.getOpenId() wxMpUser.getProvince() wxMpUser.getRemark() wxMpUser.getSex()
+		wxMpUser.getSubscribe() wxMpUser.getTagIds() wxMpUser.getUnionId()*/
 		
-		//保存会员信息
-		String customerNo = UUIDGenerator.getUUID();//商户号crc自校验数据 目的防止伪造造成脏数据
-		CustomerBase customerBase = new CustomerBase();
-		customerBase.setCustomerNo(customerNo);
-		customerBase.setAddress(userMap.get("country")+"-"+userMap.get("province")+"-"+userMap.get("city"));
-		customerBase.setAge((String)userMap.get("country"));
-		customerBase.setAvatar((String)userMap.get("headImgUrl"));
-		//customerBase.setBirthday((String)userMap.get("country"));
-		//customerBase.setCustName((String)userMap.get("country"));
-		customerBase.setNickname((String)userMap.get("nickname"));
-		customerBase.setMerchantNo(merchantNo);
-		customerBase.setOrgNo(orgNo);
-		//customerBase.setPhone(phone);
-		customerBase.setSex((String)userMap.get("sex"));
-		customerBaseService.save(customerBase);
-		
-		//保存微信授权信息
-		CustomerAuth customerAuth = new CustomerAuth();
-		customerAuth.setCredential((String)userMap.get("openId"));		//密码凭证（站内的保存密码，站外的不保存或保存token）
-		customerAuth.setCustomerNo(customerNo);		//客户（会员）编号
-		customerAuth.setIdentifier((String)userMap.get("unionId"));		//标识（手机号 邮箱 用户名或第三方应用的唯一标识）
-		customerAuth.setIdentityType("weixin");	//登录类型（手机号 邮箱 用户名）或第三方应用名称（微信 微博等）
-		customerAuthService.save(customerAuth);
-		userMap.put("customerNo", customerNo);
+		CustomerBase customerBase = customerAuthService.customerAuth(userMap);
+		userMap.put("customerNo", customerBase.getCustomerNo());
 		return ResponseHelper.success(userMap, "00", "请求数据成功");
 	} 
 	

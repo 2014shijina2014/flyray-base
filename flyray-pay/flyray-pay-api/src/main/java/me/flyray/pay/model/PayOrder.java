@@ -17,7 +17,7 @@ public class PayOrder {
 	private Long id;
 	
 	/**
-	 * 订单号
+	 * 自己生成
 	 */
 	private String payOrderNo;
 	
@@ -50,6 +50,12 @@ public class PayOrder {
 	 * 订单描述
 	 */
 	private String body;
+	
+	/**
+	 * 商户订单号 商户传
+	 */
+	private String outTradeNo;
+	
 	
 	/**
 	 * 支付方式（1支付宝2微信3余额 13余额支付宝）
@@ -165,6 +171,14 @@ public class PayOrder {
 
 	public void setRedundedAmt(BigDecimal redundedAmt) {
 		this.redundedAmt = redundedAmt;
+	}
+
+	public String getOutTradeNo() {
+		return outTradeNo;
+	}
+
+	public void setOutTradeNo(String outTradeNo) {
+		this.outTradeNo = outTradeNo;
 	}
 	
 }

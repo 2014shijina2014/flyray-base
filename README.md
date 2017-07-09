@@ -28,6 +28,10 @@
 	* 页面交互`Vue2.x`
 	* 数据可视化`echarts `
 
+### 项目进度
+
+![组织结构](flyray-doc/flyray项目进度.png)
+
 ### 组织结构
 
 ![组织结构](flyray-doc/projectStructure3.png)
