@@ -30,7 +30,7 @@
 
 ### 项目进度
 
-![组织结构](flyray-doc/flyray项目进度.png)
+![项目进度](flyray-doc/flyray-schedule.png)
 
 ### 组织结构
 
