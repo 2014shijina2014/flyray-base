@@ -9,6 +9,11 @@ package me.flyray.crm.model;
 public class CustomerRelations {
 	
 	/**
+	 * 公众号ID
+	 */
+	private String wxId;
+	
+	/**
 	 * 客户编号
 	 */
 	private String customerNo;

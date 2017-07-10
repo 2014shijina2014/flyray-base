@@ -17,19 +17,19 @@ public interface CustomerAccountService {
 	 * 成功返回账户号
 	 * @param customerAccount
 	 */
-	public void openAccount(CustomerAccount customerAccount);
+	public String openAccount(CustomerAccount customerAccount);
 	
 	/**
 	 * 个人账户入金
 	 * @param customerAccount
 	 */
-	public void deposit(CustomerAccount customerAccount);
+	public void deposit(CustomerAccount customerAccount,String amt);
 	
 	/**
 	 * 个人账户出金
 	 * @param customerAccount
 	 */
-	public void withdraw(CustomerAccount customerAccount);
+	public void withdraw(CustomerAccount customerAccount,String amt);
 	
 	/**
 	 * 个人转账

@@ -9,7 +9,7 @@
          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
 >
 
-    <context:component-scan base-package="me.flyray.message.rocketmq">
+    <context:component-scan base-package="me.flyray.message.controller">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 

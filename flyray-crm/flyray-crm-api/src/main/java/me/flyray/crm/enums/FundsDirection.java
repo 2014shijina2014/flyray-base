@@ -2,20 +2,19 @@ package me.flyray.crm.enums;
 
 /** 
 * @author: bolei
-* @date：Jun 14, 2017 8:06:04 PM 
-* @description：账户类型
+* @date：Jul 9, 2017 9:44:02 AM 
+* @description：发生额方向
 */
 
-public enum AcountType {
-	
-	BALANCE("00","余额账户"),
-    BRIBERY_MONEY("02","红包账户"),
-    POINTS("03","积分账户");
-	
+public enum FundsDirection {
+	//收方 借方增加
+	DEBITS("00","借方"),
+	//贷方 贷方减少
+    CREDITS("01","贷方");
     private String code;
     private String desc;
     
-    private AcountType (String code,String desc){
+    private FundsDirection (String code,String desc){
         this.code = code;
         this.desc = desc;
     }
@@ -36,8 +35,8 @@ public enum AcountType {
         this.desc = desc;
     }
     
-    public static AcountType getAcountType(String code){
-        for(AcountType o : AcountType.values()){
+    public static FundsDirection getFundsDirection(String code){
+        for(FundsDirection o : FundsDirection.values()){
             if(o.getCode().equals(code)){
                 return o;
             }
