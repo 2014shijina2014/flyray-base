@@ -7,11 +7,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			classpath:spring-mvc.xml
-			classpath:spring-jdbc.xml
-			classpath*:renren-*.xml
-			classpath*:service-consumer.xml
-			classpath*:spring-redis.xml
+			classpath:spring.xml
 		</param-value>
 	</context-param>
 	
