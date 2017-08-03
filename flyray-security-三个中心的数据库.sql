@@ -1,9 +1,8 @@
 /*
-SQLyog Ultimate v11.27 (32 bit)
-MySQL - 5.7.9-log : Database - flyray-security
+SQLyog Ultimate v12.09 (64 bit)
+MySQL - 5.6.16-log : Database - flyray-security
 *********************************************************************
-*/
-
+*/
 
 /*!40101 SET NAMES utf8 */;
 
@@ -17,165 +16,230 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`flyray-security` /*!40100 DEFAULT CHARA
 
 USE `flyray-security`;
 
---  quartz自带表结构
+/*Table structure for table `qrtz_blob_triggers` */
 
-CREATE TABLE QRTZ_JOB_DETAILS(
-SCHED_NAME VARCHAR(120) NOT NULL,
-JOB_NAME VARCHAR(200) NOT NULL,
-JOB_GROUP VARCHAR(200) NOT NULL,
-DESCRIPTION VARCHAR(250) NULL,
-JOB_CLASS_NAME VARCHAR(250) NOT NULL,
-IS_DURABLE VARCHAR(1) NOT NULL,
-IS_NONCONCURRENT VARCHAR(1) NOT NULL,
-IS_UPDATE_DATA VARCHAR(1) NOT NULL,
-REQUESTS_RECOVERY VARCHAR(1) NOT NULL,
-JOB_DATA BLOB NULL,
-PRIMARY KEY (SCHED_NAME,JOB_NAME,JOB_GROUP))
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `qrtz_blob_triggers`;
 
-CREATE TABLE QRTZ_TRIGGERS (
-SCHED_NAME VARCHAR(120) NOT NULL,
-TRIGGER_NAME VARCHAR(200) NOT NULL,
-TRIGGER_GROUP VARCHAR(200) NOT NULL,
-JOB_NAME VARCHAR(200) NOT NULL,
-JOB_GROUP VARCHAR(200) NOT NULL,
-DESCRIPTION VARCHAR(250) NULL,
-NEXT_FIRE_TIME BIGINT(13) NULL,
-PREV_FIRE_TIME BIGINT(13) NULL,
-PRIORITY INTEGER NULL,
-TRIGGER_STATE VARCHAR(16) NOT NULL,
-TRIGGER_TYPE VARCHAR(8) NOT NULL,
-START_TIME BIGINT(13) NOT NULL,
-END_TIME BIGINT(13) NULL,
-CALENDAR_NAME VARCHAR(200) NULL,
-MISFIRE_INSTR SMALLINT(2) NULL,
-JOB_DATA BLOB NULL,
-PRIMARY KEY (SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP),
-FOREIGN KEY (SCHED_NAME,JOB_NAME,JOB_GROUP)
-REFERENCES QRTZ_JOB_DETAILS(SCHED_NAME,JOB_NAME,JOB_GROUP))
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `qrtz_blob_triggers` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `TRIGGER_NAME` varchar(200) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  `BLOB_DATA` blob,
+  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
+  KEY `SCHED_NAME` (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
+  CONSTRAINT `QRTZ_BLOB_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `qrtz_triggers` (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE QRTZ_SIMPLE_TRIGGERS (
-SCHED_NAME VARCHAR(120) NOT NULL,
-TRIGGER_NAME VARCHAR(200) NOT NULL,
-TRIGGER_GROUP VARCHAR(200) NOT NULL,
-REPEAT_COUNT BIGINT(7) NOT NULL,
-REPEAT_INTERVAL BIGINT(12) NOT NULL,
-TIMES_TRIGGERED BIGINT(10) NOT NULL,
-PRIMARY KEY (SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP),
-FOREIGN KEY (SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP)
-REFERENCES QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP))
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*Data for the table `qrtz_blob_triggers` */
 
-CREATE TABLE QRTZ_CRON_TRIGGERS (
-SCHED_NAME VARCHAR(120) NOT NULL,
-TRIGGER_NAME VARCHAR(200) NOT NULL,
-TRIGGER_GROUP VARCHAR(200) NOT NULL,
-CRON_EXPRESSION VARCHAR(120) NOT NULL,
-TIME_ZONE_ID VARCHAR(80),
-PRIMARY KEY (SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP),
-FOREIGN KEY (SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP)
-REFERENCES QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP))
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*Table structure for table `qrtz_calendars` */
 
-CREATE TABLE QRTZ_SIMPROP_TRIGGERS
-  (          
-    SCHED_NAME VARCHAR(120) NOT NULL,
-    TRIGGER_NAME VARCHAR(200) NOT NULL,
-    TRIGGER_GROUP VARCHAR(200) NOT NULL,
-    STR_PROP_1 VARCHAR(512) NULL,
-    STR_PROP_2 VARCHAR(512) NULL,
-    STR_PROP_3 VARCHAR(512) NULL,
-    INT_PROP_1 INT NULL,
-    INT_PROP_2 INT NULL,
-    LONG_PROP_1 BIGINT NULL,
-    LONG_PROP_2 BIGINT NULL,
-    DEC_PROP_1 NUMERIC(13,4) NULL,
-    DEC_PROP_2 NUMERIC(13,4) NULL,
-    BOOL_PROP_1 VARCHAR(1) NULL,
-    BOOL_PROP_2 VARCHAR(1) NULL,
-    PRIMARY KEY (SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP),
-    FOREIGN KEY (SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP) 
-    REFERENCES QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP))
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `qrtz_calendars`;
 
-CREATE TABLE QRTZ_BLOB_TRIGGERS (
-SCHED_NAME VARCHAR(120) NOT NULL,
-TRIGGER_NAME VARCHAR(200) NOT NULL,
-TRIGGER_GROUP VARCHAR(200) NOT NULL,
-BLOB_DATA BLOB NULL,
-PRIMARY KEY (SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP),
-INDEX (SCHED_NAME,TRIGGER_NAME, TRIGGER_GROUP),
-FOREIGN KEY (SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP)
-REFERENCES QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP))
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `qrtz_calendars` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `CALENDAR_NAME` varchar(200) NOT NULL,
+  `CALENDAR` blob NOT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`CALENDAR_NAME`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE QRTZ_CALENDARS (
-SCHED_NAME VARCHAR(120) NOT NULL,
-CALENDAR_NAME VARCHAR(200) NOT NULL,
-CALENDAR BLOB NOT NULL,
-PRIMARY KEY (SCHED_NAME,CALENDAR_NAME))
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*Data for the table `qrtz_calendars` */
 
-CREATE TABLE QRTZ_PAUSED_TRIGGER_GRPS (
-SCHED_NAME VARCHAR(120) NOT NULL,
-TRIGGER_GROUP VARCHAR(200) NOT NULL,
-PRIMARY KEY (SCHED_NAME,TRIGGER_GROUP))
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*Table structure for table `qrtz_cron_triggers` */
 
-CREATE TABLE QRTZ_FIRED_TRIGGERS (
-SCHED_NAME VARCHAR(120) NOT NULL,
-ENTRY_ID VARCHAR(95) NOT NULL,
-TRIGGER_NAME VARCHAR(200) NOT NULL,
-TRIGGER_GROUP VARCHAR(200) NOT NULL,
-INSTANCE_NAME VARCHAR(200) NOT NULL,
-FIRED_TIME BIGINT(13) NOT NULL,
-SCHED_TIME BIGINT(13) NOT NULL,
-PRIORITY INTEGER NOT NULL,
-STATE VARCHAR(16) NOT NULL,
-JOB_NAME VARCHAR(200) NULL,
-JOB_GROUP VARCHAR(200) NULL,
-IS_NONCONCURRENT VARCHAR(1) NULL,
-REQUESTS_RECOVERY VARCHAR(1) NULL,
-PRIMARY KEY (SCHED_NAME,ENTRY_ID))
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE IF EXISTS `qrtz_cron_triggers`;
 
-CREATE TABLE QRTZ_SCHEDULER_STATE (
-SCHED_NAME VARCHAR(120) NOT NULL,
-INSTANCE_NAME VARCHAR(200) NOT NULL,
-LAST_CHECKIN_TIME BIGINT(13) NOT NULL,
-CHECKIN_INTERVAL BIGINT(13) NOT NULL,
-PRIMARY KEY (SCHED_NAME,INSTANCE_NAME))
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `qrtz_cron_triggers` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `TRIGGER_NAME` varchar(200) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  `CRON_EXPRESSION` varchar(120) NOT NULL,
+  `TIME_ZONE_ID` varchar(80) DEFAULT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
+  CONSTRAINT `QRTZ_CRON_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `qrtz_triggers` (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE QRTZ_LOCKS (
-SCHED_NAME VARCHAR(120) NOT NULL,
-LOCK_NAME VARCHAR(40) NOT NULL,
-PRIMARY KEY (SCHED_NAME,LOCK_NAME))
-ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*Data for the table `qrtz_cron_triggers` */
 
-CREATE INDEX IDX_QRTZ_J_REQ_RECOVERY ON QRTZ_JOB_DETAILS(SCHED_NAME,REQUESTS_RECOVERY);
-CREATE INDEX IDX_QRTZ_J_GRP ON QRTZ_JOB_DETAILS(SCHED_NAME,JOB_GROUP);
+insert  into `qrtz_cron_triggers`(`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`,`CRON_EXPRESSION`,`TIME_ZONE_ID`) values ('RenrenScheduler','TASK_1','DEFAULT','0 0/30 * * * ?','Asia/Shanghai'),('RenrenScheduler','TASK_2','DEFAULT','0 0/30 * * * ?','Asia/Shanghai');
 
-CREATE INDEX IDX_QRTZ_T_J ON QRTZ_TRIGGERS(SCHED_NAME,JOB_NAME,JOB_GROUP);
-CREATE INDEX IDX_QRTZ_T_JG ON QRTZ_TRIGGERS(SCHED_NAME,JOB_GROUP);
-CREATE INDEX IDX_QRTZ_T_C ON QRTZ_TRIGGERS(SCHED_NAME,CALENDAR_NAME);
-CREATE INDEX IDX_QRTZ_T_G ON QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_GROUP);
-CREATE INDEX IDX_QRTZ_T_STATE ON QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_STATE);
-CREATE INDEX IDX_QRTZ_T_N_STATE ON QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP,TRIGGER_STATE);
-CREATE INDEX IDX_QRTZ_T_N_G_STATE ON QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_GROUP,TRIGGER_STATE);
-CREATE INDEX IDX_QRTZ_T_NEXT_FIRE_TIME ON QRTZ_TRIGGERS(SCHED_NAME,NEXT_FIRE_TIME);
-CREATE INDEX IDX_QRTZ_T_NFT_ST ON QRTZ_TRIGGERS(SCHED_NAME,TRIGGER_STATE,NEXT_FIRE_TIME);
-CREATE INDEX IDX_QRTZ_T_NFT_MISFIRE ON QRTZ_TRIGGERS(SCHED_NAME,MISFIRE_INSTR,NEXT_FIRE_TIME);
-CREATE INDEX IDX_QRTZ_T_NFT_ST_MISFIRE ON QRTZ_TRIGGERS(SCHED_NAME,MISFIRE_INSTR,NEXT_FIRE_TIME,TRIGGER_STATE);
-CREATE INDEX IDX_QRTZ_T_NFT_ST_MISFIRE_GRP ON QRTZ_TRIGGERS(SCHED_NAME,MISFIRE_INSTR,NEXT_FIRE_TIME,TRIGGER_GROUP,TRIGGER_STATE);
+/*Table structure for table `qrtz_fired_triggers` */
 
-CREATE INDEX IDX_QRTZ_FT_TRIG_INST_NAME ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,INSTANCE_NAME);
-CREATE INDEX IDX_QRTZ_FT_INST_JOB_REQ_RCVRY ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,INSTANCE_NAME,REQUESTS_RECOVERY);
-CREATE INDEX IDX_QRTZ_FT_J_G ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,JOB_NAME,JOB_GROUP);
-CREATE INDEX IDX_QRTZ_FT_JG ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,JOB_GROUP);
-CREATE INDEX IDX_QRTZ_FT_T_G ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,TRIGGER_NAME,TRIGGER_GROUP);
-CREATE INDEX IDX_QRTZ_FT_TG ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,TRIGGER_GROUP);
+DROP TABLE IF EXISTS `qrtz_fired_triggers`;
+
+CREATE TABLE `qrtz_fired_triggers` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `ENTRY_ID` varchar(95) NOT NULL,
+  `TRIGGER_NAME` varchar(200) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  `INSTANCE_NAME` varchar(200) NOT NULL,
+  `FIRED_TIME` bigint(13) NOT NULL,
+  `SCHED_TIME` bigint(13) NOT NULL,
+  `PRIORITY` int(11) NOT NULL,
+  `STATE` varchar(16) NOT NULL,
+  `JOB_NAME` varchar(200) DEFAULT NULL,
+  `JOB_GROUP` varchar(200) DEFAULT NULL,
+  `IS_NONCONCURRENT` varchar(1) DEFAULT NULL,
+  `REQUESTS_RECOVERY` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`ENTRY_ID`),
+  KEY `IDX_QRTZ_FT_TRIG_INST_NAME` (`SCHED_NAME`,`INSTANCE_NAME`),
+  KEY `IDX_QRTZ_FT_INST_JOB_REQ_RCVRY` (`SCHED_NAME`,`INSTANCE_NAME`,`REQUESTS_RECOVERY`),
+  KEY `IDX_QRTZ_FT_J_G` (`SCHED_NAME`,`JOB_NAME`,`JOB_GROUP`),
+  KEY `IDX_QRTZ_FT_JG` (`SCHED_NAME`,`JOB_GROUP`),
+  KEY `IDX_QRTZ_FT_T_G` (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
+  KEY `IDX_QRTZ_FT_TG` (`SCHED_NAME`,`TRIGGER_GROUP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `qrtz_fired_triggers` */
+
+/*Table structure for table `qrtz_job_details` */
+
+DROP TABLE IF EXISTS `qrtz_job_details`;
+
+CREATE TABLE `qrtz_job_details` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `JOB_NAME` varchar(200) NOT NULL,
+  `JOB_GROUP` varchar(200) NOT NULL,
+  `DESCRIPTION` varchar(250) DEFAULT NULL,
+  `JOB_CLASS_NAME` varchar(250) NOT NULL,
+  `IS_DURABLE` varchar(1) NOT NULL,
+  `IS_NONCONCURRENT` varchar(1) NOT NULL,
+  `IS_UPDATE_DATA` varchar(1) NOT NULL,
+  `REQUESTS_RECOVERY` varchar(1) NOT NULL,
+  `JOB_DATA` blob,
+  PRIMARY KEY (`SCHED_NAME`,`JOB_NAME`,`JOB_GROUP`),
+  KEY `IDX_QRTZ_J_REQ_RECOVERY` (`SCHED_NAME`,`REQUESTS_RECOVERY`),
+  KEY `IDX_QRTZ_J_GRP` (`SCHED_NAME`,`JOB_GROUP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `qrtz_job_details` */
+
+insert  into `qrtz_job_details`(`SCHED_NAME`,`JOB_NAME`,`JOB_GROUP`,`DESCRIPTION`,`JOB_CLASS_NAME`,`IS_DURABLE`,`IS_NONCONCURRENT`,`IS_UPDATE_DATA`,`REQUESTS_RECOVERY`,`JOB_DATA`) values ('RenrenScheduler','TASK_1','DEFAULT',NULL,'me.flyray.rbac.utils.ScheduleJob','0','0','0','0','¬í\0sr\0org.quartz.JobDataMapŸ°ƒè¿©°Ë\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMap‚èÃûÅ](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMapæ.­(v\nÎ\0Z\0dirtyL\0mapt\0Ljava/util/Map;xpsr\0java.util.HashMapÚÁÃ`Ñ\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\rJOB_PARAM_KEYsr\0\'me.flyray.rbac.entity.ScheduleJobEntity\0\0\0\0\0\0\0\0L\0beanNamet\0Ljava/lang/String;L\0\ncreateTimet\0Ljava/util/Date;L\0cronExpressionq\0~\0	L\0jobIdt\0Ljava/lang/Long;L\0\nmethodNameq\0~\0	L\0paramsq\0~\0	L\0remarkq\0~\0	L\0statust\0Ljava/lang/Integer;xpt\0testTasksr\0java.util.DatehjKYt\0\0xpw\0\0Xºõ“0xt\00 0/30 * * * ?sr\0java.lang.Long;‹äÌ#ß\0J\0valuexr\0java.lang.Number†¬•”à‹\0\0xp\0\0\0\0\0\0\0t\0testt\0renrent\0æœ‰å‚æ•°æµ‹è¯•sr\0java.lang.Integerâ ¤÷‡8\0I\0valuexq\0~\0\0\0\0\0x\0'),('RenrenScheduler','TASK_2','DEFAULT',NULL,'me.flyray.rbac.utils.ScheduleJob','0','0','0','0','¬í\0sr\0org.quartz.JobDataMapŸ°ƒè¿©°Ë\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMap‚èÃûÅ](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMapæ.­(v\nÎ\0Z\0dirtyL\0mapt\0Ljava/util/Map;xpsr\0java.util.HashMapÚÁÃ`Ñ\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\rJOB_PARAM_KEYsr\0\'me.flyray.rbac.entity.ScheduleJobEntity\0\0\0\0\0\0\0\0L\0beanNamet\0Ljava/lang/String;L\0\ncreateTimet\0Ljava/util/Date;L\0cronExpressionq\0~\0	L\0jobIdt\0Ljava/lang/Long;L\0\nmethodNameq\0~\0	L\0paramsq\0~\0	L\0remarkq\0~\0	L\0statust\0Ljava/lang/Integer;xpt\0testTasksr\0java.util.DatehjKYt\0\0xpw\0\0XÃwÄ`xt\00 0/30 * * * ?sr\0java.lang.Long;‹äÌ#ß\0J\0valuexr\0java.lang.Number†¬•”à‹\0\0xp\0\0\0\0\0\0\0t\0test2pt\0æ— å‚æ•°æµ‹è¯•sr\0java.lang.Integerâ ¤÷‡8\0I\0valuexq\0~\0\0\0\0x\0');
+
+/*Table structure for table `qrtz_locks` */
+
+DROP TABLE IF EXISTS `qrtz_locks`;
+
+CREATE TABLE `qrtz_locks` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `LOCK_NAME` varchar(40) NOT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`LOCK_NAME`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `qrtz_locks` */
+
+insert  into `qrtz_locks`(`SCHED_NAME`,`LOCK_NAME`) values ('RenrenScheduler','STATE_ACCESS'),('RenrenScheduler','TRIGGER_ACCESS');
+
+/*Table structure for table `qrtz_paused_trigger_grps` */
+
+DROP TABLE IF EXISTS `qrtz_paused_trigger_grps`;
+
+CREATE TABLE `qrtz_paused_trigger_grps` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_GROUP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `qrtz_paused_trigger_grps` */
+
+/*Table structure for table `qrtz_scheduler_state` */
+
+DROP TABLE IF EXISTS `qrtz_scheduler_state`;
+
+CREATE TABLE `qrtz_scheduler_state` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `INSTANCE_NAME` varchar(200) NOT NULL,
+  `LAST_CHECKIN_TIME` bigint(13) NOT NULL,
+  `CHECKIN_INTERVAL` bigint(13) NOT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`INSTANCE_NAME`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `qrtz_scheduler_state` */
+
+insert  into `qrtz_scheduler_state`(`SCHED_NAME`,`INSTANCE_NAME`,`LAST_CHECKIN_TIME`,`CHECKIN_INTERVAL`) values ('RenrenScheduler','DESKTOP-SBB24811499506384475',1499506747570,15000);
+
+/*Table structure for table `qrtz_simple_triggers` */
+
+DROP TABLE IF EXISTS `qrtz_simple_triggers`;
+
+CREATE TABLE `qrtz_simple_triggers` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `TRIGGER_NAME` varchar(200) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  `REPEAT_COUNT` bigint(7) NOT NULL,
+  `REPEAT_INTERVAL` bigint(12) NOT NULL,
+  `TIMES_TRIGGERED` bigint(10) NOT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
+  CONSTRAINT `QRTZ_SIMPLE_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `qrtz_triggers` (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `qrtz_simple_triggers` */
+
+/*Table structure for table `qrtz_simprop_triggers` */
+
+DROP TABLE IF EXISTS `qrtz_simprop_triggers`;
+
+CREATE TABLE `qrtz_simprop_triggers` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `TRIGGER_NAME` varchar(200) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  `STR_PROP_1` varchar(512) DEFAULT NULL,
+  `STR_PROP_2` varchar(512) DEFAULT NULL,
+  `STR_PROP_3` varchar(512) DEFAULT NULL,
+  `INT_PROP_1` int(11) DEFAULT NULL,
+  `INT_PROP_2` int(11) DEFAULT NULL,
+  `LONG_PROP_1` bigint(20) DEFAULT NULL,
+  `LONG_PROP_2` bigint(20) DEFAULT NULL,
+  `DEC_PROP_1` decimal(13,4) DEFAULT NULL,
+  `DEC_PROP_2` decimal(13,4) DEFAULT NULL,
+  `BOOL_PROP_1` varchar(1) DEFAULT NULL,
+  `BOOL_PROP_2` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
+  CONSTRAINT `QRTZ_SIMPROP_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`) REFERENCES `qrtz_triggers` (`SCHED_NAME`, `TRIGGER_NAME`, `TRIGGER_GROUP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `qrtz_simprop_triggers` */
+
+/*Table structure for table `qrtz_triggers` */
+
+DROP TABLE IF EXISTS `qrtz_triggers`;
+
+CREATE TABLE `qrtz_triggers` (
+  `SCHED_NAME` varchar(120) NOT NULL,
+  `TRIGGER_NAME` varchar(200) NOT NULL,
+  `TRIGGER_GROUP` varchar(200) NOT NULL,
+  `JOB_NAME` varchar(200) NOT NULL,
+  `JOB_GROUP` varchar(200) NOT NULL,
+  `DESCRIPTION` varchar(250) DEFAULT NULL,
+  `NEXT_FIRE_TIME` bigint(13) DEFAULT NULL,
+  `PREV_FIRE_TIME` bigint(13) DEFAULT NULL,
+  `PRIORITY` int(11) DEFAULT NULL,
+  `TRIGGER_STATE` varchar(16) NOT NULL,
+  `TRIGGER_TYPE` varchar(8) NOT NULL,
+  `START_TIME` bigint(13) NOT NULL,
+  `END_TIME` bigint(13) DEFAULT NULL,
+  `CALENDAR_NAME` varchar(200) DEFAULT NULL,
+  `MISFIRE_INSTR` smallint(2) DEFAULT NULL,
+  `JOB_DATA` blob,
+  PRIMARY KEY (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`),
+  KEY `IDX_QRTZ_T_J` (`SCHED_NAME`,`JOB_NAME`,`JOB_GROUP`),
+  KEY `IDX_QRTZ_T_JG` (`SCHED_NAME`,`JOB_GROUP`),
+  KEY `IDX_QRTZ_T_C` (`SCHED_NAME`,`CALENDAR_NAME`),
+  KEY `IDX_QRTZ_T_G` (`SCHED_NAME`,`TRIGGER_GROUP`),
+  KEY `IDX_QRTZ_T_STATE` (`SCHED_NAME`,`TRIGGER_STATE`),
+  KEY `IDX_QRTZ_T_N_STATE` (`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`,`TRIGGER_STATE`),
+  KEY `IDX_QRTZ_T_N_G_STATE` (`SCHED_NAME`,`TRIGGER_GROUP`,`TRIGGER_STATE`),
+  KEY `IDX_QRTZ_T_NEXT_FIRE_TIME` (`SCHED_NAME`,`NEXT_FIRE_TIME`),
+  KEY `IDX_QRTZ_T_NFT_ST` (`SCHED_NAME`,`TRIGGER_STATE`,`NEXT_FIRE_TIME`),
+  KEY `IDX_QRTZ_T_NFT_MISFIRE` (`SCHED_NAME`,`MISFIRE_INSTR`,`NEXT_FIRE_TIME`),
+  KEY `IDX_QRTZ_T_NFT_ST_MISFIRE` (`SCHED_NAME`,`MISFIRE_INSTR`,`NEXT_FIRE_TIME`,`TRIGGER_STATE`),
+  KEY `IDX_QRTZ_T_NFT_ST_MISFIRE_GRP` (`SCHED_NAME`,`MISFIRE_INSTR`,`NEXT_FIRE_TIME`,`TRIGGER_GROUP`,`TRIGGER_STATE`),
+  CONSTRAINT `QRTZ_TRIGGERS_ibfk_1` FOREIGN KEY (`SCHED_NAME`, `JOB_NAME`, `JOB_GROUP`) REFERENCES `qrtz_job_details` (`SCHED_NAME`, `JOB_NAME`, `JOB_GROUP`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `qrtz_triggers` */
+
+insert  into `qrtz_triggers`(`SCHED_NAME`,`TRIGGER_NAME`,`TRIGGER_GROUP`,`JOB_NAME`,`JOB_GROUP`,`DESCRIPTION`,`NEXT_FIRE_TIME`,`PREV_FIRE_TIME`,`PRIORITY`,`TRIGGER_STATE`,`TRIGGER_TYPE`,`START_TIME`,`END_TIME`,`CALENDAR_NAME`,`MISFIRE_INSTR`,`JOB_DATA`) values ('RenrenScheduler','TASK_1','DEFAULT','TASK_1','DEFAULT',NULL,1498903200000,1498901400000,5,'WAITING','CRON',1496993828000,0,NULL,2,'¬í\0sr\0org.quartz.JobDataMapŸ°ƒè¿©°Ë\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMap‚èÃûÅ](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMapæ.­(v\nÎ\0Z\0dirtyL\0mapt\0Ljava/util/Map;xpsr\0java.util.HashMapÚÁÃ`Ñ\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\rJOB_PARAM_KEYsr\0\'me.flyray.rbac.entity.ScheduleJobEntity\0\0\0\0\0\0\0\0L\0beanNamet\0Ljava/lang/String;L\0\ncreateTimet\0Ljava/util/Date;L\0cronExpressionq\0~\0	L\0jobIdt\0Ljava/lang/Long;L\0\nmethodNameq\0~\0	L\0paramsq\0~\0	L\0remarkq\0~\0	L\0statust\0Ljava/lang/Integer;xpt\0testTasksr\0java.util.DatehjKYt\0\0xpw\0\0Xºõ“0xt\00 0/30 * * * ?sr\0java.lang.Long;‹äÌ#ß\0J\0valuexr\0java.lang.Number†¬•”à‹\0\0xp\0\0\0\0\0\0\0t\0testt\0renrent\0æœ‰å‚æ•°æµ‹è¯•sr\0java.lang.Integerâ ¤÷‡8\0I\0valuexq\0~\0\0\0\0\0x\0'),('RenrenScheduler','TASK_2','DEFAULT','TASK_2','DEFAULT',NULL,1496995200000,-1,5,'PAUSED','CRON',1496993830000,0,NULL,2,'¬í\0sr\0org.quartz.JobDataMapŸ°ƒè¿©°Ë\0\0xr\0&org.quartz.utils.StringKeyDirtyFlagMap‚èÃûÅ](\0Z\0allowsTransientDataxr\0org.quartz.utils.DirtyFlagMapæ.­(v\nÎ\0Z\0dirtyL\0mapt\0Ljava/util/Map;xpsr\0java.util.HashMapÚÁÃ`Ñ\0F\0\nloadFactorI\0	thresholdxp?@\0\0\0\0\0w\0\0\0\0\0\0t\0\rJOB_PARAM_KEYsr\0\'me.flyray.rbac.entity.ScheduleJobEntity\0\0\0\0\0\0\0\0L\0beanNamet\0Ljava/lang/String;L\0\ncreateTimet\0Ljava/util/Date;L\0cronExpressionq\0~\0	L\0jobIdt\0Ljava/lang/Long;L\0\nmethodNameq\0~\0	L\0paramsq\0~\0	L\0remarkq\0~\0	L\0statust\0Ljava/lang/Integer;xpt\0testTasksr\0java.util.DatehjKYt\0\0xpw\0\0XÃwÄ`xt\00 0/30 * * * ?sr\0java.lang.Long;‹äÌ#ß\0J\0valuexr\0java.lang.Number†¬•”à‹\0\0xp\0\0\0\0\0\0\0t\0test2pt\0æ— å‚æ•°æµ‹è¯•sr\0java.lang.Integerâ ¤÷‡8\0I\0valuexq\0~\0\0\0\0x\0');
 
 /*Table structure for table `schedule_job` */
 
@@ -191,10 +255,9 @@ CREATE TABLE `schedule_job` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`job_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='定时任务';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='定时任务';
 
 /*Data for the table `schedule_job` */
-
 
 /*Table structure for table `schedule_job_log` */
 
@@ -212,10 +275,9 @@ CREATE TABLE `schedule_job_log` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`log_id`),
   KEY `job_id` (`job_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COMMENT='定时任务日志';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='定时任务日志';
 
 /*Data for the table `schedule_job_log` */
-
 
 /*Table structure for table `sys_config` */
 
@@ -234,6 +296,21 @@ CREATE TABLE `sys_config` (
 /*Data for the table `sys_config` */
 
 insert  into `sys_config`(`id`,`key`,`value`,`status`,`remark`) values (1,'CLOUD_STORAGE_CONFIG_KEY','{\"aliyunAccessKeyId\":\"\",\"aliyunAccessKeySecret\":\"\",\"aliyunBucketName\":\"\",\"aliyunDomain\":\"\",\"aliyunEndPoint\":\"\",\"aliyunPrefix\":\"\",\"qcloudBucketName\":\"\",\"qcloudDomain\":\"\",\"qcloudPrefix\":\"\",\"qcloudSecretId\":\"\",\"qcloudSecretKey\":\"\",\"qiniuAccessKey\":\"NrgMfABZxWLo5B-YYSjoE8-AZ1EISdi1Z3ubLOeZ\",\"qiniuBucketName\":\"ios-app\",\"qiniuDomain\":\"http://7xqbwh.dl1.z0.glb.clouddn.com\",\"qiniuPrefix\":\"upload\",\"qiniuSecretKey\":\"uIwJHevMRWU0VLxFvgy0tAcOdGqasdtVlJkdy6vV\",\"type\":1}',0,'云存储配置信息');
+
+/*Table structure for table `sys_dict` */
+
+DROP TABLE IF EXISTS `sys_dict`;
+
+CREATE TABLE `sys_dict` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `sort_no` int(11) DEFAULT NULL COMMENT '排序编号',
+  `parent_id` int(11) DEFAULT NULL COMMENT '父级字典',
+  `dict_name` varchar(255) DEFAULT NULL COMMENT '名称',
+  `dict_type` varchar(255) DEFAULT NULL COMMENT '类型',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统字典表';
+
+/*Data for the table `sys_dict` */
 
 /*Table structure for table `sys_log` */
 
@@ -281,20 +358,20 @@ DROP TABLE IF EXISTS `sys_org`;
 CREATE TABLE `sys_org` (
   `org_id` bigint(11) NOT NULL AUTO_INCREMENT,
   `org_no` varchar(32) DEFAULT NULL COMMENT '机构部门编号',
-  `org_name` varchar(60) DEFAULT NULL COMMENT '机构部门名称',
+  `name` varchar(60) DEFAULT NULL COMMENT '机构部门名称',
   `parent_id` bigint(11) DEFAULT NULL COMMENT '所属机构部门',
   `create_by` bigint(11) DEFAULT NULL COMMENT '创建人user_id',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
   `last_update_by` bigint(11) DEFAULT NULL COMMENT '最后修改人user_id',
   `last_update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '最后修改时间',
   `org_sort` int(11) DEFAULT NULL COMMENT '机构部门排序号',
-  `status_flag` int(11) DEFAULT NULL COMMENT '状态',
+  `status_flag` int(2) DEFAULT NULL COMMENT '状态',
   PRIMARY KEY (`org_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `sys_org` */
 
-insert  into `sys_org`(`org_id`,`org_no`,`org_name`,`parent_id`,`create_by`,`create_time`,`last_update_by`,`last_update_time`,`org_level`) values (3,'2','23',NULL,NULL,'2017-04-05 22:43:10',NULL,'2017-04-05 22:43:10',233),(4,'54','54',NULL,NULL,'2017-04-16 16:01:32',NULL,'2017-04-16 16:01:32',5);
+insert  into `sys_org`(`org_id`,`org_no`,`name`,`parent_id`,`create_by`,`create_time`,`last_update_by`,`last_update_time`,`org_sort`,`status_flag`) values (1,'2','飞雷集团',0,NULL,'2017-07-08 16:28:20',NULL,'2017-04-05 22:43:10',233,0),(2,'2332','技术部',1,NULL,'2017-07-08 16:52:40',NULL,'2017-04-05 22:43:10',2233,0);
 
 /*Table structure for table `sys_oss` */
 
@@ -370,19 +447,6 @@ CREATE TABLE `sys_user_role` (
   `role_id` bigint(20) DEFAULT NULL COMMENT '角色ID',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户与角色对应关系';
-
-DROP TABLE IF EXISTS `sys_dict`;
-
-CREATE TABLE `sys_dict` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '主键id',
-  `sort_no` int(11) DEFAULT NULL COMMENT '排序编号',
-  `parent_id` int(11) DEFAULT NULL COMMENT '父级字典',
-  `dict_name` varchar(255) DEFAULT NULL COMMENT '名称',
-  `dict_type` varchar(255) DEFAULT NULL COMMENT '类型',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='系统字典表';
-
-
 
 /*Data for the table `sys_user_role` */
 
