@@ -4,6 +4,7 @@ package me.flyray.crm.model;
 * @author: bolei
 * @date：Jun 14, 2017 7:53:52 PM 
 * @description：客户关系表 用户三级分销
+* http://blog.csdn.net/cctcc/article/details/53992215
 */
 
 public class CustomerRelations {

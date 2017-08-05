@@ -43,6 +43,14 @@ public class CustomerController {
 	 * 查询客户信息
 	 * query
 	 */
+	@ResponseBody
+	@RequestMapping(value="/queryCustomerInfo", method = RequestMethod.GET)
+	public Map<String, Object> queryCustomerInfo(@RequestBody Map<String, String> param){
+		
+		//
+		
+		return null;
+	}
 	
 	/**
 	 * 生成客户邀请码
@@ -60,6 +68,7 @@ public class CustomerController {
 	
 	/**
 	 * 所邀请用户信息
+	 * 所邀请的用户也需要微信授权登陆
 	 * get Invited Customer
 	 */
 	@ResponseBody

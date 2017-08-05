@@ -7,7 +7,7 @@
 
     <dubbo:application name="flyray-operation-service-consumer" owner="programmer" organization="dubbox"/>
 
-	<dubbo:registry address="zookeeper://192.168.2.127:2181"/>
+	<dubbo:registry address="zookeeper://192.168.1.136:2181"/>
 
 	<!-- 在dubbo的配置文件中指定服务启动的绑定Ip dubbo.protocol.host 与dns有关-->
     <!-- <dubbo:protocol host="192.168.2.174" name="dubbo" port="10108"/> -->
