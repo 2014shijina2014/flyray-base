@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="flyray-operation-service-consumer" owner="programmer" organization="dubbox"/>
+
+	<dubbo:registry address="zookeeper://192.168.1.136:2181"/>
+
+	<!-- 在dubbo的配置文件中指定服务启动的绑定Ip dubbo.protocol.host 与dns有关-->
+    <!-- <dubbo:protocol host="192.168.2.174" name="dubbo" port="10108"/> -->
+
+    <dubbo:reference id="apiProvider" interface="me.flyray.rest.api.ApiProvider"/>
+
+</beans>
