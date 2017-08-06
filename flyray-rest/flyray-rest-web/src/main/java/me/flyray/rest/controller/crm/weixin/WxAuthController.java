@@ -63,6 +63,8 @@ public class WxAuthController {
 		wxMpUser.getSubscribe() wxMpUser.getTagIds() wxMpUser.getUnionId()*/
 		
 		CustomerBase customerBase = customerAuthService.customerAuth(userMap);
+		//新增客户开户信息
+		
 		userMap.put("customerNo", customerBase.getCustomerNo());
 		return ResponseHelper.success(userMap, "00", "请求数据成功");
 	} 
