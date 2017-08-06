@@ -1,4 +1,4 @@
-package me.flyray.common.service;
+package me.flyray.common.utils;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

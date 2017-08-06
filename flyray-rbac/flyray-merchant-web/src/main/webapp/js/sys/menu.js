@@ -13,7 +13,7 @@ var setting = {
 };
 var ztree;
 
-var baseURL = "/flyray-operation-web/";
+var baseURL = "/flyray-merchant-web/";
 
 var vm = new Vue({
     el:'#rrapp',

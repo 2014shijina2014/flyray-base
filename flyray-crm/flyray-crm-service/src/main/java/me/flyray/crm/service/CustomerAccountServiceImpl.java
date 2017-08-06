@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import me.flyray.common.service.AbstractBaseService;
 import me.flyray.common.utils.GenerateSequenceUtil;
 import me.flyray.common.utils.UUIDTool;
 import me.flyray.crm.api.CustomerAccountService;
@@ -25,7 +26,7 @@ import me.flyray.crm.model.CustomerAccountJournal;
 
 @Transactional
 @Service("customerAccountService")
-public class CustomerAccountServiceImpl implements CustomerAccountService{
+public class CustomerAccountServiceImpl extends AbstractBaseService<CustomerAccount> implements CustomerAccountService{
 
 	@Autowired
 	private CustomerAccountDao customerAccountDao;

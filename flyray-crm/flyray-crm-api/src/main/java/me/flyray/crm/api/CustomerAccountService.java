@@ -2,6 +2,7 @@ package me.flyray.crm.api;
 
 import java.util.Map;
 
+import me.flyray.common.service.BaseService;
 import me.flyray.crm.model.CustomerAccount;
 
 /** 
@@ -10,7 +11,7 @@ import me.flyray.crm.model.CustomerAccount;
 * @description：个人账户处理
 */
 
-public interface CustomerAccountService {
+public interface CustomerAccountService extends BaseService{
 	
 	/**
 	 * 个人账户开户

@@ -12,6 +12,10 @@
     <dubbo:reference id="customerAuthService" interface="me.flyray.crm.api.CustomerAuthService"/>
     <!-- 客户账户信息 -->
     <dubbo:reference id="customerAccountService" interface="me.flyray.crm.api.CustomerAccountService"/>
+	<!--客户账单处理 -->
+    <dubbo:reference id="customerBillingService" interface="me.flyray.crm.api.CustomerBillingService"/>
+	<!--客户三级分销关系 -->
+    <dubbo:reference id="customerRelationsService" interface="me.flyray.crm.api.CustomerRelationsService"/>
 	<!-- 商户基本信息 -->
     <dubbo:reference id="merchantBaseService" interface="me.flyray.crm.api.MerchantBaseService"/>
 	<!-- 商户账户信息 -->
