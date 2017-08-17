@@ -43,6 +43,8 @@
 ![组织结构](flyray-doc/operation.png)
 ### 商户中心
 ![组织结构](flyray-doc/merchant.png)
+### 开放平台
+![组织结构](flyray-doc/open.png)
 
 ##运行流程
 ### 1、javaweb开发环境配置
