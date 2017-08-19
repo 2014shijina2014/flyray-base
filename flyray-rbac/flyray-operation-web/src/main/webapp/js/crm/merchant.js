@@ -102,6 +102,7 @@ var vm = new Vue({
 		},
 		saveOrUpdate: function (event) {
 			var url = vm.merhcant.id == null ? "../crm/merchant/save" : "../crm/merchant/update";
+			alert(JSON.stringify(vm.merhcant));
 			$.ajax({
 				type: "POST",
 			    url: url,
@@ -119,6 +120,7 @@ var vm = new Vue({
 		},
 		getMerchant: function(orgId){
 			$.get("../crm/merchant/info/"+id, function(r){
+				alert(r.merhcant.id);
 				vm.merhcant = r.merhcant;
 			});
 		},
