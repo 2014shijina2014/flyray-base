@@ -3,6 +3,9 @@ package me.flyray.cms.model;
 import java.sql.Timestamp;
 
 public class Viewpoint {
+	/**
+	 * 主键编号
+	 */
 	private Long id;
 	private String customerNo;
 	private String pointText;
