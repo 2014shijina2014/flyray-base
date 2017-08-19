@@ -1,5 +1,5 @@
 ## flyray项目介绍
-
+![mahua](flyray-doc/logo.jpg)
 　　使用Spring+SpringMVC+Mybatis+dubbox 开发的一套分布式基础框架，提供支付、对账、清结算、客户管理、营销活动、库存管理、搜索模块、rocketmq做统一的消息队列中心
 
 [项目主页](http://www.flyray.me)
@@ -47,18 +47,45 @@
 ![组织结构](flyray-doc/open.png)
 
 ##运行流程
-### 1、javaweb开发环境配置
-自己解决
 
-### 2、下载工程导入eclipse
+##flyray-base 项目搭建
 
-### 3、导入各个工程对应的数据文件和修改数据库用户名密码
+系统环境：windows10 jdk8 eclipse tomcat8
 
-### 4、下载安装zookeeper并启动
+##搭建步骤
 
-### 5、先启动flyray-crm、flyray-erp、flyray-pay中对应的web工程，然后启动flyray-rest下面的web
+* 安装jdk1.8
+* 安装maven
+* 安装zookeeper
+* 下载项目：git clone https://git.oschina.net/boleixiongdi/flyray.git
+* eclipse导入maven项目
+* 在群里下载缺少的dubbox包和zkclient包
+* 解决缺少其他jar包问题，直到项目不报错
 
-### 6、启动flyray-cms下的web或是flyray-merchant-web、flyray-operation-web、flyray-open-web
 
-细节慢慢补充
-如有遗漏 请在群中给我**反馈**。
+##导入后项目结构
+![mahua](flyray-doc/项目结构.png)
+
+##项目架构图
+![mahua](flyray-doc/projectStructures.png)
+
+##项目启动步骤
+* 导入数据库脚本 flyray-os-各模块总的数据库.sql flyray-security-三个中心的数据库.sql
+* 修改config工程中的resource下的dubbo、数据库配置文件
+* 修改  flyray-rbac 下的flyray-merchant-web、flyray-open-web、flyray-operation-web中的resource\service-consumer.xml文件的dubbo IP
+* 启动注册中心即zookeeper
+* 启动所有的服务提供者cms、crm、pay、erp
+* 启动rest，rest既是cms、crm、pay、erp的服务消费者又是merchant-web、open-web、operation-web的服务提供者
+* 最后启动merchant-web可以登录商户中心、启动operation-web可以登录运营中心、启动open-web可以看到开放平台
+
+##感激
+感谢
+
+##关于作者
+
+```javascript
+  var ihubo = {
+    nickName  : "flyray",
+    site : "http://wwww.flyray.me"
+  }
+```
