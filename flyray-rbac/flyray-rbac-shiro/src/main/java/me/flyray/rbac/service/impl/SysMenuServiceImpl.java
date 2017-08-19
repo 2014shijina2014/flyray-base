@@ -1,18 +1,25 @@
 package me.flyray.rbac.service.impl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import me.flyray.rbac.dao.SysMenuDao;
+import me.flyray.rbac.dao.SysUserDao;
 import me.flyray.rbac.entity.SysMenuEntity;
 import me.flyray.rbac.service.SysMenuService;
 import me.flyray.rbac.service.SysRoleMenuService;
 import me.flyray.rbac.service.SysUserService;
+import me.flyray.rbac.utils.Constant;
 import me.flyray.rbac.utils.Constant.MenuType;
 
 
@@ -20,6 +27,8 @@ import me.flyray.rbac.utils.Constant.MenuType;
 public class SysMenuServiceImpl implements SysMenuService {
 	@Autowired
 	private SysMenuDao sysMenuDao;
+	@Autowired
+	private SysUserDao sysUserDao;
 	@Autowired
 	private SysUserService sysUserService;
 	@Autowired
@@ -57,6 +66,31 @@ public class SysMenuServiceImpl implements SysMenuService {
 		List<Long> menuIdList = sysUserService.queryAllMenuId(userId);
 		return getAllMenuList(menuIdList);
 	}
+	
+	@Override
+    public Set<String> getUserPermissions(long userId) {
+        List<String> permsList;
+
+        //系统管理员，拥有最高权限
+        if(userId == Constant.SUPER_ADMIN){
+            List<SysMenuEntity> menuList = sysMenuDao.queryList(new HashMap<String, Object>());
+            permsList = new ArrayList<>(menuList.size());
+            for(SysMenuEntity menu : menuList){
+                permsList.add(menu.getPerms());
+            }
+        }else{
+            permsList = sysUserDao.queryAllPerms(userId);
+        }
+        //用户权限列表
+        Set<String> permsSet = new HashSet<>();
+        for(String perms : permsList){
+            if(StringUtils.isBlank(perms)){
+                continue;
+            }
+            permsSet.addAll(Arrays.asList(perms.trim().split(",")));
+        }
+        return permsSet;
+    }
 	
 	@Override
 	public SysMenuEntity queryObject(Long menuId) {
@@ -121,4 +155,10 @@ public class SysMenuServiceImpl implements SysMenuService {
 		
 		return subMenuList;
 	}
+
+	@Override
+	public List<SysMenuEntity> queryListParentId(Long parentId) {
+		return sysMenuDao.queryListParentId(parentId);
+	}
+
 }

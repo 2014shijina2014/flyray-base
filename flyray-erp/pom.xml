@@ -16,7 +16,7 @@
   </modules>
 
 	<properties>
-		<java-version>1.7</java-version>
+		<java-version>1.8</java-version>
 		<spring.version>4.2.4.RELEASE</spring.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<tomcat.url>http://127.0.0.1:8888/manager</tomcat.url>
@@ -231,8 +231,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 					<!-- true:跳过测试 -->
 					<skip>true</skip>
 					<encoding>UTF-8</encoding>

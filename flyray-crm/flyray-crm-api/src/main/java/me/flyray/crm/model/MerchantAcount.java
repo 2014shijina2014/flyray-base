@@ -19,7 +19,7 @@ public class MerchantAcount {
 	private String merAcountNo;
 	
 	/**
-	 * 账户类型
+	 * 账户类型 数据库字典表维护
 	 */
 	private String acountType;
 	
@@ -32,6 +32,11 @@ public class MerchantAcount {
 	 * 冻结值
 	 */
 	private String freezeValue;
+	
+	/**
+	 * 账户状态
+	 */
+	private String status;
 
 	public String getMerchantNo() {
 		return merchantNo;
@@ -71,6 +76,14 @@ public class MerchantAcount {
 
 	public void setFreezeValue(String freezeValue) {
 		this.freezeValue = freezeValue;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 }

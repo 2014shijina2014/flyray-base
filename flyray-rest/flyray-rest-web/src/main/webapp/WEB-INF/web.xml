@@ -37,8 +37,20 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     
+    <filter>
+	    <filter-name>ModifyParametersFilter</filter-name>
+	    <filter-class>me.flyray.rest.filter.ModifyParametersFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	    <filter-name>ModifyParametersFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	    <!-- 直接从客户端过来的请求以及通过forward过来的请求都要经过该过滤器 -->
+	    <dispatcher>REQUEST</dispatcher>
+	    <dispatcher>FORWARD</dispatcher>
+	</filter-mapping>
+    
     <!-- 日志记录 -->
-    	<!-- 日志log4j配置文件路径 -->
+   	<!-- 日志log4j配置文件路径 -->
     <context-param>
         <param-name>log4jConfigLocation</param-name>
         <param-value>classpath:log4j.properties</param-value>

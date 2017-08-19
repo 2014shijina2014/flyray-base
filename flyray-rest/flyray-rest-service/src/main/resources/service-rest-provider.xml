@@ -23,5 +23,4 @@
 	<!-- dubbo 服务统一入口 -->
 	<dubbo:service interface="me.flyray.rest.api.ApiProvider" ref="apiProvider"  protocol="dubbo" timeout="1200000"/>
 	
-
 </beans>

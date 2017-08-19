@@ -2,6 +2,7 @@ package me.flyray.rbac.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import me.flyray.rbac.entity.SysMenuEntity;
 
@@ -21,6 +22,12 @@ public interface SysMenuService {
 	 * @param menuIdList  用户菜单ID
 	 */
 	List<SysMenuEntity> queryListParentId(Long parentId, List<Long> menuIdList);
+	
+	/**
+	 * 根据父菜单，查询子菜单
+	 * @param parentId 父菜单ID
+	 */
+	List<SysMenuEntity> queryListParentId(Long parentId);
 	
 	/**
 	 * 获取不包含按钮的菜单列表
@@ -67,4 +74,10 @@ public interface SysMenuService {
 	 * 查询用户的权限列表
 	 */
 	List<SysMenuEntity> queryUserList(Long userId);
+	
+	/**
+     * 获取用户权限列表
+     */
+    Set<String> getUserPermissions(long userId);
+
 }

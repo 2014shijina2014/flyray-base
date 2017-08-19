@@ -28,6 +28,10 @@
 	* 页面交互`Vue2.x`
 	* 数据可视化`echarts `
 
+### 项目进度
+
+![项目进度](flyray-doc/flyray-schedule.png)
+
 ### 组织结构
 
 ![组织结构](flyray-doc/projectStructure3.png)
@@ -39,6 +43,8 @@
 ![组织结构](flyray-doc/operation.png)
 ### 商户中心
 ![组织结构](flyray-doc/merchant.png)
+### 开放平台
+![组织结构](flyray-doc/open.png)
 
 ##运行流程
 ### 1、javaweb开发环境配置

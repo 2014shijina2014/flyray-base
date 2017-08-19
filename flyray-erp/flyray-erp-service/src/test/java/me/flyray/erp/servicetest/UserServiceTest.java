@@ -12,7 +12,7 @@ import me.flyray.erp.api.UserService;
 
 public class UserServiceTest {
 	
-	private  UserService userService;
+	/*private  UserService userService;
 	
 	@Before
 	public void setUp() {
@@ -25,7 +25,7 @@ public class UserServiceTest {
 		System.out.println("userService:"+userService);
 		System.out.println(userService.displayAllUser());	
 		
-	}
+	}*/
 	
 	
 

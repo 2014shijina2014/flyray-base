@@ -35,16 +35,18 @@ public class RefundHandlerControler {
 	@ResponseBody
 	@RequestMapping(value="/apply", method = RequestMethod.POST)
 	public Map<String, Object> apply(@RequestBody Map<String, String> param) {
+		
 		return null;
 	}
 	
 	/**
-	 * 退款查询查询
+	 * 退款查询
 	 * query
 	 */
 	@ResponseBody
 	@RequestMapping(value="/query", method = RequestMethod.POST)
 	public Map<String, Object> query(@RequestBody Map<String, String> param) {
+		
 		return null;
 	}
 }

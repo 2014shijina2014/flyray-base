@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.flyray.rbac.dao.SysOrgDao">
+
+	<select id="queryObject" resultType="me.flyray.rbac.entity.SysOrgEntity">
+		select * from sys_org where org_id = #{value} and status_flag = 0
+	</select>
+
+	<select id="queryList" resultType="me.flyray.rbac.entity.SysOrgEntity">
+		select d.*,(select p.name from sys_org p where p.org_id = d.parent_id) as parentName
+		from sys_org d where d.status_flag = 0
+		<if test="orgFilter != null">
+			and d.org_id in (${orgFilter})
+		</if>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by d.${sidx} ${order}
+            </when>
+			<otherwise>
+                order by d.org_sort asc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	 
+	<insert id="save" parameterType="me.flyray.rbac.entity.SysOrgEntity" useGeneratedKeys="true" keyProperty="orgId">
+		insert into sys_org
+		(
+			`parent_id`, 
+			`org_no`,
+			`name`, 
+			`org_sort`,
+			`create_by`,
+			`create_time`,
+			`last_update_by`,
+			`last_update_time`
+		)
+		values
+		(
+			#{parentId}, 
+			`orgNo`,
+			#{name}, 
+			#{orgSort},
+			#{createBy},
+			#{createTime},
+			#{lastUpdateBy},
+			#{lastUpdateTime}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="me.flyray.rbac.entity.SysOrgEntity">
+		update sys_org 
+		<set>
+			<if test="parentId != null">`parent_id` = #{parentId}, </if>
+			<if test="name != null">`name` = #{name}, </if>
+			<if test="orgSort != null">`org_sort` = #{orgSort}</if>
+			<if test="createBy != null">`create_by` = #{createBy}</if>
+			<if test="createTime != null">`create_time` = #{createTime}</if>
+			<if test="lastUpdateBy != null">`last_update_by` = #{lastUpdateBy}</if>
+			<if test="lastUpdateTime != null">`last_update_time` = #{lastUpdateTime}</if>
+		</set>
+		where org_id = #{orgId}
+	</update>
+	
+	<update id="delete">
+		update sys_org set status_flag = -1 where org_id = #{value}
+	</update>
+	
+	<select id="queryOrgIdList" resultType="long">
+		select org_id from sys_org where parent_id = #{value}
+	</select>
+
+</mapper>

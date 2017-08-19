@@ -10,6 +10,5 @@
     <dubbo:reference id="productCategaryService" interface="me.flyray.erp.api.ProductCategaryService"/>
 	<!-- 商品信息 -->
     <dubbo:reference id="productService" interface="me.flyray.erp.api.ProductService"/>
-	
 
 </beans>

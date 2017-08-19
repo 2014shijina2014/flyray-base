@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>me.flyray</groupId>
-		<artifactId>flyray</artifactId>
+		<artifactId>flyray-base</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	
@@ -13,6 +13,13 @@
 	<name>flyray-common</name>
 
 	<dependencies>
+		
+		<dependency>
+			<groupId>me.flyray</groupId>
+			<artifactId>flyray-common-config</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -39,48 +46,6 @@
 		    <artifactId>commons-codec</artifactId>
 		    <version>1.9</version>
 		</dependency>
-		<!-- <dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-beans</artifactId>
-		    <version>4.2.4.RELEASE</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-core</artifactId>
-		    <version>4.2.4.RELEASE</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-tx</artifactId>
-		    <version>4.2.4.RELEASE</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-oxm</artifactId>
-		    <version>4.2.4.RELEASE</version>
-		</dependency>
-		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-aop</artifactId>
-		    <version>4.2.4.RELEASE</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.slf4j</groupId>
-		    <artifactId>slf4j-api</artifactId>
-		    <version>1.7.24</version>
-		</dependency>
-		
-		<dependency>
-		    <groupId>org.springframework.data</groupId>
-		    <artifactId>spring-data-redis</artifactId>
-		    <version>1.8.0.RELEASE</version>
-		</dependency>
-		<dependency>
-		    <groupId>redis.clients</groupId>
-		    <artifactId>jedis</artifactId>
-		    <version>2.9.0</version>
-		</dependency> -->
 		
 		<dependency>
 		    <groupId>com.google.zxing</groupId>
@@ -92,6 +57,41 @@
 		    <groupId>com.google.zxing</groupId>
 		    <artifactId>javase</artifactId>
 		    <version>3.1.0</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>log4j</groupId>
+		    <artifactId>log4j</artifactId>
+		    <version>1.2.17</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-api</artifactId>
+		    <version>1.7.12</version>
+		</dependency>
+		
+		<dependency>
+	        <groupId>io.jsonwebtoken</groupId>
+	        <artifactId>jjwt</artifactId>
+	        <version>0.7.0</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.bouncycastle</groupId>
+	      <artifactId>bcprov-jdk15on</artifactId>
+	      <version>1.55</version>
+	    </dependency>
+	    
+	    <dependency>
+		    <groupId>commons-codec</groupId>
+		    <artifactId>commons-codec</artifactId>
+		    <version>1.10</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>biz.source_code</groupId>
+		    <artifactId>base64coder</artifactId>
+		    <version>2010-12-19</version>
 		</dependency>
 		
 	</dependencies>

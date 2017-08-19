@@ -14,12 +14,6 @@
 
 	<!-- 依赖于mvn-dao模块 -->
 	<dependencies>
-	
-		<!-- <dependency>
-			<groupId>me.flyray</groupId>
-			<artifactId>flyray-rest-api</artifactId>
-			<version>${project.version}</version>
-		</dependency> -->
 		
 		<dependency>
 			<groupId>me.flyray</groupId>
@@ -50,7 +44,7 @@
 			<artifactId>flyray-cms-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

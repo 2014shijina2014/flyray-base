@@ -1,5 +1,7 @@
 package me.flyray.crm.model;
 
+import java.math.BigDecimal;
+
 /** 
 * @author: bolei
 * @date：2017年3月26日 上午9:09:03 
@@ -20,19 +22,24 @@ public class CustomerAccount {
 	private String custAccountNo;
 	
 	/**
-	 *  账户类型
+	 *  账户类型 数据库字典表维护 枚举
 	 */
 	private String accountType;
 	
 	/**
 	 * 账户值
 	 */
-	private String value;
+	private BigDecimal value;
 	
 	/**
 	 * 冻结值
 	 */
 	private String freezeValue;
+	
+	/**
+	 * 账户状态 枚举值
+	 */
+	private String status;
 
 	public String getCustomerNo() {
 		return customerNo;
@@ -58,11 +65,11 @@ public class CustomerAccount {
 		this.accountType = accountType;
 	}
 
-	public String getValue() {
+	public BigDecimal getValue() {
 		return value;
 	}
 
-	public void setValue(String value) {
+	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
 
@@ -72,6 +79,14 @@ public class CustomerAccount {
 
 	public void setFreezeValue(String freezeValue) {
 		this.freezeValue = freezeValue;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 	
 }

@@ -44,6 +44,7 @@ public class PaymentHandlerController {
 		createOrder.setMerchantNo((String)param.get("merchantNo"));
 		createOrder.setPayOrderNo((String)param.get("payOrderNo"));
 		paymentHandlerService.createOrder(createOrder);
+		//生成账单
 		return ResponseHelper.success(createOrder, "00", "创建支付订单成功");
 	}
 	

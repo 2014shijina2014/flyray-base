@@ -11,7 +11,7 @@
 	     http://www.springframework.org/schema/data/elasticsearch 
 	     http://www.springframework.org/schema/data/elasticsearch/spring-elasticsearch.xsd">
 
-    <context:component-scan base-package="me.flyray.search.rocketmq">
+    <context:component-scan base-package="me.flyray.search">
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
@@ -25,19 +25,6 @@
             </list>
         </property>
     </bean>
-
-    <!--AOP-->
-    <bean id="logAspect" class="me.flyray.search.aspect.LogAspect"/>
-    <aop:config>
-        <aop:aspect id="received" ref="logAspect">
-            <aop:pointcut id="receivedService"
-                          expression="execution(* me.flyray.search.rocketmq.service..*.*(..))"/>
-            <aop:around pointcut-ref="receivedService" method="around"/>
-        </aop:aspect>
-    </aop:config>
-
-    <aop:aspectj-autoproxy/>
-    <aop:aspectj-autoproxy proxy-target-class="true"/>
     
     <elasticsearch:transport-client id="client"
 		cluster-nodes="127.0.0.1:9300" cluster-name="elasticsearch" />

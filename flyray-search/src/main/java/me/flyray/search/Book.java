@@ -14,14 +14,11 @@ public class Book{
 	private Integer id;
 	private String name;
 	private String desc;
-	@Field(index=FieldIndex.not_analyzed)
 	private String url;
-	@Field(index=FieldIndex.not_analyzed)
 	private String pubdate;
 	private String pubinfo;
 	@Field(type=FieldType.Nested)
 	private Author author;
-	@Field(type=FieldType.Float,index=FieldIndex.not_analyzed)
 	private Double price;
 	
 	public Book() {

@@ -92,6 +92,19 @@ CREATE TABLE `sys_oss` (
   PRIMARY KEY (`id`)
 ) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8 COMMENT='文件上传';
 
+CREATE TABLE `sys_org` (
+  `id` bigint(11) NOT NULL AUTO_INCREMENT,
+  `org_no` varchar(32) DEFAULT NULL COMMENT '机构部门编号',
+  `org_name` varchar(60) DEFAULT NULL COMMENT '机构部门名称',
+  `parent_id` bigint(11) DEFAULT NULL COMMENT '所属机构部门',
+  `create_by` bigint(11) DEFAULT NULL COMMENT '创建人user_id',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '创建时间',
+  `last_update_by` bigint(11) DEFAULT NULL COMMENT '最后修改人user_id',
+  `last_update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '最后修改时间',
+  `org_level` int(11) DEFAULT NULL COMMENT '机构部门排序号',
+  PRIMARY KEY (`org_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
 
 -- 初始数据
 
@@ -349,6 +362,7 @@ STATE VARCHAR(16) NOT NULL,
 JOB_NAME VARCHAR(200) NULL,
 JOB_GROUP VARCHAR(200) NULL,
 IS_NONCONCURRENT VARCHAR(1) NULL,
+
 REQUESTS_RECOVERY VARCHAR(1) NULL,
 PRIMARY KEY (SCHED_NAME,ENTRY_ID))
 ENGINE=InnoDB DEFAULT CHARSET=utf8;
