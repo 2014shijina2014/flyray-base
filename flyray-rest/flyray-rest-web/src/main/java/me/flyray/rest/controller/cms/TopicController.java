@@ -27,10 +27,10 @@ public class TopicController {
 	
 	/**
 	  * 创建支付交易订单
-	  * create
+	  * query
 	  */
 	@ResponseBody
-	@RequestMapping(value="/create", method = RequestMethod.POST)
+	@RequestMapping(value="/query", method = RequestMethod.POST)
 	public Map<String, Object> create(@RequestBody Map<String, String> param) {
 		logger.info("请求创建支付订单---start---{}",param);
 		CreateOrderRequst createOrder = new CreateOrderRequst();

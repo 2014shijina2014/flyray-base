@@ -44,5 +44,7 @@ public class Topic {
 	 * 审核删除标识
 	 */
 	private String flag;
+	
+	
 
 }
