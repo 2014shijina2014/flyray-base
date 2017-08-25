@@ -86,6 +86,6 @@
 ```javascript
   var ihubo = {
     nickName  : "flyray",
-    site : "http://wwww.flyray.me"
+    site : "http://www.flyray.me"
   }
 ```
