@@ -44,6 +44,11 @@ public class SysRoleEntity implements Serializable {
 	 * 创建时间
 	 */
 	private Date createTime;
+	
+	/**
+	 * 角色所属组织机构
+	 */
+	private Long orgId;
 
 	/**
 	 * 设置：
@@ -115,6 +120,14 @@ public class SysRoleEntity implements Serializable {
 
 	public void setCreateUserId(Long createUserId) {
 		this.createUserId = createUserId;
+	}
+
+	public Long getOrgId() {
+		return orgId;
+	}
+
+	public void setOrgId(Long orgId) {
+		this.orgId = orgId;
 	}
 	
 }

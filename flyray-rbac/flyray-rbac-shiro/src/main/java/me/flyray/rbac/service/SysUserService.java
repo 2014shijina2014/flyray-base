@@ -50,8 +50,9 @@ public interface SysUserService {
 	
 	/**
 	 * 保存用户
+	 * @return 
 	 */
-	void save(SysUserEntity user);
+	int save(SysUserEntity user);
 	
 	/**
 	 * 修改用户

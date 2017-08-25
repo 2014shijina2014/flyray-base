@@ -69,17 +69,19 @@ public class SysUserServiceImpl implements SysUserService {
 
 	@Override
 	@Transactional
-	public void save(SysUserEntity user) {
+	public int save(SysUserEntity user) {
 		user.setCreateTime(new Date());
 		//sha256加密
 		user.setPassword(new Sha256Hash(user.getPassword()).toHex());
-		sysUserDao.save(user);
+		int userId = sysUserDao.save(user);
 		
 		//检查角色是否越权
 		checkRole(user);
 		
 		//保存用户与角色关系
 		sysUserRoleService.saveOrUpdate(user.getUserId(), user.getRoleIdList());
+		
+		return userId;
 	}
 
 	@Override

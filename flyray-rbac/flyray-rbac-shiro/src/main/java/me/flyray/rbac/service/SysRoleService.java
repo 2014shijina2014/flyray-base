@@ -21,7 +21,7 @@ public interface SysRoleService {
 	
 	int queryTotal(Map<String, Object> map);
 	
-	void save(SysRoleEntity role);
+	int save(SysRoleEntity role);
 	
 	void update(SysRoleEntity role);
 	

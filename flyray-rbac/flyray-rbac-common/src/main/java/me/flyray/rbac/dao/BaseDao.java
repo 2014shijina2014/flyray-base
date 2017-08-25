@@ -12,9 +12,9 @@ import java.util.Map;
  */
 public interface BaseDao<T> {
 	
-	void save(T t);
+	int save(T t);
 	
-	void save(Map<String, Object> map);
+	int save(Map<String, Object> map);
 	
 	void saveBatch(List<T> list);
 	

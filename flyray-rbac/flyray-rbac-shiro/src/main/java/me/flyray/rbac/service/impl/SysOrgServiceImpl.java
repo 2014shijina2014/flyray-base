@@ -36,8 +36,8 @@ public class SysOrgServiceImpl implements SysOrgService{
 	}
 
 	@Override
-	public void save(SysOrgEntity sysOrg) {
-		sysOrgDao.save(sysOrg);
+	public int save(SysOrgEntity sysOrg) {
+		return sysOrgDao.save(sysOrg);
 	}
 
 	@Override

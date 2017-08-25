@@ -15,5 +15,11 @@
 			<artifactId>flyray-rbac-common</artifactId>
 			<version>${flyray-rbac-version}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>me.flyray</groupId>
+			<artifactId>flyray-rbac-shiro</artifactId>
+			<version>${flyray-rbac-version}</version>
+		</dependency>
 	</dependencies>
 </project>
