@@ -26,7 +26,12 @@
 
 	<!-- 在dubbo的配置文件中指定服务启动的绑定Ip dubbo.protocol.host 与dns有关-->
     <dubbo:protocol host="${dubbo.protocol.host}" name="dubbo" port="${cms.dubbo.port}"/>
-
+    
+    <!-- 活动接口dubbo服务 -->
 	<dubbo:service interface="me.flyray.cms.api.ActivityService" ref="activityService"  protocol="dubbo" timeout="1200000"/>
+	<!-- 兴趣小组接口dubbo服务 -->
+	<dubbo:service interface="me.flyray.cms.api.InterestGroupService" ref="interestGroupService"  protocol="dubbo" timeout="1200000"/>
+	<!-- 兴趣小组类别接口dubbo服务 -->
+	<dubbo:service interface="me.flyray.cms.api.InterestGroupCategoryService" ref="interestGroupCategoryService"  protocol="dubbo" timeout="1200000"/>
 	
 </beans>

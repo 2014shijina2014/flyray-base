@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.flyray.cms.dao.InterestGroupDao">
+	
+	<resultMap type="me.flyray.cms.model.InterestGroup" id="interestGroupMap">
+	    <id column="id" property="id" jdbcType="INTEGER" />
+		<result column="org_id" property="orgId" jdbcType="INTEGER" />
+		<result column="merchant_id" property="merchantId" jdbcType="INTEGER" />
+		<result column="group_category_id" property="groupCategoryId" jdbcType="INTEGER" />
+		<result column="group_name" property="groupName" jdbcType="VARCHAR" />
+		<result column="group_logo" property="groupLogo" jdbcType="VARCHAR" />
+		<result column="group_slogan" property="groupSlogan" jdbcType="VARCHAR" />
+		<result column="group_intro" property="groupIntro" jdbcType="VARCHAR" />
+		<result column="createtime" property="createTime" jdbcType="VARCHAR" />
+		<result column="custmer_no" property="custmerNo" jdbcType="VARCHAR" />
+		<result column="group_address" property="groupAddress" jdbcType="VARCHAR" />
+		<result column="flag" property="flag" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+        id, org_id, merchant_id, group_category_id, group_name, group_logo, group_slogan, group_intro, createtime, custmer_no, group_address, flag
+    </sql>
+    
+    <sql id="where1">
+		<trim prefix="where" prefixOverrides="AND|OR">
+		<if test="id != null and id != ''">
+			AND id = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="orgId != null and orgId != ''">
+			AND org_id = #{orgId,jdbcType=INTEGER}
+        </if>
+        <if test="merchantId != null and merchantId != ''">
+			AND merchant_id = #{merchantId,jdbcType=INTEGER}
+        </if>
+        <if test="groupCategoryId != null and groupCategoryId != ''">
+			AND group_category_id = #{groupCategoryId,jdbcType=INTEGER}
+        </if>
+        <if test="groupName != null and groupName != ''">
+			AND group_name = #{groupName,jdbcType=VARCHAR}
+        </if>
+        <if test="groupLogo != null and groupLogo != ''">
+			AND group_logo = #{groupLogo,jdbcType=VARCHAR}
+        </if>
+        <if test="groupSlogan != null and groupSlogan != ''">
+			AND group_slogan = #{groupSlogan,jdbcType=VARCHAR}
+        </if>
+        <if test="groupIntro != null and groupIntro != ''">
+			AND group_intro = #{groupIntro,jdbcType=VARCHAR}
+        </if>
+        <if test="createTime != null and createTime != ''">
+			AND createtime = #{createTime,jdbcType=VARCHAR}
+        </if>
+        <if test="custmerNo != null and custmerNo != ''">
+			AND custmer_no = #{custmerNo,jdbcType=VARCHAR}
+        </if>
+        <if test="groupAddress != null and groupAddress != ''">
+			AND group_address = #{groupAddress,jdbcType=VARCHAR}
+        </if>
+        <if test="flag != null and flag != ''">
+			AND flag = #{flag,jdbcType=VARCHAR}
+        </if>
+		</trim>
+	</sql>
+	
+	<insert id="insert" parameterType="me.flyray.cms.model.InterestGroup">
+		insert into cms_interest_group
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != ''">
+				id,
+			</if>
+			<if test="orgId != null and orgId != ''">
+				org_id,
+			</if>
+			<if test="merchantId != null and merchantId != ''">
+				merchant_id,
+			</if>
+			<if test="groupCategoryId != null and groupCategoryId != ''">
+				group_category_id,
+			</if>
+			<if test="groupName != null and groupName != ''">
+				group_name,
+			</if>
+			<if test="groupLogo != null and groupLogo != ''">
+				group_logo,
+			</if>
+			<if test="groupSlogan != null and groupSlogan != ''">
+				group_slogan,
+			</if>
+			<if test="groupIntro != null and groupIntro != ''">
+				group_intro,
+			</if>
+			<if test="createTime != null and createTime != ''">
+				createtime,
+			</if>
+			<if test="custmerNo != null and custmerNo != ''">
+				custmer_no,
+			</if>
+			<if test="groupAddress != null and groupAddress != ''">
+				group_address,
+			</if>
+			<if test="flag != null and flag != ''">
+				flag,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != ''">
+				#{id,jdbcType=INTEGER},
+	        </if>
+	        <if test="orgId != null and orgId != ''">
+				#{orgId,jdbcType=INTEGER},
+	        </if>
+	        <if test="merchantId != null and merchantId != ''">
+				#{merchantId,jdbcType=INTEGER},
+	        </if>
+	        <if test="groupCategoryId != null and groupCategoryId != ''">
+				#{groupCategoryId,jdbcType=INTEGER},
+	        </if>
+	        <if test="groupName != null and groupName != ''">
+				#{groupName,jdbcType=VARCHAR},
+	        </if>
+	        <if test="groupLogo != null and groupLogo != ''">
+				#{groupLogo,jdbcType=VARCHAR},
+	        </if>
+	        <if test="groupSlogan != null and groupSlogan != ''">
+				#{groupSlogan,jdbcType=VARCHAR},
+	        </if>
+	        <if test="groupIntro != null and groupIntro != ''">
+				#{groupIntro,jdbcType=VARCHAR},
+	        </if>
+	        <if test="createTime != null and createTime != ''">
+				#{createTime,jdbcType=VARCHAR},
+	        </if>
+	        <if test="custmerNo != null and custmerNo != ''">
+				#{custmerNo,jdbcType=VARCHAR},
+	        </if>
+	        <if test="groupAddress != null and groupAddress != ''">
+				#{groupAddress,jdbcType=VARCHAR},
+	        </if>
+	        <if test="flag != null and flag != ''">
+				#{flag,jdbcType=VARCHAR},
+	        </if>
+		</trim>
+	</insert>
+
+	<update id="update" parameterType="me.flyray.cms.model.InterestGroup">
+		update cms_interest_group
+		<set>
+	        <if test="orgId != null and orgId != ''">
+				org_id = #{orgId,jdbcType=INTEGER},
+	        </if>
+	        <if test="merchantId != null and merchantId != ''">
+				merchant_id = #{merchantId,jdbcType=INTEGER},
+	        </if>
+	        <if test="groupCategoryId != null and groupCategoryId != ''">
+				group_category_id = #{groupCategoryId,jdbcType=INTEGER},
+	        </if>
+	        <if test="groupName != null and groupName != ''">
+				group_name = #{groupName,jdbcType=VARCHAR},
+	        </if>
+	        <if test="groupLogo != null and groupLogo != ''">
+				group_logo = #{groupLogo,jdbcType=VARCHAR},
+	        </if>
+	        <if test="groupSlogan != null and groupSlogan != ''">
+				group_slogan = #{groupSlogan,jdbcType=VARCHAR},
+	        </if>
+	        <if test="groupIntro != null and groupIntro != ''">
+				group_intro = #{groupIntro,jdbcType=VARCHAR},
+	        </if>
+	        <if test="createTime != null and createTime != ''">
+				createtime = #{createTime,jdbcType=VARCHAR},
+	        </if>
+	        <if test="custmerNo != null and custmerNo != ''">
+				custmer_no = #{custmerNo,jdbcType=VARCHAR},
+	        </if>
+	        <if test="groupAddress != null and groupAddress != ''">
+				group_address = #{groupAddress,jdbcType=VARCHAR},
+	        </if>
+	        <if test="flag != null and flag != ''">
+				flag = #{flag,jdbcType=VARCHAR},
+	        </if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectByBizKeys" resultMap="interestGroupMap" parameterType="me.flyray.cms.model.InterestGroup">
+		select
+		<include refid="Base_Column_List" />
+		from cms_interest_group
+        <include refid="where1"/>
+	</select>
+  
+</mapper>
