@@ -23,7 +23,7 @@ import me.flyray.rest.util.ResponseHelper;
 */
 
 @Controller
-@RequestMapping("/customerAccount")
+@RequestMapping("/api/crm/customerAccount")
 public class CustomerAccountController {
 
 	@Autowired
