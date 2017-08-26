@@ -1,5 +1,6 @@
 package me.flyray.rest.controller.cms;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import me.flyray.cms.api.ActivityService;
 import me.flyray.cms.api.InterestGroupCategoryService;
 import me.flyray.cms.api.InterestGroupService;
-import me.flyray.crm.api.WeixinCommonService;
+import me.flyray.rest.util.ResponseHelper;
 
 /** 
 * @author: bolei
@@ -25,7 +26,7 @@ import me.flyray.crm.api.WeixinCommonService;
 */
 
 @RestController
-@RequestMapping("/activity")
+@RequestMapping("/api/cms/activity")
 public class ActivityController {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
@@ -42,16 +43,19 @@ public class ActivityController {
 	 * query
 	 */
 	@ResponseBody
-	@RequestMapping(value="/query", method = RequestMethod.GET)
+	@RequestMapping(value="/query", method = RequestMethod.POST)
 	public Map<String, Object> queryCustomerInfo(@RequestBody Map<String, String> param){
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		logger.info("查询活动首页信息------start------{}",param);
 		
-		
-		
+		resultMap.put("value", "001");
+		List<String> a = new ArrayList<String>();
+		a.add("lala");
+		a.add("niuniu");
+		resultMap.put("list", a);
 		
 		logger.info("查询活动首页信息------end------{}",resultMap);
-		return resultMap;
+		return ResponseHelper.success(resultMap, "00", "请求数据成功");
 	}
 	
 	
