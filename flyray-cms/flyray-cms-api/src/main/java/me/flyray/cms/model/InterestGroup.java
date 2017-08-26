@@ -1,62 +1,69 @@
 package me.flyray.cms.model;
 
-/** 
-* @author: bolei
-* @date：2017年8月26日 上午8:50:48
-* @description：兴趣小组
-*/
+import me.flyray.common.model.BaseModel;
 
-public class InterestGroup {
+/**
+ * @author: bolei
+ * @date：2017年8月26日 上午8:50:48
+ * @description：兴趣小组
+ */
+
+public class InterestGroup extends BaseModel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3822056995269583261L;
 
 	/**
 	 * 自增id
 	 */
 	private Long id;
-	
+
 	/**
-	 * 所属机构
+	 * 小组所属类别
 	 */
-	private Long orgId;
-	
-	/**
-	 * 所属商户
-	 */
-	private Long merchantId;
-	
+	private Long groupCategoryId;
+
 	/**
 	 * 小组名称
 	 */
 	private String groupName;
-	
+
 	/**
 	 * 小组logo
 	 */
 	private String groupLogo;
-	
+
 	/**
 	 * 小组口号
 	 */
 	private String groupSlogan;
-	
+
 	/**
 	 * 小组简介
 	 */
 	private String groupIntro;
-	
+
 	/**
 	 * 小组创建时间
 	 */
 	private String createTime;
-	
+
 	/**
 	 * 小组创建人
 	 */
 	private String custmerNo;
-	
+
 	/**
 	 * 小组地址
 	 */
 	private String groupAddress;
+
+	/**
+	 * 状态标识 00：无效；10：推荐；20：置顶
+	 */
+	private String flag;
 
 	public Long getId() {
 		return id;
@@ -66,20 +73,12 @@ public class InterestGroup {
 		this.id = id;
 	}
 
-	public Long getOrgId() {
-		return orgId;
+	public Long getGroupCategoryId() {
+		return groupCategoryId;
 	}
 
-	public void setOrgId(Long orgId) {
-		this.orgId = orgId;
-	}
-
-	public Long getMerchantId() {
-		return merchantId;
-	}
-
-	public void setMerchantId(Long merchantId) {
-		this.merchantId = merchantId;
+	public void setGroupCategoryId(Long groupCategoryId) {
+		this.groupCategoryId = groupCategoryId;
 	}
 
 	public String getGroupName() {
@@ -137,5 +136,22 @@ public class InterestGroup {
 	public void setGroupAddress(String groupAddress) {
 		this.groupAddress = groupAddress;
 	}
-	
+
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+
+	@Override
+	public String toString() {
+		return "InterestGroup [getId()=" + getId() + ", getGroupCategoryId()=" + getGroupCategoryId()
+				+ ", getGroupName()=" + getGroupName() + ", getGroupLogo()=" + getGroupLogo() + ", getGroupSlogan()="
+				+ getGroupSlogan() + ", getGroupIntro()=" + getGroupIntro() + ", getCreateTime()=" + getCreateTime()
+				+ ", getCustmerNo()=" + getCustmerNo() + ", getGroupAddress()=" + getGroupAddress() + ", getFlag()="
+				+ getFlag() + ", getMerchantId()=" + getMerchantId() + ", getOrgId()=" + getOrgId() + "]";
+	}
+
 }

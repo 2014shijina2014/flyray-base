@@ -1,13 +1,20 @@
 package me.flyray.cms.model;
 
+import java.io.Serializable;
+
 /** 
 * @author: bolei
 * @date：2017年3月6日 下午10:20:39 
 * @description：活动 
 */
 
-public class Activity {
+public class Activity implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4641341658497485836L;
+
 	/**
 	 * 自增id
 	 */
@@ -37,6 +44,12 @@ public class Activity {
 	 * 活动内容
 	 */
 	private String activityContent;
+	
+	/**
+	 * 状态标识
+	 * 00：无效；10：推荐；20：置顶
+	 */
+	private String flag;
 
 	public Long getId() {
 		return id;
@@ -84,6 +97,21 @@ public class Activity {
 
 	public void setInterestGroupId(Long interestGroupId) {
 		InterestGroupId = interestGroupId;
+	}
+
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+
+	@Override
+	public String toString() {
+		return "Activity [id=" + id + ", InterestGroupId=" + InterestGroupId + ", activityName=" + activityName
+				+ ", activityLogo=" + activityLogo + ", activityDes=" + activityDes + ", activityContent="
+				+ activityContent + ", flag=" + flag + "]";
 	}
 	
 }

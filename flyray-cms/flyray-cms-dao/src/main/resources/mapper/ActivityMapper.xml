@@ -3,10 +3,127 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="me.flyray.cms.dao.ActivityDao">
+	
+	<resultMap type="me.flyray.cms.model.Activity" id="activityMap">
+	    <id column="id" property="id" jdbcType="INTEGER" />
+		<result column="interest_group_id" property="InterestGroupId" jdbcType="INTEGER" />
+		<result column="activity_name" property="activityName" jdbcType="VARCHAR" />
+		<result column="activity_logo" property="activityLogo" jdbcType="VARCHAR" />
+		<result column="activity_des" property="activityDes" jdbcType="VARCHAR" />
+		<result column="activity_content" property="activityContent" jdbcType="VARCHAR" />
+		<result column="flag" property="flag" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+        id, interest_group_id, activity_name, activity_logo, activity_des, activity_content, flag
+    </sql>
+    
+    <sql id="where1">
+		<trim prefix="where" prefixOverrides="AND|OR">
+		<if test="id != null and id != ''">
+			AND id = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="InterestGroupId != null and InterestGroupId != ''">
+			AND interest_group_id = #{InterestGroupId,jdbcType=INTEGER}
+        </if>
+        <if test="activityName != null and activityName != ''">
+			AND activity_name = #{activityName,jdbcType=VARCHAR}
+        </if>
+        <if test="activityLogo != null and activityLogo != ''">
+			AND activity_logo = #{activityLogo,jdbcType=VARCHAR}
+        </if>
+        <if test="activityDes != null and activityDes != ''">
+			AND activity_des = #{activityDes,jdbcType=VARCHAR}
+        </if>
+        <if test="activityContent != null and activityContent != ''">
+			AND activity_content = #{activityContent,jdbcType=VARCHAR}
+        </if>
+        <if test="flag != null and flag != ''">
+			AND flag = #{flag,jdbcType=VARCHAR}
+        </if>
+		</trim>
+	</sql>
+	
+	<insert id="insert" parameterType="me.flyray.cms.model.Activity">
+		insert into cms_activity
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != ''">
+				id,
+			</if>
+			<if test="InterestGroupId != null and InterestGroupId != ''">
+				interest_group_id,
+			</if>
+			<if test="activityName != null and activityName != ''">
+				activity_name,
+			</if>
+			<if test="activityLogo != null and activityLogo != ''">
+				activity_logo,
+			</if>
+			<if test="activityDes != null and activityDes != ''">
+				activity_des,
+			</if>
+			<if test="activityContent != null and activityContent != ''">
+				activity_content,
+			</if>
+			<if test="flag != null and flag != ''">
+				flag,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != ''">
+				#{id,jdbcType=INTEGER},
+	        </if>
+	        <if test="InterestGroupId != null and InterestGroupId != ''">
+				#{InterestGroupId,jdbcType=INTEGER},
+	        </if>
+	        <if test="activityName != null and activityName != ''">
+				#{activityName,jdbcType=VARCHAR},
+	        </if>
+	        <if test="activityLogo != null and activityLogo != ''">
+				#{activityLogo,jdbcType=VARCHAR},
+	        </if>
+	        <if test="activityDes != null and activityDes != ''">
+				#{activityDes,jdbcType=VARCHAR},
+	        </if>
+	        <if test="activityContent != null and activityContent != ''">
+				#{activityContent,jdbcType=VARCHAR},
+	        </if>
+	        <if test="flag != null and flag != ''">
+				#{flag,jdbcType=VARCHAR},
+	        </if>
+		</trim>
+	</insert>
 
-	<!-- 查询所有用户,分页 -->
-	<select id="queryUser" resultType="me.flyray.cms.model.Activity">
-		select * from user 		
+	<update id="update" parameterType="me.flyray.cms.model.Activity">
+		update cms_activity
+		<set>
+	        <if test="InterestGroupId != null and InterestGroupId != ''">
+				interest_group_id = #{InterestGroupId,jdbcType=INTEGER},
+	        </if>
+	        <if test="activityName != null and activityName != ''">
+				activity_name = #{activityName,jdbcType=VARCHAR},
+	        </if>
+	        <if test="activityLogo != null and activityLogo != ''">
+				activity_logo = #{activityLogo,jdbcType=VARCHAR},
+	        </if>
+	        <if test="activityDes != null and activityDes != ''">
+				activity_des = #{activityDes,jdbcType=VARCHAR},
+	        </if>
+	        <if test="activityContent != null and activityContent != ''">
+				activity_content = #{activityContent,jdbcType=VARCHAR},
+	        </if>
+	        <if test="flag != null and flag != ''">
+				flag = #{flag,jdbcType=VARCHAR},
+	        </if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	
+	<select id="selectByBizKeys" resultMap="activityMap" parameterType="me.flyray.cms.model.Activity">
+		select
+		<include refid="Base_Column_List" />
+		from cms_activity
+        <include refid="where1"/>
 	</select>
   
 </mapper>
