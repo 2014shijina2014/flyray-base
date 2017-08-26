@@ -8,12 +8,15 @@ package me.flyray.cms.model;
 
 public class Activity {
 	
-	private Integer id;
+	/**
+	 * 自增id
+	 */
+	private Long id;
 	
 	/**
-	 * 机构编号
+	 * 所属兴趣组
 	 */
-	private String orgNo;
+	private Long InterestGroupId;
 	
 	/**
 	 * 活动名称
@@ -26,24 +29,21 @@ public class Activity {
 	private String activityLogo;
 	
 	/**
-	 * 活动描述
+	 * 活动摘要
 	 */
 	private String activityDes;
+	
+	/**
+	 * 活动内容
+	 */
+	private String activityContent;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getOrgNo() {
-		return orgNo;
-	}
-
-	public void setOrgNo(String orgNo) {
-		this.orgNo = orgNo;
 	}
 
 	public String getActivityName() {
@@ -68,6 +68,22 @@ public class Activity {
 
 	public void setActivityDes(String activityDes) {
 		this.activityDes = activityDes;
+	}
+
+	public String getActivityContent() {
+		return activityContent;
+	}
+
+	public void setActivityContent(String activityContent) {
+		this.activityContent = activityContent;
+	}
+
+	public Long getInterestGroupId() {
+		return InterestGroupId;
+	}
+
+	public void setInterestGroupId(Long interestGroupId) {
+		InterestGroupId = interestGroupId;
 	}
 	
 }
