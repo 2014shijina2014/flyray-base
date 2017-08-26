@@ -1,10 +1,7 @@
 package me.flyray.rest.controller.cms;
 
 import java.util.HashMap;
-<<<<<<< HEAD
-=======
 import java.util.List;
->>>>>>> c761494a72cd1e1c09865936d9875eefcb2fa348
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -17,12 +14,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import me.flyray.cms.api.ActivityService;
-<<<<<<< HEAD
 import me.flyray.cms.api.InterestGroupCategoryService;
 import me.flyray.cms.api.InterestGroupService;
-=======
 import me.flyray.crm.api.WeixinCommonService;
->>>>>>> c761494a72cd1e1c09865936d9875eefcb2fa348
 
 /** 
 * @author: bolei
@@ -38,13 +32,10 @@ public class ActivityController {
 	
 	@Autowired
 	private ActivityService activityService;
-<<<<<<< HEAD
 	@Autowired
 	private InterestGroupService interestGroupService;
 	@Autowired
 	private InterestGroupCategoryService interestGroupCategoryService;
-=======
->>>>>>> c761494a72cd1e1c09865936d9875eefcb2fa348
 	/**
 	 * 查询客户信息
 	 * 包括客户账户信息
@@ -53,7 +44,6 @@ public class ActivityController {
 	@ResponseBody
 	@RequestMapping(value="/query", method = RequestMethod.GET)
 	public Map<String, Object> queryCustomerInfo(@RequestBody Map<String, String> param){
-<<<<<<< HEAD
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		logger.info("查询活动首页信息------start------{}",param);
 		
@@ -62,13 +52,6 @@ public class ActivityController {
 		
 		logger.info("查询活动首页信息------end------{}",resultMap);
 		return resultMap;
-=======
-		return null;
-//		logger.info("查询客户信息------start------{}",param);
-//		
-//		logger.info("查询客户信息------end------{}",resultMap);
-//		return resultMap;
->>>>>>> c761494a72cd1e1c09865936d9875eefcb2fa348
 	}
 	
 	
