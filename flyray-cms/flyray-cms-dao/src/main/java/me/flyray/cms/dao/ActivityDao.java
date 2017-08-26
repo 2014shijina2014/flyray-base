@@ -12,5 +12,8 @@ import me.flyray.cms.model.Activity;
 
 public interface ActivityDao {
 
-	public List<Activity> queryActivity();
+	public void insert(Activity activity);
+	public void update(Activity activity);
+	public List<Activity> selectByBizKeys(Activity activity);
+	
 }
