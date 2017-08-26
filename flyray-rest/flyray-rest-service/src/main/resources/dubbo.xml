@@ -21,10 +21,11 @@
 	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <dubbo:application name="flyray-rest-dubbo" owner="programmer" organization="dubbox"/>
-
     <dubbo:registry address="${dubbo.registry.address}"/>
-
+	<!-- 关闭所有服务的启动时检查：(没有提供者时报错)  写在定义服务消费者一方 -->
+    <dubbo:consumer check="false" />
 	<!-- 在dubbo的配置文件中指定服务启动的绑定Ip dubbo.protocol.host 与dns有关-->
     <dubbo:protocol host="${dubbo.protocol.host}" name="dubbo" port="${rest.dubbo.port}"/>
+    
 	
 </beans>
