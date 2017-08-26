@@ -27,13 +27,13 @@
 		insert into erp_product_categary
 		(
 			`org_id`, 
-			`merchant_no`, 
+			`merchant_id`, 
 			`categary_name`
 		)
 		values
 		(
 			#{orgId}, 
-			#{merchantNo},
+			#{merchantId},
 			#{categaryName}
 		)
 	</insert>
@@ -42,7 +42,7 @@
 		update erp_product_categary 
 		<set>
 			<if test="orgId != null">`org_id` = #{orgId}, </if>
-			<if test="merchantNo != null">`merchant_no` = #{merchantNo},</if>
+			<if test="merchantNo != null">`merchant_id` = #{merchantId},</if>
 			<if test="categaryName != null">`categary_name` = #{categaryName}</if>
 		</set>
 		where id = #{id}

@@ -145,7 +145,7 @@ CREATE TABLE `erp_product_categary` (
   `id` bigint(20) DEFAULT NULL,
   `org_id` bigint(20) DEFAULT NULL COMMENT '所属组织机构',
   `categary_name` varbinary(60) DEFAULT NULL COMMENT '商品类名',
-  `merchant_no` char(10) DEFAULT NULL COMMENT '所属商户'
+  `merchant_id` char(10) DEFAULT NULL COMMENT '所属商户'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `erp_product_categary` */

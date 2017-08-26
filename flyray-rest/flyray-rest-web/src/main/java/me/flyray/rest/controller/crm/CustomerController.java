@@ -38,7 +38,7 @@ import me.flyray.rest.util.ResponseHelper;
 */
 
 @Controller
-@RequestMapping("/customer")
+@RequestMapping("/api/crm/customer")
 public class CustomerController {
 
 	protected Logger logger = LoggerFactory.getLogger(getClass());

@@ -70,14 +70,14 @@ private static final Logger logger = LoggerFactory.getLogger(ProductCategaryCont
 	/**
 	 * 保存客户会员
 	 */
-	@SysLog("保存客户会员")
+	@SysLog("保存商品分类")
 	@RequestMapping("/save")
 	@RequiresPermissions("erp:productCategary:save")
 	public R save(@RequestBody Map<String, Object> params){
 		Parameter parameter = new Parameter("productCategaryService", "save");
 		Map<String, Object> map = new HashMap<>();
-		map.put("orgId", params.get("orgId"));
-		map.put("merchantNo", params.get("merchantNo"));
+		map.put("orgId", "1");
+		map.put("merchantId", "1");
 		map.put("categaryName", params.get("categaryName"));
 		parameter.setMap(map);
 		apiProvider.execute(parameter);
