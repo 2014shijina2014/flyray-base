@@ -150,7 +150,7 @@ CREATE TABLE `erp_product_categary` (
 
 /*Data for the table `erp_product_categary` */
 
-insert  into `erp_product_categary`(`id`,`org_id`,`categary_name`,`merchant_no`) values (NULL,44,'erere','344r');
+insert  into `erp_product_categary`(`id`,`org_id`,`categary_name`,`merchant_id`) values (NULL,44,'erere','344r');
 
 /*Table structure for table `pay_channel` */
 

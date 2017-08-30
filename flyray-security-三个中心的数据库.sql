@@ -373,6 +373,15 @@ CREATE TABLE `sys_org` (
 
 insert  into `sys_org`(`org_id`,`org_no`,`name`,`parent_id`,`create_by`,`create_time`,`last_update_by`,`last_update_time`,`org_sort`,`status_flag`) values (1,'2','飞雷集团',0,NULL,'2017-07-08 16:28:20',NULL,'2017-04-05 22:43:10',233,0),(2,'2332','技术部',1,NULL,'2017-07-08 16:52:40',NULL,'2017-04-05 22:43:10',2233,0);
 
+DROP TABLE IF EXISTS `sys_role_org`;
+-- 角色与部门对应关系
+CREATE TABLE `sys_role_org` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `role_id` BIGINT COMMENT '角色ID',
+  `org_id` BIGINT COMMENT '机构部门ID',
+  PRIMARY KEY (`id`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8 COMMENT='角色与部门对应关系';
+
 /*Table structure for table `sys_oss` */
 
 DROP TABLE IF EXISTS `sys_oss`;
