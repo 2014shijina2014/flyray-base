@@ -56,8 +56,8 @@ public class ApiOrgUserController {
     	sysOrg.setName(orgName);
     	sysOrg.setOrgNo("");
     	sysOrg.setParentId(Long.valueOf(1));
-    	int orgId = sysOrgService.save(sysOrg);
-    	
+    	sysOrgService.save(sysOrg);
+    	Long orgId = sysOrg.getOrgId();
     	//为渠道、商户、或部门添加最大权限角色
     	SysRoleEntity sysRole = new SysRoleEntity();
     	sysRole.setRoleName("机构部门管理员");
@@ -66,8 +66,8 @@ public class ApiOrgUserController {
     	List<Long> menuIdList = sysRoleMenuService.queryMenuIdList(Long.valueOf(1));
     	sysRole.setMenuIdList(menuIdList);
     	sysRole.setOrgId(Long.valueOf(orgId));
-    	int roleId = sysRoleService.save(sysRole);
-    	
+    	sysRoleService.save(sysRole);
+    	Long roleId = sysRole.getRoleId();
     	//写用户表
     	SysUserEntity sysUser = new SysUserEntity();
     	sysUser.setOrgId(Long.valueOf(orgId));
@@ -78,9 +78,9 @@ public class ApiOrgUserController {
     	List<Long> roleIdList = new ArrayList<>();
     	roleIdList.add((long)roleId);
     	sysUser.setRoleIdList(roleIdList);
-    	int userId = sysUserService.save(sysUser);
+    	sysUserService.save(sysUser);
     	//写用户角色表
-    	sysUserRoleService.saveOrUpdate((long)userId, roleIdList);
+    	sysUserRoleService.saveOrUpdate((long)sysUser.getUserId(), roleIdList);
         return R.ok();
     }
     

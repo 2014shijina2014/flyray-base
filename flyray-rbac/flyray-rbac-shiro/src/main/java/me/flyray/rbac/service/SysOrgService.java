@@ -17,7 +17,7 @@ public interface SysOrgService {
 	
 	List<SysOrgEntity> queryList(Map<String, Object> map);
 
-	int save(SysOrgEntity sysOrg);
+	void save(SysOrgEntity sysOrg);
 	
 	void update(SysOrgEntity sysOrg);
 	

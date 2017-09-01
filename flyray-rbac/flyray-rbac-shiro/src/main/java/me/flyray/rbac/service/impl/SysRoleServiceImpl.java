@@ -54,17 +54,15 @@ public class SysRoleServiceImpl implements SysRoleService {
 
 	@Override
 	@Transactional
-	public int save(SysRoleEntity role) {
+	public void save(SysRoleEntity role) {
 		role.setCreateTime(new Date());
-		int roleId = sysRoleDao.save(role);
+		sysRoleDao.save(role);
 		
 		//检查权限是否越权
 		checkPrems(role);
 		
 		//保存角色与菜单关系
 		sysRoleMenuService.saveOrUpdate(role.getRoleId(), role.getMenuIdList());
-		
-		return roleId;
 	}
 
 	@Override
