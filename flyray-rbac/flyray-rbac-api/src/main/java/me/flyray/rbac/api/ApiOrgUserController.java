@@ -57,7 +57,7 @@ public class ApiOrgUserController {
     	sysOrg.setOrgNo("");
     	sysOrg.setParentId(Long.valueOf(1));
     	sysOrgService.save(sysOrg);
-    	Long orgId = sysOrg.getOrgId();
+    	Long orgId = sysOrg.getId();
     	//为渠道、商户、或部门添加最大权限角色
     	SysRoleEntity sysRole = new SysRoleEntity();
     	sysRole.setRoleName("机构部门管理员");
