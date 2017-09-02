@@ -71,7 +71,7 @@ CREATE TABLE `crm_customer_base_extend` (
 DROP TABLE IF EXISTS `crm_customer_proficient`;
 
 CREATE TABLE `crm_customer_proficient` (
-  `customer_no` varchar(60) NOT NULL COMMENT '客户号',
+  `customer_id` bigint(20) NOT NULL COMMENT '客户号',
   `cert_photo_file_no` varchar(20) NOT NULL COMMENT '身份证正面照片',
   `leval` varchar(2) NOT NULL COMMENT '专家等级：00-普通；01-热门'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -291,6 +291,19 @@ CREATE TABLE `user` (
   UNIQUE KEY `chinesename` (`chinesename`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `cms_view_point`;
+
+CREATE TABLE `cms_view_point` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键，自增',
+  `customer_id` bigint(20) DEFAULT NULL COMMENT '索引，用户编号',
+  `point_text` text COMMENT '发表观点，文字内容',
+  `point_img` varchar(300) DEFAULT NULL COMMENT '发表观点，图片路径，json格式',
+  `point_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '发表时间',
+  `point_address` varchar(50) DEFAULT NULL COMMENT '发表地点',
+  PRIMARY KEY (`id`),
+  KEY `customer_no` (`customer_id`),
+  KEY `point_time` (`point_time`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*Data for the table `user` */
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
