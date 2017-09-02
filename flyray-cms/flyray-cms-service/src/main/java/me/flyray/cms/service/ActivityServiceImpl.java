@@ -57,4 +57,16 @@ public class ActivityServiceImpl implements ActivityService{
 		return activityDao.selectByBizKeys(activity);
 	}
 
+	/**
+	 * 根据机构号和商户号，查询商户下推荐活动列表
+	 * @author centerroot
+	 * @time 创建时间:2017年9月2日下午5:13:12
+	 * (non-Javadoc)
+	 * @see me.flyray.cms.api.ActivityService#selectRecommendActivity(java.lang.Long, java.lang.Long)
+	 */
+	@Override
+	public List<Activity> selectRecommendActivity(Long orgId, Long merchantId) {
+		return activityDao.selectRecommendActivity(orgId, merchantId);
+	}
+
 }
