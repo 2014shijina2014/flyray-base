@@ -2,7 +2,8 @@
 SQLyog Ultimate v12.09 (64 bit)
 MySQL - 5.6.16-log : Database - flyray-os
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -84,7 +85,7 @@ DROP TABLE IF EXISTS `crm_merchant_base`;
 CREATE TABLE `crm_merchant_base` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `merchant_no` varchar(60) NOT NULL,
-  `org_no` bigint(20) DEFAULT NULL COMMENT '所属机构',
+  `org_id` bigint(20) DEFAULT NULL COMMENT '所属机构',
   `merchant_name` varbinary(60) DEFAULT NULL COMMENT '商户名称',
   `brief_intro` varbinary(255) DEFAULT NULL COMMENT '商户简介',
   `merchant_address` varchar(255) DEFAULT NULL COMMENT '商户位置',

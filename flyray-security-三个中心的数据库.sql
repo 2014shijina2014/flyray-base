@@ -356,7 +356,7 @@ insert  into `sys_menu`(`menu_id`,`parent_id`,`name`,`url`,`perms`,`type`,`icon`
 DROP TABLE IF EXISTS `sys_org`;
 
 CREATE TABLE `sys_org` (
-  `org_id` bigint(11) NOT NULL AUTO_INCREMENT,
+  `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `org_no` varchar(32) DEFAULT NULL COMMENT '机构部门编号',
   `name` varchar(60) DEFAULT NULL COMMENT '机构部门名称',
   `parent_id` bigint(11) DEFAULT NULL COMMENT '所属机构部门',
@@ -366,7 +366,7 @@ CREATE TABLE `sys_org` (
   `last_update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '最后修改时间',
   `org_sort` int(11) DEFAULT NULL COMMENT '机构部门排序号',
   `status_flag` int(2) DEFAULT NULL COMMENT '状态',
-  PRIMARY KEY (`org_id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 /*Data for the table `sys_org` */
