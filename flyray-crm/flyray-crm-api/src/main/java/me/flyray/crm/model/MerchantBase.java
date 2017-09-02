@@ -21,7 +21,7 @@ public class MerchantBase {
 	/**
 	 * 所属机构
 	 */
-	private String orgNo;
+	private String orgId;
 	
 	/**
 	 * 商户名称
@@ -64,12 +64,12 @@ public class MerchantBase {
 		this.merchantNo = merchantNo;
 	}
 
-	public String getOrgNo() {
-		return orgNo;
+	public String getOrgId() {
+		return orgId;
 	}
 
-	public void setOrgNo(String orgNo) {
-		this.orgNo = orgNo;
+	public void setOrgId(String orgId) {
+		this.orgId = orgId;
 	}
 
 	public String getMerchantName() {
