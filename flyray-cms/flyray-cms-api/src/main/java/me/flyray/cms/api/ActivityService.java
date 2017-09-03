@@ -36,15 +36,5 @@ public interface ActivityService {
 	 * @return
 	 */
 	public List<Activity> selectByBizKeys(Activity activity);
-	
-	/**
-	 * 根据机构号和商户号，查询商户下推荐活动列表
-	 * @author centerroot
-	 * @time 创建时间:2017年9月2日下午5:11:11
-	 * @param orgId
-	 * @param merchantId
-	 * @return
-	 */
-	public List<Activity> selectRecommendActivity(Long orgId, Long merchantId);
 
 }
