@@ -77,7 +77,7 @@ public class WechatJsApiPaymentService implements PayObjectService<OnlinePayment
 		RequestElement reqElement = new RequestElement();
 		reqElement.setAppid(channelConfig.getMerAccount());
 		reqElement.setBody(request.getProductName());
-		reqElement.setMch_id(channelConfig.getMerchantNo());
+		reqElement.setMch_id(Long.toString(channelConfig.getMerchantId()));
 		reqElement.setNonce_str(nonce_str);
 		reqElement.setNotify_url(notifyUrl);
 		reqElement.setOut_trade_no(request.getSerialNo());

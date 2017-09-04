@@ -19,6 +19,11 @@ public class PayChannelInterface {
 	private String payChannelNo;
 	
 	/**
+	 * 支付公司
+	 */
+	private String payCompanyNo;
+	
+	/**
 	 * 交易类型 支付 退款 支付查询 退款查询
 	 */
 	private String tradeType;
@@ -42,6 +47,14 @@ public class PayChannelInterface {
 
 	public void setPayChannelNo(String payChannelNo) {
 		this.payChannelNo = payChannelNo;
+	}
+	
+	public String getPayCompanyNo() {
+		return payCompanyNo;
+	}
+
+	public void setPayCompanyNo(String payCompanyNo) {
+		this.payCompanyNo = payCompanyNo;
 	}
 
 	public String getTradeType() {

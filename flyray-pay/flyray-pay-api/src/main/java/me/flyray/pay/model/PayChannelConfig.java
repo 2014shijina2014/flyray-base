@@ -26,27 +26,27 @@ public class PayChannelConfig {
 	/**
 	 * 组织机构
 	 */
-	private String orgNo;
+	private Long orgId;
 	
 	/**
 	 * 商户号
 	 */
-	private String merchantNo;
+	private Long merchantId;
 	
 	/**
-	 * 微信商户号
+	 * 第三方支付公司商户号
 	 */
 	private String merAccount;
 	
 	/**
-	 * 商户key
+	 * 第三方支付公司商户key
 	 */
 	private String merKey;
 	
 	/**
-	 * 商户 签名类型
+	 * 第三方支付公司商户 签名类型
 	 */
-	private String SingType;
+	private String singType;
 	
 	public Long getId() {
 		return id;
@@ -72,20 +72,20 @@ public class PayChannelConfig {
 		this.payCompanyNo = payCompanyNo;
 	}
 
-	public String getOrgNo() {
-		return orgNo;
+	public Long getOrgId() {
+		return orgId;
 	}
 
-	public void setOrgNo(String orgNo) {
-		this.orgNo = orgNo;
+	public void setOrgId(Long orgId) {
+		this.orgId = orgId;
 	}
 
-	public String getMerchantNo() {
-		return merchantNo;
+	public Long getMerchantId() {
+		return merchantId;
 	}
 
-	public void setMerchantNo(String merchantNo) {
-		this.merchantNo = merchantNo;
+	public void setMerchantId(Long merchantId) {
+		this.merchantId = merchantId;
 	}
 
 	public String getMerAccount() {
@@ -105,11 +105,10 @@ public class PayChannelConfig {
 	}
 
 	public String getSingType() {
-		return SingType;
+		return singType;
 	}
 
 	public void setSingType(String singType) {
-		SingType = singType;
+		this.singType = singType;
 	}
-
 }

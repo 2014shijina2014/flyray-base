@@ -75,9 +75,9 @@ public class WechatRefundService{
         
         WechatRefundRequest wechatRefundRequest = new WechatRefundRequest();
         wechatRefundRequest.setAppid(channelConfig.getMerAccount());
-        wechatRefundRequest.setMch_id(channelConfig.getMerchantNo());
+        wechatRefundRequest.setMch_id(Long.toString(channelConfig.getMerchantId()));
         wechatRefundRequest.setNonce_str(ObjectUtils.nullSafeToString((new Random().nextInt() * (99999 - 10000 + 1)) + 10000));
-        wechatRefundRequest.setOp_user_id(channelConfig.getMerchantNo());
+        wechatRefundRequest.setOp_user_id(Long.toString(channelConfig.getMerchantId()));
         try {
 			wechatRefundRequest.setSign(wechatSignatureService.sign(wechatRefundRequest, channelConfig));
 		} catch (Exception e1) {
