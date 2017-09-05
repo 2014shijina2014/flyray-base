@@ -9,9 +9,9 @@ package me.flyray.crm.model;
 public class MerchantAcount {
 
 	/**
-	 *  商户号
+	 *  商户ID
 	 */
-	private String merchantNo;
+	private String merchantId;
 	
 	/**
 	 * 商户账户
@@ -38,12 +38,12 @@ public class MerchantAcount {
 	 */
 	private String status;
 
-	public String getMerchantNo() {
-		return merchantNo;
+	public String getMerchantId() {
+		return merchantId;
 	}
 
-	public void setMerchantNo(String merchantNo) {
-		this.merchantNo = merchantNo;
+	public void setMerchantId(String merchantId) {
+		this.merchantId = merchantId;
 	}
 
 	public String getMerAcountNo() {

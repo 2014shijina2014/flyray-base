@@ -19,9 +19,9 @@ public class MerchantBase {
 	private String merchantNo;
 	
 	/**
-	 * 所属机构
+	 * 所属商户
 	 */
-	private String orgId;
+	private String parentId;
 	
 	/**
 	 * 商户名称
@@ -47,6 +47,11 @@ public class MerchantBase {
 	 * 商户logo
 	 */
 	private String merchantLogo;
+	
+	/**
+	 * 商户类型 渠道商户 普通商户
+	 */
+	private String merchantType;
 
 	public Integer getId() {
 		return id;
@@ -64,12 +69,20 @@ public class MerchantBase {
 		this.merchantNo = merchantNo;
 	}
 
-	public String getOrgId() {
-		return orgId;
+	public String getParentId() {
+		return parentId;
 	}
 
-	public void setOrgId(String orgId) {
-		this.orgId = orgId;
+	public void setParentId(String parentId) {
+		this.parentId = parentId;
+	}
+
+	public String getMerchantType() {
+		return merchantType;
+	}
+
+	public void setMerchantType(String merchantType) {
+		this.merchantType = merchantType;
 	}
 
 	public String getMerchantName() {
