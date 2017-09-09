@@ -1,5 +1,7 @@
 package me.flyray.cms.model;
 
+import java.util.List;
+
 import me.flyray.common.model.BaseModel;
 
 /**
@@ -29,6 +31,11 @@ public class InterestGroupCategory extends BaseModel {
 	 * 状态标志 00：无效
 	 */
 	private String flag;
+	
+	/**
+	 * 类别中包含的小组
+	 */
+	private List<InterestGroup> groupList;
 	
 	public Long getId() {
 		return id;
@@ -62,11 +69,19 @@ public class InterestGroupCategory extends BaseModel {
 		this.flag = flag;
 	}
 
+	public List<InterestGroup> getGroupList() {
+		return groupList;
+	}
+
+	public void setGroupList(List<InterestGroup> groupList) {
+		this.groupList = groupList;
+	}
+
 	@Override
 	public String toString() {
 		return "InterestGroupCategory [getId()=" + getId() + ", getCategoryName()=" + getCategoryName()
-				+ ", getCreatetime()=" + getCreatetime() + ", getFlag()=" + getFlag() + ", getMerchantId()="
-				+ getMerchantId() + ", getOrgId()=" + getOrgId() + "]";
+				+ ", getCreatetime()=" + getCreatetime() + ", getFlag()=" + getFlag() + ", getGroupList()="
+				+ getGroupList() + ", getMerchantId()=" + getMerchantId() + ", getOrgId()=" + getOrgId() + "]";
 	}
 
 }

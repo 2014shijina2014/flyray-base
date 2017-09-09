@@ -125,5 +125,11 @@
 		from cms_activity
         <include refid="where1"/>
 	</select>
+	
+	<select id="selectRecommendActivity" resultMap="activityMap">
+		SELECT ac.* FROM cms_activity AS ac
+		LEFT JOIN cms_interest_group AS gp ON ac.interest_group_id = gp.id
+		where gp.org_id = #{orgId,jdbcType=INTEGER} AND gp.merchant_id = #{merchantId,jdbcType=INTEGER} AND ac.flag = '10' LIMIT 3
+	</select>
   
 </mapper>
