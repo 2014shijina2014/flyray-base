@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>菜单管理</title>
+#parse("sys/header.html")
+</head>
+<body>
+<div id="rrapp">
+	<button type="button" id="btn1">btn1 Click Me!</button>
+	<button type="button" id="btn2">btn2 Click Me!</button>
+	<div id="flyrayEdt">
+        <p>请输入内容...</p>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+    	var E = window.wangEditor
+    	var editor = new E('#flyrayEdt')
+    	// 下面两个配置，使用其中一个即可显示“上传图片”的tab。但是两者不要同时使用！！！
+        editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
+        editor.customConfig.uploadImgServer = '/upload'  // 上传图片到服务器
+       	// 隐藏“网络图片”tab
+        editor.customConfig.showLinkImg = false
+        editor.create()
+        document.getElementById('btn1').addEventListener('click', function () {
+        	// 读取 html
+        	console.log(editor.txt.html())
+        	alert(editor.txt.html())
+    	}, false)
+
+    	document.getElementById('btn2').addEventListener('click', function () {
+        	// 读取 text
+        	alert(editor.txt.text())
+    	}, false)
+    });
+</script>
+</body>
+</html>
