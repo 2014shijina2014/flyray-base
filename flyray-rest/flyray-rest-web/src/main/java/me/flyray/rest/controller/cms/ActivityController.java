@@ -22,69 +22,75 @@ import me.flyray.cms.model.InterestGroup;
 import me.flyray.cms.model.InterestGroupCategory;
 import me.flyray.rest.util.ResponseHelper;
 
-/** 
-* @author: bolei
-* @date：2017年3月7日 下午8:15:40 
-* @description：类说明 
-*/
+/**
+ * @author: bolei
+ * @date：2017年3月7日 下午8:15:40
+ * @description：类说明
+ */
 
 @RestController
 @RequestMapping("/api/cms/activity")
 public class ActivityController {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
-	
+
 	@Autowired
 	private ActivityService activityService;
 	@Autowired
 	private InterestGroupService interestGroupService;
 	@Autowired
 	private InterestGroupCategoryService interestGroupCategoryService;
+
 	/**
-	 * 查询客户信息
-	 * 包括客户账户信息
-	 * query
+	 * 查询客户信息 包括客户账户信息 query
 	 */
 	@ResponseBody
-	@RequestMapping(value="/query", method = RequestMethod.POST)
-	public Map<String, Object> queryCustomerInfo(@RequestBody Map<String, String> param){
+	@RequestMapping(value = "/query", method = RequestMethod.POST)
+	public Map<String, Object> queryCustomerInfo(@RequestBody Map<String, String> param) {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
-		logger.info("查询活动首页信息------start------{}",param);
-		
+		logger.info("查询活动首页信息------start------{}", param);
+
 		// TODO 用户登录后获取到机构id和商户id后替换参数
-			Long orgId = 2l;
-			Long merId = 1l;
-			List<Activity> recActivities = activityService.selectRecommendActivity(orgId, merId);
-			logger.info("查询活动首页信息------查询推荐活动记录------{}",recActivities);
-			
-			InterestGroupCategory groupCategory = new InterestGroupCategory();
-			groupCategory.setOrgId(orgId);
-			groupCategory.setMerchantId(merId);
-			logger.info("查询活动首页信息------查询兴趣小组类别请求参数------{}",groupCategory.toString());
-			List<InterestGroupCategory> groupCategories = interestGroupCategoryService.selectByBizKeys(groupCategory);
-			logger.info("查询活动首页信息------查询兴趣小组类别响应参数------{}",groupCategories);
-			if (null != groupCategories) {
-				for (int i = 0; i < groupCategories.size(); i++) {
-					InterestGroupCategory groupCategoryItem = groupCategories.get(i); 
-					InterestGroup group = new InterestGroup();
-					group.setOrgId(orgId);
-					group.setMerchantId(merId);
-					group.setGroupCategoryId(groupCategoryItem.getId());
-					group.setFlag("20");
-					logger.info("查询活动首页信息------查询兴趣小组请求参数------{}",group.toString());
-					List<InterestGroup> groups = interestGroupService.selectByBizKeys(group);
-					logger.info("查询活动首页信息------查询兴趣小组响应参数------{}",groupCategories);
-					groupCategoryItem.setGroupList(groups);
-				}
-			}
-			
-			
-			resultMap.put("activities", recActivities);
-			resultMap.put("groupCategories", groupCategories);
+		Long orgId = null;
+		Long merId = null;
+		String orgstr = (String) param.get("orgId");
+		String merstr = (String) param.get("merId");
+		if (null != orgstr && !"".equals(orgstr.trim())) {
+			orgId = Long.valueOf(orgstr.trim());
+		}
+		if (null != merstr && !"".equals(merstr.trim())) {
+			merId = Long.valueOf(merstr.trim());
+		}
 		
-		logger.info("查询活动首页信息------end------{}",resultMap);
+		List<Activity> recActivities = activityService.selectRecommendActivity(orgId, merId);
+		logger.info("查询活动首页信息------查询推荐活动记录------{}", recActivities);
+
+		InterestGroupCategory groupCategory = new InterestGroupCategory();
+		groupCategory.setOrgId(orgId);
+		groupCategory.setMerchantId(merId);
+		logger.info("查询活动首页信息------查询兴趣小组类别请求参数------{}", groupCategory.toString());
+		List<InterestGroupCategory> groupCategories = interestGroupCategoryService.selectByBizKeys(groupCategory);
+		logger.info("查询活动首页信息------查询兴趣小组类别响应参数------{}", groupCategories);
+		if (null != groupCategories) {
+			for (int i = 0; i < groupCategories.size(); i++) {
+				InterestGroupCategory groupCategoryItem = groupCategories.get(i);
+				InterestGroup group = new InterestGroup();
+				group.setOrgId(orgId);
+				group.setMerchantId(merId);
+				group.setGroupCategoryId(groupCategoryItem.getId());
+				group.setFlag("20");
+				logger.info("查询活动首页信息------查询兴趣小组请求参数------{}", group.toString());
+				List<InterestGroup> groups = interestGroupService.selectByBizKeys(group);
+				logger.info("查询活动首页信息------查询兴趣小组响应参数------{}", groupCategories);
+				groupCategoryItem.setGroupList(groups);
+			}
+		}
+
+		resultMap.put("activities", recActivities);
+		resultMap.put("groupCategories", groupCategories);
+
+		logger.info("查询活动首页信息------end------{}", resultMap);
 		return ResponseHelper.success(resultMap, "00", "请求数据成功");
 	}
-	
-	
+
 }
