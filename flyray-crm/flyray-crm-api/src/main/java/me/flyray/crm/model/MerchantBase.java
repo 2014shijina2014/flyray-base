@@ -14,7 +14,7 @@ public class MerchantBase {
 	private Long id;
 	
 	/**
-	 * 商户号 如果该商户是平台商户则商户号对应orgNo
+	 * 商户号 如果该商户是平台商户则商户号merchantNo对应orgNo
 	 */
 	private String merchantNo;
 	

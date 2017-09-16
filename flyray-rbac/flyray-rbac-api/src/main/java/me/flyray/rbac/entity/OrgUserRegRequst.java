@@ -16,6 +16,11 @@ public class OrgUserRegRequst implements Serializable {
 	 * 组织机构名称
 	 */
 	private String orgName;
+	
+	/**
+	 * 商户类型
+	 */
+	private String merchantType;
 
 	public String getOrgName() {
 		return orgName;
@@ -23,6 +28,14 @@ public class OrgUserRegRequst implements Serializable {
 
 	public void setOrgName(String orgName) {
 		this.orgName = orgName;
+	}
+
+	public String getMerchantType() {
+		return merchantType;
+	}
+
+	public void setMerchantType(String merchantType) {
+		this.merchantType = merchantType;
 	}
 	
 	

@@ -15,6 +15,7 @@ import me.flyray.rbac.entity.OrgUserRegRequst;
 import me.flyray.rbac.entity.SysOrgEntity;
 import me.flyray.rbac.entity.SysRoleEntity;
 import me.flyray.rbac.entity.SysUserEntity;
+import me.flyray.rbac.enums.UserType;
 import me.flyray.rbac.service.SysOrgService;
 import me.flyray.rbac.service.SysRoleMenuService;
 import me.flyray.rbac.service.SysRoleService;
@@ -75,6 +76,7 @@ public class ApiOrgUserController {
     	sysUser.setPassword(DigestUtils.sha256Hex("123456"));
     	sysUser.setCreateTime(new Date());
     	sysUser.setUsername(orgName);
+    	sysUser.setUserType(orgRegRequst.getMerchantType());
     	List<Long> roleIdList = new ArrayList<>();
     	roleIdList.add((long)roleId);
     	sysUser.setRoleIdList(roleIdList);
