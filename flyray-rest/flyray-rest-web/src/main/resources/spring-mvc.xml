@@ -98,5 +98,11 @@
        		<mvc:mapping path="/rest/*" />
             <bean class="me.flyray.rest.interceptor.LoginInterceptor"/>
         </mvc:interceptor>
+        
+        <mvc:interceptor>
+        <!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->  
+        <mvc:mapping path="/" />  
+        <bean class="me.flyray.rest.interceptor.CommonInterceptor"></bean>    
+    </mvc:interceptor>  
 </mvc:interceptors>
 </beans>

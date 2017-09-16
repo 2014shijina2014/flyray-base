@@ -135,11 +135,13 @@ public class CustomerController {
 			return ResponseHelper.success(userMap, "01", "调用微信授权失败");
 		}
 		
-		/*wxMpUser.getCity() wxMpUser.getCountry()
-		wxMpUser.getGroupId() wxMpUser.getHeadImgUrl() wxMpUser.getLanguage() wxMpUser.getNickname()
-		wxMpUser.getOpenId() wxMpUser.getProvince() wxMpUser.getRemark() wxMpUser.getSex()
-		wxMpUser.getSubscribe() wxMpUser.getTagIds() wxMpUser.getUnionId()*/
-		
+		//判断用户是否邀请过 如果customerAuth表中已存在该记录，则说明用户已经是会员或是被邀请过，给用户提示
+		Map<String, Object> queryUserMap = new HashMap<String, Object>();
+		queryUserMap.put("credential", userMap.get("openId"));
+		Map<String, Object> customerAuth = customerAuthService.queryObject(queryUserMap);
+		if (customerAuth != null ) {
+			return ResponseHelper.success(customerAuth, "01", "用户已经是会员不能被重复邀请");
+		}
 		CustomerBase customerBase = customerAuthService.customerAuth(userMap);
 		userMap.put("customerNo", customerBase.getCustomerNo());
 		//将新用户与邀请人关联

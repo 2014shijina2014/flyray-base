@@ -17,6 +17,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 * @author: bolei
 * @date：Jun 22, 2017 8:31:58 AM
 * @description：用装饰模式来修改请求中的参数
+* 一次请求只通过一次filter
 */
 
 public class ModifyParametersFilter extends OncePerRequestFilter{
