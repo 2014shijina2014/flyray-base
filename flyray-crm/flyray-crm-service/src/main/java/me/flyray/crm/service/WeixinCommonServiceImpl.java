@@ -39,6 +39,10 @@ public class WeixinCommonServiceImpl implements WeixinCommonService{
 			logger.info("请求微信授权信息------{}",param);
 			WxMpOAuth2AccessToken wxMpOAuth2AccessToken = weixinService.oauth2getAccessToken((String)param.get("code"));
 			WxMpUser wxMpUser = weixinService.oauth2getUserInfo(wxMpOAuth2AccessToken, null);
+			/*wxMpUser.getCity() wxMpUser.getCountry()
+			wxMpUser.getGroupId() wxMpUser.getHeadImgUrl() wxMpUser.getLanguage() wxMpUser.getNickname()
+			wxMpUser.getOpenId() wxMpUser.getProvince() wxMpUser.getRemark() wxMpUser.getSex()
+			wxMpUser.getSubscribe() wxMpUser.getTagIds() wxMpUser.getUnionId()*/
 			resultMap = BeanUtils.objectToMap(wxMpUser);
 			logger.info("微信授权用户信息------{}",resultMap);
 			/* 将用户信息保存到数据库 */
