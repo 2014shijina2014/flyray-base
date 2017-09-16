@@ -5,7 +5,7 @@ $(function () {
         colModel: [			
 			{ label: 'ID', name: 'id', index: "id", width: 45, key: true },
 			{ label: '所属机构', name: 'orgId', width: 75 },
-			{ label: '所属商户', name: 'merchantId', width: 50 },
+			{ label: '所属商户', name: 'merchantNo', width: 50 },
 			{ label: '商品类名', name: 'categaryName', width: 50 },
         ],
 		viewrecords: true,

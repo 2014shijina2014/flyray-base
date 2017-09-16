@@ -1,6 +1,10 @@
 package me.flyray.rbac.service;
 
 import java.util.List;
+import java.util.Map;
+
+import me.flyray.rbac.entity.SysRoleEntity;
+import me.flyray.rbac.entity.SysUserRoleEntity;
 
 
 
@@ -21,4 +25,6 @@ public interface SysUserRoleService {
 	List<Long> queryRoleIdList(Long userId);
 	
 	void delete(Long userId);
+	
+	List<SysUserRoleEntity> queryListByUserId(Long userId);
 }

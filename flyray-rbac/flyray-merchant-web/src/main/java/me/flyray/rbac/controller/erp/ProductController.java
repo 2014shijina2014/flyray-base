@@ -16,10 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import me.flyray.rbac.annotation.SysLog;
 import me.flyray.rbac.controller.AbstractController;
-import me.flyray.rbac.entity.SysUserEntity;
-import me.flyray.rbac.entity.SysUserRoleEntity;
-import me.flyray.rbac.enums.UserType;
-import me.flyray.rbac.service.SysUserRoleService;
 import me.flyray.rbac.utils.PageUtils;
 import me.flyray.rbac.utils.R;
 import me.flyray.rest.api.ApiProvider;
@@ -27,39 +23,29 @@ import me.flyray.rest.model.Parameter;
 
 /** 
 * @author: bolei
-* @date：2017年4月22日 下午10:00:23 
-* @description：商品分类
+* @date：2017年9月16日 上午11:23:59
+* @description：商品管理
 */
 
 @RestController
-@RequestMapping("/erp/productCategary")
-public class ProductCategaryController extends AbstractController {
+@RequestMapping("/erp/product")
+public class ProductController extends AbstractController {
 
-	private static final Logger logger = LoggerFactory.getLogger(ProductCategaryController.class);
+private static final Logger logger = LoggerFactory.getLogger(ProductCategaryController.class);
 	
 	@Autowired
 	private ApiProvider apiProvider;
-	@Autowired
-	private SysUserRoleService sysUserRoleService;
 	
 	/**
-	 * 所有该商户下的商品分离
+	 * 所有客户会员列表
 	 */
 	@RequestMapping("/list")
 	@RequiresPermissions("erp:productCategary:list")
 	public R list(@RequestParam Map<String, Object> params){
-		//判断当前用户是什么角色 如果是小商户或平台商户则直接查询当前用户下信息，如果是平台商户的管理员则查询平台商户的信息
-		SysUserEntity currUser = getUser();
-		Long merchantId = getMerchantId();
+		//查询列表数据
 		Parameter parameter = new Parameter("productCategaryService", "queryList");
 		Map<String, Object> map = new HashMap<>();
-		if (isOrg()) {
-			map.put("orgId", currUser.getOrgId());
-		}else if (UserType.SAAS_ADMIN.getCode().equals(currUser.getUserType())) {
-			map.put("merchantId", "");
-		}else{
-			map.put("merchantId", merchantId);
-		}
+		map.put("payChannelNo", "");
 		parameter.setMap(map);
 		List<?> list = apiProvider.execute(parameter).getList();
 		int total = list.size();
@@ -82,19 +68,16 @@ public class ProductCategaryController extends AbstractController {
 	}
 	
 	/**
-	 * 保存商户分类信息
+	 * 保存客户会员
 	 */
 	@SysLog("保存商品分类")
 	@RequestMapping("/save")
 	@RequiresPermissions("erp:productCategary:save")
 	public R save(@RequestBody Map<String, Object> params){
 		Parameter parameter = new Parameter("productCategaryService", "save");
-		//判断当前登陆用户的商户号和所属机构
-		SysUserEntity currUser = getUser();
-		Long merchantId = getMerchantId();
 		Map<String, Object> map = new HashMap<>();
-		map.put("orgId", currUser.getOrgId());
-		map.put("merchantId", merchantId);
+		map.put("orgId", "1");
+		map.put("merchantId", "1");
 		map.put("categaryName", params.get("categaryName"));
 		parameter.setMap(map);
 		apiProvider.execute(parameter);
@@ -112,9 +95,12 @@ public class ProductCategaryController extends AbstractController {
 		Parameter parameter = new Parameter("productCategaryService", "update");
 		Map<String, Object> map = new HashMap<>();
 		map.put("id", params.get("id"));
+		map.put("orgId", params.get("orgId"));
+		map.put("merchantNo", params.get("merchantNo"));
 		map.put("categaryName", params.get("categaryName"));
 		parameter.setMap(map);
 		apiProvider.execute(parameter);
+		
 		return R.ok();
 	}
 	
@@ -125,6 +111,7 @@ public class ProductCategaryController extends AbstractController {
 	@RequestMapping("/delete")
 	@RequiresPermissions("erp:productCategary:delete")
 	public R delete(@RequestBody Long[] ids){
+		
 		Parameter parameter = new Parameter("productCategaryService", "deleteBatch");
 		Map<String, Object> map = new HashMap<>();
 		map.put("ids", "");

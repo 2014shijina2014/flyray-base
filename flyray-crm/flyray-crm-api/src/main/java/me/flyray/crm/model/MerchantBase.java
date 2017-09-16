@@ -11,10 +11,10 @@ public class MerchantBase {
 	/**
 	 * 商户自增ID
 	 */
-	private Integer id;
+	private Long id;
 	
 	/**
-	 * 商户号
+	 * 商户号 如果该商户是平台商户则商户号对应orgNo
 	 */
 	private String merchantNo;
 	
@@ -53,11 +53,11 @@ public class MerchantBase {
 	 */
 	private String merchantType;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

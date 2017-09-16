@@ -14,6 +14,14 @@
 
 	<select id="queryList" resultType="me.flyray.erp.model.ProductCategary">
 		select * from erp_product_categary order by id desc
+		<where>
+		    <if test="merchantId != null and  merchantId != '' ">
+		         merchant_id = #{merchantId}
+		    </if>
+		    <if test="orgId != null and  orgId != '' ">
+		        AND org_id like #{orgId}
+		    </if>
+		  </where>
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>

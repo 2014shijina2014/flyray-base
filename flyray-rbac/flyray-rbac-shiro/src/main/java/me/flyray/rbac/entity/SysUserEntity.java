@@ -81,6 +81,13 @@ public class SysUserEntity implements Serializable {
 	 * 组织机构名称
 	 */
 	private String orgName;
+	
+	
+	/**
+	 * 用户类型
+	 */
+	private String userType;
+	
 
 	/**
 	 * 设置：
@@ -225,5 +232,13 @@ public class SysUserEntity implements Serializable {
 	public void setCreateUserId(Long createUserId) {
 		this.createUserId = createUserId;
 	}
-	
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
 }

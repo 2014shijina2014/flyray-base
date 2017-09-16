@@ -24,7 +24,12 @@ public class SysUserRoleEntity implements Serializable {
 	 * 角色ID
 	 */
 	private Long roleId;
-
+	
+	/**
+	 * 角色类型
+	 */
+	private Integer roleType;
+	
 	/**
 	 * 设置：
 	 * @param id 
@@ -71,6 +76,14 @@ public class SysUserRoleEntity implements Serializable {
 	 */
 	public Long getRoleId() {
 		return roleId;
+	}
+
+	public Integer getRoleType() {
+		return roleType;
+	}
+
+	public void setRoleType(Integer roleType) {
+		this.roleType = roleType;
 	}
 	
 }

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import me.flyray.rbac.dao.SysUserRoleDao;
+import me.flyray.rbac.entity.SysRoleEntity;
+import me.flyray.rbac.entity.SysUserRoleEntity;
 import me.flyray.rbac.service.SysUserRoleService;
 
 
@@ -48,5 +50,10 @@ public class SysUserRoleServiceImpl implements SysUserRoleService {
 	@Override
 	public void delete(Long userId) {
 		sysUserRoleDao.delete(userId);
+	}
+
+	@Override
+	public List<SysUserRoleEntity> queryListByUserId(Long userId) {
+		return sysUserRoleDao.queryListByUserId(userId);
 	}
 }

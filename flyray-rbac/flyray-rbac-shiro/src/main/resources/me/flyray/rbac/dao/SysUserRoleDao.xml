@@ -11,7 +11,16 @@
 			</if>
 		</where>
 	</select>
- 
+	
+	<select id="queryListByUserId" resultType="me.flyray.rbac.entity.SysUserRoleEntity">
+		select * from sys_user_role 
+		<where>
+			<if test="userId != null">
+				user_id = #{userId}
+			</if>
+		</where>
+	</select>
+	
 	<insert id="save">
 		insert into sys_user_role
 		(
