@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import me.flyray.cms.api.CmsViewPointService;
 import me.flyray.cms.dao.CmsViewPointDao;
 import me.flyray.cms.model.CmsViewPoint;
 
+@Service("cmsViewPointService")
 public class CmsViewPointServiceImpl implements CmsViewPointService{
 	
 	@Autowired
@@ -43,4 +45,4 @@ public class CmsViewPointServiceImpl implements CmsViewPointService{
 		// TODO Auto-generated method stub
 		cmsViewPointDao.delete(id);
 	}
-	}
+}

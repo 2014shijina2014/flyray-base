@@ -1,5 +1,6 @@
 package me.flyray.crm.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /** 
@@ -8,7 +9,7 @@ import java.util.Date;
 * @description：客户基础信息
 */
 
-public class CustomerBase{
+public class CustomerBase implements Serializable{
 
 	/**
 	 * 客户自增ID
@@ -75,9 +76,21 @@ public class CustomerBase{
 	 * 机构号
 	 */
 	private String orgNo;
-
+	/**
+	 * 拓展
+	 */
+	private CrmCustomerBaseExtend crmCustomerBaseExtend;
+	
 	public Integer getId() {
 		return id;
+	}
+
+	public CrmCustomerBaseExtend getCrmCustomerBaseExtend() {
+		return crmCustomerBaseExtend;
+	}
+
+	public void setCrmCustomerBaseExtend(CrmCustomerBaseExtend crmCustomerBaseExtend) {
+		this.crmCustomerBaseExtend = crmCustomerBaseExtend;
 	}
 
 	public void setId(Integer id) {
@@ -178,6 +191,14 @@ public class CustomerBase{
 
 	public void setOrgNo(String orgNo) {
 		this.orgNo = orgNo;
+	}
+
+	@Override
+	public String toString() {
+		return "CustomerBase [id=" + id + ", customerNo=" + customerNo + ", custName=" + custName + ", nickname="
+				+ nickname + ", phone=" + phone + ", sex=" + sex + ", identityCard=" + identityCard + ", address="
+				+ address + ", age=" + age + ", birthday=" + birthday + ", avatar=" + avatar + ", merchantNo="
+				+ merchantNo + ", orgNo=" + orgNo + ", crmCustomerBaseExtend=" + crmCustomerBaseExtend + "]";
 	}
 	
 }

@@ -13,25 +13,28 @@ public class CmsViewPoint implements Serializable{
 	 */
 	private Long id;
 	/**
-	 * customer_id
+	 * 索引，用户编号
 	 */
 	private Long customerId;
 	/**
-	 * point_text
+	 * 发表观点，文字内容
 	 */
 	private String pointText;
 	/**
-	 * point_img
+	 * 发表观点，图片路径，json格式
 	 */
 	private String pointImg;
 	/**
-	 * point_time
+	 * 发表时间
 	 */
 	private Date pointTime;
 	/**
-	 * point_address
+	 * 发表地点
 	 */
 	private String pointAddress;
+	
+	
+	
 	public Long getId() {
 		return id;
 	}

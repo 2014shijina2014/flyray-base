@@ -33,5 +33,6 @@
 	<dubbo:service interface="me.flyray.cms.api.InterestGroupService" ref="interestGroupService"  protocol="dubbo" timeout="1200000"/>
 	<!-- 兴趣小组类别接口dubbo服务 -->
 	<dubbo:service interface="me.flyray.cms.api.InterestGroupCategoryService" ref="interestGroupCategoryService"  protocol="dubbo" timeout="1200000"/>
-	
+	<!-- 状态接口 -->
+	<dubbo:service interface="me.flyray.cms.api.CmsViewPointService" ref="cmsViewPointService"  protocol="dubbo" timeout="1200000"/>
 </beans>

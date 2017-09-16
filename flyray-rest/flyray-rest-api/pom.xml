@@ -13,6 +13,31 @@
   <name>flyray-rest-api</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+  
+  	<dependency>
+		<groupId>me.flyray</groupId>
+		<artifactId>flyray-crm-api</artifactId>
+		<version>${project.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>me.flyray</groupId>
+		<artifactId>flyray-pay-api</artifactId>
+		<version>${project.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>me.flyray</groupId>
+		<artifactId>flyray-erp-api</artifactId>
+		<version>${project.version}</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>me.flyray</groupId>
+		<artifactId>flyray-cms-api</artifactId>
+		<version>${project.version}</version>
+	</dependency>
+		
   	<!-- mybatis -->
 	<dependency>
 		<groupId>com.baomidou</groupId>

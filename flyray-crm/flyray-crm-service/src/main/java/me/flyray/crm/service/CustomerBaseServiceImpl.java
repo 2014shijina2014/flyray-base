@@ -1,13 +1,18 @@
 package me.flyray.crm.service;
 
+import java.lang.reflect.ParameterizedType;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import me.flyray.common.service.AbstractBaseService;
+import me.flyray.common.utils.BeanUtils;
 import me.flyray.crm.api.CustomerBaseService;
 import me.flyray.crm.dao.CustomerBaseDao;
+import me.flyray.crm.model.CrmCustomerBaseExtend;
 import me.flyray.crm.model.CustomerBase;
 
 /** 
@@ -29,5 +34,35 @@ public class CustomerBaseServiceImpl extends AbstractBaseService<CustomerBase> i
 		customerBaseDao.save(customerBase);
 	}
 
+	@Override
+	public void updateExtent(CrmCustomerBaseExtend extent) {
+		// TODO Auto-generated method stub
+		customerBaseDao.updateExtent(extent); 
+	}
+
+	@Override
+	public void saveExtend(CrmCustomerBaseExtend extent) {
+		// TODO Auto-generated method stub
+		customerBaseDao.saveExtend(extent);
+	}
+
+	@Override
+	public void deleteBaseAndExtend(Long id) {
+		// TODO Auto-generated method stub
+		customerBaseDao.deleteBaseAndExtend(id);
+	}
+
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		customerBaseDao.delete(id);
+	}
+
+	@Override
+	public CustomerBase queryByCustomerId(Long customerId) {
+		CustomerBase customerBase = customerBaseDao.queryByCustomerId(customerId);
+		System.out.println("1111");
+		return customerBase;
+	}
 
 }

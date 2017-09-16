@@ -1,6 +1,7 @@
 package me.flyray.crm.api;
 
 import me.flyray.common.service.BaseService;
+import me.flyray.crm.model.CrmCustomerBaseExtend;
 import me.flyray.crm.model.CustomerBase;
 
 /** 
@@ -12,4 +13,10 @@ import me.flyray.crm.model.CustomerBase;
 public interface CustomerBaseService extends BaseService{
 
 	void save(CustomerBase customerBase);
+	void updateExtent(CrmCustomerBaseExtend extent);
+	void saveExtend(CrmCustomerBaseExtend extent);
+	void deleteBaseAndExtend(Long id);
+	void delete(Long id);
+	CustomerBase queryByCustomerId(Long customerId);
+	
 }
