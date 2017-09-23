@@ -61,7 +61,6 @@ public class CustomerBaseServiceImpl extends AbstractBaseService<CustomerBase> i
 	@Override
 	public CustomerBase queryByCustomerId(Long customerId) {
 		CustomerBase customerBase = customerBaseDao.queryByCustomerId(customerId);
-		System.out.println("1111");
 		return customerBase;
 	}
 

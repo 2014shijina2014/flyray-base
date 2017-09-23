@@ -1,5 +1,7 @@
 package me.flyray.crm.api;
 
+import java.util.Map;
+
 import me.flyray.common.service.BaseService;
 import me.flyray.crm.model.CrmCustomerBaseExtend;
 import me.flyray.crm.model.CustomerBase;

@@ -33,8 +33,18 @@ public class CmsViewPoint implements Serializable{
 	 */
 	private String pointAddress;
 	
+	/**
+	 *发表状态距现在时间
+	 * 
+	 */
+	private String diffTime;
 	
-	
+	public String getDiffTime() {
+		return diffTime;
+	}
+	public void setDiffTime(String diffTime) {
+		this.diffTime = diffTime;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -75,8 +85,10 @@ public class CmsViewPoint implements Serializable{
 	@Override
 	public String toString() {
 		return "CmsViewPoint [id=" + id + ", customerId=" + customerId + ", pointText=" + pointText + ", pointImg="
-				+ pointImg + ", pointTime=" + pointTime + ", pointAddress=" + pointAddress + "]";
+				+ pointImg + ", pointTime=" + pointTime + ", pointAddress=" + pointAddress + ", diffTime=" + diffTime
+				+ "]";
 	}
+	
 	
 	
 }

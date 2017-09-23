@@ -162,7 +162,7 @@ public class Pager {
 	        this.is_last = this.current_page == this.total_page ? true : false;
 
 	        //处理total_count 为0时  开始页 也为0 ,结束页也为0
-	        this.start_size =this.total_count==0?0: (this.current_page - 1) * this.page_size + 1;
+	        this.start_size =this.total_count==0?0: (this.current_page - 1) * this.page_size;
 	        //this.end_size = ((this.start_size + this.page_size - 1) > this.total_count ? this.total_count==0?0:this.total_count : (this.start_size + this.page_size-1));
 	        this.end_size = ((this.start_size + this.page_size - 1) > this.total_count ? this.total_count : (this.start_size + this.page_size-1));
 
