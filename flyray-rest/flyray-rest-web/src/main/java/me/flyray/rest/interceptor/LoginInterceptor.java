@@ -1,5 +1,7 @@
 package me.flyray.rest.interceptor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.context.request.WebRequestInterceptor;
@@ -13,10 +15,12 @@ import org.springframework.web.context.request.WebRequestInterceptor;
 
 public class LoginInterceptor implements WebRequestInterceptor{
 
+	private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
+	
 	@Override
 	public void afterCompletion(WebRequest arg0, Exception arg1) throws Exception {
 		// TODO Auto-generated method stub
-		
+		logger.info("WebRequestInterceptor---登陆授权拦截开始---start------{}",arg0);
 	}
 
 	@Override

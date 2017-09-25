@@ -11,7 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.filter.OncePerRequestFilter;
+
+import me.flyray.rest.interceptor.LoginInterceptor;
 
 /** 
 * @author: bolei
@@ -22,6 +26,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 public class ModifyParametersFilter extends OncePerRequestFilter{
 
+	private static final Logger logger = LoggerFactory.getLogger(ModifyParametersFilter.class);
+	
 	@Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
@@ -66,7 +72,7 @@ public class ModifyParametersFilter extends OncePerRequestFilter{
             if (results == null || results.length <= 0)
                 return null;
             else {
-                System.out.println("修改之前： " + results[0]);
+            	logger.info("修改之前：------{}",results[0]);
                 return modify(results[0]);
             }
         }
@@ -83,7 +89,7 @@ public class ModifyParametersFilter extends OncePerRequestFilter{
             else {
                 int length = results.length;
                 for (int i = 0; i < length; i++) {
-                    System.out.println("修改之前2： " + results[i]);
+                	logger.info("修改之前：------{}",results[i]);
                     results[i] = modify(results[i]);
                 }
                 return results;

@@ -38,6 +38,7 @@ public class ProductController {
 	
 	/**
 	 * 商品分类
+	 * 渠道号（即机构号必填）
 	 * upToDate
 	 */
 	@ResponseBody
