@@ -10,6 +10,7 @@
 			classpath*:spring-mvc.xml
 			classpath*:spring-jdbc.xml
 			classpath*:renren-*.xml
+			classpath*:service-consumer.xml
 		</param-value>
 	</context-param>
 	

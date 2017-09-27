@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import me.flyray.common.utils.SnowFlake;
 import me.flyray.rbac.annotation.SysLog;
 import me.flyray.rbac.controller.AbstractController;
 import me.flyray.rbac.utils.PageUtils;
@@ -76,6 +77,8 @@ private static final Logger logger = LoggerFactory.getLogger(ProductCategaryCont
 	public R save(@RequestBody Map<String, Object> params){
 		Parameter parameter = new Parameter("productCategaryService", "save");
 		Map<String, Object> map = new HashMap<>();
+		long id = SnowFlake.getId();
+		map.put("id", id);
 		map.put("orgId", "1");
 		map.put("merchantId", "1");
 		map.put("categaryName", params.get("categaryName"));

@@ -1,6 +1,5 @@
 package me.flyray.rest.interceptor;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -14,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /** 
@@ -30,31 +28,21 @@ public class CommonInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)  
         throws Exception { 
 		logger.info("HandlerInterceptorAdapter------start------{}",request);
-		HttpServletRequest _request;
-		_request = request;
-		 
-        StringBuffer jsonStr = new StringBuffer();
-        try (BufferedReader bufferedReader = _request.getReader())
-        {
-            String line;
-            while ((line = bufferedReader.readLine()) != null)
-                jsonStr.append(line);
-        }
-        //获取到提交测json，将密码解密后重新复制给requestBody
-        JSONObject json = JSONObject.parseObject(jsonStr.toString());
-        if (json.get("orgNo") == null || json.get("orgNo") == "") {
-        	out(response);
-        	return false;
-		}
         return true;
     }  
     public void postHandle(  
         HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)  
         throws Exception {  
+    	logger.info("HandlerInterceptorAdapter------处理相应start------{}",response);
+    	
+    	logger.info("HandlerInterceptorAdapter------处理相应end------{}",response);
     }  
     public void afterCompletion(  
         HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)  
         throws Exception {  
+    	logger.info("HandlerInterceptorAdapter------处理相应start------{}",response);
+    	
+    	logger.info("HandlerInterceptorAdapter------处理相应end------{}",response);
     }  
     
     /**
@@ -62,30 +50,5 @@ public class CommonInterceptor extends HandlerInterceptorAdapter{
      * 先将RequestBody保存，然后通过Servlet自带的HttpServletRequestWrapper类覆盖getReader()和getInputStream()方法，
      * 使流从保存的body读取。然后再Filter中将ServletRequest替换为ServletRequestWrapper
      */
-    /**
-     * 返回输出json
-     *
-     * @param response
-     * @param resultCode
-     */
-    private static final void out(HttpServletResponse response) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json; charset=utf-8");
-        PrintWriter out = null;
-        try {
-            out = response.getWriter();
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("code", "01");
-            map.put("msg", "orgNo 不能为空");
-            map.put("status", "201");
-            out.append(objectMapper.writeValueAsString(map));
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (out != null) {
-                out.close();
-            }
-        }
-    }
+    
 }

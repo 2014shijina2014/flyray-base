@@ -43,6 +43,7 @@
 		</property>
 	</bean>
 
+	<bean class="me.flyray.rest.exception.CommonHandlerExceptionResolver" />
 
 	<!--通用视图解析器-->
 	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

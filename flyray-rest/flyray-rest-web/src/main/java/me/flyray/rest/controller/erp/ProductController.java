@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import me.flyray.common.exception.BusinessException;
+import me.flyray.common.utils.SnowFlake;
 import me.flyray.crm.enums.BillingType;
 import me.flyray.crm.model.CustomerAccount;
 import me.flyray.crm.model.CustomerBilling;
@@ -46,6 +48,9 @@ public class ProductController {
 	public Map<String, Object> categary(@RequestBody Map<String, String> param) {
 		logger.info("查询商品分类信息------start------{}",param);
 		Map<String, Object> queryMap = new HashMap<>();
+		if (null == param.get("id")) {
+			throw new BusinessException("BF22","你全家都是中性！");
+		}
 		List<Map<String, Object>> resultMap = productCategaryService.queryList(queryMap);
 		logger.info("查询商品分类信息------end------{}",resultMap);
 		return ResponseHelper.success(resultMap, "00", "请求数据成功");
