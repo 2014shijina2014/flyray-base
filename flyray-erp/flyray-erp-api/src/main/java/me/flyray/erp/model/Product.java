@@ -39,6 +39,11 @@ public class Product extends BaseModel{
 	 * 所属类别
 	 */
 	private Long productCategaryId;
+	
+	/**
+	 * 商户状态（上架、下架、推荐、）
+	 */
+	private String productStatus;
 
 	public Integer getId() {
 		return id;
@@ -86,6 +91,14 @@ public class Product extends BaseModel{
 
 	public void setProductCategaryId(Long productCategaryId) {
 		this.productCategaryId = productCategaryId;
+	}
+
+	public String getProductStatus() {
+		return productStatus;
+	}
+
+	public void setProductStatus(String productStatus) {
+		this.productStatus = productStatus;
 	}
 	
 }

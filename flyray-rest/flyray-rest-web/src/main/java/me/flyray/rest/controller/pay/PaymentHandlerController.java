@@ -45,7 +45,7 @@ public class PaymentHandlerController {
 		createOrder.setPayOrderNo((String)param.get("payOrderNo"));
 		paymentHandlerService.createOrder(createOrder);
 		//生成账单
-		return ResponseHelper.success(createOrder, "00", "创建支付订单成功");
+		return ResponseHelper.success(createOrder,null, "00", "创建支付订单成功");
 	}
 	
 	/**
@@ -62,7 +62,7 @@ public class PaymentHandlerController {
 		payRequest.setPayChannelNo((String)param.get("payChannelNo"));
 		payRequest.setPayMethod((String)param.get("payMethod"));
 		paymentHandlerService.pay(payRequest);
-		return ResponseHelper.success(null, "00", "支付请求成功");
+		return ResponseHelper.success(null,null, "00", "支付请求成功");
 	}
 	
 	/**

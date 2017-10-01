@@ -109,7 +109,7 @@ public class CustomerController {
 		String imgStr = ImageBase64.getImgStr(imgFile);
 		logger.info("查询客户信息------end------{}",resultMap);
 		resultMap.put("img", imgStr);
-		return ResponseHelper.success(resultMap, "00", "生产邀请二维码成功");
+		return ResponseHelper.success(resultMap,null, "00", "生产邀请二维码成功");
 	}
 	
 	/**
@@ -132,7 +132,7 @@ public class CustomerController {
 		Map<String, Object> userMap = weixinCommonService.getOauthUserInfo(requestMap);
 		logger.info("通过code获取用户授权信息------end------{}",userMap);
 		if (userMap == null) {
-			return ResponseHelper.success(userMap, "01", "调用微信授权失败");
+			return ResponseHelper.success(userMap,null, "01", "调用微信授权失败");
 		}
 		
 		//判断用户是否邀请过 如果customerAuth表中已存在该记录，则说明用户已经是会员或是被邀请过，给用户提示
@@ -140,7 +140,7 @@ public class CustomerController {
 		queryUserMap.put("credential", userMap.get("openId"));
 		Map<String, Object> customerAuth = customerAuthService.queryObject(queryUserMap);
 		if (customerAuth != null ) {
-			return ResponseHelper.success(customerAuth, "01", "用户已经是会员不能被重复邀请");
+			return ResponseHelper.success(customerAuth,null, "01", "用户已经是会员不能被重复邀请");
 		}
 		CustomerBase customerBase = customerAuthService.customerAuth(userMap);
 		userMap.put("customerNo", customerBase.getCustomerNo());

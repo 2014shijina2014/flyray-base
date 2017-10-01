@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSONObject;
+
 import me.flyray.common.exception.BusinessException;
-import me.flyray.common.utils.SnowFlake;
-import me.flyray.crm.enums.BillingType;
-import me.flyray.crm.model.CustomerAccount;
-import me.flyray.crm.model.CustomerBilling;
 import me.flyray.erp.api.ProductCategaryService;
 import me.flyray.erp.api.ProductService;
+import me.flyray.rest.controller.AbstractController;
+import me.flyray.rest.util.PageUtils;
+import me.flyray.rest.util.Pager;
 import me.flyray.rest.util.ResponseHelper;
 
 /** 
@@ -30,7 +31,7 @@ import me.flyray.rest.util.ResponseHelper;
 
 @RestController
 @RequestMapping("/api/erp/products")
-public class ProductController {
+public class ProductController extends AbstractController{
 
 	private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 	@Autowired
@@ -53,7 +54,7 @@ public class ProductController {
 		}
 		List<Map<String, Object>> resultMap = productCategaryService.queryList(queryMap);
 		logger.info("查询商品分类信息------end------{}",resultMap);
-		return ResponseHelper.success(resultMap, "00", "请求数据成功");
+		return ResponseHelper.success(resultMap,null, "00", "请求数据成功");
 	}
 	
 	/**
@@ -65,9 +66,17 @@ public class ProductController {
 	public Map<String, Object> list(@RequestBody Map<String, String> param) {
 		logger.info("根据条件查询商品------start------{}",param);
 		Map<String, Object> queryMap = new HashMap<>();
-		queryMap.put("productCategaryId", "1");
+		int resultTotal = productService.queryTotal(queryMap);
+		param.put("totalCount", String.valueOf(resultTotal));
+		PageUtils pageUtil = new PageUtils(resultTotal, resultTotal, Integer.valueOf(param.get("currentPage")));
+		if (isLastPage(param)) {
+			return ResponseHelper.success(null,pageUtil, "01", "已经到最后一条了~");
+		}
+		queryMap.putAll(getPagination(param));
+		queryMap.put("productCategaryId", param.get("333"));
 		List<Map<String, Object>> resultMap = productService.queryList(queryMap);
 		logger.info("根据条件查询商品------end------{}",resultMap);
-		return ResponseHelper.success(resultMap, "00", "请求数据成功");
+		//List<?> list, int totalCount, int pageSize, int currPage
+		return ResponseHelper.success(resultMap,pageUtil, "00", "请求数据成功");
 	}
 }

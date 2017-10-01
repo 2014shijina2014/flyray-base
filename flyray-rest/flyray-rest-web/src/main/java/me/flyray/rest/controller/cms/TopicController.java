@@ -38,6 +38,6 @@ public class TopicController {
 		createOrder.setMerchantNo((String)param.get("merchantNo"));
 		createOrder.setPayOrderNo((String)param.get("payOrderNo"));
 		//生成账单
-		return ResponseHelper.success(createOrder, "00", "创建支付订单成功");
+		return ResponseHelper.success(createOrder,null, "00", "创建支付订单成功");
 	}
 }

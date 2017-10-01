@@ -56,7 +56,7 @@ public class CustomerAccountController {
 		String amt = param.get("amt");
 		customerAccountService.deposit(customerAccount, amt);
 		
-		return ResponseHelper.success(null, "00", "请求数据成功");
+		return ResponseHelper.success(null,null, "00", "请求数据成功");
 	}
 	
 	/**
@@ -74,7 +74,7 @@ public class CustomerAccountController {
 		customerAccount.setAccountType(accountType);
 		String amt = param.get("amt");
 		customerAccountService.withdraw(customerAccount, amt);
-		return ResponseHelper.success(null, "00", "请求数据成功");
+		return ResponseHelper.success(null,null, "00", "请求数据成功");
 	}
 	
 }

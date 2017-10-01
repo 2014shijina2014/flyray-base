@@ -90,7 +90,7 @@ public class ActivityController {
 		resultMap.put("groupCategories", groupCategories);
 
 		logger.info("查询活动首页信息------end------{}", resultMap);
-		return ResponseHelper.success(resultMap, "00", "请求数据成功");
+		return ResponseHelper.success(resultMap,null,"00", "请求数据成功");
 	}
 
 }

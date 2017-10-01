@@ -12,13 +12,14 @@ import java.util.Map;
 
 public class ResponseHelper {
 
-	public static <T> Map<String, Object> success(Object clazz, String code, String msg) {
+	public static <T> Map<String, Object> success(Object clazz,PageUtils pageUtils, String code, String msg) {
 		
 		Map<String, Object> map = new HashMap<>();
 		map.put("code", code);
 		map.put("status", "200");
 		map.put("msg", msg);
 		try {
+			map.put("pagination", BeanUtil.objectToMap(pageUtils));
 			if (clazz == null) {
 				return map;
 			}

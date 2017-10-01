@@ -51,7 +51,7 @@ public class ViewpointController {
 		cmsViewPoint.setPointText(pointText);
 		cmsViewPoint.setCustomerId((long) 1);
 		cmsViewPointService.save(cmsViewPoint);
-		return ResponseHelper.success(param, "00", "添加成功");
+		return ResponseHelper.success(param,null, "00", "添加成功");
 	}
 	/**
 	 * 分页查询
@@ -75,7 +75,7 @@ public class ViewpointController {
 		if(nextPage > Page.getTotal_page()){
 			//下一页超出总页数
 			result.put("currentPage", Page.getTotal_page()+"");
-			return ResponseHelper.success(result, "01", "已经到最后一条了~");
+			return ResponseHelper.success(result,null, "01", "已经到最后一条了~");
 		}
 		//int current_page, int page_size, int total_count
 		map.put("offset", Page.getStart_size());//开始行索引
@@ -120,7 +120,7 @@ public class ViewpointController {
 		}
 		result.put("itemList", itemList);
 		result.put("currentPage", nextPage.toString());
-		return ResponseHelper.success(result, "00", "查询成功");
+		return ResponseHelper.success(result,null, "00", "查询成功");
 	}
 	/**
 	 * 点赞或者是取消赞
@@ -135,10 +135,10 @@ public class ViewpointController {
 		String code = (String) map.get("code");
 		if("00".equals(code)){
 			//成功
-			return ResponseHelper.success(map, "00", "操作成功");
+			return ResponseHelper.success(map,null, "00", "操作成功");
 		}else{
 			//失败
-			return ResponseHelper.success(map, "01", "操作异常");
+			return ResponseHelper.success(map,null, "01", "操作异常");
 		}
 		
 	}

@@ -24,13 +24,13 @@ public class ProficientRecommendController {
 	@RequestMapping(value="/proficientRecommend")
 	public Map<String,Object> proficientRecommend(HttpServletRequest request,HttpServletResponse response) throws IllegalStateException, IOException {
         
-		return ResponseHelper.success(null, "00", "请求数据成功");
+		return ResponseHelper.success(null,null, "00", "请求数据成功");
 	}
 	
 	@RequestMapping(value="/viewRecommend")
 	public Map<String,Object> viewRecommend(HttpServletRequest request,HttpServletResponse response) throws IllegalStateException, IOException {
 		
-		return ResponseHelper.success(null, "00", "请求数据成功");
+		return ResponseHelper.success(null,null, "00", "请求数据成功");
 	}
 	
 }
