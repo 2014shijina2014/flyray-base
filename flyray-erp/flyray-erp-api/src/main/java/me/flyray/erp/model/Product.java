@@ -44,7 +44,12 @@ public class Product extends BaseModel{
 	 * 商户状态（上架、下架、推荐、）
 	 */
 	private String productStatus;
-
+	
+	/**
+	 * 商品首页展示图片
+	 */
+	private String productLogo;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -99,6 +104,14 @@ public class Product extends BaseModel{
 
 	public void setProductStatus(String productStatus) {
 		this.productStatus = productStatus;
+	}
+
+	public String getProductLogo() {
+		return productLogo;
+	}
+
+	public void setProductLogo(String productLogo) {
+		this.productLogo = productLogo;
 	}
 	
 }

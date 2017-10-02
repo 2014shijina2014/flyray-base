@@ -31,7 +31,8 @@
 			`product_des`, 
 			`product_price`,
 			`merchant_no`,
-			`product_status`
+			`product_status`,
+			`product_logo`
 		)
 		values
 		(
@@ -39,7 +40,8 @@
 			#{productName},
 			#{productDes},
 			#{productPrice},
-			#{productStatus}
+			#{productStatus},
+			#{productLogo}
 		)
 	</insert>
 	 
@@ -52,6 +54,7 @@
 			<if test="productPrice != null">`product_price` = #{productPrice},</if>
 			<if test="merchantNo != null">`merchant_no` = #{merchantNo}</if>
 			<if test="productStatus != null">`product_status` = #{productStatus}</if>
+			<if test="productLogo != null">`product_status` = #{product_logo}</if>
 		</set>
 		where id = #{id}
 	</update>
