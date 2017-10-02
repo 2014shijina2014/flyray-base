@@ -128,7 +128,6 @@ public class CustomerController {
 		String orgNo = param.get("orgNo");
 		Map<String, Object> requestMap = new HashMap<>();
 		requestMap.put("code", code);
-		requestMap.put("merchantNo", merchantNo);
 		Map<String, Object> userMap = weixinCommonService.getOauthUserInfo(requestMap);
 		logger.info("通过code获取用户授权信息------end------{}",userMap);
 		if (userMap == null) {
