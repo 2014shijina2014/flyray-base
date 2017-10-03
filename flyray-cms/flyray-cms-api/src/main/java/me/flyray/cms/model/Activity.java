@@ -1,6 +1,6 @@
 package me.flyray.cms.model;
 
-import java.io.Serializable;
+import me.flyray.common.model.BaseModel;
 
 /** 
 * @author: bolei
@@ -8,7 +8,7 @@ import java.io.Serializable;
 * @description：活动 
 */
 
-public class Activity implements Serializable {
+public class Activity extends BaseModel {
 	
 	/**
 	 * 
