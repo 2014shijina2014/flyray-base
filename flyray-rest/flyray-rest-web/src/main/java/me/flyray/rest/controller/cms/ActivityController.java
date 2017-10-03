@@ -20,6 +20,8 @@ import me.flyray.cms.api.InterestGroupService;
 import me.flyray.cms.model.Activity;
 import me.flyray.cms.model.InterestGroup;
 import me.flyray.cms.model.InterestGroupCategory;
+import me.flyray.rest.controller.AbstractController;
+import me.flyray.rest.util.PageUtils;
 import me.flyray.rest.util.ResponseHelper;
 
 /**
@@ -30,7 +32,7 @@ import me.flyray.rest.util.ResponseHelper;
 
 @RestController
 @RequestMapping("/api/cms/activity")
-public class ActivityController {
+public class ActivityController extends AbstractController {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -41,6 +43,35 @@ public class ActivityController {
 	@Autowired
 	private InterestGroupCategoryService interestGroupCategoryService;
 
+	/**
+	 * 查询推荐活动
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/queryHotActivity", method = RequestMethod.POST)
+	public Map<String, Object> queryHotActivity(@RequestBody Map<String, String> param) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		logger.info("查询推荐活动------start------{}", param);
+
+		// TODO 用户登录后获取到机构id和商户id后替换参数
+		Long orgId = null;
+		Long merId = null;
+		String orgstr = (String) param.get("orgId");
+		String merstr = (String) param.get("merId");
+		if (null != orgstr && !"".equals(orgstr.trim())) {
+			orgId = Long.valueOf(orgstr.trim());
+		}
+		if (null != merstr && !"".equals(merstr.trim())) {
+			merId = Long.valueOf(merstr.trim());
+		}
+		
+		List<Activity> recActivities = activityService.selectRecommendActivity(orgId, merId);
+		logger.info("查询活动首页信息------查询推荐活动记录------{}", recActivities);
+		resultMap.put("activities", recActivities);
+
+		logger.info("查询活动首页信息------end------{}", resultMap);
+		return ResponseHelper.success(resultMap, null, "00", "请求数据成功");
+	}
+	
 	/**
 	 * 查询客户信息 包括客户账户信息 query
 	 */
@@ -61,18 +92,19 @@ public class ActivityController {
 		if (null != merstr && !"".equals(merstr.trim())) {
 			merId = Long.valueOf(merstr.trim());
 		}
-		
-		List<Activity> recActivities = activityService.selectRecommendActivity(orgId, merId);
-		logger.info("查询活动首页信息------查询推荐活动记录------{}", recActivities);
-		
+
+		InterestGroupCategory groupCategory = new InterestGroupCategory();
+		groupCategory.setOrgId(orgId);
+		groupCategory.setMerchantId(merId);
+
 		Map<String, Object> queryMap = new HashMap<>();
-		queryMap.put("orgId", orgId);
-		queryMap.put("merId", merId);
-		List<InterestGroupCategory> groupCategories = interestGroupCategoryService.query(queryMap);
-		logger.info("查询活动首页信息------查询兴趣小组类别响应参数------{}", groupCategories);
-		if (null != groupCategories) {
-			for (int i = 0; i < groupCategories.size(); i++) {
-				InterestGroupCategory groupCategoryItem = groupCategories.get(i);
+		int resultTotal = interestGroupCategoryService.queryTotal(queryMap);
+		queryMap.putAll(getPagination(param));
+		List<Map<String, Object>> igcListMap = interestGroupCategoryService.queryList(queryMap);
+		
+		if (null != igcListMap) {
+			for (int i = 0; i < igcListMap.size(); i++) {
+				Map<String, Object> groupCategoryItem = igcListMap.get(i);
 				Map<String, Object> queryGroupMap = new HashMap<>();
 				queryGroupMap.put("orgId", orgId);
 				queryGroupMap.put("merId", merId);
@@ -80,16 +112,20 @@ public class ActivityController {
 				queryGroupMap.put("flag", "20");
 				logger.info("查询活动首页信息------查询兴趣小组请求参数------{}", queryGroupMap);
 				List<InterestGroup> groups = interestGroupService.query(queryGroupMap);
-				logger.info("查询活动首页信息------查询兴趣小组响应参数------{}", groupCategories);
-				groupCategoryItem.setGroupList(groups);
+				logger.info("查询活动首页信息------查询兴趣小组响应参数------{}", groups);
+				groupCategoryItem.put("groupList", groups);
 			}
 		}
-
-		resultMap.put("activities", recActivities);
-		resultMap.put("groupCategories", groupCategories);
+		param.put("totalCount", String.valueOf(resultTotal));
+		PageUtils pageUtil = new PageUtils(resultTotal, resultTotal, Integer.valueOf(param.get("currentPage")));
+		if (isLastPage(param)) {
+			return ResponseHelper.success(null,pageUtil, "01", "已经到最后一条了~");
+		}
+		
+		resultMap.put("groupCategories", igcListMap);
 
 		logger.info("查询活动首页信息------end------{}", resultMap);
-		return ResponseHelper.success(resultMap,null,"00", "请求数据成功");
+		return ResponseHelper.success(resultMap,pageUtil, "00", "请求数据成功");
 	}
 
 }
