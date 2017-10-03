@@ -112,5 +112,20 @@
 		from cms_interest_group_category
         <include refid="where1"/>
 	</select>
-  
+	
+	<select id="queryList" resultMap="interestGroupMap">
+		select
+		<include refid="Base_Column_List" />
+		from cms_interest_group_category
+        <include refid="where1"/>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) 
+		from cms_interest_group_category
+        <include refid="where1"/>
+	</select>
 </mapper>
