@@ -2,14 +2,14 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="me.flyray.cms.dao.CmsViewFavortDao">
+<mapper namespace="me.flyray.cms.dao.ViewFavortDao">
 
-	<select id="queryObject" resultType="me.flyray.cms.model.CmsViewFavort">
+	<select id="queryObject" resultType="me.flyray.cms.model.ViewFavort">
 		select * from cms_view_favort 
 		where id = #{id,jdbcType=BIGINT}
 	</select>
 
-	<select id="queryList" resultType="me.flyray.cms.model.CmsViewFavort"
+	<select id="queryList" resultType="me.flyray.cms.model.ViewFavort"
 		parameterType="java.util.Map">
 		select * from cms_view_favort 
 		<trim prefix="WHERE" suffixOverrides="AND">
@@ -23,7 +23,7 @@
 	</select>
 
 
-	<select id="query" resultType="me.flyray.cms.model.CmsViewFavort"
+	<select id="query" resultType="me.flyray.cms.model.ViewFavort"
 		parameterType="java.util.Map">
 		select * from cms_view_favort
 		<where>
@@ -50,7 +50,7 @@
 			</if>
 		</where>
 	</select>
-	<update id="updateById" parameterType="me.flyray.cms.model.CmsViewFavort">
+	<update id="updateById" parameterType="me.flyray.cms.model.ViewFavort">
 		update cms_view_favort
 			<set>
 		        <if test="favortStatus != null and favortStatus != ''">
@@ -67,7 +67,7 @@
 		cms_view_favort
 	</select>
 
-	<insert id="save" parameterType="me.flyray.cms.model.CmsViewFavort"
+	<insert id="save" parameterType="me.flyray.cms.model.ViewFavort"
 		useGeneratedKeys="true" keyProperty="id">
 		insert into cms_view_favort (customer_id,point_id,favort_status,create_time,update_time) values (
 		#{customerId,jdbcType=BIGINT},

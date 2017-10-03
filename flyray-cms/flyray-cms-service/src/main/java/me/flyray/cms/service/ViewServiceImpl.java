@@ -1,12 +1,10 @@
 package me.flyray.cms.service;
 
-import me.flyray.cms.dao.PhotoFileDao;
-import me.flyray.cms.model.PhotoFile;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.qiniu.util.StringUtils;
+import me.flyray.cms.dao.PhotoFileDao;
+import me.flyray.cms.model.PhotoFile;
 
 @Service("viewService")
 public class ViewServiceImpl {

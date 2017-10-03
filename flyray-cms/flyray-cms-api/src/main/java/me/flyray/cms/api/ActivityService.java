@@ -3,6 +3,7 @@ package me.flyray.cms.api;
 import java.util.List;
 
 import me.flyray.cms.model.Activity;
+import me.flyray.common.service.BaseService;
 
 /** 
 * @author: bolei
@@ -10,7 +11,7 @@ import me.flyray.cms.model.Activity;
 * @description：活动服务接口
 */
 
-public interface ActivityService {
+public interface ActivityService extends BaseService{
 	
 	/**
 	 * 添加活动服务

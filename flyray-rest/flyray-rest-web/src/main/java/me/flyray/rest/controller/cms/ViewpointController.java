@@ -15,10 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import me.flyray.cms.api.ActivityService;
-import me.flyray.cms.api.CmsViewFavortService;
-import me.flyray.cms.api.CmsViewPointService;
-import me.flyray.cms.model.CmsViewPoint;
+import me.flyray.cms.api.ViewFavortService;
+import me.flyray.cms.api.ViewpointService;
+import me.flyray.cms.model.Viewpoint;
 import me.flyray.crm.api.CustomerBaseService;
 import me.flyray.crm.model.CustomerBase;
 import me.flyray.rest.model.ViewPointItem;
@@ -35,22 +34,22 @@ import me.flyray.rest.util.ResponseHelper;
 @RequestMapping("/api/cms/viewpoints")
 public class ViewpointController {
 	@Autowired
-	private CmsViewPointService cmsViewPointService;
+	private ViewpointService viewPointService;
 	@Autowired
 	private CustomerBaseService customerBaseService;
 	@Autowired
-	private CmsViewFavortService cmsViewFavortService;
+	private ViewFavortService viewFavortService;
 	/**
 	 * 添加观点
 	 */
 	@ResponseBody
 	@RequestMapping(value="/add", method = RequestMethod.POST)
 	public Map<String, Object> add(@RequestBody Map<String, Object> param) {
-		CmsViewPoint cmsViewPoint = new CmsViewPoint();
+		Viewpoint cmsViewPoint = new Viewpoint();
 		String pointText = (String)param.get("pointText");
 		cmsViewPoint.setPointText(pointText);
 		cmsViewPoint.setCustomerId((long) 1);
-		cmsViewPointService.save(cmsViewPoint);
+		viewPointService.insert(cmsViewPoint);
 		return ResponseHelper.success(param,null, "00", "添加成功");
 	}
 	/**
@@ -63,7 +62,8 @@ public class ViewpointController {
 		String pageSize = (String) param.get("pageSize");//条数
 		Map<String, Object> result = new HashMap<String, Object>();
 		Map<String, Object> map = new HashMap<String, Object>();
-		Integer total = cmsViewPointService.queryTotal();
+		Map<String, Object> queryMap = new HashMap<>();
+		Integer total = viewPointService.queryTotal(queryMap);
 		if(currentPage == null || currentPage == ""){
 			currentPage = "0";
 		}
@@ -80,9 +80,9 @@ public class ViewpointController {
 		//int current_page, int page_size, int total_count
 		map.put("offset", Page.getStart_size());//开始行索引
 		map.put("limit", Page.getPage_size());//每页条数
-		List<CmsViewPoint> videoPointList = cmsViewPointService.queryList(map);
+		List<Viewpoint> videoPointList = viewPointService.query(map);
 		List<ViewPointItem> itemList = new ArrayList<ViewPointItem>();
-		for (CmsViewPoint cmsViewPoint : videoPointList) {
+		for (Viewpoint cmsViewPoint : videoPointList) {
 			ViewPointItem item = new ViewPointItem();
 			
 			Date time = cmsViewPoint.getPointTime();
@@ -131,7 +131,7 @@ public class ViewpointController {
 		//假设从后台取
 		Long customerId = (long) 1;
 		param.put("customerId", customerId);
-		Map<String, Object> map = cmsViewFavortService.doFavort(param);
+		Map<String, Object> map = viewFavortService.doFavort(param);
 		String code = (String) map.get("code");
 		if("00".equals(code)){
 			//成功

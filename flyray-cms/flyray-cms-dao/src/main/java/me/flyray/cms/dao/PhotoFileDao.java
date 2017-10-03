@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import me.flyray.cms.model.PhotoFile;
+import me.flyray.common.dao.BaseDao;
 
 /** 
 * @author: bolei
@@ -11,10 +12,8 @@ import me.flyray.cms.model.PhotoFile;
 * @description：类说明 
 */
 
-public interface PhotoFileDao {
+public interface PhotoFileDao extends BaseDao<PhotoFile>{
 
-	public List<PhotoFile> queryAll();
-	
 	public List<PhotoFile> query(Map<String,Object> map);
 	
 	public PhotoFile findById(String id);

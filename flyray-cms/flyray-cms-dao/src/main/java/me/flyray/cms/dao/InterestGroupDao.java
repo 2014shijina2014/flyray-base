@@ -1,8 +1,7 @@
 package me.flyray.cms.dao;
 
-import java.util.List;
-
 import me.flyray.cms.model.InterestGroup;
+import me.flyray.common.dao.BaseDao;
 
 /**
  * 
@@ -11,10 +10,8 @@ import me.flyray.cms.model.InterestGroup;
  * @description:兴趣小组数据操作类
  */
 
-public interface InterestGroupDao {
+public interface InterestGroupDao extends BaseDao<InterestGroup>{
 
 	public void insert(InterestGroup group);
-	public void update(InterestGroup group);
-	public List<InterestGroup> selectByBizKeys(InterestGroup group);
 	
 }

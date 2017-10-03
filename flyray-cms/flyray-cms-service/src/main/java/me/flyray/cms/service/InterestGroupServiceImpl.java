@@ -2,6 +2,7 @@ package me.flyray.cms.service;
 
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import me.flyray.cms.api.InterestGroupService;
 import me.flyray.cms.dao.InterestGroupDao;
 import me.flyray.cms.model.InterestGroup;
+import me.flyray.common.service.AbstractBaseService;
 
 /**
  * 
@@ -17,7 +19,7 @@ import me.flyray.cms.model.InterestGroup;
  * @description : 兴趣小组信息逻辑处理服务
  */
 @Service("interestGroupService")
-public class InterestGroupServiceImpl implements InterestGroupService{
+public class InterestGroupServiceImpl extends AbstractBaseService<InterestGroup> implements InterestGroupService{
 
 	@Autowired
 	private InterestGroupDao interestGroupDao;
@@ -32,30 +34,9 @@ public class InterestGroupServiceImpl implements InterestGroupService{
 	public void insert(InterestGroup group) {
 		interestGroupDao.insert(group);
 	}
-
-	/**
-	 * 更新兴趣小组记录
-	 * @author centerroot
-	 * @time 创建时间:2017年8月26日下午1:47:31
-	 * (non-Javadoc)
-	 * @see me.flyray.cms.api.InterestGroupService#updateById(me.flyray.cms.model.InterestGroup)
-	 */
 	@Override
-	public void updateById(InterestGroup group) {
-		interestGroupDao.update(group);
-		
+	public List<InterestGroup> query(Map<String, Object> queryGroupMap) {
+		return interestGroupDao.queryList(queryGroupMap);
 	}
 	
-	/**
-	 * 根据输入字段作为条件查询兴趣小组列表
-	 * @author centerroot
-	 * @time 创建时间:2017年8月26日下午1:47:35
-	 * (non-Javadoc)
-	 * @see me.flyray.cms.api.InterestGroupService#selectByBizKeys(me.flyray.cms.model.InterestGroup)
-	 */
-	@Override
-	public List<InterestGroup> selectByBizKeys(InterestGroup group) {
-		return interestGroupDao.selectByBizKeys(group);
-	}
-
 }

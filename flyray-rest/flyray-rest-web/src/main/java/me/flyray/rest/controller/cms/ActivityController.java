@@ -64,23 +64,22 @@ public class ActivityController {
 		
 		List<Activity> recActivities = activityService.selectRecommendActivity(orgId, merId);
 		logger.info("查询活动首页信息------查询推荐活动记录------{}", recActivities);
-
-		InterestGroupCategory groupCategory = new InterestGroupCategory();
-		groupCategory.setOrgId(orgId);
-		groupCategory.setMerchantId(merId);
-		logger.info("查询活动首页信息------查询兴趣小组类别请求参数------{}", groupCategory.toString());
-		List<InterestGroupCategory> groupCategories = interestGroupCategoryService.selectByBizKeys(groupCategory);
+		
+		Map<String, Object> queryMap = new HashMap<>();
+		queryMap.put("orgId", orgId);
+		queryMap.put("merId", merId);
+		List<InterestGroupCategory> groupCategories = interestGroupCategoryService.query(queryMap);
 		logger.info("查询活动首页信息------查询兴趣小组类别响应参数------{}", groupCategories);
 		if (null != groupCategories) {
 			for (int i = 0; i < groupCategories.size(); i++) {
 				InterestGroupCategory groupCategoryItem = groupCategories.get(i);
-				InterestGroup group = new InterestGroup();
-				group.setOrgId(orgId);
-				group.setMerchantId(merId);
-				group.setGroupCategoryId(groupCategoryItem.getId());
-				group.setFlag("20");
-				logger.info("查询活动首页信息------查询兴趣小组请求参数------{}", group.toString());
-				List<InterestGroup> groups = interestGroupService.selectByBizKeys(group);
+				Map<String, Object> queryGroupMap = new HashMap<>();
+				queryGroupMap.put("orgId", orgId);
+				queryGroupMap.put("merId", merId);
+				queryGroupMap.put("groupCategoryId", orgId);
+				queryGroupMap.put("flag", "20");
+				logger.info("查询活动首页信息------查询兴趣小组请求参数------{}", queryGroupMap);
+				List<InterestGroup> groups = interestGroupService.query(queryGroupMap);
 				logger.info("查询活动首页信息------查询兴趣小组响应参数------{}", groupCategories);
 				groupCategoryItem.setGroupList(groups);
 			}

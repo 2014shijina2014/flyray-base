@@ -1,53 +1,34 @@
 package me.flyray.cms.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import me.flyray.cms.api.ViewpointService;
-import me.flyray.cms.dao.CmsViewPointMapper;
+import me.flyray.cms.dao.ViewpointDao;
 import me.flyray.cms.model.Viewpoint;
+import me.flyray.common.service.AbstractBaseService;
 
 @Service("viewpointService")
-public class ViewpointServiceImpl implements ViewpointService {
-
+public class ViewpointServiceImpl extends AbstractBaseService<Viewpoint> implements ViewpointService{
+	
 	@Autowired
-	private CmsViewPointMapper dao;
+	private ViewpointDao viewPointDao;
+	
 	@Override
-	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
-		dao.deleteById(id);
+	public void delete(Long id) {
+		viewPointDao.delete(id);
 	}
 
 	@Override
-	public void insert(Viewpoint point) {
-		// TODO Auto-generated method stub
-		dao.insert(point);
+	public List<Viewpoint> query(Map<String, Object> map) {
+		return viewPointDao.queryList(map);
 	}
 
 	@Override
-	public void updateById(Viewpoint point) {
-		// TODO Auto-generated method stub
-		dao.updateById(point);
+	public void insert(Viewpoint viewPoint) {
+		viewPointDao.save(viewPoint);
 	}
-
-	@Override
-	public List<Viewpoint> queryAll(Viewpoint point) {
-		// TODO Auto-generated method stub
-		return dao.queryAll(point);
-	}
-
-	@Override
-	public Integer queryCountAll(Viewpoint point) {
-		// TODO Auto-generated method stub
-		return dao.queryCountAll(point);
-	}
-
-	@Override
-	public Viewpoint selectById(Long id) {
-		// TODO Auto-generated method stub
-		return dao.selectById(id);
-	}
-
 }

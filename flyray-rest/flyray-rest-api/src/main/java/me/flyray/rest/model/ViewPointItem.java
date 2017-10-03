@@ -1,15 +1,15 @@
 package me.flyray.rest.model;
 
-import me.flyray.cms.model.CmsViewPoint;
+import me.flyray.cms.model.Viewpoint;
 import me.flyray.crm.model.CustomerBase;
 
 public class ViewPointItem {
-	private CmsViewPoint cmsViewPoint;
+	private Viewpoint cmsViewPoint;
 	private CustomerBase customer;
-	public CmsViewPoint getCmsViewPoint() {
+	public Viewpoint getCmsViewPoint() {
 		return cmsViewPoint;
 	}
-	public void setCmsViewPoint(CmsViewPoint cmsViewPoint) {
+	public void setCmsViewPoint(Viewpoint cmsViewPoint) {
 		this.cmsViewPoint = cmsViewPoint;
 	}
 	public CustomerBase getCustomer() {

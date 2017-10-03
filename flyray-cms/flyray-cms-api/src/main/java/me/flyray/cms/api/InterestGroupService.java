@@ -1,8 +1,10 @@
 package me.flyray.cms.api;
 
 import java.util.List;
+import java.util.Map;
 
 import me.flyray.cms.model.InterestGroup;
+import me.flyray.common.service.BaseService;
 
 /**
  * 
@@ -11,7 +13,7 @@ import me.flyray.cms.model.InterestGroup;
  * @description:兴趣小组服务接口
  */
 
-public interface InterestGroupService {
+public interface InterestGroupService extends BaseService{
 	
 	/**
 	 * 添加兴趣小组服务
@@ -20,22 +22,7 @@ public interface InterestGroupService {
 	 * @param group
 	 */
 	public void insert(InterestGroup group);
-	
-	/**
-	 * 更新兴趣小组记录
-	 * @author centerroot
-	 * @time 创建时间:2017年8月26日下午1:42:04
-	 * @param group
-	 */
-	public void updateById(InterestGroup group);
-	
-	/**
-	 * 根据输入字段作为条件查询兴趣小组列表
-	 * @author centerroot
-	 * @time 创建时间:2017年8月26日下午1:42:41
-	 * @param group
-	 * @return
-	 */
-	public List<InterestGroup> selectByBizKeys(InterestGroup group);
 
+	public List<InterestGroup> query(Map<String, Object> queryGroupMap);
+	
 }

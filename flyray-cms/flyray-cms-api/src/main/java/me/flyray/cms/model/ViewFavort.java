@@ -3,7 +3,7 @@ package me.flyray.cms.model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class CmsViewFavort implements Serializable{
+public class ViewFavort implements Serializable{
 	/**
 	 * 
 	 */

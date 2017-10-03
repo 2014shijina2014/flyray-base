@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.flyray.cms.dao.ViewpointDao">
+
+	<select id="queryObject" resultType="me.flyray.cms.model.Viewpoint">
+		select * from cms_view_point 
+		where id = #{id,jdbcType=BIGINT}
+	</select>
+
+	<select id="queryList" resultType="me.flyray.cms.model.Viewpoint"
+		parameterType="java.util.Map">
+		select * from cms_view_point 
+		<trim prefix="WHERE" suffixOverrides="AND">
+			<if test="customerId != null">customer_id = #{customerId} AND</if>
+		</trim>
+		order by id desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+
+	<select id="query" resultType="me.flyray.cms.model.Viewpoint"
+		parameterType="java.util.Map">
+		select * from cms_view_point
+		<where>
+			1 = 1
+			<if test="customerId != null">
+				AND customer_id = #{customerId,jdbcType=BIGINT}
+			</if>
+		</where>
+	</select>
+
+	<select id="queryTotal" resultType="int">
+		select count(*) from
+		cms_view_point
+	</select>
+
+	<insert id="save" parameterType="me.flyray.cms.model.Viewpoint"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into cms_view_point (customer_id,point_text,point_img,point_time,point_address) values (
+		#{customerId,jdbcType=BIGINT},
+		#{pointText,jdbcType=VARCHAR},
+		#{pointImg,jdbcType=VARCHAR},
+		#{pointTime,jdbcType=TIMESTAMP},
+		#{pointAddress,jdbcType=VARCHAR}
+		)
+		
+	</insert>
+	<delete id="delete">
+		delete from cms_view_point
+		where id = #{id,jdbcType=BIGINT}
+	</delete>
+
+</mapper>

@@ -7,53 +7,19 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import me.flyray.cms.api.CmsViewFavortService;
-import me.flyray.cms.dao.CmsViewFavortDao;
-import me.flyray.cms.model.CmsViewFavort;
 
-@Service("cmsViewFavortService")
-public class CmsViewFavortServiceImpl implements CmsViewFavortService{
+import me.flyray.cms.api.ViewFavortService;
+import me.flyray.cms.dao.ViewFavortDao;
+import me.flyray.cms.model.ViewFavort;
+import me.flyray.common.service.AbstractBaseService;
+
+@Service("viewFavortService")
+public class ViewFavortServiceImpl extends AbstractBaseService<ViewFavort> implements ViewFavortService{
 	@Autowired
-	private CmsViewFavortDao dao;
-	@Override
-	public List<CmsViewFavort> queryObject(Long id) {
-		// TODO Auto-generated method stub
-		return dao.queryObject(id);
-	}
-
-	@Override
-	public List<CmsViewFavort> queryList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return dao.queryList(map);
-	}
-
-	@Override
-	public List<CmsViewFavort> query(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return dao.query(map);
-	}
-
-	@Override
-	public Integer queryCount(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return dao.queryCount(map);
-	}
-
-	@Override
-	public Integer queryTotal() {
-		// TODO Auto-generated method stub
-		return dao.queryTotal();
-	}
-
-	@Override
-	public void save(CmsViewFavort favort) {
-		// TODO Auto-generated method stub
-		dao.save(favort);
-	}
+	private ViewFavortDao dao;
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
 		dao.delete(id);
 	}
 
@@ -64,14 +30,14 @@ public class CmsViewFavortServiceImpl implements CmsViewFavortService{
 			String customerId = (String) param.get("customerId");
 			String favortStatus = (String) param.get("favortStatus");
 			String pointId = (String) param.get("pointId");
-			List<CmsViewFavort> favortList = dao.query(param);
-			CmsViewFavort favort = new CmsViewFavort();
+			List<ViewFavort> favortList = dao.query(param);
+			ViewFavort favort = new ViewFavort();
 			if (null != favortList && favortList.size() > 0){
 				//说明已经点赞过--更新
 				favort = favortList.get(0);
 				favort.setUpdateTime(new Timestamp(System.currentTimeMillis()));
 				favort.setFavortStatus(Integer.valueOf(favortStatus));
-				dao.updateById(favort);
+				dao.update(favort);
 			} else {
 				//没有点赞过--插入
 				favort.setCustomerId(Long.valueOf(customerId));

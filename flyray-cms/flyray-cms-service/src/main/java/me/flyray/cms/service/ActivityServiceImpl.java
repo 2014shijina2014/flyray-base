@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import me.flyray.cms.api.ActivityService;
 import me.flyray.cms.dao.ActivityDao;
 import me.flyray.cms.model.Activity;
+import me.flyray.common.service.AbstractBaseService;
 
 /**
  * 
@@ -17,7 +18,7 @@ import me.flyray.cms.model.Activity;
  * @description : 活动信息逻辑处理服务
  */
 @Service("activityService")
-public class ActivityServiceImpl implements ActivityService{
+public class ActivityServiceImpl extends AbstractBaseService<Activity> implements ActivityService{
 
 	@Autowired
 	private ActivityDao activityDao;
