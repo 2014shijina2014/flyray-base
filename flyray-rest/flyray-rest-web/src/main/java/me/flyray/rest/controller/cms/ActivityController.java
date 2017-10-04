@@ -99,6 +99,7 @@ public class ActivityController extends AbstractController {
 
 		Map<String, Object> queryMap = new HashMap<>();
 		int resultTotal = interestGroupCategoryService.queryTotal(queryMap);
+		param.put("totalCount", String.valueOf(resultTotal));
 		queryMap.putAll(getPagination(param));
 		List<Map<String, Object>> igcListMap = interestGroupCategoryService.queryList(queryMap);
 		
@@ -116,8 +117,9 @@ public class ActivityController extends AbstractController {
 				groupCategoryItem.put("groupList", groups);
 			}
 		}
-		param.put("totalCount", String.valueOf(resultTotal));
-		PageUtils pageUtil = new PageUtils(resultTotal, resultTotal, Integer.valueOf(param.get("currentPage")));
+		
+		int pageSizeInt = Integer.valueOf(param.get("pageSize"));
+		PageUtils pageUtil = new PageUtils(resultTotal, pageSizeInt, Integer.valueOf(param.get("currentPage")));
 		if (isLastPage(param)) {
 			return ResponseHelper.success(null,pageUtil, "01", "已经到最后一条了~");
 		}

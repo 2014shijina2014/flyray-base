@@ -190,5 +190,15 @@
 		from cms_interest_group
         <include refid="where1"/>
 	</select>
+	
+	<select id="queryList" resultType="me.flyray.cms.model.InterestGroup"
+		parameterType="java.util.Map">
+		select * from cms_interest_group
+		<include refid="where1"/>
+		order by id desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
   
 </mapper>
