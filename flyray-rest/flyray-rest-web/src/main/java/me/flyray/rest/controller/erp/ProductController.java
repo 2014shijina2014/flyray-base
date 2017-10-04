@@ -13,14 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
-
 import me.flyray.common.exception.BusinessException;
 import me.flyray.erp.api.ProductCategaryService;
 import me.flyray.erp.api.ProductService;
 import me.flyray.rest.controller.AbstractController;
 import me.flyray.rest.util.PageUtils;
-import me.flyray.rest.util.Pager;
 import me.flyray.rest.util.ResponseHelper;
 
 /** 

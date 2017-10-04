@@ -16,4 +16,6 @@
     <dubbo:reference id="viewpointService" interface="me.flyray.cms.api.ViewpointService"/>
 	<!-- 点赞接口 -->
 	<dubbo:reference id="viewFavortService" interface="me.flyray.cms.api.ViewFavortService"/>
+	<!-- 专栏相关接口 -->
+	<dubbo:reference id="specialColumnService" interface="me.flyray.cms.api.SpecialColumnService"/>
 </beans>

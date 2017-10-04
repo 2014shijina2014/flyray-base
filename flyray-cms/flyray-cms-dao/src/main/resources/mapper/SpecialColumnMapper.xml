@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.flyray.cms.dao.SpecialColumnDao">
+
+	<select id="queryObject" resultType="me.flyray.cms.model.SpecialColumn">
+		select * from cms_special_column where id = #{id}
+	</select>
+	
+	<select id="queryById" resultType="me.flyray.cms.model.SpecialColumn">
+		select * from cms_special_column where id = #{id}
+	</select>
+
+	<select id="queryList" resultType="me.flyray.cms.model.SpecialColumn">
+		select * from cms_special_column order by id desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from cms_special_column 
+	</select>
+	
+	<insert id="save" parameterType="me.flyray.cms.model.SpecialColumn" useGeneratedKeys="true" keyProperty="id">
+		insert into cms_special_column
+		(
+			`id`, 
+			`column_name`, 
+			`column_desc`, 
+			`column_logo`,
+			`create_by`
+		)
+		values
+		(
+			#{id}, 
+			#{columnName},
+			#{columnDesc},
+			#{columnLogo},
+			#{createBy}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="me.flyray.cms.model.SpecialColumn">
+		update cms_special_column 
+		<set>
+			<if test="id != null">`id` = #{id}, </if>
+			<if test="columnName != null">`column_name` = #{columnName},</if>
+			<if test="columnDesc != null">`column_desc` = #{columnDesc},</if>
+			<if test="columnLogo != null">`column_logo` = #{columnLogo}</if>
+			<if test="create_by != null">`create_by` = #{create_by}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from cms_special_column where id = #{id}
+	</delete>
+  
+</mapper>

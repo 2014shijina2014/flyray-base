@@ -6,7 +6,7 @@ package me.flyray.cms.model;
 * @description：内容管理专栏
 */
 
-public class Column {
+public class SpecialColumn {
 	
 	/**
 	 * 跟进算法生成id
@@ -19,7 +19,7 @@ public class Column {
 	private String columnName;
 	
 	/**
-	 * 专栏描述
+	 * 专栏介绍
 	 */
 	private String columnDesc;
 	

@@ -8,6 +8,6 @@ import me.flyray.common.service.BaseService;
 * @description：内容管理专栏
 */
 
-public interface ColumnService extends BaseService{
+public interface SpecialColumnService extends BaseService{
 
 }
