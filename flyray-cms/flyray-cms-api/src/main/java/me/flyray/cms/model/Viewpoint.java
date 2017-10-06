@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
-public class Viewpoint implements Serializable{
+import me.flyray.common.model.BaseModel;
+
+public class Viewpoint extends BaseModel implements Serializable {
 	/**
 	 * 
 	 */

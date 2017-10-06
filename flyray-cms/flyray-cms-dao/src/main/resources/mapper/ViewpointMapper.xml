@@ -6,7 +6,7 @@
 		type="me.flyray.cms.model.Viewpoint"
 		id="point">
 		<result property="id" column="id" />
-		<result property="customerNo" column="customer_no" />
+		<result property="customerId" column="customer_id" />
 		<result property="pointText" column="point_text" />
 		<result property="pointImg" column="point_img" />
 		<result property="pointTime" column="point_time" />
@@ -14,15 +14,15 @@
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		id, customer_no, point_text, point_img, point_time, point_address
+		id, customer_id, point_text, point_img, point_time, point_address
 	</sql>
 	<sql id="where">
 		<trim prefix="where" suffixOverrides="AND">
 			<if test="id != null">
 				id = #{id,jdbcType=BIGINT} AND
 			</if>
-			<if test="customerNo != null">
-				customer_no = #{customerNo,jdbcType=VARCHAR} AND
+			<if test="customerId != null">
+				customer_id = #{customerId,jdbcType=VARCHAR} AND
 			</if>
 			<if test="pointText != null">
 				point_text = #{pointText,jdbcType=VARCHAR} AND
@@ -43,12 +43,12 @@
 	<delete id="deleteById" parameterType="java.lang.Long">
 		delete from cms_view_point where id = #{id,jdbcType=BIGINT}
 	</delete>
-	<insert id="insert" useGeneratedKeys="true" keyProperty="id"
+	<insert id="sava" keyProperty="id"
 		parameterType="me.flyray.cms.model.Viewpoint">
-		insert into cms_view_point (id, customer_no, point_text, point_img, point_time, point_address)
+		insert into cms_view_point (id, customer_id, point_text, point_img, point_time, point_address)
 		values (
 		#{id,jdbcType=BIGINT}
-		,#{customerNo,jdbcType=VARCHAR}
+		,#{customerId,jdbcType=VARCHAR}
 		,#{pointText,jdbcType=VARCHAR}
 		,#{pointImg,jdbcType=VARCHAR}
 		,#{pointTime,jdbcType=TIMESTAMP}
@@ -59,8 +59,8 @@
 		parameterType="me.flyray.cms.model.Viewpoint">
 		update cms_view_point
 		<set>
-			<if test="customerNo != null">
-				customer_no = #{customerNo,jdbcType=VARCHAR},
+			<if test="customerId != null">
+				customer_id = #{customerId,jdbcType=VARCHAR},
 			</if>
 			<if test="pointText != null">
 				point_text = #{pointText,jdbcType=VARCHAR},
@@ -74,12 +74,15 @@
 		</set>
 		where id = #{id,jdbcType=BIGINT}
 	</update>
-	<select id="queryAll" resultMap="point"
-		parameterType="me.flyray.cms.model.Viewpoint">
+	<select id="queryList" resultMap="point"
+		parameterType="java.util.Map">
 		select
 		<include refid="Base_Column_List" />
 		from cms_view_point
 		<include refid="where" />
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
 	</select>
 	<select id="queryTotal" resultType="int">
 		select count(1) from cms_view_point 

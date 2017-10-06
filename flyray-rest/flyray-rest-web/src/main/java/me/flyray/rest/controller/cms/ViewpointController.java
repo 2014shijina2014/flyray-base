@@ -18,9 +18,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import me.flyray.cms.api.ViewFavortService;
 import me.flyray.cms.api.ViewpointService;
 import me.flyray.cms.model.Viewpoint;
+import me.flyray.common.utils.SnowFlake;
 import me.flyray.crm.api.CustomerBaseService;
 import me.flyray.crm.model.CustomerBase;
+import me.flyray.rest.controller.AbstractController;
 import me.flyray.rest.model.ViewPointItem;
+import me.flyray.rest.util.PageUtils;
 import me.flyray.rest.util.Pager;
 import me.flyray.rest.util.ResponseHelper;
 
@@ -32,7 +35,7 @@ import me.flyray.rest.util.ResponseHelper;
 
 @Controller
 @RequestMapping("/api/cms/viewpoints")
-public class ViewpointController {
+public class ViewpointController extends AbstractController{
 	@Autowired
 	private ViewpointService viewPointService;
 	@Autowired
@@ -45,11 +48,17 @@ public class ViewpointController {
 	@ResponseBody
 	@RequestMapping(value="/add", method = RequestMethod.POST)
 	public Map<String, Object> add(@RequestBody Map<String, Object> param) {
-		Viewpoint cmsViewPoint = new Viewpoint();
+		//Viewpoint cmsViewPoint = new Viewpoint();
+		Long id = SnowFlake.getId();
 		String pointText = (String)param.get("pointText");
-		cmsViewPoint.setPointText(pointText);
+		/*cmsViewPoint.setPointText(pointText);
 		cmsViewPoint.setCustomerId((long) 1);
-		viewPointService.insert(cmsViewPoint);
+		cmsViewPoint.setId(id);*/
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pointText", pointText);
+		map.put("customerId", (long) 1);
+		map.put("id", id);
+		viewPointService.save(map);
 		return ResponseHelper.success(param,null, "00", "添加成功");
 	}
 	/**
@@ -57,30 +66,20 @@ public class ViewpointController {
 	 */
 	@ResponseBody
 	@RequestMapping(value="/query", method = RequestMethod.POST)
-	public Map<String, Object> query(@RequestBody Map<String, Object> param) {
-		String currentPage = (String) param.get("currentPage");//当前页
-		String pageSize = (String) param.get("pageSize");//条数
-		Map<String, Object> result = new HashMap<String, Object>();
+	public Map<String, Object> query(@RequestBody Map<String, String> param) {
+		String currentPage = param.get("currentPage");//当前页
+		String pageSize = param.get("pageSize");//条数
 		Map<String, Object> map = new HashMap<String, Object>();
 		Map<String, Object> queryMap = new HashMap<>();
 		Integer total = viewPointService.queryTotal(queryMap);
-		if(currentPage == null || currentPage == ""){
-			currentPage = "0";
+		param.put("totalCount", String.valueOf(total));
+		int pageSizeInt = Integer.valueOf(pageSize);
+		PageUtils pageUtil = new PageUtils(total, pageSizeInt, Integer.valueOf(currentPage));
+		if (isLastPage(param)) {
+			return ResponseHelper.success(null,pageUtil, "01", "已经到最后一条了~");
 		}
-		Integer nextPage = Integer.valueOf(currentPage) + 1;
-		if(pageSize == null || pageSize == ""){
-			pageSize = "10";
-		}
-		Pager Page = new Pager(nextPage, Integer.valueOf(pageSize), total);
-		if(nextPage > Page.getTotal_page()){
-			//下一页超出总页数
-			result.put("currentPage", Page.getTotal_page()+"");
-			return ResponseHelper.success(result,null, "01", "已经到最后一条了~");
-		}
-		//int current_page, int page_size, int total_count
-		map.put("offset", Page.getStart_size());//开始行索引
-		map.put("limit", Page.getPage_size());//每页条数
-		List<Viewpoint> videoPointList = viewPointService.query(map);
+		queryMap.putAll(getPagination(param));
+		List<Viewpoint> videoPointList = viewPointService.query(queryMap);
 		List<ViewPointItem> itemList = new ArrayList<ViewPointItem>();
 		for (Viewpoint cmsViewPoint : videoPointList) {
 			ViewPointItem item = new ViewPointItem();
@@ -118,9 +117,7 @@ public class ViewpointController {
 			}
 			itemList.add(item);
 		}
-		result.put("itemList", itemList);
-		result.put("currentPage", nextPage.toString());
-		return ResponseHelper.success(result,null, "00", "查询成功");
+		return ResponseHelper.success(itemList,pageUtil, "00", "查询成功");
 	}
 	/**
 	 * 点赞或者是取消赞
