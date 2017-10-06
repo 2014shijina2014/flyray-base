@@ -1,6 +1,7 @@
 package me.flyray.cms.api;
 
 import java.util.List;
+import java.util.Map;
 
 import me.flyray.cms.model.Activity;
 import me.flyray.common.service.BaseService;
@@ -42,10 +43,18 @@ public interface ActivityService extends BaseService{
 	 * 根据机构号和商户号，查询商户下推荐活动列表
 	 * @author centerroot
 	 * @time 创建时间:2017年9月2日下午5:11:11
-	 * @param orgId
-	 * @param merchantId
+	 * @param map
 	 * @return
 	 */
-	public List<Activity> selectRecommendActivity(Long orgId, Long merchantId);
+	public List<Activity> selectRecommendActivity(Map<String, Object> map);
+	
+	/**
+	 * 根据活动状态查询活动列表
+	 * @author centerroot
+	 * @time 创建时间:2017年10月6日下午6:09:16
+	 * @param map
+	 * @return
+	 */
+	public List<Activity> selectActivityByStatus(Map<String, Object> map);
 
 }

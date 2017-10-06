@@ -11,11 +11,16 @@
 		<result column="activity_logo" property="activityLogo" jdbcType="VARCHAR" />
 		<result column="activity_des" property="activityDes" jdbcType="VARCHAR" />
 		<result column="activity_content" property="activityContent" jdbcType="VARCHAR" />
+		<result column="activity_start_time" property="activityStartTime" jdbcType="TIMESTAMP" />
+		<result column="activity_end_time" property="activityEndTime" jdbcType="TIMESTAMP" />
+		<result column="activity_addr" property="activityAddr" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="create_by" property="createBy" jdbcType="INTEGER" />
 		<result column="flag" property="flag" jdbcType="VARCHAR" />
 	</resultMap>
 	
 	<sql id="Base_Column_List">
-        id, interest_group_id, activity_name, activity_logo, activity_des, activity_content, flag
+        id, interest_group_id, activity_name, activity_logo, activity_des, activity_content, activity_start_time, activity_end_time, activity_addr, create_time, create_by, flag
     </sql>
     
     <sql id="where1">
@@ -37,6 +42,21 @@
         </if>
         <if test="activityContent != null and activityContent != ''">
 			AND activity_content = #{activityContent,jdbcType=VARCHAR}
+        </if>
+        <if test="activityStartTime != null and activityStartTime != ''">
+			AND activity_start_time = #{activityStartTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="activityEndTime != null and activityEndTime != ''">
+			AND activity_end_time = #{activityEndTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="activityAddr != null and activityAddr != ''">
+			AND activity_addr = #{activityAddr,jdbcType=VARCHAR}
+        </if>
+        <if test="create_time != null and createTime != ''">
+			AND activity_content = #{createTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="createBy != null and createBy != ''">
+			AND create_by = #{createBy,jdbcType=INTEGER}
         </if>
         <if test="flag != null and flag != ''">
 			AND flag = #{flag,jdbcType=VARCHAR}
@@ -65,6 +85,21 @@
 			<if test="activityContent != null and activityContent != ''">
 				activity_content,
 			</if>
+			<if test="activityStartTime != null and activityStartTime != ''">
+				activity_start_time,
+			</if>
+			<if test="activityEndTime != null and activityEndTime != ''">
+				activity_end_time,
+			</if>
+			<if test="activityAddr != null and activityAddr != ''">
+				activity_addr,
+			</if>
+			<if test="createTime != null and createTime != ''">
+				create_time,
+			</if>
+			<if test="createBy != null and createBy != ''">
+				create_by,
+			</if>
 			<if test="flag != null and flag != ''">
 				flag,
 			</if>
@@ -87,6 +122,21 @@
 	        </if>
 	        <if test="activityContent != null and activityContent != ''">
 				#{activityContent,jdbcType=VARCHAR},
+	        </if>
+	        <if test="activityStartTime != null and activityStartTime != ''">
+				#{activityStartTime,jdbcType=TIMESTAMP},
+	        </if>
+	        <if test="activityEndTime != null and activityEndTime != ''">
+				#{activityEndTime,jdbcType=TIMESTAMP},
+	        </if>
+	        <if test="activityAddr != null and activityAddr != ''">
+				#{activityAddr,jdbcType=VARCHAR},
+	        </if>
+	        <if test="createTime != null and createTime != ''">
+				#{createTime,jdbcType=TIMESTAMP},
+	        </if>
+	        <if test="createBy != null and createBy != ''">
+				#{createBy,jdbcType=INTEGER},
 	        </if>
 	        <if test="flag != null and flag != ''">
 				#{flag,jdbcType=VARCHAR},
@@ -112,6 +162,21 @@
 	        <if test="activityContent != null and activityContent != ''">
 				activity_content = #{activityContent,jdbcType=VARCHAR},
 	        </if>
+	        <if test="activityStartTime != null and activityStartTime != ''">
+				activity_start_time = #{activityStartTime,jdbcType=TIMESTAMP},
+	        </if>
+	        <if test="activityEndTime != null and activityEndTime != ''">
+				activity_end_time = #{activityEndTime,jdbcType=TIMESTAMP},
+	        </if>
+	        <if test="activityAddr != null and activityAddr != ''">
+				activity_addr = #{activityAddr,jdbcType=VARCHAR},
+	        </if>
+	        <if test="createTime != null and createTime != ''">
+				create_time = #{createTime,jdbcType=TIMESTAMP},
+	        </if>
+	        <if test="createBy != null and createBy != ''">
+				create_by = #{createBy,jdbcType=INTEGER},
+	        </if>
 	        <if test="flag != null and flag != ''">
 				flag = #{flag,jdbcType=VARCHAR},
 	        </if>
@@ -129,7 +194,21 @@
 	<select id="selectRecommendActivity" resultMap="activityMap">
 		SELECT ac.* FROM cms_activity AS ac
 		LEFT JOIN cms_interest_group AS gp ON ac.interest_group_id = gp.id
-		where gp.org_id = #{orgId,jdbcType=INTEGER} AND gp.merchant_id = #{merchantId,jdbcType=INTEGER} AND ac.flag = '10' LIMIT 3
+		<where>
+			<trim prefixOverrides="AND|OR">
+		        <if test="orgId != null and orgId != ''">
+					AND org_id = #{orgId,jdbcType=INTEGER}
+		        </if>
+		        <if test="merchantId != null and merchantId != ''">
+					AND merchant_id = #{merchantId,jdbcType=INTEGER}
+		        </if>
+		        <if test="InterestGroupId != null and InterestGroupId != ''">
+					AND interest_group_id = #{InterestGroupId,jdbcType=INTEGER}
+		        </if>
+		        AND ac.flag = '10'
+			</trim>
+        </where>
+        LIMIT 3
 	</select>
 	
 	<select id="queryList" resultType="me.flyray.cms.model.InterestGroup"
@@ -138,7 +217,7 @@
 		<include refid="Base_Column_List" />
 		from cms_activity
 		<include refid="where1"/>
-		order by id desc
+		order by create_time desc
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
@@ -147,6 +226,71 @@
 	<select id="queryTotal" resultType="int">
 		select count(*) from cms_activity
         <include refid="where1"/>
+	</select>
+	
+	<select id="selectStartActivity" resultMap="activityMap" parameterType="java.util.Map">
+		select 
+		<include refid="Base_Column_List" />
+		from cms_activity
+		<where>
+			<trim prefixOverrides="AND|OR">
+		        <if test="orgId != null and orgId != ''">
+					AND org_id = #{orgId,jdbcType=INTEGER}
+		        </if>
+		        <if test="merchantId != null and merchantId != ''">
+					AND merchant_id = #{merchantId,jdbcType=INTEGER}
+		        </if>
+		        <if test="InterestGroupId != null and InterestGroupId != ''">
+					AND interest_group_id = #{InterestGroupId,jdbcType=INTEGER}
+		        </if>
+		        <if test="currentTime != null and currentTime != ''">
+					AND activity_start_time &gt; #{currentTime,jdbcType=TIMESTAMP}
+		        </if>
+			</trim>
+        </where>
+	</select>
+	<select id="selectEndActivity" resultMap="activityMap" parameterType="java.util.Map">
+		select 
+		<include refid="Base_Column_List" />
+		from cms_activity
+		<where>
+			<trim prefixOverrides="AND|OR">
+		        <if test="orgId != null and orgId != ''">
+					AND org_id = #{orgId,jdbcType=INTEGER}
+		        </if>
+		        <if test="merchantId != null and merchantId != ''">
+					AND merchant_id = #{merchantId,jdbcType=INTEGER}
+		        </if>
+		        <if test="InterestGroupId != null and InterestGroupId != ''">
+					AND interest_group_id = #{InterestGroupId,jdbcType=INTEGER}
+		        </if>
+		        <if test="currentTime != null and currentTime != ''">
+					AND activity_end_time &lt; #{currentTime,jdbcType=TIMESTAMP}
+		        </if>
+			</trim>
+        </where>
+	</select>
+	<select id="selectProcessActivity" resultMap="activityMap" parameterType="java.util.Map">
+		select 
+		<include refid="Base_Column_List" />
+		from cms_activity
+		<where>
+			<trim prefixOverrides="AND|OR">
+		        <if test="orgId != null and orgId != ''">
+					AND org_id = #{orgId,jdbcType=INTEGER}
+		        </if>
+		        <if test="merchantId != null and merchantId != ''">
+					AND merchant_id = #{merchantId,jdbcType=INTEGER}
+		        </if>
+		        <if test="InterestGroupId != null and InterestGroupId != ''">
+					AND interest_group_id = #{InterestGroupId,jdbcType=INTEGER}
+		        </if>
+		        <if test="currentTime != null and currentTime != ''">
+					AND activity_start_time &lt; #{currentTime,jdbcType=TIMESTAMP}
+					AND activity_end_time &gt; #{currentTime,jdbcType=TIMESTAMP}
+		        </if>
+			</trim>
+        </where>
 	</select>
   
 </mapper>

@@ -1,7 +1,9 @@
 package me.flyray.cms.service;
 
 
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,8 +68,36 @@ public class ActivityServiceImpl extends AbstractBaseService<Activity> implement
 	 * @see me.flyray.cms.api.ActivityService#selectRecommendActivity(java.lang.Long, java.lang.Long)
 	 */
 	@Override
-	public List<Activity> selectRecommendActivity(Long orgId, Long merchantId) {
-		return activityDao.selectRecommendActivity(orgId, merchantId);
+	public List<Activity> selectRecommendActivity(Map<String, Object> map) {
+		return activityDao.selectRecommendActivity(map);
 	}
+
+	/**
+	 * 根据活动状态查询活动列表
+	 * 1、当前时间小于活动开始时间，属于可参加的活动
+	 * 2、当前时间大于活动开始时间小于活动结束时间，属于活动进行中
+	 * 3、当前时间大于活动结束时间，属于活动已结束
+	 * @author centerroot
+	 * @time 创建时间:2017年10月6日下午6:10:06
+	 * (non-Javadoc)
+	 * @see me.flyray.cms.api.ActivityService#selectActivityByStatus(java.util.Map)
+	 */
+	@Override
+	public List<Activity> selectActivityByStatus(Map<String, Object> map) {
+		String actStatus = (String) map.get("actStatus");
+		map.put("currentTime", new Timestamp(System.currentTimeMillis()));
+		if ("1".equals(actStatus)) {
+			return activityDao.selectStartActivity(map);
+		} else if ("2".equals(actStatus)) {
+			return activityDao.selectProcessActivity(map);
+		} else if ("3".equals(actStatus)) {
+			return activityDao.selectEndActivity(map);
+		} else {
+			return null;
+		}
+	}
+	
+	
+	
  	
 }

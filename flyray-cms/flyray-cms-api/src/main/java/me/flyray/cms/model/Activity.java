@@ -1,5 +1,7 @@
 package me.flyray.cms.model;
 
+import java.sql.Timestamp;
+
 import me.flyray.common.model.BaseModel;
 
 /** 
@@ -44,6 +46,27 @@ public class Activity extends BaseModel {
 	 * 活动内容
 	 */
 	private String activityContent;
+	
+	/**
+	 * 活动开始时间
+	 */
+	private String activityStartTime;
+	/**
+	 * 活动结束时间
+	 */
+	private String activityEndTime;
+	/**
+	 * 活动地点
+	 */
+	private String activityAddr;
+	/**
+	 * 创建时间
+	 */
+	private Timestamp createTime;
+	/**
+	 * 创建者
+	 */
+	private long createBy;
 	
 	/**
 	 * 状态标识
@@ -99,6 +122,46 @@ public class Activity extends BaseModel {
 		InterestGroupId = interestGroupId;
 	}
 
+	public String getActivityStartTime() {
+		return activityStartTime;
+	}
+
+	public void setActivityStartTime(String activityStartTime) {
+		this.activityStartTime = activityStartTime;
+	}
+
+	public String getActivityEndTime() {
+		return activityEndTime;
+	}
+
+	public void setActivityEndTime(String activityEndTime) {
+		this.activityEndTime = activityEndTime;
+	}
+
+	public String getActivityAddr() {
+		return activityAddr;
+	}
+
+	public void setActivityAddr(String activityAddr) {
+		this.activityAddr = activityAddr;
+	}
+
+	public Timestamp getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
+	}
+
+	public long getCreateBy() {
+		return createBy;
+	}
+
+	public void setCreateBy(long createBy) {
+		this.createBy = createBy;
+	}
+
 	public String getFlag() {
 		return flag;
 	}
@@ -109,9 +172,13 @@ public class Activity extends BaseModel {
 
 	@Override
 	public String toString() {
-		return "Activity [id=" + id + ", InterestGroupId=" + InterestGroupId + ", activityName=" + activityName
-				+ ", activityLogo=" + activityLogo + ", activityDes=" + activityDes + ", activityContent="
-				+ activityContent + ", flag=" + flag + "]";
+		return "Activity [getId()=" + getId() + ", getActivityName()=" + getActivityName() + ", getActivityLogo()="
+				+ getActivityLogo() + ", getActivityDes()=" + getActivityDes() + ", getActivityContent()="
+				+ getActivityContent() + ", getInterestGroupId()=" + getInterestGroupId() + ", getActivityStartTime()="
+				+ getActivityStartTime() + ", getActivityEndTime()=" + getActivityEndTime() + ", getActivityAddr()="
+				+ getActivityAddr() + ", getCreateTime()=" + getCreateTime() + ", getCreateBy()=" + getCreateBy()
+				+ ", getFlag()=" + getFlag() + ", getMerchantId()=" + getMerchantId() + ", getOrgId()=" + getOrgId()
+				+ "]";
 	}
 	
 }
