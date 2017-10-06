@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.flyray.cms.dao.SpecialColumnContentDao">
+
+	<select id="queryObject" resultType="me.flyray.cms.model.SpecialColumnContent">
+		select * from cms_special_column_content where id = #{id}
+	</select>
+	
+	<select id="queryById" resultType="me.flyray.cms.model.SpecialColumnContent">
+		select * from cms_special_column_content where id = #{id}
+	</select>
+
+	<select id="queryList" resultType="me.flyray.cms.model.SpecialColumnContent">
+		select * from cms_special_column_content order by id desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from cms_special_column_content 
+	</select>
+	
+	<insert id="save" parameterType="me.flyray.cms.model.SpecialColumnContent" useGeneratedKeys="true" keyProperty="id">
+		insert into cms_special_column_content
+		(
+			`id`, 
+			`column_content_title`, 
+			`column_content`, 
+			`column_content_logo`, 
+			`create_time`,
+			`create_by`
+		)
+		values
+		(
+			#{id}, 
+			#{columnContentTitle},
+			#{columnContent},
+			#{columnContentLogo},
+			#{createTime},
+			#{createBy}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="me.flyray.cms.model.SpecialColumnContent">
+		update cms_special_column_content 
+		<set>
+			<if test="id != null">`id` = #{id}, </if>
+			<if test="columnContentTitle != null">`column_content_title` = #{columnContentTitle},</if>
+			<if test="column_content != null">`column_content` = #{column_content},</if>
+			<if test="columnContentLogo != null">`column_content_logo` = #{columnContentLogo}</if>
+			<if test="createTime != null">`create_time` = #{createTime}</if>
+			<if test="createBy != null">`create_by` = #{createBy}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from cms_special_column_content where id = #{id}
+	</delete>
+  
+</mapper>

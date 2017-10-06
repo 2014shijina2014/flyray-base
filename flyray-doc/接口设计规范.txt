@@ -12,9 +12,8 @@
     "code": -1,
     "msg": "api error",
     "paginantion": {
-        "pageNo": "1",
+        "currentPage": "1",
         "pageSize": "10",
-        "orderBy": "orderBy"，
          "totalCounts":null,
         "totalPages":null
     }
@@ -25,14 +24,7 @@
 {
     "name": "200",
     "password": -1,
-    "page_size": "10",
-    "page_no": "1",
-    "paginantion": {
-        "pageNo": "1",
-        "pageSize": "10",
-        "orderBy": "orderBy"，
-         "totalCounts":null,
-        "totalPages":null
-    }
+    "currentPage": "1",
+    "pageSize": "10",
 }
 

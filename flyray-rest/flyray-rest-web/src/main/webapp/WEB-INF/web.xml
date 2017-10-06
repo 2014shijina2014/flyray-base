@@ -11,7 +11,7 @@
     <!-- Spring容器加载  读取spring配置文件 -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring.xml</param-value>
+        <param-value>classpath*:spring.xml</param-value>
     </context-param>
  
    <listener>
@@ -32,15 +32,14 @@
             <param-value>true</param-value>
         </init-param>
     </filter>
-    <filter-mapping>
-        <filter-name>SpringEncodingFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>
-    
     <filter>
 	    <filter-name>ModifyParametersFilter</filter-name>
 	    <filter-class>me.flyray.rest.filter.ModifyParametersFilter</filter-class>
 	</filter>
+    <filter-mapping>
+        <filter-name>SpringEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 	<filter-mapping>
 	    <filter-name>ModifyParametersFilter</filter-name>
 	    <url-pattern>/*</url-pattern>

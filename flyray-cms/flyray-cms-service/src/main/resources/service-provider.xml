@@ -39,4 +39,8 @@
 	<dubbo:service interface="me.flyray.cms.api.ViewFavortService" ref="viewFavortService"  protocol="dubbo" timeout="1200000"/>
 	<!-- 专栏相关接口 -->
 	<dubbo:service interface="me.flyray.cms.api.SpecialColumnService" ref="specialColumnService"  protocol="dubbo" timeout="1200000"/>
+	<!-- 专栏内容接口 -->
+	<dubbo:service interface="me.flyray.cms.api.SpecialColumnContentService" ref="specialColumnContentService"  protocol="dubbo" timeout="1200000"/>
+	<!-- cms所有模块的评论回复接口 -->
+	<dubbo:service interface="me.flyray.cms.api.CommentService" ref="commentService"  protocol="dubbo" timeout="1200000"/>
 </beans>

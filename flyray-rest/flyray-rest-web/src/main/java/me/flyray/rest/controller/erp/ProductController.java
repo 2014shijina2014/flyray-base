@@ -47,7 +47,7 @@ public class ProductController extends AbstractController{
 		logger.info("查询商品分类信息------start------{}",param);
 		Map<String, Object> queryMap = new HashMap<>();
 		if (null == param.get("id")) {
-			throw new BusinessException("BF22","你全家都是中性！");
+			throw new BusinessException("ERP.22","你全家都是中性！");
 		}
 		List<Map<String, Object>> resultMap = productCategaryService.queryList(queryMap);
 		logger.info("查询商品分类信息------end------{}",resultMap);
