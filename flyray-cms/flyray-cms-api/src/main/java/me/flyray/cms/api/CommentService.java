@@ -1,5 +1,9 @@
 package me.flyray.cms.api;
 
+import java.util.List;
+import java.util.Map;
+
+import me.flyray.cms.model.Comment;
 import me.flyray.common.service.BaseService;
 
 /** 
@@ -10,4 +14,9 @@ import me.flyray.common.service.BaseService;
 
 public interface CommentService extends BaseService {
 
+	/**
+	 *  根据条件查询评论
+	 */
+	public List<Comment> query(Map<String, Object> param);
+	
 }
