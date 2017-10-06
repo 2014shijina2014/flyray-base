@@ -131,5 +131,22 @@
 		LEFT JOIN cms_interest_group AS gp ON ac.interest_group_id = gp.id
 		where gp.org_id = #{orgId,jdbcType=INTEGER} AND gp.merchant_id = #{merchantId,jdbcType=INTEGER} AND ac.flag = '10' LIMIT 3
 	</select>
+	
+	<select id="queryList" resultType="me.flyray.cms.model.InterestGroup"
+		parameterType="java.util.Map">
+		select 
+		<include refid="Base_Column_List" />
+		from cms_activity
+		<include refid="where1"/>
+		order by id desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+	<select id="queryTotal" resultType="int">
+		select count(*) from cms_activity
+        <include refid="where1"/>
+	</select>
   
 </mapper>
