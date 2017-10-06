@@ -27,6 +27,7 @@
 		insert into cms_special_column_content
 		(
 			`id`, 
+			`special_column_id`, 
 			`column_content_title`, 
 			`column_content`, 
 			`column_content_logo`, 
@@ -36,6 +37,7 @@
 		values
 		(
 			#{id}, 
+			#{specialColumnId}, 
 			#{columnContentTitle},
 			#{columnContent},
 			#{columnContentLogo},
@@ -48,6 +50,7 @@
 		update cms_special_column_content 
 		<set>
 			<if test="id != null">`id` = #{id}, </if>
+			<if test="specialColumnId != null">`special_column_id` = #{specialColumnId}, </if>
 			<if test="columnContentTitle != null">`column_content_title` = #{columnContentTitle},</if>
 			<if test="column_content != null">`column_content` = #{column_content},</if>
 			<if test="columnContentLogo != null">`column_content_logo` = #{columnContentLogo}</if>
@@ -60,5 +63,5 @@
 	<delete id="delete">
 		delete from cms_special_column_content where id = #{id}
 	</delete>
-  
+	
 </mapper>

@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import me.flyray.cms.api.CustomerSpecialColumnService;
+import me.flyray.cms.api.SpecialColumnContentService;
 import me.flyray.cms.api.SpecialColumnService;
+import me.flyray.cms.model.SpecialColumn;
+import me.flyray.common.exception.BusinessException;
 import me.flyray.rest.controller.AbstractController;
 import me.flyray.rest.util.PageUtils;
 import me.flyray.rest.util.ResponseHelper;
@@ -28,6 +32,10 @@ public class SpecialColumnController extends AbstractController{
 
 	@Autowired
 	private SpecialColumnService columnService;
+	@Autowired
+	private CustomerSpecialColumnService customerSpecialColumnService;
+	@Autowired
+	private SpecialColumnContentService specialColumnContentService;
 	
 	/**
 	 * 根据条件查询专栏信息
@@ -38,6 +46,7 @@ public class SpecialColumnController extends AbstractController{
 	public Map<String, Object> list(@RequestBody Map<String, String> param) {
 		logger.info("根据条件查询专栏信息------start------{}",param);
 		Map<String, Object> queryMap = new HashMap<>();
+		queryMap.putAll(param);
 		int resultTotal = columnService.queryTotal(queryMap);
 		param.put("totalCount", String.valueOf(resultTotal));
 		int pageSizeInt = Integer.valueOf(param.get("pageSize"));
@@ -46,9 +55,66 @@ public class SpecialColumnController extends AbstractController{
 			return ResponseHelper.success(null,pageUtil, "01", "已经到最后一条了~");
 		}
 		queryMap.putAll(getPagination(param));
-		queryMap.put("productCategaryId", param.get("333"));
 		List<Map<String, Object>> resultMap = columnService.queryList(queryMap);
 		logger.info("根据条件查询专栏信息------end------{}",resultMap);
+		//List<?> list, int totalCount, int pageSize, int currPage
+		return ResponseHelper.success(resultMap,pageUtil, "00", "请求数据成功");
+	}
+	
+	/**
+	 * 查询会员的订阅
+	 * list
+	 */
+	@ResponseBody
+	@RequestMapping(value="/customer", method = RequestMethod.POST)
+	public Map<String, Object> customer(@RequestBody Map<String, String> param) {
+		logger.info("根据会员customerId查询专栏信息------start------{}",param);
+		Map<String, Object> queryMap = new HashMap<>();
+		if (null == param.get("customerId")) {
+			throw new BusinessException("CMS.22","customerId不能为空");
+		}
+		queryMap.putAll(param);
+		//查询出我的订阅专栏的总数
+		int resultTotal = customerSpecialColumnService.queryTotal(queryMap);
+		param.put("totalCount", String.valueOf(resultTotal));
+		int pageSizeInt = Integer.valueOf(param.get("pageSize"));
+		PageUtils pageUtil = new PageUtils(resultTotal, pageSizeInt, Integer.valueOf(param.get("currentPage")));
+		if (isLastPage(param)) {
+			return ResponseHelper.success(null,pageUtil, "01", "已经到最后一条了~");
+		}
+		queryMap.putAll(getPagination(param));
+		//根据会员与专栏的关系表查出该会员下的专栏信息
+		List<SpecialColumn> resultMap = columnService.queryCustomerColumnsList(queryMap);
+		logger.info("根据会员customerId查询专栏信息------end------{}",resultMap);
+		//List<?> list, int totalCount, int pageSize, int currPage
+		return ResponseHelper.success(resultMap,pageUtil, "00", "请求数据成功");
+	}
+	
+	/**
+	 * 根据专栏Id查询专栏内容
+	 * contents
+	 */
+	@ResponseBody
+	@RequestMapping(value="/contents", method = RequestMethod.POST)
+	public Map<String, Object> contents(@RequestBody Map<String, String> param) {
+		logger.info("根据specialColumnId查询专栏内容------start------{}",param);
+		Map<String, Object> queryMap = new HashMap<>();
+		if (null == param.get("specialColumnId")) {
+			throw new BusinessException("CMS.23","specialColumnId不能为空");
+		}
+		queryMap.putAll(param);
+		//查询出我的订阅专栏的总数
+		int resultTotal = specialColumnContentService.queryTotal(queryMap);
+		param.put("totalCount", String.valueOf(resultTotal));
+		int pageSizeInt = Integer.valueOf(param.get("pageSize"));
+		PageUtils pageUtil = new PageUtils(resultTotal, pageSizeInt, Integer.valueOf(param.get("currentPage")));
+		if (isLastPage(param)) {
+			return ResponseHelper.success(null,pageUtil, "01", "已经到最后一条了~");
+		}
+		queryMap.putAll(getPagination(param));
+		//根据会员与专栏的关系表查出该会员下的专栏信息
+		List<Map<String, Object>> resultMap = specialColumnContentService.queryList(queryMap);
+		logger.info("根据specialColumnId查询专栏内容------end------{}",resultMap);
 		//List<?> list, int totalCount, int pageSize, int currPage
 		return ResponseHelper.success(resultMap,pageUtil, "00", "请求数据成功");
 	}

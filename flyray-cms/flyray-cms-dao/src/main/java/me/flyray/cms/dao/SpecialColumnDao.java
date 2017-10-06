@@ -1,5 +1,8 @@
 package me.flyray.cms.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import me.flyray.cms.model.SpecialColumn;
 import me.flyray.common.dao.BaseDao;
 
@@ -10,5 +13,7 @@ import me.flyray.common.dao.BaseDao;
 */
 
 public interface SpecialColumnDao extends BaseDao<SpecialColumn>{
+
+	List<SpecialColumn> queryCustomerColumnsList(Map<String, Object> queryMap);
 
 }

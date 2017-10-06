@@ -1,5 +1,9 @@
 package me.flyray.cms.api;
 
+import java.util.List;
+import java.util.Map;
+
+import me.flyray.cms.model.SpecialColumn;
 import me.flyray.common.service.BaseService;
 
 /** 
@@ -9,5 +13,7 @@ import me.flyray.common.service.BaseService;
 */
 
 public interface SpecialColumnService extends BaseService{
+
+	List<SpecialColumn> queryCustomerColumnsList(Map<String, Object> queryMap);
 
 }

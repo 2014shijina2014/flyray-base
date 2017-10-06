@@ -1,17 +1,24 @@
 package me.flyray.cms.model;
 
+import me.flyray.common.model.BaseModel;
+
 /** 
 * @author: bolei
 * @date：2017年10月6日 上午9:30:47
 * @description：专栏内容
 */
 
-public class SpecialColumnContent {
+public class SpecialColumnContent extends BaseModel {
 
 	/**
 	 * 根据算法生成的id
 	 */
 	private Long id;
+	
+	/**
+	 * 所属专栏
+	 */
+	private Long specialColumnId;
 	
 	/**
 	 * 专栏内容名称
@@ -39,6 +46,14 @@ public class SpecialColumnContent {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getSpecialColumnId() {
+		return specialColumnId;
+	}
+
+	public void setSpecialColumnId(Long specialColumnId) {
+		this.specialColumnId = specialColumnId;
 	}
 
 	public String getColumnContentTitle() {

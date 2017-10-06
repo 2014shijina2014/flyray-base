@@ -2,10 +2,12 @@ package me.flyray.cms.model;
 
 import java.util.Date;
 
+import me.flyray.common.model.BaseModel;
+
 /**
  * 专家推荐表
  */
-public class ProficientRecommend {
+public class ProficientRecommend extends BaseModel {
 
 	/**
 	 * 主键

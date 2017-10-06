@@ -4,6 +4,17 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="me.flyray.cms.dao.SpecialColumnDao">
 
+	<sql id="where1">
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<if test="customerId != null and customerId != ''">
+				AND customer_id = #{customerId,jdbcType=INTEGER}
+	        </if>
+	        <if test="specialColumnId != null and specialColumnId != ''">
+				AND special_column_id = #{specialColumnId,jdbcType=INTEGER}
+	        </if>
+		</trim>
+	</sql>
+	
 	<select id="queryObject" resultType="me.flyray.cms.model.SpecialColumn">
 		select * from cms_special_column where id = #{id}
 	</select>
@@ -57,5 +68,13 @@
 	<delete id="delete">
 		delete from cms_special_column where id = #{id}
 	</delete>
+	
+	<select id="queryCustomerColumnsList" resultType="me.flyray.cms.model.SpecialColumn">
+		SELECT sc.* FROM cms_special_column sc LEFT JOIN cms_customer_special_column csc ON sc.id = csc.special_column_id 
+		WHERE csc.customer_id = #{customerId}
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
   
 </mapper>

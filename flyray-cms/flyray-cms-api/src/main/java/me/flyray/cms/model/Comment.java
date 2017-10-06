@@ -1,12 +1,14 @@
 package me.flyray.cms.model;
 
+import me.flyray.common.model.BaseModel;
+
 /** 
 * @author: bolei
 * @date：2017年10月6日 上午11:15:17
 * @description：cms模块的评论回复表
 */
 
-public class Comment {
+public class Comment extends BaseModel {
 	
 	/**
 	 * 主键id

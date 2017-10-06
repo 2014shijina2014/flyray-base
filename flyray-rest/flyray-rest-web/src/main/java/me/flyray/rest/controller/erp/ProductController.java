@@ -63,6 +63,7 @@ public class ProductController extends AbstractController{
 	public Map<String, Object> list(@RequestBody Map<String, String> param) {
 		logger.info("根据条件查询商品------start------{}",param);
 		Map<String, Object> queryMap = new HashMap<>();
+		queryMap.putAll(param);
 		int resultTotal = productService.queryTotal(queryMap);
 		param.put("totalCount", String.valueOf(resultTotal));
 		int pageSizeInt = Integer.valueOf(param.get("pageSize"));

@@ -1,12 +1,14 @@
 package me.flyray.cms.model;
 
+import me.flyray.common.model.BaseModel;
+
 /** 
 * @author: bolei
 * @date：2017年10月3日 下午3:57:05
 * @description：内容管理专栏
 */
 
-public class SpecialColumn {
+public class SpecialColumn extends BaseModel {
 	
 	/**
 	 * 跟进算法生成id
