@@ -16,6 +16,4 @@ public interface ViewpointService extends BaseService{
 	void delete(Long id);
 
 	List<Viewpoint> query(Map<String, Object> map);
-
-	void insert(Viewpoint cmsViewPoint);
 }

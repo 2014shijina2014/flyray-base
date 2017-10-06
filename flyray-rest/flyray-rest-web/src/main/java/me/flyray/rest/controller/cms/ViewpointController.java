@@ -1,5 +1,6 @@
 package me.flyray.rest.controller.cms;
 
+import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -48,17 +49,21 @@ public class ViewpointController extends AbstractController{
 	@ResponseBody
 	@RequestMapping(value="/add", method = RequestMethod.POST)
 	public Map<String, Object> add(@RequestBody Map<String, Object> param) {
-		//Viewpoint cmsViewPoint = new Viewpoint();
 		Long id = SnowFlake.getId();
 		String pointText = (String)param.get("pointText");
-		/*cmsViewPoint.setPointText(pointText);
-		cmsViewPoint.setCustomerId((long) 1);
-		cmsViewPoint.setId(id);*/
+		String createBy = (String)param.get("createBy");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("pointText", pointText);
-		map.put("customerId", (long) 1);
+		map.put("createBy", Long.valueOf(createBy));
+		map.put("favortCount", 0);
+		map.put("commentCount", 0);
 		map.put("id", id);
-		viewPointService.save(map);
+		try {
+			viewPointService.save(map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return ResponseHelper.success(param,null, "00", "添加成功");
 	}
 	/**
@@ -69,6 +74,7 @@ public class ViewpointController extends AbstractController{
 	public Map<String, Object> query(@RequestBody Map<String, String> param) {
 		String currentPage = param.get("currentPage");//当前页
 		String pageSize = param.get("pageSize");//条数
+		String createBy = param.get("createBy");//用户编号
 		Map<String, Object> map = new HashMap<String, Object>();
 		Map<String, Object> queryMap = new HashMap<>();
 		Integer total = viewPointService.queryTotal(queryMap);
@@ -82,8 +88,18 @@ public class ViewpointController extends AbstractController{
 		List<Viewpoint> videoPointList = viewPointService.query(queryMap);
 		List<ViewPointItem> itemList = new ArrayList<ViewPointItem>();
 		for (Viewpoint cmsViewPoint : videoPointList) {
-			ViewPointItem item = new ViewPointItem();
+			//当前登录者有没有对条记录点赞
+			Map<String, Object> favortMap = new HashMap<>();
+			favortMap.put("createBy", createBy);
+			favortMap.put("pointId", cmsViewPoint.getId());
+			List favortList = viewFavortService.queryList(favortMap);
+			if(favortList.size() > 0){
+				cmsViewPoint.setIfFavort(1);
+			}else{
+				cmsViewPoint.setIfFavort(2);
+			}
 			
+			ViewPointItem item = new ViewPointItem();
 			Date time = cmsViewPoint.getPointTime();
 			SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");//
 			String fromDate = simpleFormat.format(time);
@@ -111,8 +127,8 @@ public class ViewpointController extends AbstractController{
 				e.printStackTrace();
 			}
 			
-			if(cmsViewPoint.getCustomerId() != null){
-				CustomerBase customer = customerBaseService.queryByCustomerId(cmsViewPoint.getCustomerId());
+			if(cmsViewPoint.getCreateBy() != null){
+				CustomerBase customer = customerBaseService.queryByCustomerId(cmsViewPoint.getCreateBy());
 				item.setCustomer(customer);
 			}
 			itemList.add(item);

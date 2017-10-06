@@ -6,23 +6,24 @@
 		type="me.flyray.cms.model.Viewpoint"
 		id="point">
 		<result property="id" column="id" />
-		<result property="customerId" column="customer_id" />
+		<result property="createBy" column="create_by" />
 		<result property="pointText" column="point_text" />
 		<result property="pointImg" column="point_img" />
 		<result property="pointTime" column="point_time" />
-		<result property="pointAddress" column="point_address" />
+		<result property="favortCount" column="favort_count" />
+		<result property="commentCount" column="comment_count" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		id, customer_id, point_text, point_img, point_time, point_address
+		id, create_by, point_text, point_img, point_time, point_address, favort_count, comment_count
 	</sql>
 	<sql id="where">
 		<trim prefix="where" suffixOverrides="AND">
 			<if test="id != null">
 				id = #{id,jdbcType=BIGINT} AND
 			</if>
-			<if test="customerId != null">
-				customer_id = #{customerId,jdbcType=VARCHAR} AND
+			<if test="createBy != null">
+				create_by = #{createBy,jdbcType=BIGINT} AND
 			</if>
 			<if test="pointText != null">
 				point_text = #{pointText,jdbcType=VARCHAR} AND
@@ -43,24 +44,26 @@
 	<delete id="deleteById" parameterType="java.lang.Long">
 		delete from cms_view_point where id = #{id,jdbcType=BIGINT}
 	</delete>
-	<insert id="sava" keyProperty="id"
+	<insert id="save" keyProperty="id"
 		parameterType="me.flyray.cms.model.Viewpoint">
-		insert into cms_view_point (id, customer_id, point_text, point_img, point_time, point_address)
+		insert into cms_view_point (id, create_by, point_text, point_img, point_time, point_address, favort_count, comment_count)
 		values (
 		#{id,jdbcType=BIGINT}
-		,#{customerId,jdbcType=VARCHAR}
+		,#{createBy,jdbcType=BIGINT}
 		,#{pointText,jdbcType=VARCHAR}
 		,#{pointImg,jdbcType=VARCHAR}
 		,#{pointTime,jdbcType=TIMESTAMP}
 		,#{pointAddress,jdbcType=VARCHAR}
+		,#{favortCount,jdbcType=INTEGER}
+		,#{commentCount,jdbcType=INTEGER}
 		)
 	</insert>
-	<update id="updateById"
+	<update id="update"
 		parameterType="me.flyray.cms.model.Viewpoint">
 		update cms_view_point
 		<set>
-			<if test="customerId != null">
-				customer_id = #{customerId,jdbcType=VARCHAR},
+			<if test="createBy != null">
+				create_by = #{createBy,jdbcType=BIGINT},
 			</if>
 			<if test="pointText != null">
 				point_text = #{pointText,jdbcType=VARCHAR},
@@ -71,6 +74,12 @@
 			<if test="pointAddress != null">
 				point_address = #{pointAddress,jdbcType=VARCHAR},
 			</if>
+			<if test="favortCount != null">
+				favort_count = #{favortCount,jdbcType=INTEGER},
+			</if>
+			<if test="commentCount != null">
+				comment_count = #{commentCount,jdbcType=INTEGER},
+			</if>
 		</set>
 		where id = #{id,jdbcType=BIGINT}
 	</update>
@@ -80,6 +89,7 @@
 		<include refid="Base_Column_List" />
 		from cms_view_point
 		<include refid="where" />
+		 ORDER BY point_time desc 
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
@@ -89,7 +99,7 @@
 		<include refid="where" />
 	</select>
 	<select id="selectById" resultMap="point"
-			parameterType="me.flyray.cms.model.Viewpoint">
+			parameterType="java.lang.Long">
 			select
 			<include refid="Base_Column_List" />
 			from cms_view_point

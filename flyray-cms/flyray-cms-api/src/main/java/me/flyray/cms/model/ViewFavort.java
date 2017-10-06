@@ -15,7 +15,7 @@ public class ViewFavort implements Serializable{
 	/**
 	 * 用户编号
 	 */
-	private Long customerId;
+	private Long createBy;
 	/**
 	 * 观点编号
 	 */
@@ -38,11 +38,12 @@ public class ViewFavort implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Long getCustomerId() {
-		return customerId;
+	
+	public Long getCreateBy() {
+		return createBy;
 	}
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
+	public void setCreateBy(Long createBy) {
+		this.createBy = createBy;
 	}
 	public Long getPointId() {
 		return pointId;
@@ -70,7 +71,8 @@ public class ViewFavort implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "CmsViewFavort [id=" + id + ", customerId=" + customerId + ", pointId=" + pointId + ", favortStatus="
+		return "ViewFavort [id=" + id + ", createBy=" + createBy + ", pointId=" + pointId + ", favortStatus="
 				+ favortStatus + ", createTime=" + createTime + ", updateTime=" + updateTime + "]";
 	}
+	
 }

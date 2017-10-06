@@ -9,4 +9,5 @@ public interface ViewpointDao extends BaseDao<Viewpoint>{
 	
 	List<Viewpoint> queryObject(Long id);
 	void delete(Long id);
+	Viewpoint selectById(Long id);
 }

@@ -18,7 +18,7 @@ public class Viewpoint extends BaseModel implements Serializable {
 	/**
 	 * 索引，用户编号
 	 */
-	private Long customerId;
+	private Long createBy;
 	/**
 	 * 发表观点，文字内容
 	 */
@@ -35,13 +35,32 @@ public class Viewpoint extends BaseModel implements Serializable {
 	 * 发表地点
 	 */
 	private String pointAddress;
-	
+	/**
+	 * 点赞数量
+	 */
+	private Integer favortCount;
+	/**
+	 * 评论数量
+	 */
+	private Integer commentCount;
 	/**
 	 *发表状态距现在时间
 	 * 
 	 */
 	private String diffTime;
+	/**
+	 * 是否点赞过 1、点赞过，2、没有点赞过
+	 */
+	private Integer ifFavort;
 	
+	
+	
+	public Integer getIfFavort() {
+		return ifFavort;
+	}
+	public void setIfFavort(Integer ifFavort) {
+		this.ifFavort = ifFavort;
+	}
 	public String getDiffTime() {
 		return diffTime;
 	}
@@ -79,17 +98,29 @@ public class Viewpoint extends BaseModel implements Serializable {
 	public void setPointText(String pointText) {
 		this.pointText = pointText;
 	}
-	public Long getCustomerId() {
-		return customerId;
+	
+	public Long getCreateBy() {
+		return createBy;
 	}
-	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
+	public void setCreateBy(Long createBy) {
+		this.createBy = createBy;
+	}
+	public Integer getFavortCount() {
+		return favortCount;
+	}
+	public void setFavortCount(Integer favortCount) {
+		this.favortCount = favortCount;
+	}
+	public Integer getCommentCount() {
+		return commentCount;
+	}
+	public void setCommentCount(Integer commentCount) {
+		this.commentCount = commentCount;
 	}
 	@Override
 	public String toString() {
-		return "CmsViewPoint [id=" + id + ", customerId=" + customerId + ", pointText=" + pointText + ", pointImg="
-				+ pointImg + ", pointTime=" + pointTime + ", pointAddress=" + pointAddress + ", diffTime=" + diffTime
-				+ "]";
+		return "Viewpoint [id=" + id + ", createBy=" + createBy + ", pointText=" + pointText + ", pointImg=" + pointImg
+				+ ", pointTime=" + pointTime + ", pointAddress=" + pointAddress + ", favortCount=" + favortCount
+				+ ", commentCount=" + commentCount + ", diffTime=" + diffTime + ", ifFavort=" + ifFavort + "]";
 	}
-	
 }

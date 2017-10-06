@@ -26,9 +26,4 @@ public class ViewpointServiceImpl extends AbstractBaseService<Viewpoint> impleme
 	public List<Viewpoint> query(Map<String, Object> map) {
 		return viewPointDao.queryList(map);
 	}
-
-	@Override
-	public void insert(Viewpoint viewPoint) {
-		viewPointDao.save(viewPoint);
-	}
 }

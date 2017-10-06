@@ -13,7 +13,7 @@
 		parameterType="java.util.Map">
 		select * from cms_view_favort 
 		<trim prefix="WHERE" suffixOverrides="AND">
-			<if test="customerId != null">customer_id = #{customerId} AND</if>
+			<if test="createBy != null">create_by = #{createBy} AND</if>
 			<if test="pointId != null">point_id = #{pointId} AND</if>
 		</trim>
 		order by id desc
@@ -28,8 +28,8 @@
 		select * from cms_view_favort
 		<where>
 			1 = 1
-			<if test="customerId != null">
-				AND customer_id = #{customerId,jdbcType=BIGINT}
+			<if test="createBy != null">
+				AND create_by = #{createBy,jdbcType=BIGINT}
 			</if>
 			<if test="pointId != null">
 				AND point_id = #{pointId,jdbcType=BIGINT}
@@ -43,7 +43,7 @@
 		<where>
 			1 = 1
 			<if test="customerId != null">
-				AND customer_id = #{customerId,jdbcType=BIGINT}
+				AND create_by = #{createBy,jdbcType=BIGINT}
 			</if>
 			<if test="pointId != null">
 				AND point_id = #{pointId,jdbcType=BIGINT}
@@ -68,9 +68,10 @@
 	</select>
 
 	<insert id="save" parameterType="me.flyray.cms.model.ViewFavort"
-		useGeneratedKeys="true" keyProperty="id">
-		insert into cms_view_favort (customer_id,point_id,favort_status,create_time,update_time) values (
-		#{customerId,jdbcType=BIGINT},
+		keyProperty="id">
+		insert into cms_view_favort (id,create_by,point_id,favort_status,create_time,update_time) values (
+		#{id,jdbcType=BIGINT},
+		#{createBy,jdbcType=BIGINT},
 		#{pointId,jdbcType=BIGINT},
 		#{favortStatus,jdbcType=INTEGER},
 		#{createTime,jdbcType=TIMESTAMP},
