@@ -193,12 +193,19 @@
 	
 	<select id="queryList" resultType="me.flyray.cms.model.InterestGroup"
 		parameterType="java.util.Map">
-		select * from cms_interest_group
+		select 
+		<include refid="Base_Column_List" />
+		from cms_interest_group
 		<include refid="where1"/>
 		order by id desc
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
 	</select>
-  
+	
+	<select id="queryTotal" resultType="int">
+		select count(*) 
+		from cms_interest_group
+        <include refid="where1"/>
+	</select>
 </mapper>

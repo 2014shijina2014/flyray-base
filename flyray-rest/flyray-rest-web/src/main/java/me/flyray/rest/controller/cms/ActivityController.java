@@ -93,11 +93,9 @@ public class ActivityController extends AbstractController {
 			merId = Long.valueOf(merstr.trim());
 		}
 
-		InterestGroupCategory groupCategory = new InterestGroupCategory();
-		groupCategory.setOrgId(orgId);
-		groupCategory.setMerchantId(merId);
-
 		Map<String, Object> queryMap = new HashMap<>();
+		queryMap.put("orgId", orgId);
+		queryMap.put("merchantId", merId);
 		int resultTotal = interestGroupCategoryService.queryTotal(queryMap);
 		param.put("totalCount", String.valueOf(resultTotal));
 		queryMap.putAll(getPagination(param));
@@ -108,8 +106,8 @@ public class ActivityController extends AbstractController {
 				Map<String, Object> groupCategoryItem = igcListMap.get(i);
 				Map<String, Object> queryGroupMap = new HashMap<>();
 				queryGroupMap.put("orgId", orgId);
-				queryGroupMap.put("merId", merId);
-				queryGroupMap.put("groupCategoryId", orgId);
+				queryGroupMap.put("merchantId", merId);
+				queryGroupMap.put("groupCategoryId", groupCategoryItem.get("id"));
 				queryGroupMap.put("flag", "20");
 				logger.info("查询活动首页信息------查询兴趣小组请求参数------{}", queryGroupMap);
 				List<InterestGroup> groups = interestGroupService.query(queryGroupMap);
@@ -129,5 +127,4 @@ public class ActivityController extends AbstractController {
 		logger.info("查询活动首页信息------end------{}", resultMap);
 		return ResponseHelper.success(resultMap,pageUtil, "00", "请求数据成功");
 	}
-
 }
