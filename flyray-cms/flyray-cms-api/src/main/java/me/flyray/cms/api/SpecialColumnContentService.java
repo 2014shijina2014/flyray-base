@@ -1,5 +1,6 @@
 package me.flyray.cms.api;
 
+import me.flyray.cms.model.SpecialColumnContent;
 import me.flyray.common.service.BaseService;
 
 /** 
@@ -9,5 +10,7 @@ import me.flyray.common.service.BaseService;
 */
 
 public interface SpecialColumnContentService extends BaseService {
-
+	
+	public SpecialColumnContent queryEntity(SpecialColumnContent param);
+	
 }

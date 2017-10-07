@@ -1,8 +1,12 @@
 package me.flyray.cms.service;
 
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import me.flyray.cms.api.CustomerSpecialColumnService;
+import me.flyray.cms.dao.CustomerSpecialColumnDao;
 import me.flyray.cms.model.CustomerSpecialColumn;
 import me.flyray.common.service.AbstractBaseService;
 
@@ -14,5 +18,13 @@ import me.flyray.common.service.AbstractBaseService;
 
 @Service("customerSpecialColumnService")
 public class CustomerSpecialColumnServiceImpl extends AbstractBaseService<CustomerSpecialColumn> implements CustomerSpecialColumnService {
+
+	@Autowired
+	private CustomerSpecialColumnDao customerSpecialColumnDao;
+	
+	@Override
+	public void unsubscribe(Map<String, String> param) {
+		customerSpecialColumnDao.deleteOne(param);
+	}
 
 }

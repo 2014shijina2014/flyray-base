@@ -60,5 +60,9 @@
 	<delete id="delete">
 		delete from cms_customer_special_column where id = #{id}
 	</delete>
+	
+	<delete id="deleteOne">
+		delete from cms_customer_special_column where customer_id = #{customerId} and special_column_id = #{specialColumnId}
+	</delete>
   
 </mapper>

@@ -1,5 +1,7 @@
 package me.flyray.cms.api;
 
+import java.util.Map;
+
 import me.flyray.common.service.BaseService;
 
 /** 
@@ -9,5 +11,7 @@ import me.flyray.common.service.BaseService;
 */
 
 public interface CustomerSpecialColumnService extends BaseService{
+
+	void unsubscribe(Map<String, String> param);
 
 }

@@ -1,5 +1,7 @@
 package me.flyray.cms.dao;
 
+import java.util.Map;
+
 import me.flyray.cms.model.CustomerSpecialColumn;
 import me.flyray.common.dao.BaseDao;
 
@@ -10,5 +12,7 @@ import me.flyray.common.dao.BaseDao;
 */
 
 public interface CustomerSpecialColumnDao extends BaseDao<CustomerSpecialColumn>{
+
+	void deleteOne(Map<String, String> param);
 
 }

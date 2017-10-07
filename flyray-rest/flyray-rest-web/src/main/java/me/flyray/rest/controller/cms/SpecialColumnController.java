@@ -15,6 +15,7 @@ import me.flyray.cms.api.CustomerSpecialColumnService;
 import me.flyray.cms.api.SpecialColumnContentService;
 import me.flyray.cms.api.SpecialColumnService;
 import me.flyray.cms.model.SpecialColumn;
+import me.flyray.cms.model.SpecialColumnContent;
 import me.flyray.common.exception.BusinessException;
 import me.flyray.rest.controller.AbstractController;
 import me.flyray.rest.util.PageUtils;
@@ -118,4 +119,54 @@ public class SpecialColumnController extends AbstractController{
 		//List<?> list, int totalCount, int pageSize, int currPage
 		return ResponseHelper.success(resultMap,pageUtil, "00", "请求数据成功");
 	}
+	
+	/**
+	 * 订阅一个专栏
+	 */
+	@ResponseBody
+	@RequestMapping(value="/subscribe", method = RequestMethod.POST)
+	public Map<String, Object> subscribe(@RequestBody Map<String, String> param) {
+		logger.info("订阅一个专栏------start------{}",param);
+		Map<String, Object> queryMap = new HashMap<>();
+		if (null == param.get("specialColumnId")) {
+			throw new BusinessException("CMS.24","specialColumnId不能为空");
+		}
+		customerSpecialColumnService.save(queryMap);
+		logger.info("订阅一个专栏------end------{}",param);
+		return ResponseHelper.success(null,null, "00", "请求数据成功");
+	}
+	
+	/**
+	 * 取消订阅一个专栏
+	 */
+	@ResponseBody
+	@RequestMapping(value="/unsubscribe", method = RequestMethod.POST)
+	public Map<String, Object> unsubscribe(@RequestBody Map<String, String> param) {
+		logger.info("取消订阅一个专栏------start------{}",param);
+		if (null == param.get("specialColumnId")) {
+			throw new BusinessException("CMS.24","specialColumnId不能为空");
+		}
+		customerSpecialColumnService.unsubscribe(param);
+		logger.info("取消订阅一个专栏------end------{}",param);
+		return ResponseHelper.success(null,null, "00", "请求数据成功");
+	}
+	
+	
+	/**
+	 * 根据专栏内容Id查询具体内容
+	 */
+	@ResponseBody
+	@RequestMapping(value="/contentDetail", method = RequestMethod.POST)
+	public Map<String, Object> contentDetail(@RequestBody Map<String, String> param) {
+		logger.info("根据specialColumnContentId查询专栏内容------start------{}",param);
+		if (null == param.get("specialColumnContentId")) {
+			throw new BusinessException("CMS.23","specialColumnId不能为空");
+		}
+		SpecialColumnContent sc = new SpecialColumnContent();
+		sc.setId(Long.valueOf(param.get("specialColumnContentId")));
+		SpecialColumnContent resultMap = specialColumnContentService.queryEntity(sc);
+		logger.info("根据specialColumnContentId查询专栏内容------end------{}",resultMap);
+		return ResponseHelper.success(resultMap,null, "00", "请求数据成功");
+	}
+	
 }
