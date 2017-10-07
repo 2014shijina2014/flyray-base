@@ -1,5 +1,6 @@
 package me.flyray.rest.controller.crm;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.google.zxing.WriterException;
 
 import me.flyray.common.utils.ImageBase64;
+import me.flyray.common.utils.ImageGeneralUtils;
+import me.flyray.common.utils.ImageHelper;
 import me.flyray.common.utils.QrCodeCreateUtil;
 import me.flyray.crm.api.CustomerAccountService;
 import me.flyray.crm.api.CustomerAuthService;
@@ -86,19 +89,19 @@ public class CustomerController {
 	 * Invite QR Code
 	 */
 	@ResponseBody
-	@RequestMapping(value="/createInvieQrCode", method = RequestMethod.POST)
+	@RequestMapping(value="/createInviteQrCode", method = RequestMethod.POST)
 	public Map<String, Object> createInvieQrCode(@RequestBody Map<String, String> param){
 		logger.info("查询客户信息------end------{}",param);
-		String customerNo = param.get("customerNo");
+		String customerId = param.get("customerId");
 		String merchantNo = param.get("merchantNo");
 		Map<String, Object> resultMap = new HashMap<>();
 		OutputStream outputStream;
-		String imgFile = "/home/bolei/software/myworkspace/flyray-parent/"+customerNo+".jpg";
+		String qrImgFile = "F:/assets/test/"+customerId+".jpg";
 		try {
-			outputStream = new FileOutputStream(new File(imgFile));
+			outputStream = new FileOutputStream(new File(qrImgFile));
 			StringBuilder content = new StringBuilder("http://www.flyray.me/rest/customer/invited?inviter=");
-			content.append(customerNo);
-			QrCodeCreateUtil.createQrCode(outputStream,content.toString(),900,"JPEG");
+			content.append(customerId);
+			QrCodeCreateUtil.createQrCode(outputStream,content.toString(),300,"JPEG");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (WriterException e) {
@@ -106,7 +109,24 @@ public class CustomerController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		String imgStr = ImageBase64.getImgStr(imgFile);
+		
+		ImageGeneralUtils tt = new ImageGeneralUtils();
+		//此处随机取一张图片
+		java.util.Random random=new java.util.Random();// 定义随机类
+		int result=random.nextInt(10);
+        BufferedImage d = tt.loadImageLocal("F:/assets/"+result+".jpg");  
+        //往图片上写文件 
+        String imgAndStr = "F:/assets/test/imgAndStr-"+customerId+".jpg";
+	    tt.writeImageLocal(imgAndStr,tt.modifyImage(d,"我是博羸兄弟",120,320));
+	    BufferedImage b = tt.loadImageLocal(imgAndStr);
+	    //将生成的二维码图片压缩成所需比例
+	    String scaleQrcode = "F:/assets/test/scale-qrcode.jpg";
+	    ImageHelper.scaleImage(qrImgFile, "scaleQrcode", 0.3, "JPEG");
+	    BufferedImage c = tt.loadImageLocal(scaleQrcode);
+        //将多张图片合在一起  
+	    String resultImg = "F:/assets/test/resul-"+customerId+".jpg";
+        tt.writeImageLocal(resultImg, tt.modifyImagetogeter(c, b)); 
+		String imgStr = ImageBase64.getImgStr(resultImg);
 		logger.info("查询客户信息------end------{}",resultMap);
 		resultMap.put("img", imgStr);
 		return ResponseHelper.success(resultMap,null, "00", "生产邀请二维码成功");

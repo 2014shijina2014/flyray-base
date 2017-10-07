@@ -92,8 +92,8 @@ public class QrCodeCreateUtil {
      */
     public static void main(String[] args) throws IOException, WriterException {  
         
-        createQrCode(new FileOutputStream(new File("/home/bolei/software/myworkspace/flyray-parent/qrcode.jpg")),"WE1231238239128sASDASDSADSDWEWWREWRERWSDFDFSDSDF123123123123213123",900,"JPEG");
-        readQrCode(new FileInputStream(new File("/home/bolei/software/myworkspace/flyray-parent/qrcode.jpg")));  
+        createQrCode(new FileOutputStream(new File("F:/assets/test/qrcode.jpg")),"WE1231238239128sASDASDSADSDWEWWREWRERWSDFDFSDSDF123123123123213123",900,"JPEG");
+        readQrCode(new FileInputStream(new File("F:/assets/test/qrcode.jpg")));  
     }  
   
 }
