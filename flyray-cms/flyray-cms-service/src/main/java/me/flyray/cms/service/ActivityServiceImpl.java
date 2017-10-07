@@ -73,17 +73,39 @@ public class ActivityServiceImpl extends AbstractBaseService<Activity> implement
 	}
 
 	/**
+	 * 根据活动状态查询活动总条数
+	 * @author centerroot
+	 * @time 创建时间:2017年10月7日下午1:55:01
+	 * (non-Javadoc)
+	 * @see me.flyray.cms.api.ActivityService#queryGroupActTotal(java.util.Map)
+	 */
+	@Override
+	public int queryGroupActTotal(Map<String, Object> map) {
+		String actStatus = (String) map.get("actStatus");
+		map.put("currentTime", new Timestamp(System.currentTimeMillis()));
+		if ("1".equals(actStatus)) {
+			return activityDao.selectStartActTotal(map);
+		} else if ("2".equals(actStatus)) {
+			return activityDao.selectProcessActTotal(map);
+		} else if ("3".equals(actStatus)) {
+			return activityDao.selectEndActTotal(map);
+		} else {
+			return 0;
+		}
+	}
+
+	/**
 	 * 根据活动状态查询活动列表
 	 * 1、当前时间小于活动开始时间，属于可参加的活动
 	 * 2、当前时间大于活动开始时间小于活动结束时间，属于活动进行中
 	 * 3、当前时间大于活动结束时间，属于活动已结束
 	 * @author centerroot
-	 * @time 创建时间:2017年10月6日下午6:10:06
+	 * @time 创建时间:2017年10月7日下午1:55:06
 	 * (non-Javadoc)
-	 * @see me.flyray.cms.api.ActivityService#selectActivityByStatus(java.util.Map)
+	 * @see me.flyray.cms.api.ActivityService#queryGroupActList(java.util.Map)
 	 */
 	@Override
-	public List<Activity> selectActivityByStatus(Map<String, Object> map) {
+	public List<Activity> queryGroupActList(Map<String, Object> map) {
 		String actStatus = (String) map.get("actStatus");
 		map.put("currentTime", new Timestamp(System.currentTimeMillis()));
 		if ("1".equals(actStatus)) {

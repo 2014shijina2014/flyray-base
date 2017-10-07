@@ -18,6 +18,10 @@ public interface ActivityDao extends BaseDao<Activity>{
 	public List<Activity> selectByBizKeys(Activity activity);
 	public List<Activity> selectRecommendActivity(Map<String, Object> map);
 	
+	public int selectStartActTotal(Map<String, Object> map);
+	public int selectEndActTotal(Map<String, Object> map);
+	public int selectProcessActTotal(Map<String, Object> map);
+	
 	public List<Activity> selectStartActivity(Map<String, Object> map);
 	public List<Activity> selectEndActivity(Map<String, Object> map);
 	public List<Activity> selectProcessActivity(Map<String, Object> map);

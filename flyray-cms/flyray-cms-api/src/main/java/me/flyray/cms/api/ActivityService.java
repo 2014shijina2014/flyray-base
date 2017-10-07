@@ -49,12 +49,20 @@ public interface ActivityService extends BaseService{
 	public List<Activity> selectRecommendActivity(Map<String, Object> map);
 	
 	/**
+	 * 根据活动状态查询活动总条数
+	 * @author centerroot
+	 * @time 创建时间:2017年10月7日下午1:54:20
+	 * @param map
+	 * @return
+	 */
+	public int queryGroupActTotal(Map<String, Object> map);
+	
+	/**
 	 * 根据活动状态查询活动列表
 	 * @author centerroot
 	 * @time 创建时间:2017年10月6日下午6:09:16
 	 * @param map
 	 * @return
 	 */
-	public List<Activity> selectActivityByStatus(Map<String, Object> map);
-
+	public List<Activity> queryGroupActList(Map<String, Object> map);
 }

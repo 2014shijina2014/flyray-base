@@ -107,7 +107,9 @@ public class ActivityController extends AbstractController {
 		int resultTotal = interestGroupCategoryService.queryTotal(queryMap);
 		param.put("totalCount", String.valueOf(resultTotal));
 		queryMap.putAll(getPagination(param));
+		logger.info("查询活动首页信息------查询团队类型请求参数：{}", queryMap);
 		List<Map<String, Object>> igcListMap = interestGroupCategoryService.queryList(queryMap);
+		logger.info("查询活动首页信息------查询团队类型响应结果：{}", igcListMap);
 		
 		if (null != igcListMap) {
 			for (int i = 0; i < igcListMap.size(); i++) {
@@ -140,7 +142,7 @@ public class ActivityController extends AbstractController {
 	 * 查询团队中的活动列表
 	 */
 	@ResponseBody
-	@RequestMapping(value = "/queryActivity", method = RequestMethod.POST)
+	@RequestMapping(value = "/queryGroupActivity", method = RequestMethod.POST)
 	public Map<String, Object> queryActivity(@RequestBody Map<String, String> param) {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		logger.info("查询团队中的活动列表------start------{}", param);
@@ -152,6 +154,7 @@ public class ActivityController extends AbstractController {
 		String orgstr = (String) param.get("orgId");
 		String merstr = (String) param.get("merId");
 		String groupstr = (String) param.get("groupId");
+		String actStatus = (String) param.get("actStatus");
 		if (null != orgstr && !"".equals(orgstr.trim())) {
 			orgId = Long.valueOf(orgstr.trim());
 		}
@@ -165,11 +168,28 @@ public class ActivityController extends AbstractController {
 		queryMap.put("orgId", orgId);
 		queryMap.put("merchantId", merId);
 		queryMap.put("InterestGroupId", groupId);
-		List<Activity> recActivities = activityService.selectRecommendActivity(queryMap);
+		queryMap.put("actStatus", actStatus);
+		
+		int resultTotal = activityService.queryGroupActTotal(queryMap);
+		param.put("totalCount", String.valueOf(resultTotal));
+		queryMap.putAll(getPagination(param));
+		
+		logger.info("查询团队中的活动列表------请求参数: {}", queryMap);
+		List<Activity> recActivities = activityService.queryGroupActList(queryMap);
 		logger.info("查询团队中的活动列表------recActivities: {}", recActivities);
+		for (int i = 0; i < recActivities.size(); i++) {
+			
+		}
+		
+		int pageSizeInt = Integer.valueOf(param.get("pageSize"));
+		PageUtils pageUtil = new PageUtils(resultTotal, pageSizeInt, Integer.valueOf(param.get("currentPage")));
+		if (isLastPage(param)) {
+			return ResponseHelper.success(null,pageUtil, "01", "已经到最后一条了~");
+		}
+		
 		resultMap.put("activities", recActivities);
 
 		logger.info("查询团队中的活动列表------end------{}", resultMap);
-		return ResponseHelper.success(resultMap, null, "00", "请求数据成功");
+		return ResponseHelper.success(resultMap, pageUtil, "00", "请求数据成功");
 	}
 }
