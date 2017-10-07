@@ -213,7 +213,7 @@ public class ImageGeneralUtils {
             g = d.createGraphics(); 
             //合并图片未知
             //Image img, int x, int y,int width, int height,ImageObserver observer
-            g.drawImage(b, 300, 420, w, h, null); 
+            g.drawImage(b, 300, 410, w, h, null); 
             g.dispose();  
         } catch (Exception e) {  
             System.out.println(e.getMessage());  
