@@ -72,15 +72,18 @@ public class ViewpointController extends AbstractController{
 	@ResponseBody
 	@RequestMapping(value="/query", method = RequestMethod.POST)
 	public Map<String, Object> query(@RequestBody Map<String, String> param) {
+		logger.info("请求观点---start---{}",param);
 		String currentPage = param.get("currentPage");//当前页
 		String pageSize = param.get("pageSize");//条数
 		String createBy = param.get("createBy");//用户编号
 		Map<String, Object> map = new HashMap<String, Object>();
 		Map<String, Object> queryMap = new HashMap<>();
 		Integer total = viewPointService.queryTotal(queryMap);
+		logger.info("请求观点---total---{}",total);
 		param.put("totalCount", String.valueOf(total));
 		int pageSizeInt = Integer.valueOf(pageSize);
 		PageUtils pageUtil = new PageUtils(total, pageSizeInt, Integer.valueOf(currentPage));
+		logger.info("请求观点---pageUtil---{}",pageUtil.toString());
 		if (isLastPage(param)) {
 			return ResponseHelper.success(null,pageUtil, "01", "已经到最后一条了~");
 		}
@@ -92,13 +95,13 @@ public class ViewpointController extends AbstractController{
 			Map<String, Object> favortMap = new HashMap<>();
 			favortMap.put("createBy", createBy);
 			favortMap.put("pointId", cmsViewPoint.getId());
+			favortMap.put("favortStatus", 1);
 			List favortList = viewFavortService.queryList(favortMap);
 			if(favortList.size() > 0){
 				cmsViewPoint.setIfFavort(1);
 			}else{
 				cmsViewPoint.setIfFavort(2);
 			}
-			
 			ViewPointItem item = new ViewPointItem();
 			Date time = cmsViewPoint.getPointTime();
 			SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");//
@@ -133,6 +136,7 @@ public class ViewpointController extends AbstractController{
 			}
 			itemList.add(item);
 		}
+		logger.info("请求观点---itemList---{}",itemList.toString());
 		return ResponseHelper.success(itemList,pageUtil, "00", "查询成功");
 	}
 	/**
@@ -141,11 +145,14 @@ public class ViewpointController extends AbstractController{
 	@ResponseBody
 	@RequestMapping(value="/doFavort", method = RequestMethod.POST)
 	public Map<String, Object> doFavort(@RequestBody Map<String, Object> param) {
+		logger.info("请求观点---start---{}",param);
 		//假设从后台取
 		Long customerId = (long) 1;
 		param.put("customerId", customerId);
 		Map<String, Object> map = viewFavortService.doFavort(param);
+		logger.info("请求观点---map---{}",map);
 		String code = (String) map.get("code");
+		logger.info("请求观点---code---{}",code);
 		if("00".equals(code)){
 			//成功
 			return ResponseHelper.success(map,null, "00", "操作成功");

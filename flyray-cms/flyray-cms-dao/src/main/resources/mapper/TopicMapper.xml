@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.flyray.cms.dao.TopicDao">
+	<select id="queryObject" resultType="me.flyray.cms.model.Topic" parameterType="me.flyray.cms.model.Topic">
+		select * from cms_topic 
+		where id = #{id,jdbcType=VARCHAR}
+	</select>
+	<!-- 查询查询话题信息 -->
+	<select id="queryList" resultType="me.flyray.cms.model.Topic" parameterType="java.util.Map">
+		select * from cms_topic 
+		<trim prefix="WHERE" suffixOverrides="AND">
+			<if test="createBy != null">create_by = #{createBy} AND</if>
+			<if test="createTime != null">create_time = #{createTime} AND</if>
+			<if test="flag != null">flag = #{flag} AND</if>
+		</trim>
+		order by create_time desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	<update id="update" parameterType="me.flyray.cms.model.Topic">
+		update cms_topic
+			<set>
+		        <if test="title != null and title != ''">
+					title = #{title,jdbcType=VARCHAR},
+		        </if>
+		        <if test="content != null and content != ''">
+					content = #{content,jdbcType=VARCHAR},
+		        </if>
+		        <if test="discription != null and discription != ''">
+					discription = #{discription,jdbcType=VARCHAR},
+		        </if>
+		        <if test="img != null and img != ''">
+					img = #{img,jdbcType=VARCHAR},
+		        </if>
+		        <if test="createBy != null and createBy != ''">
+					create_by = #{createBy,jdbcType=VARCHAR},
+		        </if>
+		        <if test="createTime != null and createTime != ''">
+					create_time = #{createTime,jdbcType=TIMESTAMP},
+		        </if>
+		        <if test="flag != null and flag != ''">
+					flag = #{flag,jdbcType=VARCHAR},
+		        </if>
+			</set>
+			where id = #{id,jdbcType=VARCHAR}
+	</update>
+	<insert id="save" parameterType="me.flyray.cms.model.Topic"
+		keyProperty="id">
+		insert into cms_topic (id,title,content,discription,img,create_by,create_time,flag) values (
+		#{id,jdbcType=VARCHAR},
+		#{title,jdbcType=VARCHAR},
+		#{content,jdbcType=VARCHAR},
+		#{discription,jdbcType=VARCHAR},
+		#{img,jdbcType=VARCHAR},
+		#{createby,jdbcType=VARCHAR},
+		#{createTime,jdbcType=TIMESTAMP},
+		#{flag,jdbcType=VARCHAR}
+		)
+	</insert>
+	<select id="queryTotal" resultType="int" parameterType="java.util.Map">
+		select count(*) from cms_topic
+		<trim prefix="WHERE" suffixOverrides="AND">
+			<if test="createBy != null">create_by = #{createBy} AND</if>
+			<if test="createTime != null">create_time = #{createTime} AND</if>
+			<if test="flag != null">flag = #{flag} AND</if>
+		</trim>
+	</select>
+	<select id="selectById" resultType="me.flyray.cms.model.Topic" parameterType="java.lang.String">
+		select * from cms_topic where id = #{id,jdbcType=VARCHAR}
+	</select>
+</mapper>

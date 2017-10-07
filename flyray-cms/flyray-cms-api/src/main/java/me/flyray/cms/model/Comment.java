@@ -38,7 +38,7 @@ public class Comment extends BaseModel {
 	/**
 	 * 发表评论的用户昵称
 	 */
-	private Long commentByName;
+	private String commentByName;
 	
 	/**
 	 * 评论的目标用户id
@@ -48,7 +48,7 @@ public class Comment extends BaseModel {
 	/**
 	 * 评论的目标用户昵称
 	 */
-	private Long commentTargetUserName;
+	private String commentTargetUserName;
 	
 	/**
 	 * 该评论被点赞的数量
@@ -64,6 +64,19 @@ public class Comment extends BaseModel {
 	 * 评论模块编号
 	 */
 	private String  commentModuleNo;
+	/**
+	 * 评论人头像
+	 */
+	private String commentImg;
+	
+	
+	public String getCommentImg() {
+		return commentImg;
+	}
+
+	public void setCommentImg(String commentImg) {
+		this.commentImg = commentImg;
+	}
 
 	public Long getId() {
 		return id;
@@ -105,13 +118,7 @@ public class Comment extends BaseModel {
 		this.commentBy = commentBy;
 	}
 
-	public Long getCommentByName() {
-		return commentByName;
-	}
-
-	public void setCommentByName(Long commentByName) {
-		this.commentByName = commentByName;
-	}
+	
 
 	public Long getCommentTargetUserId() {
 		return commentTargetUserId;
@@ -121,11 +128,21 @@ public class Comment extends BaseModel {
 		this.commentTargetUserId = commentTargetUserId;
 	}
 
-	public Long getCommentTargetUserName() {
+	
+
+	public String getCommentByName() {
+		return commentByName;
+	}
+
+	public void setCommentByName(String commentByName) {
+		this.commentByName = commentByName;
+	}
+
+	public String getCommentTargetUserName() {
 		return commentTargetUserName;
 	}
 
-	public void setCommentTargetUserName(Long commentTargetUserName) {
+	public void setCommentTargetUserName(String commentTargetUserName) {
 		this.commentTargetUserName = commentTargetUserName;
 	}
 

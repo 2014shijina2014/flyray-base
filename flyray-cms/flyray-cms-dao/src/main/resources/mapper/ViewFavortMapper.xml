@@ -6,7 +6,7 @@
 
 	<select id="queryObject" resultType="me.flyray.cms.model.ViewFavort">
 		select * from cms_view_favort 
-		where id = #{id,jdbcType=BIGINT}
+		where id = #{id,jdbcType=VARCHAR}
 	</select>
 
 	<select id="queryList" resultType="me.flyray.cms.model.ViewFavort"
@@ -15,8 +15,9 @@
 		<trim prefix="WHERE" suffixOverrides="AND">
 			<if test="createBy != null">create_by = #{createBy} AND</if>
 			<if test="pointId != null">point_id = #{pointId} AND</if>
+			<if test="favortStatus != null">favort_status = #{favortStatus} AND</if>
 		</trim>
-		order by id desc
+		order by create_time desc
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
@@ -29,10 +30,10 @@
 		<where>
 			1 = 1
 			<if test="createBy != null">
-				AND create_by = #{createBy,jdbcType=BIGINT}
+				AND create_by = #{createBy,jdbcType=VARCHAR}
 			</if>
 			<if test="pointId != null">
-				AND point_id = #{pointId,jdbcType=BIGINT}
+				AND point_id = #{pointId,jdbcType=VARCHAR}
 			</if>
 		</where>
 	</select>
@@ -43,14 +44,14 @@
 		<where>
 			1 = 1
 			<if test="customerId != null">
-				AND create_by = #{createBy,jdbcType=BIGINT}
+				AND create_by = #{createBy,jdbcType=VARCHAR}
 			</if>
 			<if test="pointId != null">
-				AND point_id = #{pointId,jdbcType=BIGINT}
+				AND point_id = #{pointId,jdbcType=VARCHAR}
 			</if>
 		</where>
 	</select>
-	<update id="updateById" parameterType="me.flyray.cms.model.ViewFavort">
+	<update id="update" parameterType="me.flyray.cms.model.ViewFavort">
 		update cms_view_favort
 			<set>
 		        <if test="favortStatus != null and favortStatus != ''">
@@ -70,9 +71,9 @@
 	<insert id="save" parameterType="me.flyray.cms.model.ViewFavort"
 		keyProperty="id">
 		insert into cms_view_favort (id,create_by,point_id,favort_status,create_time,update_time) values (
-		#{id,jdbcType=BIGINT},
-		#{createBy,jdbcType=BIGINT},
-		#{pointId,jdbcType=BIGINT},
+		#{id,jdbcType=VARCHAR},
+		#{createBy,jdbcType=VARCHAR},
+		#{pointId,jdbcType=VARCHAR},
 		#{favortStatus,jdbcType=INTEGER},
 		#{createTime,jdbcType=TIMESTAMP},
 		#{updateTime,jdbcType=TIMESTAMP}
@@ -81,7 +82,7 @@
 	</insert>
 	<delete id="delete">
 		delete from cms_view_favort
-		where id = #{id,jdbcType=BIGINT}
+		where id = #{id,jdbcType=VARCHAR}
 	</delete>
 
 </mapper>

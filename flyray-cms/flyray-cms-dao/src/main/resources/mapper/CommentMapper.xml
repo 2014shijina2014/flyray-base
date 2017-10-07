@@ -4,58 +4,71 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="me.flyray.cms.dao.CommentDao">
 
+	<sql id="where1">
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<if test="commentType != null"> AND comment_type = #{commentType} </if>
+			<if test="commentTargetId != null">AND comment_target_id = #{commentTargetId} </if>
+			<if test="commentModuleNo != null">AND comment_module_no = #{commentModuleNo}</if>
+		</trim>
+	</sql>
 	<select id="queryObject" resultType="me.flyray.cms.model.Comment">
-		select * from cms_comment where id = #{id}
+		select * from cms_comment
+		where id = #{id}
 	</select>
-	
+
 	<select id="queryById" resultType="me.flyray.cms.model.Comment">
-		select * from cms_comment where id = #{id}
+		select * from cms_comment
+		where id = #{id}
 	</select>
 
 	<select id="queryList" resultType="me.flyray.cms.model.Comment">
-		select * from cms_comment order by id desc
+		select * from cms_comment 
+		<include refid="where1"/>
+		order by comment_time desc
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
 	</select>
-	
- 	<select id="queryTotal" resultType="int">
-		select count(*) from cms_comment 
+
+	<select id="queryTotal" resultType="int">
+		select count(*) from
+		cms_comment
 	</select>
-	
-	<insert id="save" parameterType="me.flyray.cms.model.Comment" useGeneratedKeys="true" keyProperty="id">
+
+	<insert id="save" parameterType="me.flyray.cms.model.Comment"
+		useGeneratedKeys="true" keyProperty="id">
 		insert into cms_comment
 		(
-			`id`, 
-			`comment_type`, 
-			`comment_content`, 
-			`comment_target_id`, 
-			`comment_by_name`,
-			`comment_by`,
-			`comment_target_user_name`
-			`comment_target_user_id`
-			`comment_likeCount`, 
-			`comment_time`,
-			`comment_module_no`
+		`id`,
+		`comment_type`,
+		`comment_content`,
+		`comment_target_id`,
+		`comment_by_name`,
+		`comment_by`,
+		`comment_target_user_name`
+		`comment_target_user_id`
+		`comment_likeCount`,
+		`comment_time`,
+		`comment_module_no`
 		)
 		values
 		(
-			#{id}, 
-			#{commentType},
-			#{commentContent},
-			#{commentTargetId},
-			#{commentByName},
-			#{commentBy},
-			#{commentTargetUserName},
-			#{commentTargetUserId},
-			#{commentLikeCount},
-			#{commentTime},
-			#{commentModuleNo}
+		#{id},
+		#{commentType},
+		#{commentContent},
+		#{commentTargetId},
+		#{commentByName},
+		#{commentBy},
+		#{commentTargetUserName},
+		#{commentTargetUserId},
+		#{commentLikeCount},
+		#{commentTime},
+		#{commentModuleNo}
 		)
 	</insert>
-	 
+
 	<update id="update" parameterType="me.flyray.cms.model.Comment">
-		update cms_comment 
+		update cms_comment
 		<set>
 			<if test="id != null">`id` = #{id}, </if>
 			<if test="columnContentTitle != null">`column_content_title` = #{columnContentTitle},</if>
@@ -66,9 +79,9 @@
 		</set>
 		where id = #{id}
 	</update>
-	
+
 	<delete id="delete">
 		delete from cms_comment where id = #{id}
 	</delete>
-  
+
 </mapper>

@@ -61,4 +61,10 @@ public class PageUtils implements Serializable {
 	public void setCurrentPage(int currentPage) {
 		this.currentPage = currentPage;
 	}
+
+	@Override
+	public String toString() {
+		return "PageUtils [totalCount=" + totalCount + ", pageSize=" + pageSize + ", totalPage=" + totalPage
+				+ ", currentPage=" + currentPage + "]";
+	}
 }
