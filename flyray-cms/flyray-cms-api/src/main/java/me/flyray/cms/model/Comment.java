@@ -36,9 +36,19 @@ public class Comment extends BaseModel {
 	private Long commentBy;
 	
 	/**
+	 * 发表评论的用户昵称
+	 */
+	private Long commentByName;
+	
+	/**
 	 * 评论的目标用户id
 	 */
 	private Long  commentTargetUserId;
+	
+	/**
+	 * 评论的目标用户昵称
+	 */
+	private Long commentTargetUserName;
 	
 	/**
 	 * 该评论被点赞的数量
@@ -95,12 +105,28 @@ public class Comment extends BaseModel {
 		this.commentBy = commentBy;
 	}
 
+	public Long getCommentByName() {
+		return commentByName;
+	}
+
+	public void setCommentByName(Long commentByName) {
+		this.commentByName = commentByName;
+	}
+
 	public Long getCommentTargetUserId() {
 		return commentTargetUserId;
 	}
 
 	public void setCommentTargetUserId(Long commentTargetUserId) {
 		this.commentTargetUserId = commentTargetUserId;
+	}
+
+	public Long getCommentTargetUserName() {
+		return commentTargetUserName;
+	}
+
+	public void setCommentTargetUserName(Long commentTargetUserName) {
+		this.commentTargetUserName = commentTargetUserName;
 	}
 
 	public Long getCommentLikeCount() {
@@ -126,5 +152,5 @@ public class Comment extends BaseModel {
 	public void setCommentModuleNo(String commentModuleNo) {
 		this.commentModuleNo = commentModuleNo;
 	}
-	
+
 }

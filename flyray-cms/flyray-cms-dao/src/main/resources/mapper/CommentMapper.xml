@@ -30,7 +30,9 @@
 			`comment_type`, 
 			`comment_content`, 
 			`comment_target_id`, 
+			`comment_by_name`,
 			`comment_by`,
+			`comment_target_user_name`
 			`comment_target_user_id`
 			`comment_likeCount`, 
 			`comment_time`,
@@ -42,7 +44,9 @@
 			#{commentType},
 			#{commentContent},
 			#{commentTargetId},
+			#{commentByName},
 			#{commentBy},
+			#{commentTargetUserName},
 			#{commentTargetUserId},
 			#{commentLikeCount},
 			#{commentTime},
