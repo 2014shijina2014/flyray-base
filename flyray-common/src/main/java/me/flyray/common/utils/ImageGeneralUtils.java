@@ -35,7 +35,7 @@ public class ImageGeneralUtils {
     private static Font getSelfDefinedFont(String filename){  
         Font font = null;  
         //配置字体路径
-        String filepath = "/home/bolei/Desktop/"+filename;  
+        String filepath = "F:/"+filename;  
         File file = new File(filepath);  
         try  
         {
@@ -225,16 +225,16 @@ public class ImageGeneralUtils {
   
     	ImageGeneralUtils tt = new ImageGeneralUtils();  
   
-        BufferedImage d = tt.loadImageLocal("/home/bolei/Desktop/assets/4.jpg");  
+        BufferedImage d = tt.loadImageLocal("F:/assets/4.jpg");  
 //      
-         tt.writeImageLocal("/home/bolei/Desktop/flyray333.jpg",tt.modifyImage(d,"我是博羸兄弟",120,320)  
+         tt.writeImageLocal("F:/assets/test/flyray333.jpg",tt.modifyImage(d,"我是博羸兄弟",120,320)  
         //往图片上写文件  
          );
          
-         BufferedImage b = tt.loadImageLocal("/home/bolei/Desktop/flyray333.jpg");  
-         BufferedImage c = tt.loadImageLocal("/home/bolei/Desktop/assets/22.jpg");  
+         BufferedImage b = tt.loadImageLocal("F:/assets/test/flyray333.jpg");  
+         BufferedImage c = tt.loadImageLocal("F:/assets/22.jpg");  
        //将多张图片合在一起  
-        tt.writeImageLocal("/home/bolei/Desktop/flyray444.jpg", tt.modifyImagetogeter(c, b));  
+        tt.writeImageLocal("F:/assets/test/flyray444.jpg", tt.modifyImagetogeter(c, b));  
         System.out.println("success");  
     }
 }
