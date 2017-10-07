@@ -44,21 +44,9 @@ public class InterestGroupController extends AbstractController {
 		logger.info("查询活动团队列表信息------start------{}", param);
 
 		// TODO 用户登录后获取到机构id和商户id后替换参数
-		Long orgId = null;
-		Long merId = null;
-		Long categoryId = null;
-		String orgstr = (String) param.get("orgId");
-		String merstr = (String) param.get("merId");
-		String categoryStr = (String) param.get("categoryId");
-		if (null != orgstr && !"".equals(orgstr.trim())) {
-			orgId = Long.valueOf(orgstr.trim());
-		}
-		if (null != merstr && !"".equals(merstr.trim())) {
-			merId = Long.valueOf(merstr.trim());
-		}
-		if (null != categoryStr && !"".equals(categoryStr.trim())) {
-			categoryId = Long.valueOf(categoryStr.trim());
-		}
+		String orgId = (String) param.get("orgId");
+		String merId = (String) param.get("merId");
+		String categoryId = (String) param.get("categoryId");
 
 		Map<String, Object> queryMap = new HashMap<>();
 		queryMap.put("orgId", orgId);
@@ -96,21 +84,9 @@ public class InterestGroupController extends AbstractController {
 		logger.info("查询活动团队列表信息------start------{}", param);
 
 		// TODO 用户登录后获取到机构id和商户id后替换参数
-		Long orgId = null;
-		Long merId = null;
-		Long groupId = null;
-		String orgstr = (String) param.get("orgId");
-		String merstr = (String) param.get("merId");
-		String groupStr = (String) param.get("groupId");
-		if (null != orgstr && !"".equals(orgstr.trim())) {
-			orgId = Long.valueOf(orgstr.trim());
-		}
-		if (null != merstr && !"".equals(merstr.trim())) {
-			merId = Long.valueOf(merstr.trim());
-		}
-		if (null != groupStr && !"".equals(groupStr.trim())) {
-			groupId = Long.valueOf(groupStr.trim());
-		}
+		String orgId = (String) param.get("orgId");
+		String merId = (String) param.get("merId");
+		String groupId = (String) param.get("groupId");
 
 		Map<String, Object> queryMap = new HashMap<>();
 		queryMap.put("orgId", orgId);

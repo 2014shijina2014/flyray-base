@@ -20,12 +20,12 @@ public class Activity extends BaseModel {
 	/**
 	 * 自增id
 	 */
-	private Long id;
+	private String id;
 	
 	/**
 	 * 所属兴趣组
 	 */
-	private Long InterestGroupId;
+	private String InterestGroupId;
 	
 	/**
 	 * 活动名称
@@ -66,7 +66,7 @@ public class Activity extends BaseModel {
 	/**
 	 * 创建者
 	 */
-	private long createBy;
+	private String createBy;
 	
 	/**
 	 * 状态标识
@@ -74,12 +74,20 @@ public class Activity extends BaseModel {
 	 */
 	private String flag;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getInterestGroupId() {
+		return InterestGroupId;
+	}
+
+	public void setInterestGroupId(String interestGroupId) {
+		InterestGroupId = interestGroupId;
 	}
 
 	public String getActivityName() {
@@ -114,14 +122,6 @@ public class Activity extends BaseModel {
 		this.activityContent = activityContent;
 	}
 
-	public Long getInterestGroupId() {
-		return InterestGroupId;
-	}
-
-	public void setInterestGroupId(Long interestGroupId) {
-		InterestGroupId = interestGroupId;
-	}
-
 	public String getActivityStartTime() {
 		return activityStartTime;
 	}
@@ -154,11 +154,11 @@ public class Activity extends BaseModel {
 		this.createTime = createTime;
 	}
 
-	public long getCreateBy() {
+	public String getCreateBy() {
 		return createBy;
 	}
 
-	public void setCreateBy(long createBy) {
+	public void setCreateBy(String createBy) {
 		this.createBy = createBy;
 	}
 

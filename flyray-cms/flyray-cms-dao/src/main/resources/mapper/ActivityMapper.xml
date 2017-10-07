@@ -5,8 +5,8 @@
 <mapper namespace="me.flyray.cms.dao.ActivityDao">
 	
 	<resultMap type="me.flyray.cms.model.Activity" id="activityMap">
-	    <id column="id" property="id" jdbcType="INTEGER" />
-		<result column="interest_group_id" property="InterestGroupId" jdbcType="INTEGER" />
+	    <id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="interest_group_id" property="InterestGroupId" jdbcType="VARCHAR" />
 		<result column="activity_name" property="activityName" jdbcType="VARCHAR" />
 		<result column="activity_logo" property="activityLogo" jdbcType="VARCHAR" />
 		<result column="activity_des" property="activityDes" jdbcType="VARCHAR" />
@@ -15,7 +15,7 @@
 		<result column="activity_end_time" property="activityEndTime" jdbcType="TIMESTAMP" />
 		<result column="activity_addr" property="activityAddr" jdbcType="VARCHAR" />
 		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-		<result column="create_by" property="createBy" jdbcType="INTEGER" />
+		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
 		<result column="flag" property="flag" jdbcType="VARCHAR" />
 	</resultMap>
 	
@@ -26,10 +26,10 @@
     <sql id="where1">
 		<trim prefix="where" prefixOverrides="AND|OR">
 		<if test="id != null and id != ''">
-			AND id = #{id,jdbcType=INTEGER}
+			AND id = #{id,jdbcType=VARCHAR}
         </if>
         <if test="InterestGroupId != null and InterestGroupId != ''">
-			AND interest_group_id = #{InterestGroupId,jdbcType=INTEGER}
+			AND interest_group_id = #{InterestGroupId,jdbcType=VARCHAR}
         </if>
         <if test="activityName != null and activityName != ''">
 			AND activity_name = #{activityName,jdbcType=VARCHAR}
@@ -52,11 +52,11 @@
         <if test="activityAddr != null and activityAddr != ''">
 			AND activity_addr = #{activityAddr,jdbcType=VARCHAR}
         </if>
-        <if test="create_time != null and createTime != ''">
-			AND activity_content = #{createTime,jdbcType=TIMESTAMP}
+        <if test="createTime != null and createTime != ''">
+			AND create_time = #{createTime,jdbcType=TIMESTAMP}
         </if>
         <if test="createBy != null and createBy != ''">
-			AND create_by = #{createBy,jdbcType=INTEGER}
+			AND create_by = #{createBy,jdbcType=VARCHAR}
         </if>
         <if test="flag != null and flag != ''">
 			AND flag = #{flag,jdbcType=VARCHAR}
@@ -106,10 +106,10 @@
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="id != null and id != ''">
-				#{id,jdbcType=INTEGER},
+				#{id,jdbcType=VARCHAR},
 	        </if>
 	        <if test="InterestGroupId != null and InterestGroupId != ''">
-				#{InterestGroupId,jdbcType=INTEGER},
+				#{InterestGroupId,jdbcType=VARCHAR},
 	        </if>
 	        <if test="activityName != null and activityName != ''">
 				#{activityName,jdbcType=VARCHAR},
@@ -136,7 +136,7 @@
 				#{createTime,jdbcType=TIMESTAMP},
 	        </if>
 	        <if test="createBy != null and createBy != ''">
-				#{createBy,jdbcType=INTEGER},
+				#{createBy,jdbcType=VARCHAR},
 	        </if>
 	        <if test="flag != null and flag != ''">
 				#{flag,jdbcType=VARCHAR},
@@ -148,7 +148,7 @@
 		update cms_activity
 		<set>
 	        <if test="InterestGroupId != null and InterestGroupId != ''">
-				interest_group_id = #{InterestGroupId,jdbcType=INTEGER},
+				interest_group_id = #{InterestGroupId,jdbcType=VARCHAR},
 	        </if>
 	        <if test="activityName != null and activityName != ''">
 				activity_name = #{activityName,jdbcType=VARCHAR},
@@ -175,13 +175,13 @@
 				create_time = #{createTime,jdbcType=TIMESTAMP},
 	        </if>
 	        <if test="createBy != null and createBy != ''">
-				create_by = #{createBy,jdbcType=INTEGER},
+				create_by = #{createBy,jdbcType=VARCHAR},
 	        </if>
 	        <if test="flag != null and flag != ''">
 				flag = #{flag,jdbcType=VARCHAR},
 	        </if>
 		</set>
-		where id = #{id,jdbcType=INTEGER}
+		where id = #{id,jdbcType=VARCHAR}
 	</update>
 	
 	<select id="selectByBizKeys" resultMap="activityMap" parameterType="me.flyray.cms.model.Activity">
@@ -197,13 +197,13 @@
 		<where>
 			<trim prefixOverrides="AND|OR">
 		        <if test="orgId != null and orgId != ''">
-					AND org_id = #{orgId,jdbcType=INTEGER}
+					AND org_id = #{orgId,jdbcType=VARCHAR}
 		        </if>
 		        <if test="merchantId != null and merchantId != ''">
-					AND merchant_id = #{merchantId,jdbcType=INTEGER}
+					AND merchant_id = #{merchantId,jdbcType=VARCHAR}
 		        </if>
 		        <if test="InterestGroupId != null and InterestGroupId != ''">
-					AND interest_group_id = #{InterestGroupId,jdbcType=INTEGER}
+					AND interest_group_id = #{InterestGroupId,jdbcType=VARCHAR}
 		        </if>
 		        AND ac.flag = '10'
 			</trim>
@@ -211,7 +211,7 @@
         LIMIT 3
 	</select>
 	
-	<select id="queryList" resultType="me.flyray.cms.model.InterestGroup"
+	<select id="queryList" resultType="me.flyray.cms.model.Activity"
 		parameterType="java.util.Map">
 		select 
 		<include refid="Base_Column_List" />
@@ -235,7 +235,7 @@
 		<where>
 			<trim prefixOverrides="AND|OR">
 		        <if test="InterestGroupId != null and InterestGroupId != ''">
-					AND interest_group_id = #{InterestGroupId,jdbcType=INTEGER}
+					AND interest_group_id = #{InterestGroupId,jdbcType=VARCHAR}
 		        </if>
 		        <if test="currentTime != null and currentTime != ''">
 					AND activity_start_time &gt; #{currentTime,jdbcType=TIMESTAMP}
@@ -253,7 +253,7 @@
 		<where>
 			<trim prefixOverrides="AND|OR">
 		        <if test="InterestGroupId != null and InterestGroupId != ''">
-					AND interest_group_id = #{InterestGroupId,jdbcType=INTEGER}
+					AND interest_group_id = #{InterestGroupId,jdbcType=VARCHAR}
 		        </if>
 		        <if test="currentTime != null and currentTime != ''">
 					AND activity_start_time &gt; #{currentTime,jdbcType=TIMESTAMP}
@@ -269,7 +269,7 @@
 		<where>
 			<trim prefixOverrides="AND|OR">
 		        <if test="InterestGroupId != null and InterestGroupId != ''">
-					AND interest_group_id = #{InterestGroupId,jdbcType=INTEGER}
+					AND interest_group_id = #{InterestGroupId,jdbcType=VARCHAR}
 		        </if>
 		        <if test="currentTime != null and currentTime != ''">
 					AND activity_end_time &lt; #{currentTime,jdbcType=TIMESTAMP}
@@ -287,7 +287,7 @@
 		<where>
 			<trim prefixOverrides="AND|OR">
 		        <if test="InterestGroupId != null and InterestGroupId != ''">
-					AND interest_group_id = #{InterestGroupId,jdbcType=INTEGER}
+					AND interest_group_id = #{InterestGroupId,jdbcType=VARCHAR}
 		        </if>
 		        <if test="currentTime != null and currentTime != ''">
 					AND activity_end_time &lt; #{currentTime,jdbcType=TIMESTAMP}
@@ -303,7 +303,7 @@
 		<where>
 			<trim prefixOverrides="AND|OR">
 		        <if test="InterestGroupId != null and InterestGroupId != ''">
-					AND interest_group_id = #{InterestGroupId,jdbcType=INTEGER}
+					AND interest_group_id = #{InterestGroupId,jdbcType=VARCHAR}
 		        </if>
 		        <if test="currentTime != null and currentTime != ''">
 					AND activity_start_time &lt; #{currentTime,jdbcType=TIMESTAMP}
@@ -322,7 +322,7 @@
 		<where>
 			<trim prefixOverrides="AND|OR">
 		        <if test="InterestGroupId != null and InterestGroupId != ''">
-					AND interest_group_id = #{InterestGroupId,jdbcType=INTEGER}
+					AND interest_group_id = #{InterestGroupId,jdbcType=VARCHAR}
 		        </if>
 		        <if test="currentTime != null and currentTime != ''">
 					AND activity_start_time &lt; #{currentTime,jdbcType=TIMESTAMP}
@@ -330,6 +330,13 @@
 		        </if>
 			</trim>
         </where>
+	</select>
+	
+	<select id="queryEntity" resultType="me.flyray.cms.model.Activity" parameterType="me.flyray.cms.model.Activity">
+		select 
+		<include refid="Base_Column_List" />
+		from cms_activity
+		<include refid="where1"/>
 	</select>
   
 </mapper>

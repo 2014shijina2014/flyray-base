@@ -5,10 +5,10 @@
 <mapper namespace="me.flyray.cms.dao.InterestGroupDao">
 	
 	<resultMap type="me.flyray.cms.model.InterestGroup" id="interestGroupMap">
-	    <id column="id" property="id" jdbcType="INTEGER" />
-		<result column="org_id" property="orgId" jdbcType="INTEGER" />
-		<result column="merchant_id" property="merchantId" jdbcType="INTEGER" />
-		<result column="group_category_id" property="groupCategoryId" jdbcType="INTEGER" />
+	    <id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="org_id" property="orgId" jdbcType="VARCHAR" />
+		<result column="merchant_id" property="merchantId" jdbcType="VARCHAR" />
+		<result column="group_category_id" property="groupCategoryId" jdbcType="VARCHAR" />
 		<result column="group_name" property="groupName" jdbcType="VARCHAR" />
 		<result column="group_logo" property="groupLogo" jdbcType="VARCHAR" />
 		<result column="group_slogan" property="groupSlogan" jdbcType="VARCHAR" />
@@ -26,16 +26,16 @@
     <sql id="where1">
 		<trim prefix="where" prefixOverrides="AND|OR">
 		<if test="id != null and id != ''">
-			AND id = #{id,jdbcType=INTEGER}
+			AND id = #{id,jdbcType=VARCHAR}
         </if>
         <if test="orgId != null and orgId != ''">
-			AND org_id = #{orgId,jdbcType=INTEGER}
+			AND org_id = #{orgId,jdbcType=VARCHAR}
         </if>
         <if test="merchantId != null and merchantId != ''">
-			AND merchant_id = #{merchantId,jdbcType=INTEGER}
+			AND merchant_id = #{merchantId,jdbcType=VARCHAR}
         </if>
         <if test="groupCategoryId != null and groupCategoryId != ''">
-			AND group_category_id = #{groupCategoryId,jdbcType=INTEGER}
+			AND group_category_id = #{groupCategoryId,jdbcType=VARCHAR}
         </if>
         <if test="groupName != null and groupName != ''">
 			AND group_name = #{groupName,jdbcType=VARCHAR}
@@ -106,16 +106,16 @@
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="id != null and id != ''">
-				#{id,jdbcType=INTEGER},
+				#{id,jdbcType=VARCHAR},
 	        </if>
 	        <if test="orgId != null and orgId != ''">
-				#{orgId,jdbcType=INTEGER},
+				#{orgId,jdbcType=VARCHAR},
 	        </if>
 	        <if test="merchantId != null and merchantId != ''">
-				#{merchantId,jdbcType=INTEGER},
+				#{merchantId,jdbcType=VARCHAR},
 	        </if>
 	        <if test="groupCategoryId != null and groupCategoryId != ''">
-				#{groupCategoryId,jdbcType=INTEGER},
+				#{groupCategoryId,jdbcType=VARCHAR},
 	        </if>
 	        <if test="groupName != null and groupName != ''">
 				#{groupName,jdbcType=VARCHAR},
@@ -148,13 +148,13 @@
 		update cms_interest_group
 		<set>
 	        <if test="orgId != null and orgId != ''">
-				org_id = #{orgId,jdbcType=INTEGER},
+				org_id = #{orgId,jdbcType=VARCHAR},
 	        </if>
 	        <if test="merchantId != null and merchantId != ''">
-				merchant_id = #{merchantId,jdbcType=INTEGER},
+				merchant_id = #{merchantId,jdbcType=VARCHAR},
 	        </if>
 	        <if test="groupCategoryId != null and groupCategoryId != ''">
-				group_category_id = #{groupCategoryId,jdbcType=INTEGER},
+				group_category_id = #{groupCategoryId,jdbcType=VARCHAR},
 	        </if>
 	        <if test="groupName != null and groupName != ''">
 				group_name = #{groupName,jdbcType=VARCHAR},
@@ -181,7 +181,7 @@
 				flag = #{flag,jdbcType=VARCHAR},
 	        </if>
 		</set>
-		where id = #{id,jdbcType=INTEGER}
+		where id = #{id,jdbcType=VARCHAR}
 	</update>
 	
 	<select id="selectByBizKeys" resultMap="interestGroupMap" parameterType="me.flyray.cms.model.InterestGroup">

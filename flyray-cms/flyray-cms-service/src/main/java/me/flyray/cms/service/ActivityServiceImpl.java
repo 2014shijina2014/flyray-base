@@ -118,6 +118,18 @@ public class ActivityServiceImpl extends AbstractBaseService<Activity> implement
 			return null;
 		}
 	}
+
+	/**
+	 * 根据条件查询活动详情
+	 * @author centerroot
+	 * @time 创建时间:2017年10月7日下午5:14:08
+	 * (non-Javadoc)
+	 * @see me.flyray.cms.api.ActivityService#queryEntity(me.flyray.cms.model.Activity)
+	 */
+	@Override
+	public Activity queryEntity(Activity activity) {
+		return activityDao.queryEntity(activity);
+	}
 	
 	
 	

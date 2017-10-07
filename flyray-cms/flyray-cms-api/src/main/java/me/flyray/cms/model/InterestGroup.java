@@ -18,12 +18,12 @@ public class InterestGroup extends BaseModel {
 	/**
 	 * 自增id
 	 */
-	private Long id;
+	private String id;
 
 	/**
 	 * 小组所属类别
 	 */
-	private Long groupCategoryId;
+	private String groupCategoryId;
 
 	/**
 	 * 小组名称
@@ -65,19 +65,19 @@ public class InterestGroup extends BaseModel {
 	 */
 	private String flag;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public Long getGroupCategoryId() {
+	public String getGroupCategoryId() {
 		return groupCategoryId;
 	}
 
-	public void setGroupCategoryId(Long groupCategoryId) {
+	public void setGroupCategoryId(String groupCategoryId) {
 		this.groupCategoryId = groupCategoryId;
 	}
 

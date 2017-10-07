@@ -65,4 +65,13 @@ public interface ActivityService extends BaseService{
 	 * @return
 	 */
 	public List<Activity> queryGroupActList(Map<String, Object> map);
+	
+	/**
+	 * 根据条件查询活动详细信息
+	 * @author centerroot
+	 * @time 创建时间:2017年10月7日下午5:13:19
+	 * @param activity
+	 * @return
+	 */
+	public Activity queryEntity(Activity activity);
 }

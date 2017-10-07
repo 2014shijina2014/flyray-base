@@ -53,21 +53,10 @@ public class ActivityController extends AbstractController {
 		logger.info("查询推荐活动------start------{}", param);
 
 		// TODO 用户登录后获取到机构id和商户id后替换参数
-		Long orgId = null;
-		Long merId = null;
-		Long groupId = null;
-		String orgstr = (String) param.get("orgId");
-		String merstr = (String) param.get("merId");
-		String groupstr = (String) param.get("groupId");
-		if (null != orgstr && !"".equals(orgstr.trim())) {
-			orgId = Long.valueOf(orgstr.trim());
-		}
-		if (null != merstr && !"".equals(merstr.trim())) {
-			merId = Long.valueOf(merstr.trim());
-		}
-		if (null != groupstr && !"".equals(groupstr.trim())) {
-			groupId = Long.valueOf(groupstr.trim());
-		}
+		String orgId = (String) param.get("orgId");
+		String merId = (String) param.get("merId");
+		String groupId = (String) param.get("groupId");
+		
 		Map<String, Object> queryMap = new HashMap<>();
 		queryMap.put("orgId", orgId);
 		queryMap.put("merchantId", merId);
@@ -89,18 +78,9 @@ public class ActivityController extends AbstractController {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		logger.info("查询活动首页信息------start------{}", param);
 
-		// TODO 用户登录后获取到机构id和商户id后替换参数
-		Long orgId = null;
-		Long merId = null;
-		String orgstr = (String) param.get("orgId");
-		String merstr = (String) param.get("merId");
-		if (null != orgstr && !"".equals(orgstr.trim())) {
-			orgId = Long.valueOf(orgstr.trim());
-		}
-		if (null != merstr && !"".equals(merstr.trim())) {
-			merId = Long.valueOf(merstr.trim());
-		}
-
+		String orgId = (String) param.get("orgId");
+		String merId = (String) param.get("merId");
+		
 		Map<String, Object> queryMap = new HashMap<>();
 		queryMap.put("orgId", orgId);
 		queryMap.put("merchantId", merId);
@@ -147,23 +127,11 @@ public class ActivityController extends AbstractController {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		logger.info("查询团队中的活动列表------start------{}", param);
 
-		// TODO 用户登录后获取到机构id和商户id后替换参数
-		Long orgId = null;
-		Long merId = null;
-		Long groupId = null;
-		String orgstr = (String) param.get("orgId");
-		String merstr = (String) param.get("merId");
-		String groupstr = (String) param.get("groupId");
+		String orgId = (String) param.get("orgId");
+		String merId = (String) param.get("merId");
+		String groupId = (String) param.get("groupId");
 		String actStatus = (String) param.get("actStatus");
-		if (null != orgstr && !"".equals(orgstr.trim())) {
-			orgId = Long.valueOf(orgstr.trim());
-		}
-		if (null != merstr && !"".equals(merstr.trim())) {
-			merId = Long.valueOf(merstr.trim());
-		}
-		if (null != groupstr && !"".equals(groupstr.trim())) {
-			groupId = Long.valueOf(groupstr.trim());
-		}
+		
 		Map<String, Object> queryMap = new HashMap<>();
 		queryMap.put("orgId", orgId);
 		queryMap.put("merchantId", merId);
@@ -191,5 +159,30 @@ public class ActivityController extends AbstractController {
 
 		logger.info("查询团队中的活动列表------end------{}", resultMap);
 		return ResponseHelper.success(resultMap, pageUtil, "00", "请求数据成功");
+	}
+	
+	
+	/**
+	 * 查询活动详细信息
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/queryActivityInfo", method = RequestMethod.POST)
+	public Map<String, Object> queryActivityInfo(@RequestBody Map<String, String> param) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		logger.info("查询活动详细信息------start------{}", param);
+
+		String activitystr = (String) param.get("activityId");
+		if (null == activitystr || "".equals(activitystr.trim())) {
+			logger.info("查询活动详情信息请求参数错误，activityId：{}",activitystr);
+			return ResponseHelper.success(resultMap, null, "01", "请求数据失败");
+		}
+		Activity reqAct = new Activity();
+		reqAct.setId(activitystr);
+		Activity resAct = activityService.queryEntity(reqAct);
+		logger.info("查询活动首页信息------查询推荐活动记录------{}", resAct);
+		resultMap.put("activity", resAct);
+
+		logger.info("查询活动详细信息------end------{}", resultMap);
+		return ResponseHelper.success(resultMap, null, "00", "请求数据成功");
 	}
 }

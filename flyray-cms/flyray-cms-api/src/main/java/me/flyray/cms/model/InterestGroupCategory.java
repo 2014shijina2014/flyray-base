@@ -18,7 +18,7 @@ public class InterestGroupCategory extends BaseModel {
 	/**
 	 * 自增id
 	 */
-	private Long id;
+	private String id;
 	/**
 	 * 类别名称
 	 */
@@ -36,12 +36,12 @@ public class InterestGroupCategory extends BaseModel {
 	 * 类别中包含的小组
 	 */
 	private List<InterestGroup> groupList;
-	
-	public Long getId() {
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
