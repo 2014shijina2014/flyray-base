@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.flyray.cms.dao.ActivityCustomerDao">
+	
+	<resultMap type="me.flyray.cms.model.ActivityCustomer" id="activityCustomerMap">
+		<result column="activity_id" property="activityId" jdbcType="VARCHAR" />
+		<result column="customer_id" property="customerId" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+        activity_id, customer_id
+    </sql>
+    
+    <sql id="where1">
+		<trim prefix="where" prefixOverrides="AND|OR">
+        <if test="activityId != null and activityId != ''">
+			AND activity_id = #{activityId,jdbcType=VARCHAR}
+        </if>
+        <if test="customerId != null and customerId != ''">
+			AND customer_id = #{customerId,jdbcType=VARCHAR}
+        </if>
+		</trim>
+	</sql>
+	
+	<insert id="insert" parameterType="me.flyray.cms.model.Activity">
+		insert into cms_activity_customer
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="activityId != null and activityId != ''">
+				activity_id,
+			</if>
+			<if test="customerId != null and customerId != ''">
+				customer_id,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="activityId != null and activityId != ''">
+				#{activityId,jdbcType=VARCHAR},
+	        </if>
+	        <if test="customerId != null and customerId != ''">
+				#{customerId,jdbcType=VARCHAR},
+	        </if>
+		</trim>
+	</insert>
+	
+	<select id="selectByBizKeys" resultMap="activityCustomerMap" parameterType="me.flyray.cms.model.ActivityCustomer">
+		select
+		<include refid="Base_Column_List" />
+		from cms_activity_customer
+        <include refid="where1"/>
+	</select>
+</mapper>
