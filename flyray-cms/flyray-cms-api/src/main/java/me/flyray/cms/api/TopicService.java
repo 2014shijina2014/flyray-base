@@ -1,5 +1,8 @@
 package me.flyray.cms.api;
 
+import java.util.Map;
+
+import me.flyray.cms.model.Topic;
 import me.flyray.common.service.BaseService;
 
 /** 
@@ -9,5 +12,5 @@ import me.flyray.common.service.BaseService;
 */
 
 public interface TopicService extends BaseService{
-
+	Topic queryTopicInfo(Map<String, Object> param);
 }

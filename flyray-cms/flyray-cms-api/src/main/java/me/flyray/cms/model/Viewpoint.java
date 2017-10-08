@@ -14,7 +14,7 @@ public class Viewpoint extends BaseModel implements Serializable {
 	/**
 	 * 主键，自增
 	 */
-	private Long id;
+	private String id;
 	/**
 	 * 索引，用户编号
 	 */
@@ -55,6 +55,7 @@ public class Viewpoint extends BaseModel implements Serializable {
 	
 	
 	
+	
 	public Integer getIfFavort() {
 		return ifFavort;
 	}
@@ -67,10 +68,10 @@ public class Viewpoint extends BaseModel implements Serializable {
 	public void setDiffTime(String diffTime) {
 		this.diffTime = diffTime;
 	}
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	
@@ -123,4 +124,5 @@ public class Viewpoint extends BaseModel implements Serializable {
 				+ ", pointTime=" + pointTime + ", pointAddress=" + pointAddress + ", favortCount=" + favortCount
 				+ ", commentCount=" + commentCount + ", diffTime=" + diffTime + ", ifFavort=" + ifFavort + "]";
 	}
+	
 }

@@ -20,7 +20,7 @@
 	<sql id="where">
 		<trim prefix="where" suffixOverrides="AND">
 			<if test="id != null">
-				id = #{id,jdbcType=BIGINT} AND
+				id = #{id,jdbcType=VARCHAR} AND
 			</if>
 			<if test="createBy != null">
 				create_by = #{createBy,jdbcType=BIGINT} AND
@@ -41,14 +41,14 @@
 	</sql>
 
 
-	<delete id="deleteById" parameterType="java.lang.Long">
-		delete from cms_view_point where id = #{id,jdbcType=BIGINT}
+	<delete id="deleteById" parameterType="java.lang.String">
+		delete from cms_view_point where id = #{id,jdbcType=VARCHAR}
 	</delete>
 	<insert id="save" keyProperty="id"
 		parameterType="me.flyray.cms.model.Viewpoint">
 		insert into cms_view_point (id, create_by, point_text, point_img, point_time, point_address, favort_count, comment_count)
 		values (
-		#{id,jdbcType=BIGINT}
+		#{id,jdbcType=VARCHAR}
 		,#{createBy,jdbcType=BIGINT}
 		,#{pointText,jdbcType=VARCHAR}
 		,#{pointImg,jdbcType=VARCHAR}
@@ -81,7 +81,7 @@
 				comment_count = #{commentCount,jdbcType=INTEGER},
 			</if>
 		</set>
-		where id = #{id,jdbcType=BIGINT}
+		where id = #{id,jdbcType=VARCHAR}
 	</update>
 	<select id="queryList" resultMap="point"
 		parameterType="java.util.Map">
@@ -99,10 +99,10 @@
 		<include refid="where" />
 	</select>
 	<select id="selectById" resultMap="point"
-			parameterType="java.lang.Long">
+			parameterType="java.lang.String">
 			select
 			<include refid="Base_Column_List" />
 			from cms_view_point
-			where id = #{id,jdbcType=BIGINT}
+			where id = #{id,jdbcType=VARCHAR}
 	</select>
 </mapper>

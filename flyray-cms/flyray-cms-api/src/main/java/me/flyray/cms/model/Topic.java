@@ -1,17 +1,19 @@
 package me.flyray.cms.model;
 
+import java.io.Serializable;
+
 /**
  * @author: bolei
  * @date：2017年3月6日 下午10:21:42
  * @description：话题
  */
 
-public class Topic {
+public class Topic implements Serializable{
 	
 	/**
-	 * 自增id
+	 * id
 	 */
-	private Long id;
+	private String id;
 	
 	/**
 	 * 话题标题
@@ -36,7 +38,7 @@ public class Topic {
 	/**
 	 * 发起话题人
 	 */
-	private String customerNo;
+	private String createBy;
 	
 	/**
 	 * 发起时间
@@ -47,13 +49,32 @@ public class Topic {
 	 * 审核删除标识
 	 */
 	private String flag;
-
-	public Long getId() {
-		return id;
+	/**
+	 * 发起话题人名字
+	 */
+	private String name;
+	
+	/**
+	 * 发起人头像
+	 */
+	private String authImg;
+	
+	
+	
+	public String getAuthImg() {
+		return authImg;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setAuthImg(String authImg) {
+		this.authImg = authImg;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getTitle() {
@@ -87,15 +108,6 @@ public class Topic {
 	public void setImg(String img) {
 		this.img = img;
 	}
-
-	public String getCustomerNo() {
-		return customerNo;
-	}
-
-	public void setCustomerNo(String customerNo) {
-		this.customerNo = customerNo;
-	}
-
 	public String getCreateTime() {
 		return createTime;
 	}
@@ -111,5 +123,27 @@ public class Topic {
 	public void setFlag(String flag) {
 		this.flag = flag;
 	}
-	
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getCreateBy() {
+		return createBy;
+	}
+
+	public void setCreateBy(String createBy) {
+		this.createBy = createBy;
+	}
+
+	@Override
+	public String toString() {
+		return "Topic [id=" + id + ", title=" + title + ", content=" + content + ", discription=" + discription
+				+ ", img=" + img + ", createBy=" + createBy + ", createTime=" + createTime + ", flag=" + flag
+				+ ", name=" + name + ", authImg=" + authImg + "]";
+	}
 }

@@ -46,7 +46,7 @@ public abstract class AbstractController {
 	protected boolean isLastPage(Map<String, String> param) {
 		
 		String currentPage = (String) param.get("currentPage");//当前页
-		PageUtils pageUtil = new PageUtils(Integer.valueOf(param.get("totalCount")), 10, Integer.valueOf(param.get("currentPage")));
+		PageUtils pageUtil = new PageUtils(Integer.valueOf(param.get("totalCount")), 10, Integer.valueOf(currentPage));
 		Integer nextPage = Integer.valueOf(currentPage) + 1;
 		boolean flag =  false;
 		if(nextPage > pageUtil.getTotalPage()){
