@@ -7,6 +7,7 @@ package me.flyray.cms.model;
  * @description :
  */
 public class ActivityCustomer {
+	
 	/**
 	 * 活动序号
 	 */

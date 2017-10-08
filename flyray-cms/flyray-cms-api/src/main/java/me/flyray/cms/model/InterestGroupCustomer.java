@@ -7,6 +7,7 @@ package me.flyray.cms.model;
  * @description :
  */
 public class InterestGroupCustomer {
+	
 	/**
 	 * 团队序号
 	 */
