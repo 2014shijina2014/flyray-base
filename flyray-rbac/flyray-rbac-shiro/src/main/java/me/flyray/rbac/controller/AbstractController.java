@@ -64,4 +64,35 @@ public abstract class AbstractController {
 		Map<String, Object> resulMap= (Map<String, Object>)list.get(0);
 		return (Long)resulMap.get("id");
 	}
+	
+	/**
+	 * 确保查询的是当前机构或商户下的数据
+	 * @return
+	 */
+	protected Map<String, Object> getCommonQueryParam() {
+		SysUserEntity currUser = getUser();
+		Long merchantId = getMerchantId();
+		Map<String, Object> map = new HashMap<>();
+		if (isOrg()) {
+			map.put("orgId", currUser.getOrgId());
+		}else if (UserType.SAAS_ADMIN.getCode().equals(currUser.getUserType())) {
+			map.put("merchantId", "");
+		}else{
+			map.put("merchantId", merchantId);
+		}
+		return map;
+	}
+	
+	/**
+	 * 确保数据添加到当前商户或渠道下面
+	 * @return
+	 */
+	protected Map<String, Object> getCommonSaveParam() {
+		SysUserEntity currUser = getUser();
+		Long merchantId = getMerchantId();
+		Map<String, Object> map = new HashMap<>();
+		map.put("orgId", currUser.getOrgId());
+		map.put("merchantId", merchantId);
+		return map;
+	}
 }

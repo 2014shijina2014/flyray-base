@@ -49,26 +49,14 @@ public class ProductCategaryController extends AbstractController {
 	@RequiresPermissions("erp:productCategary:list")
 	public R list(@RequestParam Map<String, Object> params){
 		//判断当前用户是什么角色 如果是小商户或平台商户则直接查询当前用户下信息，如果是平台商户的管理员则查询平台商户的信息
-		SysUserEntity currUser = getUser();
-		Long merchantId = getMerchantId();
 		Parameter parameter = new Parameter("productCategaryService", "queryList");
-		Map<String, Object> map = new HashMap<>();
-		if (isOrg()) {
-			map.put("orgId", currUser.getOrgId());
-		}else if (UserType.SAAS_ADMIN.getCode().equals(currUser.getUserType())) {
-			map.put("merchantId", "");
-		}else{
-			map.put("merchantId", merchantId);
-		}
-		parameter.setMap(map);
+		parameter.setMap(getCommonQueryParam());
 		List<?> list = apiProvider.execute(parameter).getList();
 		int total = list.size();
 		PageUtils pageUtil = new PageUtils(list, total, 10, 1);
-		
 		return R.ok().put("page", pageUtil);
 	}
-	
-	
+
 	/**
 	 * 客户会员信息
 	 */
@@ -90,11 +78,8 @@ public class ProductCategaryController extends AbstractController {
 	public R save(@RequestBody Map<String, Object> params){
 		Parameter parameter = new Parameter("productCategaryService", "save");
 		//判断当前登陆用户的商户号和所属机构
-		SysUserEntity currUser = getUser();
-		Long merchantId = getMerchantId();
 		Map<String, Object> map = new HashMap<>();
-		map.put("orgId", currUser.getOrgId());
-		map.put("merchantId", merchantId);
+		map.putAll(getCommonSaveParam());
 		map.put("categaryName", params.get("categaryName"));
 		parameter.setMap(map);
 		apiProvider.execute(parameter);
