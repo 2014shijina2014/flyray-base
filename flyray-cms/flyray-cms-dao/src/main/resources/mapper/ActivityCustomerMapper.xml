@@ -24,7 +24,7 @@
 		</trim>
 	</sql>
 	
-	<insert id="insert" parameterType="me.flyray.cms.model.Activity">
+	<insert id="save" parameterType="me.flyray.cms.model.Activity">
 		insert into cms_activity_customer
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="activityId != null and activityId != ''">

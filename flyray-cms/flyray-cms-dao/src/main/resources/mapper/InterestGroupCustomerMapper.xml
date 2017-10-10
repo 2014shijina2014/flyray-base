@@ -24,7 +24,7 @@
 		</trim>
 	</sql>
 	
-	<insert id="insert" parameterType="me.flyray.cms.model.InterestGroupCustomer">
+	<insert id="save" parameterType="me.flyray.cms.model.InterestGroupCustomer">
 		insert into cms_interest_group_customer
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="groupId != null and groupId != ''">

@@ -1,6 +1,5 @@
 package me.flyray.rest.controller.cms;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +18,6 @@ import me.flyray.cms.api.InterestGroupCategoryService;
 import me.flyray.cms.api.InterestGroupService;
 import me.flyray.cms.model.Activity;
 import me.flyray.cms.model.InterestGroup;
-import me.flyray.cms.model.InterestGroupCategory;
 import me.flyray.rest.controller.AbstractController;
 import me.flyray.rest.util.PageUtils;
 import me.flyray.rest.util.ResponseHelper;
