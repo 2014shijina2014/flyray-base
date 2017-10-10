@@ -43,7 +43,7 @@ public class ViewFavortServiceImpl extends AbstractBaseService<ViewFavort> imple
 			String pointId = (String) param.get("pointId");
 			//根据观点编号查询出观点，然后点赞数量+1
 			Map<String, Object> pointMap = new HashMap<String, Object>();
-			Viewpoint point = pointDao.selectById(Long.valueOf(pointId));
+			Viewpoint point = pointDao.selectById(pointId);
 			
 			List<ViewFavort> favortList = dao.query(param);
 			ViewFavort favort = new ViewFavort();

@@ -32,11 +32,11 @@
 
 	<select id="queryTotal" resultType="int">
 		select count(*) from
-		cms_comment
+		cms_comment 
+		<include refid="where1"/>
 	</select>
 
-	<insert id="save" parameterType="me.flyray.cms.model.Comment"
-		useGeneratedKeys="true" keyProperty="id">
+	<insert id="save" parameterType="me.flyray.cms.model.Comment" keyProperty="id">
 		insert into cms_comment
 		(
 		`id`,
@@ -45,8 +45,8 @@
 		`comment_target_id`,
 		`comment_by_name`,
 		`comment_by`,
-		`comment_target_user_name`
-		`comment_target_user_id`
+		`comment_target_user_name`,
+		`comment_target_user_id`,
 		`comment_likeCount`,
 		`comment_time`,
 		`comment_module_no`

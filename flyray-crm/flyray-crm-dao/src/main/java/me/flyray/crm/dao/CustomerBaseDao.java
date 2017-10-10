@@ -16,4 +16,5 @@ public interface CustomerBaseDao extends BaseDao<CustomerBase>{
 	void deleteBaseAndExtend(Long id);
 	void delete(Long id);
 	CustomerBase queryByCustomerId(Long id);
+	CustomerBase queryByCustomerNo(String customerNo);
 }

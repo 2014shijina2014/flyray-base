@@ -1,6 +1,5 @@
 package me.flyray.rest.controller.cms;
 
-import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import me.flyray.cms.api.CommentService;
 import me.flyray.cms.api.ViewFavortService;
 import me.flyray.cms.api.ViewpointService;
+import me.flyray.cms.model.Comment;
 import me.flyray.cms.model.Viewpoint;
 import me.flyray.common.utils.SnowFlake;
 import me.flyray.crm.api.CustomerBaseService;
@@ -25,7 +26,6 @@ import me.flyray.crm.model.CustomerBase;
 import me.flyray.rest.controller.AbstractController;
 import me.flyray.rest.model.ViewPointItem;
 import me.flyray.rest.util.PageUtils;
-import me.flyray.rest.util.Pager;
 import me.flyray.rest.util.ResponseHelper;
 
 /** 
@@ -43,6 +43,8 @@ public class ViewpointController extends AbstractController{
 	private CustomerBaseService customerBaseService;
 	@Autowired
 	private ViewFavortService viewFavortService;
+	@Autowired
+	private CommentService commentService;
 	/**
 	 * 添加观点
 	 */
@@ -162,4 +164,126 @@ public class ViewpointController extends AbstractController{
 		}
 		
 	}
+	/**
+	 * 请求单个观点详情
+	 */
+	@ResponseBody
+	@RequestMapping(value="/info", method = RequestMethod.POST)
+	public Map<String, Object> info(@RequestBody Map<String, Object> param) {
+		logger.info("请求单个观点详情---start---{}",param);
+		Map<String, Object> result = viewPointService.selectPointById(param);
+		String code = (String) result.get("code");
+		String createBy = (String) result.get("createBy");
+		if("00".equals(code)){
+			Viewpoint cmsViewPoint = (Viewpoint) result.get("point");
+			//当前登录者有没有对条记录点赞
+			Map<String, Object> favortMap = new HashMap<>();
+			favortMap.put("createBy", createBy);
+			favortMap.put("pointId", cmsViewPoint.getId());
+			favortMap.put("favortStatus", 1);
+			List favortList = viewFavortService.queryList(favortMap);
+			if(favortList.size() > 0){
+				cmsViewPoint.setIfFavort(1);
+			}else{
+				cmsViewPoint.setIfFavort(2);
+			}
+			ViewPointItem item = new ViewPointItem();
+			Date time = cmsViewPoint.getPointTime();
+			SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");//
+			String fromDate = simpleFormat.format(time);
+			String toDate = simpleFormat.format(new Date());
+
+			try {
+				long from = simpleFormat.parse(fromDate).getTime();
+				long to = simpleFormat.parse(toDate).getTime();
+				int minutes = (int) ((to - from)/(1000 * 60));
+				if(minutes <= 60){
+					//如果小于60分钟就显示分钟
+					cmsViewPoint.setDiffTime(String.valueOf(minutes)+"分钟");
+				}else if(minutes > 60 && minutes <= 60*24){
+					//如果大于60分钟小于24小时显示小时
+					int hours = (int) ((to - from)/(1000 * 60 * 60));
+					cmsViewPoint.setDiffTime(String.valueOf(hours)+"小时");
+				}else{
+					//大于24小时显示天
+					int days = (int) ((to - from)/(1000 * 60 * 60 * 24));
+					cmsViewPoint.setDiffTime(String.valueOf(days)+"天");
+				}
+				item.setCmsViewPoint(cmsViewPoint);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			if(cmsViewPoint.getCreateBy() != null){
+				CustomerBase customer = customerBaseService.queryByCustomerId(cmsViewPoint.getCreateBy());
+				item.setCustomer(customer);
+			}
+			result.put("item", item);
+			return ResponseHelper.success(result,null, "00", "查询成功");
+		}else{
+			return ResponseHelper.success(result,null, "01", "查询异常");
+		}
+	}
+	/**
+	 * 查询观点评论 
+	 */
+	@ResponseBody
+	@RequestMapping(value="/queryPointComment", method = RequestMethod.POST)
+	public Map<String, Object> queryPointComment(@RequestBody Map<String, String> param) {
+		logger.info("查询观点评论 ---start---{}",param);
+		String currentPage = param.get("currentPage");//当前页
+		String pageSize = param.get("pageSize");//条数
+		String commentTargetId = param.get("commentTargetId");//观点编号
+		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> queryMap = new HashMap<>();
+		queryMap.put("commentModuleNo", 1);
+		queryMap.put("commentTargetId", commentTargetId);
+		Integer total = commentService.queryTotal(queryMap);
+		logger.info("查询观点评论 ---total---{}",total);
+		param.put("totalCount", String.valueOf(total));
+		int pageSizeInt = Integer.valueOf(pageSize);
+		PageUtils pageUtil = new PageUtils(total, pageSizeInt, Integer.valueOf(currentPage));
+		logger.info("查询观点评论 ---pageUtil---{}",pageUtil.toString());
+		if (isLastPage(param)) {
+			return ResponseHelper.success(null,pageUtil, "01", "已经到最后一条了~");
+		}
+		queryMap.putAll(getPagination(param));
+		
+		
+		List<Comment> commentList = commentService.query(queryMap);
+		return ResponseHelper.success(commentList,pageUtil, "00", "查询成功");
+	}
+	/**
+	 * 观点回复添加
+	 */
+	@ResponseBody
+	@RequestMapping(value="/addPointComment", method = RequestMethod.POST)
+	public Map<String, Object> addPointComment(@RequestBody Map<String, Object> param) {
+		logger.info("观点回复添加 ---start---{}",param);
+		String commentType = (String) param.get("commentType");//1评论2回复
+		String commentBy = (String) param.get("commentBy");
+		CustomerBase custome = customerBaseService.queryByCustomerId(Long.valueOf(commentBy));
+		param.put("commentByName", custome.getNickname());
+		if ("1".equals(commentType)) {
+			//1、评论
+			
+		} else if("2".equals(commentType)) {
+			//2、回复
+			Integer commentTargetUserId = (Integer) param.get("commentTargetUserId");
+			CustomerBase targetCustome = customerBaseService.queryByCustomerId(Long.valueOf(commentBy));
+			param.put("commentTargetUserName", targetCustome.getNickname());
+			param.put("commentTargetUserId", commentTargetUserId);
+		}
+		try {
+			logger.info("观点回复添加 ---查询完用户名后---{}",param);
+			Comment comment = commentService.savePointComment(param);
+			logger.info("观点回复添加 ---comment---{}",comment.toString());
+			return ResponseHelper.success(comment,null, "00", "评论成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return ResponseHelper.success(null,null, "01", "评论异常");
+	}
+	
 }

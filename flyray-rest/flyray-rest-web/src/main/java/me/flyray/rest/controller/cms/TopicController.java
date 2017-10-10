@@ -1,5 +1,6 @@
 package me.flyray.rest.controller.cms;
 
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -107,14 +108,35 @@ public class TopicController extends AbstractController{
 		queryMap.put("commentModuleNo", "2");
 		List<Comment> list = commentService.query(queryMap);
 		logger.info("请求查询话题--list---{}",list.toString());
+		String format = "yyyy-MM-dd HH:mm:ss";
+		SimpleDateFormat sdf = new SimpleDateFormat(format);  
 		for (Object object : list) {
 			Comment comment = (Comment) object;
 			Long uid = comment.getCommentBy();
 			CustomerBase customer = customerBaseService.queryByCustomerId(uid);
 			comment.setCommentImg(customer.getAvatar());
+			String time = sdf.format(comment.getCommentTime());
+			comment.setCommentTimes(time);
 		}
 		
 		return ResponseHelper.success(list,pageUtil, "00", "查询成功");
 	}
-	
+	/**
+	 * 添加评论
+	 */
+	@ResponseBody
+	@RequestMapping(value="/addComment", method = RequestMethod.POST)
+	public Map<String, Object> addComment(@RequestBody Map<String, Object> param) {
+		String commentBy = (String) param.get("commentBy");
+		//根据commentBy查询用户名
+		CustomerBase custome = customerBaseService.queryByCustomerId(Long.valueOf(commentBy));
+		param.put("commentByName", custome.getNickname());
+		Map<String, Object> result = commentService.saveTopicComment(param);
+		if ("00".equals(result.get("code"))) {
+			Comment comment = (Comment) result.get("comment");
+			return ResponseHelper.success(result,null, "00", "评论成功");
+		}else {
+			return ResponseHelper.success(result,null, "01", "评论异常");
+		}
+	}
 }

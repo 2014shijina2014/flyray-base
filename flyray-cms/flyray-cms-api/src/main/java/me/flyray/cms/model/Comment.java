@@ -1,5 +1,7 @@
 package me.flyray.cms.model;
 
+import java.sql.Timestamp;
+
 import me.flyray.common.model.BaseModel;
 
 /** 
@@ -13,7 +15,7 @@ public class Comment extends BaseModel {
 	/**
 	 * 主键id
 	 */
-	private Long id;
+	private String id;
 	
 	/**
 	 * 评论类型(1评论2回复)
@@ -28,7 +30,7 @@ public class Comment extends BaseModel {
 	/**
 	 * 评论的目标id
 	 */
-	private Long commentTargetId;
+	private String commentTargetId;
 	
 	/**
 	 * 发表评论的用户id
@@ -58,7 +60,7 @@ public class Comment extends BaseModel {
 	/**
 	 * 评论时间
 	 */
-	private String  commentTime;
+	private Timestamp  commentTime;
 	
 	/**
 	 * 评论模块编号
@@ -68,21 +70,32 @@ public class Comment extends BaseModel {
 	 * 评论人头像
 	 */
 	private String commentImg;
-	
+	/**
+	 * 字符串格式时间
+	 */
+	private String commentTimes;
 	
 	public String getCommentImg() {
 		return commentImg;
+	}
+
+	public String getCommentTimes() {
+		return commentTimes;
+	}
+
+	public void setCommentTimes(String commentTimes) {
+		this.commentTimes = commentTimes;
 	}
 
 	public void setCommentImg(String commentImg) {
 		this.commentImg = commentImg;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -102,11 +115,13 @@ public class Comment extends BaseModel {
 		this.commentContent = commentContent;
 	}
 
-	public Long getCommentTargetId() {
+	
+
+	public String getCommentTargetId() {
 		return commentTargetId;
 	}
 
-	public void setCommentTargetId(Long commentTargetId) {
+	public void setCommentTargetId(String commentTargetId) {
 		this.commentTargetId = commentTargetId;
 	}
 
@@ -154,11 +169,11 @@ public class Comment extends BaseModel {
 		this.commentLikeCount = commentLikeCount;
 	}
 
-	public String getCommentTime() {
+	public Timestamp getCommentTime() {
 		return commentTime;
 	}
 
-	public void setCommentTime(String commentTime) {
+	public void setCommentTime(Timestamp commentTime) {
 		this.commentTime = commentTime;
 	}
 
@@ -170,4 +185,13 @@ public class Comment extends BaseModel {
 		this.commentModuleNo = commentModuleNo;
 	}
 
+	@Override
+	public String toString() {
+		return "Comment [id=" + id + ", commentType=" + commentType + ", commentContent=" + commentContent
+				+ ", commentTargetId=" + commentTargetId + ", commentBy=" + commentBy + ", commentByName="
+				+ commentByName + ", commentTargetUserId=" + commentTargetUserId + ", commentTargetUserName="
+				+ commentTargetUserName + ", commentLikeCount=" + commentLikeCount + ", commentTime=" + commentTime
+				+ ", commentModuleNo=" + commentModuleNo + ", commentImg=" + commentImg + ", commentTimes="
+				+ commentTimes + "]";
+	}
 }

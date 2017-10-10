@@ -13,7 +13,9 @@ import me.flyray.common.service.BaseService;
 
 public interface ViewpointService extends BaseService{
 
-	void delete(Long id);
+	void delete(String id);
 
 	List<Viewpoint> query(Map<String, Object> map);
+	Map<String, Object> selectPointById(Map<String, Object> map);
+	
 }

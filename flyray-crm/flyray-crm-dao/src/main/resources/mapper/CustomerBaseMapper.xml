@@ -41,6 +41,9 @@
 	<select id="queryByCustomerId" resultMap="customerBaseMap">
 		SELECT * FROM crm_customer_base AS base LEFT JOIN `crm_customer_base_extend` AS extend ON base.`id` = extend.`customer_id` WHERE id = #{id}
 	</select>
+	<select id="queryByCustomerNo" resultMap="customerBaseMap">
+		SELECT * FROM crm_customer_base AS base LEFT JOIN `crm_customer_base_extend` AS extend ON base.`id` = extend.`customer_id` WHERE customer_no = #{customerNo}
+	</select>
 	<insert id="save" parameterType="me.flyray.crm.model.CustomerBase" useGeneratedKeys="true" keyProperty="id">
 		insert into crm_customer_base
 		(

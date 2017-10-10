@@ -7,7 +7,7 @@ import me.flyray.common.dao.BaseDao;
 
 public interface ViewpointDao extends BaseDao<Viewpoint>{
 	
-	List<Viewpoint> queryObject(Long id);
-	void delete(Long id);
-	Viewpoint selectById(Long id);
+	List<Viewpoint> queryObject(String id);
+	void delete(String id);
+	Viewpoint selectById(String id);
 }

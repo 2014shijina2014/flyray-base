@@ -64,4 +64,10 @@ public class CustomerBaseServiceImpl extends AbstractBaseService<CustomerBase> i
 		return customerBase;
 	}
 
+	@Override
+	public CustomerBase queryByCustomerNo(String customerNo) {
+		CustomerBase customerBase = customerBaseDao.queryByCustomerNo(customerNo);
+		return customerBase;
+	}
+
 }

@@ -20,5 +20,5 @@ public interface CustomerBaseService extends BaseService{
 	void deleteBaseAndExtend(Long id);
 	void delete(Long id);
 	CustomerBase queryByCustomerId(Long customerId);
-	
+	CustomerBase queryByCustomerNo(String customerNo);
 }
