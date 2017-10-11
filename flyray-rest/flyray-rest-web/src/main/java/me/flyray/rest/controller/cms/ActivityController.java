@@ -1,5 +1,6 @@
 package me.flyray.rest.controller.cms;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,11 +14,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import me.flyray.cms.api.ActivityCustomerService;
 import me.flyray.cms.api.ActivityService;
 import me.flyray.cms.api.InterestGroupCategoryService;
 import me.flyray.cms.api.InterestGroupService;
 import me.flyray.cms.model.Activity;
+import me.flyray.cms.model.ActivityCustomer;
 import me.flyray.cms.model.InterestGroup;
+import me.flyray.crm.api.CustomerBaseService;
+import me.flyray.crm.model.CustomerBase;
 import me.flyray.rest.controller.AbstractController;
 import me.flyray.rest.util.PageUtils;
 import me.flyray.rest.util.ResponseHelper;
@@ -36,6 +41,10 @@ public class ActivityController extends AbstractController {
 
 	@Autowired
 	private ActivityService activityService;
+	@Autowired
+	private ActivityCustomerService activityCustomerService;
+	@Autowired
+	private CustomerBaseService customerBaseService;
 	@Autowired
 	private InterestGroupService interestGroupService;
 	@Autowired
@@ -169,16 +178,32 @@ public class ActivityController extends AbstractController {
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		logger.info("查询活动详细信息------start------{}", param);
 
-		String activitystr = (String) param.get("activityId");
-		if (null == activitystr || "".equals(activitystr.trim())) {
-			logger.info("查询活动详情信息请求参数错误，activityId：{}",activitystr);
+		String activityId = (String) param.get("activityId");
+		if (null == activityId || "".equals(activityId.trim())) {
+			logger.info("查询活动详情信息请求参数错误，activityId：{}",activityId);
 			return ResponseHelper.success(resultMap, null, "01", "请求数据失败");
 		}
 		Activity reqAct = new Activity();
-		reqAct.setId(activitystr);
+		reqAct.setId(activityId);
 		Activity resAct = activityService.queryEntity(reqAct);
-		logger.info("查询活动首页信息------查询推荐活动记录------{}", resAct);
+		logger.info("查询活动详细信息------{}", resAct);
+		ActivityCustomer reqActCus = new ActivityCustomer();
+		reqActCus.setActivityId(activityId);
+		List<ActivityCustomer> respActCusList = activityCustomerService.selectByBizKeys(reqActCus);
+		List<CustomerBase> customerList = null;
+		if(null != respActCusList && respActCusList.size() > 0) {
+			customerList = new ArrayList<CustomerBase>();
+			for (int i = 0; i < respActCusList.size(); i++) {
+				ActivityCustomer item = respActCusList.get(i);
+				Long custId = Long.valueOf(item.getCustomerId());
+				CustomerBase customerBase = customerBaseService.queryByCustomerId(custId);
+				customerList.add(customerBase);
+			}
+		}
+		
+		logger.info("查询参与活动的用户信息------{}", customerList);
 		resultMap.put("activity", resAct);
+		resultMap.put("customerList", customerList);
 
 		logger.info("查询活动详细信息------end------{}", resultMap);
 		return ResponseHelper.success(resultMap, null, "00", "请求数据成功");

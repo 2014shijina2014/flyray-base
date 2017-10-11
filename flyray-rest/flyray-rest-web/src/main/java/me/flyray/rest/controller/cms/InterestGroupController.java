@@ -1,5 +1,6 @@
 package me.flyray.rest.controller.cms;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,8 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import me.flyray.cms.api.InterestGroupCustomerService;
 import me.flyray.cms.api.InterestGroupService;
+import me.flyray.cms.model.ActivityCustomer;
 import me.flyray.cms.model.InterestGroup;
+import me.flyray.cms.model.InterestGroupCustomer;
+import me.flyray.crm.api.CustomerBaseService;
+import me.flyray.crm.model.CustomerBase;
 import me.flyray.rest.controller.AbstractController;
 import me.flyray.rest.util.PageUtils;
 import me.flyray.rest.util.ResponseHelper;
@@ -33,6 +39,10 @@ public class InterestGroupController extends AbstractController {
 
 	@Autowired
 	private InterestGroupService interestGroupService;
+	@Autowired
+	private CustomerBaseService customerBaseService;
+	@Autowired
+	private InterestGroupCustomerService interestGroupCustomerService;
 	
 	/**
 	 * 查询活动分类下的活动团队列表
@@ -92,9 +102,6 @@ public class InterestGroupController extends AbstractController {
 		queryMap.put("orgId", orgId);
 		queryMap.put("merchantId", merId);
 		queryMap.put("id", groupId);
-//		int resultTotal = interestGroupService.queryTotal(queryMap);
-//		param.put("totalCount", String.valueOf(resultTotal));
-//		queryMap.putAll(getPagination(param));
 		
 		logger.info("查询活动团队列表信息------{}", queryMap);
 		List<InterestGroup> groups = interestGroupService.query(queryMap);
@@ -103,14 +110,24 @@ public class InterestGroupController extends AbstractController {
 		if (null != groups && groups.size() > 0) {
 			interestGroup = groups.get(0);
 		}
-		
-//		int pageSizeInt = Integer.valueOf(param.get("pageSize"));
-//		PageUtils pageUtil = new PageUtils(resultTotal, pageSizeInt, Integer.valueOf(param.get("currentPage")));
-//		if (isLastPage(param)) {
-//			return ResponseHelper.success(null,pageUtil, "01", "已经到最后一条了~");
-//		}
-		
+		logger.info("查询活动团队详细信息------{}", interestGroup);
+		InterestGroupCustomer reqGroupCus = new InterestGroupCustomer();
+		reqGroupCus.setGroupId(groupId);
+		List<InterestGroupCustomer> respGroupCusList = interestGroupCustomerService.selectByBizKeys(reqGroupCus);
+		List<CustomerBase> customerList = null;
+		if(null != respGroupCusList && respGroupCusList.size() > 0) {
+			customerList = new ArrayList<CustomerBase>();
+			for (int i = 0; i < respGroupCusList.size(); i++) {
+				InterestGroupCustomer item = respGroupCusList.get(i);
+				Long custId = Long.valueOf(item.getCustomerId());
+				CustomerBase customerBase = customerBaseService.queryByCustomerId(custId);
+				customerList.add(customerBase);
+			}
+		}		
+
+		logger.info("查询参加团队的用户信息------{}", customerList);
 		resultMap.put("interestGroup", interestGroup);
+		resultMap.put("customerList", customerList);
 
 		logger.info("查询活动团队列表信息------end------{}", resultMap);
 		return ResponseHelper.success(resultMap, null, "00", "请求数据成功");
