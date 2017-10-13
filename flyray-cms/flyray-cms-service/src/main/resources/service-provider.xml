@@ -47,4 +47,8 @@
 	<dubbo:service interface="me.flyray.cms.api.CustomerSpecialColumnService" ref="customerSpecialColumnService"  protocol="dubbo" timeout="1200000"/>
 	<!-- 话题接口 -->
 	<dubbo:service interface="me.flyray.cms.api.TopicService" ref="topicService"  protocol="dubbo" timeout="1200000"/>
+	
+	<dubbo:service interface="me.flyray.cms.api.ActivityCustomerService" ref="activityCustomerService"  protocol="dubbo" timeout="1200000"/>
+	
+	<dubbo:service interface="me.flyray.cms.api.InterestGroupCustomerService" ref="interestGroupCustomerService"  protocol="dubbo" timeout="1200000"/>
 </beans>
