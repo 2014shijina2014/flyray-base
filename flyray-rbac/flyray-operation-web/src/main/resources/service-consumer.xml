@@ -14,5 +14,6 @@
     <!-- <dubbo:protocol host="192.168.2.174" name="dubbo" port="10108"/> -->
 
     <dubbo:reference id="apiProvider" interface="me.flyray.rest.api.ApiProvider"/>
-
+    <!-- 话题接口 -->
+	<dubbo:reference id="topicService" interface="me.flyray.cms.api.TopicService"/>
 </beans>
