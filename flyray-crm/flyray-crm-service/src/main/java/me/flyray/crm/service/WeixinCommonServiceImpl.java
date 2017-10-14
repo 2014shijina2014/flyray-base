@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import me.chanjar.weixin.common.exception.WxErrorException;
+import me.chanjar.weixin.mp.api.WxMpInMemoryConfigStorage;
 import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.result.WxMpOAuth2AccessToken;
 import me.chanjar.weixin.mp.bean.result.WxMpUser;
@@ -37,6 +38,11 @@ public class WeixinCommonServiceImpl implements WeixinCommonService{
 		Map<String, Object> resultMap = null;
 		try {
 			logger.info("请求微信授权信息------{}",param);
+			
+			WxMpInMemoryConfigStorage config = new WxMpInMemoryConfigStorage();
+		    config.setAppId("wx0f6fa56da5e7fb62"); // 设置微信公众号的appid
+		    config.setSecret("..."); // 设置微信公众号的app corpSecret
+		    wxMpService.setWxMpConfigStorage(config);
 			WxMpOAuth2AccessToken wxMpOAuth2AccessToken = weixinService.oauth2getAccessToken((String)param.get("code"));
 			WxMpUser wxMpUser = weixinService.oauth2getUserInfo(wxMpOAuth2AccessToken, null);
 			/*wxMpUser.getCity() wxMpUser.getCountry()
