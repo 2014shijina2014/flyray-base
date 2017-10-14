@@ -9,6 +9,8 @@
 			<if test="commentType != null"> AND comment_type = #{commentType} </if>
 			<if test="commentTargetId != null">AND comment_target_id = #{commentTargetId} </if>
 			<if test="commentModuleNo != null">AND comment_module_no = #{commentModuleNo}</if>
+			<if test="merchantId != null">AND merchant_id = #{merchantId}</if>
+			<if test="orgId != null">AND org_id = #{orgId}</if>
 		</trim>
 	</sql>
 	<select id="queryObject" resultType="me.flyray.cms.model.Comment">
@@ -49,7 +51,9 @@
 		`comment_target_user_id`,
 		`comment_likeCount`,
 		`comment_time`,
-		`comment_module_no`
+		`comment_module_no`,
+		`merchant_id`,
+		`org_id`,
 		)
 		values
 		(
@@ -63,7 +67,9 @@
 		#{commentTargetUserId},
 		#{commentLikeCount},
 		#{commentTime},
-		#{commentModuleNo}
+		#{commentModuleNo},
+		#{merchantId},
+		#{orgId},
 		)
 	</insert>
 

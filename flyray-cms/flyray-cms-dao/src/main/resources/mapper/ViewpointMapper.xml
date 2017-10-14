@@ -12,10 +12,12 @@
 		<result property="pointTime" column="point_time" />
 		<result property="favortCount" column="favort_count" />
 		<result property="commentCount" column="comment_count" />
+		<result property="merchantId" column="merchant_id" />
+		<result property="orgId" column="org_id" />
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		id, create_by, point_text, point_img, point_time, point_address, favort_count, comment_count
+		id, create_by, point_text, point_img, point_time, point_address, favort_count, comment_count, merchant_id, org_id
 	</sql>
 	<sql id="where">
 		<trim prefix="where" suffixOverrides="AND">
@@ -37,6 +39,12 @@
 			<if test="pointAddress != null">
 				point_address = #{pointAddress,jdbcType=VARCHAR} AND
 			</if>
+			<if test="merchantId != null">
+				merchant_id = #{merchantId,jdbcType=VARCHAR} AND
+			</if>
+			<if test="orgId != null">
+				org_id = #{orgId,jdbcType=VARCHAR} AND
+			</if>
 		</trim>
 	</sql>
 
@@ -46,7 +54,7 @@
 	</delete>
 	<insert id="save" keyProperty="id"
 		parameterType="me.flyray.cms.model.Viewpoint">
-		insert into cms_view_point (id, create_by, point_text, point_img, point_time, point_address, favort_count, comment_count)
+		insert into cms_view_point (id, create_by, point_text, point_img, point_time, point_address, favort_count, comment_count, merchant_id, org_id)
 		values (
 		#{id,jdbcType=VARCHAR}
 		,#{createBy,jdbcType=BIGINT}
@@ -56,6 +64,8 @@
 		,#{pointAddress,jdbcType=VARCHAR}
 		,#{favortCount,jdbcType=INTEGER}
 		,#{commentCount,jdbcType=INTEGER}
+		,#{merchantId,jdbcType=VARCHAR}
+		,#{orgId,jdbcType=VARCHAR}
 		)
 	</insert>
 	<update id="update"
@@ -79,6 +89,12 @@
 			</if>
 			<if test="commentCount != null">
 				comment_count = #{commentCount,jdbcType=INTEGER},
+			</if>
+			<if test="merchantId != null">
+				merchant_id = #{merchantId,jdbcType=VARCHAR},
+			</if>
+			<if test="orgId != null">
+				org_id = #{orgId,jdbcType=VARCHAR},
 			</if>
 		</set>
 		where id = #{id,jdbcType=VARCHAR}

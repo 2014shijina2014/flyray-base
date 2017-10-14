@@ -1,6 +1,6 @@
 package me.flyray.cms.model;
 
-import java.io.Serializable;
+import me.flyray.common.model.BaseModel;
 
 /**
  * @author: bolei
@@ -8,8 +8,13 @@ import java.io.Serializable;
  * @description：话题
  */
 
-public class Topic implements Serializable{
+public class Topic extends BaseModel{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6637440544286734697L;
+
 	/**
 	 * id
 	 */

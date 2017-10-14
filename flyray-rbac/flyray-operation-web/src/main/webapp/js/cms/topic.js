@@ -3,7 +3,8 @@ $(function () {
         url: '../cms/topic/list',
         datatype: "json",
         colModel: [			
-			{ label: 'ID', name: 'id', index: "id", width: 45, key: true }
+			{ label: 'ID', name: 'id', index: "id", width: 45, key: true },
+			{ label: '标题', name: 'title', width: 45}
         ],
 		viewrecords: true,
         height: 385,
@@ -113,8 +114,9 @@ var vm = new Vue({
 		reload: function (event) {
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
+			alert(vm.q.title);
 			$("#jqGrid").jqGrid('setGridParam',{ 
-                postData:{'orgName': vm.q.orgName},
+                postData:{'title': vm.q.title},
                 page:page
             }).trigger("reloadGrid");
 		}

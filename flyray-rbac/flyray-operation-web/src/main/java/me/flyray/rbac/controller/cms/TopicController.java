@@ -37,7 +37,7 @@ public class TopicController extends AbstractController {
 		Parameter parameter = new Parameter("topicService", "queryList");
 		parameter.setMap(getCommonQueryParam());
 		Map<String, Object> map = new HashMap<>();
-		parameter.setMap(map);
+		parameter.setMap(params);
 		List<?> list = apiProvider.execute(parameter).getList();
 		int total = list.size();
 		logger.info("flyray-operation话题列表---查询结果size:{}",total);

@@ -13,6 +13,11 @@ import me.flyray.common.model.BaseModel;
 public class Comment extends BaseModel {
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8754505712835926770L;
+
+	/**
 	 * 主键id
 	 */
 	private String id;

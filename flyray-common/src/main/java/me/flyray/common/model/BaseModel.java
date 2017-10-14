@@ -5,23 +5,23 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public abstract class BaseModel implements Serializable {
 	
-	private Long merchantId;
+	private String merchantId;
 	
-	private Long orgId;
+	private String orgId;
 
-	public Long getMerchantId() {
+	public String getMerchantId() {
 		return merchantId;
 	}
 
-	public void setMerchantId(Long merchantId) {
+	public void setMerchantId(String merchantId) {
 		this.merchantId = merchantId;
 	}
 
-	public Long getOrgId() {
+	public String getOrgId() {
 		return orgId;
 	}
 
-	public void setOrgId(Long orgId) {
+	public void setOrgId(String orgId) {
 		this.orgId = orgId;
 	}
 

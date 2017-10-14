@@ -16,6 +16,8 @@
 			<if test="createBy != null">create_by = #{createBy} AND</if>
 			<if test="pointId != null">point_id = #{pointId} AND</if>
 			<if test="favortStatus != null">favort_status = #{favortStatus} AND</if>
+			<if test="merchantId != null">merchant_id = #{merchantId} AND</if>
+			<if test="orgId != null">org_id = #{orgId} AND</if>
 		</trim>
 		order by create_time desc
 		<if test="offset != null and limit != null">
@@ -35,6 +37,12 @@
 			<if test="pointId != null">
 				AND point_id = #{pointId,jdbcType=VARCHAR}
 			</if>
+			<if test="merchantId != null">
+				AND merchant_id = #{merchantId,jdbcType=VARCHAR} 
+			</if>
+			<if test="orgId != null">
+				AND org_id = #{orgId,jdbcType=VARCHAR} 
+			</if>
 		</where>
 	</select>
 	
@@ -48,6 +56,12 @@
 			</if>
 			<if test="pointId != null">
 				AND point_id = #{pointId,jdbcType=VARCHAR}
+			</if>
+			<if test="merchantId != null">
+				AND merchant_id = #{merchantId,jdbcType=VARCHAR} 
+			</if>
+			<if test="orgId != null">
+				AND org_id = #{orgId,jdbcType=VARCHAR} 
 			</if>
 		</where>
 	</select>
@@ -70,13 +84,15 @@
 
 	<insert id="save" parameterType="me.flyray.cms.model.ViewFavort"
 		keyProperty="id">
-		insert into cms_view_favort (id,create_by,point_id,favort_status,create_time,update_time) values (
+		insert into cms_view_favort (id,create_by,point_id,favort_status,create_time,update_time,merchant_id,org_id) values (
 		#{id,jdbcType=VARCHAR},
 		#{createBy,jdbcType=VARCHAR},
 		#{pointId,jdbcType=VARCHAR},
 		#{favortStatus,jdbcType=INTEGER},
 		#{createTime,jdbcType=TIMESTAMP},
-		#{updateTime,jdbcType=TIMESTAMP}
+		#{updateTime,jdbcType=TIMESTAMP},
+		#{merchantId,jdbcType=VARCHAR},
+		#{orgId,jdbcType=VARCHAR},
 		)
 		
 	</insert>

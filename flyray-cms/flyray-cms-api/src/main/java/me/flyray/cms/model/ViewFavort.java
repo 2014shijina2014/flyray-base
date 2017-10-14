@@ -1,9 +1,10 @@
 package me.flyray.cms.model;
 
-import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class ViewFavort implements Serializable{
+import me.flyray.common.model.BaseModel;
+
+public class ViewFavort extends BaseModel{
 	/**
 	 * 
 	 */

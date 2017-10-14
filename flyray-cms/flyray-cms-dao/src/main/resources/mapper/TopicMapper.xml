@@ -14,7 +14,9 @@
 			<if test="createBy != null">create_by = #{createBy} AND</if>
 			<if test="createTime != null">create_time = #{createTime} AND</if>
 			<if test="flag != null">flag = #{flag} AND</if>
-			<if test="title != null">flag like '%#{title}%' AND</if>
+			<if test="title != null and title != ''">flag like '%#{title}%' AND</if>
+			<if test="merchantId != null">merchant_id = #{merchantId} AND</if>
+			<if test="orgId != null">org_id = #{orgId} AND</if>
 		</trim>
 		order by create_time desc
 		<if test="offset != null and limit != null">
@@ -50,7 +52,7 @@
 	</update>
 	<insert id="save" parameterType="me.flyray.cms.model.Topic"
 		keyProperty="id">
-		insert into cms_topic (id,title,content,discription,img,create_by,create_time,flag) values (
+		insert into cms_topic (id,title,content,discription,img,create_by,create_time,flag,merchant_id,org_id) values (
 		#{id,jdbcType=VARCHAR},
 		#{title,jdbcType=VARCHAR},
 		#{content,jdbcType=VARCHAR},
@@ -58,7 +60,9 @@
 		#{img,jdbcType=VARCHAR},
 		#{createby,jdbcType=VARCHAR},
 		#{createTime,jdbcType=TIMESTAMP},
-		#{flag,jdbcType=VARCHAR}
+		#{flag,jdbcType=VARCHAR},
+		#{merchantId,jdbcType=VARCHAR},
+		#{orgId,jdbcType=VARCHAR},
 		)
 	</insert>
 	<select id="queryTotal" resultType="int" parameterType="java.util.Map">
@@ -68,6 +72,8 @@
 			<if test="createTime != null">create_time = #{createTime} AND</if>
 			<if test="flag != null">flag = #{flag} AND</if>
 			<if test="title != null">flag like '%#{title}%' AND</if>
+			<if test="merchantId != null">merchant_id = #{merchantId} AND</if>
+			<if test="orgId != null">org_id = #{orgId} AND</if>
 		</trim>
 	</select>
 	<select id="selectById" resultType="me.flyray.cms.model.Topic" parameterType="java.lang.String">
