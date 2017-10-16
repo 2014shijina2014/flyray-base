@@ -25,30 +25,32 @@
     
     <div v-show="!showList" class="panel panel-default">
 		<div class="panel-heading">{{title}}</div>
-		<form class="form-horizontal">
+		<form class="form-horizontal" enctype="multipart/form-data">
 			<div class="form-group">
 			   	<div class="col-sm-2 control-label">标题</div>
 			   	<div class="col-sm-10">
-			      <input type="text" class="form-control" v-model="payChannel.payChannelNo" placeholder="标题"/>
+			      <input type="text" class="form-control" v-model="topic.title" placeholder="标题"/>
 			    </div>
 			</div>
 			<div class="form-group">
 			   	<div class="col-sm-2 control-label">内容</div>
 			   	<div class="col-sm-10">
-			      <input type="text" class="form-control" v-model="payChannel.payCompanyNo" placeholder="内容"/>
+			      <div id="flyrayEdt" style="width:300px">
+			        <p>请输入内容...</p>
+			    </div>
 			    </div>
 			</div>
 			<div class="form-group">
 			   	<div class="col-sm-2 control-label">描述</div>
 			   	<div class="col-sm-10">
-			      <input type="text" class="form-control" v-model="payChannel.feeRatio" placeholder="描述"/>
+			      <input type="text" class="form-control" v-model="topic.discription" placeholder="描述"/>
 			    </div>
 			</div>
 			<div class="form-group">
-			   	<div class="col-sm-2 control-label">图片</div>
+			<div class="col-sm-2 control-label">图片</div>
 			   	<div class="col-sm-10">
-			      <input type="text" class="form-control" v-model="payChannel.feeRatio" placeholder="图片"/>
-			    </div>
+    				<input type="file" v-model="topic.img">
+    			</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-2 control-label"></div> 
@@ -60,5 +62,27 @@
 </div>
 
 <script src="${rc.contextPath}/js/cms/topic.js?_${date.systemTime}"></script>
+<script type="text/javascript">
+    $(function () {
+    	var E = window.wangEditor
+    	var editor = new E('#flyrayEdt')
+    	// 下面两个配置，使用其中一个即可显示“上传图片”的tab。但是两者不要同时使用！！！
+        editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
+        editor.customConfig.uploadImgServer = '/upload'  // 上传图片到服务器
+       	// 隐藏“网络图片”tab
+        editor.customConfig.showLinkImg = false
+        editor.create()
+        document.getElementById('btn1').addEventListener('click', function () {
+        	// 读取 html
+        	console.log(editor.txt.html())
+        	alert(editor.txt.html())
+    	}, false)
+
+    	document.getElementById('btn2').addEventListener('click', function () {
+        	// 读取 text
+        	alert(editor.txt.text())
+    	}, false)
+    });
+</script>
 </body>
 </html>

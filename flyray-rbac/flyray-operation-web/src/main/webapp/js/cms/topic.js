@@ -45,6 +45,13 @@ var vm = new Vue({
 			payChannelNo:null,
 			payCompanyNo:null,
 			feeRatio:null,
+		},
+		topic:{
+			id:null,
+			content:null,
+			title:null,
+			discription:null,
+			img:null
 		}
 	},
 	methods: {
@@ -90,11 +97,13 @@ var vm = new Vue({
 			});
 		},
 		saveOrUpdate: function (event) {
-			var url = vm.payChannel.id == null ? "../pay/payChannel/save" : "../pay/payChannel/update";
+			var url = vm.topic.id == null ? "../cms/topic/save" : "../pay/payChannel/update";
+			alert(JSON.stringify(vm.topic));
+			return;
 			$.ajax({
 				type: "POST",
 			    url: url,
-			    data: JSON.stringify(vm.payChannel),
+			    data: JSON.stringify(vm.topic),
 			    success: function(r){
 			    	if(r.code === 0){
 						alert('操作成功', function(index){
@@ -114,7 +123,6 @@ var vm = new Vue({
 		reload: function (event) {
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
-			alert(vm.q.title);
 			$("#jqGrid").jqGrid('setGridParam',{ 
                 postData:{'title': vm.q.title},
                 page:page
