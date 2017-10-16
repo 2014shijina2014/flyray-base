@@ -167,10 +167,12 @@ public class InterestGroupController extends AbstractController {
 		String customerId = (String) param.get("customerId");
 		if (null == groupId || "".equals(groupId.trim())) {
 			logger.info("用户报名参加活动请求参数错误，groupId：{}",groupId);
+			resultMap.put("isJoin", "0");
 			return ResponseHelper.success(resultMap, null, "01", "请求数据失败");
 		}
 		if (null == customerId || "".equals(customerId.trim())) {
 			logger.info("用户报名参加活动请求参数错误，customerId：{}",customerId);
+			resultMap.put("isJoin", "0");
 			return ResponseHelper.success(resultMap, null, "01", "请求数据失败");
 		}
 		
@@ -184,6 +186,7 @@ public class InterestGroupController extends AbstractController {
 			saveMap.put("customerId", customerId);
 			interestGroupCustomerService.save(saveMap);
 		}
+		resultMap.put("isJoin", "1");
 		
 		logger.info("查询活动团队列表信息------end------{}", resultMap);
 		return ResponseHelper.success(resultMap, null, "00", "请求数据成功");

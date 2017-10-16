@@ -240,10 +240,12 @@ public class ActivityController extends AbstractController {
 		String customerId = (String) param.get("customerId");
 		if (null == activityId || "".equals(activityId.trim())) {
 			logger.info("用户报名参加活动请求参数错误，activityId：{}",activityId);
+			resultMap.put("isJoin", "0");
 			return ResponseHelper.success(resultMap, null, "01", "请求数据失败");
 		}
 		if (null == customerId || "".equals(customerId.trim())) {
 			logger.info("用户报名参加活动请求参数错误，customerId：{}",customerId);
+			resultMap.put("isJoin", "0");
 			return ResponseHelper.success(resultMap, null, "01", "请求数据失败");
 		}
 		
@@ -258,6 +260,8 @@ public class ActivityController extends AbstractController {
 			saveMap.put("customerId", customerId);
 			activityCustomerService.save(saveMap);
 		}
+
+		resultMap.put("isJoin", "1");
 		
 		logger.info("用户参加报名参加活动------end------{}", resultMap);
 		return ResponseHelper.success(resultMap, null, "00", "请求数据成功");
