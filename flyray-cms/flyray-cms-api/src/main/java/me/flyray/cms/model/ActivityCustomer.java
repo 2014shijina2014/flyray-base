@@ -1,13 +1,19 @@
 package me.flyray.cms.model;
 
+import java.io.Serializable;
+
 /**
  * 活动-用户关联实体
  * @author centerroot
  * @time 创建时间:2017年10月8日上午11:33:38
  * @description :
  */
-public class ActivityCustomer {
+public class ActivityCustomer implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3009439504700179634L;
 	/**
 	 * 活动序号
 	 */

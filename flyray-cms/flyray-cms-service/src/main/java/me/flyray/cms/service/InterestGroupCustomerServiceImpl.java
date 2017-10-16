@@ -48,8 +48,10 @@ public class InterestGroupCustomerServiceImpl implements InterestGroupCustomerSe
 
 	@Override
 	public void save(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-
+		InterestGroupCustomer igc = new InterestGroupCustomer();
+		igc.setCustomerId((String) map.get("customerId"));
+		igc.setGroupId((String) map.get("groupId"));
+		interestGroupCustomerDao.save(igc);
 	}
 
 	@Override

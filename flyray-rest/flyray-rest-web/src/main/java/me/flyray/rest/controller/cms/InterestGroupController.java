@@ -97,7 +97,16 @@ public class InterestGroupController extends AbstractController {
 		String orgId = (String) param.get("orgId");
 		String merId = (String) param.get("merId");
 		String groupId = (String) param.get("groupId");
-
+		String customerId = (String) param.get("customerId");
+		if (null == groupId || "".equals(groupId.trim())) {
+			logger.info("用户报名参加活动请求参数错误，groupId：{}",groupId);
+			return ResponseHelper.success(resultMap, null, "01", "请求数据失败");
+		}
+		if (null == customerId || "".equals(customerId.trim())) {
+			logger.info("用户报名参加活动请求参数错误，customerId：{}",customerId);
+			return ResponseHelper.success(resultMap, null, "01", "请求数据失败");
+		}
+		
 		Map<String, Object> queryMap = new HashMap<>();
 		queryMap.put("orgId", orgId);
 		queryMap.put("merchantId", merId);
@@ -123,12 +132,59 @@ public class InterestGroupController extends AbstractController {
 				CustomerBase customerBase = customerBaseService.queryByCustomerId(custId);
 				customerList.add(customerBase);
 			}
-		}		
+		}
+		
+		InterestGroupCustomer reqJoinGroupCus = new InterestGroupCustomer();
+		reqJoinGroupCus.setGroupId(groupId);
+		reqJoinGroupCus.setCustomerId(customerId);
+		List<InterestGroupCustomer> respJoinGroupCusList = interestGroupCustomerService.selectByBizKeys(reqJoinGroupCus);
+		if (null != respJoinGroupCusList && respJoinGroupCusList.size() > 0) {
+			// 已参加
+			resultMap.put("isJoin", "1");
+		} else {
+			// 未参加
+			resultMap.put("isJoin", "0");
+		}
 
 		logger.info("查询参加团队的用户信息------{}", customerList);
 		resultMap.put("interestGroup", interestGroup);
 		resultMap.put("customerList", customerList);
 
+		logger.info("查询活动团队列表信息------end------{}", resultMap);
+		return ResponseHelper.success(resultMap, null, "00", "请求数据成功");
+	}
+	
+	/**
+	 * 添加参加团队人员
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/customerJoinInterestGroup", method = RequestMethod.POST)
+	public Map<String, Object> customerJoinInterestGroup(@RequestBody Map<String, String> param) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		logger.info("添加参加团队人员------start------{}", param);
+
+		String groupId = (String) param.get("groupId");
+		String customerId = (String) param.get("customerId");
+		if (null == groupId || "".equals(groupId.trim())) {
+			logger.info("用户报名参加活动请求参数错误，groupId：{}",groupId);
+			return ResponseHelper.success(resultMap, null, "01", "请求数据失败");
+		}
+		if (null == customerId || "".equals(customerId.trim())) {
+			logger.info("用户报名参加活动请求参数错误，customerId：{}",customerId);
+			return ResponseHelper.success(resultMap, null, "01", "请求数据失败");
+		}
+		
+		InterestGroupCustomer reqGroupCus = new InterestGroupCustomer();
+		reqGroupCus.setGroupId(groupId);
+		reqGroupCus.setCustomerId(customerId);
+		List<InterestGroupCustomer> respGroupCusList = interestGroupCustomerService.selectByBizKeys(reqGroupCus);
+		if (null == respGroupCusList || respGroupCusList.size() <= 0) {
+			Map<String, Object> saveMap = new HashMap<>();
+			saveMap.put("groupId", groupId);
+			saveMap.put("customerId", customerId);
+			interestGroupCustomerService.save(saveMap);
+		}
+		
 		logger.info("查询活动团队列表信息------end------{}", resultMap);
 		return ResponseHelper.success(resultMap, null, "00", "请求数据成功");
 	}
