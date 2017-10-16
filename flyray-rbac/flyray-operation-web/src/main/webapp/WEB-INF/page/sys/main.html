@@ -4,11 +4,25 @@
 <title>控制台</title>
 #parse("sys/header.html")
 </head>
-<body>
+<body style="background-color: #f1f1f1;">
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 <div id="rrapp">
 <div class="row">
-  <div class="col-md-3 col-sm-6 col-xs-12">
+
+  <section class="col-lg-4 connectedSortable ui-sortable">
+  <!-- solid sales graph -->
+  <div class="box box-solid">
+   <div id="main3" style="width: 100%;height:400px;"></div>
+  </div>
+  <!-- /.box -->
+  <div class="box box-solid">
+  	<div id="main1" style="width: 100%;height:400px;"></div>
+  </div>
+</section>
+	
+<section class="col-lg-8 connectedSortable ui-sortable">
+<div class="box box-solid">
+  <div class="col-md-4 col-sm-6 col-xs-12">
     <div class="info-box">
       <span class="info-box-icon bg-aqua">
       	<i class="ion ion-ios-gear-outline"></i>
@@ -19,7 +33,7 @@
       </div>
     </div>
   </div>
-  <div class="col-md-3 col-sm-6 col-xs-12">
+  <div class="col-md-4 col-sm-6 col-xs-12">
     <div class="info-box">
       <span class="info-box-icon bg-red">
       	<i class="ion ion-ios-gear-outline"></i>
@@ -30,18 +44,7 @@
       </div>
     </div>
   </div>
-  <div class="col-md-3 col-sm-6 col-xs-12">
-    <div class="info-box">
-      <span class="info-box-icon bg-blue">
-      	<i class="ion ion-ios-gear-outline"></i>
-      </span>
-      <div class="info-box-content">
-        <span class="info-box-text">平均单价</span>
-        <span class="info-box-number">90</span>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3 col-sm-6 col-xs-12">
+  <div class="col-md-4 col-sm-6 col-xs-12">
     <div class="info-box">
       <span class="info-box-icon bg-fuchsia">
       	<i class="ion ion-ios-gear-outline"></i>
@@ -52,7 +55,19 @@
       </div>
     </div>
   </div>
+  <div style="clear:both"></div>
+  </div>
+  
+  <div class="nav-tabs-custom " style="cursor: move;">
+   <div id="main2" style="width: 100%;height:400px;"></div>
+  </div>
+  <div class="box box-success">
+  	<div id="main" style="width: 100%;height:400px;"></div>
+  </div>
+  
+</section>
 </div>
+
 <div class="row">
   <div class="col-md-12">
     <div class="box">
@@ -61,66 +76,7 @@
       </div>
     </div>
   </div>
-  <div class="box-body">
-    <div class="row">
-      <div class="col-md-8">
-        <p class="text-center">
-          <strong>日期: 1 Jan, 2017 - 30 Jul, 2017</strong>
-        </p>
-
-        <div class="chart">
-          <!-- Sales Chart Canvas -->
-          <div id="main" style="width:700px;height:200px;"></div>
-        </div>
-        <!-- /.chart-responsive -->
-      </div>
-      <!-- /.col -->
-      <div class="col-md-4">
-        <p class="text-center">
-          <strong>Goal Completion</strong>
-        </p>
-
-        <div class="progress-group">
-          <span class="progress-text">Add Products to Cart</span>
-          <span class="progress-number"><b>160</b>/200</span>
-
-          <div class="progress sm">
-            <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
-          </div>
-        </div>
-        <!-- /.progress-group -->
-        <div class="progress-group">
-          <span class="progress-text">Complete Purchase</span>
-          <span class="progress-number"><b>310</b>/400</span>
-
-          <div class="progress sm">
-            <div class="progress-bar progress-bar-red" style="width: 80%"></div>
-          </div>
-        </div>
-        <!-- /.progress-group -->
-        <div class="progress-group">
-          <span class="progress-text">Visit Premium Page</span>
-          <span class="progress-number"><b>480</b>/800</span>
-
-          <div class="progress sm">
-            <div class="progress-bar progress-bar-green" style="width: 80%"></div>
-          </div>
-        </div>
-        <!-- /.progress-group -->
-        <div class="progress-group">
-          <span class="progress-text">Send Inquiries</span>
-          <span class="progress-number"><b>250</b>/500</span>
-
-          <div class="progress sm">
-            <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
-          </div>
-        </div>
-        <!-- /.progress-group -->
-      </div>
-      <!-- /.col -->
-    </div>
-    <!-- /.row -->
-  </div>
+  
   <div class="box-footer">
     <div class="row">
       <div class="col-sm-3 col-xs-6">
@@ -162,9 +118,6 @@
     <!-- /.row -->
   </div>
   
-</div>
-<div class="row">
-  <div id="main1" style="width: 100%;height:400px;"></div>
 </div>
 
 </div>
