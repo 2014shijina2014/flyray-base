@@ -1,5 +1,6 @@
 package me.flyray.rest.controller.cms;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import me.flyray.cms.api.CommentService;
 import me.flyray.cms.model.Comment;
+import me.flyray.common.utils.BeanUtils;
 import me.flyray.crm.api.CustomerBaseService;
 import me.flyray.crm.model.CustomerBase;
 import me.flyray.rest.controller.AbstractController;
@@ -39,7 +41,7 @@ public class CommentController extends AbstractController{
 	 */
 	@ResponseBody
 	@RequestMapping(value="/query", method = RequestMethod.POST)
-	public Map<String, Object> queryPointComment(@RequestBody Map<String, String> param) {
+	public Map<String, Object> queryComment(@RequestBody Map<String, String> param) {
 		logger.info("查询观点评论 ---start---{}",param);
 		String currentPage = param.get("currentPage");//当前页
 		String pageSize = param.get("pageSize");//条数
@@ -62,6 +64,40 @@ public class CommentController extends AbstractController{
 		List<Comment> commentList = commentService.query(queryMap);
 		return ResponseHelper.success(commentList,pageUtil, "00", "查询成功");
 	}
+	
+	/**
+	 * 查询观点评论 
+	 * 查询多级评论
+	 */
+	@ResponseBody
+	@RequestMapping(value="/queryMany", method = RequestMethod.POST)
+	public Map<String, Object> queryTwo(@RequestBody Map<String, String> param) {
+		logger.info("查询观点评论 ---start---{}",param);
+		String commentTargetId = param.get("commentTargetId");//观点编号
+		Map<String, Object> queryMap = new HashMap<>();
+		queryMap.put("commentModuleNo", 1);
+		queryMap.put("commentTargetId", commentTargetId);
+		List<Comment> commentList = commentService.query(queryMap);
+		List<Map<String, Object>> resultMaps = new ArrayList<>();
+		Map<String, Object> resultMap = new HashMap<>();
+		for (Comment comment : commentList) {
+			try {
+				resultMap.putAll(BeanUtils.objectToMap(comment));
+				Map<String, Object> subQueryMap = new HashMap<>();
+				subQueryMap.put("commentModuleNo", 1);
+				subQueryMap.put("commentTargetId", commentTargetId);
+				subQueryMap.put("commentType", 2);//查询类型为回复的
+				subQueryMap.put("parentId", comment.getId());//查询类型为回复的
+				List<Comment> subCommentList = commentService.query(subQueryMap);
+				resultMap.put("subComents", subCommentList);
+				resultMaps.add(resultMap);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return ResponseHelper.success(resultMaps,null, "00", "查询成功");
+	}
+	
 	/**
 	 * 观点回复添加
 	 */
