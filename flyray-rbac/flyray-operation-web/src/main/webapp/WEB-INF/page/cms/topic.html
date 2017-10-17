@@ -35,7 +35,7 @@
 			<div class="form-group">
 			   	<div class="col-sm-2 control-label">内容</div>
 			   	<div class="col-sm-10">
-			      <div id="flyrayEdt" style="width:300px">
+			      <div id="flyrayEdt">
 			        <p>请输入内容...</p>
 			    </div>
 			    </div>
@@ -48,9 +48,27 @@
 			</div>
 			<div class="form-group">
 			<div class="col-sm-2 control-label">图片</div>
-			   	<div class="col-sm-10">
+			   <!-- 	<div class="col-sm-10">
     				<input type="file" v-model="topic.img">
-    			</div>
+    			</div> -->
+    			<div style="margin-bottom: 20px">
+                <h2>选择图片</h2>
+                <a id='addPic' href="" v-on:click="addPic">添加图片 </a>
+                <input type="file" @change="onFileChange" multiple style="display: none;">
+            </div>
+            <div v-if="images.length >0">
+               <ul>
+                  <li v-for="(image,key) in images">
+                    
+                     <img :src="image" @click='delImage(key)' />
+                     <a href="#" style="position: absolute;" @click='delImage(key)'>
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                  </li>
+               </ul>
+                <button @click="removeImage">移除全部图片</button>
+                <button @click='uploadImage' >上传</button>
+            </div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-2 control-label"></div> 
@@ -84,5 +102,10 @@
     	}, false)
     });
 </script>
+<style>
+	.form-horizontal {
+		width:900px;
+	}
+</style>
 </body>
 </html>
