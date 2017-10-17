@@ -24,6 +24,7 @@ import me.flyray.rest.util.ResponseHelper;
 */
 
 @Controller
+@RequestMapping("/api/crm")
 public class WxAuthController {
 
 	protected Logger logger = LoggerFactory.getLogger(getClass());

@@ -49,8 +49,10 @@ public class ActivityCustomerServiceImpl implements ActivityCustomerService {
 
 	@Override
 	public void save(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-
+		ActivityCustomer ac = new ActivityCustomer();
+		ac.setActivityId((String) map.get("activityId"));
+		ac.setCustomerId((String) map.get("customerId"));
+		activityCustomerDao.save(ac);
 	}
 
 	@Override

@@ -23,15 +23,15 @@ import me.flyray.rest.model.Parameter;
 
 /** 
 * @author: bolei
-* @date：2017年10月9日 下午6:35:05
-* @description：专栏后台管理
+* @date：2017年10月16日 下午2:51:49
+* @description：专栏内容后台管理
 */
 
 @RestController
-@RequestMapping("/cms/specialColumn")
-public class SpecialColumnController extends AbstractController {
+@RequestMapping("/cms/specialColumnContent")
+public class SpecialColumnContentController extends AbstractController {
 
-	private static final Logger logger = LoggerFactory.getLogger(SpecialColumnController.class);
+private static final Logger logger = LoggerFactory.getLogger(SpecialColumnController.class);
 	
 	@Autowired
 	private ApiProvider apiProvider;
@@ -40,7 +40,7 @@ public class SpecialColumnController extends AbstractController {
 	 * 专栏列表
 	 */
 	@RequestMapping("/list")
-	@RequiresPermissions("cms:specialColumn:list")
+	@RequiresPermissions("cms:specialColumnContent:list")
 	public R list(@RequestParam Map<String, Object> params){
 		//查询列表数据
 		logger.info("flyray-merchant请求查询专栏列表---请求参数:{}",params);
@@ -60,7 +60,7 @@ public class SpecialColumnController extends AbstractController {
 	 * 专栏信息
 	 */
 	@RequestMapping("/info/{id}")
-	@RequiresPermissions("cms:specialColumn:info")
+	@RequiresPermissions("cms:specialColumnContent:info")
 	public R info(@PathVariable("id") Long id){
 		logger.info("flyray-merchant请求查询专栏信息---请求参数:{}",id);
 		Parameter parameter = new Parameter("specialColumnService", "queryById");
@@ -75,7 +75,7 @@ public class SpecialColumnController extends AbstractController {
 	 */
 	@SysLog("保存配置")
 	@RequestMapping("/save")
-	@RequiresPermissions("cms:specialColumn:save")
+	@RequiresPermissions("cms:specialColumnContent:save")
 	public R save(@RequestBody Map<String, Object> params){
 		
 		logger.info("flyray-merchant保存专栏信息---请求参数：{}",params);
@@ -96,7 +96,7 @@ public class SpecialColumnController extends AbstractController {
 	 */
 	@SysLog("修改配置")
 	@RequestMapping("/update")
-	@RequiresPermissions("cms:specialColumn:update")
+	@RequiresPermissions("cms:specialColumnContent:update")
 	public R update(@RequestBody Map<String, Object> params){
 		
 		logger.info("flyray-merchant修改专栏信息---请求参数{}",params);
@@ -117,7 +117,7 @@ public class SpecialColumnController extends AbstractController {
 	 */
 	@SysLog("删除配置")
 	@RequestMapping("/delete")
-	@RequiresPermissions("cms:specialColumn:delete")
+	@RequiresPermissions("cms:specialColumnContent:delete")
 	public R delete(@RequestBody Long[] ids){
 		
 		Parameter parameter = new Parameter("specialColumnService", "deleteBatch");
@@ -128,5 +128,4 @@ public class SpecialColumnController extends AbstractController {
 		
 		return R.ok();
 	}
-	
 }

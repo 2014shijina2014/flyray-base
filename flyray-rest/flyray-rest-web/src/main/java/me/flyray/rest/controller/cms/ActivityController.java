@@ -179,8 +179,13 @@ public class ActivityController extends AbstractController {
 		logger.info("查询活动详细信息------start------{}", param);
 
 		String activityId = (String) param.get("activityId");
+		String customerId = (String) param.get("customerId");
 		if (null == activityId || "".equals(activityId.trim())) {
 			logger.info("查询活动详情信息请求参数错误，activityId：{}",activityId);
+			return ResponseHelper.success(resultMap, null, "01", "请求数据失败");
+		}
+		if (null == customerId || "".equals(customerId.trim())) {
+			logger.info("用户报名参加活动请求参数错误，customerId：{}",customerId);
 			return ResponseHelper.success(resultMap, null, "01", "请求数据失败");
 		}
 		Activity reqAct = new Activity();
@@ -201,11 +206,64 @@ public class ActivityController extends AbstractController {
 			}
 		}
 		
-		logger.info("查询参与活动的用户信息------{}", customerList);
+		ActivityCustomer reqJoinActCus = new ActivityCustomer();
+		reqJoinActCus.setActivityId(activityId);
+		reqJoinActCus.setCustomerId(customerId);
+		List<ActivityCustomer> respJoinActCusList = activityCustomerService.selectByBizKeys(reqJoinActCus);
+		if (null != respJoinActCusList && respJoinActCusList.size() > 0) {
+			// 已参加
+			resultMap.put("isJoin", "1");
+		} else {
+			// 未参加
+			resultMap.put("isJoin", "0");
+		}
+
+		logger.info("查询参与活动的用户信息------activity:{}", resAct);
+		logger.info("查询参与活动的用户信息------customerList:{}", customerList);
 		resultMap.put("activity", resAct);
 		resultMap.put("customerList", customerList);
 
 		logger.info("查询活动详细信息------end------{}", resultMap);
+		return ResponseHelper.success(resultMap, null, "00", "请求数据成功");
+	}
+	
+	/**
+	 * 用户参加报名参加活动
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/customerJoinActivity", method = RequestMethod.POST)
+	public Map<String, Object> customerJoinActivity(@RequestBody Map<String, String> param) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		logger.info("用户参加报名参加活动------start------{}", param);
+
+		String activityId = (String) param.get("activityId");
+		String customerId = (String) param.get("customerId");
+		if (null == activityId || "".equals(activityId.trim())) {
+			logger.info("用户报名参加活动请求参数错误，activityId：{}",activityId);
+			resultMap.put("isJoin", "0");
+			return ResponseHelper.success(resultMap, null, "01", "请求数据失败");
+		}
+		if (null == customerId || "".equals(customerId.trim())) {
+			logger.info("用户报名参加活动请求参数错误，customerId：{}",customerId);
+			resultMap.put("isJoin", "0");
+			return ResponseHelper.success(resultMap, null, "01", "请求数据失败");
+		}
+		
+		ActivityCustomer reqActCus = new ActivityCustomer();
+		reqActCus.setActivityId(activityId);
+		reqActCus.setCustomerId(customerId);
+		List<ActivityCustomer> respActCusList = activityCustomerService.selectByBizKeys(reqActCus);
+		if (null == respActCusList || respActCusList.size() <= 0) {
+			// 用户未报名
+			Map<String, Object> saveMap = new HashMap<String, Object>();
+			saveMap.put("activityId", activityId);
+			saveMap.put("customerId", customerId);
+			activityCustomerService.save(saveMap);
+		}
+
+		resultMap.put("isJoin", "1");
+		
+		logger.info("用户参加报名参加活动------end------{}", resultMap);
 		return ResponseHelper.success(resultMap, null, "00", "请求数据成功");
 	}
 }

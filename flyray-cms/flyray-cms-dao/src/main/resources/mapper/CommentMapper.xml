@@ -7,6 +7,7 @@
 	<sql id="where1">
 		<trim prefix="where" prefixOverrides="AND|OR">
 			<if test="commentType != null"> AND comment_type = #{commentType} </if>
+			<if test="parentId != null"> AND parent_id = #{parentId} </if>
 			<if test="commentTargetId != null">AND comment_target_id = #{commentTargetId} </if>
 			<if test="commentModuleNo != null">AND comment_module_no = #{commentModuleNo}</if>
 			<if test="merchantId != null">AND merchant_id = #{merchantId}</if>
@@ -42,6 +43,7 @@
 		insert into cms_comment
 		(
 		`id`,
+		`parent_id`,
 		`comment_type`,
 		`comment_content`,
 		`comment_target_id`,
@@ -58,6 +60,7 @@
 		values
 		(
 		#{id},
+		#{parentId},
 		#{commentType},
 		#{commentContent},
 		#{commentTargetId},

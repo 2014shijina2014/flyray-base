@@ -23,6 +23,11 @@ public class Comment extends BaseModel {
 	private String id;
 	
 	/**
+	 * 回复评论的目标id
+	 */
+	private String parentId;
+	
+	/**
 	 * 评论类型(1评论2回复)
 	 */
 	private String commentType;
@@ -79,124 +84,99 @@ public class Comment extends BaseModel {
 	 * 字符串格式时间
 	 */
 	private String commentTimes;
-	
-	public String getCommentImg() {
-		return commentImg;
-	}
-
-	public String getCommentTimes() {
-		return commentTimes;
-	}
-
-	public void setCommentTimes(String commentTimes) {
-		this.commentTimes = commentTimes;
-	}
-
-	public void setCommentImg(String commentImg) {
-		this.commentImg = commentImg;
-	}
-
 	public String getId() {
 		return id;
 	}
-
 	public void setId(String id) {
 		this.id = id;
 	}
-
+	public String getParentId() {
+		return parentId;
+	}
+	public void setParentId(String parentId) {
+		this.parentId = parentId;
+	}
 	public String getCommentType() {
 		return commentType;
 	}
-
 	public void setCommentType(String commentType) {
 		this.commentType = commentType;
 	}
-
 	public String getCommentContent() {
 		return commentContent;
 	}
-
 	public void setCommentContent(String commentContent) {
 		this.commentContent = commentContent;
 	}
-
-	
-
 	public String getCommentTargetId() {
 		return commentTargetId;
 	}
-
 	public void setCommentTargetId(String commentTargetId) {
 		this.commentTargetId = commentTargetId;
 	}
-
 	public Long getCommentBy() {
 		return commentBy;
 	}
-
 	public void setCommentBy(Long commentBy) {
 		this.commentBy = commentBy;
 	}
-
-	
-
-	public Long getCommentTargetUserId() {
-		return commentTargetUserId;
-	}
-
-	public void setCommentTargetUserId(Long commentTargetUserId) {
-		this.commentTargetUserId = commentTargetUserId;
-	}
-
-	
-
 	public String getCommentByName() {
 		return commentByName;
 	}
-
 	public void setCommentByName(String commentByName) {
 		this.commentByName = commentByName;
 	}
-
+	public Long getCommentTargetUserId() {
+		return commentTargetUserId;
+	}
+	public void setCommentTargetUserId(Long commentTargetUserId) {
+		this.commentTargetUserId = commentTargetUserId;
+	}
 	public String getCommentTargetUserName() {
 		return commentTargetUserName;
 	}
-
 	public void setCommentTargetUserName(String commentTargetUserName) {
 		this.commentTargetUserName = commentTargetUserName;
 	}
-
 	public Long getCommentLikeCount() {
 		return commentLikeCount;
 	}
-
 	public void setCommentLikeCount(Long commentLikeCount) {
 		this.commentLikeCount = commentLikeCount;
 	}
-
 	public Timestamp getCommentTime() {
 		return commentTime;
 	}
-
 	public void setCommentTime(Timestamp commentTime) {
 		this.commentTime = commentTime;
 	}
-
 	public String getCommentModuleNo() {
 		return commentModuleNo;
 	}
-
 	public void setCommentModuleNo(String commentModuleNo) {
 		this.commentModuleNo = commentModuleNo;
 	}
-
+	public String getCommentImg() {
+		return commentImg;
+	}
+	public void setCommentImg(String commentImg) {
+		this.commentImg = commentImg;
+	}
+	public String getCommentTimes() {
+		return commentTimes;
+	}
+	public void setCommentTimes(String commentTimes) {
+		this.commentTimes = commentTimes;
+	}
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", commentType=" + commentType + ", commentContent=" + commentContent
-				+ ", commentTargetId=" + commentTargetId + ", commentBy=" + commentBy + ", commentByName="
-				+ commentByName + ", commentTargetUserId=" + commentTargetUserId + ", commentTargetUserName="
-				+ commentTargetUserName + ", commentLikeCount=" + commentLikeCount + ", commentTime=" + commentTime
-				+ ", commentModuleNo=" + commentModuleNo + ", commentImg=" + commentImg + ", commentTimes="
-				+ commentTimes + "]";
+		return "Comment [id=" + id + ", parentId=" + parentId + ", commentType=" + commentType + ", commentContent="
+				+ commentContent + ", commentTargetId=" + commentTargetId + ", commentBy=" + commentBy
+				+ ", commentByName=" + commentByName + ", commentTargetUserId=" + commentTargetUserId
+				+ ", commentTargetUserName=" + commentTargetUserName + ", commentLikeCount=" + commentLikeCount
+				+ ", commentTime=" + commentTime + ", commentModuleNo=" + commentModuleNo + ", commentImg=" + commentImg
+				+ ", commentTimes=" + commentTimes + "]";
 	}
+	
+	
 }
