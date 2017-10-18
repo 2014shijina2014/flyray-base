@@ -227,7 +227,8 @@ public class ActivityController extends AbstractController {
 			resultMap.put("isHavPhone", "0");
 		}
 		if (null != resAct.getActivityStartTime()) {
-			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//小写的mm表示的是分钟 
+			//小写的mm表示的是分钟 
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			Date startdate= null;
 			Date enddate= null;
 			try {

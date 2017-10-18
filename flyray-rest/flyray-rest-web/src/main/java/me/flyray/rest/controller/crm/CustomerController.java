@@ -99,9 +99,9 @@ public class CustomerController {
 		String qrImgFile = "F:/assets/test/"+customerId+".jpg";
 		try {
 			outputStream = new FileOutputStream(new File(qrImgFile));
-			StringBuilder content = new StringBuilder("http://www.flyray.me/rest/customer/invited?inviter=");
+			StringBuilder content = new StringBuilder("http://192.168.1.136::3000/api/cms/me/invited/");
 			content.append(customerId);
-			QrCodeCreateUtil.createQrCode(outputStream,content.toString(),300,"JPEG");
+			QrCodeCreateUtil.createQrCode(outputStream,content.toString(),900,"JPEG");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (WriterException e) {
@@ -121,7 +121,8 @@ public class CustomerController {
 	    BufferedImage b = tt.loadImageLocal(imgAndStr);
 	    //将生成的二维码图片压缩成所需比例
 	    String scaleQrcode = "F:/assets/test/scale-qrcode.jpg";
-	    ImageHelper.scaleImage(qrImgFile, "scaleQrcode", 0.3, "JPEG");
+	    //源地址  改变大小后图片的地址 
+	    ImageHelper.scaleImage(qrImgFile, scaleQrcode, 0.3, "JPEG");
 	    BufferedImage c = tt.loadImageLocal(scaleQrcode);
         //将多张图片合在一起  
 	    String resultImg = "F:/assets/test/resul-"+customerId+".jpg";
