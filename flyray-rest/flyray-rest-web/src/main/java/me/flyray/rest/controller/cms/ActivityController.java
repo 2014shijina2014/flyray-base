@@ -1,6 +1,9 @@
 package me.flyray.rest.controller.cms;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -153,9 +156,6 @@ public class ActivityController extends AbstractController {
 		logger.info("查询团队中的活动列表------请求参数: {}", queryMap);
 		List<Activity> recActivities = activityService.queryGroupActList(queryMap);
 		logger.info("查询团队中的活动列表------recActivities: {}", recActivities);
-		for (int i = 0; i < recActivities.size(); i++) {
-			
-		}
 		
 		int pageSizeInt = Integer.valueOf(param.get("pageSize"));
 		PageUtils pageUtil = new PageUtils(resultTotal, pageSizeInt, Integer.valueOf(param.get("currentPage")));
@@ -219,12 +219,44 @@ public class ActivityController extends AbstractController {
 			resultMap.put("isJoin", "0");
 		}
 		CustomerBase customerBase = customerBaseService.queryByCustomerId(Long.valueOf(customerId));
-		if (null == customerBase.getPhone() && !"".equals(customerBase.getPhone().trim())) {
+		if (null != customerBase.getPhone() && !"".equals(customerBase.getPhone().trim())) {
 			// 已保存过电话
 			resultMap.put("isHavPhone", "1");
 		} else {
 			// 未保存过电话
 			resultMap.put("isHavPhone", "0");
+		}
+		if (null != resAct.getActivityStartTime()) {
+			SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//小写的mm表示的是分钟 
+			Date startdate= null;
+			Date enddate= null;
+			try {
+				startdate = sdf.parse(resAct.getActivityStartTime());
+				enddate = sdf.parse(resAct.getActivityEndTime());
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			
+			if (null != startdate && null != enddate) {
+				int i = new Date().compareTo(startdate);
+				int j = new Date().compareTo(enddate);
+				if (i < 0) {
+					// 活动未开始
+					resultMap.put("isStart", "0");
+				} else if (i >=0 && j < 0) {
+					// 活动进行中
+					resultMap.put("isStart", "1");
+				} else if (j >= 0) {
+					// 活动结束
+					resultMap.put("isStart", "2");
+				}
+			}else {
+				// 当获取活动开始时间失败，默认为未开始
+				resultMap.put("isStart", "0");
+			}
+		}else {
+			// 当获取活动开始时间失败，默认为未开始
+			resultMap.put("isStart", "0");
 		}
 
 		logger.info("查询参与活动的用户信息------activity:{}", resAct);
@@ -272,7 +304,6 @@ public class ActivityController extends AbstractController {
 		}
 		
 		if(null != customerPhone && !"".equals(customerPhone.trim())) {
-			
 			Map<String, Object> upMap = new HashMap<String, Object>();
 			upMap.put("id", Integer.valueOf(customerId));
 			upMap.put("phone", customerPhone);

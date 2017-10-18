@@ -145,6 +145,14 @@ public class InterestGroupController extends AbstractController {
 			// 未参加
 			resultMap.put("isJoin", "0");
 		}
+		CustomerBase customerBase = customerBaseService.queryByCustomerId(Long.valueOf(customerId));
+		if (null != customerBase.getPhone() && !"".equals(customerBase.getPhone().trim())) {
+			// 已保存过电话
+			resultMap.put("isHavPhone", "1");
+		} else {
+			// 未保存过电话
+			resultMap.put("isHavPhone", "0");
+		}
 
 		logger.info("查询参加团队的用户信息------{}", customerList);
 		resultMap.put("interestGroup", interestGroup);
@@ -165,6 +173,7 @@ public class InterestGroupController extends AbstractController {
 
 		String groupId = (String) param.get("groupId");
 		String customerId = (String) param.get("customerId");
+		String customerPhone = (String) param.get("customerPhone");
 		if (null == groupId || "".equals(groupId.trim())) {
 			logger.info("用户报名参加活动请求参数错误，groupId：{}",groupId);
 			resultMap.put("isJoin", "0");
@@ -186,6 +195,14 @@ public class InterestGroupController extends AbstractController {
 			saveMap.put("customerId", customerId);
 			interestGroupCustomerService.save(saveMap);
 		}
+		
+		if(null != customerPhone && !"".equals(customerPhone.trim())) {
+			Map<String, Object> upMap = new HashMap<String, Object>();
+			upMap.put("id", Integer.valueOf(customerId));
+			upMap.put("phone", customerPhone);
+			customerBaseService.update(upMap);
+		}
+		
 		resultMap.put("isJoin", "1");
 		
 		logger.info("查询活动团队列表信息------end------{}", resultMap);
