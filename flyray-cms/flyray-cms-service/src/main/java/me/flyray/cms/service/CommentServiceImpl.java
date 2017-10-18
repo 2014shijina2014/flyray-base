@@ -12,22 +12,26 @@ import org.springframework.stereotype.Service;
 
 import me.flyray.cms.api.CommentService;
 import me.flyray.cms.dao.CommentDao;
+import me.flyray.cms.dao.ViewpointDao;
 import me.flyray.cms.model.Comment;
+import me.flyray.cms.model.Viewpoint;
 import me.flyray.common.service.AbstractBaseService;
 import me.flyray.common.utils.SnowFlake;
 
 /** 
-* @author: bolei
-* @date：2017年10月6日 上午11:27:03
-* @description：cms模块的评论回复表
-*/
+ * @author: bolei
+ * @date：2017年10月6日 上午11:27:03
+ * @description：cms模块的评论回复表
+ */
 
 @Service("commentService")
 public class CommentServiceImpl extends AbstractBaseService<Comment> implements CommentService {
 
 	@Autowired
 	private CommentDao commentDao;
-	
+	@Autowired
+	private ViewpointDao viewpointDao;
+
 	@Override
 	public List<Comment> query(Map<String, Object> param) {
 		return commentDao.queryList(param);
@@ -62,7 +66,7 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 			map.put("code", "01");
 			e.printStackTrace();
 		}
-		
+
 		return map;
 	}
 
@@ -76,6 +80,12 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 		String commentTargetId = (String) param.get("commentTargetId");
 		String commentBy = (String) param.get("commentBy");
 		String commentByName = (String) param.get("commentByName");
+		//
+		Viewpoint point = viewpointDao.selectById(commentTargetId);
+		Integer commenCount = point.getCommentCount();
+		commenCount = commenCount + 1;
+		point.setCommentCount(commenCount);
+		viewpointDao.update(point);
 		comment.setCommentContent(commentContent);
 		//如果是评论commentTargetId是被评论的观点的编号，如果是回复 commentTargetId 是被回复的评论的编号
 		comment.setCommentTargetId(commentTargetId);
@@ -94,7 +104,7 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 			String commentTargetUserName = (String) param.get("commentTargetUserName");
 			comment.setCommentTargetUserId(Long.valueOf(commentTargetUserId));
 			comment.setCommentTargetUserName(commentTargetUserName);
-			
+
 		}
 		commentDao.save(comment);
 		return comment;
