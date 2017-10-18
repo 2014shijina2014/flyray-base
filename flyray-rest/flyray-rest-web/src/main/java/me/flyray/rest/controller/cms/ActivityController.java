@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -217,6 +218,14 @@ public class ActivityController extends AbstractController {
 			// 未参加
 			resultMap.put("isJoin", "0");
 		}
+		CustomerBase customerBase = customerBaseService.queryByCustomerId(Long.valueOf(customerId));
+		if (null == customerBase.getPhone() && !"".equals(customerBase.getPhone().trim())) {
+			// 已保存过电话
+			resultMap.put("isHavPhone", "1");
+		} else {
+			// 未保存过电话
+			resultMap.put("isHavPhone", "0");
+		}
 
 		logger.info("查询参与活动的用户信息------activity:{}", resAct);
 		logger.info("查询参与活动的用户信息------customerList:{}", customerList);
@@ -238,6 +247,7 @@ public class ActivityController extends AbstractController {
 
 		String activityId = (String) param.get("activityId");
 		String customerId = (String) param.get("customerId");
+		String customerPhone = (String) param.get("customerPhone");
 		if (null == activityId || "".equals(activityId.trim())) {
 			logger.info("用户报名参加活动请求参数错误，activityId：{}",activityId);
 			resultMap.put("isJoin", "0");
@@ -259,6 +269,14 @@ public class ActivityController extends AbstractController {
 			saveMap.put("activityId", activityId);
 			saveMap.put("customerId", customerId);
 			activityCustomerService.save(saveMap);
+		}
+		
+		if(null != customerPhone && !"".equals(customerPhone.trim())) {
+			
+			Map<String, Object> upMap = new HashMap<String, Object>();
+			upMap.put("id", Integer.valueOf(customerId));
+			upMap.put("phone", customerPhone);
+			customerBaseService.update(upMap);
 		}
 
 		resultMap.put("isJoin", "1");

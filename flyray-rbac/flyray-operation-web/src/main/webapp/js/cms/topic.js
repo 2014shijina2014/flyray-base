@@ -45,7 +45,15 @@ var vm = new Vue({
 			payChannelNo:null,
 			payCompanyNo:null,
 			feeRatio:null,
-		}
+		},
+		topic:{
+			id:null,
+			content:null,
+			title:null,
+			discription:null,
+			img:null
+		},
+		images:[]
 	},
 	methods: {
 		query: function () {
@@ -90,11 +98,13 @@ var vm = new Vue({
 			});
 		},
 		saveOrUpdate: function (event) {
-			var url = vm.payChannel.id == null ? "../pay/payChannel/save" : "../pay/payChannel/update";
+			var url = vm.topic.id == null ? "../cms/topic/save" : "../pay/payChannel/update";
+			alert(JSON.stringify(vm.topic));
+			return;
 			$.ajax({
 				type: "POST",
 			    url: url,
-			    data: JSON.stringify(vm.payChannel),
+			    data: JSON.stringify(vm.topic),
 			    success: function(r){
 			    	if(r.code === 0){
 						alert('操作成功', function(index){
@@ -114,11 +124,64 @@ var vm = new Vue({
 		reload: function (event) {
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
-			alert(vm.q.title);
 			$("#jqGrid").jqGrid('setGridParam',{ 
                 postData:{'title': vm.q.title},
                 page:page
             }).trigger("reloadGrid");
-		}
+		},
+		addPic: function (e) {
+            e.preventDefault();
+            $('input[type=file]').trigger('click');
+            return false;
+        },
+        onFileChange: function (e) {
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length)return; 
+            console.log(files);
+            this.createImage(files);
+        },
+        createImage: function(file) {
+            if(typeof FileReader==='undefined'){
+                alert('您的浏览器不支持图片上传，请升级您的浏览器');
+                return false;
+            }
+            var image = new Image();         
+            var vm = this;
+            var leng=file.length;
+            for(var i=0;i<leng;i++){
+                var reader = new FileReader();
+                reader.readAsDataURL(file[i]); 
+                reader.onload =function(e){
+                  vm.images.push(e.target.result);                                    
+                };                 
+            }                        
+        },
+        delImage:function(index){
+            this.images.shift(index);
+        },
+        removeImage: function(e) {
+            this.images = [];
+        },
+        uploadImage: function() {
+            console.log(this.images);
+            return false;
+            var obj = {};
+            obj.images=this.images
+            $.ajax({
+                type: 'post',
+                url: "../cms/topic/save",
+                data: obj,
+                dataType: "json",
+                success: function(data) {
+                    if(data.status){
+                        alert(data.msg);
+                        return false;
+                    }else{
+                        alert(data.msg);
+                        return false;
+                    }
+                }
+            });
+        }
 	}
 });

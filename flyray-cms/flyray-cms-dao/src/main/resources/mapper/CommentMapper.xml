@@ -55,7 +55,7 @@
 		`comment_time`,
 		`comment_module_no`,
 		`merchant_id`,
-		`org_id`,
+		`org_id`
 		)
 		values
 		(
@@ -72,7 +72,7 @@
 		#{commentTime},
 		#{commentModuleNo},
 		#{merchantId},
-		#{orgId},
+		#{orgId}
 		)
 	</insert>
 
