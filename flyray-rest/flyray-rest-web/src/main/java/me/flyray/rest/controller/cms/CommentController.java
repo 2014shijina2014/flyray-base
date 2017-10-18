@@ -79,16 +79,17 @@ public class CommentController extends AbstractController{
 		queryMap.put("commentTargetId", commentTargetId);
 		List<Comment> commentList = commentService.query(queryMap);
 		List<Map<String, Object>> resultMaps = new ArrayList<>();
-		Map<String, Object> resultMap = new HashMap<>();
+		Map<String, Object> resultMap;
 		for (Comment comment : commentList) {
 			try {
+				resultMap = new HashMap<>();
 				resultMap.putAll(BeanUtils.objectToMap(comment));
 				Map<String, Object> subQueryMap = new HashMap<>();
 				subQueryMap.put("commentModuleNo", 1);
 				subQueryMap.put("commentTargetId", commentTargetId);
 				subQueryMap.put("commentType", 2);//查询类型为回复的
 				subQueryMap.put("parentId", comment.getId());//查询类型为回复的
-				List<Comment> subCommentList = commentService.query(subQueryMap);
+				List<Map<String, Object>> subCommentList = commentService.queryList(subQueryMap);
 				resultMap.put("subComents", subCommentList);
 				resultMaps.add(resultMap);
 			} catch (Exception e) {
