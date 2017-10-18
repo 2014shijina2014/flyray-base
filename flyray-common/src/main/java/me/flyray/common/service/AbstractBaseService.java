@@ -64,8 +64,8 @@ public abstract class AbstractBaseService<T> implements BaseService{
 		if (map == null)     
             return;
 		try {
-			@SuppressWarnings("rawtypes")
-			Class clazz = getClass();
+			@SuppressWarnings("unchecked")
+			Class<T> clazz = (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0]; 
 			@SuppressWarnings("unchecked")
 			T t = (T)BeanUtils.mapToObject(map, clazz);
 			baseDao.update(t);
@@ -87,8 +87,8 @@ public abstract class AbstractBaseService<T> implements BaseService{
             return null;
 		Map<String, Object> resultMap = null;
 		try {
-			@SuppressWarnings("rawtypes")
-			Class clazz = getClass();
+			@SuppressWarnings("unchecked")
+			Class<T> clazz = (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0]; 
 			@SuppressWarnings("unchecked")
 			T t = (T)BeanUtils.mapToObject(map, clazz);
 			resultMap = BeanUtils.objectToMap(baseDao.queryObject(t));
