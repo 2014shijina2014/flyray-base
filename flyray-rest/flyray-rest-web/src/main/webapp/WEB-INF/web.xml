@@ -88,10 +88,10 @@
     </servlet>
     
     <!--Spring MVC Config Mapping -->
-    <servlet-mapping>
-        <servlet-name>spring</servlet-name>
-        <url-pattern>/*</url-pattern>
-    </servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
  
  	<servlet>
       <servlet-name>DruidStatView</servlet-name>

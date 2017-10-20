@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class IndexController {
 
-	@RequestMapping(value = "/434", method= RequestMethod.GET)
+	@RequestMapping(value = "/33434", method= RequestMethod.GET)
     public String home() {
-        return "index33";
+        return "3434";
     }
 }

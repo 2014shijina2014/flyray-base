@@ -62,7 +62,7 @@ public class ModifyParametersFilter extends OncePerRequestFilter{
             
 			// body = StreamUtil.readBytes(request.getReader(), JoddDefault.encoding);
 			// 因为http协议默认传输的编码就是iso-8859-1,如果使用utf-8转码乱码的话，可以尝试使用iso-8859-1
-			body = StreamUtil.readBytes(request.getReader(), "utf-8");
+			body = StreamUtil.readBytes(request.getInputStream());
         }
         // 重写几个HttpServletRequestWrapper中的方法
         @Override  
