@@ -4,11 +4,11 @@
 	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="
 	http://www.springframework.org/schema/beans 
-	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
 	http://www.springframework.org/schema/context 
-	http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+	http://www.springframework.org/schema/context/spring-context.xsd 
 	http://www.springframework.org/schema/mvc 
-	http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<!-- 注解支持 -->  
 	
@@ -17,9 +17,9 @@
 	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
 	
 	<context:component-scan base-package="me.flyray.rest.controller" />
-
-	<bean id="defaultJsonView" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
-    
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
+ 
 	<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
 	<bean id="mappingJacksonHttpMessageConverter"
 		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
@@ -42,8 +42,6 @@
 			<value>4096</value>
 		</property>
 	</bean>
-
-	<bean class="me.flyray.rest.exception.CommonHandlerExceptionResolver" />
 
 	<!--通用视图解析器-->
 	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -86,24 +84,9 @@
 	</bean>
 	<bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape"/>
 	
+
 	<mvc:resources mapping="/css/**" location="/css/" />
 	<mvc:resources mapping="/js/**" location="/js/" />
 	<mvc:resources mapping="/images/**" location="/images/" />
 	<mvc:resources mapping="/plug-in/**" location="/plug-in/" />
-	
-	<mvc:interceptors>
-        <!--对所有的请求记性拦截-->
-        <!--<beans:bean class="me.flyray.rest.interceptor.LoginInterceptor"/>-->
-        <!--对特定的请求进行拦截-->
-        <mvc:interceptor>
-       		<mvc:mapping path="/rest/*" />
-            <bean class="me.flyray.rest.interceptor.LoginInterceptor"/>
-        </mvc:interceptor>
-        
-        <mvc:interceptor>
-        <!-- 匹配的是url路径， 如果不配置或/**,将拦截所有的Controller -->  
-        <mvc:mapping path="/**" />
-        	<bean class="me.flyray.rest.interceptor.CommonInterceptor"></bean>    
-    	</mvc:interceptor>  
-	</mvc:interceptors>
 </beans>

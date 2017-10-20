@@ -1,14 +1,10 @@
 package me.flyray.rest.controller.cms;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 /** 
 * @author: bolei
@@ -25,10 +21,9 @@ public class UploadController {
 		return "upload";
 	}
 	
-	@RequestMapping("/uploadToCloud")  
-    public ModelAndView uploadToCloud(HttpServletRequest request,HttpServletResponse response) throws IllegalStateException, IOException {  
-        
-        return new ModelAndView("redirect:/view.do?id="+"");
-//        return "view" + "?id=";  
+	@RequestMapping(value="/doUpload", method=RequestMethod.POST)  
+    public String doUploadFile(@RequestParam("file") MultipartFile file){  
+        System.out.println(file);
+        return "";
     }
 }

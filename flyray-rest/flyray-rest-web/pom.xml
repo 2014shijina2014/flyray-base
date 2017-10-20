@@ -141,17 +141,29 @@
 
 		<plugins>
 			<!-- <plugin>
+
 				<groupId>org.apache.maven.plugins</groupId>
+
 				<artifactId>maven-war-plugin</artifactId>
+
 				<version>2.1.1</version>
+
 				<configuration>
+
 					<overlays>
+
 						<overlay>
+
 							<groupId>me.flyray.rest</groupId>
+
 							<artifactId>web-common</artifactId>
+
 						</overlay>
+
 					</overlays>
+
 				</configuration>
+
 			</plugin> -->
 		</plugins>
 	</build>
