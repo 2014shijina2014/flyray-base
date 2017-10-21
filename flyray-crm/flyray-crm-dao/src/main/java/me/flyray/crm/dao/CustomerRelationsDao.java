@@ -1,5 +1,7 @@
 package me.flyray.crm.dao;
 
+import java.util.List;
+
 import me.flyray.common.dao.BaseDao;
 import me.flyray.crm.model.CustomerRelations;
 
@@ -10,5 +12,7 @@ import me.flyray.crm.model.CustomerRelations;
 */
 
 public interface CustomerRelationsDao extends BaseDao<CustomerRelations>{
+
+	List<CustomerRelations> queryByCustomerId(String customerId);
 
 }

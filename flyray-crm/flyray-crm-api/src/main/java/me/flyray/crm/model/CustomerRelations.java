@@ -1,5 +1,7 @@
 package me.flyray.crm.model;
 
+import java.io.Serializable;
+
 /** 
 * @author: bolei
 * @date：Jun 14, 2017 7:53:52 PM 
@@ -7,7 +9,7 @@ package me.flyray.crm.model;
 * http://blog.csdn.net/cctcc/article/details/53992215
 */
 
-public class CustomerRelations {
+public class CustomerRelations implements Serializable{
 	
 	/**
 	 * 公众号ID
@@ -17,53 +19,61 @@ public class CustomerRelations {
 	/**
 	 * 客户编号
 	 */
-	private String customerNo;
+	private Long customerId;
 	
 	/**
 	 * 分销级数
 	 */
-	private String FxLevel;
+	private String fxLevel;
 	
 	/**
 	 * 推荐客户编号
 	 */
-	private String parentNo;
+	private Long parentId;
 	
 	/**
 	 * 所推荐客户编号
 	 */
-	private String childNo;
+	private Long childId;
 
-	public String getCustomerNo() {
-		return customerNo;
+	public String getWxId() {
+		return wxId;
 	}
 
-	public void setCustomerNo(String customerNo) {
-		this.customerNo = customerNo;
+	public void setWxId(String wxId) {
+		this.wxId = wxId;
+	}
+
+	public Long getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
 	}
 
 	public String getFxLevel() {
-		return FxLevel;
+		return fxLevel;
 	}
 
 	public void setFxLevel(String fxLevel) {
-		FxLevel = fxLevel;
+		this.fxLevel = fxLevel;
 	}
 
-	public String getParentNo() {
-		return parentNo;
+	public Long getParentId() {
+		return parentId;
 	}
 
-	public void setParentNo(String parentNo) {
-		this.parentNo = parentNo;
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
 	}
 
-	public String getChildNo() {
-		return childNo;
+	public Long getChildId() {
+		return childId;
 	}
 
-	public void setChildNo(String childNo) {
-		this.childNo = childNo;
+	public void setChildId(Long childId) {
+		this.childId = childId;
 	}
-	
+
 }

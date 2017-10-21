@@ -13,7 +13,7 @@ import me.flyray.crm.model.CustomerRelations;
 
 public interface CustomerRelationsService extends BaseService{
 
-	void save(CustomerRelations customerRelations);
+	List<CustomerRelations> queryByCustomerId(String customerId);
 
-	List<CustomerRelations> queryByCustomerNo(String customerNo);
+	void insert(CustomerRelations invitedCustomer);
 }

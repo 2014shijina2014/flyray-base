@@ -197,14 +197,19 @@ public class CRC16M {
 		    }
 		    return hex.toString();
 	}
+	
+	public static String getCRCNo(String value){
+		byte[] sbuf = CRC16M.getSendBuf(value);
+		return CRC16M.getBufHexStr(sbuf);
+	}
 
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		byte[] sbuf = CRC16M.getSendBuf("010415000004");
+		// TODO Auto-generated method stub 119101174732566528600E
+		byte[] sbuf = CRC16M.getSendBuf(String.valueOf(SnowFlake.getId()));
 		System.out.println(CRC16M.getBufHexStr(sbuf));
 		String hexStr = CRC16M.getBufHexStr(sbuf);
 		byte[] bt = CRC16M.HexString2Buf(hexStr);

@@ -2,10 +2,13 @@ package me.flyray.crm.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import me.flyray.common.service.AbstractBaseService;
 import me.flyray.crm.api.CustomerRelationsService;
+import me.flyray.crm.dao.CustomerBaseDao;
+import me.flyray.crm.dao.CustomerRelationsDao;
 import me.flyray.crm.model.CustomerRelations;
 
 /** 
@@ -17,16 +20,17 @@ import me.flyray.crm.model.CustomerRelations;
 @Service("customerRelationsService")
 public class CustomerRelationsServiceImpl extends AbstractBaseService<CustomerRelations> implements CustomerRelationsService{
 
+	@Autowired
+	private CustomerRelationsDao customerRelationsDao;
+	
 	@Override
-	public void save(CustomerRelations customerRelations) {
-		// TODO Auto-generated method stub
-		
+	public List<CustomerRelations> queryByCustomerId(String customerId) {
+		return customerRelationsDao.queryByCustomerId(customerId);
 	}
 
 	@Override
-	public List<CustomerRelations> queryByCustomerNo(String customerNo) {
-		// TODO Auto-generated method stub
-		return null;
+	public void insert(CustomerRelations invitedCustomer) {
+		customerRelationsDao.save(invitedCustomer);
 	}
 
 }

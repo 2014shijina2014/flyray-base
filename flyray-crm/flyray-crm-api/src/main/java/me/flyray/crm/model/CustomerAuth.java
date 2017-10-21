@@ -10,14 +10,9 @@ package me.flyray.crm.model;
 public class CustomerAuth {
 
 	/**
-	 * 客户（会员）Id
-	 */
-	private Integer id;
-	
-	/**
 	 * 客户（会员）编号
 	 */
-	private String customerNo;
+	private long customerId;
 	
 	/**
 	 * 登录类型（手机号 邮箱 用户名）或第三方应用名称（微信 微博等）
@@ -34,20 +29,12 @@ public class CustomerAuth {
 	 */
 	private String credential;
 
-	public Integer getId() {
-		return id;
+	public long getCustomerId() {
+		return customerId;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getCustomerNo() {
-		return customerNo;
-	}
-
-	public void setCustomerNo(String customerNo) {
-		this.customerNo = customerNo;
+	public void setCustomerId(long customerId) {
+		this.customerId = customerId;
 	}
 
 	public String getIdentityType() {

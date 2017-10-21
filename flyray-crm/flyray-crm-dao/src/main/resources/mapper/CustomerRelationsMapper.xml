@@ -5,43 +5,45 @@
 <mapper namespace="me.flyray.crm.dao.CustomerRelationsDao">
 
 	<select id="queryObject" resultType="me.flyray.crm.model.CustomerRelations">
-		select * from crm_customer_auth where id = #{id}
+		select * from crm_customer_relations where customer_id = #{customerId}
 	</select>
 	
-	<select id="queryById" resultType="me.flyray.crm.model.CustomerRelations">
-		select * from crm_customer_auth where id = #{id}
+	<select id="queryByCustomerId" resultType="me.flyray.crm.model.CustomerRelations">
+		select * from crm_customer_relations where customer_id = #{customerId}
 	</select>
 
 	<select id="queryList" resultType="me.flyray.crm.model.CustomerRelations">
-		select * from crm_customer_auth order by id desc
+		select * from crm_customer_relations order by customer_id desc
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
 	</select>
 	
  	<select id="queryTotal" resultType="int">
-		select count(*) from crm_customer_auth 
+		select count(*) from crm_customer_relations 
 	</select>
 	
 	<insert id="save" parameterType="me.flyray.crm.model.CustomerRelations" useGeneratedKeys="true" keyProperty="id">
-		insert into crm_customer_auth
+		insert into crm_customer_relations
 		(
-			`customer_no`, 
-			`identity_type`, 
-			`identifier`, 
-			`credential`
+			`wx_id`, 
+			`customer_id`, 
+			`fx_level`, 
+			`parent_id`,
+			`child_id`
 		)
 		values
 		(
-			#{customerNo}, 
-			#{identityType},
-			#{identifier},
-			#{credential}
+			#{wxId}, 
+			#{customerId},
+			#{fxLevel},
+			#{parentId},
+			#{childId}
 		)
 	</insert>
 	 
 	<update id="update" parameterType="me.flyray.crm.model.CustomerRelations">
-		update crm_customer_auth 
+		update crm_customer_relations 
 		<set>
 			<if test="customerNo != null">`customer_no` = #{customerNo}, </if>
 			<if test="identityType != null">`identity_type` = #{identityType},</if>
@@ -52,7 +54,7 @@
 	</update>
 	
 	<delete id="delete">
-		delete from crm_customer_auth where id = #{id}
+		delete from crm_customer_relations where id = #{id}
 	</delete>
   
 </mapper>

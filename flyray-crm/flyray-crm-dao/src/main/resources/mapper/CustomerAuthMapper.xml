@@ -26,14 +26,14 @@
 	<insert id="save" parameterType="me.flyray.crm.model.CustomerAuth" useGeneratedKeys="true" keyProperty="id">
 		insert into crm_customer_auth
 		(
-			`customer_no`, 
+			`customer_id`, 
 			`identity_type`, 
 			`identifier`, 
 			`credential`
 		)
 		values
 		(
-			#{customerNo}, 
+			#{customerId}, 
 			#{identityType},
 			#{identifier},
 			#{credential}
@@ -43,7 +43,7 @@
 	<update id="update" parameterType="me.flyray.crm.model.CustomerAuth">
 		update crm_customer_auth 
 		<set>
-			<if test="customerNo != null">`customer_no` = #{customerNo}, </if>
+			<if test="customerId != null">`customer_id` = #{customerId}, </if>
 			<if test="identityType != null">`identity_type` = #{identityType},</if>
 			<if test="identifier != null">`identifier` = #{identifier},</if>
 			<if test="credential != null">`credential` = #{credential}</if>

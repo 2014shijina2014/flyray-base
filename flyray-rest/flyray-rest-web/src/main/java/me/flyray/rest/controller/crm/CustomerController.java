@@ -147,7 +147,7 @@ public class CustomerController {
 		logger.info("通过code获取用户授权信息------start------{}",param);
 		String code = param.get("code");
 		String merchantNo = param.get("merchantNo");
-		String inviterNo = param.get("inviter");
+		String inviterId = param.get("inviter");
 		String orgNo = param.get("orgNo");
 		Map<String, Object> requestMap = new HashMap<>();
 		requestMap.put("code", code);
@@ -168,60 +168,58 @@ public class CustomerController {
 		userMap.put("customerNo", customerBase.getCustomerNo());
 		//将新用户与邀请人关联
 		//判断邀请人属于哪级分销
-		List<CustomerRelations> customerRelationses = customerRelationsService.queryByCustomerNo(inviterNo);
-		if (customerRelationses == null ) {
+		List<CustomerRelations> customerRelationses = customerRelationsService.queryByCustomerId(inviterId);
+		int sz = customerRelationses.size();
+		if (sz == 0) {
 			//说明邀请人是顶级分销 受要人是一级分销
 			CustomerRelations invitedCustomer = new CustomerRelations();
-			invitedCustomer.setCustomerNo(customerBase.getCustomerNo());
+			invitedCustomer.setCustomerId(customerBase.getId());
 			invitedCustomer.setFxLevel("1");
-			invitedCustomer.setParentNo(inviterNo);
-			customerRelationsService.save(invitedCustomer);
-		}else {
-			int sz = customerRelationses.size();
-			if (sz == 1) {
-				//说明邀请人是一级分销 受邀人是二级分销需要写两条条记录
-				CustomerRelations invitedCustomer = new CustomerRelations();
-				invitedCustomer.setCustomerNo(customerBase.getCustomerNo());
-				invitedCustomer.setFxLevel("1");
-				invitedCustomer.setParentNo(inviterNo);
-				customerRelationsService.save(invitedCustomer);
-				//受邀人
+			invitedCustomer.setParentId(Long.valueOf(inviterId));
+			customerRelationsService.insert(invitedCustomer);
+		}else if(sz == 1) {
+			//说明邀请人是一级分销 受邀人是二级分销需要写两条条记录
+			CustomerRelations invitedCustomer = new CustomerRelations();
+			invitedCustomer.setCustomerId(customerBase.getId());
+			invitedCustomer.setFxLevel("1");
+			invitedCustomer.setParentId(Long.valueOf(inviterId));
+			customerRelationsService.insert(invitedCustomer);
+			//受邀人
+			CustomerRelations ic = new CustomerRelations();
+			ic.setCustomerId(customerBase.getId());
+			ic.setFxLevel("2");
+			ic.setParentId(Long.valueOf(inviterId));
+			customerRelationsService.insert(invitedCustomer);
+		}else if (sz == 2) {
+			//说明邀请人是二级分销 受邀人是三级分销需要写三条条记录
+			CustomerRelations invitedCustomer = new CustomerRelations();
+			invitedCustomer.setCustomerId(customerBase.getId());
+			invitedCustomer.setFxLevel("1");
+			invitedCustomer.setParentId(Long.valueOf(inviterId));
+			customerRelationsService.insert(invitedCustomer);
+			//查询出邀请人的parentId
+			for (CustomerRelations customerRelations : customerRelationses) {
+				Long parentId = customerRelations.getParentId();
+				//判断邀请人的上级位于三级分销中第几级
 				CustomerRelations ic = new CustomerRelations();
-				ic.setCustomerNo(customerBase.getCustomerNo());
-				ic.setFxLevel("2");
-				ic.setParentNo(inviterNo);
-				customerRelationsService.save(invitedCustomer);
-			}else if (sz == 2) {
-				//说明邀请人是二级分销 受邀人是三级分销需要写三条条记录
-				CustomerRelations invitedCustomer = new CustomerRelations();
-				invitedCustomer.setCustomerNo(customerBase.getCustomerNo());
-				invitedCustomer.setFxLevel("1");
-				invitedCustomer.setParentNo(inviterNo);
-				customerRelationsService.save(invitedCustomer);
-				//查询出邀请人的parentId
-				for (CustomerRelations customerRelations : customerRelationses) {
-					String parentNo = customerRelations.getParentNo();
-					//判断邀请人的上级位于三级分销中第几级
-					CustomerRelations ic = new CustomerRelations();
-					if ("1" == customerRelations.getFxLevel()) {
-						ic.setFxLevel("2");
-					}else if ("2" == customerRelations.getFxLevel()) {
-						ic.setFxLevel("3");
-					}
-					ic.setCustomerNo(customerBase.getCustomerNo());
-					ic.setParentNo(parentNo);
-					customerRelationsService.save(invitedCustomer);
+				if ("1" == customerRelations.getFxLevel()) {
+					ic.setFxLevel("2");
+				}else if ("2" == customerRelations.getFxLevel()) {
+					ic.setFxLevel("3");
 				}
-			}else if (sz == 3) {
-				//说明邀请人是三级分销 受邀人是邀请人的一级分销需要写一条记录
-				CustomerRelations invitedCustomer = new CustomerRelations();
-				invitedCustomer.setCustomerNo(customerBase.getCustomerNo());
-				invitedCustomer.setFxLevel("1");
-				invitedCustomer.setParentNo(inviterNo);
-				customerRelationsService.save(invitedCustomer);
+				ic.setCustomerId(customerBase.getId());
+				ic.setParentId(parentId);
+				customerRelationsService.insert(invitedCustomer);
 			}
+		}else if (sz == 3) {
+			//说明邀请人是三级分销 受邀人是邀请人的一级分销需要写一条记录
+			CustomerRelations invitedCustomer = new CustomerRelations();
+			invitedCustomer.setCustomerId(customerBase.getId());
+			invitedCustomer.setFxLevel("1");
+			invitedCustomer.setParentId(Long.valueOf(inviterId));
+			customerRelationsService.insert(invitedCustomer);
 		}
-		return userMap;
+		return ResponseHelper.success(userMap,null, "00", "邀请成功");
 	}
 	
 	

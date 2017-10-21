@@ -14,7 +14,7 @@ public class CustomerBase implements Serializable{
 	/**
 	 * 客户自增ID
 	 */
-	private Integer id;
+	private Long id;
 	
 	/**
 	 * 客户编号
@@ -81,10 +81,6 @@ public class CustomerBase implements Serializable{
 	 */
 	private CrmCustomerBaseExtend crmCustomerBaseExtend;
 	
-	public Integer getId() {
-		return id;
-	}
-
 	public CrmCustomerBaseExtend getCrmCustomerBaseExtend() {
 		return crmCustomerBaseExtend;
 	}
@@ -93,12 +89,17 @@ public class CustomerBase implements Serializable{
 		this.crmCustomerBaseExtend = crmCustomerBaseExtend;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 	public String getCustomerNo() {
 		return customerNo;
+	}
+	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public void setCustomerNo(String customerNo) {
