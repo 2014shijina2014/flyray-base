@@ -1,5 +1,7 @@
 package me.flyray.rest.filter;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -20,6 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jodd.io.StreamUtil;
@@ -35,12 +38,19 @@ import me.flyray.common.exception.BusinessException;
 public class ModifyParametersFilter extends OncePerRequestFilter{
 
 	private static final Logger logger = LoggerFactory.getLogger(ModifyParametersFilter.class);
-	
+	JSONObject reqJson;
 	@Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         ModifyParametersWrapper mParametersWrapper = new ModifyParametersWrapper(request);
         try {
+        	if (reqJson == null) {
+        		out(response,"请求参数不能为空");
+			}
+        	if(reqJson.get("customerId") != null || reqJson.get("orgId") != null
+        			|| reqJson.get("merchantId") != null){
+        		out(response,"customerId、merchantId和orgId不能为空");
+        	}
         	filterChain.doFilter(mParametersWrapper, response);
         } catch (RuntimeException e) {  
             if(e instanceof BusinessException){//如果是你定义的业务异常  
@@ -63,6 +73,8 @@ public class ModifyParametersFilter extends OncePerRequestFilter{
 			// body = StreamUtil.readBytes(request.getReader(), JoddDefault.encoding);
 			// 因为http协议默认传输的编码就是iso-8859-1,如果使用utf-8转码乱码的话，可以尝试使用iso-8859-1
 			body = StreamUtil.readBytes(request.getInputStream());
+			String req = new String(body,"UTF-8");
+			reqJson= JSONObject.parseObject(req); 
         }
         // 重写几个HttpServletRequestWrapper中的方法
         @Override  
@@ -107,7 +119,7 @@ public class ModifyParametersFilter extends OncePerRequestFilter{
      * @param response
      * @param resultCode
      */
-    private static final void out(HttpServletResponse response) {
+    private static final void out(HttpServletResponse response, String msg) {
         ObjectMapper objectMapper = new ObjectMapper();
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
@@ -116,7 +128,7 @@ public class ModifyParametersFilter extends OncePerRequestFilter{
             out = response.getWriter();
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("code", "01");
-            map.put("msg", "orgNo 不能为空");
+            map.put("msg", msg);
             map.put("status", "201");
             out.append(objectMapper.writeValueAsString(map));
         } catch (IOException e) {
@@ -128,33 +140,4 @@ public class ModifyParametersFilter extends OncePerRequestFilter{
         }
     }
     
-    
-    /**
-     * 返回输出json
-     * 跟进errCode查询数据库返回错误信息
-     * 此处通过缓存错误码
-     * @param response
-     * @param resultCode
-     */
-    private static final void out(HttpServletResponse response,String errCode) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json; charset=utf-8");
-        PrintWriter out = null;
-        try {
-            out = response.getWriter();
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("code", "01");
-            map.put("msg", "orgNo 不能为空");
-            map.put("status", "201");
-            out.append(objectMapper.writeValueAsString(map));
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (out != null) {
-                out.close();
-            }
-        }
-    }
-
 }
