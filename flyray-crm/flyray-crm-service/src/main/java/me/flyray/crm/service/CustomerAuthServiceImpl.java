@@ -39,7 +39,7 @@ public class CustomerAuthServiceImpl extends AbstractBaseService<CustomerAuth> i
 		CustomerBase customerBase = new CustomerBase();
 		customerBase.setCustomerNo(customerNo);
 		customerBase.setAddress(map.get("country")+"-"+map.get("province")+"-"+map.get("city"));
-		customerBase.setAge((String)map.get("country"));
+		//customerBase.setAge((String)map.get("age"));
 		customerBase.setAvatar((String)map.get("headImgUrl"));
 		//customerBase.setBirthday((String)userMap.get("country"));
 		//customerBase.setCustName((String)userMap.get("country"));

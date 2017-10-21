@@ -99,8 +99,10 @@ public class CustomerController {
 		String qrImgFile = "F:/assets/test/"+customerId+".jpg";
 		try {
 			outputStream = new FileOutputStream(new File(qrImgFile));
-			StringBuilder content = new StringBuilder("http://192.168.1.136::3000/api/cms/me/invited/");
-			content.append(customerId);
+			/*StringBuilder content = new StringBuilder("http://192.168.1.136:3000/api/cms/me/invited/");
+			content.append(customerId);*/
+			//测试
+			StringBuilder content = new StringBuilder("http://192.168.1.136:3000/api/cms/me/inviteGetWxCode？inviter=1&code=32323");
 			QrCodeCreateUtil.createQrCode(outputStream,content.toString(),900,"JPEG");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -139,7 +141,7 @@ public class CustomerController {
 	 * get Invited Customer
 	 */
 	@ResponseBody
-	@RequestMapping(value="/invited", method = RequestMethod.GET)
+	@RequestMapping(value="/invited", method = RequestMethod.POST)
 	public Map<String, Object> invited(@RequestBody Map<String, String> param){
 		//
 		logger.info("通过code获取用户授权信息------start------{}",param);
