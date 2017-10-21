@@ -1,5 +1,6 @@
 package me.flyray.rest.controller.cms;
 
+import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -7,6 +8,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +24,7 @@ import me.flyray.cms.api.ViewFavortService;
 import me.flyray.cms.api.ViewpointService;
 import me.flyray.cms.model.Comment;
 import me.flyray.cms.model.Viewpoint;
+import me.flyray.common.utils.ImageBase64;
 import me.flyray.common.utils.SnowFlake;
 import me.flyray.crm.api.CustomerBaseService;
 import me.flyray.crm.model.CustomerBase;
@@ -50,16 +55,25 @@ public class ViewpointController extends AbstractController{
 	 */
 	@ResponseBody
 	@RequestMapping(value="/add", method = RequestMethod.POST)
-	public Map<String, Object> add(@RequestBody Map<String, Object> param) {
+	public Map<String, Object> add(@RequestBody Map<String, Object> param, HttpSession session) {
 		Long id = SnowFlake.getId();
 		String pointText = (String)param.get("pointText");
 		String createBy = (String)param.get("createBy");
+		String imgFile64 = (String)param.get("imgFile");
+		String imgFileName = (String)param.get("imgFileName");
+		String suffix = imgFileName.substring(imgFileName.lastIndexOf(".") + 1);  
+		Long time = new Date().getTime();
+		String newName = time + "." + suffix;
+		String url = session.getServletContext().getRealPath("/")+File.separator+"view_point_img" + File.separator + id + File.separator + newName;
+		
+		Boolean flag = ImageBase64.generateImage(imgFile64, url);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("pointText", pointText);
 		map.put("createBy", Long.valueOf(createBy));
 		map.put("favortCount", 0);
 		map.put("commentCount", 0);
 		map.put("id", id);
+		map.put("pointImg", newName);
 		try {
 			viewPointService.save(map);
 		} catch (Exception e) {
@@ -69,11 +83,20 @@ public class ViewpointController extends AbstractController{
 		return ResponseHelper.success(param,null, "00", "添加成功");
 	}
 	/**
+	 * 观点添加图片
+	 */
+	@ResponseBody
+	@RequestMapping(value="/addImg", method = RequestMethod.POST)
+	public Map<String, Object> addImg(@RequestBody Map<String, Object> param) {
+		System.out.println(param);
+		return null;
+	}
+	/**
 	 * 分页查询
 	 */
 	@ResponseBody
 	@RequestMapping(value="/query", method = RequestMethod.POST)
-	public Map<String, Object> query(@RequestBody Map<String, String> param) {
+	public Map<String, Object> query(@RequestBody Map<String, String> param, HttpSession session) {
 		logger.info("请求观点---start---{}",param);
 		String currentPage = param.get("currentPage");//当前页
 		String pageSize = param.get("pageSize");//条数
@@ -104,6 +127,11 @@ public class ViewpointController extends AbstractController{
 			}else{
 				cmsViewPoint.setIfFavort(2);
 			}
+			if(cmsViewPoint.getPointImg() != null){
+				String url = session.getServletContext().getRealPath("/")+File.separator+"view_point_img" + File.separator + cmsViewPoint.getId() + File.separator + cmsViewPoint.getPointImg();
+				cmsViewPoint.setPointImg(url);
+			}
+			
 			ViewPointItem item = new ViewPointItem();
 			Date time = cmsViewPoint.getPointTime();
 			SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");//

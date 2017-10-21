@@ -1,5 +1,6 @@
 package me.flyray.common.utils;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -61,6 +62,10 @@ public class ImageBase64 {
      
         try 
         {
+        	File f = new File(imgFilePath);
+        	if (!f.getParentFile().exists()) {
+        		 f.getParentFile().mkdirs();
+        	}
             //Base64解码
             byte[] b = Base64.decodeBase64(imgStr);
             for(int i=0;i<b.length;++i)
@@ -80,6 +85,7 @@ public class ImageBase64 {
         } 
         catch (Exception e) 
         {
+        	e.printStackTrace();
             return false;
         }
     }
