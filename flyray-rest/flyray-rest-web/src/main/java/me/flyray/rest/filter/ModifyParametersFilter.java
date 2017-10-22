@@ -44,12 +44,14 @@ public class ModifyParametersFilter extends OncePerRequestFilter{
             throws ServletException, IOException {
         ModifyParametersWrapper mParametersWrapper = new ModifyParametersWrapper(request);
         try {
-        	if (reqJson == null) {
-        		out(response,"请求参数不能为空");
-			}
-        	if(reqJson.get("customerId") != null || reqJson.get("orgId") != null
-        			|| reqJson.get("merchantId") != null){
-        		out(response,"customerId、merchantId和orgId不能为空");
+        	if(request.getServletPath().length() > 0){
+        		if (reqJson == null) {
+            		out(response,"请求参数不能为空");
+    			}
+        		if(reqJson.get("customerId") != null || reqJson.get("orgId") != null
+            			|| reqJson.get("merchantId") != null){
+            		out(response,"customerId、merchantId和orgId不能为空");
+            	}
         	}
         	filterChain.doFilter(mParametersWrapper, response);
         } catch (RuntimeException e) {  
