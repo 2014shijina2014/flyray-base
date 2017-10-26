@@ -60,7 +60,6 @@ public class CommentController extends AbstractController{
 			return ResponseHelper.success(null,pageUtil, "01", "已经到最后一条了~");
 		}
 		queryMap.putAll(getPagination(param));
-		
 		List<Comment> commentList = commentService.query(queryMap);
 		return ResponseHelper.success(commentList,pageUtil, "00", "查询成功");
 	}
@@ -116,7 +115,7 @@ public class CommentController extends AbstractController{
 		} else if("2".equals(commentType)) {
 			//2、回复
 			Integer commentTargetUserId = (Integer) param.get("commentTargetUserId");
-			CustomerBase targetCustome = customerBaseService.queryByCustomerId(Long.valueOf(commentBy));
+			CustomerBase targetCustome = customerBaseService.queryByCustomerId(Long.valueOf(commentTargetUserId));
 			param.put("commentTargetUserName", targetCustome.getNickname());
 			param.put("commentTargetUserId", commentTargetUserId);
 		}
