@@ -37,7 +37,6 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 		return commentDao.queryList(param);
 	}
 
-	@Override
 	public Map<String, Object> saveTopicComment(Map<String, Object> param) {
 		String content = (String) param.get("content");
 		String targetId = (String) param.get("targetId");
@@ -70,7 +69,6 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 		return map;
 	}
 
-	@Override
 	public Comment savePointComment(Map<String, Object> param) throws Exception{
 		String commentType = (String) param.get("commentType");//1评论2回复
 		Comment comment = new Comment();
@@ -108,6 +106,12 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 		}
 		commentDao.save(comment);
 		return comment;
+	}
+
+	@Override
+	public Comment saveAll(Map<String, Object> param) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

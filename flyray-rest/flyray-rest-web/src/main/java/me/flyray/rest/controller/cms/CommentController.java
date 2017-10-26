@@ -121,7 +121,7 @@ public class CommentController extends AbstractController{
 		}
 		try {
 			logger.info("观点回复添加 ---查询完用户名后---{}",param);
-			Comment comment = commentService.savePointComment(param);
+			Comment comment = commentService.saveAll(param);
 			logger.info("观点回复添加 ---comment---{}",comment.toString());
 			return ResponseHelper.success(comment,null, "00", "评论成功");
 		} catch (Exception e) {

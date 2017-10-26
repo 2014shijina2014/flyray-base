@@ -18,13 +18,6 @@ public interface CommentService extends BaseService {
 	 *  根据条件查询评论
 	 */
 	public List<Comment> query(Map<String, Object> param);
-	/**
-	 * 添加话题评论
-	 */
-	public Map<String, Object> saveTopicComment(Map<String, Object> param);
-	/**
-	 * 添加圈子评论
-	 * @throws Exception 
-	 */
-	public Comment savePointComment(Map<String, Object> param) throws Exception;
+	
+	public Comment saveAll(Map<String, Object> param);
 }
