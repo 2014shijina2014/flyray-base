@@ -131,12 +131,7 @@ public class TopicController extends AbstractController{
 		//根据commentBy查询用户名
 		CustomerBase custome = customerBaseService.queryByCustomerId(Long.valueOf(commentBy));
 		param.put("commentByName", custome.getNickname());
-		Map<String, Object> result = commentService.saveTopicComment(param);
-		if ("00".equals(result.get("code"))) {
-			Comment comment = (Comment) result.get("comment");
-			return ResponseHelper.success(result,null, "00", "评论成功");
-		}else {
-			return ResponseHelper.success(result,null, "01", "评论异常");
-		}
+		commentService.saveAll(param);
+		return ResponseHelper.success(null,null, "01", "评论异常");
 	}
 }

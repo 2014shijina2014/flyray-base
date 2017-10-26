@@ -110,7 +110,7 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 
 	@Override
 	public Comment saveAll(Map<String, Object> param) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub commentContent
 		return null;
 	}
 
