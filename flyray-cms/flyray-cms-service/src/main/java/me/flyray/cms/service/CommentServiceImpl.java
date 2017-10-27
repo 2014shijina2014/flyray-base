@@ -110,8 +110,49 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 
 	@Override
 	public Comment saveAll(Map<String, Object> param) {
-		// TODO Auto-generated method stub commentContent
-		return null;
+		String commentType = (String) param.get("commentType");//1评论2回复
+		Comment comment = new Comment();
+		Long id = SnowFlake.getId();
+		comment.setId(String.valueOf(id));
+		String commentContent = (String) param.get("commentContent");
+		String commentTargetId = (String) param.get("commentTargetId");
+		String commentBy = (String) param.get("commentBy");
+		String commentByName = (String) param.get("commentByName");
+		String commentModuleNo = (String) param.get("commentModuleNo");
+		//
+		if("2".equals(commentModuleNo)){
+			Viewpoint point = viewpointDao.selectById(commentTargetId);
+			Integer commenCount = point.getCommentCount();
+			commenCount = commenCount + 1;
+			point.setCommentCount(commenCount);
+			viewpointDao.update(point);
+		}
+		comment.setCommentContent(commentContent);
+		//如果是评论commentTargetId是被评论的观点的编号，如果是回复 commentTargetId 是被回复的评论的编号
+		comment.setCommentTargetId(commentTargetId);
+		comment.setCommentLikeCount(Long.valueOf("0"));
+		comment.setCommentTime(new Timestamp(new Date().getTime()));
+		comment.setCommentModuleNo("1");
+		comment.setCommentBy(Long.valueOf(commentBy));
+		comment.setCommentByName(commentByName);
+		if ("1".equals(commentType)) {
+			//1、评论
+			comment.setCommentType("1");
+		} else if("2".equals(commentType)) {
+			//2、回复
+			comment.setCommentType("2");
+			Integer commentTargetUserId = (Integer) param.get("commentTargetUserId");
+			String commentTargetUserName = (String) param.get("commentTargetUserName");
+			comment.setCommentTargetUserId(Long.valueOf(commentTargetUserId));
+			comment.setCommentTargetUserName(commentTargetUserName);
+
+		}
+		commentDao.save(comment);
+		String format = "yyyy-MM-dd HH:mm:ss";
+		SimpleDateFormat sdf = new SimpleDateFormat(format); 
+		String time = sdf.format(comment.getCommentTime());
+		comment.setCommentTimes(time);
+		return comment;
 	}
 
 }

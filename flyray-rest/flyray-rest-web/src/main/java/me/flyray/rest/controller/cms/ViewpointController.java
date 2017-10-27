@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -50,6 +51,8 @@ public class ViewpointController extends AbstractController{
 	private ViewFavortService viewFavortService;
 	@Autowired
 	private CommentService commentService;
+	@Value("D:\\gitworkspacevue\\flyray-cms-ui\\src\\assets\\home")
+	private String imgPath;
 	/**
 	 * 添加观点
 	 */
@@ -60,13 +63,14 @@ public class ViewpointController extends AbstractController{
 		String pointText = (String)param.get("pointText");
 		String createBy = (String)param.get("createBy");
 		String imgFile64 = (String)param.get("imgFile");
+		String img64[] = imgFile64.split(",");
 		String imgFileName = (String)param.get("imgFileName");
 		String suffix = imgFileName.substring(imgFileName.lastIndexOf(".") + 1);  
 		Long time = new Date().getTime();
 		String newName = time + "." + suffix;
-		String url = session.getServletContext().getRealPath("/")+File.separator+"view_point_img" + File.separator + id + File.separator + newName;
-		
-		Boolean flag = ImageBase64.generateImage(imgFile64, url);
+		//String url = session.getServletContext().getRealPath("/")+File.separator+"view_point_img" + File.separator + id + File.separator + newName;
+		String url = imgPath + File.separator + id + File.separator + newName;
+		Boolean flag = ImageBase64.generateImage(img64[1], url);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("pointText", pointText);
 		map.put("createBy", Long.valueOf(createBy));

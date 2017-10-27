@@ -105,7 +105,7 @@ public class TopicController extends AbstractController{
 		}
 		queryMap.put("commentType", "1");
 		queryMap.put("commentTargetId", id);
-		queryMap.put("commentModuleNo", "2");
+		queryMap.put("commentModuleNo", "1");
 		List<Comment> list = commentService.query(queryMap);
 		logger.info("请求查询话题--list---{}",list.toString());
 		String format = "yyyy-MM-dd HH:mm:ss";

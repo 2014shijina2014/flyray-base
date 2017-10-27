@@ -1,5 +1,6 @@
 package me.flyray.rest.controller.cms;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -42,26 +43,42 @@ public class CommentController extends AbstractController{
 	@ResponseBody
 	@RequestMapping(value="/query", method = RequestMethod.POST)
 	public Map<String, Object> queryComment(@RequestBody Map<String, String> param) {
-		logger.info("查询观点评论 ---start---{}",param);
+
+		logger.info("请求查询话题---start---{}",param);
 		String currentPage = param.get("currentPage");//当前页
 		String pageSize = param.get("pageSize");//条数
-		String commentTargetId = param.get("commentTargetId");//观点编号
+		String createBy = param.get("createBy");//用户编号
+		String id = param.get("id");//话题编号
+		String commentModuleNo = param.get("commentModuleNo");//话题编号
 		Map<String, Object> map = new HashMap<String, Object>();
 		Map<String, Object> queryMap = new HashMap<>();
-		queryMap.put("commentModuleNo", 1);
-		queryMap.put("commentTargetId", commentTargetId);
+		queryMap.put("commentTargetId", id);
+		queryMap.put("commentModuleNo", commentModuleNo);
 		Integer total = commentService.queryTotal(queryMap);
-		logger.info("查询观点评论 ---total---{}",total);
-		param.put("totalCount", String.valueOf(total));
 		int pageSizeInt = Integer.valueOf(pageSize);
 		PageUtils pageUtil = new PageUtils(total, pageSizeInt, Integer.valueOf(currentPage));
-		logger.info("查询观点评论 ---pageUtil---{}",pageUtil.toString());
+		param.put("totalCount", total.toString());
+		logger.info("请求查询话题--pageUtil---{}",pageUtil.toString());
 		if (isLastPage(param)) {
 			return ResponseHelper.success(null,pageUtil, "01", "已经到最后一条了~");
 		}
-		queryMap.putAll(getPagination(param));
-		List<Comment> commentList = commentService.query(queryMap);
-		return ResponseHelper.success(commentList,pageUtil, "00", "查询成功");
+		//queryMap.put("commentType", "1");
+		
+		List<Comment> list = commentService.query(queryMap);
+		logger.info("请求查询话题--list---{}",list.toString());
+		String format = "yyyy-MM-dd HH:mm:ss";
+		SimpleDateFormat sdf = new SimpleDateFormat(format);  
+		for (Object object : list) {
+			Comment comment = (Comment) object;
+			Long uid = comment.getCommentBy();
+			CustomerBase customer = customerBaseService.queryByCustomerId(uid);
+			comment.setCommentImg(customer.getAvatar());
+			String time = sdf.format(comment.getCommentTime());
+			comment.setCommentTimes(time);
+		}
+		
+		return ResponseHelper.success(list,pageUtil, "00", "查询成功");
+	
 	}
 	
 	/**
