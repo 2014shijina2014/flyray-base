@@ -51,8 +51,11 @@ public class ViewpointController extends AbstractController{
 	private ViewFavortService viewFavortService;
 	@Autowired
 	private CommentService commentService;
-	@Value("D:\\gitworkspacevue\\flyray-cms-ui\\src\\assets\\home")
+	@Value("${rest_home_imgPath}")
 	private String imgPath;
+	@Value("${rest_home_imgHttpPath}")
+	private String imgHttpPath;
+	
 	/**
 	 * 添加观点
 	 */
@@ -132,7 +135,7 @@ public class ViewpointController extends AbstractController{
 				cmsViewPoint.setIfFavort(2);
 			}
 			if(cmsViewPoint.getPointImg() != null){
-				String url = session.getServletContext().getRealPath("/")+File.separator+"view_point_img" + File.separator + cmsViewPoint.getId() + File.separator + cmsViewPoint.getPointImg();
+				String url = imgHttpPath + File.separator + cmsViewPoint.getId() + File.separator + cmsViewPoint.getPointImg();
 				cmsViewPoint.setPointImg(url);
 			}
 			

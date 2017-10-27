@@ -11,6 +11,8 @@
 	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
 	<!-- 注解支持 -->  
+	<!-- 引入属性文件,config.properties位于src/main/resources目录下 -->
+	<context:property-placeholder location="classpath*:*.properties" />
 	
     <mvc:annotation-driven />
     
