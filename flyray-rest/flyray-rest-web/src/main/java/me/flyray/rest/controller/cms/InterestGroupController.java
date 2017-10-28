@@ -209,6 +209,7 @@ public class InterestGroupController extends AbstractController {
 		return ResponseHelper.success(resultMap, null, "00", "请求数据成功");
 	}
 	
+	
 	/**
 	 * 退出团队
 	 */

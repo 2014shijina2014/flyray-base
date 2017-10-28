@@ -169,7 +169,6 @@ public class ActivityController extends AbstractController {
 		return ResponseHelper.success(resultMap, pageUtil, "00", "请求数据成功");
 	}
 	
-	
 	/**
 	 * 查询活动详细信息
 	 */
