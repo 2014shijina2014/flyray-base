@@ -4,8 +4,26 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="me.flyray.crm.dao.CustomerAuthDao">
 
+	<sql id="where1">
+		<trim prefix="where" prefixOverrides="AND|OR">
+		<if test="customerId != null and customerId != ''">
+			AND customer_id = #{customerId,jdbcType=VARCHAR}
+        </if>
+        <if test="identityType != null and InterestGroupId != ''">
+			AND identity_type = #{identityType,jdbcType=VARCHAR}
+        </if>
+        <if test="identifier != null and activityName != ''">
+			AND identifier = #{identifier,jdbcType=VARCHAR}
+        </if>
+        <if test="credential != null and activityLogo != ''">
+			AND credential = #{credential,jdbcType=VARCHAR}
+        </if>
+		</trim>
+	</sql>
+	
 	<select id="queryObject" resultType="me.flyray.crm.model.CustomerAuth">
-		select * from crm_customer_auth where id = #{id}
+		select * from crm_customer_auth 
+		<include refid="where1"/>
 	</select>
 	
 	<select id="queryById" resultType="me.flyray.crm.model.CustomerAuth">
@@ -48,11 +66,11 @@
 			<if test="identifier != null">`identifier` = #{identifier},</if>
 			<if test="credential != null">`credential` = #{credential}</if>
 		</set>
-		where id = #{id}
+		where customer_id = #{customerId}
 	</update>
 	
 	<delete id="delete">
-		delete from crm_customer_auth where id = #{id}
+		delete from crm_customer_auth where customer_id = #{customerId}
 	</delete>
   
 </mapper>

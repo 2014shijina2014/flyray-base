@@ -47,6 +47,7 @@
 	<insert id="save" parameterType="me.flyray.crm.model.CustomerBase" useGeneratedKeys="true" keyProperty="id">
 		insert into crm_customer_base
 		(
+			`id`, 
 			`customer_no`, 
 			`cust_name`,
 			`nickname`,
@@ -61,6 +62,7 @@
 		)
 		values
 		(
+			#{id}, 
 			#{customerNo}, 
 			#{custName},
 			#{nickname},
