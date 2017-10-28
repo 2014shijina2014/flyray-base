@@ -256,6 +256,10 @@ public class ViewpointController extends AbstractController{
 				CustomerBase customer = customerBaseService.queryByCustomerId(cmsViewPoint.getCreateBy());
 				item.setCustomer(customer);
 			}
+			if(cmsViewPoint.getPointImg() != null){
+				String url = imgHttpPath + File.separator + cmsViewPoint.getId() + File.separator + cmsViewPoint.getPointImg();
+				cmsViewPoint.setPointImg(url);
+			}
 			result.put("item", item);
 			return ResponseHelper.success(result,null, "00", "查询成功");
 		}else{

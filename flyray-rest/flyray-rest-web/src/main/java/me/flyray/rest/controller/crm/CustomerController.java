@@ -89,7 +89,7 @@ public class CustomerController {
 		resultMap.put("customerAuth", customerAuthMap);
 		//查询客户账户信息
 		queryMap.put("accountType", AcountType.POINTS.getCode());
-		List<Map<String, Object>> customerAccountMap = customerAccountService.queryList(queryMap);
+		Map<String, Object> customerAccountMap = customerAccountService.queryObject(queryMap);
 		resultMap.put("customerAccount", customerAccountMap);
 		//客户角色
 		Map<String, Object> queryRoleRltMap = new HashMap<String, Object>();
@@ -97,13 +97,14 @@ public class CustomerController {
 		queryRoleRltMap.put("merchantId", param.get("merchantId"));
 		queryRoleRltMap.put("customerId", param.get("customerId"));
 		Map<String, Object> resultRoleRlt = customerRoleRelationsService.queryObject(queryRoleRltMap);
-		
-		Map<String, Object> queryRoleMap = new HashMap<String, Object>();
-		queryRoleMap.put("id", resultRoleRlt.get("customerRoleId"));
-		Map<String, Object> customerRoleMap = customerRoleService.queryObject(queryRoleMap);
-		resultMap.put("customerRole", customerRoleMap);
+		if (null != resultRoleRlt) {
+			Map<String, Object> queryRoleMap = new HashMap<String, Object>();
+			queryRoleMap.put("id", resultRoleRlt.get("customerRoleId"));
+			Map<String, Object> customerRoleMap = customerRoleService.queryObject(queryRoleMap);
+			resultMap.put("customerRole", customerRoleMap);
+		}
 		logger.info("查询客户信息------end------{}",resultMap);
-		return resultMap;
+		return ResponseHelper.success(resultMap,null, "00", "查询成功");
 	}
 	
 	/**
