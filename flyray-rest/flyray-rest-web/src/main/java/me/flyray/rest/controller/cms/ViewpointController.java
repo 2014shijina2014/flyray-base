@@ -66,21 +66,23 @@ public class ViewpointController extends AbstractController{
 		String pointText = (String)param.get("pointText");
 		String createBy = (String)param.get("createBy");
 		String imgFile64 = (String)param.get("imgFile");
-		String img64[] = imgFile64.split(",");
-		String imgFileName = (String)param.get("imgFileName");
-		String suffix = imgFileName.substring(imgFileName.lastIndexOf(".") + 1);  
-		Long time = new Date().getTime();
-		String newName = time + "." + suffix;
-		//String url = session.getServletContext().getRealPath("/")+File.separator+"view_point_img" + File.separator + id + File.separator + newName;
-		String url = imgPath + File.separator + id + File.separator + newName;
-		Boolean flag = ImageBase64.generateImage(img64[1], url);
+		
 		Map<String, Object> map = new HashMap<String, Object>();
+		if ("" != imgFile64 && null != imgFile64) {
+			String img64[] = imgFile64.split(",");
+			String imgFileName = (String)param.get("imgFileName");
+			String suffix = imgFileName.substring(imgFileName.lastIndexOf(".") + 1);  
+			Long time = new Date().getTime();
+			String newName = time + "." + suffix;
+			String url = imgPath + File.separator + id + File.separator + newName;
+			Boolean flag = ImageBase64.generateImage(img64[1], url);
+			map.put("pointImg", newName);
+		}
 		map.put("pointText", pointText);
 		map.put("createBy", Long.valueOf(createBy));
 		map.put("favortCount", 0);
 		map.put("commentCount", 0);
 		map.put("id", id);
-		map.put("pointImg", newName);
 		try {
 			viewPointService.save(map);
 		} catch (Exception e) {
