@@ -22,5 +22,9 @@
     <dubbo:reference id="merchantAccountService" interface="me.flyray.crm.api.MerchantAccountService"/>
     <!-- 微信信息处理 -->
     <dubbo:reference id="weixinCommonService" interface="me.flyray.crm.api.WeixinCommonService"/>
+    <!-- 客户对于平台所属角色 -->
+    <dubbo:reference id="customerRoleService" interface="me.flyray.crm.api.CustomerRoleService"/>
+    <!-- 客户与平台所属角色关系 -->
+    <dubbo:reference id="customerRoleRelationsService" interface="me.flyray.crm.api.CustomerRoleRelationsService"/>
     
 </beans>
