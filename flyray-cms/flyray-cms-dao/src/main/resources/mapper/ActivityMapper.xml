@@ -17,10 +17,11 @@
 		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
 		<result column="create_by" property="createBy" jdbcType="VARCHAR" />
 		<result column="flag" property="flag" jdbcType="VARCHAR" />
+		<result column="highlights" property="highlights" jdbcType="VARCHAR" />
 	</resultMap>
 	
 	<sql id="Base_Column_List">
-        id, interest_group_id, activity_name, activity_logo, activity_des, activity_content, activity_start_time, activity_end_time, activity_addr, create_time, create_by, flag
+        id, interest_group_id, activity_name, activity_logo, activity_des, activity_content, activity_start_time, activity_end_time, activity_addr, create_time, create_by, flag, highlights
     </sql>
     
     <sql id="where1">
@@ -60,6 +61,9 @@
         </if>
         <if test="flag != null and flag != ''">
 			AND flag = #{flag,jdbcType=VARCHAR}
+        </if>
+        <if test="highlights != null and highlights != ''">
+			AND highlights = #{highlights,jdbcType=VARCHAR}
         </if>
 		</trim>
 	</sql>
@@ -103,6 +107,9 @@
 			<if test="flag != null and flag != ''">
 				flag,
 			</if>
+			<if test="highlights != null and highlights != ''">
+				highlights,
+			</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="id != null and id != ''">
@@ -140,6 +147,9 @@
 	        </if>
 	        <if test="flag != null and flag != ''">
 				#{flag,jdbcType=VARCHAR},
+	        </if>
+	        <if test="highlights != null and highlights != ''">
+				#{highlights,jdbcType=VARCHAR},
 	        </if>
 		</trim>
 	</insert>
@@ -179,6 +189,9 @@
 	        </if>
 	        <if test="flag != null and flag != ''">
 				flag = #{flag,jdbcType=VARCHAR},
+	        </if>
+	        <if test="highlights != null and highlights != ''">
+				highlights = #{highlights,jdbcType=VARCHAR},
 	        </if>
 		</set>
 		where id = #{id,jdbcType=VARCHAR}

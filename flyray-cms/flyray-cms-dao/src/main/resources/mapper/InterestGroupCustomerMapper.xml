@@ -44,6 +44,11 @@
 		</trim>
 	</insert>
 	
+	<delete id="delete" parameterType="me.flyray.cms.model.InterestGroupCustomer">
+        delete from cms_interest_group_customer
+        <include refid="where1"/>
+    </delete>
+	
 	<select id="selectByBizKeys" resultMap="interestGroupCustomerMap" parameterType="me.flyray.cms.model.InterestGroupCustomer">
 		select
 		<include refid="Base_Column_List" />

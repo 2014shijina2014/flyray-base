@@ -9,4 +9,6 @@ public interface InterestGroupCustomerDao extends BaseDao<InterestGroupCustomer>
 	
 	public List<InterestGroupCustomer> selectByBizKeys(InterestGroupCustomer interestGroupCustomer);
 	
+	public void delete(InterestGroupCustomer interestGroupCustomer);
+	
 }

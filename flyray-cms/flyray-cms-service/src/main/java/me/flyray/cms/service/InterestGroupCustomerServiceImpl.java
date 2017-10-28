@@ -78,4 +78,16 @@ public class InterestGroupCustomerServiceImpl implements InterestGroupCustomerSe
 		return interestGroupCustomerDao.selectByBizKeys(interestGroupCustomer);
 	}
 
+	/**
+	 * 根据条件删除用户团队关系
+	 * @author centerroot
+	 * @time 创建时间:2017年10月28日下午2:18:13
+	 * (non-Javadoc)
+	 * @see me.flyray.cms.api.InterestGroupCustomerService#delete(me.flyray.cms.model.InterestGroupCustomer)
+	 */
+	@Override
+	public void delete(InterestGroupCustomer interestGroupCustomer) {
+		interestGroupCustomerDao.delete(interestGroupCustomer);
+	}
+
 }

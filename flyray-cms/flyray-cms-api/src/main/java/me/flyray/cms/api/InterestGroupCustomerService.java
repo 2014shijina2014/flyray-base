@@ -21,4 +21,12 @@ public interface InterestGroupCustomerService extends BaseService{
 	 * @return
 	 */
 	public List<InterestGroupCustomer> selectByBizKeys(InterestGroupCustomer interestGroupCustomer);
+
+	/**
+	 * 根据条件删除用户团队关系
+	 * @author centerroot
+	 * @time 创建时间:2017年10月28日下午2:17:39
+	 * @param interestGroupCustomer
+	 */
+	public void delete(InterestGroupCustomer interestGroupCustomer);
 }
