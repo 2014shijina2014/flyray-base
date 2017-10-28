@@ -65,12 +65,12 @@ public class ActivityController extends AbstractController {
 
 		// TODO 用户登录后获取到机构id和商户id后替换参数
 		String orgId = (String) param.get("orgId");
-		String merId = (String) param.get("merId");
+		String merchantId = (String) param.get("merchantId");
 		String groupId = (String) param.get("groupId");
 		
 		Map<String, Object> queryMap = new HashMap<>();
 		queryMap.put("orgId", orgId);
-		queryMap.put("merchantId", merId);
+		queryMap.put("merchantId", merchantId);
 		queryMap.put("InterestGroupId", groupId);
 		List<Activity> recActivities = activityService.selectRecommendActivity(queryMap);
 		logger.info("查询活动首页信息------查询推荐活动记录------{}", recActivities);
@@ -90,11 +90,11 @@ public class ActivityController extends AbstractController {
 		logger.info("查询活动首页信息------start------{}", param);
 
 		String orgId = (String) param.get("orgId");
-		String merId = (String) param.get("merId");
+		String merchantId = (String) param.get("merchantId");
 		
 		Map<String, Object> queryMap = new HashMap<>();
 		queryMap.put("orgId", orgId);
-		queryMap.put("merchantId", merId);
+		queryMap.put("merchantId", merchantId);
 		int resultTotal = interestGroupCategoryService.queryTotal(queryMap);
 		param.put("totalCount", String.valueOf(resultTotal));
 		queryMap.putAll(getPagination(param));
@@ -107,7 +107,7 @@ public class ActivityController extends AbstractController {
 				Map<String, Object> groupCategoryItem = igcListMap.get(i);
 				Map<String, Object> queryGroupMap = new HashMap<>();
 				queryGroupMap.put("orgId", orgId);
-				queryGroupMap.put("merchantId", merId);
+				queryGroupMap.put("merchantId", merchantId);
 				queryGroupMap.put("groupCategoryId", groupCategoryItem.get("id"));
 				queryGroupMap.put("flag", "20");
 				logger.info("查询活动首页信息------查询兴趣小组请求参数------{}", queryGroupMap);
@@ -139,13 +139,13 @@ public class ActivityController extends AbstractController {
 		logger.info("查询团队中的活动列表------start------{}", param);
 
 		String orgId = (String) param.get("orgId");
-		String merId = (String) param.get("merId");
+		String merchantId = (String) param.get("merchantId");
 		String groupId = (String) param.get("groupId");
 		String actStatus = (String) param.get("actStatus");
 		
 		Map<String, Object> queryMap = new HashMap<>();
 		queryMap.put("orgId", orgId);
-		queryMap.put("merchantId", merId);
+		queryMap.put("merchantId", merchantId);
 		queryMap.put("InterestGroupId", groupId);
 		queryMap.put("actStatus", actStatus);
 		
