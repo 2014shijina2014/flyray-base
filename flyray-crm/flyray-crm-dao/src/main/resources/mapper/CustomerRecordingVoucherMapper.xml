@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.flyray.crm.dao.CustomerRecordingVoucherDao">
+	<resultMap type="me.flyray.crm.model.CustomerBase" id="customerBaseMap">
+		<result column="id" property="id" />
+		<result column="customer_no" property="customerNo" />
+		<result column="cust_name" property="custName" />
+		<result column="nickname" property="nickname" />
+		<result column="phone" property="phone" />
+		<result column="sex" property="sex" />
+		<result column="inDate" property="identityCard" />
+		<result column="address" property="address" />
+		<result column="age" property="age" />
+		<result column="birthday" property="birthday" />
+		<result column="avatar" property="avatar" />
+		<result column="merchant_no" property="merchantNo" />
+		<result column="customer_id" property="crmCustomerBaseExtend.customerId" />
+		<result column="follow_customer_no" property="crmCustomerBaseExtend.followCustomerNo" />
+		<result column="school_name" property="crmCustomerBaseExtend.schoolName" />
+	</resultMap>
+	<select id="queryObject" resultMap="customerBaseMap">
+		SELECT * FROM crm_customer_base AS base LEFT JOIN `crm_customer_base_extend` AS extend ON base.`id` = extend.`customer_id` WHERE id = #{id}
+	</select>
+	
+	<select id="queryById" resultMap="customerBaseMap">
+		SELECT * FROM crm_customer_base AS base LEFT JOIN `crm_customer_base_extend` AS extend ON base.`id` = extend.`customer_id` WHERE id = #{id}
+	</select>
+
+	<select id="queryList"  resultMap="customerBaseMap">
+		SELECT * FROM crm_customer_base AS base LEFT JOIN `crm_customer_base_extend` AS extend ON base.`id` = extend.`customer_id` ORDER BY id DESC
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from crm_customer_base 
+	</select>
+	<select id="queryByCustomerId" resultMap="customerBaseMap">
+		SELECT * FROM crm_customer_base AS base LEFT JOIN `crm_customer_base_extend` AS extend ON base.`id` = extend.`customer_id` WHERE id = #{id}
+	</select>
+	<select id="queryByCustomerNo" resultMap="customerBaseMap">
+		SELECT * FROM crm_customer_base AS base LEFT JOIN `crm_customer_base_extend` AS extend ON base.`id` = extend.`customer_id` WHERE customer_no = #{customerNo}
+	</select>
+	<insert id="save" parameterType="me.flyray.crm.model.CustomerBase" useGeneratedKeys="true" keyProperty="id">
+		insert into crm_customer_base
+		(
+			`id`, 
+			`customer_no`, 
+			`cust_name`,
+			`nickname`,
+			`phone`,
+			`sex`,
+			`address`,
+			`age`,
+			`birthday`,
+			`avatar`,
+			`merchant_no`,
+			`org_no`
+		)
+		values
+		(
+			#{id}, 
+			#{customerNo}, 
+			#{custName},
+			#{nickname},
+			#{phone},
+			#{sex},
+			#{address},
+			#{age},
+			#{birthday},
+			#{avatar},
+			#{merchantNo},
+			#{orgNo}
+		)
+	</insert>
+	 <insert id="saveExtend" parameterType="me.flyray.crm.model.CrmCustomerBaseExtend">
+		insert into crm_customer_base_extend
+		(
+			`customer_id`,
+			`follow_customer_no`,
+			`school_name`
+		)
+		values
+		(
+			#{customerId}, 
+			#{followCustomerNo},
+			#{schoolName}
+			
+		)
+	</insert>
+	<update id="update" parameterType="me.flyray.crm.model.CustomerBase">
+		update crm_customer_base 
+		<set>
+			<if test="customerNo != null">`customer_no` = #{customerNo}, </if>
+			<if test="custName != null">`cust_name` = #{custName}, </if>
+			<if test="nickname != null">`nickname` = #{nickname}, </if>
+			<if test="phone != null">`phone` = #{phone}, </if>
+			<if test="sex != null">`sex` = #{sex}, </if>
+			<if test="address != null">`address` = #{address}, </if>
+			<if test="age != null">`age` = #{age}, </if>
+			<if test="birthday != null">`birthday` = #{birthday}, </if>
+			<if test="avatar != null">`avatar` = #{avatar}, </if>
+			<if test="merchantNo != null">`merchant_no` = #{merchantNo}, </if>
+			<if test="orgNo != null">`org_no` = #{orgNo}</if>
+		</set>
+		where id = #{id}
+	</update>
+	<update id="updateExtent" parameterType="me.flyray.crm.model.CrmCustomerBaseExtend">
+		update crm_customer_base_extend 
+		<set>
+			<if test="followCustomerNo != null">`follow_customer_no` = #{followCustomerNo}, </if>
+			<if test="schoolName != null">`school_name` = #{schoolName}, </if>
+		</set>
+		where customer_id = #{customerId}
+	</update>
+	<delete id="delete">
+		delete from crm_customer_base where id = #{id}
+	</delete>
+	<delete id="deleteBaseAndExtend">
+		DELETE base.*,extend.* FROM crm_customer_base AS base LEFT JOIN `crm_customer_base_extend` AS extend ON base.`id` = extend.`customer_id` WHERE base.id = #{id}
+	</delete>
+</mapper>

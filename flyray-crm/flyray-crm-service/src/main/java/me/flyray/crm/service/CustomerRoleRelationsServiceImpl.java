@@ -12,7 +12,7 @@ import me.flyray.crm.model.CustomerRoleRelations;
 * @description：类说明 
 */
 
-@Service("customerRelationsService")
+@Service("customerRoleRelationsService")
 public class CustomerRoleRelationsServiceImpl extends AbstractBaseService<CustomerRoleRelations> implements CustomerRoleRelationsService{
 
 }
