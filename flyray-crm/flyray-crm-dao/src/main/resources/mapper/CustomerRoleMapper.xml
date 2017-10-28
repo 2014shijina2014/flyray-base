@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.flyray.crm.dao.CustomerRoleDao">
+
+	<sql id="where1">
+		<trim prefix="where" prefixOverrides="AND|OR">
+		<if test="id != null and id != ''">
+			AND `id` = #{id}
+        </if>
+		<if test="roleNo != null and roleNo != ''">
+			AND `role_no` = #{roleNo}
+        </if>
+        <if test="roleName != null and roleName != ''">
+			AND `role_name` = #{roleNo}
+        </if>
+		</trim>
+	</sql>
+	
+	<select id="queryObject" resultType="me.flyray.crm.model.CustomerRole">
+		select * from crm_customer_role 
+		<include refid="where1"/>
+	</select>
+	
+	<select id="queryById" resultType="me.flyray.crm.model.CustomerRole">
+		select * from crm_customer_role where id = #{id}
+	</select>
+
+	<select id="queryList" resultType="me.flyray.crm.model.CustomerRole">
+		select * from crm_customer_role order by id desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from crm_customer_role 
+	</select>
+	
+	<insert id="save" parameterType="me.flyray.crm.model.CustomerRole" useGeneratedKeys="true" keyProperty="id">
+		insert into crm_customer_role
+		(
+			`role_no`, 
+			`role_name`,
+			`org_id`,
+			`merchant_id`
+		)
+		values
+		(
+			#{roleNo}, 
+			#{roleName},
+			#{orgId}, 
+			#{merchantId}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="me.flyray.crm.model.CustomerRole">
+		update crm_customer_role 
+		<set>
+			<if test="roleNo != null">`role_no` = #{roleNo}, </if>
+			<if test="roleName != null">`role_name` = #{roleName}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="delete">
+		delete from crm_customer_role where id = #{id}
+	</delete>
+  
+</mapper>

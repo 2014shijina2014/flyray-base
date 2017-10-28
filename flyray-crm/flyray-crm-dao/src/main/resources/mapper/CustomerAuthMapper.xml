@@ -9,7 +9,7 @@
 		<if test="customerId != null and customerId != ''">
 			AND customer_id = #{customerId,jdbcType=VARCHAR}
         </if>
-        <if test="identityType != null and InterestGroupId != ''">
+        <if test="identityType != null and identityType != ''">
 			AND identity_type = #{identityType,jdbcType=VARCHAR}
         </if>
         <if test="identifier != null and activityName != ''">

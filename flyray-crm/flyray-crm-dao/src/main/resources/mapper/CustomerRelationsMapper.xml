@@ -4,6 +4,20 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="me.flyray.crm.dao.CustomerRelationsDao">
 
+	<sql id="where1">
+		<trim prefix="where" prefixOverrides="AND|OR">
+		<if test="customerId != null and customerId != ''">
+			AND customer_id = #{customerId,jdbcType=VARCHAR}
+        </if>
+        <if test="startTime != null and startTime != ''">
+			AND date(invited_time) <![CDATA[>=]]> #{startTime}
+        </if>
+        <if test="endTime != null and endTime != ''">
+        	AND date(invited_time) <![CDATA[<=]]> #{endTime}
+        </if>
+		</trim>
+	</sql>
+	
 	<select id="queryObject" resultType="me.flyray.crm.model.CustomerRelations">
 		select * from crm_customer_relations where customer_id = #{customerId}
 	</select>
@@ -19,6 +33,11 @@
 		</if>
 	</select>
 	
+	<select id="queryInviteeCount" resultType="int">
+		select count(1) from crm_customer_relations 
+		<include refid="where1"/>
+	</select>
+	
  	<select id="queryTotal" resultType="int">
 		select count(*) from crm_customer_relations 
 	</select>
@@ -30,7 +49,8 @@
 			`customer_id`, 
 			`fx_level`, 
 			`parent_id`,
-			`child_id`
+			`child_id`,
+			`invited_time`
 		)
 		values
 		(
@@ -38,7 +58,8 @@
 			#{customerId},
 			#{fxLevel},
 			#{parentId},
-			#{childId}
+			#{childId},
+			#{invitedTime}
 		)
 	</insert>
 	 

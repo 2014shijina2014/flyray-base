@@ -13,7 +13,7 @@ public class CustomerAccount {
 	/**
 	 * 客户号
 	 */
-	private String customerNo;
+	private String customerId;
 	
 	/**
 	 * 客户账户号
@@ -41,12 +41,12 @@ public class CustomerAccount {
 	 */
 	private String status;
 
-	public String getCustomerNo() {
-		return customerNo;
+	public String getCustomerId() {
+		return customerId;
 	}
 
-	public void setCustomerNo(String customerNo) {
-		this.customerNo = customerNo;
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
 	}
 
 	public String getCustAccountNo() {

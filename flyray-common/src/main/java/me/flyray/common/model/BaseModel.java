@@ -5,8 +5,14 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public abstract class BaseModel implements Serializable {
 	
+	/**
+	 * 商户号
+	 */
 	private String merchantId;
 	
+	/**
+	 * 机构Id
+	 */
 	private String orgId;
 
 	public String getMerchantId() {

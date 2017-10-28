@@ -1,6 +1,7 @@
 package me.flyray.crm.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,11 @@ public class CustomerRelationsServiceImpl extends AbstractBaseService<CustomerRe
 	@Override
 	public void insert(CustomerRelations invitedCustomer) {
 		customerRelationsDao.save(invitedCustomer);
+	}
+
+	@Override
+	public int queryInviteeCount(Map<String, Object> queryMap) {
+		return customerRelationsDao.queryInviteeCount(queryMap);
 	}
 
 }

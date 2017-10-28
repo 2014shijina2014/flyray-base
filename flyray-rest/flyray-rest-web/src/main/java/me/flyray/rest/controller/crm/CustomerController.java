@@ -6,6 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +32,10 @@ import me.flyray.crm.api.CustomerAccountService;
 import me.flyray.crm.api.CustomerAuthService;
 import me.flyray.crm.api.CustomerBaseService;
 import me.flyray.crm.api.CustomerRelationsService;
+import me.flyray.crm.api.CustomerRoleRelationsService;
+import me.flyray.crm.api.CustomerRoleService;
 import me.flyray.crm.api.WeixinCommonService;
+import me.flyray.crm.enums.AcountType;
 import me.flyray.crm.model.CustomerBase;
 import me.flyray.crm.model.CustomerRelations;
 import me.flyray.rest.util.ResponseHelper;
@@ -56,6 +62,10 @@ public class CustomerController {
 	private CustomerBaseService customerBaseService;
 	@Autowired
 	private CustomerAccountService customerAccountService;
+	@Autowired
+	private CustomerRoleService customerRoleService;
+	@Autowired
+	private CustomerRoleRelationsService customerRoleRelationsService;
 	
 	
 	/**
@@ -64,20 +74,34 @@ public class CustomerController {
 	 * query
 	 */
 	@ResponseBody
-	@RequestMapping(value="/query", method = RequestMethod.GET)
+	@RequestMapping(value="/query", method = RequestMethod.POST)
 	public Map<String, Object> queryCustomerInfo(@RequestBody Map<String, String> param){
 		logger.info("查询客户信息------start------{}",param);
 		Map<String, Object> resultMap = new HashMap<>();
 		//查询客户基本信息
 		Map<String, Object> queryMap = new HashMap<String, Object>();
+		queryMap.put("id", param.get("customerId"));
 		Map<String, Object> customerBaseMap = customerBaseService.queryObject(queryMap);
 		resultMap.put("customerBase", customerBaseMap);
 		//查询客户授权信息
+		queryMap.put("customerId", param.get("customerId"));
 		Map<String, Object> customerAuthMap = customerAuthService.queryObject(queryMap);
 		resultMap.put("customerAuth", customerAuthMap);
 		//查询客户账户信息
+		queryMap.put("accountType", AcountType.POINTS.getCode());
 		List<Map<String, Object>> customerAccountMap = customerAccountService.queryList(queryMap);
 		resultMap.put("customerAccount", customerAccountMap);
+		//客户角色
+		Map<String, Object> queryRoleRltMap = new HashMap<String, Object>();
+		queryRoleRltMap.put("orgId", param.get("orgId"));
+		queryRoleRltMap.put("merchantId", param.get("merchantId"));
+		queryRoleRltMap.put("customerId", param.get("customerId"));
+		Map<String, Object> resultRoleRlt = customerRoleRelationsService.queryObject(queryRoleRltMap);
+		
+		Map<String, Object> queryRoleMap = new HashMap<String, Object>();
+		queryRoleMap.put("id", resultRoleRlt.get("customerRoleId"));
+		Map<String, Object> customerRoleMap = customerRoleService.queryObject(queryRoleMap);
+		resultMap.put("customerRole", customerRoleMap);
 		logger.info("查询客户信息------end------{}",resultMap);
 		return resultMap;
 	}
@@ -146,9 +170,8 @@ public class CustomerController {
 		//
 		logger.info("通过code获取用户授权信息------start------{}",param);
 		String code = param.get("code");
-		String merchantNo = param.get("merchantNo");
+		//邀请人id
 		String inviterId = param.get("inviter");
-		String orgNo = param.get("orgNo");
 		Map<String, Object> requestMap = new HashMap<>();
 		requestMap.put("code", code);
 		Map<String, Object> userMap = weixinCommonService.getOauthUserInfo(requestMap);
@@ -170,12 +193,15 @@ public class CustomerController {
 		//判断邀请人属于哪级分销
 		List<CustomerRelations> customerRelationses = customerRelationsService.queryByCustomerId(inviterId);
 		int sz = customerRelationses.size();
+		Date invitedTime = new Date();
 		if (sz == 0) {
-			//说明邀请人是顶级分销 受要人是一级分销
+			//说明邀请人是顶级分销不是被邀请过的人 受要人是一级分销
 			CustomerRelations invitedCustomer = new CustomerRelations();
 			invitedCustomer.setCustomerId(customerBase.getId());
 			invitedCustomer.setFxLevel("1");
 			invitedCustomer.setParentId(Long.valueOf(inviterId));
+			invitedCustomer.setParentId(Long.valueOf(inviterId));
+			invitedCustomer.setInvitedTime(invitedTime);
 			customerRelationsService.insert(invitedCustomer);
 		}else if(sz == 1) {
 			//说明邀请人是一级分销 受邀人是二级分销需要写两条条记录
@@ -183,12 +209,14 @@ public class CustomerController {
 			invitedCustomer.setCustomerId(customerBase.getId());
 			invitedCustomer.setFxLevel("1");
 			invitedCustomer.setParentId(Long.valueOf(inviterId));
+			invitedCustomer.setInvitedTime(invitedTime);
 			customerRelationsService.insert(invitedCustomer);
 			//受邀人
 			CustomerRelations ic = new CustomerRelations();
 			ic.setCustomerId(customerBase.getId());
 			ic.setFxLevel("2");
 			ic.setParentId(Long.valueOf(inviterId));
+			ic.setInvitedTime(invitedTime);
 			customerRelationsService.insert(invitedCustomer);
 		}else if (sz == 2) {
 			//说明邀请人是二级分销 受邀人是三级分销需要写三条条记录
@@ -196,6 +224,7 @@ public class CustomerController {
 			invitedCustomer.setCustomerId(customerBase.getId());
 			invitedCustomer.setFxLevel("1");
 			invitedCustomer.setParentId(Long.valueOf(inviterId));
+			invitedCustomer.setInvitedTime(invitedTime);
 			customerRelationsService.insert(invitedCustomer);
 			//查询出邀请人的parentId
 			for (CustomerRelations customerRelations : customerRelationses) {
@@ -209,6 +238,7 @@ public class CustomerController {
 				}
 				ic.setCustomerId(customerBase.getId());
 				ic.setParentId(parentId);
+				ic.setInvitedTime(invitedTime);
 				customerRelationsService.insert(invitedCustomer);
 			}
 		}else if (sz == 3) {
@@ -217,11 +247,42 @@ public class CustomerController {
 			invitedCustomer.setCustomerId(customerBase.getId());
 			invitedCustomer.setFxLevel("1");
 			invitedCustomer.setParentId(Long.valueOf(inviterId));
+			invitedCustomer.setInvitedTime(invitedTime);
 			customerRelationsService.insert(invitedCustomer);
 		}
 		return ResponseHelper.success(userMap,null, "00", "邀请成功");
 	}
 	
-	
+	/**
+	 * 查询客户邀请人数
+	 */
+	@ResponseBody
+	@RequestMapping(value="/queryInviteeCount", method = RequestMethod.POST)
+	public Map<String, Object> queryInviteeCount(@RequestBody Map<String, String> param){
+		logger.info("查询客户邀请人数------start------{}",param);
+		Map<String, Object> resultMap = new HashMap<>();
+		//查询客户基本信息
+		String customerId = param.get("customerId");
+		Map<String, Object> queryAllMap = new HashMap<String, Object>();
+		queryAllMap.put("customerId", customerId);
+		int InviteeCount = customerRelationsService.queryInviteeCount(queryAllMap);
+		Map<String, Object> queryMap = new HashMap<String, Object>();
+		Date taday = new Date();
+		SimpleDateFormat fmt=new SimpleDateFormat("yyyy-MM-dd");  
+		Date udate = null;
+		System.out.println(fmt.format(taday));  
+        try {
+			udate = fmt.parse(fmt.format(taday));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}   
+		queryMap.put("startTime", udate);
+		queryMap.put("endTime", udate);
+		int todayInviteeCount = customerRelationsService.queryInviteeCount(queryMap);
+		resultMap.put("inviteeCount", InviteeCount);
+		resultMap.put("todayInviteeCount", todayInviteeCount);
+		logger.info("查询客户邀请人数------end------{}",resultMap);
+		return ResponseHelper.success(resultMap,null, "00", "查询成功");
+	}
 	
 }

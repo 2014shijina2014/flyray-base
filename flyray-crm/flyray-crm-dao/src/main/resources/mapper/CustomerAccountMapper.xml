@@ -5,11 +5,11 @@
 <mapper namespace="me.flyray.crm.dao.CustomerAccountDao">
 
 	<select id="queryObject" resultType="me.flyray.crm.model.CustomerAccount">
-		select * from crm_customer_account where id = #{id}
+		select * from crm_customer_account where cust_account_no = #{custAccountNo}
 	</select>
 	
 	<select id="queryById" resultType="me.flyray.crm.model.CustomerAccount">
-		select * from crm_customer_account where id = #{id}
+		select * from crm_customer_account where customer_id = #{customerId}
 	</select>
 
 	<select id="queryList" resultType="me.flyray.crm.model.CustomerAccount">
@@ -26,50 +26,31 @@
 	<insert id="save" parameterType="me.flyray.crm.model.CustomerAccount" useGeneratedKeys="true" keyProperty="id">
 		insert into crm_customer_account
 		(
-			`customer_no`, 
-			`cust_name`,
-			`nickname`,
-			`phone`,
-			`sex`,
-			`address`,
-			`age`,
-			`birthday`,
-			`avatar`,
-			`merchant_no`,
-			`org_no`
+			`customer_id`, 
+			`cust_account_no`,
+			`account_type`,
+			`value`,
+			`freeze_value`
 		)
 		values
 		(
-			#{customerNo}, 
-			#{custName},
-			#{nickname},
-			#{phone},
-			#{sex},
-			#{address},
-			#{age},
-			#{birthday},
-			#{avatar},
-			#{merchantNo},
-			#{orgNo}
+			#{customerId}, 
+			#{custAccountNo},
+			#{accountType},
+			#{value},
+			#{freezeValue}
 		)
 	</insert>
 	 
 	<update id="update" parameterType="me.flyray.crm.model.CustomerAccount">
 		update crm_customer_account 
 		<set>
-			<if test="customerNo != null">`customer_no` = #{customerNo}, </if>
-			<if test="custName != null">`cust_name` = #{custName}, </if>
-			<if test="nickname != null">`nickname` = #{nickname}, </if>
-			<if test="phone != null">`phone` = #{phone}, </if>
-			<if test="sex != null">`sex` = #{sex}, </if>
-			<if test="address != null">`address` = #{address}, </if>
-			<if test="age != null">`age` = #{age}, </if>
-			<if test="birthday != null">`birthday` = #{birthday}, </if>
-			<if test="avatar != null">`avatar` = #{avatar}, </if>
-			<if test="merchantNo != null">`merchant_no` = #{merchantNo}, </if>
-			<if test="orgNo != null">`org_no` = #{orgNo}</if>
+			<if test="custAccountNo != null">`cust_account_no` = #{custAccountNo}, </if>
+			<if test="accountType != null">`account_type` = #{accountType}, </if>
+			<if test="value != null">`value` = #{value}, </if>
+			<if test="freezeValue != null">`freeze_value` = #{freezeValue}</if>
 		</set>
-		where id = #{id}
+		where customer_id = #{customerId}
 	</update>
 	
 	<delete id="delete">

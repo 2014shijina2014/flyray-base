@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.flyray.crm.dao.CustomerRoleRelationsDao">
+
+	<sql id="where1">
+		<trim prefix="where" prefixOverrides="AND|OR">
+		<if test="customerId != null and customerId != ''">
+			AND customer_id = #{customerId,jdbcType=VARCHAR}
+        </if>
+        <if test="customerRoleId != null and customerRoleId != ''">
+			AND customer_role_id = #{customerRoleId,jdbcType=VARCHAR}
+        </if>
+        <if test="orgId != null and orgId != ''">
+			AND org_id = #{identifier,jdbcType=VARCHAR}
+        </if>
+        <if test="merchantId != null and activityLogo != ''">
+			AND merchant_id = #{merchantId,jdbcType=VARCHAR}
+        </if>
+		</trim>
+	</sql>
+	
+	<select id="queryObject" resultType="me.flyray.crm.model.CustomerRoleRelations">
+		select * from crm_customer_role_relations 
+		<include refid="where1"/>
+	</select>
+	
+	<select id="queryById" resultType="me.flyray.crm.model.CustomerRoleRelations">
+		select * from crm_customer_role_relations where id = #{id}
+	</select>
+
+	<select id="queryList" resultType="me.flyray.crm.model.CustomerRoleRelations">
+		select * from crm_customer_role_relations order by id desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from crm_customer_role_relations 
+	</select>
+	
+	<insert id="save" parameterType="me.flyray.crm.model.CustomerRoleRelations" useGeneratedKeys="true" keyProperty="id">
+		insert into crm_customer_role_relations
+		(
+			`customer_id`, 
+			`customer_role_id`, 
+			`org_id`, 
+			`merchant_id`
+		)
+		values
+		(
+			#{customerId}, 
+			#{customerRoleId},
+			#{orgId},
+			#{merchantId}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="me.flyray.crm.model.CustomerRoleRelations">
+		update crm_customer_role_relations 
+		<set>
+			<if test="customerId != null">`customer_id` = #{customerId}, </if>
+			<if test="customerRoleId != null">`customer_role_id` = #{customerRoleId},</if>
+			<if test="orgId != null">`org_id` = #{orgId},</if>
+			<if test="merchantId != null">`merchant_id` = #{merchantId}</if>
+		</set>
+		where customer_id = #{customerId}
+	</update>
+	
+	<delete id="delete">
+		delete from crm_customer_role_relations where customer_id = #{customerId}
+	</delete>
+  
+</mapper>

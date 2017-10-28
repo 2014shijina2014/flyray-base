@@ -43,4 +43,8 @@
 	
 	<dubbo:service interface="me.flyray.crm.api.CustomerRelationsService" ref="customerRelationsService"  protocol="dubbo" timeout="1200000"/>
 	
+	<dubbo:service interface="me.flyray.crm.api.CustomerRoleService" ref="customerRoleService"  protocol="dubbo" timeout="1200000"/>
+	
+	<dubbo:service interface="me.flyray.crm.api.CustomerRoleRelationsService" ref="customerRoleRelationsService"  protocol="dubbo" timeout="1200000"/>
+	
 </beans>

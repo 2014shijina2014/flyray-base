@@ -1,6 +1,7 @@
 package me.flyray.crm.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /** 
 * @author: bolei
@@ -35,6 +36,11 @@ public class CustomerRelations implements Serializable{
 	 * 所推荐客户编号
 	 */
 	private Long childId;
+	
+	/**
+	 * 被邀请时间
+	 */
+	private Date invitedTime;
 
 	public String getWxId() {
 		return wxId;
@@ -74,6 +80,14 @@ public class CustomerRelations implements Serializable{
 
 	public void setChildId(Long childId) {
 		this.childId = childId;
+	}
+
+	public Date getInvitedTime() {
+		return invitedTime;
+	}
+
+	public void setInvitedTime(Date invitedTime) {
+		this.invitedTime = invitedTime;
 	}
 
 }
