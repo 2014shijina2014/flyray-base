@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -44,7 +45,12 @@ public class ModifyParametersFilter extends OncePerRequestFilter{
             throws ServletException, IOException {
         ModifyParametersWrapper mParametersWrapper = new ModifyParametersWrapper(request);
         try {
-        	if(request.getServletPath().length() > 0){
+        	String uri = request.getRequestURI();
+        	String contextPath = request.getContextPath();
+        	if (StringUtils.length(contextPath) > 0) {
+        	    uri = StringUtils.substring(uri, contextPath.length());
+        	}
+        	if(!"/".equals(uri)){
         		if (reqJson == null) {
             		out(response,"请求参数不能为空");
     			}
