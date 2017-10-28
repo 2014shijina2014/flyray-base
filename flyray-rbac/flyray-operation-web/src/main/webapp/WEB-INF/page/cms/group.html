@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>话题列表</title>
+#parse("sys/header.html")
+</head>
+<body>
+<div id="rrapp" v-cloak>
+	<div v-show="showList">
+		<div class="grid-btn">
+			<div class="form-group col-sm-2">
+				<input type="text" class="form-control" v-model="q.title" @keyup.enter="query" placeholder="话题名">
+			</div>
+			<a class="btn btn-default" @click="query">查询</a>
+			#if($shiro.hasPermission("cms:topic:save"))
+			<a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;添加</a>
+			#end
+			#if($shiro.hasPermission("cms:topic:update"))
+			<a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			#end
+		</div>
+	    <table id="jqGrid"></table>
+	    <div id="jqGridPager"></div>
+    </div>
+    
+    <div v-show="!showList" class="panel panel-default">
+		<div class="panel-heading">{{title}}</div>
+		<form class="form-horizontal" enctype="multipart/form-data">
+			<div class="form-group">
+			   	<div class="col-sm-2 control-label">标题</div>
+			   	<div class="col-sm-10">
+			      <input type="text" class="form-control" v-model="topic.title" placeholder="标题"/>
+			    </div>
+			</div>
+			<div class="form-group">
+			   	<div class="col-sm-2 control-label">内容</div>
+			   	<div class="col-sm-10">
+			      <div id="flyrayEdt">
+			        <p>请输入内容...</p>
+			    </div>
+			    </div>
+			</div>
+			<div class="form-group">
+			   	<div class="col-sm-2 control-label">描述</div>
+			   	<div class="col-sm-10">
+			      <input type="text" class="form-control" v-model="topic.discription" placeholder="描述"/>
+			    </div>
+			</div>
+			<div class="form-group">
+			<div class="col-sm-2 control-label">图片</div>
+			   <!-- 	<div class="col-sm-10">
+    				<input type="file" v-model="topic.img">
+    			</div> -->
+    			<div style="margin-bottom: 20px">
+                <h2>选择图片</h2>
+                <a id='addPic' href="" v-on:click="addPic">添加图片 </a>
+                <input type="file" @change="onFileChange" multiple style="display: none;">
+            </div>
+            <div v-if="images.length >0">
+               <ul>
+                  <li v-for="(image,key) in images">
+                    
+                     <img :src="image" @click='delImage(key)' />
+                     <a href="#" style="position: absolute;" @click='delImage(key)'>
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                  </li>
+               </ul>
+                <button @click="removeImage">移除全部图片</button>
+                <button @click='uploadImage' >上传</button>
+            </div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label"></div> 
+				<input type="button" class="btn btn-primary" @click="saveOrUpdate" value="确定"/>
+				&nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="取消"/>
+			</div>
+		</form>
+	</div>
+</div>
+
+<script src="${rc.contextPath}/js/cms/topic.js?_${date.systemTime}"></script>
+<script type="text/javascript">
+    $(function () {
+    	var E = window.wangEditor
+    	var editor = new E('#flyrayEdt')
+    	// 下面两个配置，使用其中一个即可显示“上传图片”的tab。但是两者不要同时使用！！！
+        editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
+        editor.customConfig.uploadImgServer = '/upload'  // 上传图片到服务器
+       	// 隐藏“网络图片”tab
+        editor.customConfig.showLinkImg = false
+        editor.create()
+        document.getElementById('btn1').addEventListener('click', function () {
+        	// 读取 html
+        	console.log(editor.txt.html())
+        	alert(editor.txt.html())
+    	}, false)
+
+    	document.getElementById('btn2').addEventListener('click', function () {
+        	// 读取 text
+        	alert(editor.txt.text())
+    	}, false)
+    });
+</script>
+<style>
+	.form-horizontal {
+		width:900px;
+	}
+</style>
+</body>
+</html>

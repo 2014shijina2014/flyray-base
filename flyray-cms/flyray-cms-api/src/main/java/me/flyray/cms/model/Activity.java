@@ -73,6 +73,11 @@ public class Activity extends BaseModel {
 	 * 00：无效；10：推荐；20：置顶
 	 */
 	private String flag;
+	
+	/**
+	 * 活动花絮
+	 */
+	private String highlights;
 
 	public String getId() {
 		return id;
@@ -170,15 +175,21 @@ public class Activity extends BaseModel {
 		this.flag = flag;
 	}
 
+	public String getHighlights() {
+		return highlights;
+	}
+
+	public void setHighlights(String highlights) {
+		this.highlights = highlights;
+	}
+
 	@Override
 	public String toString() {
-		return "Activity [getId()=" + getId() + ", getActivityName()=" + getActivityName() + ", getActivityLogo()="
-				+ getActivityLogo() + ", getActivityDes()=" + getActivityDes() + ", getActivityContent()="
-				+ getActivityContent() + ", getInterestGroupId()=" + getInterestGroupId() + ", getActivityStartTime()="
-				+ getActivityStartTime() + ", getActivityEndTime()=" + getActivityEndTime() + ", getActivityAddr()="
-				+ getActivityAddr() + ", getCreateTime()=" + getCreateTime() + ", getCreateBy()=" + getCreateBy()
-				+ ", getFlag()=" + getFlag() + ", getMerchantId()=" + getMerchantId() + ", getOrgId()=" + getOrgId()
-				+ "]";
+		return "Activity [id=" + id + ", InterestGroupId=" + InterestGroupId + ", activityName=" + activityName
+				+ ", activityLogo=" + activityLogo + ", activityDes=" + activityDes + ", activityContent="
+				+ activityContent + ", activityStartTime=" + activityStartTime + ", activityEndTime=" + activityEndTime
+				+ ", activityAddr=" + activityAddr + ", createTime=" + createTime + ", createBy=" + createBy + ", flag="
+				+ flag + ", highlights=" + highlights + "]";
 	}
 	
 }

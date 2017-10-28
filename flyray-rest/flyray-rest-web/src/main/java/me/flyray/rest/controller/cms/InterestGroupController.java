@@ -208,4 +208,37 @@ public class InterestGroupController extends AbstractController {
 		logger.info("查询活动团队列表信息------end------{}", resultMap);
 		return ResponseHelper.success(resultMap, null, "00", "请求数据成功");
 	}
+	
+	/**
+	 * 退出团队
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/customerOutInterestGroup", method = RequestMethod.POST)
+	public Map<String, Object> customerOutInterestGroup(@RequestBody Map<String, String> param) {
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		logger.info("退出团队------start------{}", param);
+
+		String groupId = (String) param.get("groupId");
+		String customerId = (String) param.get("customerId");
+		if (null == groupId || "".equals(groupId.trim())) {
+			logger.info("用户退出团队请求参数错误，groupId：{}",groupId);
+			resultMap.put("isJoin", "1");
+			return ResponseHelper.success(resultMap, null, "01", "请求数据失败");
+		}
+		if (null == customerId || "".equals(customerId.trim())) {
+			logger.info("用户退出团队请求参数错误，customerId：{}",customerId);
+			resultMap.put("isJoin", "1");
+			return ResponseHelper.success(resultMap, null, "01", "请求数据失败");
+		}
+		
+		InterestGroupCustomer reqGroupCus = new InterestGroupCustomer();
+		reqGroupCus.setGroupId(groupId);
+		reqGroupCus.setCustomerId(customerId);
+		interestGroupCustomerService.delete(reqGroupCus);
+		
+		resultMap.put("isJoin", "0");
+		
+		logger.info("退出团队------end------{}", resultMap);
+		return ResponseHelper.success(resultMap, null, "00", "请求数据成功");
+	}
 }
