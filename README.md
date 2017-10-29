@@ -6,9 +6,9 @@
 
 [cms前端工程](https://git.oschina.net/boleixiongdi/flyray-cms-ui)
 
-[开发手册](https://git.oschina.net/boleixiongdi/flyray-cms-ui)
+[开发手册](https://gitee.com/boleixiongdi/flyray/blob/master/%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C.md)
 
-[开发部署文档](https://git.oschina.net/boleixiongdi/flyray-cms-ui)
+[开发部署文档](https://gitee.com/boleixiongdi/flyray/blob/master/%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3.md)
 
 有兴趣、想学习部署的可以加群交流
 ![qq群](flyray-doc/qq.png)
