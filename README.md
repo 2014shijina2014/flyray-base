@@ -10,6 +10,11 @@
 
 [开发部署文档](https://gitee.com/boleixiongdi/flyray/blob/master/%E9%83%A8%E7%BD%B2%E6%96%87%E6%A1%A3.md)
 
+[接口文档文档](https://gitee.com/boleixiongdi/flyray/blob/master/%E5%B9%B3%E5%8F%B0%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3.md)
+
+[各模块功能文档](https://gitee.com/boleixiongdi/flyray/blob/master/%E5%90%84%E6%A8%A1%E5%9D%97%E5%8A%9F%E8%83%BD.md)
+
+
 有兴趣、想学习部署的可以加群交流
 ![qq群](flyray-doc/qq.png)
 
