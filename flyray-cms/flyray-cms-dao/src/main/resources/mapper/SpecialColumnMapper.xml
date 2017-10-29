@@ -41,7 +41,8 @@
 			`column_name`, 
 			`column_desc`, 
 			`column_logo`,
-			`create_by`
+			`create_by`,
+			`column_status`
 		)
 		values
 		(
@@ -49,18 +50,19 @@
 			#{columnName},
 			#{columnDesc},
 			#{columnLogo},
-			#{createBy}
+			#{createBy},
+			#{columnStatus}
 		)
 	</insert>
 	 
 	<update id="update" parameterType="me.flyray.cms.model.SpecialColumn">
 		update cms_special_column 
 		<set>
-			<if test="id != null">`id` = #{id}, </if>
 			<if test="columnName != null">`column_name` = #{columnName},</if>
 			<if test="columnDesc != null">`column_desc` = #{columnDesc},</if>
-			<if test="columnLogo != null">`column_logo` = #{columnLogo}</if>
-			<if test="create_by != null">`create_by` = #{create_by}</if>
+			<if test="columnLogo != null">`column_logo` = #{columnLogo},</if>
+			<if test="createBy != null">`create_by` = #{createBy},</if>
+			<if test="columnStatus != null">`column_status` = #{columnStatus}</if>
 		</set>
 		where id = #{id}
 	</update>

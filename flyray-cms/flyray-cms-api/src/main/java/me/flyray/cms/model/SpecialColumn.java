@@ -34,6 +34,13 @@ public class SpecialColumn extends BaseModel {
 	 * 专栏创建者
 	 */
 	private String createBy;
+	
+	/**
+	 * 专栏状态：0上架1下架
+	 * @return
+	 */
+	
+	private String columnStatus;
 
 	public Long getId() {
 		return id;
@@ -73,6 +80,14 @@ public class SpecialColumn extends BaseModel {
 
 	public void setCreateBy(String createBy) {
 		this.createBy = createBy;
+	}
+
+	public String getColumnStatus() {
+		return columnStatus;
+	}
+
+	public void setColumnStatus(String columnStatus) {
+		this.columnStatus = columnStatus;
 	}
 	
 }
