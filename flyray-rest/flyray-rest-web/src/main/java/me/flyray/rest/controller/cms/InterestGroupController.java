@@ -55,12 +55,12 @@ public class InterestGroupController extends AbstractController {
 
 		// TODO 用户登录后获取到机构id和商户id后替换参数
 		String orgId = (String) param.get("orgId");
-		String merId = (String) param.get("merId");
+		String merchantId = (String) param.get("merchantId");
 		String categoryId = (String) param.get("categoryId");
 
 		Map<String, Object> queryMap = new HashMap<>();
 		queryMap.put("orgId", orgId);
-		queryMap.put("merchantId", merId);
+		queryMap.put("merchantId", merchantId);
 		queryMap.put("groupCategoryId", categoryId);
 		int resultTotal = interestGroupService.queryTotal(queryMap);
 		param.put("totalCount", String.valueOf(resultTotal));
@@ -95,7 +95,7 @@ public class InterestGroupController extends AbstractController {
 
 		// TODO 用户登录后获取到机构id和商户id后替换参数
 		String orgId = (String) param.get("orgId");
-		String merId = (String) param.get("merId");
+		String merchantId = (String) param.get("merchantId");
 		String groupId = (String) param.get("groupId");
 		String customerId = (String) param.get("customerId");
 		if (null == groupId || "".equals(groupId.trim())) {
@@ -109,7 +109,7 @@ public class InterestGroupController extends AbstractController {
 		
 		Map<String, Object> queryMap = new HashMap<>();
 		queryMap.put("orgId", orgId);
-		queryMap.put("merchantId", merId);
+		queryMap.put("merchantId", merchantId);
 		queryMap.put("id", groupId);
 		
 		logger.info("查询活动团队列表信息------{}", queryMap);
@@ -208,6 +208,7 @@ public class InterestGroupController extends AbstractController {
 		logger.info("查询活动团队列表信息------end------{}", resultMap);
 		return ResponseHelper.success(resultMap, null, "00", "请求数据成功");
 	}
+	
 	
 	/**
 	 * 退出团队
