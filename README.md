@@ -6,6 +6,10 @@
 
 [cms前端工程](https://git.oschina.net/boleixiongdi/flyray-cms-ui)
 
+[开发手册](https://git.oschina.net/boleixiongdi/flyray-cms-ui)
+
+[开发部署文档](https://git.oschina.net/boleixiongdi/flyray-cms-ui)
+
 有兴趣、想学习部署的可以加群交流
 ![qq群](flyray-doc/qq.png)
 
@@ -74,12 +78,12 @@
 * 修改config工程中的resource下的dubbo、数据库配置文件
 * 修改  flyray-rbac 下的flyray-merchant-web、flyray-open-web、flyray-operation-web中的resource\service-consumer.xml文件的dubbo IP
 * 启动注册中心即zookeeper
-* 启动所有的服务提供者cms、crm、pay、erp
+* 启动所有的服务提供者cms、crm、pay、erp下的web工程
 * 启动rest，rest既是cms、crm、pay、erp的服务消费者又是merchant-web、open-web、operation-web的服务提供者
 * 最后启动merchant-web可以登录商户中心、启动operation-web可以登录运营中心、启动open-web可以看到开放平台
 
-##感激
-感谢
+##感谢
+感谢以下贡献者
 
 ##关于作者
 
