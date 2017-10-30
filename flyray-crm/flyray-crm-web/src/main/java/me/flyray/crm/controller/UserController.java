@@ -24,7 +24,11 @@ public class UserController {
 	
 	@Autowired
 	private CustomerAccountService customerAccountService;
-	
+
+	/**
+	 * 展示所有用户信息
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping(value="/displayAllUser", method = RequestMethod.GET)
 	public HashMap<String, List<User>> displayAllUser() {
