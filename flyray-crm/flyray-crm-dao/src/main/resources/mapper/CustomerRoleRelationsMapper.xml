@@ -15,7 +15,7 @@
         <if test="orgId != null and orgId != ''">
 			AND org_id = #{identifier,jdbcType=VARCHAR}
         </if>
-        <if test="merchantId != null and activityLogo != ''">
+        <if test="merchantId != null and merchantId != ''">
 			AND merchant_id = #{merchantId,jdbcType=VARCHAR}
         </if>
 		</trim>

@@ -54,12 +54,15 @@ public class ModifyParametersFilter extends OncePerRequestFilter{
         		if (reqJson == null) {
             		out(response,"请求参数不能为空");
     			}
-        		if(reqJson.get("customerId") != null || reqJson.get("orgId") != null
-            			|| reqJson.get("merchantId") != null){
+        		if(reqJson.get("customerId") == null || reqJson.get("orgId") == null
+            			|| reqJson.get("merchantId") == null){
             		out(response,"customerId、merchantId和orgId不能为空");
-            	}
-        	}
-        	filterChain.doFilter(mParametersWrapper, response);
+            	}else {
+            		filterChain.doFilter(mParametersWrapper, response);
+				}
+        	}else {
+        		filterChain.doFilter(mParametersWrapper, response);
+			}
         } catch (RuntimeException e) {  
             if(e instanceof BusinessException){//如果是你定义的业务异常  
                 request.setAttribute("BusinessException", e);//存储业务异常信息类  
@@ -143,6 +146,7 @@ public class ModifyParametersFilter extends OncePerRequestFilter{
             e.printStackTrace();
         } finally {
             if (out != null) {
+            	out.flush();
                 out.close();
             }
         }
