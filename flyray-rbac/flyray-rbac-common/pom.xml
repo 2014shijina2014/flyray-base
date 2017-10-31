@@ -70,7 +70,7 @@
         <dependency>
 			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>
-			<version>3.21.0-GA</version>
+			<version>${javassist-version}</version>
 		</dependency>
 		
         <!--zookeeper-->
