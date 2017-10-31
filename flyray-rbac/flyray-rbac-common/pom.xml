@@ -62,7 +62,7 @@
                 </exclusion>
                 <exclusion>
                     <groupId>javassist</groupId>
-                    <artifactId>org.javassist</artifactId>
+                    <artifactId>javassist</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -70,7 +70,7 @@
         <dependency>
 			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>
-			<version>3.11.0.GA</version>
+			<version>3.21.0-GA</version>
 		</dependency>
 		
         <!--zookeeper-->
