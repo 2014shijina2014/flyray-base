@@ -16,9 +16,10 @@
 		<result column="birthday" property="birthday" />
 		<result column="avatar" property="avatar" />
 		<result column="merchant_no" property="merchantNo" />
-		<result column="customer_id" property="crmCustomerBaseExtend.customerId" />
-		<result column="follow_customer_no" property="crmCustomerBaseExtend.followCustomerNo" />
-		<result column="school_name" property="crmCustomerBaseExtend.schoolName" />
+		<association property="crmCustomerBaseExtend" javaType="me.flyray.crm.model.CrmCustomerBaseExtend">  
+			<result column="follow_customer_no" property="followCustomerNo" />
+			<result column="school_name" property="schoolName" />
+        </association> 
 	</resultMap>
 	<select id="queryObject" resultMap="customerBaseMap">
 		SELECT * FROM crm_customer_base AS base LEFT JOIN `crm_customer_base_extend` AS extend ON base.`id` = extend.`customer_id` WHERE id = #{id}

@@ -47,7 +47,6 @@ public class CommentController extends AbstractController{
 		logger.info("请求查询话题---start---{}",param);
 		String currentPage = param.get("currentPage");//当前页
 		String pageSize = param.get("pageSize");//条数
-		String createBy = param.get("createBy");//用户编号
 		String id = param.get("id");//话题编号
 		String commentModuleNo = param.get("commentModuleNo");//评论模块编号
 		Map<String, Object> map = new HashMap<String, Object>();

@@ -51,7 +51,6 @@ public class TopicController extends AbstractController{
 		logger.info("请求查询话题---start---{}",param);
 		String currentPage = param.get("currentPage");//当前页
 		String pageSize = param.get("pageSize");//条数
-		String createBy = param.get("createBy");//用户编号
 		Map<String, Object> map = new HashMap<String, Object>();
 		Map<String, Object> queryMap = new HashMap<>();
 		Integer total = topicService.queryTotal(queryMap);
@@ -63,8 +62,7 @@ public class TopicController extends AbstractController{
 			return ResponseHelper.success(null,pageUtil, "01", "已经到最后一条了~");
 		}
 		queryMap.putAll(getPagination(param));
-		List list =  topicService.queryList(queryMap);
-		
+		List<Map<String, Object>> list =  topicService.queryList(queryMap);
 		return ResponseHelper.success(list,pageUtil, "00", "查询成功");
 	}
 	/**
