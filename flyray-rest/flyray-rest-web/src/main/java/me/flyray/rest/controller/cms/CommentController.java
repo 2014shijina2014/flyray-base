@@ -49,7 +49,7 @@ public class CommentController extends AbstractController{
 		String pageSize = param.get("pageSize");//条数
 		String createBy = param.get("createBy");//用户编号
 		String id = param.get("id");//话题编号
-		String commentModuleNo = param.get("commentModuleNo");//话题编号
+		String commentModuleNo = param.get("commentModuleNo");//评论模块编号
 		Map<String, Object> map = new HashMap<String, Object>();
 		Map<String, Object> queryMap = new HashMap<>();
 		queryMap.put("commentTargetId", id);
@@ -91,7 +91,8 @@ public class CommentController extends AbstractController{
 		logger.info("查询观点评论 ---start---{}",param);
 		String commentTargetId = param.get("commentTargetId");//观点编号
 		Map<String, Object> queryMap = new HashMap<>();
-		queryMap.put("commentModuleNo", 1);
+		String commentModuleNo = param.get("commentModuleNo");//评论模块编号
+		queryMap.put("commentModuleNo", commentModuleNo);
 		queryMap.put("commentTargetId", commentTargetId);
 		List<Comment> commentList = commentService.query(queryMap);
 		List<Map<String, Object>> resultMaps = new ArrayList<>();

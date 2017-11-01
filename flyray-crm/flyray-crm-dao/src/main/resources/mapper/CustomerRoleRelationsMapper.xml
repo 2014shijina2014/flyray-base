@@ -13,7 +13,7 @@
 			AND customer_role_id = #{customerRoleId,jdbcType=VARCHAR}
         </if>
         <if test="orgId != null and orgId != ''">
-			AND org_id = #{identifier,jdbcType=VARCHAR}
+			AND org_id = #{orgId,jdbcType=VARCHAR}
         </if>
         <if test="merchantId != null and merchantId != ''">
 			AND merchant_id = #{merchantId,jdbcType=VARCHAR}
