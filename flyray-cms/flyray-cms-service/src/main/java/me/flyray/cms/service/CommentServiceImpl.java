@@ -120,14 +120,7 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 		String commentBy = (String) param.get("commentBy");
 		String commentByName = (String) param.get("commentByName");
 		String commentModuleNo = (String) param.get("commentModuleNo");
-		//更新评论量
-		if(CommentModuleNo.home_viewpoint.getCode().equals(commentModuleNo)){
-			Viewpoint point = viewpointDao.selectById(commentTargetId);
-			Integer commenCount = point.getCommentCount();
-			commenCount = commenCount + 1;
-			point.setCommentCount(commenCount);
-			viewpointDao.update(point);
-		}
+		
 		comment.setCommentContent(commentContent);
 		//如果是评论commentTargetId是被评论的观点的编号，如果是回复 commentTargetId 是被回复的评论的编号
 		comment.setCommentTargetId(commentTargetId);
