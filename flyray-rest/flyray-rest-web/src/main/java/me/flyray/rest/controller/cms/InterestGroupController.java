@@ -198,7 +198,7 @@ public class InterestGroupController extends AbstractController {
 		
 		if(null != customerPhone && !"".equals(customerPhone.trim())) {
 			Map<String, Object> upMap = new HashMap<String, Object>();
-			upMap.put("id", Integer.valueOf(customerId));
+			upMap.put("id", customerId);
 			upMap.put("phone", customerPhone);
 			customerBaseService.update(upMap);
 		}
