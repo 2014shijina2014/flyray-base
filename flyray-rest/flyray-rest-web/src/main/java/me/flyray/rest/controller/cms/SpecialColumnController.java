@@ -121,9 +121,12 @@ public class SpecialColumnController extends AbstractController{
 		if (subscribeCount > 0) {
 			isSubscribe = "0";
 		}
+		//查询出专栏信息
+		Map<String, Object> specialColumn = columnService.queryById(Long.valueOf(param.get("specialColumnId")));
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		resultMap.put("columnContents", columnContentMap);
 		resultMap.put("isSubscribe", isSubscribe);
+		resultMap.put("specialColumn", specialColumn);
 		logger.info("根据specialColumnId查询专栏内容------end------{}",resultMap);
 		//List<?> list, int totalCount, int pageSize, int currPage
 		return ResponseHelper.success(resultMap,pageUtil, "00", "请求数据成功");

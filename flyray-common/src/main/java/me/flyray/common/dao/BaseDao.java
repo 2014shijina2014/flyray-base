@@ -17,7 +17,7 @@ public interface BaseDao<T> {
 	
 	int queryTotal(Map<String, Object> map);
 	
-	Map<String, Object> queryById(Long id);
+	T queryById(Long id);
 	
 	void save(T t);
 	
