@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import me.flyray.cms.api.CommentService;
 import me.flyray.cms.dao.CommentDao;
 import me.flyray.cms.dao.ViewpointDao;
+import me.flyray.cms.enums.CommentModuleNo;
 import me.flyray.cms.model.Comment;
 import me.flyray.cms.model.Viewpoint;
 import me.flyray.common.service.AbstractBaseService;
@@ -119,8 +120,8 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 		String commentBy = (String) param.get("commentBy");
 		String commentByName = (String) param.get("commentByName");
 		String commentModuleNo = (String) param.get("commentModuleNo");
-		//
-		if("2".equals(commentModuleNo)){
+		//更新评论量
+		if(CommentModuleNo.home_viewpoint.getCode().equals(commentModuleNo)){
 			Viewpoint point = viewpointDao.selectById(commentTargetId);
 			Integer commenCount = point.getCommentCount();
 			commenCount = commenCount + 1;
@@ -132,7 +133,7 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 		comment.setCommentTargetId(commentTargetId);
 		comment.setCommentLikeCount(Long.valueOf("0"));
 		comment.setCommentTime(new Timestamp(new Date().getTime()));
-		comment.setCommentModuleNo("1");
+		comment.setCommentModuleNo(commentModuleNo);
 		comment.setCommentBy(Long.valueOf(commentBy));
 		comment.setCommentByName(commentByName);
 		if ("1".equals(commentType)) {
