@@ -143,7 +143,7 @@ public class ViewpointController extends AbstractController{
 			
 			ViewPointItem item = new ViewPointItem();
 			Date time = cmsViewPoint.getPointTime();
-			SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");//
+			SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");//
 			String fromDate = simpleFormat.format(time);
 			String toDate = simpleFormat.format(new Date());
 
