@@ -11,8 +11,8 @@ public enum CommentModuleNo {
 	specialColumn_columnContentDetail("01","专栏详细页模块"),
 	home_viewpoint("02","首页圈子模块"),
 	home_topic("03","首页话题模块"),
-	activity_group("03","社团模块"),
-	activity_activity("03","社团活动模块");
+	activity_activity("04","活动模块"),
+	activity_highlights("05","活动亮点模块");
 	
     private String code;
     private String desc;
