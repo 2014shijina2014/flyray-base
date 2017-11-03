@@ -53,7 +53,8 @@ var vm = new Vue({
 			discription:null,
 			img:null
 		},
-		images:[]
+		images:[],
+		imgFile: ''
 	},
 	methods: {
 		query: function () {
@@ -99,8 +100,7 @@ var vm = new Vue({
 		},
 		saveOrUpdate: function (event) {
 			var url = vm.topic.id == null ? "../cms/topic/save" : "../pay/payChannel/update";
-			alert(JSON.stringify(vm.topic));
-			return;
+			alert(url);
 			$.ajax({
 				type: "POST",
 			    url: url,
@@ -136,8 +136,16 @@ var vm = new Vue({
         },
         onFileChange: function (e) {
             var files = e.target.files || e.dataTransfer.files;
-            if (!files.length)return; 
+            if (!files.length)return;
+            if	(files.length > 1) {
+            	alert("只能上传一张图片");
+            	return;
+            }
             console.log(files);
+            this.images = [];
+            var file = files[0];
+            console.log(file);
+            
             this.createImage(files);
         },
         createImage: function(file) {
@@ -152,6 +160,7 @@ var vm = new Vue({
                 var reader = new FileReader();
                 reader.readAsDataURL(file[i]); 
                 reader.onload =function(e){
+                  vm.topic.img = e.target.result;
                   vm.images.push(e.target.result);                                    
                 };                 
             }                        

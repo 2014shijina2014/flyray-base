@@ -52,22 +52,21 @@
     				<input type="file" v-model="topic.img">
     			</div> -->
     			<div style="margin-bottom: 20px">
-                <h2>选择图片</h2>
-                <a id='addPic' href="" v-on:click="addPic">添加图片 </a>
-                <input type="file" @change="onFileChange" multiple style="display: none;">
+                <!-- <a id='addPic' href="" v-on:click="addPic">添加图片 </a> -->
+                <input type="file" @change="onFileChange" multiple style="display: block;">
             </div>
             <div v-if="images.length >0">
                <ul>
                   <li v-for="(image,key) in images">
                     
-                     <img :src="image" @click='delImage(key)' />
+                     <img :src="image" @click='delImage(key)' style="height:100px;width: 100px;"/>
                      <a href="#" style="position: absolute;" @click='delImage(key)'>
                         <span class="glyphicon glyphicon-remove"></span>
                     </a>
                   </li>
                </ul>
-                <button @click="removeImage">移除全部图片</button>
-                <button @click='uploadImage' >上传</button>
+                <!-- <button @click="removeImage">移除全部图片</button>
+                <button @click='uploadImage' >上传</button> -->
             </div>
 			</div>
 			<div class="form-group">
