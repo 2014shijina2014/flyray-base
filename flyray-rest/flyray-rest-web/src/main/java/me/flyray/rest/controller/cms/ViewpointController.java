@@ -83,6 +83,7 @@ public class ViewpointController extends AbstractController{
 		map.put("favortCount", 0);
 		map.put("commentCount", 0);
 		map.put("id", id);
+		map.put("pointTime", new Date());
 		try {
 			viewPointService.save(map);
 		} catch (Exception e) {
@@ -105,7 +106,7 @@ public class ViewpointController extends AbstractController{
 	 */
 	@ResponseBody
 	@RequestMapping(value="/query", method = RequestMethod.POST)
-	public Map<String, Object> query(@RequestBody Map<String, String> param, HttpSession session) {
+	public Map<String, Object> query(@RequestBody Map<String, String> param) {
 		logger.info("请求观点---start---{}",param);
 		String currentPage = param.get("currentPage");//当前页
 		String pageSize = param.get("pageSize");//条数

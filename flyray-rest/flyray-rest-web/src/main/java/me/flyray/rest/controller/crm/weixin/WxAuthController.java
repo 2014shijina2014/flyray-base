@@ -47,11 +47,11 @@ public class WxAuthController {
 	public Map<String, Object> getWxCode(@RequestBody Map<String, String> param) throws Exception {
 		logger.info("通过code获取用户授权信息------start------{}",param);
 		String code = param.get("code");
-		String merchantNo = param.get("merchantNo");
-		String orgNo = param.get("orgNo");
+		String merchantId = param.get("merchantId");
+		String orgId = param.get("orgId");
 		Map<String, Object> requestMap = new HashMap<>();
 		requestMap.put("code", code);
-		requestMap.put("merchantNo", merchantNo);
+		requestMap.put("merchantId", merchantId);
 		Map<String, Object> userMap = weixinCommonService.getOauthUserInfo(requestMap);
 		logger.info("通过code获取用户授权信息------end------{}",userMap);
 		if (userMap == null) {
@@ -66,7 +66,7 @@ public class WxAuthController {
 		CustomerBase customerBase = customerAuthService.customerAuth(userMap);
 		//新增客户开户信息
 		
-		userMap.put("customerNo", customerBase.getCustomerNo());
+		userMap.put("customerId", customerBase.getId().toString());
 		return ResponseHelper.success(userMap,null, "00", "请求数据成功");
 	} 
 	
