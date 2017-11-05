@@ -46,15 +46,14 @@ var vm = new Vue({
 			payCompanyNo:null,
 			feeRatio:null,
 		},
-		topic:{
-			id:null,
-			content:null,
-			title:null,
-			discription:null,
-			img:null
-		},
-		images:[],
-		imgFile: ''
+		id:null,
+		content:null,
+		titles:null,
+		discription:null,
+		img:null,
+		imgFile: '',
+		imgFileName: '',
+		images:[]
 	},
 	methods: {
 		query: function () {
@@ -99,12 +98,14 @@ var vm = new Vue({
 			});
 		},
 		saveOrUpdate: function (event) {
-			var url = vm.topic.id == null ? "../cms/topic/save" : "../pay/payChannel/update";
-			alert(url);
+			var url = vm.id == null ? "../cms/topic/save" : "../pay/payChannel/update";
+			var obj = document.getElementById("flyrayEdt");  
+		    vm.content = obj.innerHTML;
+		    alert(vm.content);
 			$.ajax({
 				type: "POST",
 			    url: url,
-			    data: JSON.stringify(vm.topic),
+			    data: {"id":vm.id,"content":vm.content,"title":vm.titles,"discription":vm.discription,"imgFile":vm.imgFile,"imgFileName": vm.imgFileName},
 			    success: function(r){
 			    	if(r.code === 0){
 						alert('操作成功', function(index){
@@ -145,7 +146,7 @@ var vm = new Vue({
             this.images = [];
             var file = files[0];
             console.log(file);
-            
+            this.imgFileName = file.name
             this.createImage(files);
         },
         createImage: function(file) {
@@ -160,7 +161,7 @@ var vm = new Vue({
                 var reader = new FileReader();
                 reader.readAsDataURL(file[i]); 
                 reader.onload =function(e){
-                  vm.topic.img = e.target.result;
+                  vm.imgFile = e.target.result;
                   vm.images.push(e.target.result);                                    
                 };                 
             }                        
