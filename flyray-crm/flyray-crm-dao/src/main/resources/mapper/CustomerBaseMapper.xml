@@ -15,7 +15,8 @@
 		<result column="age" property="age" />
 		<result column="birthday" property="birthday" />
 		<result column="avatar" property="avatar" />
-		<result column="merchant_no" property="merchantNo" />
+		<result column="merchant_id" property="merchantId" />
+		<result column="org_id" property="orgId" />
 		<association property="crmCustomerBaseExtend" javaType="me.flyray.crm.model.CrmCustomerBaseExtend">  
 			<result column="follow_customer_no" property="followCustomerNo" />
 			<result column="school_name" property="schoolName" />
@@ -58,8 +59,8 @@
 			`age`,
 			`birthday`,
 			`avatar`,
-			`merchant_no`,
-			`org_no`
+			`merchant_id`,
+			`org_id`
 		)
 		values
 		(
@@ -73,8 +74,8 @@
 			#{age},
 			#{birthday},
 			#{avatar},
-			#{merchantNo},
-			#{orgNo}
+			#{merchantId},
+			#{orgId}
 		)
 	</insert>
 	 <insert id="saveExtend" parameterType="me.flyray.crm.model.CrmCustomerBaseExtend">

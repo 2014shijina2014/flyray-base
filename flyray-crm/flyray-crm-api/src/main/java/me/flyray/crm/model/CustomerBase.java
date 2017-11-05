@@ -3,13 +3,15 @@ package me.flyray.crm.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import me.flyray.common.model.BaseModel;
+
 /** 
 * @author: bolei
 * @date：2017年3月6日 下午9:53:42 
 * @description：客户基础信息
 */
 
-public class CustomerBase implements Serializable{
+public class CustomerBase extends BaseModel {
 
 	/**
 	 * 客户自增ID
@@ -67,15 +69,6 @@ public class CustomerBase implements Serializable{
 	
 	private String avatar;
 	
-	/**
-	 * 商户号
-	 */
-	private String merchantNo;
-	
-	/**
-	 * 机构号
-	 */
-	private String orgNo;
 	/**
 	 * 拓展
 	 */
@@ -176,30 +169,6 @@ public class CustomerBase implements Serializable{
 
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
-	}
-
-	public String getMerchantNo() {
-		return merchantNo;
-	}
-
-	public void setMerchantNo(String merchantNo) {
-		this.merchantNo = merchantNo;
-	}
-
-	public String getOrgNo() {
-		return orgNo;
-	}
-
-	public void setOrgNo(String orgNo) {
-		this.orgNo = orgNo;
-	}
-
-	@Override
-	public String toString() {
-		return "CustomerBase [id=" + id + ", customerNo=" + customerNo + ", custName=" + custName + ", nickname="
-				+ nickname + ", phone=" + phone + ", sex=" + sex + ", identityCard=" + identityCard + ", address="
-				+ address + ", age=" + age + ", birthday=" + birthday + ", avatar=" + avatar + ", merchantNo="
-				+ merchantNo + ", orgNo=" + orgNo + ", crmCustomerBaseExtend=" + crmCustomerBaseExtend + "]";
 	}
 	
 }
