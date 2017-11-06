@@ -76,6 +76,10 @@ public class ViewpointController extends AbstractController{
 			String newName = time + "." + suffix;
 			String url = imgPath + File.separator + id + File.separator + newName;
 			Boolean flag = ImageBase64.generateImage(img64[1], url);
+			logger.info("生产图片路径和目录---{}",flag);
+			if (!flag) {
+				return ResponseHelper.success(null,null, "02", "添加数据失败");
+			}
 			map.put("pointImg", newName);
 		}
 		map.put("pointText", pointText);
