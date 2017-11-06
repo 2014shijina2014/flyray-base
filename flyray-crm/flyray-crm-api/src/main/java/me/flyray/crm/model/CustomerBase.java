@@ -13,9 +13,9 @@ import me.flyray.common.model.BaseModel;
 public class CustomerBase extends BaseModel {
 
 	/**
-	 * 客户自增ID
+	 * 客户ID
 	 */
-	private Long id;
+	private String id;
 	
 	/**
 	 * 客户编号
@@ -72,19 +72,16 @@ public class CustomerBase extends BaseModel {
 	 * 拓展
 	 */
 	private CustomerBaseExtend customerBaseExtend;
-	
-	
 
 	public String getCustomerNo() {
 		return customerNo;
 	}
-	
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

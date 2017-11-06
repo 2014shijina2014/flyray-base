@@ -20,7 +20,7 @@ public class CustomerRelations implements Serializable{
 	/**
 	 * 客户编号
 	 */
-	private Long customerId;
+	private String customerId;
 	
 	/**
 	 * 分销级数
@@ -50,11 +50,11 @@ public class CustomerRelations implements Serializable{
 		this.wxId = wxId;
 	}
 
-	public Long getCustomerId() {
+	public String getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(Long customerId) {
+	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
 

@@ -43,10 +43,11 @@ public class CustomerAuthServiceImpl extends AbstractBaseService<CustomerAuth> i
 	public CustomerBase customerAuth(Map<String, Object> map) {
 		//保存会员信息
 		long customerId = SnowFlake.getId();//商户号crc自校验数据 目的防止伪造造成脏数据
-		String customerNo = CRC16M.getCRCNo(String.valueOf(customerId));
+		String customerIdStr = String.valueOf(customerId);
+		String customerNo = CRC16M.getCRCNo(customerIdStr);
 		CustomerBase customerBase = new CustomerBase();
 		customerBase.setCustomerNo(customerNo);
-		customerBase.setId(customerId);
+		customerBase.setId(customerIdStr);
 		customerBase.setAddress(map.get("country")+"-"+map.get("province")+"-"+map.get("city"));
 		//customerBase.setAge((String)map.get("age"));
 		customerBase.setAvatar((String)map.get("headImgUrl"));
@@ -64,7 +65,7 @@ public class CustomerAuthServiceImpl extends AbstractBaseService<CustomerAuth> i
 		List<CustomerAuth> list = customerAuthDao.queryList(queryMap);
 		if (list != null && list.size() > 0) {
 			CustomerAuth customerAuth = list.get(0);
-			return customerBaseService.queryByCustomerId(customerAuth.getCustomerId());
+			return customerBaseService.queryByCustomerId(Long.valueOf(customerAuth.getCustomerId()));
 		}
 		CustomerBaseExtend customerBaseExtend = new CustomerBaseExtend();
 		customerBaseExtend.setCustomerId(customerId);
@@ -73,7 +74,7 @@ public class CustomerAuthServiceImpl extends AbstractBaseService<CustomerAuth> i
 		//保存微信授权信息
 		CustomerAuth customerAuth = new CustomerAuth();
 		customerAuth.setCredential(openId);		//密码凭证（站内的保存密码，站外的不保存或保存token）
-		customerAuth.setCustomerId(customerId);		//客户（会员）编号
+		customerAuth.setCustomerId(String.valueOf(customerId));		//客户（会员）编号
 		customerAuth.setIdentifier((String)map.get("unionId"));		//标识（手机号 邮箱 用户名或第三方应用的唯一标识）
 		customerAuth.setIdentityType("weixin");	//登录类型（手机号 邮箱 用户名）或第三方应用名称（微信 微博等）
 		this.save(customerAuth);

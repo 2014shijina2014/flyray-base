@@ -76,6 +76,7 @@ public class ViewpointController extends AbstractController{
 			Long time = new Date().getTime();
 			String newName = time + "." + suffix;
 			String url = imgPath + File.separator + id + File.separator + newName;
+			logger.info("生产图片路径---{}",url);
 			Boolean flag = ImageBase64.generateImage(img64[1], url);
 			logger.info("生产图片路径和目录---{}",flag);
 			if (!flag) {
