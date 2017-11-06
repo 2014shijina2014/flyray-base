@@ -1,6 +1,5 @@
 package me.flyray.crm.model;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import me.flyray.common.model.BaseModel;
@@ -72,15 +71,9 @@ public class CustomerBase extends BaseModel {
 	/**
 	 * 拓展
 	 */
-	private CrmCustomerBaseExtend crmCustomerBaseExtend;
+	private CustomerBaseExtend customerBaseExtend;
 	
-	public CrmCustomerBaseExtend getCrmCustomerBaseExtend() {
-		return crmCustomerBaseExtend;
-	}
-
-	public void setCrmCustomerBaseExtend(CrmCustomerBaseExtend crmCustomerBaseExtend) {
-		this.crmCustomerBaseExtend = crmCustomerBaseExtend;
-	}
+	
 
 	public String getCustomerNo() {
 		return customerNo;
@@ -169,6 +162,16 @@ public class CustomerBase extends BaseModel {
 
 	public void setAvatar(String avatar) {
 		this.avatar = avatar;
+	}
+
+
+	public CustomerBaseExtend getCustomerBaseExtend() {
+		return customerBaseExtend;
+	}
+
+
+	public void setCustomerBaseExtend(CustomerBaseExtend customerBaseExtend) {
+		this.customerBaseExtend = customerBaseExtend;
 	}
 	
 }

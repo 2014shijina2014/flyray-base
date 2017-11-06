@@ -61,7 +61,8 @@ public class ViewpointController extends AbstractController{
 	 */
 	@ResponseBody
 	@RequestMapping(value="/add", method = RequestMethod.POST)
-	public Map<String, Object> add(@RequestBody Map<String, Object> param, HttpSession session) {
+	public Map<String, Object> add(@RequestBody Map<String, Object> param) {
+		logger.info("添加观点---start---{}",param);
 		Long id = SnowFlake.getId();
 		String pointText = (String)param.get("pointText");
 		String createBy = (String)param.get("createBy");
@@ -93,7 +94,7 @@ public class ViewpointController extends AbstractController{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		logger.info("添加观点---end---{}",param);
 		return ResponseHelper.success(param,null, "00", "添加成功");
 	}
 	/**
@@ -173,7 +174,7 @@ public class ViewpointController extends AbstractController{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+			logger.info("观点创建人id--------{}",cmsViewPoint.getCreateBy());
 			if(cmsViewPoint.getCreateBy() != null){
 				CustomerBase customer = customerBaseService.queryByCustomerId(cmsViewPoint.getCreateBy());
 				item.setCustomer(customer);

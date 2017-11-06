@@ -1,5 +1,7 @@
 package me.flyray.crm.service;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,12 +10,13 @@ import org.springframework.stereotype.Service;
 import me.flyray.common.service.AbstractBaseService;
 import me.flyray.common.utils.CRC16M;
 import me.flyray.common.utils.SnowFlake;
-import me.flyray.common.utils.UUIDTool;
 import me.flyray.crm.api.CustomerAuthService;
+import me.flyray.crm.api.CustomerBaseExtendService;
 import me.flyray.crm.api.CustomerBaseService;
 import me.flyray.crm.dao.CustomerAuthDao;
 import me.flyray.crm.model.CustomerAuth;
 import me.flyray.crm.model.CustomerBase;
+import me.flyray.crm.model.CustomerBaseExtend;
 
 /** 
 * @author: bolei
@@ -28,6 +31,8 @@ public class CustomerAuthServiceImpl extends AbstractBaseService<CustomerAuth> i
 	private CustomerAuthDao customerAuthDao;
 	@Autowired
 	private CustomerBaseService customerBaseService;
+	@Autowired
+	private CustomerBaseExtendService CustomerBaseExtendService;
 
 	@Override
 	public void save(CustomerAuth customerAuth) {
@@ -52,10 +57,22 @@ public class CustomerAuthServiceImpl extends AbstractBaseService<CustomerAuth> i
 		customerBase.setOrgId((String)map.get("orgId"));
 		//customerBase.setPhone(phone);
 		customerBase.setSex((String)map.get("sex"));
+		//先判断该用户是否已经授权过
+		String openId = (String)map.get("openId");
+		Map<String, Object> queryMap = new HashMap<>();
+		queryMap.put("credential", openId);
+		List<CustomerAuth> list = customerAuthDao.queryList(queryMap);
+		if (list != null && list.size() > 0) {
+			CustomerAuth customerAuth = list.get(0);
+			return customerBaseService.queryByCustomerId(customerAuth.getCustomerId());
+		}
+		CustomerBaseExtend customerBaseExtend = new CustomerBaseExtend();
+		customerBaseExtend.setCustomerId(customerId);
+		CustomerBaseExtendService.save(customerBaseExtend);
 		customerBaseService.save(customerBase);
 		//保存微信授权信息
 		CustomerAuth customerAuth = new CustomerAuth();
-		customerAuth.setCredential((String)map.get("openId"));		//密码凭证（站内的保存密码，站外的不保存或保存token）
+		customerAuth.setCredential(openId);		//密码凭证（站内的保存密码，站外的不保存或保存token）
 		customerAuth.setCustomerId(customerId);		//客户（会员）编号
 		customerAuth.setIdentifier((String)map.get("unionId"));		//标识（手机号 邮箱 用户名或第三方应用的唯一标识）
 		customerAuth.setIdentityType("weixin");	//登录类型（手机号 邮箱 用户名）或第三方应用名称（微信 微博等）

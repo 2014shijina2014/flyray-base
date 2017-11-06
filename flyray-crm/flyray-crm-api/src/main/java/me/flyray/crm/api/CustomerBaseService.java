@@ -3,7 +3,7 @@ package me.flyray.crm.api;
 import java.util.Map;
 
 import me.flyray.common.service.BaseService;
-import me.flyray.crm.model.CrmCustomerBaseExtend;
+import me.flyray.crm.model.CustomerBaseExtend;
 import me.flyray.crm.model.CustomerBase;
 
 /** 
@@ -15,8 +15,8 @@ import me.flyray.crm.model.CustomerBase;
 public interface CustomerBaseService extends BaseService{
 
 	void save(CustomerBase customerBase);
-	void updateExtent(CrmCustomerBaseExtend extent);
-	void saveExtend(CrmCustomerBaseExtend extent);
+	void updateExtent(CustomerBaseExtend extent);
+	void saveExtend(CustomerBaseExtend extent);
 	void deleteBaseAndExtend(Long id);
 	void delete(Long id);
 	CustomerBase queryByCustomerId(Long customerId);

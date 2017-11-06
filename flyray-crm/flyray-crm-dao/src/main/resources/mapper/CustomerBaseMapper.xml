@@ -17,8 +17,8 @@
 		<result column="avatar" property="avatar" />
 		<result column="merchant_id" property="merchantId" />
 		<result column="org_id" property="orgId" />
-		<association property="crmCustomerBaseExtend" javaType="me.flyray.crm.model.CrmCustomerBaseExtend">  
-			<result column="follow_customer_no" property="followCustomerNo" />
+		<association property="customerBaseExtend" javaType="me.flyray.crm.model.CustomerBaseExtend">  
+			<result column="follow_customer_id" property="followCustomerId" />
 			<result column="school_name" property="schoolName" />
         </association> 
 	</resultMap>
@@ -78,17 +78,17 @@
 			#{orgId}
 		)
 	</insert>
-	 <insert id="saveExtend" parameterType="me.flyray.crm.model.CrmCustomerBaseExtend">
+	 <insert id="saveExtend" parameterType="me.flyray.crm.model.CustomerBaseExtend">
 		insert into crm_customer_base_extend
 		(
 			`customer_id`,
-			`follow_customer_no`,
+			`follow_customer_id`,
 			`school_name`
 		)
 		values
 		(
 			#{customerId}, 
-			#{followCustomerNo},
+			#{followCustomerId},
 			#{schoolName}
 			
 		)
@@ -110,10 +110,10 @@
 		</set>
 		where id = #{id}
 	</update>
-	<update id="updateExtent" parameterType="me.flyray.crm.model.CrmCustomerBaseExtend">
+	<update id="updateExtent" parameterType="me.flyray.crm.model.CustomerBaseExtend">
 		update crm_customer_base_extend 
 		<set>
-			<if test="followCustomerNo != null">`follow_customer_no` = #{followCustomerNo}, </if>
+			<if test="followCustomerId != null">`follow_customer_id` = #{followCustomerId}, </if>
 			<if test="schoolName != null">`school_name` = #{schoolName}, </if>
 		</set>
 		where customer_id = #{customerId}

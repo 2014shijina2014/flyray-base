@@ -16,9 +16,9 @@
 		<result column="birthday" property="birthday" />
 		<result column="avatar" property="avatar" />
 		<result column="merchant_no" property="merchantNo" />
-		<result column="customer_id" property="crmCustomerBaseExtend.customerId" />
-		<result column="follow_customer_no" property="crmCustomerBaseExtend.followCustomerNo" />
-		<result column="school_name" property="crmCustomerBaseExtend.schoolName" />
+		<result column="customer_id" property="customerBaseExtend.customerId" />
+		<result column="follow_customer_id" property="customerBaseExtend.followCustomerId" />
+		<result column="school_name" property="customerBaseExtend.schoolName" />
 	</resultMap>
 	<select id="queryObject" resultMap="customerBaseMap">
 		SELECT * FROM crm_customer_base AS base LEFT JOIN `crm_customer_base_extend` AS extend ON base.`id` = extend.`customer_id` WHERE id = #{id}
@@ -76,17 +76,17 @@
 			#{orgNo}
 		)
 	</insert>
-	 <insert id="saveExtend" parameterType="me.flyray.crm.model.CrmCustomerBaseExtend">
+	 <insert id="saveExtend" parameterType="me.flyray.crm.model.CustomerBaseExtend">
 		insert into crm_customer_base_extend
 		(
 			`customer_id`,
-			`follow_customer_no`,
+			`follow_customer_id`,
 			`school_name`
 		)
 		values
 		(
 			#{customerId}, 
-			#{followCustomerNo},
+			#{followCustomerId},
 			#{schoolName}
 			
 		)
@@ -108,10 +108,10 @@
 		</set>
 		where id = #{id}
 	</update>
-	<update id="updateExtent" parameterType="me.flyray.crm.model.CrmCustomerBaseExtend">
+	<update id="updateExtent" parameterType="me.flyray.crm.model.CustomerBaseExtend">
 		update crm_customer_base_extend 
 		<set>
-			<if test="followCustomerNo != null">`follow_customer_no` = #{followCustomerNo}, </if>
+			<if test="followCustomerId != null">`follow_customer_id` = #{followCustomerId}, </if>
 			<if test="schoolName != null">`school_name` = #{schoolName}, </if>
 		</set>
 		where customer_id = #{customerId}

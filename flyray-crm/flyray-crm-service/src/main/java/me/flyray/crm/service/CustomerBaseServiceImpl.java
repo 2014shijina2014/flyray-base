@@ -12,7 +12,7 @@ import me.flyray.common.service.AbstractBaseService;
 import me.flyray.common.utils.BeanUtils;
 import me.flyray.crm.api.CustomerBaseService;
 import me.flyray.crm.dao.CustomerBaseDao;
-import me.flyray.crm.model.CrmCustomerBaseExtend;
+import me.flyray.crm.model.CustomerBaseExtend;
 import me.flyray.crm.model.CustomerBase;
 
 /** 
@@ -35,13 +35,13 @@ public class CustomerBaseServiceImpl extends AbstractBaseService<CustomerBase> i
 	}
 
 	@Override
-	public void updateExtent(CrmCustomerBaseExtend extent) {
+	public void updateExtent(CustomerBaseExtend extent) {
 		// TODO Auto-generated method stub
 		customerBaseDao.updateExtent(extent); 
 	}
 
 	@Override
-	public void saveExtend(CrmCustomerBaseExtend extent) {
+	public void saveExtend(CustomerBaseExtend extent) {
 		// TODO Auto-generated method stub
 		customerBaseDao.saveExtend(extent);
 	}
