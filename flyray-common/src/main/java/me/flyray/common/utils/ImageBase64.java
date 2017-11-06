@@ -64,7 +64,8 @@ public class ImageBase64 {
         {
         	File f = new File(imgFilePath);
         	if (!f.getParentFile().exists()) {
-        		 f.getParentFile().mkdirs();
+        		f.setWritable(true, false);
+        		f.getParentFile().mkdirs();
         	}
             //Base64解码
             byte[] b = Base64.decodeBase64(imgStr);
