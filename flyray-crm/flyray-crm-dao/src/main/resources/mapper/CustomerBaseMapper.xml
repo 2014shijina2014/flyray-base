@@ -17,7 +17,8 @@
 		<result column="avatar" property="avatar" />
 		<result column="merchant_id" property="merchantId" />
 		<result column="org_id" property="orgId" />
-		<association property="customerBaseExtend" javaType="me.flyray.crm.model.CustomerBaseExtend">  
+		<association property="customerBaseExtend" javaType="me.flyray.crm.model.CustomerBaseExtend"> 
+			<result column="merchant_id" property="merchantId" />
 			<result column="follow_customer_id" property="followCustomerId" />
 			<result column="school_name" property="schoolName" />
         </association> 
