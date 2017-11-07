@@ -7,7 +7,11 @@ $(function () {
 			{ label: '专栏名称', name: 'columnName', width: 75 },
 			{ label: '专栏介绍', name: 'columnDesc', width: 90 },
 			{ label: '专栏logo', name: 'columnLogo', width: 100 },
-            { label: '专栏状态', name: 'columnStatus', width: 50 },
+            { label: '专栏状态', name: 'columnStatus', width: 80, formatter: function(value, options, row){
+                return value !== 1 ?
+                    '<span class="label label-danger">禁用</span>' :
+                    '<span class="label label-success">正常</span>';
+            }},
             { label: '专栏创建者', name: 'createBy', width: 50 }
         ],
 		viewrecords: true,
@@ -60,6 +64,13 @@ var vm = new Vue({
 		add: function(){
 			vm.showList = false;
 			vm.title = "新增";
+			vm.specialColumn = {
+                columnName:null,
+                columnDesc:null,
+                columnLogo:null,
+                columnStatus:null,
+                createBy:null
+            }
 		},
 		update: function () {
 			var id = getSelectedRow();
