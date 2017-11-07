@@ -137,7 +137,7 @@ public class CommentController extends AbstractController{
 			
 		} else if("2".equals(commentType)) {
 			//2、回复
-			Integer commentTargetUserId = (Integer) param.get("commentTargetUserId");
+			Long commentTargetUserId = (Long) param.get("commentTargetUserId");
 			CustomerBase targetCustome = customerBaseService.queryByCustomerId(Long.valueOf(commentTargetUserId));
 			param.put("commentTargetUserName", targetCustome.getNickname());
 			param.put("commentTargetUserId", commentTargetUserId);
