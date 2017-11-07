@@ -7,6 +7,8 @@ $(function () {
 			{ label: '专栏名称', name: 'columnName', width: 75 },
 			{ label: '专栏介绍', name: 'columnDesc', width: 90 },
 			{ label: '专栏logo', name: 'columnLogo', width: 100 },
+            { label: '专栏状态', name: 'columnStatus', width: 50 },
+            { label: '专栏创建者', name: 'createBy', width: 50 }
         ],
 		viewrecords: true,
         height: 385,
@@ -47,6 +49,8 @@ var vm = new Vue({
 			columnName:null,
 			columnDesc:null,
 			columnLogo:null,
+            columnStatus:null,
+			createBy:null
 		}
 	},
 	methods: {
@@ -96,7 +100,7 @@ var vm = new Vue({
 			$.ajax({
 				type: "POST",
 			    url: url,
-			    data: JSON.stringify(vm.payChannel),
+			    data: JSON.stringify(vm.specialColumn),
 			    success: function(r){
 			    	if(r.code === 0){
 						alert('操作成功', function(index){
