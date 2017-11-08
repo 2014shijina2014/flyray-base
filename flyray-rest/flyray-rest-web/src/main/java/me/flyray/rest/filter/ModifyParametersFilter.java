@@ -1,6 +1,5 @@
 package me.flyray.rest.filter;
 
-import static org.hamcrest.CoreMatchers.nullValue;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -103,19 +102,16 @@ public class ModifyParametersFilter extends OncePerRequestFilter{
                     return bais.read();  
                 }
 
-				@Override
 				public boolean isFinished() {
 					// TODO Auto-generated method stub
 					return false;
 				}
 
-				@Override
 				public boolean isReady() {
 					// TODO Auto-generated method stub
 					return false;
 				}
 
-				@Override
 				public void setReadListener(ReadListener readListener) {
 					// TODO Auto-generated method stub
 					

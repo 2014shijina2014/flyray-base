@@ -13,8 +13,14 @@
 			AND `role_no` = #{roleNo}
         </if>
         <if test="roleName != null and roleName != ''">
-			AND `role_name` = #{roleNo}
+			AND `role_name` = #{roleName}
         </if>
+			<if test="roleName != null and roleName != ''">
+				AND `org_id` = #{orgId}
+			</if>
+			<if test="roleName != null and roleName != ''">
+				AND `merchant_id` = #{merchantId}
+			</if>
 		</trim>
 	</sql>
 	
@@ -27,8 +33,10 @@
 		select * from crm_customer_role where id = #{id}
 	</select>
 
-	<select id="queryList" resultType="me.flyray.crm.model.CustomerRole">
+	<select id="queryList"  resultType="me.flyray.crm.model.CustomerRole">
 		select * from crm_customer_role order by id desc
+
+		<include refid="where1"/>
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
@@ -59,7 +67,9 @@
 		update crm_customer_role 
 		<set>
 			<if test="roleNo != null">`role_no` = #{roleNo}, </if>
-			<if test="roleName != null">`role_name` = #{roleName}</if>
+			<if test="roleName != null">`role_name` = #{roleName},</if>
+			<if test="orgId != null">`org_id` = #{orgId}, </if>
+			<if test="merchantId != null">`merchant_id` = #{merchantId}</if>
 		</set>
 		where id = #{id}
 	</update>
@@ -67,5 +77,11 @@
 	<delete id="delete">
 		delete from crm_customer_role where id = #{id}
 	</delete>
-  
+
+	<delete id="deleteBatch" parameterType="java.util.List">
+	delete from crm_customer_role where id in
+	<foreach item="id" collection="list" open="(" separator="," close=")">
+		#{id}
+	</foreach>
+	</delete>
 </mapper>

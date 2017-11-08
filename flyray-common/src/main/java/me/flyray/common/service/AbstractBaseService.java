@@ -75,9 +75,15 @@ public abstract class AbstractBaseService<T> implements BaseService{
 	}
 
 	@Override
-	public void deleteBatch(Long[] ids) {
-		// TODO Auto-generated method stub
-		
+	public void deleteBatch(List<Long> ids) {
+		if(ids == null){
+			return;
+		}
+		try {
+			baseDao.deleteBatch(ids);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Override

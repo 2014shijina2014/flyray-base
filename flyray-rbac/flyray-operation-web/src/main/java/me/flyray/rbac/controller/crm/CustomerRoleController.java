@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,10 +58,8 @@ public class CustomerRoleController extends AbstractController {
     public R info(@PathVariable("id") Long id){
         Parameter parameter = new Parameter("customerRoleService", "queryById");
         parameter.setId(id);
-        Parameter parameter1=apiProvider.execute(parameter);
-        Map<?,?> map1=parameter1.getMap();
-       // Map<?,?> map1=apiProvider.execute(parameter).getMap();
-        return R.ok().put("CustomerRole",map1);
+        Map<?,?> map=apiProvider.execute(parameter).getMap();
+        return R.ok().put("CustomerRole",map);
     }
 
     @SysLog("保存会员角色信息")
@@ -71,7 +70,8 @@ public class CustomerRoleController extends AbstractController {
         Map<String,Object> map=new HashMap<>();
         map.put("roleNo",params.get("roleNo"));
         map.put("roleName",params.get("roleName"));
-
+        map.put("merchantId",params.get("merchantId"));
+        map.put("orgId",params.get("orgId"));
         parameter.setMap(map);
         apiProvider.execute(parameter);
         return R.ok();
@@ -86,11 +86,13 @@ public class CustomerRoleController extends AbstractController {
     @RequestMapping("/update")
     @RequiresPermissions("crm:customerRole:update")
     public R update(@RequestBody Map<String, Object> params){
-    	logger.info("flyray-operation修改会员角色---请求参数:{}",params);
         Parameter parameter=new Parameter("customerRoleService","update");
         Map<String, Object> map=new HashMap<>();
+        map.put("id",params.get("id"));
         map.put("roleNo",params.get("roleNo"));
         map.put("roleName",params.get("roleName"));
+        map.put("merchantId",params.get("merchantId"));
+        map.put("orgId",params.get("orgId"));
         parameter.setMap(map);
         apiProvider.execute(parameter);
         return R.ok();
@@ -101,9 +103,8 @@ public class CustomerRoleController extends AbstractController {
     @RequiresPermissions("crm:customerRole:delete")
     public R delete(@RequestBody Long[] ids){
         Parameter parameter=new Parameter("customerRoleService","deleteBatch");
-        Map<String, Object> map=new HashMap<>();
-        map.put("ids",ids);
-        parameter.setMap(map);
+        List<Long> list= Arrays.asList(ids);
+        parameter.setList(list);
         apiProvider.execute(parameter);
         return R.ok();
     }

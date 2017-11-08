@@ -138,5 +138,18 @@ public class CustomerController extends AbstractController {
 		
 		return R.ok();
 	}
-	
+
+	public R accountList(@RequestParam Map<String, Object> params){
+
+		//查询列表数据
+		Parameter parameter = new Parameter("CustomerAccountService", "queryList");
+		Map<String, Object> map = new HashMap<>();
+		map.put("payChannelNo", "");
+		parameter.setMap(map);
+		List<?> list = apiProvider.execute(parameter).getList();
+		int total = list.size();
+		PageUtils pageUtil = new PageUtils(list, total, 10, 1);
+
+		return R.ok().put("page", pageUtil);
+	}
 }

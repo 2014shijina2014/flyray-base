@@ -6,8 +6,8 @@ $(function () {
             { label: '角色ID', name: 'id', index: "id", width: 45, key: true },
             { label: '角色号', name: 'roleNo', index: "role_no", width: 45},
             { label: '角色名称', name: 'roleName', index: "role_name", width: 75 },
-            { label: '商铺', name: 'orgId', index: "org_id", width: 100 },
-            { label: '组织', name: 'merchantId', index: "merchant_id", width: 80}
+            { label: '商铺', name: 'merchantId', index: "merchant_id", width: 80},
+            { label: '组织', name: 'orgId', index: "org_id", width: 100 }
         ],
         viewrecords: true,
         height: 385,
@@ -101,7 +101,6 @@ var vm = new Vue({
                 $.ajax({
                     type: "POST",
                     url: "../crm/customerRole/delete",
-                    contentType: "application/json",
                     data: JSON.stringify(ids),
                     success: function(r){
                         if(r.code == 0){
@@ -121,10 +120,10 @@ var vm = new Vue({
             $.ajax({
                 type: "POST",
                 url: url,
-                contentType: "application/json",
                 data: JSON.stringify(vm.CustomerRole),
                 success: function(r){
-                    if(r.code === 0){
+                    console.log(r.code())
+                    if(r.code() === 0){
                         alert('操作成功', function(index){
                             vm.reload();
                         });

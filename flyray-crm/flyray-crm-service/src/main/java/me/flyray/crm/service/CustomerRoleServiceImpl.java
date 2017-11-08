@@ -6,6 +6,8 @@ import me.flyray.common.service.AbstractBaseService;
 import me.flyray.crm.api.CustomerRoleService;
 import me.flyray.crm.model.CustomerRole;
 
+import java.util.List;
+
 /** 
 * @author: bolei
 * @date：2017年10月28日 下午12:53:25
@@ -14,5 +16,4 @@ import me.flyray.crm.model.CustomerRole;
 
 @Service("customerRoleService")
 public class CustomerRoleServiceImpl extends AbstractBaseService<CustomerRole> implements CustomerRoleService{
-
 }

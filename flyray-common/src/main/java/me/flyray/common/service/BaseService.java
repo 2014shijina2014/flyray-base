@@ -23,6 +23,6 @@ public interface BaseService {
 	
 	void update(Map<String, Object> map);
 	
-	void deleteBatch(Long[] ids);
+	void deleteBatch(List<Long> ids);
 	
 }

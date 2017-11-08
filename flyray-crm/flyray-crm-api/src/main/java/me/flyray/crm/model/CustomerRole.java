@@ -48,5 +48,4 @@ public class CustomerRole extends BaseModel {
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
 	}
-	
 }

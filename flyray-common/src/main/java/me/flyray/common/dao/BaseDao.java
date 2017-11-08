@@ -23,5 +23,5 @@ public interface BaseDao<T> {
 	
 	void update(T t);
 	
-	void deleteBatch(Long[] ids);
+	void deleteBatch(List<Long> ids);
 }

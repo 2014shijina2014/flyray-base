@@ -3,6 +3,8 @@ package me.flyray.crm.dao;
 import me.flyray.common.dao.BaseDao;
 import me.flyray.crm.model.CustomerRole;
 
+import java.util.List;
+
 /** 
 * @author: bolei
 * @date：2017年10月28日 下午12:55:43
@@ -10,5 +12,4 @@ import me.flyray.crm.model.CustomerRole;
 */
 
 public interface CustomerRoleDao extends BaseDao<CustomerRole>{
-
 }
