@@ -1,6 +1,9 @@
 package me.flyray.crm.api;
 
 import me.flyray.common.service.BaseService;
+import me.flyray.crm.model.CustomerRole;
+
+import java.util.List;
 
 /** 
 * @author: bolei
@@ -9,5 +12,4 @@ import me.flyray.common.service.BaseService;
 */
 
 public interface CustomerRoleService extends BaseService{
-
 }
