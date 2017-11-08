@@ -4,7 +4,7 @@ $(function () {
         datatype: "json",
         colModel: [
             { label: '角色ID', name: 'id', index: "id", width: 45, key: true },
-            { label: '角色号', name: 'roleNo', index: "role_no", width: 45, key: true },
+            { label: '角色号', name: 'roleNo', index: "role_no", width: 45},
             { label: '角色名称', name: 'roleName', index: "role_name", width: 75 },
             { label: '商铺', name: 'orgId', index: "org_id", width: 100 },
             { label: '组织', name: 'merchantId', index: "merchant_id", width: 80}
