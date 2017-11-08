@@ -86,10 +86,12 @@ public class CustomerRoleController extends AbstractController {
     @RequestMapping("/update")
     @RequiresPermissions("crm:customerRole:update")
     public R update(@RequestBody Map<String, Object> params){
+    	logger.info("flyray-operation修改会员角色---请求参数:{}",params);
         Parameter parameter=new Parameter("customerRoleService","update");
         Map<String, Object> map=new HashMap<>();
         map.put("roleNo",params.get("roleNo"));
         map.put("roleName",params.get("roleName"));
+        parameter.setMap(map);
         apiProvider.execute(parameter);
         return R.ok();
     }
@@ -101,6 +103,7 @@ public class CustomerRoleController extends AbstractController {
         Parameter parameter=new Parameter("customerRoleService","deleteBatch");
         Map<String, Object> map=new HashMap<>();
         map.put("ids",ids);
+        parameter.setMap(map);
         apiProvider.execute(parameter);
         return R.ok();
     }

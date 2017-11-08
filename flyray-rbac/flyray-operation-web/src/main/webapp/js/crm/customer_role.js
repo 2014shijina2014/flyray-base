@@ -101,6 +101,7 @@ var vm = new Vue({
                 $.ajax({
                     type: "POST",
                     url: "../crm/customerRole/delete",
+                    contentType: "application/json",
                     data: JSON.stringify(ids),
                     success: function(r){
                         if(r.code == 0){
@@ -120,10 +121,10 @@ var vm = new Vue({
             $.ajax({
                 type: "POST",
                 url: url,
+                contentType: "application/json",
                 data: JSON.stringify(vm.CustomerRole),
                 success: function(r){
-                    console.log(r.code())
-                    if(r.code() === 0){
+                    if(r.code === 0){
                         alert('操作成功', function(index){
                             vm.reload();
                         });
