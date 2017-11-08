@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="me.flyray.crm.dao.CustomerBaseExtendDao">
+	<resultMap type="me.flyray.crm.model.CustomerBaseExtend" id="customerBaseExtendMap">
+		<result column="customer_id" property="customerId" />
+		<result column="follow_customer_id" property="followCustomerId" />
+		<result column="school_name" property="schoolName" />
+	</resultMap>
+	<select id="queryObject" resultMap="customerBaseExtendMap">
+		SELECT * FROM crm_customer_base_extend WHERE customer_id = #{customerId}
+	</select>
+	
+	<select id="queryList"  resultMap="customerBaseExtendMap">
+		SELECT * FROM crm_customer_base_extend WHERE customer_id = #{customerId}
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="queryTotal" resultType="int">
+		select count(*) from crm_customer_base_extend 
+	</select>
+	
+	<insert id="save" parameterType="me.flyray.crm.model.CustomerBaseExtend" useGeneratedKeys="true" keyProperty="id">
+		insert into crm_customer_base_extend
+		(
+			`customer_id`,
+			`follow_customer_id`,
+			`school_name`
+		)
+		values
+		(
+			#{customerId}, 
+			#{followCustomerId},
+			#{schoolName}
+			
+		)
+	</insert>
+	
+	<update id="update" parameterType="me.flyray.crm.model.CustomerBaseExtend">
+		update crm_customer_base_extend 
+		<set>
+			<if test="followCustomerId != null">`follow_customer_id` = #{followCustomerId}, </if>
+			<if test="schoolName != null">`school_name` = #{schoolName}, </if>
+		</set>
+		where customerId = #{customer_id}
+	</update>
+	<delete id="delete">
+		delete from crm_customer_base_extend where customerId = #{customer_id}
+	</delete>
+	
+</mapper>

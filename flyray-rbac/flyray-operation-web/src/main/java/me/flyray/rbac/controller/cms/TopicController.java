@@ -1,11 +1,15 @@
 package me.flyray.rbac.controller.cms;
 
+import java.io.File;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import me.flyray.cms.api.TopicService;
+import me.flyray.common.utils.ImageBase64;
+import me.flyray.common.utils.SnowFlake;
 import me.flyray.rbac.annotation.SysLog;
 import me.flyray.rbac.controller.AbstractController;
 import me.flyray.rbac.utils.PageUtils;
@@ -27,6 +33,8 @@ public class TopicController extends AbstractController {
 	private TopicService topicService;
 	@Autowired
 	private ApiProvider apiProvider;
+	@Value("${rest_home_imgPath}")
+	private String imgPath;
 	/**
 	 * 话题列表
 	 */
@@ -54,7 +62,32 @@ public class TopicController extends AbstractController {
 	public R save(@RequestParam Map<String, Object> params){
 		
 		logger.info("flyray-merchant保存专栏信息---请求参数：{}",params);
-		MultipartFile files = (MultipartFile) params.get("img");
+		Map<String, Object> map = new HashMap<String, Object>();
+	    String content = (String)params.get("content");
+	    String discription = (String)params.get("discription");
+	    String title = (String)params.get("title");
+		String imgFile64 = (String)params.get("imgFile");
+		String id = (String)params.get("id");
+		if(id==null ||"".equals(id)) {
+			 id = SnowFlake.getId()+"";
+		}
+		map.put("id", id);
+		map.put("content", content);
+		map.put("discription", discription);
+		map.put("title", title);
+		map.put("createBy", getUserId());
+		map.put("createTime", new Timestamp(new Date().getTime()));
+		if ("" != imgFile64 && null != imgFile64) {
+			String img64[] = imgFile64.split(",");
+			String imgFileName = (String)params.get("imgFileName");
+			String suffix = imgFileName.substring(imgFileName.lastIndexOf(".") + 1);  
+			Long time = new Date().getTime();
+			String newName = time + "." + suffix;
+			String url = imgPath + File.separator + id + File.separator + newName;
+			Boolean flag = ImageBase64.generateImage(img64[1], url);
+			map.put("img", newName);
+		}
+		topicService.save(map);
 		return R.ok();
 		
 	}

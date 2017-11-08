@@ -31,7 +31,8 @@
 	</select>
 
 	<select id="queryList" resultType="me.flyray.crm.model.CustomerAuth">
-		select * from crm_customer_auth order by id desc
+		select * from crm_customer_auth  
+		<include refid="where1"/>
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>

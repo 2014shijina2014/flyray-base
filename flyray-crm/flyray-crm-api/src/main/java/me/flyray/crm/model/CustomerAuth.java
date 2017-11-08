@@ -12,7 +12,7 @@ public class CustomerAuth {
 	/**
 	 * 客户（会员）编号
 	 */
-	private long customerId;
+	private String customerId;
 	
 	/**
 	 * 登录类型（手机号 邮箱 用户名）或第三方应用名称（微信 微博等）
@@ -29,11 +29,11 @@ public class CustomerAuth {
 	 */
 	private String credential;
 
-	public long getCustomerId() {
+	public String getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(long customerId) {
+	public void setCustomerId(String customerId) {
 		this.customerId = customerId;
 	}
 

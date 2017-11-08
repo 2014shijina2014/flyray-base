@@ -29,8 +29,7 @@ public class UserDaoTest {
 	
 	@Test
 	public void testQueryUser() {
-		Map<String, Object> users = payChannelConfigDao.queryById(Long.valueOf(1));
-		assertNotNull(users);
+		payChannelConfigDao.queryById(Long.valueOf(1));
 	}
 
 }

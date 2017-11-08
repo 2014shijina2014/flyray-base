@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import me.flyray.cms.api.CommentService;
+import me.flyray.cms.api.ViewpointService;
+import me.flyray.cms.enums.CommentModuleNo;
 import me.flyray.cms.model.Comment;
+import me.flyray.cms.model.Viewpoint;
 import me.flyray.common.utils.BeanUtils;
 import me.flyray.crm.api.CustomerBaseService;
 import me.flyray.crm.model.CustomerBase;
@@ -36,6 +39,8 @@ public class CommentController extends AbstractController{
 	private CommentService commentService;
 	@Autowired
 	private CustomerBaseService customerBaseService;
+	@Autowired
+	private ViewpointService viewpointService;
 	
 	/**
 	 * 查询观点评论 
@@ -47,9 +52,8 @@ public class CommentController extends AbstractController{
 		logger.info("请求查询话题---start---{}",param);
 		String currentPage = param.get("currentPage");//当前页
 		String pageSize = param.get("pageSize");//条数
-		String createBy = param.get("createBy");//用户编号
 		String id = param.get("id");//话题编号
-		String commentModuleNo = param.get("commentModuleNo");//话题编号
+		String commentModuleNo = param.get("commentModuleNo");//评论模块编号
 		Map<String, Object> map = new HashMap<String, Object>();
 		Map<String, Object> queryMap = new HashMap<>();
 		queryMap.put("commentTargetId", id);
@@ -91,7 +95,8 @@ public class CommentController extends AbstractController{
 		logger.info("查询观点评论 ---start---{}",param);
 		String commentTargetId = param.get("commentTargetId");//观点编号
 		Map<String, Object> queryMap = new HashMap<>();
-		queryMap.put("commentModuleNo", 1);
+		String commentModuleNo = param.get("commentModuleNo");//评论模块编号
+		queryMap.put("commentModuleNo", commentModuleNo);
 		queryMap.put("commentTargetId", commentTargetId);
 		List<Comment> commentList = commentService.query(queryMap);
 		List<Map<String, Object>> resultMaps = new ArrayList<>();
@@ -124,6 +129,7 @@ public class CommentController extends AbstractController{
 		logger.info("观点回复添加 ---start---{}",param);
 		String commentType = (String) param.get("commentType");//1评论2回复
 		String commentBy = (String) param.get("commentBy");
+		String commentModuleNo = (String) param.get("commentModuleNo");
 		CustomerBase custome = customerBaseService.queryByCustomerId(Long.valueOf(commentBy));
 		param.put("commentByName", custome.getNickname());
 		if ("1".equals(commentType)) {
@@ -131,12 +137,28 @@ public class CommentController extends AbstractController{
 			
 		} else if("2".equals(commentType)) {
 			//2、回复
-			Integer commentTargetUserId = (Integer) param.get("commentTargetUserId");
+			Long commentTargetUserId = (Long) param.get("commentTargetUserId");
 			CustomerBase targetCustome = customerBaseService.queryByCustomerId(Long.valueOf(commentTargetUserId));
 			param.put("commentTargetUserName", targetCustome.getNickname());
 			param.put("commentTargetUserId", commentTargetUserId);
 		}
 		try {
+			//如果是观点更新评论量
+			if(CommentModuleNo.home_viewpoint.getCode().equals(commentModuleNo)){
+				Map<String, Object> pointMap = new HashMap<String, Object>();
+				String commentTargetId = (String) param.get("commentTargetId");
+				pointMap.put("id", commentTargetId);
+				List<Viewpoint> pointList = viewpointService.query(pointMap);
+				if(pointList.size() == 0){
+					return ResponseHelper.success(null,null, "01", "未查询到观点记录");
+				}
+				Viewpoint point = pointList.get(0);
+				Integer commenCount = point.getCommentCount();
+				commenCount = commenCount + 1;
+				point.setCommentCount(commenCount);
+				pointMap.put("commentCount", commenCount);
+				viewpointService.update(pointMap);
+			}
 			logger.info("观点回复添加 ---查询完用户名后---{}",param);
 			Comment comment = commentService.saveAll(param);
 			logger.info("观点回复添加 ---comment---{}",comment.toString());

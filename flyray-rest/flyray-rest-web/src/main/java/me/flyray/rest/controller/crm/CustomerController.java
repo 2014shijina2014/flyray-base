@@ -16,6 +16,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,6 +67,10 @@ public class CustomerController {
 	private CustomerRoleService customerRoleService;
 	@Autowired
 	private CustomerRoleRelationsService customerRoleRelationsService;
+	@Value("${rest_invite_imgPath}")
+	private String imgPath;
+	@Value("${rest_invite_imgHttpPath}")
+	private String imgHttpPath;
 	
 	
 	/**
@@ -121,13 +126,16 @@ public class CustomerController {
 		String merchantNo = param.get("merchantNo");
 		Map<String, Object> resultMap = new HashMap<>();
 		OutputStream outputStream;
-		String qrImgFile = "F:/assets/test/"+customerId+".jpg";
+		String qrImgFile = imgPath+ File.separator + customerId+".jpg";
+		//String qrImgFile = "F:/assets/test/"+customerId+".jpg";
 		try {
 			outputStream = new FileOutputStream(new File(qrImgFile));
 			/*StringBuilder content = new StringBuilder("http://192.168.1.136:3000/api/cms/me/invited/");
 			content.append(customerId);*/
 			//测试
-			StringBuilder content = new StringBuilder("http://192.168.1.136:3000/api/cms/me/inviteGetWxCode？inviter=1&code=32323");
+			String redirect_uri = "http://qingwei.flyray.me/api/cms/me/inviteGetWxCode&inviter="+customerId;
+			StringBuilder content = new StringBuilder("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0f6fa56da5e7fb62&redirect_uri="+redirect_uri+"&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect");
+			//StringBuilder content = new StringBuilder("http://192.168.1.136:3000/api/cms/me/inviteGetWxCode？inviter=1&code=32323");
 			QrCodeCreateUtil.createQrCode(outputStream,content.toString(),900,"JPEG");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -141,18 +149,18 @@ public class CustomerController {
 		//此处随机取一张图片
 		java.util.Random random=new java.util.Random();// 定义随机类
 		int result=random.nextInt(10);
-        BufferedImage d = tt.loadImageLocal("F:/assets/"+result+".jpg");  
+        BufferedImage d = tt.loadImageLocal(imgPath+ File.separator+result+".jpg");  
         //往图片上写文件 
-        String imgAndStr = "F:/assets/test/imgAndStr-"+customerId+".jpg";
+        String imgAndStr = imgPath+ File.separator +"imgAndStr-"+customerId+".jpg";
 	    tt.writeImageLocal(imgAndStr,tt.modifyImage(d,"我是博羸兄弟",120,320));
 	    BufferedImage b = tt.loadImageLocal(imgAndStr);
 	    //将生成的二维码图片压缩成所需比例
-	    String scaleQrcode = "F:/assets/test/scale-qrcode.jpg";
+	    String scaleQrcode = imgPath+ File.separator + "scale-qrcode"+customerId+".jpg";
 	    //源地址  改变大小后图片的地址 
 	    ImageHelper.scaleImage(qrImgFile, scaleQrcode, 0.3, "JPEG");
 	    BufferedImage c = tt.loadImageLocal(scaleQrcode);
         //将多张图片合在一起  
-	    String resultImg = "F:/assets/test/resul-"+customerId+".jpg";
+	    String resultImg = imgPath+ File.separator +"resul-"+customerId+".jpg";
         tt.writeImageLocal(resultImg, tt.modifyImagetogeter(c, b)); 
 		String imgStr = ImageBase64.getImgStr(resultImg);
 		logger.info("查询客户信息------end------{}",resultMap);
@@ -189,7 +197,7 @@ public class CustomerController {
 			return ResponseHelper.success(customerAuth,null, "01", "用户已经是会员不能被重复邀请");
 		}
 		CustomerBase customerBase = customerAuthService.customerAuth(userMap);
-		userMap.put("customerNo", customerBase.getCustomerNo());
+		userMap.put("customerId", customerBase.getId());
 		//将新用户与邀请人关联
 		//判断邀请人属于哪级分销
 		List<CustomerRelations> customerRelationses = customerRelationsService.queryByCustomerId(inviterId);

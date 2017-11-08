@@ -29,7 +29,7 @@
 			<div class="form-group">
 			   	<div class="col-sm-2 control-label">标题</div>
 			   	<div class="col-sm-10">
-			      <input type="text" class="form-control" v-model="topic.title" placeholder="标题"/>
+			      <input type="text" class="form-control" v-model="titles" placeholder="标题"/>
 			    </div>
 			</div>
 			<div class="form-group">
@@ -43,7 +43,7 @@
 			<div class="form-group">
 			   	<div class="col-sm-2 control-label">描述</div>
 			   	<div class="col-sm-10">
-			      <input type="text" class="form-control" v-model="topic.discription" placeholder="描述"/>
+			      <input type="text" class="form-control" v-model="discription" placeholder="描述"/>
 			    </div>
 			</div>
 			<div class="form-group">
@@ -52,22 +52,21 @@
     				<input type="file" v-model="topic.img">
     			</div> -->
     			<div style="margin-bottom: 20px">
-                <h2>选择图片</h2>
-                <a id='addPic' href="" v-on:click="addPic">添加图片 </a>
-                <input type="file" @change="onFileChange" multiple style="display: none;">
+                <!-- <a id='addPic' href="" v-on:click="addPic">添加图片 </a> -->
+                <input type="file" @change="onFileChange" multiple style="display: block;">
             </div>
-            <div v-if="images.length >0">
+            <div v-if="images.length >0" style="width:500px;margin-left:180px">
                <ul>
-                  <li v-for="(image,key) in images">
+                  <li v-for="(image,key) in images" style="list-style:none">
                     
-                     <img :src="image" @click='delImage(key)' />
+                     <img :src="image" @click='delImage(key)' style="height:100px;width: 100px;"/>
                      <a href="#" style="position: absolute;" @click='delImage(key)'>
                         <span class="glyphicon glyphicon-remove"></span>
                     </a>
                   </li>
                </ul>
-                <button @click="removeImage">移除全部图片</button>
-                <button @click='uploadImage' >上传</button>
+                <!-- <button @click="removeImage">移除全部图片</button>
+                <button @click='uploadImage' >上传</button> -->
             </div>
 			</div>
 			<div class="form-group">

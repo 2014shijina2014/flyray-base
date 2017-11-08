@@ -61,7 +61,8 @@ public class ViewpointController extends AbstractController{
 	 */
 	@ResponseBody
 	@RequestMapping(value="/add", method = RequestMethod.POST)
-	public Map<String, Object> add(@RequestBody Map<String, Object> param, HttpSession session) {
+	public Map<String, Object> add(@RequestBody Map<String, Object> param) {
+		logger.info("添加观点---start---{}",param);
 		Long id = SnowFlake.getId();
 		String pointText = (String)param.get("pointText");
 		String createBy = (String)param.get("createBy");
@@ -75,7 +76,12 @@ public class ViewpointController extends AbstractController{
 			Long time = new Date().getTime();
 			String newName = time + "." + suffix;
 			String url = imgPath + File.separator + id + File.separator + newName;
+			logger.info("生产图片路径---{}",url);
 			Boolean flag = ImageBase64.generateImage(img64[1], url);
+			logger.info("生产图片路径和目录---{}",flag);
+			if (!flag) {
+				return ResponseHelper.success(null,null, "02", "添加数据失败");
+			}
 			map.put("pointImg", newName);
 		}
 		map.put("pointText", pointText);
@@ -83,12 +89,13 @@ public class ViewpointController extends AbstractController{
 		map.put("favortCount", 0);
 		map.put("commentCount", 0);
 		map.put("id", id);
+		map.put("pointTime", new Date());
 		try {
 			viewPointService.save(map);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		logger.info("添加观点---end---{}",param);
 		return ResponseHelper.success(param,null, "00", "添加成功");
 	}
 	/**
@@ -105,7 +112,7 @@ public class ViewpointController extends AbstractController{
 	 */
 	@ResponseBody
 	@RequestMapping(value="/query", method = RequestMethod.POST)
-	public Map<String, Object> query(@RequestBody Map<String, String> param, HttpSession session) {
+	public Map<String, Object> query(@RequestBody Map<String, String> param) {
 		logger.info("请求观点---start---{}",param);
 		String currentPage = param.get("currentPage");//当前页
 		String pageSize = param.get("pageSize");//条数
@@ -143,7 +150,7 @@ public class ViewpointController extends AbstractController{
 			
 			ViewPointItem item = new ViewPointItem();
 			Date time = cmsViewPoint.getPointTime();
-			SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm");//
+			SimpleDateFormat simpleFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");//
 			String fromDate = simpleFormat.format(time);
 			String toDate = simpleFormat.format(new Date());
 
@@ -168,7 +175,7 @@ public class ViewpointController extends AbstractController{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+			logger.info("观点创建人id--------{}",cmsViewPoint.getCreateBy());
 			if(cmsViewPoint.getCreateBy() != null){
 				CustomerBase customer = customerBaseService.queryByCustomerId(cmsViewPoint.getCreateBy());
 				item.setCustomer(customer);

@@ -1,7 +1,8 @@
 package me.flyray.crm.model;
 
-import java.io.Serializable;
 import java.util.Date;
+
+import me.flyray.common.model.BaseModel;
 
 /** 
 * @author: bolei
@@ -9,12 +10,12 @@ import java.util.Date;
 * @description：客户基础信息
 */
 
-public class CustomerBase implements Serializable{
+public class CustomerBase extends BaseModel {
 
 	/**
-	 * 客户自增ID
+	 * 客户ID
 	 */
-	private Long id;
+	private String id;
 	
 	/**
 	 * 客户编号
@@ -68,37 +69,19 @@ public class CustomerBase implements Serializable{
 	private String avatar;
 	
 	/**
-	 * 商户号
-	 */
-	private String merchantNo;
-	
-	/**
-	 * 机构号
-	 */
-	private String orgNo;
-	/**
 	 * 拓展
 	 */
-	private CrmCustomerBaseExtend crmCustomerBaseExtend;
-	
-	public CrmCustomerBaseExtend getCrmCustomerBaseExtend() {
-		return crmCustomerBaseExtend;
-	}
-
-	public void setCrmCustomerBaseExtend(CrmCustomerBaseExtend crmCustomerBaseExtend) {
-		this.crmCustomerBaseExtend = crmCustomerBaseExtend;
-	}
+	private CustomerBaseExtend customerBaseExtend;
 
 	public String getCustomerNo() {
 		return customerNo;
 	}
-	
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -178,28 +161,14 @@ public class CustomerBase implements Serializable{
 		this.avatar = avatar;
 	}
 
-	public String getMerchantNo() {
-		return merchantNo;
+
+	public CustomerBaseExtend getCustomerBaseExtend() {
+		return customerBaseExtend;
 	}
 
-	public void setMerchantNo(String merchantNo) {
-		this.merchantNo = merchantNo;
-	}
 
-	public String getOrgNo() {
-		return orgNo;
-	}
-
-	public void setOrgNo(String orgNo) {
-		this.orgNo = orgNo;
-	}
-
-	@Override
-	public String toString() {
-		return "CustomerBase [id=" + id + ", customerNo=" + customerNo + ", custName=" + custName + ", nickname="
-				+ nickname + ", phone=" + phone + ", sex=" + sex + ", identityCard=" + identityCard + ", address="
-				+ address + ", age=" + age + ", birthday=" + birthday + ", avatar=" + avatar + ", merchantNo="
-				+ merchantNo + ", orgNo=" + orgNo + ", crmCustomerBaseExtend=" + crmCustomerBaseExtend + "]";
+	public void setCustomerBaseExtend(CustomerBaseExtend customerBaseExtend) {
+		this.customerBaseExtend = customerBaseExtend;
 	}
 	
 }

@@ -26,5 +26,7 @@
     <dubbo:reference id="customerRoleService" interface="me.flyray.crm.api.CustomerRoleService"/>
     <!-- 客户与平台所属角色关系 -->
     <dubbo:reference id="customerRoleRelationsService" interface="me.flyray.crm.api.CustomerRoleRelationsService"/>
-    
+    <!-- 客户扩展信息 -->
+    <dubbo:reference id="customerBaseExtendService" interface="me.flyray.crm.api.CustomerBaseExtendService"/>
+	
 </beans>

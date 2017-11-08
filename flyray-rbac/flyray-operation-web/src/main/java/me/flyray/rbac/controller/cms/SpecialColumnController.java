@@ -67,7 +67,7 @@ public class SpecialColumnController extends AbstractController {
 		parameter.setId(id);
 		Map<?, ?> map = apiProvider.execute(parameter).getMap();
 		logger.info("flyray-merchant请求查询专栏信息---返回参数:{}",map);
-		return R.ok().put("payChannel", map);
+		return R.ok().put("specialColumn", map);
 	}
 	
 	/**

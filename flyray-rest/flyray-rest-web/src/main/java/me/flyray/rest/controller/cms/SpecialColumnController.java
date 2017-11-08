@@ -104,7 +104,7 @@ public class SpecialColumnController extends AbstractController{
 			throw new BusinessException("CMS.23","specialColumnId不能为空");
 		}
 		queryMap.putAll(param);
-		//查询出我的订阅专栏的总数
+		//查询出专栏Id下的内容总数
 		int resultTotal = specialColumnContentService.queryTotal(queryMap);
 		param.put("totalCount", String.valueOf(resultTotal));
 		int pageSizeInt = Integer.valueOf(param.get("pageSize"));
@@ -113,8 +113,20 @@ public class SpecialColumnController extends AbstractController{
 			return ResponseHelper.success(null,pageUtil, "01", "已经到最后一条了~");
 		}
 		queryMap.putAll(getPagination(param));
-		//根据会员与专栏的关系表查出该会员下的专栏信息
-		List<Map<String, Object>> resultMap = specialColumnContentService.queryList(queryMap);
+		//查询出专栏Id下的内容
+		List<Map<String, Object>> columnContentMap = specialColumnContentService.queryList(queryMap);
+		//根据会员与专栏id查询用户是否订阅该专栏
+		int subscribeCount = customerSpecialColumnService.queryTotal(queryMap);
+		String isSubscribe = "1";
+		if (subscribeCount > 0) {
+			isSubscribe = "0";
+		}
+		//查询出专栏信息
+		Map<String, Object> specialColumn = columnService.queryById(Long.valueOf(param.get("specialColumnId")));
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("columnContents", columnContentMap);
+		resultMap.put("isSubscribe", isSubscribe);
+		resultMap.put("specialColumn", specialColumn);
 		logger.info("根据specialColumnId查询专栏内容------end------{}",resultMap);
 		//List<?> list, int totalCount, int pageSize, int currPage
 		return ResponseHelper.success(resultMap,pageUtil, "00", "请求数据成功");
@@ -125,13 +137,12 @@ public class SpecialColumnController extends AbstractController{
 	 */
 	@ResponseBody
 	@RequestMapping(value="/subscribe", method = RequestMethod.POST)
-	public Map<String, Object> subscribe(@RequestBody Map<String, String> param) {
+	public Map<String, Object> subscribe(@RequestBody Map<String, Object> param) {
 		logger.info("订阅一个专栏------start------{}",param);
-		Map<String, Object> queryMap = new HashMap<>();
 		if (null == param.get("specialColumnId")) {
 			throw new BusinessException("CMS.24","specialColumnId不能为空");
 		}
-		customerSpecialColumnService.save(queryMap);
+		customerSpecialColumnService.save(param);
 		logger.info("订阅一个专栏------end------{}",param);
 		return ResponseHelper.success(null,null, "00", "请求数据成功");
 	}

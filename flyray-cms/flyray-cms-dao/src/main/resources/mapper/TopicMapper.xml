@@ -58,11 +58,11 @@
 		#{content,jdbcType=VARCHAR},
 		#{discription,jdbcType=VARCHAR},
 		#{img,jdbcType=VARCHAR},
-		#{createby,jdbcType=VARCHAR},
+		#{createBy,jdbcType=VARCHAR},
 		#{createTime,jdbcType=TIMESTAMP},
 		#{flag,jdbcType=VARCHAR},
 		#{merchantId,jdbcType=VARCHAR},
-		#{orgId,jdbcType=VARCHAR},
+		#{orgId,jdbcType=VARCHAR}
 		)
 	</insert>
 	<select id="queryTotal" resultType="int" parameterType="java.util.Map">

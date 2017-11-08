@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import me.flyray.cms.api.CommentService;
 import me.flyray.cms.dao.CommentDao;
 import me.flyray.cms.dao.ViewpointDao;
+import me.flyray.cms.enums.CommentModuleNo;
 import me.flyray.cms.model.Comment;
 import me.flyray.cms.model.Viewpoint;
 import me.flyray.common.service.AbstractBaseService;
@@ -119,20 +120,13 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 		String commentBy = (String) param.get("commentBy");
 		String commentByName = (String) param.get("commentByName");
 		String commentModuleNo = (String) param.get("commentModuleNo");
-		//
-		if("2".equals(commentModuleNo)){
-			Viewpoint point = viewpointDao.selectById(commentTargetId);
-			Integer commenCount = point.getCommentCount();
-			commenCount = commenCount + 1;
-			point.setCommentCount(commenCount);
-			viewpointDao.update(point);
-		}
+		
 		comment.setCommentContent(commentContent);
 		//如果是评论commentTargetId是被评论的观点的编号，如果是回复 commentTargetId 是被回复的评论的编号
 		comment.setCommentTargetId(commentTargetId);
 		comment.setCommentLikeCount(Long.valueOf("0"));
 		comment.setCommentTime(new Timestamp(new Date().getTime()));
-		comment.setCommentModuleNo("1");
+		comment.setCommentModuleNo(commentModuleNo);
 		comment.setCommentBy(Long.valueOf(commentBy));
 		comment.setCommentByName(commentByName);
 		if ("1".equals(commentType)) {
@@ -141,9 +135,9 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 		} else if("2".equals(commentType)) {
 			//2、回复
 			comment.setCommentType("2");
-			Integer commentTargetUserId = (Integer) param.get("commentTargetUserId");
+			Long commentTargetUserId = (Long) param.get("commentTargetUserId");
 			String commentTargetUserName = (String) param.get("commentTargetUserName");
-			comment.setCommentTargetUserId(Long.valueOf(commentTargetUserId));
+			comment.setCommentTargetUserId(commentTargetUserId);
 			comment.setCommentTargetUserName(commentTargetUserName);
 
 		}
