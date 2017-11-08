@@ -20,13 +20,13 @@
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		init-method="init" destroy-method="close">
 		<property name="url">
-			<value>${rbac.operetion.jdbc.url}</value>
+			<value>${rbac.operation.jdbc.url}</value>
 		</property>
 		<property name="username">
-			<value>${rbac.operetion.jdbc.username}</value>
+			<value>${rbac.operation.jdbc.username}</value>
 		</property>
 		<property name="password">
-			<value>${rbac.operetion.jdbc.password}</value>
+			<value>${rbac.operation.jdbc.password}</value>
 		</property>
 		<property name="initialSize">
 			<value>${rbac.jdbc.initialSize}</value>
