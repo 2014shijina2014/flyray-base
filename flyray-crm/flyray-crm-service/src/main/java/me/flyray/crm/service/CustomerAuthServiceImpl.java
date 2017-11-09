@@ -69,6 +69,7 @@ public class CustomerAuthServiceImpl extends AbstractBaseService<CustomerAuth> i
 		}
 		CustomerBaseExtend customerBaseExtend = new CustomerBaseExtend();
 		customerBaseExtend.setCustomerId(customerId);
+		customerBaseExtend.setSchoolName("地球");
 		CustomerBaseExtendService.save(customerBaseExtend);
 		customerBaseService.save(customerBase);
 		//保存微信授权信息
