@@ -7,19 +7,19 @@
 	<sql id="where1">
 		<trim prefix="where" prefixOverrides="AND|OR">
 		<if test="id != null and id != ''">
-			AND `id` = #{id}
+			AND id = #{id}
         </if>
 		<if test="roleNo != null and roleNo != ''">
-			AND `role_no` = #{roleNo}
+			AND role_no = #{roleNo}
         </if>
         <if test="roleName != null and roleName != ''">
-			AND `role_name` = #{roleName}
+			AND role_name = #{roleName}
         </if>
-			<if test="roleName != null and roleName != ''">
-				AND `org_id` = #{orgId}
+			<if test="orgId != null and orgId != ''">
+				AND org_id = #{orgId}
 			</if>
-			<if test="roleName != null and roleName != ''">
-				AND `merchant_id` = #{merchantId}
+			<if test="merchantId != null and merchantId != ''">
+				AND merchant_id = #{merchantId}
 			</if>
 		</trim>
 	</sql>
@@ -34,12 +34,13 @@
 	</select>
 
 	<select id="queryList"  resultType="me.flyray.crm.model.CustomerRole">
-		select * from crm_customer_role order by id desc
+		select * from crm_customer_role
 
 		<include refid="where1"/>
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
+        order by id desc
 	</select>
 	
  	<select id="queryTotal" resultType="int">
