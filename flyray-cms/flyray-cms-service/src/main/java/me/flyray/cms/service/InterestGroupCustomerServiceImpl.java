@@ -60,12 +60,6 @@ public class InterestGroupCustomerServiceImpl implements InterestGroupCustomerSe
 
 	}
 
-	@Override
-	public void deleteBatch(Long[] ids) {
-		// TODO Auto-generated method stub
-
-	}
-
 	/**
 	 * 查询参加团队的成员
 	 * @author centerroot
@@ -88,6 +82,12 @@ public class InterestGroupCustomerServiceImpl implements InterestGroupCustomerSe
 	@Override
 	public void delete(InterestGroupCustomer interestGroupCustomer) {
 		interestGroupCustomerDao.delete(interestGroupCustomer);
+	}
+
+	@Override
+	public void deleteBatch(List<Long> ids) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -61,12 +61,6 @@ public class ActivityCustomerServiceImpl implements ActivityCustomerService {
 
 	}
 
-	@Override
-	public void deleteBatch(Long[] ids) {
-		// TODO Auto-generated method stub
-
-	}
-
 	/**
 	 * 根据条件查询参与活动的用户
 	 * @author centerroot
@@ -77,6 +71,12 @@ public class ActivityCustomerServiceImpl implements ActivityCustomerService {
 	@Override
 	public List<ActivityCustomer> selectByBizKeys(ActivityCustomer activityCustomer) {
 		return activityCustomerDao.selectByBizKeys(activityCustomer);
+	}
+
+	@Override
+	public void deleteBatch(List<Long> ids) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
