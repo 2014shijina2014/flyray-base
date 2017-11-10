@@ -1,25 +1,22 @@
 package me.flyray.rbac.controller.cms;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
+import me.flyray.common.utils.SnowFlake;
 import me.flyray.rbac.annotation.SysLog;
 import me.flyray.rbac.controller.AbstractController;
 import me.flyray.rbac.utils.PageUtils;
 import me.flyray.rbac.utils.R;
 import me.flyray.rest.api.ApiProvider;
 import me.flyray.rest.model.Parameter;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /** 
 * @author: bolei
@@ -80,10 +77,28 @@ public class SpecialColumnController extends AbstractController {
 		
 		logger.info("flyray-merchant保存专栏信息---请求参数：{}",params);
 		Parameter parameter = new Parameter("specialColumnService", "save");
+		String columnName= (String) params.get("columnName");
+		String columnStatus = (String) params.get("columnStatus");
+		String columnLogo = (String) params.get("columnLogo");
+		String columnDesc = (String) params.get("columnDesc");
+		Long createBy=this.getUserId();
+
+		if (columnName==null || columnName.isEmpty()) {
+			return R.error("专栏名称不能为空。");
+		}
+		if (columnStatus==null || (!columnStatus.equals("0") && !columnStatus.equals("1"))) {
+			columnStatus = "0";
+		}
+
 		Map<String, Object> map = new HashMap<>();
-		map.put("payChannelNo", params.get("payChannelNo"));
-		map.put("payCompanyNo", params.get("payCompanyNo"));
-		map.put("feeRatio", params.get("feeRatio"));
+		map.put("columnName", columnName);
+		map.put("columnStatus", columnStatus);
+		map.put("columnLogo", columnLogo);
+		map.put("columnDesc", columnDesc);
+		map.put("createBy", createBy);
+		map.put("id", SnowFlake.getId());
+
+		// 获得merchantId、orgId
 		map.putAll(getCommonSaveParam());
 		parameter.setMap(map);
 		apiProvider.execute(parameter);
@@ -101,11 +116,27 @@ public class SpecialColumnController extends AbstractController {
 		
 		logger.info("flyray-merchant修改专栏信息---请求参数{}",params);
 		Parameter parameter = new Parameter("specialColumnService", "update");
+
+		String columnName= (String) params.get("columnName");
+		String columnStatus = (String) params.get("columnStatus");
+		String columnLogo = (String) params.get("columnLogo");
+		String columnDesc = (String) params.get("columnDesc");
+		Long id = Long.valueOf(params.get("id").toString());
+
+
+		if (columnName==null || columnName.isEmpty()) {
+			return R.error("专栏名称不能为空。");
+		}
+		if (columnStatus==null || (!columnStatus.equals("0") && !columnStatus.equals("1"))) {
+			columnStatus = "0";
+		}
+
 		Map<String, Object> map = new HashMap<>();
-		map.put("payChannelNo", params.get("payChannelNo"));
-		map.put("payCompanyNo", params.get("payCompanyNo"));
-		map.put("feeRatio", params.get("feeRatio"));
-		map.put("id", params.get("id"));
+		map.put("columnName", columnName);
+		map.put("columnStatus", columnStatus);
+		map.put("columnLogo", columnLogo);
+		map.put("columnDesc", columnDesc);
+		map.put("id", id);
 		parameter.setMap(map);
 		apiProvider.execute(parameter);
 		
@@ -121,9 +152,8 @@ public class SpecialColumnController extends AbstractController {
 	public R delete(@RequestBody Long[] ids){
 		
 		Parameter parameter = new Parameter("specialColumnService", "deleteBatch");
-		Map<String, Object> map = new HashMap<>();
-		map.put("ids", ids);
-		parameter.setMap(map);
+		List<Long> list= Arrays.asList(ids);
+		parameter.setList(list);
 		apiProvider.execute(parameter);
 		
 		return R.ok();
