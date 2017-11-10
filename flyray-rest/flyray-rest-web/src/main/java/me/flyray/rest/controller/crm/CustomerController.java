@@ -123,20 +123,24 @@ public class CustomerController {
 	public Map<String, Object> createInvieQrCode(@RequestBody Map<String, String> param){
 		logger.info("查询客户信息------end------{}",param);
 		String customerId = param.get("customerId");
-		String merchantNo = param.get("merchantNo");
+		String imgNo = param.get("imgNo");
 		Map<String, Object> resultMap = new HashMap<>();
 		OutputStream outputStream;
+		//二维码地址
 		String qrImgFile = imgPath+ File.separator + customerId+".jpg";
 		//String qrImgFile = "F:/assets/test/"+customerId+".jpg";
 		try {
-			outputStream = new FileOutputStream(new File(qrImgFile));
-			/*StringBuilder content = new StringBuilder("http://192.168.1.136:3000/api/cms/me/invited/");
-			content.append(customerId);*/
+			File qrImgF = new File(qrImgFile);
+			if (!qrImgF.getParentFile().exists()) {
+				qrImgF.setWritable(true, false);
+				qrImgF.getParentFile().mkdirs();
+        	}
+			outputStream = new FileOutputStream(qrImgF);
 			//测试
 			String redirect_uri = "http://qingwei.flyray.me/api/cms/me/inviteGetWxCode&inviter="+customerId;
 			StringBuilder content = new StringBuilder("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0f6fa56da5e7fb62&redirect_uri="+redirect_uri+"&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect");
-			//StringBuilder content = new StringBuilder("http://192.168.1.136:3000/api/cms/me/inviteGetWxCode？inviter=1&code=32323");
-			QrCodeCreateUtil.createQrCode(outputStream,content.toString(),900,"JPEG");
+			//StringBuilder content = new StringBuilder("http://192.168.2.106:3000/api/cms/me/inviteGetWxCode？inviter=124935467304235008&code=32323");
+			QrCodeCreateUtil.createQrCode(outputStream,content.toString(),1200,"JPEG");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (WriterException e) {
@@ -147,12 +151,30 @@ public class CustomerController {
 		
 		ImageGeneralUtils tt = new ImageGeneralUtils();
 		//此处随机取一张图片
-		java.util.Random random=new java.util.Random();// 定义随机类
-		int result=random.nextInt(10);
-        BufferedImage d = tt.loadImageLocal(imgPath+ File.separator+result+".jpg");  
+		imgNo = imgNo != null ? imgNo : "1";
+        BufferedImage d = tt.loadImageLocal(imgPath + File.separator + "invite" + File.separator +imgNo+".jpg");  
         //往图片上写文件 
+        logger.info("查询客户基本信息------start------");
+        Map<String, Object> queryMap = new HashMap<String, Object>();
+		queryMap.put("id", param.get("customerId"));
+		Map<String, Object> customerBaseMap = customerBaseService.queryObject(queryMap);
+		logger.info("查询客户基本信息------start------{}",customerBaseMap);
+		String avatar = (String)customerBaseMap.get("avatar");
+		//将头像下载到本地
+        BufferedImage bf = tt.loadImageUrl(avatar);
+        String avatarPath = imgPath + File.separator + "avatar" + customerId + ".png" ;  
+		tt.writeImageLocal(avatarPath,bf);
+		//压缩后的头像地址
+		String scaleAvatar = imgPath+ File.separator + "scale-avatar"+customerId+".jpg";
+		ImageHelper.scaleImage(avatarPath, scaleAvatar, 0.2, "JPEG");
+		//将头像写入卡片上
+		BufferedImage avatarB = tt.loadImageLocal(scaleAvatar);
+		String avatarPlusImg = imgPath+ File.separator +"resul-"+customerId+".jpg";
+        tt.writeImageLocal(avatarPlusImg, tt.modifyImagetogeter(avatarB, d, 300, 70)); 
+        //将昵称写入卡片上
+		BufferedImage avatarPlusB = tt.loadImageLocal(avatarPlusImg);
         String imgAndStr = imgPath+ File.separator +"imgAndStr-"+customerId+".jpg";
-	    tt.writeImageLocal(imgAndStr,tt.modifyImage(d,"我是博羸兄弟",120,320));
+	    tt.writeImageLocal(imgAndStr,tt.modifyImage(avatarPlusB,customerBaseMap.get("nickname"),260,250));
 	    BufferedImage b = tt.loadImageLocal(imgAndStr);
 	    //将生成的二维码图片压缩成所需比例
 	    String scaleQrcode = imgPath+ File.separator + "scale-qrcode"+customerId+".jpg";
@@ -161,7 +183,7 @@ public class CustomerController {
 	    BufferedImage c = tt.loadImageLocal(scaleQrcode);
         //将多张图片合在一起  
 	    String resultImg = imgPath+ File.separator +"resul-"+customerId+".jpg";
-        tt.writeImageLocal(resultImg, tt.modifyImagetogeter(c, b)); 
+        tt.writeImageLocal(resultImg, tt.modifyImagetogeter(c, b, 200, 450)); 
 		String imgStr = ImageBase64.getImgStr(resultImg);
 		logger.info("查询客户信息------end------{}",resultMap);
 		resultMap.put("img", imgStr);
@@ -183,7 +205,8 @@ public class CustomerController {
 		String inviterId = param.get("inviter");
 		Map<String, Object> requestMap = new HashMap<>();
 		requestMap.put("code", code);
-		Map<String, Object> userMap = weixinCommonService.getOauthUserInfo(requestMap);
+		Map<String, Object> userMap = new HashMap<>();//weixinCommonService.getOauthUserInfo(requestMap);
+		userMap.put("openId", "1249354673042333");
 		logger.info("通过code获取用户授权信息------end------{}",userMap);
 		if (userMap == null) {
 			return ResponseHelper.success(userMap,null, "01", "调用微信授权失败");

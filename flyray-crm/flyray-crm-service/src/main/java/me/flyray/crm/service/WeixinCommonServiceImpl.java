@@ -49,9 +49,8 @@ public class WeixinCommonServiceImpl implements WeixinCommonService{
 			wxMpUser.getGroupId() wxMpUser.getHeadImgUrl() wxMpUser.getLanguage() wxMpUser.getNickname()
 			wxMpUser.getOpenId() wxMpUser.getProvince() wxMpUser.getRemark() wxMpUser.getSex()
 			wxMpUser.getSubscribe() wxMpUser.getTagIds() wxMpUser.getUnionId()*/
-		    //WxMpUser wxMpUser = new WxMpUser();
-			
-		    /*wxMpUser.setCity("333");
+			/*WxMpUser wxMpUser = new WxMpUser();
+		    wxMpUser.setCity("333");
 		    wxMpUser.setCountry("3232");
 		    wxMpUser.setGroupId(1);
 		    wxMpUser.setHeadImgUrl("333");

@@ -57,8 +57,13 @@ public class ImageGeneralUtils {
      * 导入本地图片到缓冲区 
      */  
     public BufferedImage loadImageLocal(String imgName) {  
-        try {  
-            return ImageIO.read(new File(imgName));  
+        try {
+        	File imgF = new File(imgName);
+        	if (!imgF.getParentFile().exists()) {
+        		imgF.setWritable(true, false);
+        		imgF.getParentFile().mkdirs();
+        	}
+            return ImageIO.read(imgF);  
         } catch (IOException e) {  
             System.out.println(e.getMessage());  
         }
@@ -83,8 +88,12 @@ public class ImageGeneralUtils {
      */  
     public void writeImageLocal(String newImage, BufferedImage img) {  
         if (newImage != null && img != null) {  
-            try {  
-                File outputfile = new File(newImage);  
+            try {
+            	File outputfile = new File(newImage);
+            	if (!outputfile.getParentFile().exists()) {
+            		outputfile.setWritable(true, false);
+            		outputfile.getParentFile().mkdirs();
+            	}
                 ImageIO.write(img, "jpg", outputfile);  
             } catch (IOException e) {  
                 System.out.println(e.getMessage());  
@@ -111,7 +120,7 @@ public class ImageGeneralUtils {
             int h = img.getHeight();  
             g = img.createGraphics();  
             g.setBackground(Color.WHITE);  
-            g.setColor(Color.orange);//设置字体颜色  
+            g.setColor(Color.black);//设置字体颜色  
             if (this.font == null)  
             	setFont("assets/font1.ttf",48);
             g.setFont(this.font);  
@@ -204,16 +213,17 @@ public class ImageGeneralUtils {
   
         return img;  
     }  
-  
-    public BufferedImage modifyImagetogeter(BufferedImage b, BufferedImage d) {  
+    
+    //d 主图片
+    public BufferedImage modifyImagetogeter(BufferedImage b, BufferedImage d, int x, int y) {  
   
         try {  
             int w = b.getWidth();  
             int h = b.getHeight();  
             g = d.createGraphics(); 
             //合并图片未知
-            //Image img, int x, int y,int width, int height,ImageObserver observer
-            g.drawImage(b, 300, 410, w, h, null); 
+            //Image img, int x, int y,int width, int height,ImageObserver observer 300, 410
+            g.drawImage(b, x, y, w, h, null); 
             g.dispose();  
         } catch (Exception e) {  
             System.out.println(e.getMessage());  
@@ -234,7 +244,7 @@ public class ImageGeneralUtils {
          BufferedImage b = tt.loadImageLocal("F:/assets/test/flyray333.jpg");  
          BufferedImage c = tt.loadImageLocal("F:/assets/22.jpg");  
        //将多张图片合在一起  
-        tt.writeImageLocal("F:/assets/test/flyray444.jpg", tt.modifyImagetogeter(c, b));  
+        tt.writeImageLocal("F:/assets/test/flyray444.jpg", tt.modifyImagetogeter(c, b,300,410));  
         System.out.println("success");  
     }
 }
