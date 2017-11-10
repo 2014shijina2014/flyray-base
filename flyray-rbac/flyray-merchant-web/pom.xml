@@ -36,6 +36,12 @@
             <version>${flyray-rbac-version}</version>
         </dependency>
         
+        <dependency>
+            <groupId>me.flyray</groupId>
+            <artifactId>flyray-rbac-module</artifactId>
+            <version>${flyray-rbac-version}</version>
+        </dependency>
+        
         <!-- redis依赖 -->
         <dependency>
 		    <groupId>org.springframework.data</groupId>

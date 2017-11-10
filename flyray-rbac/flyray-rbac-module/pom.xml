@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>me.flyray</groupId>
+		<artifactId>flyray-rbac</artifactId>
+		<version>${flyray-rbac-version}</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>flyray-rbac-module</artifactId>
+	<packaging>jar</packaging>
+    <description>系统模块</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>me.flyray</groupId>
+			<artifactId>flyray-rbac-common</artifactId>
+			<version>${flyray-rbac-version}</version>
+		</dependency>
+		<dependency>
+            <groupId>me.flyray</groupId>
+            <artifactId>flyray-rbac-common</artifactId>
+            <version>${flyray-rbac-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>me.flyray</groupId>
+            <artifactId>flyray-rbac-shiro</artifactId>
+            <version>${flyray-rbac-version}</version>
+        </dependency>
+        
+        <!-- websocket依赖 start -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
+            <version>4.2.4.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-messaging</artifactId>
+            <version>4.2.4.RELEASE</version>
+        </dependency>    
+        <!-- websocket依赖 end -->
+        
+	</dependencies>
+
+</project>

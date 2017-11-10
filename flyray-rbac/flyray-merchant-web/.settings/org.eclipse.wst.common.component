@@ -40,6 +40,9 @@
         <dependent-module archiveName="flyray-rbac-api-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-rbac-api/flyray-rbac-api">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="flyray-rbac-module-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-rbac-module/flyray-rbac-module">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/flyray-merchant-web/target/classes"/>
         <property name="context-root" value="flyray-merchant-web"/>
     </wb-module>
