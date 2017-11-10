@@ -78,5 +78,11 @@
 			limit #{offset}, #{limit}
 		</if>
 	</select>
+	<delete id="deleteBatch" parameterType="java.util.List">
+		delete from cms_special_column where id in
+		<foreach item="id" collection="list" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
   
 </mapper>

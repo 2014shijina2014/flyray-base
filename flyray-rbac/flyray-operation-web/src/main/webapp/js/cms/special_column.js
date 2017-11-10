@@ -8,9 +8,9 @@ $(function () {
 			{ label: '专栏介绍', name: 'columnDesc', width: 90 },
 			{ label: '专栏logo', name: 'columnLogo', width: 100 },
             { label: '专栏状态', name: 'columnStatus', width: 80, formatter: function(value, options, row){
-                return value !== 1 ?
-                    '<span class="label label-danger">禁用</span>' :
-                    '<span class="label label-success">正常</span>';
+                return value === "1" ?
+                    '<span class="label label-success">正常</span>' :
+                    '<span class="label label-danger">禁用</span>';
             }},
             { label: '专栏创建者', name: 'createBy', width: 50 }
         ],
@@ -78,10 +78,11 @@ var vm = new Vue({
 				return ;
 			}
 			
-			vm.showList = false;
+
             vm.title = "修改";
 			
 			vm.getSpecialColumn(id);
+            vm.showList = false;
 		},
 		del: function () {
 			var ids = getSelectedRows();
@@ -93,6 +94,7 @@ var vm = new Vue({
 				$.ajax({
 					type: "POST",
 				    url: "../cms/specialColumn/delete",
+                    contentType: "application/json",
 				    data: JSON.stringify(ids),
 				    success: function(r){
 						if(r.code == 0){
@@ -111,6 +113,7 @@ var vm = new Vue({
 			$.ajax({
 				type: "POST",
 			    url: url,
+                contentType: "application/json",
 			    data: JSON.stringify(vm.specialColumn),
 			    success: function(r){
 			    	if(r.code === 0){
