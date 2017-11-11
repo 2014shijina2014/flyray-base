@@ -41,6 +41,8 @@ public class ViewFavortServiceImpl extends AbstractBaseService<ViewFavort> imple
 			Long customerId = (Long) param.get("customerId");
 			Integer favortStatus = (Integer) param.get("favortStatus");
 			String pointId = (String) param.get("pointId");
+			String merchantId = (String) param.get("merchantId");
+			String orgId = (String) param.get("orgId");
 			//根据观点编号查询出观点，然后点赞数量+1
 			Map<String, Object> pointMap = new HashMap<String, Object>();
 			Viewpoint point = pointDao.selectById(pointId);
@@ -82,12 +84,15 @@ public class ViewFavortServiceImpl extends AbstractBaseService<ViewFavort> imple
 					count = count + 1;
 					point.setFavortCount(count);
 					pointDao.update(point);
+					favort.setOrgId(orgId);
+					favort.setMerchantId(merchantId);
+					favort.setCreateBy(customerId);
+					favort.setPointId(Long.valueOf(pointId));
+					favort.setCreateTime(new Timestamp(System.currentTimeMillis()));
+					favort.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+					dao.save(favort);
 				}
-				favort.setCreateBy(customerId);
-				favort.setPointId(Long.valueOf(pointId));
-				favort.setCreateTime(new Timestamp(System.currentTimeMillis()));
-				favort.setUpdateTime(new Timestamp(System.currentTimeMillis()));
-				dao.save(favort);
+				
 			}
 			result.put("favort", favort);
 			result.put("code", "00");

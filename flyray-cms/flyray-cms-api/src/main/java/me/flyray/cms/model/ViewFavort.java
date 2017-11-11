@@ -33,6 +33,27 @@ public class ViewFavort extends BaseModel{
 	 * 更新时间
 	 */
 	private Timestamp updateTime;
+	/**
+	 * 商户号
+	 */
+	private String merchantId;
+	/**
+	 * 机构号
+	 */
+	private String orgId;
+	
+	public String getMerchantId() {
+		return merchantId;
+	}
+	public void setMerchantId(String merchantId) {
+		this.merchantId = merchantId;
+	}
+	public String getOrgId() {
+		return orgId;
+	}
+	public void setOrgId(String orgId) {
+		this.orgId = orgId;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -73,7 +94,7 @@ public class ViewFavort extends BaseModel{
 	@Override
 	public String toString() {
 		return "ViewFavort [id=" + id + ", createBy=" + createBy + ", pointId=" + pointId + ", favortStatus="
-				+ favortStatus + ", createTime=" + createTime + ", updateTime=" + updateTime + "]";
+				+ favortStatus + ", createTime=" + createTime + ", updateTime=" + updateTime + ", merchantId="
+				+ merchantId + ", orgId=" + orgId + "]";
 	}
-	
 }
