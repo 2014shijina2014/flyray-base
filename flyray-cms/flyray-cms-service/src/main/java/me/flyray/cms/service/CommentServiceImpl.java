@@ -135,9 +135,9 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 		} else if("2".equals(commentType)) {
 			//2、回复
 			comment.setCommentType("2");
-			Long commentTargetUserId = (Long) param.get("commentTargetUserId");
+			String commentTargetUserId =  (String) param.get("commentTargetUserId");
 			String commentTargetUserName = (String) param.get("commentTargetUserName");
-			comment.setCommentTargetUserId(commentTargetUserId);
+			comment.setCommentTargetUserId(Long.valueOf(commentTargetUserId));
 			comment.setCommentTargetUserName(commentTargetUserName);
 
 		}

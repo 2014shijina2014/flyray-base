@@ -147,10 +147,7 @@ public class CommentController extends AbstractController{
 		String commentModuleNo = (String) param.get("commentModuleNo");
 		CustomerBase custome = customerBaseService.queryByCustomerId(commentBy);
 		param.put("commentByName", custome.getNickname());
-		if ("1".equals(commentType)) {
-			//1、评论
-			
-		} else if("2".equals(commentType)) {
+		if("2".equals(commentType)) {
 			//2、回复
 			String commentTargetUserId = (String) param.get("commentTargetUserId");
 			CustomerBase targetCustome = customerBaseService.queryByCustomerId(commentTargetUserId);
