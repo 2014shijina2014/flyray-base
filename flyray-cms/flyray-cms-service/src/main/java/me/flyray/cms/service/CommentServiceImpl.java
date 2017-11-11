@@ -120,7 +120,7 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 		String commentBy = (String) param.get("commentBy");
 		String commentByName = (String) param.get("commentByName");
 		String commentModuleNo = (String) param.get("commentModuleNo");
-		
+		String parentId = (String) param.get("parentId");
 		comment.setCommentContent(commentContent);
 		//如果是评论commentTargetId是被评论的观点的编号，如果是回复 commentTargetId 是被回复的评论的编号
 		comment.setCommentTargetId(commentTargetId);
@@ -129,6 +129,9 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 		comment.setCommentModuleNo(commentModuleNo);
 		comment.setCommentBy(commentBy);
 		comment.setCommentByName(commentByName);
+		if(parentId != null && !"".equals(parentId)){
+			comment.setParentId(parentId);
+		}
 		if ("1".equals(commentType)) {
 			//1、评论
 			comment.setCommentType("1");

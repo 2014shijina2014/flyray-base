@@ -97,6 +97,7 @@ public class CommentController extends AbstractController{
 		String commentModuleNo = param.get("commentModuleNo");//评论模块编号
 		queryMap.put("commentModuleNo", commentModuleNo);
 		queryMap.put("commentTargetId", commentTargetId);
+		queryMap.put("commentType", "1");
 		List<Comment> commentList = commentService.query(queryMap);
 		List<Map<String, Object>> resultMaps = new ArrayList<>();
 		String format = "yyyy-MM-dd HH:mm:ss";
@@ -112,7 +113,7 @@ public class CommentController extends AbstractController{
 				resultMap = new HashMap<>();
 				resultMap.putAll(BeanUtils.objectToMap(comment));
 				Map<String, Object> subQueryMap = new HashMap<>();
-				subQueryMap.put("commentModuleNo", 1);
+				subQueryMap.put("commentModuleNo", commentModuleNo);
 				subQueryMap.put("commentTargetId", commentTargetId);
 				subQueryMap.put("commentType", 2);//查询类型为回复的
 				subQueryMap.put("parentId", comment.getId());//查询类型为回复的
