@@ -32,10 +32,9 @@ public class ImageGeneralUtils {
   
     private int y = 0;  
     
-    private static Font getSelfDefinedFont(String filename){  
+    private static Font getSelfDefinedFont(String filepath){  
         Font font = null;  
         //配置字体路径
-        String filepath = "F:/"+filename;  
         File file = new File(filepath);  
         try  
         {
@@ -112,8 +111,7 @@ public class ImageGeneralUtils {
     /** 
      * 修改图片,返回修改后的图片缓冲区（只输出一行文本） 
      */  
-    public BufferedImage modifyImage(BufferedImage img, Object content, int x,  
-            int y) {  
+    public BufferedImage modifyImage(BufferedImage img, Object content, int x,int y,String fontPath) {  
   
         try {  
             int w = img.getWidth();  
@@ -122,7 +120,7 @@ public class ImageGeneralUtils {
             g.setBackground(Color.WHITE);  
             g.setColor(Color.black);//设置字体颜色  
             if (this.font == null)  
-            	setFont("assets/font1.ttf",48);
+            	setFont(fontPath,100);
             g.setFont(this.font);  
             // 验证输出位置的纵坐标和横坐标  
             if (x >= h || y >= w) {  
@@ -237,7 +235,7 @@ public class ImageGeneralUtils {
   
         BufferedImage d = tt.loadImageLocal("F:/assets/4.jpg");  
 //      
-         tt.writeImageLocal("F:/assets/test/flyray333.jpg",tt.modifyImage(d,"我是博羸兄弟",120,320)  
+         tt.writeImageLocal("F:/assets/test/flyray333.jpg",tt.modifyImage(d,"我是博羸兄弟",120,320,"assets/font1.ttf")  
         //往图片上写文件  
          );
          

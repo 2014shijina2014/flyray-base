@@ -69,9 +69,12 @@ public class WeixinCommonServiceImpl implements WeixinCommonService{
 	@Override
 	public void sendWxMpMessage(Map<String, Object> param) {
 		WxMpTemplateMessage templateMessage = new WxMpTemplateMessage();
+		//OPENID
 		templateMessage.setToUser("");
 		templateMessage.setTemplateId("");
+		//模板跳转链接
 		templateMessage.setUrl("");
+		//String name, String value, String color "value":"巧克力","color":"#173177"
 		templateMessage.getData().add(new WxMpTemplateData("", "", ""));
 		templateMessage.getData().add(new WxMpTemplateData("", "", ""));
 		try {

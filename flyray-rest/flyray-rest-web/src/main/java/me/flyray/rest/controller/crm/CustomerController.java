@@ -71,6 +71,8 @@ public class CustomerController {
 	private String imgPath;
 	@Value("${rest_invite_imgHttpPath}")
 	private String imgHttpPath;
+	@Value("${fontPath}")
+	private String fontPath;
 	
 	
 	/**
@@ -137,10 +139,10 @@ public class CustomerController {
         	}
 			outputStream = new FileOutputStream(qrImgF);
 			//测试
-			String redirect_uri = "http://qingwei.flyray.me/api/cms/me/inviteGetWxCode&inviter="+customerId;
+			String redirect_uri = "http://qingwei.flyray.me/api/cms/me/inviteGetWxCode/"+customerId;
 			StringBuilder content = new StringBuilder("https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx0f6fa56da5e7fb62&redirect_uri="+redirect_uri+"&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect");
 			//StringBuilder content = new StringBuilder("http://192.168.2.106:3000/api/cms/me/inviteGetWxCode？inviter=124935467304235008&code=32323");
-			QrCodeCreateUtil.createQrCode(outputStream,content.toString(),1200,"JPEG");
+			QrCodeCreateUtil.createQrCode(outputStream,content.toString(),1600,"JPEG");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (WriterException e) {
@@ -174,12 +176,12 @@ public class CustomerController {
         //将昵称写入卡片上
 		BufferedImage avatarPlusB = tt.loadImageLocal(avatarPlusImg);
         String imgAndStr = imgPath+ File.separator +"imgAndStr-"+customerId+".jpg";
-	    tt.writeImageLocal(imgAndStr,tt.modifyImage(avatarPlusB,customerBaseMap.get("nickname"),260,250));
+	    tt.writeImageLocal(imgAndStr,tt.modifyImage(avatarPlusB,customerBaseMap.get("nickname"),260,250,fontPath));
 	    BufferedImage b = tt.loadImageLocal(imgAndStr);
 	    //将生成的二维码图片压缩成所需比例
 	    String scaleQrcode = imgPath+ File.separator + "scale-qrcode"+customerId+".jpg";
 	    //源地址  改变大小后图片的地址 
-	    ImageHelper.scaleImage(qrImgFile, scaleQrcode, 0.3, "JPEG");
+	    ImageHelper.scaleImage(qrImgFile, scaleQrcode, 0.2, "JPEG");
 	    BufferedImage c = tt.loadImageLocal(scaleQrcode);
         //将多张图片合在一起  
 	    String resultImg = imgPath+ File.separator +"resul-"+customerId+".jpg";
@@ -203,10 +205,10 @@ public class CustomerController {
 		String code = param.get("code");
 		//邀请人id
 		String inviterId = param.get("inviter");
+		String orgId = param.get("orgId");
 		Map<String, Object> requestMap = new HashMap<>();
 		requestMap.put("code", code);
-		Map<String, Object> userMap = new HashMap<>();//weixinCommonService.getOauthUserInfo(requestMap);
-		userMap.put("openId", "1249354673042333");
+		Map<String, Object> userMap = weixinCommonService.getOauthUserInfo(requestMap);
 		logger.info("通过code获取用户授权信息------end------{}",userMap);
 		if (userMap == null) {
 			return ResponseHelper.success(userMap,null, "01", "调用微信授权失败");
@@ -229,6 +231,7 @@ public class CustomerController {
 		if (sz == 0) {
 			//说明邀请人是顶级分销不是被邀请过的人 受要人是一级分销
 			CustomerRelations invitedCustomer = new CustomerRelations();
+			invitedCustomer.setWxId(orgId);
 			invitedCustomer.setCustomerId(customerBase.getId());
 			invitedCustomer.setFxLevel("1");
 			invitedCustomer.setParentId(Long.valueOf(inviterId));
@@ -238,6 +241,7 @@ public class CustomerController {
 		}else if(sz == 1) {
 			//说明邀请人是一级分销 受邀人是二级分销需要写两条条记录
 			CustomerRelations invitedCustomer = new CustomerRelations();
+			invitedCustomer.setWxId(orgId);
 			invitedCustomer.setCustomerId(customerBase.getId());
 			invitedCustomer.setFxLevel("1");
 			invitedCustomer.setParentId(Long.valueOf(inviterId));
@@ -245,6 +249,7 @@ public class CustomerController {
 			customerRelationsService.insert(invitedCustomer);
 			//受邀人
 			CustomerRelations ic = new CustomerRelations();
+			ic.setWxId(orgId);
 			ic.setCustomerId(customerBase.getId());
 			ic.setFxLevel("2");
 			ic.setParentId(Long.valueOf(inviterId));
@@ -253,6 +258,7 @@ public class CustomerController {
 		}else if (sz == 2) {
 			//说明邀请人是二级分销 受邀人是三级分销需要写三条条记录
 			CustomerRelations invitedCustomer = new CustomerRelations();
+			invitedCustomer.setWxId(orgId);
 			invitedCustomer.setCustomerId(customerBase.getId());
 			invitedCustomer.setFxLevel("1");
 			invitedCustomer.setParentId(Long.valueOf(inviterId));
@@ -263,6 +269,7 @@ public class CustomerController {
 				Long parentId = customerRelations.getParentId();
 				//判断邀请人的上级位于三级分销中第几级
 				CustomerRelations ic = new CustomerRelations();
+				ic.setWxId(orgId);
 				if ("1" == customerRelations.getFxLevel()) {
 					ic.setFxLevel("2");
 				}else if ("2" == customerRelations.getFxLevel()) {
@@ -276,6 +283,7 @@ public class CustomerController {
 		}else if (sz == 3) {
 			//说明邀请人是三级分销 受邀人是邀请人的一级分销需要写一条记录
 			CustomerRelations invitedCustomer = new CustomerRelations();
+			invitedCustomer.setWxId(orgId);
 			invitedCustomer.setCustomerId(customerBase.getId());
 			invitedCustomer.setFxLevel("1");
 			invitedCustomer.setParentId(Long.valueOf(inviterId));
