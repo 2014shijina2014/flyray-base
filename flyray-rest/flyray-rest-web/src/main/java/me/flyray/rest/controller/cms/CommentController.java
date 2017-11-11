@@ -99,9 +99,16 @@ public class CommentController extends AbstractController{
 		queryMap.put("commentTargetId", commentTargetId);
 		List<Comment> commentList = commentService.query(queryMap);
 		List<Map<String, Object>> resultMaps = new ArrayList<>();
+		String format = "yyyy-MM-dd HH:mm:ss";
+		SimpleDateFormat sdf = new SimpleDateFormat(format);  
 		Map<String, Object> resultMap;
 		for (Comment comment : commentList) {
 			try {
+				//评论者头像
+				CustomerBase customer = customerBaseService.queryByCustomerId(comment.getCommentBy());
+				comment.setCommentImg(customer.getAvatar());
+				String time = sdf.format(comment.getCommentTime());
+				comment.setCommentTimes(time);
 				resultMap = new HashMap<>();
 				resultMap.putAll(BeanUtils.objectToMap(comment));
 				Map<String, Object> subQueryMap = new HashMap<>();
@@ -110,6 +117,15 @@ public class CommentController extends AbstractController{
 				subQueryMap.put("commentType", 2);//查询类型为回复的
 				subQueryMap.put("parentId", comment.getId());//查询类型为回复的
 				List<Map<String, Object>> subCommentList = commentService.queryList(subQueryMap);
+				//回复者头像
+				for (Map<String, Object> map : subCommentList) {
+					String commentBy = (String) map.get("commentBy");
+					CustomerBase customerp = customerBaseService.queryByCustomerId(commentBy);
+					map.put("commentImg", customer.getAvatar());
+					comment.setCommentImg(customer.getAvatar());
+					String timep = sdf.format(comment.getCommentTime());
+					map.put("commentTimes", timep);
+				}
 				resultMap.put("subComents", subCommentList);
 				resultMaps.add(resultMap);
 			} catch (Exception e) {
@@ -160,6 +176,13 @@ public class CommentController extends AbstractController{
 			}
 			logger.info("观点回复添加 ---查询完用户名后---{}",param);
 			Comment comment = commentService.saveAll(param);
+			//评论者头像
+			CustomerBase customer = customerBaseService.queryByCustomerId(comment.getCommentBy());
+			String format = "yyyy-MM-dd HH:mm:ss";
+			SimpleDateFormat sdf = new SimpleDateFormat(format); 
+			comment.setCommentImg(customer.getAvatar());
+			String time = sdf.format(comment.getCommentTime());
+			comment.setCommentTimes(time);
 			logger.info("观点回复添加 ---comment---{}",comment.toString());
 			return ResponseHelper.success(comment,null, "00", "评论成功");
 		} catch (Exception e) {
