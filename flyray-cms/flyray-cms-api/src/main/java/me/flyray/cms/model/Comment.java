@@ -55,7 +55,7 @@ public class Comment extends BaseModel {
 	/**
 	 * 评论的目标用户id
 	 */
-	private Long  commentTargetUserId;
+	private String  commentTargetUserId;
 	
 	/**
 	 * 评论的目标用户昵称
@@ -126,10 +126,10 @@ public class Comment extends BaseModel {
 	public void setCommentByName(String commentByName) {
 		this.commentByName = commentByName;
 	}
-	public Long getCommentTargetUserId() {
+	public String getCommentTargetUserId() {
 		return commentTargetUserId;
 	}
-	public void setCommentTargetUserId(Long commentTargetUserId) {
+	public void setCommentTargetUserId(String commentTargetUserId) {
 		this.commentTargetUserId = commentTargetUserId;
 	}
 	public String getCommentTargetUserName() {
