@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -151,6 +152,20 @@ public class CustomerController {
 			e.printStackTrace();
 		}
 		
+		/*Map<String, Object> sendParam = new HashMap<>();
+		sendParam.put("openId", "o-rSJ08RGemk_BQH1PBi1kzOcSnA");
+		sendParam.put("templateId", "u_WXJy7zqkUfCpJQ9-H8FfRzCymdzYO9Cuv-MIWd688");
+		sendParam.put("url", "http://qingwei.flyray.me/#/");
+		sendParam.put("openId", "o-rSJ08RGemk_BQH1PBi1kzOcSnA");
+		List<Map<String, Object>> listData = new ArrayList<>();
+		Map<String, Object> dataMap = new HashMap<String, Object>();
+		dataMap.put("keyword1", "322323");
+		dataMap.put("keyword2", "322323");
+		dataMap.put("keyword3", "haode");
+		listData.add(dataMap);
+		sendParam.put("listData", listData);
+		weixinCommonService.sendWxMpMessage(sendParam);*/
+		
 		ImageGeneralUtils tt = new ImageGeneralUtils();
 		//此处随机取一张图片
 		imgNo = imgNo != null ? imgNo : "1";
@@ -213,7 +228,6 @@ public class CustomerController {
 		if (userMap == null) {
 			return ResponseHelper.success(userMap,null, "01", "调用微信授权失败");
 		}
-		
 		//判断用户是否邀请过 如果customerAuth表中已存在该记录，则说明用户已经是会员或是被邀请过，给用户提示
 		Map<String, Object> queryUserMap = new HashMap<String, Object>();
 		queryUserMap.put("credential", userMap.get("openId"));
