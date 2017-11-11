@@ -51,7 +51,7 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 		comment.setCommentContent(content);
 		comment.setCommentTargetId(targetId);
 		comment.setCommentByName(commentByName);
-		comment.setCommentBy(Long.valueOf(commentBy));
+		comment.setCommentBy(commentBy);
 		comment.setCommentTime(new Timestamp(new Date().getTime()));
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
@@ -91,7 +91,7 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 		comment.setCommentLikeCount(Long.valueOf("0"));
 		comment.setCommentTime(new Timestamp(new Date().getTime()));
 		comment.setCommentModuleNo("1");
-		comment.setCommentBy(Long.valueOf(commentBy));
+		comment.setCommentBy(commentBy);
 		comment.setCommentByName(commentByName);
 		if ("1".equals(commentType)) {
 			//1、评论
@@ -127,7 +127,7 @@ public class CommentServiceImpl extends AbstractBaseService<Comment> implements 
 		comment.setCommentLikeCount(Long.valueOf("0"));
 		comment.setCommentTime(new Timestamp(new Date().getTime()));
 		comment.setCommentModuleNo(commentModuleNo);
-		comment.setCommentBy(Long.valueOf(commentBy));
+		comment.setCommentBy(commentBy);
 		comment.setCommentByName(commentByName);
 		if ("1".equals(commentType)) {
 			//1、评论
