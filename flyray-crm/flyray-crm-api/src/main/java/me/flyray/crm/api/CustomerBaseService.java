@@ -19,6 +19,6 @@ public interface CustomerBaseService extends BaseService{
 	void saveExtend(CustomerBaseExtend extent);
 	void deleteBaseAndExtend(Long id);
 	void delete(Long id);
-	CustomerBase queryByCustomerId(Long customerId);
+	CustomerBase queryByCustomerId(String customerId);
 	CustomerBase queryByCustomerNo(String customerNo);
 }

@@ -45,7 +45,7 @@ public class Comment extends BaseModel {
 	/**
 	 * 发表评论的用户id
 	 */
-	private Long commentBy;
+	private String commentBy;
 	
 	/**
 	 * 发表评论的用户昵称
@@ -114,10 +114,10 @@ public class Comment extends BaseModel {
 	public void setCommentTargetId(String commentTargetId) {
 		this.commentTargetId = commentTargetId;
 	}
-	public Long getCommentBy() {
+	public String getCommentBy() {
 		return commentBy;
 	}
-	public void setCommentBy(Long commentBy) {
+	public void setCommentBy(String commentBy) {
 		this.commentBy = commentBy;
 	}
 	public String getCommentByName() {

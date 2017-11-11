@@ -65,7 +65,7 @@ public class CustomerAuthServiceImpl extends AbstractBaseService<CustomerAuth> i
 		List<CustomerAuth> list = customerAuthDao.queryList(queryMap);
 		if (list != null && list.size() > 0) {
 			CustomerAuth customerAuth = list.get(0);
-			return customerBaseService.queryByCustomerId(Long.valueOf(customerAuth.getCustomerId()));
+			return customerBaseService.queryByCustomerId(customerAuth.getCustomerId());
 		}
 		CustomerBaseExtend customerBaseExtend = new CustomerBaseExtend();
 		customerBaseExtend.setCustomerId(customerId);

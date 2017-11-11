@@ -59,7 +59,7 @@ public class CustomerBaseServiceImpl extends AbstractBaseService<CustomerBase> i
 	}
 
 	@Override
-	public CustomerBase queryByCustomerId(Long customerId) {
+	public CustomerBase queryByCustomerId(String customerId) {
 		CustomerBase customerBase = customerBaseDao.queryByCustomerId(customerId);
 		return customerBase;
 	}

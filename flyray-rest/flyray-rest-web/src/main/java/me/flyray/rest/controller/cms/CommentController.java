@@ -74,8 +74,7 @@ public class CommentController extends AbstractController{
 		SimpleDateFormat sdf = new SimpleDateFormat(format);  
 		for (Object object : list) {
 			Comment comment = (Comment) object;
-			Long uid = comment.getCommentBy();
-			CustomerBase customer = customerBaseService.queryByCustomerId(uid);
+			CustomerBase customer = customerBaseService.queryByCustomerId(comment.getCommentBy());
 			comment.setCommentImg(customer.getAvatar());
 			String time = sdf.format(comment.getCommentTime());
 			comment.setCommentTimes(time);
@@ -130,15 +129,15 @@ public class CommentController extends AbstractController{
 		String commentType = (String) param.get("commentType");//1评论2回复
 		String commentBy = (String) param.get("commentBy");
 		String commentModuleNo = (String) param.get("commentModuleNo");
-		CustomerBase custome = customerBaseService.queryByCustomerId(Long.valueOf(commentBy));
+		CustomerBase custome = customerBaseService.queryByCustomerId(commentBy);
 		param.put("commentByName", custome.getNickname());
 		if ("1".equals(commentType)) {
 			//1、评论
 			
 		} else if("2".equals(commentType)) {
 			//2、回复
-			Long commentTargetUserId = (Long) param.get("commentTargetUserId");
-			CustomerBase targetCustome = customerBaseService.queryByCustomerId(Long.valueOf(commentTargetUserId));
+			String commentTargetUserId = (String) param.get("commentTargetUserId");
+			CustomerBase targetCustome = customerBaseService.queryByCustomerId(commentTargetUserId);
 			param.put("commentTargetUserName", targetCustome.getNickname());
 			param.put("commentTargetUserId", commentTargetUserId);
 		}

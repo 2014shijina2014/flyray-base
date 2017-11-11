@@ -110,8 +110,7 @@ public class TopicController extends AbstractController{
 		SimpleDateFormat sdf = new SimpleDateFormat(format);  
 		for (Object object : list) {
 			Comment comment = (Comment) object;
-			Long uid = comment.getCommentBy();
-			CustomerBase customer = customerBaseService.queryByCustomerId(uid);
+			CustomerBase customer = customerBaseService.queryByCustomerId(comment.getCommentBy());
 			comment.setCommentImg(customer.getAvatar());
 			String time = sdf.format(comment.getCommentTime());
 			comment.setCommentTimes(time);
@@ -127,7 +126,7 @@ public class TopicController extends AbstractController{
 	public Map<String, Object> addComment(@RequestBody Map<String, Object> param) {
 		String commentBy = (String) param.get("commentBy");
 		//根据commentBy查询用户名
-		CustomerBase custome = customerBaseService.queryByCustomerId(Long.valueOf(commentBy));
+		CustomerBase custome = customerBaseService.queryByCustomerId(commentBy);
 		param.put("commentByName", custome.getNickname());
 		commentService.saveAll(param);
 		return ResponseHelper.success(null,null, "01", "评论异常");

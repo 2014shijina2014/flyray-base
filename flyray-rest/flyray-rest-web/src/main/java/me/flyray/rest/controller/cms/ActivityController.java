@@ -200,8 +200,7 @@ public class ActivityController extends AbstractController {
 			customerList = new ArrayList<CustomerBase>();
 			for (int i = 0; i < respActCusList.size(); i++) {
 				ActivityCustomer item = respActCusList.get(i);
-				Long custId = Long.valueOf(item.getCustomerId());
-				CustomerBase customerBase = customerBaseService.queryByCustomerId(custId);
+				CustomerBase customerBase = customerBaseService.queryByCustomerId(item.getCustomerId());
 				customerList.add(customerBase);
 			}
 		}
@@ -217,7 +216,7 @@ public class ActivityController extends AbstractController {
 			// 未参加
 			resultMap.put("isJoin", "0");
 		}
-		CustomerBase customerBase = customerBaseService.queryByCustomerId(Long.valueOf(customerId));
+		CustomerBase customerBase = customerBaseService.queryByCustomerId(customerId);
 		if (null != customerBase.getPhone() && !"".equals(customerBase.getPhone().trim())) {
 			// 已保存过电话
 			resultMap.put("isHavPhone", "1");
@@ -305,11 +304,26 @@ public class ActivityController extends AbstractController {
 		
 		if(null != customerPhone && !"".equals(customerPhone.trim())) {
 			Map<String, Object> upMap = new HashMap<String, Object>();
-			upMap.put("id", Integer.valueOf(customerId));
+			upMap.put("id", customerId);
 			upMap.put("phone", customerPhone);
 			customerBaseService.update(upMap);
 		}
-
+		
+		ActivityCustomer reqActCusTemp = new ActivityCustomer();
+		reqActCusTemp.setActivityId(activityId);
+		List<ActivityCustomer> respActCusTempList = activityCustomerService.selectByBizKeys(reqActCusTemp);
+		List<CustomerBase> customerList = null;
+		if(null != respActCusTempList && respActCusTempList.size() > 0) {
+			customerList = new ArrayList<CustomerBase>();
+			for (int i = 0; i < respActCusTempList.size(); i++) {
+				ActivityCustomer item = respActCusTempList.get(i);
+				CustomerBase customerBase = customerBaseService.queryByCustomerId(item.getCustomerId());
+				customerList.add(customerBase);
+			}
+		}
+		
+		logger.info("查询参与活动的用户信息------customerList:{}", customerList);
+		resultMap.put("customerList", customerList);
 		resultMap.put("isJoin", "1");
 		
 		logger.info("用户参加报名参加活动------end------{}", resultMap);

@@ -106,8 +106,8 @@
 			<if test="age != null">`age` = #{age}, </if>
 			<if test="birthday != null">`birthday` = #{birthday}, </if>
 			<if test="avatar != null">`avatar` = #{avatar}, </if>
-			<if test="merchantNo != null">`merchant_no` = #{merchantNo}, </if>
-			<if test="orgNo != null">`org_no` = #{orgNo}</if>
+			<if test="merchantId != null">`merchant_id` = #{merchantId}, </if>
+			<if test="orgId != null">`org_id` = #{orgId}</if>
 		</set>
 		where id = #{id}
 	</update>

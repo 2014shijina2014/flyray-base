@@ -128,8 +128,7 @@ public class InterestGroupController extends AbstractController {
 			customerList = new ArrayList<CustomerBase>();
 			for (int i = 0; i < respGroupCusList.size(); i++) {
 				InterestGroupCustomer item = respGroupCusList.get(i);
-				Long custId = Long.valueOf(item.getCustomerId());
-				CustomerBase customerBase = customerBaseService.queryByCustomerId(custId);
+				CustomerBase customerBase = customerBaseService.queryByCustomerId(item.getCustomerId());
 				customerList.add(customerBase);
 			}
 		}
@@ -145,7 +144,7 @@ public class InterestGroupController extends AbstractController {
 			// 未参加
 			resultMap.put("isJoin", "0");
 		}
-		CustomerBase customerBase = customerBaseService.queryByCustomerId(Long.valueOf(customerId));
+		CustomerBase customerBase = customerBaseService.queryByCustomerId(customerId);
 		if (null != customerBase.getPhone() && !"".equals(customerBase.getPhone().trim())) {
 			// 已保存过电话
 			resultMap.put("isHavPhone", "1");
@@ -203,6 +202,22 @@ public class InterestGroupController extends AbstractController {
 			customerBaseService.update(upMap);
 		}
 		
+		
+		InterestGroupCustomer reqGroupCusTemp = new InterestGroupCustomer();
+		reqGroupCusTemp.setGroupId(groupId);
+		List<InterestGroupCustomer> respGroupCusTempList = interestGroupCustomerService.selectByBizKeys(reqGroupCusTemp);
+		List<CustomerBase> customerList = null;
+		if(null != respGroupCusTempList && respGroupCusTempList.size() > 0) {
+			customerList = new ArrayList<CustomerBase>();
+			for (int i = 0; i < respGroupCusTempList.size(); i++) {
+				InterestGroupCustomer item = respGroupCusTempList.get(i);
+				CustomerBase customerBase = customerBaseService.queryByCustomerId(item.getCustomerId());
+				customerList.add(customerBase);
+			}
+		}
+		
+		logger.info("查询参加团队的用户信息------{}", customerList);
+		resultMap.put("customerList", customerList);
 		resultMap.put("isJoin", "1");
 		
 		logger.info("查询活动团队列表信息------end------{}", resultMap);
@@ -237,6 +252,22 @@ public class InterestGroupController extends AbstractController {
 		reqGroupCus.setCustomerId(customerId);
 		interestGroupCustomerService.delete(reqGroupCus);
 		
+		
+		InterestGroupCustomer reqGroupCusTemp = new InterestGroupCustomer();
+		reqGroupCusTemp.setGroupId(groupId);
+		List<InterestGroupCustomer> respGroupCusTempList = interestGroupCustomerService.selectByBizKeys(reqGroupCusTemp);
+		List<CustomerBase> customerList = null;
+		if(null != respGroupCusTempList && respGroupCusTempList.size() > 0) {
+			customerList = new ArrayList<CustomerBase>();
+			for (int i = 0; i < respGroupCusTempList.size(); i++) {
+				InterestGroupCustomer item = respGroupCusTempList.get(i);
+				CustomerBase customerBase = customerBaseService.queryByCustomerId(item.getCustomerId());
+				customerList.add(customerBase);
+			}
+		}
+		
+		logger.info("查询参加团队的用户信息------{}", customerList);
+		resultMap.put("customerList", customerList);
 		resultMap.put("isJoin", "0");
 		
 		logger.info("退出团队------end------{}", resultMap);

@@ -18,7 +18,7 @@ public class Viewpoint extends BaseModel implements Serializable {
 	/**
 	 * 索引，用户编号
 	 */
-	private Long createBy;
+	private String createBy;
 	/**
 	 * 发表观点，文字内容
 	 */
@@ -100,10 +100,10 @@ public class Viewpoint extends BaseModel implements Serializable {
 		this.pointText = pointText;
 	}
 	
-	public Long getCreateBy() {
+	public String getCreateBy() {
 		return createBy;
 	}
-	public void setCreateBy(Long createBy) {
+	public void setCreateBy(String createBy) {
 		this.createBy = createBy;
 	}
 	public Integer getFavortCount() {
