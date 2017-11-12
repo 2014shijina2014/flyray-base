@@ -18,4 +18,8 @@ public interface CustomerRelationsDao extends BaseDao<CustomerRelations>{
 
 	int queryInviteeCount(Map<String, Object> queryMap);
 
+	int queryTodayInvitedTotle(String customerId);
+
+	int queryAllInvitedTotle(String customerId);
+
 }

@@ -37,7 +37,7 @@ import me.flyray.crm.api.CustomerRelationsService;
 import me.flyray.crm.api.CustomerRoleRelationsService;
 import me.flyray.crm.api.CustomerRoleService;
 import me.flyray.crm.api.WeixinCommonService;
-import me.flyray.crm.enums.AcountType;
+import me.flyray.crm.enums.AccountType;
 import me.flyray.crm.model.CustomerBase;
 import me.flyray.crm.model.CustomerRelations;
 import me.flyray.rest.util.ResponseHelper;
@@ -86,17 +86,18 @@ public class CustomerController {
 	public Map<String, Object> queryCustomerInfo(@RequestBody Map<String, String> param){
 		logger.info("查询客户信息------start------{}",param);
 		Map<String, Object> resultMap = new HashMap<>();
+		String customerId = param.get("customerId");
 		//查询客户基本信息
 		Map<String, Object> queryMap = new HashMap<String, Object>();
-		queryMap.put("id", param.get("customerId"));
+		queryMap.put("id", customerId);
 		Map<String, Object> customerBaseMap = customerBaseService.queryObject(queryMap);
 		resultMap.put("customerBase", customerBaseMap);
 		//查询客户授权信息
-		queryMap.put("customerId", param.get("customerId"));
+		queryMap.put("customerId", customerId);
 		Map<String, Object> customerAuthMap = customerAuthService.queryObject(queryMap);
 		resultMap.put("customerAuth", customerAuthMap);
 		//查询客户账户信息
-		queryMap.put("accountType", AcountType.POINTS.getCode());
+		queryMap.put("accountType", AccountType.POINTS.getCode());
 		Map<String, Object> customerAccountMap = customerAccountService.queryObject(queryMap);
 		resultMap.put("customerAccount", customerAccountMap);
 		//客户角色
@@ -111,6 +112,12 @@ public class CustomerController {
 			Map<String, Object> customerRoleMap = customerRoleService.queryObject(queryRoleMap);
 			resultMap.put("customerRole", customerRoleMap);
 		}
+		//查询改用户邀请的人数
+		int todayInvitedTotle = customerRelationsService.queryTodayInvitedTotle(customerId);
+		int allInvitedTotle = customerRelationsService.queryAllInvitedTotle(customerId);
+		
+		resultMap.put("todayInvitedTotle", String.valueOf(todayInvitedTotle));
+		resultMap.put("allInvitedTotle", String.valueOf(allInvitedTotle));
 		logger.info("查询客户信息------end------{}",resultMap);
 		return ResponseHelper.success(resultMap,null, "00", "查询成功");
 	}
@@ -304,6 +311,11 @@ public class CustomerController {
 			invitedCustomer.setInvitedTime(invitedTime);
 			customerRelationsService.insert(invitedCustomer);
 		}
+		Map<String, Object> accountMap = new HashMap<>();
+		accountMap.put("accountType", AccountType.POINTS.getCode());
+		accountMap.put("value", "5");
+		accountMap.put("customerId", "inviterId");
+		customerAccountService.update(accountMap);
 		return ResponseHelper.success(userMap,null, "00", "邀请成功");
 	}
 	

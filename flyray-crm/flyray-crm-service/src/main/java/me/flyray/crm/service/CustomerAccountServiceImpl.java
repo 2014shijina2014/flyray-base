@@ -27,7 +27,7 @@ import me.flyray.crm.model.CustomerAccountJournal;
 @Transactional
 @Service("customerAccountService")
 public class CustomerAccountServiceImpl extends AbstractBaseService<CustomerAccount> implements CustomerAccountService{
-
+	
 	@Autowired
 	private CustomerAccountDao customerAccountDao;
 	@Autowired
@@ -93,12 +93,17 @@ public class CustomerAccountServiceImpl extends AbstractBaseService<CustomerAcco
 		//查询该账户下的金额
 		CustomerAccount ca = customerAccountDao.queryByCustomerAccountNo(custAccountNo);
 		if (FundsDirection.CREDITS.getCode() == fundsDirection) {
-			ca.setValue(ca.getValue().subtract(amtDec));
+			ca.setValue(String.valueOf(new BigDecimal(ca.getValue()).subtract(amtDec)));
 		}else if (FundsDirection.DEBITS.getCode() == fundsDirection) {
-			ca.setValue(ca.getValue().add(amtDec));
+			ca.setValue(String.valueOf(new BigDecimal(ca.getValue()).add(amtDec)));
 		}
 		//更新账户金额
 		customerAccountDao.update(ca);
+	}
+
+	@Override
+	public void save(CustomerAccount customerAccount) {
+		customerAccountDao.save(customerAccount);
 	}
 
 }

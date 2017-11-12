@@ -29,7 +29,7 @@ public class CustomerAccount {
 	/**
 	 * 账户值
 	 */
-	private BigDecimal value;
+	private String value;
 	
 	/**
 	 * 冻结值
@@ -65,11 +65,11 @@ public class CustomerAccount {
 		this.accountType = accountType;
 	}
 
-	public BigDecimal getValue() {
+	public String getValue() {
 		return value;
 	}
 
-	public void setValue(BigDecimal value) {
+	public void setValue(String value) {
 		this.value = value;
 	}
 

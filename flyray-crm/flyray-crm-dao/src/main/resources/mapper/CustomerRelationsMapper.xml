@@ -74,6 +74,14 @@
 		where id = #{id}
 	</update>
 	
+	<select id="queryTodayInvitedTotle" resultType="int">
+		SELECT COUNT(*) FROM crm_customer_relations WHERE parent_id = #{parentId} AND  DATE(invited_time) = DATE(NOW())
+	</select>
+	
+	<select id="queryAllInvitedTotle" resultType="int">
+		SELECT COUNT(*) FROM crm_customer_relations WHERE parent_id = #{parentId}
+	</select>
+	
 	<delete id="delete">
 		delete from crm_customer_relations where id = #{id}
 	</delete>

@@ -39,4 +39,14 @@ public class CustomerRelationsServiceImpl extends AbstractBaseService<CustomerRe
 		return customerRelationsDao.queryInviteeCount(queryMap);
 	}
 
+	@Override
+	public int queryTodayInvitedTotle(String parentId) {
+		return customerRelationsDao.queryTodayInvitedTotle(parentId);
+	}
+
+	@Override
+	public int queryAllInvitedTotle(String parentId) {
+		return customerRelationsDao.queryAllInvitedTotle(parentId);
+	}
+
 }

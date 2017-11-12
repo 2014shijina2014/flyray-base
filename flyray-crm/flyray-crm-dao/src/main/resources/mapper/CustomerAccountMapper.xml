@@ -60,12 +60,10 @@
 	<update id="update" parameterType="me.flyray.crm.model.CustomerAccount">
 		update crm_customer_account 
 		<set>
-			<if test="custAccountNo != null">`cust_account_no` = #{custAccountNo}, </if>
-			<if test="accountType != null">`account_type` = #{accountType}, </if>
 			<if test="value != null">`value` = #{value}, </if>
 			<if test="freezeValue != null">`freeze_value` = #{freezeValue}</if>
 		</set>
-		where customer_id = #{customerId}
+		where customer_id = #{customerId} and account_type = #{accountType}
 	</update>
 	
 	<delete id="delete">

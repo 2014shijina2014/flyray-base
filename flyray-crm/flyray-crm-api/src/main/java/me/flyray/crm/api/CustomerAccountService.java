@@ -39,5 +39,7 @@ public interface CustomerAccountService extends BaseService{
 	 * @param Map
 	 */
 	public void transfer(Map<String, Object> param);
+
+	public void save(CustomerAccount customerAccount);
 	
 }

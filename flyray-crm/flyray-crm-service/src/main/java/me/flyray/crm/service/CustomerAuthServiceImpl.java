@@ -10,10 +10,13 @@ import org.springframework.stereotype.Service;
 import me.flyray.common.service.AbstractBaseService;
 import me.flyray.common.utils.CRC16M;
 import me.flyray.common.utils.SnowFlake;
+import me.flyray.crm.api.CustomerAccountService;
 import me.flyray.crm.api.CustomerAuthService;
 import me.flyray.crm.api.CustomerBaseExtendService;
 import me.flyray.crm.api.CustomerBaseService;
 import me.flyray.crm.dao.CustomerAuthDao;
+import me.flyray.crm.enums.AccountType;
+import me.flyray.crm.model.CustomerAccount;
 import me.flyray.crm.model.CustomerAuth;
 import me.flyray.crm.model.CustomerBase;
 import me.flyray.crm.model.CustomerBaseExtend;
@@ -33,6 +36,8 @@ public class CustomerAuthServiceImpl extends AbstractBaseService<CustomerAuth> i
 	private CustomerBaseService customerBaseService;
 	@Autowired
 	private CustomerBaseExtendService CustomerBaseExtendService;
+	@Autowired
+	private CustomerAccountService customerAccountService;
 
 	@Override
 	public void save(CustomerAuth customerAuth) {
@@ -72,10 +77,22 @@ public class CustomerAuthServiceImpl extends AbstractBaseService<CustomerAuth> i
 		customerBaseExtend.setSchoolName("地球");
 		CustomerBaseExtendService.save(customerBaseExtend);
 		customerBaseService.save(customerBase);
+		
+		CustomerAccount customerAccount = new CustomerAccount();
+		customerAccount.setCustomerId(customerIdStr);
+		customerAccount.setAccountType(AccountType.POINTS.getCode());
+		customerAccount.setValue("0");
+		long custAccountNoL = SnowFlake.getId();//商户号crc自校验数据 目的防止伪造造成脏数据
+		String custAccountNoStr = String.valueOf(custAccountNoL);
+		String custAccountNo = CRC16M.getCRCNo(custAccountNoStr);
+		customerAccount.setCustAccountNo(custAccountNo);
+		customerAccount.setFreezeValue("0");
+		customerAccountService.save(customerAccount);
+		
 		//保存微信授权信息
 		CustomerAuth customerAuth = new CustomerAuth();
 		customerAuth.setCredential(openId);		//密码凭证（站内的保存密码，站外的不保存或保存token）
-		customerAuth.setCustomerId(String.valueOf(customerId));		//客户（会员）编号
+		customerAuth.setCustomerId(customerIdStr);		//客户（会员）编号
 		customerAuth.setIdentifier((String)map.get("unionId"));		//标识（手机号 邮箱 用户名或第三方应用的唯一标识）
 		customerAuth.setIdentityType("weixin");	//登录类型（手机号 邮箱 用户名）或第三方应用名称（微信 微博等）
 		this.save(customerAuth);

@@ -6,7 +6,7 @@ package me.flyray.crm.enums;
 * @description：账户类型
 */
 
-public enum AcountType {
+public enum AccountType {
 	
 	BALANCE("00","余额账户"),
     BRIBERY_MONEY("02","红包账户"),
@@ -15,7 +15,7 @@ public enum AcountType {
     private String code;
     private String desc;
     
-    private AcountType (String code,String desc){
+    private AccountType (String code,String desc){
         this.code = code;
         this.desc = desc;
     }
@@ -36,8 +36,8 @@ public enum AcountType {
         this.desc = desc;
     }
     
-    public static AcountType getAcountType(String code){
-        for(AcountType o : AcountType.values()){
+    public static AccountType getAcountType(String code){
+        for(AccountType o : AccountType.values()){
             if(o.getCode().equals(code)){
                 return o;
             }

@@ -19,4 +19,9 @@ public interface CustomerRelationsService extends BaseService{
 	void insert(CustomerRelations invitedCustomer);
 
 	int queryInviteeCount(Map<String, Object> queryMap);
+	
+	int queryTodayInvitedTotle(String customerId);
+
+	int queryAllInvitedTotle(String customerId);
+	
 }
