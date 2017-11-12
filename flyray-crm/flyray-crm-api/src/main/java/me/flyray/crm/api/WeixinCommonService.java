@@ -22,4 +22,19 @@ public interface WeixinCommonService {
 	 * @param param
 	 */
 	void sendWxMpMessage(Map<String, Object> param);
+	
+	/**
+	 * getJsapiTicket
+	 * @param requestMap
+	 * @return
+	 */
+	String getJsapiTicket();
+	
+	/**
+	 * getSignature
+	 * @param url
+	 * @return
+	 */
+	Map<String, Object> getSignatureInfo(String url);
+	
 }

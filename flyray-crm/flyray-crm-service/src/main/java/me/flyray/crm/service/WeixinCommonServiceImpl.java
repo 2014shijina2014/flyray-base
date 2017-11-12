@@ -6,8 +6,10 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import me.chanjar.weixin.common.bean.WxJsapiSignature;
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpInMemoryConfigStorage;
 import me.chanjar.weixin.mp.api.WxMpService;
@@ -33,6 +35,10 @@ public class WeixinCommonServiceImpl implements WeixinCommonService{
 	private WeixinService weixinService;
 	@Autowired
 	private WxMpService wxMpService;
+	@Value("${wx_appid}")
+	private String appId;
+	@Value("${wx_appsecret}")
+	private String appsecret;
 	
 	@Override
 	public Map<String, Object> getOauthUserInfo(Map<String, Object> param) {
@@ -41,8 +47,8 @@ public class WeixinCommonServiceImpl implements WeixinCommonService{
 			logger.info("请求微信授权信息------{}",param);
 			
 			WxMpInMemoryConfigStorage config = new WxMpInMemoryConfigStorage();
-		    config.setAppId("wx0f6fa56da5e7fb62"); // 设置微信公众号的appid
-		    config.setSecret("4629f914e5c005ef8babaa1de46e486b"); // 设置微信公众号的app corpSecret
+		    config.setAppId(appId); // 设置微信公众号的appid
+		    config.setSecret(appsecret); // 设置微信公众号的app corpSecret
 		    wxMpService.setWxMpConfigStorage(config);
 			WxMpOAuth2AccessToken wxMpOAuth2AccessToken = weixinService.oauth2getAccessToken((String)param.get("code"));
 			WxMpUser wxMpUser = weixinService.oauth2getUserInfo(wxMpOAuth2AccessToken, null);
@@ -87,12 +93,53 @@ public class WeixinCommonServiceImpl implements WeixinCommonService{
 		}
 		try {
 			WxMpInMemoryConfigStorage config = new WxMpInMemoryConfigStorage();
-		    config.setAppId("wx0f6fa56da5e7fb62"); // 设置微信公众号的appid
-		    config.setSecret("4629f914e5c005ef8babaa1de46e486b"); // 设置微信公众号的app corpSecret
+			config.setAppId(appId); // 设置微信公众号的appid
+		    config.setSecret(appsecret); // 设置微信公众号的app corpSecret
 		    wxMpService.setWxMpConfigStorage(config);
 			wxMpService.getTemplateMsgService().sendTemplateMsg(templateMessage);
 		} catch (WxErrorException e) {
 			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public String getJsapiTicket() {
+		WxMpInMemoryConfigStorage config = new WxMpInMemoryConfigStorage();
+		config.setAppId(appId); // 设置微信公众号的appid
+	    config.setSecret(appsecret); // 设置微信公众号的app corpSecret
+	    wxMpService.setWxMpConfigStorage(config);
+	    String jsapiTicket = null;
+	    try {
+	    	jsapiTicket = wxMpService.getJsapiTicket(true);
+		} catch (WxErrorException e) {
+			e.printStackTrace();
+		}
+		return jsapiTicket;
+	}
+
+	@Override
+	public Map<String, Object> getSignatureInfo(String url) {
+		Map<String, Object> resultMap = null;
+		WxMpInMemoryConfigStorage config = new WxMpInMemoryConfigStorage();
+		config.setAppId(appId); // 设置微信公众号的appid
+	    config.setSecret(appsecret); // 设置微信公众号的app corpSecret
+	    wxMpService.setWxMpConfigStorage(config);
+	    WxJsapiSignature signInfo = null;
+		try {
+			signInfo = wxMpService.createJsapiSignature(url);
+		} catch (WxErrorException e) {
+			e.printStackTrace();
+		}
+		if (signInfo == null) {
+			return null;
+		}else{
+			try {
+				//signInfo.getSignature()
+				resultMap = BeanUtils.objectToMap(signInfo);
+			} catch (Exception e) {
+				e.printStackTrace();
+			};
+			return resultMap;
 		}
 	}
 
