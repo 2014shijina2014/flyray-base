@@ -1,14 +1,12 @@
 package me.flyray.rbac.controller.cms;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import me.flyray.rbac.annotation.SysLog;
@@ -31,14 +29,23 @@ public class GroupCategoryController extends AbstractController {
 	public R list(@RequestParam Map<String, Object> params){
 		//查询列表数据
 		logger.info("查询团队类别列表请求参数:{}",params);
-		Parameter parameter = new Parameter("interestGroupCategoryService", "query");
-		parameter.setMap(getCommonQueryParam());
+		Parameter parameter = new Parameter("interestGroupCategoryService", "queryList");
+		//parameter.setMap(getCommonQueryParam());
 		parameter.setMap(params);
 		List<?> list = apiProvider.execute(parameter).getList();
 		int total = list.size();
 		logger.info("团队类别列表查询结果size:{}",total);
 		PageUtils pageUtil = new PageUtils(list, total, 10, 1);
 		return R.ok().put("page", pageUtil);
+	}
+
+	@RequestMapping("/info/{id}")
+	@RequiresPermissions("cms:groupcategory:info")
+	public R info(@PathVariable("id") Long id){
+		Parameter parameter = new Parameter("interestGroupCategoryService", "queryById");
+		parameter.setId(id);
+		Map<?,?> map=apiProvider.execute(parameter).getMap();
+		return R.ok().put("groupcategory",map);
 	}
 	/**
 	 * 添加团队类别
@@ -47,9 +54,10 @@ public class GroupCategoryController extends AbstractController {
 	@RequestMapping("/save")
 	@RequiresPermissions("cms:groupcategory:save")
 	public R save(@RequestParam Map<String, Object> params){
-		
 		logger.info("添加团队类别---请求参数：{}",params);
-		MultipartFile files = (MultipartFile) params.get("img");
+		Parameter parameter=new Parameter("customerRoleService","save");
+		parameter.setMap(params);
+		apiProvider.execute(parameter);
 		return R.ok();
 		
 	}
@@ -60,9 +68,10 @@ public class GroupCategoryController extends AbstractController {
 	@RequestMapping("/update")
 	@RequiresPermissions("cms:groupcategory:update")
 	public R update(@RequestBody Map<String, Object> params){
-		
 		logger.info("修改团队类别---请求参数{}",params);
-		
+		Parameter parameter=new Parameter("customerRoleService","save");
+		parameter.setMap(params);
+		apiProvider.execute(parameter);
 		return R.ok();
 	}
 	
@@ -72,10 +81,11 @@ public class GroupCategoryController extends AbstractController {
 	@SysLog("删除团队类别")
 	@RequestMapping("/delete")
 	@RequiresPermissions("cms:groupcategory:delete")
-	public R delete(@RequestBody Map<String, Object> params){
-		
-		logger.info("删除团队类别---请求参数{}",params);
-		
+	public R delete(@RequestBody Long[] ids){
+		Parameter parameter=new Parameter("customerRoleService","deleteBatch");
+		List<Long> list= Arrays.asList(ids);
+		parameter.setList(list);
+		apiProvider.execute(parameter);
 		return R.ok();
 	}
 }

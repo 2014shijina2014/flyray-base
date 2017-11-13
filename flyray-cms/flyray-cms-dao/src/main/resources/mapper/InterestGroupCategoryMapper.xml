@@ -6,8 +6,8 @@
 	
 	<resultMap type="me.flyray.cms.model.InterestGroupCategory" id="interestGroupMap">
 	    <id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="org_id" property="orgId" jdbcType="VARCHAR" />
 		<result column="merchant_id" property="merchantId" jdbcType="VARCHAR" />
-		<result column="group_category_id" property="groupCategoryId" jdbcType="VARCHAR" />
 		<result column="category_name" property="categoryName" jdbcType="VARCHAR" />
 		<result column="createtime" property="createtime" jdbcType="VARCHAR" />
 		<result column="flag" property="flag" jdbcType="VARCHAR" />
@@ -40,48 +40,23 @@
 		</trim>
 	</sql>
 	
-	<insert id="insert" parameterType="me.flyray.cms.model.InterestGroupCategory">
+	<insert id="save" parameterType="me.flyray.cms.model.InterestGroupCategory" useGeneratedKeys="true" keyProperty="id">
 		insert into cms_interest_group_category
-		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="id != null and id != ''">
-				id,
-			</if>
-			<if test="orgId != null and orgId != ''">
-				org_id,
-			</if>
-			<if test="merchantId != null and merchantId != ''">
-				merchant_id,
-			</if>
-			<if test="categoryName != null and categoryName != ''">
-				category_name,
-			</if>
-			<if test="createtime != null and createtime != ''">
-				createtime,
-			</if>
-			<if test="flag != null and flag != ''">
-				flag,
-			</if>
-		</trim>
-		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="id != null and id != ''">
-				#{id,jdbcType=VARCHAR},
-	        </if>
-	        <if test="orgId != null and orgId != ''">
-				#{orgId,jdbcType=VARCHAR},
-	        </if>
-	        <if test="merchantId != null and merchantId != ''">
-				#{merchantId,jdbcType=VARCHAR},
-	        </if>
-	        <if test="categoryName != null and categoryName != ''">
-				#{categoryName,jdbcType=VARCHAR},
-	        </if>
-	        <if test="createtime != null and createtime != ''">
-				#{createtime,jdbcType=VARCHAR},
-	        </if>
-	        <if test="flag != null and flag != ''">
-				#{flag,jdbcType=VARCHAR},
-	        </if>
-		</trim>
+		(
+			`org_id`,
+			`merchant_id`,
+			`category_name`,
+			`createtime`,
+			`flag`
+		)
+		values
+		(
+			#{orgId},
+			#{merchantId},
+			#{categoryName},
+			#{createtime},
+			#{flag}
+		)
 	</insert>
 
 	<update id="update" parameterType="me.flyray.cms.model.InterestGroupCategory">
@@ -112,7 +87,16 @@
 		from cms_interest_group_category
         <include refid="where1"/>
 	</select>
-	
+
+	<select id="queryObject" resultMap="interestGroupMap">
+		select * from cms_interest_group_category
+		<include refid="where1"/>
+	</select>
+
+	<select id="queryById" resultMap="interestGroupMap">
+		select * from cms_interest_group_category where id = #{id}
+	</select>
+
 	<select id="queryList" resultMap="interestGroupMap">
 		select
 		<include refid="Base_Column_List" />
@@ -128,4 +112,15 @@
 		from cms_interest_group_category
         <include refid="where1"/>
 	</select>
+
+	<delete id="delete">
+		delete from cms_interest_group_category where id = #{id}
+	</delete>
+
+	<delete id="deleteBatch" parameterType="java.util.List">
+		delete from cms_interest_group_category where id in
+		<foreach item="id" collection="list" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
 </mapper>

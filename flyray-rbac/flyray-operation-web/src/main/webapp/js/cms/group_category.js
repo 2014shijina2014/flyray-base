@@ -1,10 +1,14 @@
 $(function () {
     $("#jqGrid").jqGrid({
-        url: '../cms/topic/list',
+        url: '../cms/groupcategory/list',
         datatype: "json",
         colModel: [			
 			{ label: 'ID', name: 'id', index: "id", width: 45, key: true },
-			{ label: '标题', name: 'title', width: 45}
+			{ label: '团队类别', name: 'categoryName', index:"category_name", width: 45},
+            { label: '组织', name: 'orgId', index:"org_id", width: 45},
+            { label: '商户', name: 'merchantId', index:"merchant_id", width: 45},
+            { label: '创建时间', name: 'createtime', index:"createtime", width: 45},
+            { label: '标记', name: 'flag', index:"flag", width: 45}
         ],
 		viewrecords: true,
         height: 385,
@@ -37,23 +41,18 @@ var vm = new Vue({
 	el:'#rrapp',
 	data:{
 		q:{
-			payChannelNo: null
+            categoryName: null
 		},
 		showList: true,
 		title:null,
-		payChannel:{
-			payChannelNo:null,
-			payCompanyNo:null,
-			feeRatio:null,
-		},
-		topic:{
+        groupcategory:{
 			id:null,
-			content:null,
-			title:null,
-			discription:null,
-			img:null
-		},
-		images:[]
+			categoryName:null,
+			orgId:null,
+			merchantId:null,
+			createtime:null,
+			flag:null,
+		}
 	},
 	methods: {
 		query: function () {
@@ -68,11 +67,10 @@ var vm = new Vue({
 			if(id == null){
 				return ;
 			}
-			
 			vm.showList = false;
             vm.title = "修改";
 			
-			vm.getPayChannel(id);
+			vm.getGroupcategory(id);
 		},
 		del: function () {
 			var ids = getSelectedRows();
@@ -83,7 +81,7 @@ var vm = new Vue({
 			confirm('确定要删除选中的记录？', function(){
 				$.ajax({
 					type: "POST",
-				    url: "../pay/payChannel/delete",
+				    url: "../cms/groupcategory/delete",
 				    data: JSON.stringify(ids),
 				    success: function(r){
 						if(r.code == 0){
@@ -98,13 +96,11 @@ var vm = new Vue({
 			});
 		},
 		saveOrUpdate: function (event) {
-			var url = vm.topic.id == null ? "../cms/topic/save" : "../pay/payChannel/update";
-			alert(JSON.stringify(vm.topic));
-			return;
+			var url = vm.groupcategory.id == null ? "../cms/groupcategory/save" : "../cms/groupcategory/update";
 			$.ajax({
 				type: "POST",
 			    url: url,
-			    data: JSON.stringify(vm.topic),
+			    data: JSON.stringify(vm.groupcategory),
 			    success: function(r){
 			    	if(r.code === 0){
 						alert('操作成功', function(index){
@@ -116,72 +112,18 @@ var vm = new Vue({
 				}
 			});
 		},
-		getPayChannel: function(id){
-			$.get("../pay/payChannel/info/"+id, function(r){
-				vm.payChannel = r.payChannel;
+        getGroupcategory: function(id){
+			$.get("../cms/groupcategory/info/"+id, function(r){
+				vm.groupcategory = r.groupcategory;
 			});
 		},
 		reload: function (event) {
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{ 
-                postData:{'title': vm.q.title},
+                postData:{'categoryName': vm.q.categoryName},
                 page:page
             }).trigger("reloadGrid");
-		},
-		addPic: function (e) {
-            e.preventDefault();
-            $('input[type=file]').trigger('click');
-            return false;
-        },
-        onFileChange: function (e) {
-            var files = e.target.files || e.dataTransfer.files;
-            if (!files.length)return; 
-            console.log(files);
-            this.createImage(files);
-        },
-        createImage: function(file) {
-            if(typeof FileReader==='undefined'){
-                alert('您的浏览器不支持图片上传，请升级您的浏览器');
-                return false;
-            }
-            var image = new Image();         
-            var vm = this;
-            var leng=file.length;
-            for(var i=0;i<leng;i++){
-                var reader = new FileReader();
-                reader.readAsDataURL(file[i]); 
-                reader.onload =function(e){
-                  vm.images.push(e.target.result);                                    
-                };                 
-            }                        
-        },
-        delImage:function(index){
-            this.images.shift(index);
-        },
-        removeImage: function(e) {
-            this.images = [];
-        },
-        uploadImage: function() {
-            console.log(this.images);
-            return false;
-            var obj = {};
-            obj.images=this.images
-            $.ajax({
-                type: 'post',
-                url: "../cms/topic/save",
-                data: obj,
-                dataType: "json",
-                success: function(data) {
-                    if(data.status){
-                        alert(data.msg);
-                        return false;
-                    }else{
-                        alert(data.msg);
-                        return false;
-                    }
-                }
-            });
-        }
+		}
 	}
 });
