@@ -1,10 +1,20 @@
 $(function () {
     $("#jqGrid").jqGrid({
-        url: '../cms/topic/list',
+        url: '../cms/group/list',
         datatype: "json",
         colModel: [			
 			{ label: 'ID', name: 'id', index: "id", width: 45, key: true },
-			{ label: '标题', name: 'title', width: 45}
+            { label: '小组名称', name: 'groupName', index:"group_name", width: 45},
+            { label: '小组Logo', name: 'groupLogo', index:"group_logo", width: 45},
+            { label: '小组口号', name: 'groupSlogan', index:"group_slogan", width: 45},
+            { label: '小组介绍', name: 'groupIntro', index:"group_intro", width: 45},
+            { label: '小组所属类别', name: 'groupCategoryId', index:"group_category_id", width: 45},
+            { label: '小组地址', name: 'groupAddress', index:"group_address", width: 45},
+            { label: '创建人', name: 'custmerNo', index:"custmer_no", width: 45},
+            { label: '创建时间', name: 'createTime', index:"create_time", width: 45},
+            { label: '机构', name: 'orgId', index:"org_id", width: 45},
+            { label: '商户', name: 'merchantId', index:"merchant_id", width: 45},
+            { label: '标记', name: 'flag', index:"flag", width: 45}
         ],
 		viewrecords: true,
         height: 385,
@@ -37,23 +47,24 @@ var vm = new Vue({
 	el:'#rrapp',
 	data:{
 		q:{
-			payChannelNo: null
+            groupName: null
 		},
 		showList: true,
 		title:null,
-		payChannel:{
-			payChannelNo:null,
-			payCompanyNo:null,
-			feeRatio:null,
-		},
-		topic:{
+		group:{
 			id:null,
-			content:null,
-			title:null,
-			discription:null,
-			img:null
-		},
-		images:[]
+            groupName:null,
+            groupLogo:null,
+            groupSlogan:null,
+            groupIntro:null,
+            groupCategoryId:null,
+            groupAddress:null,
+            custmerNo:null,
+            createTime:null,
+            orgId:null,
+            merchantId:null,
+            flag:null,
+		}
 	},
 	methods: {
 		query: function () {
@@ -72,7 +83,7 @@ var vm = new Vue({
 			vm.showList = false;
             vm.title = "修改";
 			
-			vm.getPayChannel(id);
+			vm.getGroup(id);
 		},
 		del: function () {
 			var ids = getSelectedRows();
@@ -83,7 +94,8 @@ var vm = new Vue({
 			confirm('确定要删除选中的记录？', function(){
 				$.ajax({
 					type: "POST",
-				    url: "../pay/payChannel/delete",
+				    url: "../cms/group/delete",
+                    contentType: 'application/json;charset=utf-8',
 				    data: JSON.stringify(ids),
 				    success: function(r){
 						if(r.code == 0){
@@ -98,13 +110,12 @@ var vm = new Vue({
 			});
 		},
 		saveOrUpdate: function (event) {
-			var url = vm.topic.id == null ? "../cms/topic/save" : "../pay/payChannel/update";
-			alert(JSON.stringify(vm.topic));
-			return;
+			var url = vm.group.id == null ? "../cms/group/save" : "../cms/group/update";
 			$.ajax({
 				type: "POST",
 			    url: url,
-			    data: JSON.stringify(vm.topic),
+                contentType: 'application/json;charset=utf-8',
+			    data: JSON.stringify(vm.group),
 			    success: function(r){
 			    	if(r.code === 0){
 						alert('操作成功', function(index){
@@ -116,72 +127,18 @@ var vm = new Vue({
 				}
 			});
 		},
-		getPayChannel: function(id){
-			$.get("../pay/payChannel/info/"+id, function(r){
-				vm.payChannel = r.payChannel;
+        getGroup: function(id){
+			$.get("../cms/group/info/"+id, function(r){
+				vm.group = r.group;
 			});
 		},
 		reload: function (event) {
 			vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
 			$("#jqGrid").jqGrid('setGridParam',{ 
-                postData:{'title': vm.q.title},
+                postData:{'groupName': vm.q.groupName},
                 page:page
             }).trigger("reloadGrid");
-		},
-		addPic: function (e) {
-            e.preventDefault();
-            $('input[type=file]').trigger('click');
-            return false;
-        },
-        onFileChange: function (e) {
-            var files = e.target.files || e.dataTransfer.files;
-            if (!files.length)return; 
-            console.log(files);
-            this.createImage(files);
-        },
-        createImage: function(file) {
-            if(typeof FileReader==='undefined'){
-                alert('您的浏览器不支持图片上传，请升级您的浏览器');
-                return false;
-            }
-            var image = new Image();         
-            var vm = this;
-            var leng=file.length;
-            for(var i=0;i<leng;i++){
-                var reader = new FileReader();
-                reader.readAsDataURL(file[i]); 
-                reader.onload =function(e){
-                  vm.images.push(e.target.result);                                    
-                };                 
-            }                        
-        },
-        delImage:function(index){
-            this.images.shift(index);
-        },
-        removeImage: function(e) {
-            this.images = [];
-        },
-        uploadImage: function() {
-            console.log(this.images);
-            return false;
-            var obj = {};
-            obj.images=this.images
-            $.ajax({
-                type: 'post',
-                url: "../cms/topic/save",
-                data: obj,
-                dataType: "json",
-                success: function(data) {
-                    if(data.status){
-                        alert(data.msg);
-                        return false;
-                    }else{
-                        alert(data.msg);
-                        return false;
-                    }
-                }
-            });
-        }
+		}
 	}
 });

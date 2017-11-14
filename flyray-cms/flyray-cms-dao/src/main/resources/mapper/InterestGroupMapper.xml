@@ -64,7 +64,7 @@
 		</trim>
 	</sql>
 	
-	<insert id="insert" parameterType="me.flyray.cms.model.InterestGroup">
+	<insert id="save" parameterType="me.flyray.cms.model.InterestGroup">
 		insert into cms_interest_group
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null and id != ''">
@@ -190,8 +190,12 @@
 		from cms_interest_group
         <include refid="where1"/>
 	</select>
-	
-	<select id="queryList" resultType="me.flyray.cms.model.InterestGroup"
+
+	<select id="queryById" resultMap="interestGroupMap">
+		select * from cms_interest_group where id = #{id}
+	</select>
+
+	<select id="queryList" resultMap="interestGroupMap"
 		parameterType="java.util.Map">
 		select 
 		<include refid="Base_Column_List" />
@@ -208,4 +212,15 @@
 		from cms_interest_group
         <include refid="where1"/>
 	</select>
+
+	<delete id="delete">
+		delete from cms_interest_group where id = #{id}
+	</delete>
+
+	<delete id="deleteBatch" parameterType="java.util.List">
+		delete from cms_interest_group where id in
+		<foreach item="id" collection="list" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
 </mapper>
