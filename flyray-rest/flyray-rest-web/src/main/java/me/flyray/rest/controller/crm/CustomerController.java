@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -311,10 +310,13 @@ public class CustomerController {
 			invitedCustomer.setInvitedTime(invitedTime);
 			customerRelationsService.insert(invitedCustomer);
 		}
-		Map<String, Object> accountMap = new HashMap<>();
-		accountMap.put("accountType", AccountType.POINTS.getCode());
-		accountMap.put("value", "5");
-		accountMap.put("customerId", "inviterId");
+		Map<String, Object> accountQueryMap = new HashMap<>();
+		accountQueryMap.put("accountType", AccountType.POINTS.getCode());
+		accountQueryMap.put("customerId", inviterId);
+		Map<String, Object> accountMap = customerAccountService.queryObject(accountQueryMap);
+		String value = (String)accountQueryMap.get("value");
+		int v = Integer.valueOf(value)+5;
+		accountMap.put(value, String.valueOf(v));
 		customerAccountService.update(accountMap);
 		return ResponseHelper.success(userMap,null, "00", "邀请成功");
 	}
