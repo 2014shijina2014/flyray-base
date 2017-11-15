@@ -49,7 +49,12 @@ public class SysRoleEntity implements Serializable {
 	 * 角色所属组织机构
 	 */
 	private Long orgId;
-
+	
+	/**
+	 * 角色所属组织机构名称
+	 */
+	private String orgName;
+	
 	/**
 	 * 设置：
 	 * @param roleId 
@@ -128,6 +133,14 @@ public class SysRoleEntity implements Serializable {
 
 	public void setOrgId(Long orgId) {
 		this.orgId = orgId;
+	}
+
+	public String getOrgName() {
+		return orgName;
+	}
+
+	public void setOrgName(String orgName) {
+		this.orgName = orgName;
 	}
 	
 }

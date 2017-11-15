@@ -5,6 +5,8 @@ $(function () {
         colModel: [			
 			{ label: '角色ID', name: 'roleId', index: "role_id", width: 45, key: true },
 			{ label: '角色名称', name: 'roleName', index: "role_name", width: 75 },
+			{ label: '所属机构ID', name: 'orgId', index: "org_id", width: 75 },
+			{ label: '所属机构名称', name: 'orgName', index: "org_name", width: 75 },
 			{ label: '备注', name: 'remark', width: 100 },
 			{ label: '创建时间', name: 'createTime', index: "create_time", width: 80}
         ],
@@ -35,6 +37,20 @@ $(function () {
     });
 });
 
+var orgSetting = {
+    data: {
+        simpleData: {
+            enable: true,
+            idKey: "orgId",
+            pIdKey: "parentId",
+            rootPId: -1
+        },
+        key: {
+            url:"nourl"
+        }
+    }
+};
+
 var setting = {
 	data: {
 		simpleData: {
@@ -53,6 +69,7 @@ var setting = {
 	}
 };
 var ztree;
+var orgZtree;
 	
 var vm = new Vue({
 	el:'#rrapp',
@@ -62,16 +79,33 @@ var vm = new Vue({
 		},
 		showList: true,
 		title:null,
-		role:{}
+		role:{
+			roleId:null,
+			roleName:null,
+			orgId:null,
+			parentName:null,
+			remark:null,
+		}
 	},
 	methods: {
 		query: function () {
 			vm.reload();
 		},
+		getOrg: function(){
+            //加载部门树
+            $.get(baseURL + "sys/org/select", function(r){
+            	orgZtree = $.fn.zTree.init($("#orgTree"), orgSetting, r.orgList);
+                var node = orgZtree.getNodeByParam("orgId", vm.role.orgId);
+                orgZtree.selectNode(node);
+
+                vm.role.orgName = node.name;
+            })
+        },
 		add: function(){
 			vm.showList = false;
 			vm.title = "新增";
-			vm.role = {};
+			vm.role = {orgId:0};
+			vm.getOrg();
 			vm.getMenuTree(null);
 		},
 		update: function () {
@@ -157,6 +191,28 @@ var vm = new Vue({
 				}
 			});
 	    },
+	    orgTree: function(){
+            layer.open({
+                type: 1,
+                offset: '50px',
+                skin: 'layui-layer-molv',
+                title: "选择组织机构",
+                area: ['300px', '450px'],
+                shade: 0,
+                shadeClose: false,
+                content: jQuery("#orgLayer"),
+                btn: ['确定', '取消'],
+                btn1: function (index) {
+                    var node = orgZtree.getSelectedNodes();
+                    //选择上级部门
+                    console.log(node[0])
+                    vm.role.orgId = node[0].orgId;
+                    vm.role.orgName = node[0].name;
+                    console.log(vm.role)
+                    layer.close(index);
+                }
+            });
+        },
 	    reload: function (event) {
 	    	vm.showList = true;
 			var page = $("#jqGrid").jqGrid('getGridParam','page');
