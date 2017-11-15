@@ -1,14 +1,12 @@
 package me.flyray.rbac.controller.cms;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import me.flyray.rbac.annotation.SysLog;
@@ -31,13 +29,22 @@ public class ActivityController extends AbstractController {
 	public R list(@RequestParam Map<String, Object> params){
 		logger.info("查询团队类别列表请求参数:{}",params);
 		Parameter parameter = new Parameter("activityService", "query");
-		parameter.setMap(getCommonQueryParam());
+		//parameter.setMap(getCommonQueryParam());
 		parameter.setMap(params);
 		List<?> list = apiProvider.execute(parameter).getList();
 		int total = list.size();
 		logger.info("团队类别列表查询结果size:{}",total);
 		PageUtils pageUtil = new PageUtils(list, total, 10, 1);
 		return R.ok().put("page", pageUtil);
+	}
+
+	@RequestMapping("/info/{id}")
+	@RequiresPermissions("cms:activity:info")
+	public R info(@PathVariable("id") Long id){
+		Parameter parameter = new Parameter("activityService", "queryById");
+		parameter.setId(id);
+		Map<?,?> map=apiProvider.execute(parameter).getMap();
+		return R.ok().put("groupcategory",map);
 	}
 	/**
 	 * 添加团队类别
@@ -47,7 +54,9 @@ public class ActivityController extends AbstractController {
 	@RequiresPermissions("cms:activity:save")
 	public R save(@RequestParam Map<String, Object> params){
 		logger.info("添加团队类别---请求参数：{}",params);
-		MultipartFile files = (MultipartFile) params.get("img");
+		Parameter parameter=new Parameter("activityService","save");
+		parameter.setMap(params);
+		apiProvider.execute(parameter);
 		return R.ok();
 		
 	}
@@ -58,9 +67,10 @@ public class ActivityController extends AbstractController {
 	@RequestMapping("/update")
 	@RequiresPermissions("cms:activity:update")
 	public R update(@RequestBody Map<String, Object> params){
-		
 		logger.info("修改团队类别---请求参数{}",params);
-		
+		Parameter parameter=new Parameter("activityService","update");
+		parameter.setMap(params);
+		apiProvider.execute(parameter);
 		return R.ok();
 	}
 	
@@ -70,10 +80,11 @@ public class ActivityController extends AbstractController {
 	@SysLog("删除团队类别")
 	@RequestMapping("/delete")
 	@RequiresPermissions("cms:activity:delete")
-	public R delete(@RequestBody Map<String, Object> params){
-		
-		logger.info("删除团队类别---请求参数{}",params);
-		
+	public R delete(@RequestBody Long[] ids){
+		Parameter parameter=new Parameter("activityService","deleteBatch");
+		List<Long> list= Arrays.asList(ids);
+		parameter.setList(list);
+		apiProvider.execute(parameter);
 		return R.ok();
 	}
 }

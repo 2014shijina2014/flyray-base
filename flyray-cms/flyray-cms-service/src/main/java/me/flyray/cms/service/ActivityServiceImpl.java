@@ -130,8 +130,5 @@ public class ActivityServiceImpl extends AbstractBaseService<Activity> implement
 	public Activity queryEntity(Activity activity) {
 		return activityDao.queryEntity(activity);
 	}
-	
-	
-	
- 	
+
 }

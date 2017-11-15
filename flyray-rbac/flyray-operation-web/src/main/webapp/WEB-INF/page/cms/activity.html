@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>活动列表</title>
+#parse("sys/header.html")
+</head>
+<body>
+<div id="rrapp" v-cloak>
+	<div v-show="showList">
+		<div class="grid-btn">
+			<div class="form-group col-sm-2">
+				<input type="text" class="form-control" v-model="q.activityName" @keyup.enter="query" placeholder="团队名">
+			</div>
+			<a class="btn btn-default" @click="query">查询</a>
+			#if($shiro.hasPermission("cms:activity:save"))
+			<a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;添加</a>
+			#end
+			#if($shiro.hasPermission("cms:activity:update"))
+			<a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
+			#end
+			#if($shiro.hasPermission("cms:activity:delete"))
+			<a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
+			#end
+		</div>
+	    <table id="jqGrid"></table>
+	    <div id="jqGridPager"></div>
+    </div>
+    
+    <div v-show="!showList" class="panel panel-default">
+		<div class="panel-heading">{{title}}</div>
+		<form class="form-horizontal" enctype="multipart/form-data">
+			<div class="form-group">
+			   	<div class="col-sm-2 control-label">活动名</div>
+			   	<div class="col-sm-10">
+			      <input type="text" class="form-control" v-model="activity.activityName" placeholder="活动名"/>
+			    </div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-2 control-label">活动Logo</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="activity.activityLogo" placeholder="活动Logo"/>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-2 control-label">活动简介</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="activity.activityDes" placeholder="活动简介"/>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-2 control-label">活动内容</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="activity.activityContent" placeholder="活动内容"/>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-2 control-label">活动开始时间</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="activity.activityStartTime" placeholder="活动开始时间"/>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-2 control-label">活动结束时间</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="activity.activityEndTime" placeholder="活动结束时间"/>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-2 control-label">活动地址</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="activity.activityAddr" placeholder="活动地址"/>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-2 control-label">所属团队</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="activity.interestGroupId" placeholder="所属团队"/>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-2 control-label">创建时间</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="activity.createTime" placeholder="创建时间"/>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-2 control-label">创建人</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="activity.createBy" placeholder="创建时间"/>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-2 control-label">标记</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="activity.flag" placeholder="标记"/>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-2 control-label">活动花絮</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="activity.highlights" placeholder="活动花絮"/>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-2 control-label"></div> 
+				<input type="button" class="btn btn-primary" @click="saveOrUpdate" value="确定"/>
+				&nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="取消"/>
+			</div>
+		</form>
+	</div>
+</div>
+<script src="${rc.contextPath}/js/cms/activity.js?_${date.systemTime}"></script>
+</body>
+</html>

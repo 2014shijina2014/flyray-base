@@ -68,7 +68,7 @@
 		</trim>
 	</sql>
 	
-	<insert id="insert" parameterType="me.flyray.cms.model.Activity">
+	<insert id="save" parameterType="me.flyray.cms.model.Activity">
 		insert into cms_activity
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="id != null and id != ''">
@@ -351,5 +351,15 @@
 		from cms_activity
 		<include refid="where1"/>
 	</select>
-  
+
+	<delete id="delete">
+		delete from cms_activity where id = #{id}
+	</delete>
+
+	<delete id="deleteBatch" parameterType="java.util.List">
+		delete from cms_activity where id in
+		<foreach item="id" collection="list" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
 </mapper>
