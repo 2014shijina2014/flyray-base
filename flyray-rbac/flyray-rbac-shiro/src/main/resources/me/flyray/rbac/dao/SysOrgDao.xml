@@ -41,7 +41,7 @@
 		values
 		(
 			#{parentId}, 
-			`orgNo`,
+			#{orgNo}, 
 			#{name}, 
 			#{orgSort},
 			#{createBy},

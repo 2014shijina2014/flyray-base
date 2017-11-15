@@ -13,7 +13,7 @@ public class SysOrgEntity {
 	/**
 	 * 机构部门ID
 	 */
-	private Long id;
+	private Long orgId;
 	
 	/**
 	 * 机构部门编号
@@ -71,12 +71,12 @@ public class SysOrgEntity {
 	
 	private List<?> list;
 
-	public Long getId() {
-		return id;
+	public Long getOrgId() {
+		return orgId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setOrgId(Long orgId) {
+		this.orgId = orgId;
 	}
 
 	public String getOrgNo() {

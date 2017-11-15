@@ -36,6 +36,12 @@
 			<if test="roleName != null and roleName.trim() != ''">
 				and `role_name` like concat('%',#{roleName},'%') 
 			</if>
+			<if test="orgId != null">
+				and org_id = #{orgId} 
+			</if>
+			<if test="orgName != null">
+				and org_name = #{orgName} 
+			</if>
 			<if test="createUserId != null">
 				and create_user_id = #{createUserId} 
 			</if>
@@ -46,7 +52,9 @@
 		insert into sys_role
 		(
 			`role_id`, 
-			`role_name`, 
+			`role_name`,
+			`org_id`,
+			`org_name`,
 			`remark`,
 			`create_user_id`,
 			`create_time`
@@ -54,7 +62,9 @@
 		values
 		(
 			#{roleId}, 
-			#{roleName}, 
+			#{roleName},
+			#{orgId}, 
+			#{orgName}, 
 			#{remark},
 			#{createUserId},
 			#{createTime}
@@ -65,6 +75,8 @@
 		update sys_role 
 		<set> 
 			<if test="roleName != null">`role_name` = #{roleName}, </if>
+			<if test="orgId != null">`org_id` = #{orgId}, </if>
+			<if test="orgName != null">`org_name` = #{orgName}, </if>
 			<if test="remark != null">`remark` = #{remark}</if>
 		</set>
 		where role_id = #{roleId}
