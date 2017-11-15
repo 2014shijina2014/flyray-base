@@ -30,14 +30,8 @@ public abstract class AbstractController {
 			pageSize = "10";
 		}
 		Map<String, Object> result = new HashMap<String, Object>();
-		int totalCountInt = Integer.valueOf(param.get("totalCount"));
-		int pageSizeInt = Integer.valueOf(param.get("pageSize"));
-		PageUtils pageUtil = new PageUtils(totalCountInt, pageSizeInt, currPage);
-		if(currPage == pageUtil.getTotalPage()-1){
-			result.put("limit", (totalCountInt%pageSizeInt));
-		}else {
-			result.put("limit", Integer.valueOf(param.get("pageSize")));
-		}
+		int pageSizeInt = Integer.valueOf(pageSize);
+		result.put("limit", pageSizeInt);
 		result.put("offset", currPage*pageSizeInt);
 		
 		return result;
