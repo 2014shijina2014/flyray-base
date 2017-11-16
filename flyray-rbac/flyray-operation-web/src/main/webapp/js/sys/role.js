@@ -83,7 +83,7 @@ var vm = new Vue({
 			roleId:null,
 			roleName:null,
 			orgId:null,
-			parentName:null,
+			orgName:null,
 			remark:null,
 		}
 	},
@@ -97,14 +97,15 @@ var vm = new Vue({
             	orgZtree = $.fn.zTree.init($("#orgTree"), orgSetting, r.orgList);
                 var node = orgZtree.getNodeByParam("orgId", vm.role.orgId);
                 orgZtree.selectNode(node);
-
+                console.log('node.name')
+                console.log(node.name)
                 vm.role.orgName = node.name;
             })
         },
 		add: function(){
 			vm.showList = false;
 			vm.title = "新增";
-			vm.role = {orgId:0};
+			vm.role = {orgName:null,orgId:0};
 			vm.getOrg();
 			vm.getMenuTree(null);
 		},
