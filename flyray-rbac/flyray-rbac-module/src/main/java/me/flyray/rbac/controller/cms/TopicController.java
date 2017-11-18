@@ -30,8 +30,6 @@ import me.flyray.rest.model.Parameter;
 @RequestMapping("/cms/topic")
 public class TopicController extends AbstractController {
 	@Autowired
-	private TopicService topicService;
-	@Autowired
 	private ApiProvider apiProvider;
 	@Value("${rest_home_imgPath}")
 	private String imgPath;
@@ -45,7 +43,6 @@ public class TopicController extends AbstractController {
 		logger.info("flyray-operation话题列表---请求参数:{}",params);
 		Parameter parameter = new Parameter("topicService", "queryList");
 		parameter.setMap(getCommonQueryParam());
-		Map<String, Object> map = new HashMap<>();
 		parameter.setMap(params);
 		List<?> list = apiProvider.execute(parameter).getList();
 		int total = list.size();
@@ -87,7 +84,9 @@ public class TopicController extends AbstractController {
 			Boolean flag = ImageBase64.generateImage(img64[1], url);
 			map.put("img", newName);
 		}
-		topicService.save(map);
+		Parameter parameter = new Parameter("topicService", "save");
+		parameter.setMap(map);
+		apiProvider.execute(parameter);
 		return R.ok();
 		
 	}
