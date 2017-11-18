@@ -63,14 +63,20 @@ public class SysRoleController extends AbstractController {
 	 */
 	@RequestMapping("/select")
 	@RequiresPermissions("sys:role:select")
-	public R select(){
-		Map<String, Object> map = new HashMap<>();
+	public R select(@RequestParam("orgId") Long orgId){
+		System.out.println(orgId);
+		List<SysRoleEntity> list = null;
 		
-		//如果不是超级管理员，则只查询自己所拥有的角色列表
-		if(getUserId() != Constant.SUPER_ADMIN){
-			map.put("createUserId", getUserId());
+		if (orgId != null) {
+			Map<String, Object> map = new HashMap<>();
+			
+			//如果不是超级管理员，则只查询自己所拥有的角色列表
+			if(getUserId() != Constant.SUPER_ADMIN){
+				map.put("createUserId", getUserId());
+			}
+			map.put("orgId", orgId);
+			list = sysRoleService.queryList(map);
 		}
-		List<SysRoleEntity> list = sysRoleService.queryList(map);
 		
 		return R.ok().put("list", list);
 	}

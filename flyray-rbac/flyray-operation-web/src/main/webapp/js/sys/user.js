@@ -84,6 +84,7 @@ var vm = new Vue({
             })
         },
         orgTree: function(){
+        	var that = this;
             layer.open({
                 type: 1,
                 offset: '50px',
@@ -102,6 +103,8 @@ var vm = new Vue({
                     vm.user.orgName = node[0].name;
                     console.log(vm.user)
                     layer.close(index);
+                    //获取角色信息
+                    that.getRoleList();
                 }
             });
         },
@@ -113,7 +116,7 @@ var vm = new Vue({
 			vm.title = "新增";
 			vm.getOrg();
 			vm.roleList = {};
-			vm.user = {status:1,roleIdList:[]};
+			vm.user = {status:1,roleIdList:[],orgName:null,orgId:0};
 			
 			//获取角色信息
 			this.getRoleList();
@@ -178,7 +181,7 @@ var vm = new Vue({
 			});
 		},
 		getRoleList: function(){
-			$.get("../sys/role/select", function(r){
+			$.get("../sys/role/select?orgId="+vm.user.orgId, function(r){
 				vm.roleList = r.list;
 			});
 		},
