@@ -23,7 +23,7 @@ img{max-width:100%;}
 /*end reset*/
 /****-----start-body----****/
 body{
-	background: #0BE093;
+	background: rgb(26, 179, 148);
   font-family: 'Open Sans', sans-serif;
 }
 body a,form li,.submit input[type="submit"],.new h3 a,.new h4 a{
@@ -105,8 +105,8 @@ form {
     outline: none;
     padding: 17px 15px;
     width: 100%;
-    border: 3px solid #0bd38a;
-    background: #0bd38a;
+    border: 3px solid rgb(26, 179, 148);
+    background: rgb(26, 179, 148);
     border-radius: 0.3em;
     -o-border-radius: 0.3em;
     -webkit-border-radius: 0.3em;
