@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="me.flyray.rbac.dao.SysRoleOrgDao">
+	
+	<insert id="save">
+		INSERT INTO sys_role_org (
+			role_id,
+			org_id
+		)
+		VALUES
+		(
+			#{roleId}, 
+			#{orgId} 
+		)
+	</insert>
+	
+	<select id="listOrgId" resultType="long">
+		SELECT
+			org_id
+		FROM
+			sys_role_org
+		WHERE
+			role_id = #{roleId}
+	</select>
+	
+	<select id="listRoleId" resultType="long">
+		SELECT
+			role_id
+		FROM
+			sys_role_org
+		WHERE
+			org_id = #{orgId}
+	</select>
+	
+	<delete id="batchRemoveByOrgId">
+		DELETE
+		FROM
+			sys_role_org
+		WHERE
+			org_id IN 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+	
+	<delete id="batchRemoveByRoleId">
+		DELETE
+		FROM
+			sys_role_org
+		WHERE
+			role_id IN 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<delete id="delete">
+		DELETE
+		FROM 
+			sys_role_org
+		WHERE 
+			role_id = #{id}
+	</delete>
+
+</mapper>
