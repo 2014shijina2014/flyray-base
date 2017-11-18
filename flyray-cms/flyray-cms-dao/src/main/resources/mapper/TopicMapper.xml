@@ -79,4 +79,7 @@
 	<select id="selectById" resultType="me.flyray.cms.model.Topic" parameterType="java.lang.String">
 		select * from cms_topic where id = #{id,jdbcType=VARCHAR}
 	</select>
+	<select id="queryById" resultType="me.flyray.cms.model.Topic">
+		select * from cms_topic where id = #{id}
+	</select>
 </mapper>

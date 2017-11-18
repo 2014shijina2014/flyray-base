@@ -68,11 +68,9 @@ var vm = new Vue({
 			if(id == null){
 				return ;
 			}
-			
 			vm.showList = false;
             vm.title = "修改";
-			
-			vm.getPayChannel(id);
+            vm.getTopic(id);
 		},
 		del: function () {
 			var ids = getSelectedRows();
@@ -98,10 +96,9 @@ var vm = new Vue({
 			});
 		},
 		saveOrUpdate: function (event) {
-			var url = vm.id == null ? "../cms/topic/save" : "../pay/payChannel/update";
-			var obj = document.getElementById("flyrayEdt");  
+			var url = vm.id == null ? "../cms/topic/save" : "../cms/topic/save";
+			var obj = document.getElementById("con");  
 		    vm.content = obj.innerHTML;
-		    alert(vm.content);
 			$.ajax({
 				type: "POST",
 			    url: url,
@@ -117,9 +114,14 @@ var vm = new Vue({
 				}
 			});
 		},
-		getPayChannel: function(id){
-			$.get("../pay/payChannel/info/"+id, function(r){
-				vm.payChannel = r.payChannel;
+		getTopic: function(topicId){
+			$.get("../cms/topic/info/"+topicId, function(r){
+				vm.titles = r.topic.title;
+				var contents = r.topic.content;
+				var obj = document.getElementById("con");  
+			    obj.innerHTML = contents;
+				vm.discription = r.topic.discription;
+				vm.id = r.topic.id;
 			});
 		},
 		reload: function (event) {

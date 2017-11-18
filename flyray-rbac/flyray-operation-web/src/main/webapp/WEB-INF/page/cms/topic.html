@@ -25,6 +25,7 @@
     
     <div v-show="!showList" class="panel panel-default">
 		<div class="panel-heading">{{title}}</div>
+		<input type="hidden" v-model="id"/>
 		<form class="form-horizontal" enctype="multipart/form-data">
 			<div class="form-group">
 			   	<div class="col-sm-2 control-label">标题</div>
@@ -36,7 +37,7 @@
 			   	<div class="col-sm-2 control-label">内容</div>
 			   	<div class="col-sm-10">
 			      <div id="flyrayEdt">
-			        <p>请输入内容...</p>
+			        <p id="con">请输入内容...</p>
 			    </div>
 			    </div>
 			</div>

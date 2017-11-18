@@ -10,6 +10,7 @@ import java.util.Map;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,13 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import me.flyray.cms.api.TopicService;
+import me.flyray.cms.model.Topic;
 import me.flyray.common.utils.ImageBase64;
 import me.flyray.common.utils.SnowFlake;
 import me.flyray.rbac.annotation.SysLog;
 import me.flyray.rbac.controller.AbstractController;
+import me.flyray.rbac.entity.SysUserEntity;
 import me.flyray.rbac.utils.PageUtils;
 import me.flyray.rbac.utils.R;
 import me.flyray.rest.api.ApiProvider;
+import me.flyray.rest.model.BaseModel;
 import me.flyray.rest.model.Parameter;
 
 @RestController
@@ -65,16 +69,13 @@ public class TopicController extends AbstractController {
 	    String title = (String)params.get("title");
 		String imgFile64 = (String)params.get("imgFile");
 		String id = (String)params.get("id");
-		if(id==null ||"".equals(id)) {
-			 id = SnowFlake.getId()+"";
-		}
-		map.put("id", id);
+		
 		map.put("content", content);
 		map.put("discription", discription);
 		map.put("title", title);
 		map.put("createBy", getUserId());
 		map.put("createTime", new Timestamp(new Date().getTime()));
-		if ("" != imgFile64 && null != imgFile64) {
+		if (!"".equals(imgFile64)  && null != imgFile64) {
 			String img64[] = imgFile64.split(",");
 			String imgFileName = (String)params.get("imgFileName");
 			String suffix = imgFileName.substring(imgFileName.lastIndexOf(".") + 1);  
@@ -84,9 +85,20 @@ public class TopicController extends AbstractController {
 			Boolean flag = ImageBase64.generateImage(img64[1], url);
 			map.put("img", newName);
 		}
-		Parameter parameter = new Parameter("topicService", "save");
-		parameter.setMap(map);
-		apiProvider.execute(parameter);
+		if(id==null ||"".equals(id)) {
+			 id = SnowFlake.getId()+"";
+			 map.put("id", id);
+				Parameter parameter = new Parameter("topicService", "save");
+				parameter.setMap(map);
+				apiProvider.execute(parameter);
+		}else {
+			map.put("id", id);
+			Parameter parameter = new Parameter("topicService", "update");
+			parameter.setMap(map);
+			apiProvider.execute(parameter);
+		}
+		
+
 		return R.ok();
 		
 	}
@@ -101,5 +113,17 @@ public class TopicController extends AbstractController {
 		logger.info("flyray-merchant修改专栏信息---请求参数{}",params);
 		
 		return R.ok();
+	}
+	/**
+	 * 获取单个话题详情
+	 */
+	@RequestMapping("/info/{topicId}")
+	@RequiresPermissions("cms:topic:info")
+	public R info(@PathVariable("topicId") Long topicId){
+		Parameter parameter = new Parameter("topicService", "queryById");
+		parameter.setId(topicId);
+		Map<?, ?> map1 = apiProvider.execute(parameter).getMap();
+		
+		return R.ok().put("topic", map1);
 	}
 }
