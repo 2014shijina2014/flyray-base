@@ -47,7 +47,7 @@
 		</dependency>
 		
 		<!-- 分布式事物 -->
-		<dependency>
+		<!-- <dependency>
 	        <groupId>org.mengyun</groupId>
 	        <artifactId>tcc-transaction-spring</artifactId>
 	        <version>1.2.4.15</version>
@@ -57,7 +57,7 @@
 		    <groupId>org.mengyun</groupId>
 		    <artifactId>tcc-transaction-dubbo</artifactId>
 		    <version>1.2.4.15</version>
-		 </dependency>
+		 </dependency> -->
 		
 		<!-- dubbo -->
 		<dependency>

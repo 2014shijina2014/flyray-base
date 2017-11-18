@@ -28,18 +28,6 @@
         <dependent-module archiveName="flyray-cms-api-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-cms-api/flyray-cms-api">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="tcc-transaction-spring-1.2.4.15.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/tcc-transaction-spring/tcc-transaction-spring">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="tcc-transaction-core-1.2.4.15.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/tcc-transaction-core/tcc-transaction-core">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="tcc-transaction-api-1.2.4.15.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/tcc-transaction-api/tcc-transaction-api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="tcc-transaction-dubbo-1.2.4.15.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/tcc-transaction-dubbo/tcc-transaction-dubbo">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="flyray-rbac-shiro-2.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/flyray-rbac-shiro/flyray-rbac-shiro">
             <dependency-type>uses</dependency-type>
         </dependent-module>
