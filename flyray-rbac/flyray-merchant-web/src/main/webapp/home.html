@@ -1,71 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>飞雷商户中心</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="statics/css/bootstrap.min.css">
-  <link rel="stylesheet" href="statics/css/font-awesome.min.css">
-  <link rel="stylesheet" href="statics/css/AdminLTE.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="statics/css/all-skins.min.css">
-  <link rel="stylesheet" href="statics/css/main.css">
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-  <style type="text/css">
-	.login-logo {color: #1ab394;}
-	.login-page{background-color: #393D49 !important;}
-	.login-btn {border-color: #1ab394 !important;background-color: #1ab394 !important;}
-  </style>
+<title>飞雷运营中心</title>
+<link rel="stylesheet" href="statics/css/login.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="App Loction Form,Login Forms,Sign up Forms,Registration Forms,News latter Forms,Elements"./>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+</script>
+<!--webfonts-->
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+<!--//webfonts-->
 </head>
-<body class="hold-transition login-page">
-<div class="login-box" id="rrapp" v-cloak>
-  <div class="login-logo">
-    <b>飞雷商户中心</b>
-  </div>
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-      <p class="login-box-msg">管理员登录</p>
-      <div v-if="error" class="alert alert-danger alert-dismissible">
-        <h4 style="margin-bottom: 0px;"><i class="fa fa-exclamation-triangle"></i> {{errorMsg}}</h4>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="text" class="form-control" v-model="username" placeholder="账号">
-        <span class="glyphicon glyphicon-user form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" v-model="password" placeholder="密码">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <input type="text" class="form-control" v-model="captcha" @keyup.enter="login" placeholder="验证码">
-        <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
-      </div>
-      <div class="form-group has-feedback">
-        <img alt="如果看不清楚，请单击图片刷新！" class="pointer" :src="src" @click="refreshCode">
-        &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" @click="refreshCode">点击刷新</a>
-      </div>
-      
-      <div class="row">
-        <!-- /.col -->
-        <div class="" style="width: 100%;">
-          <button type="button" class="login-btn btn btn-primary btn-block btn-flat" @click="login">登录</button>
-        </div>
-        <!-- /.col -->
-      </div>
-    <!-- /.social-auth-links -->
-
-  </div>
-  <!-- /.login-box-body -->
-</div>
-<!-- /.login-box -->
+<body>
+	<h1>welcome</h1>
+		<div class="app-location" id="rrapp" v-cloak>
+			<h2>飞雷运营中心</h2>
+			<div class="line"><span></span></div>
+			<div class="location"><img src="statics/img/location.png" class="img-responsive" alt="" /></div>
+			<div v-if="error" class="alert alert-danger alert-dismissible">
+		        <h4 style="margin-bottom: 0px;color:#fff"><i class="fa fa-exclamation-triangle"></i> {{errorMsg}}</h4>
+		    </div>
+			<form>
+				<input type="text" class="text" v-model="username" placeholder="账号" >
+				<input type="password" v-model="password" placeholder="密码">
+				<input type="text" v-model="captcha" @keyup.enter="login" placeholder="验证码">
+				<div class="form-group has-feedback" style="height: 60px;margin: 0.7em 1.6em;line-height: 60px;">
+			        <img alt="如果看不清楚，请单击图片刷新！" style="float: left;padding-top: 5px;" class="pointer" :src="src" @click="refreshCode">
+			        &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" style="color: #fff;" @click="refreshCode">点击刷新</a>
+			    </div>
+				<div class="login" @click="login">登陆</div>
+				<div class="clear"></div>
+				<div class="new">
+					<h3><a href="#">忘记密码 ?</a></h3>
+					<h4><a href="#">注册</a></h4>
+					<div class="clear"></div>
+				</div>
+			</form>
+		</div>
+	<!--start-copyright-->
+   		<div class="copy-right">
+				<p>Copyright &copy; 2015.Company name All rights reserved <a href="http://www.flyray.me/" target="_blank" title="飞雷">飞雷</a> - Collect from <a href="http://www.flyray.me/" title="飞雷" target="_blank">飞雷</a></p>
+		</div>
+	<!--//end-copyright-->
+</body>
 <script src="statics/libs/jquery.min.js"></script>
 <script src="statics/libs/vue.min.js"></script>
 <script src="statics/libs/bootstrap.min.js"></script>
@@ -114,5 +92,4 @@ var vm = new Vue({
 	}
 });
 </script>
-</body>
 </html>

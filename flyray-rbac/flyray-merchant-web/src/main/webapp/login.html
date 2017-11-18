@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>飞雷商户中心</title>
+<title>飞雷运营中心</title>
 <link rel="stylesheet" href="statics/css/login.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -15,9 +15,12 @@
 <body>
 	<h1>welcome</h1>
 		<div class="app-location" id="rrapp" v-cloak>
-			<h2>飞雷商户中心</h2>
+			<h2>飞雷运营中心</h2>
 			<div class="line"><span></span></div>
 			<div class="location"><img src="statics/img/location.png" class="img-responsive" alt="" /></div>
+			<div v-if="error" class="alert alert-danger alert-dismissible">
+		        <h4 style="margin-bottom: 0px;color:#fff"><i class="fa fa-exclamation-triangle"></i> {{errorMsg}}</h4>
+		    </div>
 			<form>
 				<input type="text" class="text" v-model="username" placeholder="账号" >
 				<input type="password" v-model="password" placeholder="密码">
@@ -26,7 +29,7 @@
 			        <img alt="如果看不清楚，请单击图片刷新！" style="float: left;padding-top: 5px;" class="pointer" :src="src" @click="refreshCode">
 			        &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" style="color: #fff;" @click="refreshCode">点击刷新</a>
 			    </div>
-				<div class="submit"><input type="submit" @click="login" ></div>
+				<div class="login" @click="login">登陆</div>
 				<div class="clear"></div>
 				<div class="new">
 					<h3><a href="#">忘记密码 ?</a></h3>

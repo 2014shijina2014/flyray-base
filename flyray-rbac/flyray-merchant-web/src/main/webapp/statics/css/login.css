@@ -96,6 +96,23 @@ form {
   .submit {
   margin: 1em 0;
   }
+  
+.login{
+    font-size: 20px;
+    font-weight: 300;
+    color: #fff;
+    cursor: pointer;
+    outline: none;
+    padding: 17px 15px;
+    width: 100%;
+    border: 3px solid #0bd38a;
+    background: #0bd38a;
+    border-radius: 0.3em;
+    -o-border-radius: 0.3em;
+    -webkit-border-radius: 0.3em;
+    -moz-border-radius: 0.3em;
+}
+
 .app-location input[type="submit"]{
   font-size: 20px;
   font-weight: 300;
