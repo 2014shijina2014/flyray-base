@@ -41,6 +41,20 @@ $(function () {
     });
 });
 
+var orgSetting = {
+	    data: {
+	        simpleData: {
+	            enable: true,
+	            idKey: "orgId",
+	            pIdKey: "parentId",
+	            rootPId: -1
+	        },
+	        key: {
+	            url:"nourl"
+	        }
+	    }
+	};
+
 var vm = new Vue({
 	el:'#rrapp',
 	data:{
@@ -52,16 +66,52 @@ var vm = new Vue({
 		roleList:{},
 		user:{
 			status:1,
+			orgId:null,
+			orgName:null,
 			roleIdList:[]
 		}
 	},
 	methods: {
+		getOrg: function(){
+            //加载部门树
+            $.get(baseURL + "sys/org/select", function(r){
+            	orgZtree = $.fn.zTree.init($("#orgTree"), orgSetting, r.orgList);
+                var node = orgZtree.getNodeByParam("orgId", vm.user.orgId);
+                orgZtree.selectNode(node);
+                console.log('node.name')
+                console.log(node.name)
+                vm.user.orgName = node.name;
+            })
+        },
+        orgTree: function(){
+            layer.open({
+                type: 1,
+                offset: '50px',
+                skin: 'layui-layer-molv',
+                title: "选择组织机构",
+                area: ['300px', '450px'],
+                shade: 0,
+                shadeClose: false,
+                content: jQuery("#orgLayer"),
+                btn: ['确定', '取消'],
+                btn1: function (index) {
+                    var node = orgZtree.getSelectedNodes();
+                    //选择上级部门
+                    console.log(node[0])
+                    vm.user.orgId = node[0].orgId;
+                    vm.user.orgName = node[0].name;
+                    console.log(vm.user)
+                    layer.close(index);
+                }
+            });
+        },
 		query: function () {
 			vm.reload();
 		},
 		add: function(){
 			vm.showList = false;
 			vm.title = "新增";
+			vm.getOrg();
 			vm.roleList = {};
 			vm.user = {status:1,roleIdList:[]};
 			
