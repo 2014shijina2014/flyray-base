@@ -10,8 +10,8 @@ var vm = new Vue({
 
 		option = {
 			    title : {
-			        text: '某地区蒸发量和降水量',
-			        subtext: '纯属虚构'
+			        text: '用户活跃周期',
+			        subtext: '来源微信公众号用户'
 			    },
 			    tooltip : {
 			        trigger: 'axis'
@@ -84,7 +84,7 @@ var vm = new Vue({
 		option1 = {
 			    title : {
 			        text: '某站点用户访问来源',
-			        subtext: '纯属虚构',
+			        subtext: '来源微信公众号用户',
 			        x:'center'
 			    },
 			    tooltip : {
@@ -140,8 +140,8 @@ var vm = new Vue({
 		var myChart2 = echarts.init(document.getElementById('main2'));
 		option2 = {
 			    title : {
-			        text: '某楼盘销售情况',
-			        subtext: '纯属虚构'
+			        text: '用户活跃时间段',
+			        subtext: '来源微信公众号用户'
 			    },
 			    tooltip : {
 			        trigger: 'axis'
@@ -202,7 +202,7 @@ var vm = new Vue({
 		option3 = {
 			    title : {
 			        text: '漏斗图',
-			        subtext: '纯属虚构'
+			        subtext: '来源微信公众号用户'
 			    },
 			    tooltip : {
 			        trigger: 'item',
@@ -218,12 +218,12 @@ var vm = new Vue({
 			        }
 			    },
 			    legend: {
-			        data : ['展现','点击','访问','咨询','订单']
+			        data : ['进入用户总数','评论用户总数','转发用户总数','参加活动总数','邀请用户总数']
 			    },
 			    calculable : true,
 			    series : [
 			        {
-			            name:'漏斗图',
+			            name:'用户漏斗图',
 			            type:'funnel',
 			            x: '10%',
 			            y: 60,
@@ -274,11 +274,11 @@ var vm = new Vue({
 			                }
 			            },
 			            data:[
-			                {value:60, name:'访问'},
-			                {value:40, name:'咨询'},
-			                {value:20, name:'订单'},
-			                {value:80, name:'点击'},
-			                {value:100, name:'展现'}
+			                {value:60, name:'进入用户总数'},
+			                {value:40, name:'评论用户总数'},
+			                {value:20, name:'转发用户总数'},
+			                {value:80, name:'参加活动总数'},
+			                {value:100, name:'邀请用户总数'}
 			            ]
 			        }
 			    ]

@@ -20,4 +20,9 @@
 	
 	<import resource="classpath*:spring-redis.xml" />
 	
+	<!-- TCC Transaction --> 
+	<!-- <import resource="classpath*:tcc-transaction.xml" />
+	
+	<import resource="classpath*:tcc-transaction-dubbo.xml" /> -->
+	
 </beans>
