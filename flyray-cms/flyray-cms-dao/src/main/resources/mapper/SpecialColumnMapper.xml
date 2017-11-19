@@ -6,11 +6,14 @@
 
 	<sql id="where1">
 		<trim prefix="where" prefixOverrides="AND|OR">
-			<if test="customerId != null and customerId != ''">
-				AND customer_id = #{customerId,jdbcType=INTEGER}
+			<if test="columnName != null and columnName != ''">
+				AND column_name = #{columnName}
 	        </if>
-	        <if test="specialColumnId != null and specialColumnId != ''">
-				AND special_column_id = #{specialColumnId,jdbcType=INTEGER}
+	        <if test="columnStatus != null and columnStatus != ''">
+				AND column_status = #{columnStatus}
+	        </if>
+	        <if test="createBy != null and createBy != ''">
+				AND create_by = #{createBy}
 	        </if>
 		</trim>
 	</sql>
@@ -24,7 +27,9 @@
 	</select>
 
 	<select id="queryList" resultType="me.flyray.cms.model.SpecialColumn">
-		select * from cms_special_column order by id desc
+		select * from cms_special_column 
+		<include refid="where1"/>
+		order by id desc
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>

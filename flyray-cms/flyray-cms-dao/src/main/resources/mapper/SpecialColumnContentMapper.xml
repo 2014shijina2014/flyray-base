@@ -3,7 +3,21 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="me.flyray.cms.dao.SpecialColumnContentDao">
-
+	
+	<sql id="where1">
+		<trim prefix="where" prefixOverrides="AND|OR">
+			<if test="columnContentTitle != null and columnContentTitle != ''">
+				AND columnContentTitle = #{column_content_title}
+	        </if>
+	        <if test="specialColumnId != null and specialColumnId != ''">
+				AND special_column_id = #{specialColumnId}
+	        </if>
+	        <if test="createBy != null and createBy != ''">
+				AND create_by = #{createBy}
+	        </if>
+		</trim>
+	</sql>
+	
 	<select id="queryObject" resultType="me.flyray.cms.model.SpecialColumnContent">
 		select * from cms_special_column_content where id = #{id}
 	</select>
@@ -13,7 +27,9 @@
 	</select>
 
 	<select id="queryList" resultType="me.flyray.cms.model.SpecialColumnContent">
-		select * from cms_special_column_content order by id desc
+		select * from cms_special_column_content 
+		<include refid="where1"/>
+		order by id desc 
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
