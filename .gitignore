@@ -57,3 +57,4 @@ flyray-rest/flyray-rest-util/flyray-rest-util.iml
 flyray-rest/flyray-rest-web/flyray-rest-web.iml
 flyray-rest/flyray-rest.iml
 flyray-search/flyray-search.iml
+flyray-rbac/flyray-rbac-module/flyray-rbac-module.iml
