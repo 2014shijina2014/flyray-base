@@ -56,6 +56,11 @@ var vm = new Vue({
 		add: function(){
 			vm.showList = false;
 			vm.title = "新增";
+			vm.payChannel = {
+                payChannelNo:null,
+                payCompanyNo:null,
+                feeRatio:null,
+            }
 		},
 		update: function () {
 			var id = getSelectedRow();
@@ -63,10 +68,10 @@ var vm = new Vue({
 				return ;
 			}
 			
-			vm.showList = false;
+
             vm.title = "修改";
-			
 			vm.getPayChannel(id);
+            vm.showList = false;
 		},
 		del: function () {
 			var ids = getSelectedRows();
@@ -78,6 +83,7 @@ var vm = new Vue({
 				$.ajax({
 					type: "POST",
 				    url: "../pay/payChannel/delete",
+                    contentType: "application/json",
 				    data: JSON.stringify(ids),
 				    success: function(r){
 						if(r.code == 0){
@@ -96,6 +102,7 @@ var vm = new Vue({
 			$.ajax({
 				type: "POST",
 			    url: url,
+                contentType: "application/json",
 			    data: JSON.stringify(vm.payChannel),
 			    success: function(r){
 			    	if(r.code === 0){

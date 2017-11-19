@@ -1,26 +1,21 @@
 package me.flyray.rbac.controller.pay;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.shiro.authz.annotation.RequiresPermissions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
 import me.flyray.rbac.annotation.SysLog;
 import me.flyray.rbac.controller.AbstractController;
-import me.flyray.rbac.entity.SysConfigEntity;
 import me.flyray.rbac.utils.PageUtils;
 import me.flyray.rbac.utils.R;
 import me.flyray.rest.api.ApiProvider;
 import me.flyray.rest.model.Parameter;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /** 
 * @author: bolei
@@ -121,11 +116,9 @@ public class PayChannelController extends AbstractController {
 	public R delete(@RequestBody Long[] ids){
 		
 		Parameter parameter = new Parameter("payChannelService", "deleteBatch");
-		Map<String, Object> map = new HashMap<>();
-		map.put("ids", ids);
-		parameter.setMap(map);
+		List<Long> list= Arrays.asList(ids);
+		parameter.setList(list);
 		apiProvider.execute(parameter);
-		
 		return R.ok();
 	}
 	
