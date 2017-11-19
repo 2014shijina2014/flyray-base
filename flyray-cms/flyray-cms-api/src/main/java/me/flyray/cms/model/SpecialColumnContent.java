@@ -31,6 +31,11 @@ public class SpecialColumnContent extends BaseModel {
 	private String columnContent;
 	
 	/**
+	 * 专栏具体内容logo
+	 */
+	private String columnContentLogo;
+	
+	/**
 	 * 创建时间
 	 */
 	private String createTime;
@@ -86,6 +91,14 @@ public class SpecialColumnContent extends BaseModel {
 
 	public void setCreateBy(Long createBy) {
 		this.createBy = createBy;
+	}
+
+	public String getColumnContentLogo() {
+		return columnContentLogo;
+	}
+
+	public void setColumnContentLogo(String columnContentLogo) {
+		this.columnContentLogo = columnContentLogo;
 	}
 	
 }

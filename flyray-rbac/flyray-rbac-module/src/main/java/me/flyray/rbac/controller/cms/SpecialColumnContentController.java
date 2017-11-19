@@ -43,14 +43,14 @@ private static final Logger logger = LoggerFactory.getLogger(SpecialColumnContro
 	@RequiresPermissions("cms:specialColumnContent:list")
 	public R list(@RequestParam Map<String, Object> params){
 		//查询列表数据
-		logger.info("flyray-merchant请求查询专栏列表---请求参数:{}",params);
-		Parameter parameter = new Parameter("specialColumnService", "queryList");
+		logger.info("flyray-module请求查询专栏列表---请求参数:{}",params);
+		Parameter parameter = new Parameter("specialColumnContentService", "queryList");
 		parameter.setMap(getCommonQueryParam());
 		Map<String, Object> map = new HashMap<>();
 		parameter.setMap(map);
 		List<?> list = apiProvider.execute(parameter).getList();
 		int total = list.size();
-		logger.info("flyray-merchant请求查询专栏列表---查询结果size:{}",total);
+		logger.info("flyray-module请求查询专栏列表---查询结果size:{}",total);
 		PageUtils pageUtil = new PageUtils(list, total, 10, 1);
 		return R.ok().put("page", pageUtil);
 	}
@@ -62,28 +62,25 @@ private static final Logger logger = LoggerFactory.getLogger(SpecialColumnContro
 	@RequestMapping("/info/{id}")
 	@RequiresPermissions("cms:specialColumnContent:info")
 	public R info(@PathVariable("id") Long id){
-		logger.info("flyray-merchant请求查询专栏信息---请求参数:{}",id);
-		Parameter parameter = new Parameter("specialColumnService", "queryById");
+		logger.info("flyray-module请求查询专栏信息---请求参数:{}",id);
+		Parameter parameter = new Parameter("specialColumnContentService", "queryById");
 		parameter.setId(id);
 		Map<?, ?> map = apiProvider.execute(parameter).getMap();
-		logger.info("flyray-merchant请求查询专栏信息---返回参数:{}",map);
+		logger.info("flyray-module请求查询专栏信息---返回参数:{}",map);
 		return R.ok().put("payChannel", map);
 	}
 	
-	/**
-	 * 添加专栏
-	 */
 	@SysLog("保存配置")
 	@RequestMapping("/save")
 	@RequiresPermissions("cms:specialColumnContent:save")
 	public R save(@RequestBody Map<String, Object> params){
-		
-		logger.info("flyray-merchant保存专栏信息---请求参数：{}",params);
-		Parameter parameter = new Parameter("specialColumnService", "save");
+		Long createBy=this.getUserId();
+		logger.info("flyray-module保存专栏信息---请求参数：{}",params);
+		Parameter parameter = new Parameter("specialColumnContentService", "save");
 		Map<String, Object> map = new HashMap<>();
-		map.put("payChannelNo", params.get("payChannelNo"));
-		map.put("payCompanyNo", params.get("payCompanyNo"));
-		map.put("feeRatio", params.get("feeRatio"));
+		map.put("columnContentTitle", params.get("columnContentTitle"));
+		map.put("columnContent", params.get("columnContent"));
+		map.put("createBy", createBy);
 		map.putAll(getCommonSaveParam());
 		parameter.setMap(map);
 		apiProvider.execute(parameter);
@@ -99,12 +96,11 @@ private static final Logger logger = LoggerFactory.getLogger(SpecialColumnContro
 	@RequiresPermissions("cms:specialColumnContent:update")
 	public R update(@RequestBody Map<String, Object> params){
 		
-		logger.info("flyray-merchant修改专栏信息---请求参数{}",params);
-		Parameter parameter = new Parameter("specialColumnService", "update");
+		logger.info("flyray-module修改专栏信息---请求参数{}",params);
+		Parameter parameter = new Parameter("specialColumnContentService", "update");
 		Map<String, Object> map = new HashMap<>();
-		map.put("payChannelNo", params.get("payChannelNo"));
-		map.put("payCompanyNo", params.get("payCompanyNo"));
-		map.put("feeRatio", params.get("feeRatio"));
+		map.put("columnContentTitle", params.get("columnContentTitle"));
+		map.put("columnContent", params.get("columnContent"));
 		map.put("id", params.get("id"));
 		parameter.setMap(map);
 		apiProvider.execute(parameter);
@@ -120,7 +116,7 @@ private static final Logger logger = LoggerFactory.getLogger(SpecialColumnContro
 	@RequiresPermissions("cms:specialColumnContent:delete")
 	public R delete(@RequestBody Long[] ids){
 		
-		Parameter parameter = new Parameter("specialColumnService", "deleteBatch");
+		Parameter parameter = new Parameter("specialColumnContentService", "deleteBatch");
 		Map<String, Object> map = new HashMap<>();
 		map.put("ids", ids);
 		parameter.setMap(map);
