@@ -37,6 +37,7 @@ import me.flyray.crm.api.CustomerRoleRelationsService;
 import me.flyray.crm.api.CustomerRoleService;
 import me.flyray.crm.api.WeixinCommonService;
 import me.flyray.crm.enums.AccountType;
+import me.flyray.crm.model.CustomerAccount;
 import me.flyray.crm.model.CustomerBase;
 import me.flyray.crm.model.CustomerRelations;
 import me.flyray.rest.util.ResponseHelper;
@@ -310,14 +311,11 @@ public class CustomerController {
 			invitedCustomer.setInvitedTime(invitedTime);
 			customerRelationsService.insert(invitedCustomer);
 		}
-		Map<String, Object> accountQueryMap = new HashMap<>();
-		accountQueryMap.put("accountType", AccountType.POINTS.getCode());
-		accountQueryMap.put("customerId", inviterId);
-		Map<String, Object> accountMap = customerAccountService.queryObject(accountQueryMap);
-		String value = (String)accountQueryMap.get("value");
-		int v = Integer.valueOf(value)+5;
-		accountMap.put(value, String.valueOf(v));
-		customerAccountService.update(accountMap);
+		
+		CustomerAccount customerAccount = new CustomerAccount();
+		customerAccount.setAccountType(AccountType.POINTS.getCode());
+		customerAccount.setCustomerId(inviterId);
+		customerAccountService.deposit(customerAccount, "5");
 		return ResponseHelper.success(userMap,null, "00", "邀请成功");
 	}
 	
