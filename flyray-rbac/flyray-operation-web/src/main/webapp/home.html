@@ -23,7 +23,7 @@
 				<input type="text" class="text" v-model="username" placeholder="账号" >
 				<input type="password" v-model="password" placeholder="密码">
 				<input type="text" v-model="captcha" @keyup.enter="login" placeholder="验证码">
-				<div class="form-group has-feedback" style="height: 60px;margin: 0.7em 1.6em;line-height: 60px;">
+				<div class="form-group has-feedback" style="height: 60px;margin: 0.7em 1.6em;line-height: 60px;min-width: 290px;">
 			        <img alt="如果看不清楚，请单击图片刷新！" style="float: left;padding-top: 5px;" class="pointer" :src="src" @click="refreshCode">
 			        &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" style="color: #fff;" @click="refreshCode">点击刷新</a>
 			    </div>
