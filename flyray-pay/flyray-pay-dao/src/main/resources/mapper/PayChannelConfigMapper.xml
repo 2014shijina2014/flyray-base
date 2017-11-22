@@ -22,27 +22,50 @@
 	<insert id="save" parameterType="me.flyray.pay.model.PayChannelConfig" useGeneratedKeys="true" keyProperty="id">
 		insert into pay_channel_config
 		(
-			`url`, 
-			`create_date`
+			`id`
+			`pay_channel_no`,
+			`pay_company_no`,
+			`org_id`,
+			`merchant_id`,
+			`mer_account`,
+			`mer_key`,
+			`sing_type`
 		)
 		values
 		(
-			#{url}, 
-			#{createDate}
+			#{id}
+			#{payChannelNo},
+			#{payCompanyNo},
+			#{orgId},
+			#{merchantId},
+			#{merAccount},
+			#{merKey},
+			#{singType}
 		)
 	</insert>
 	 
 	<update id="update" parameterType="me.flyray.pay.model.PayChannelConfig">
 		update pay_channel_config 
 		<set>
-			<if test="url != null">`url` = #{url}, </if>
-			<if test="createDate != null">`create_date` = #{createDate}</if>
+			<if test="payChannelNo != null">`pay_channel_no` = #{payChannelNo}, </if>
+			<if test="payCompanyNo != null">`pay_company_no` = #{payCompanyNo}, </if>
+			<if test="orgId != null">`org_id` = #{orgId}, </if>
+			<if test="merchantId != null">`merchant_id` = #{merchantId}, </if>
+			<if test="merAccount != null">`mer_account` = #{merAccount}, </if>
+			<if test="merKey != null">`mer_key` = #{merKey}, </if>
+			<if test="singType != null">`sing_type` = #{singType}</if>
 		</set>
 		where id = #{id}
 	</update>
 	
 	<delete id="delete">
 		delete from pay_channel_config where id = #{value}
+	</delete>
+	<delete id="deleteBatch" parameterType="java.util.List">
+		delete from pay_channel_config where id in
+		<foreach item="id" collection="list" open="(" separator="," close=")">
+			#{id}
+		</foreach>
 	</delete>
   
 </mapper>

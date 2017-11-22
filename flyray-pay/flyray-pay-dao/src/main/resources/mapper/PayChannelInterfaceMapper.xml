@@ -22,27 +22,39 @@
 	<insert id="save" parameterType="me.flyray.pay.model.PayChannelInterface" useGeneratedKeys="true" keyProperty="id">
 		insert into pay_channel_interface
 		(
-			`url`, 
-			`create_date`
+			`pay_channel_no`,
+			`pay_company_no`,
+			`service_name`,
+			`trade_type`
 		)
 		values
 		(
-			#{url}, 
-			#{createDate}
+			#{payChannelNo},
+			#{payCompanyNo},
+			#{serviceName},
+			#{tradeType}
 		)
 	</insert>
 	 
 	<update id="update" parameterType="me.flyray.pay.model.PayChannelInterface">
 		update pay_channel_interface 
 		<set>
-			<if test="url != null">`url` = #{url}, </if>
-			<if test="createDate != null">`create_date` = #{createDate}</if>
+			<if test="payChannelNo != null">`pay_channel_no` = #{payChannelNo}, </if>
+			<if test="payCompanyNo != null">`pay_company_no` = #{payCompanyNo}, </if>
+			<if test="serviceName != null">`service_name` = #{serviceName}, </if>
+			<if test="tradeType != null">`trade_type` = #{tradeType}</if>
 		</set>
 		where id = #{id}
 	</update>
 	
 	<delete id="delete">
 		delete from pay_channel_interface where id = #{value}
+	</delete>
+	<delete id="deleteBatch" parameterType="java.util.List">
+		delete from pay_channel_interface where id in
+		<foreach item="id" collection="list" open="(" separator="," close=")">
+			#{id}
+		</foreach>
 	</delete>
   
 </mapper>
