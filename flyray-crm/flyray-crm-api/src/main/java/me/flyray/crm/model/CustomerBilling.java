@@ -1,12 +1,14 @@
 package me.flyray.crm.model;
 
+import java.io.Serializable;
+
 /** 
 * @author: bolei
 * @date：Jul 9, 2017 10:59:19 AM 
 * @description： 客户账单
 */
 
-public class CustomerBilling {
+public class CustomerBilling implements Serializable{
 
 	/**
 	 * 自增ID

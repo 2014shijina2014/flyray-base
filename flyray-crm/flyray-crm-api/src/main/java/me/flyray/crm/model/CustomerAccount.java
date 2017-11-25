@@ -1,6 +1,9 @@
 package me.flyray.crm.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
+
+import me.flyray.common.model.BaseModel;
 
 /** 
 * @author: bolei
@@ -8,7 +11,7 @@ import java.math.BigDecimal;
 * @description：客户账户
 */
 
-public class CustomerAccount {
+public class CustomerAccount implements Serializable{
 	
 	/**
 	 * 客户号
