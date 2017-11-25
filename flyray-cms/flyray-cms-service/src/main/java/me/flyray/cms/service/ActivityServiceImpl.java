@@ -2,6 +2,7 @@ package me.flyray.cms.service;
 
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,8 @@ import me.flyray.cms.api.ActivityService;
 import me.flyray.cms.dao.ActivityDao;
 import me.flyray.cms.model.Activity;
 import me.flyray.common.service.AbstractBaseService;
+import me.flyray.common.utils.BeanUtils;
+import me.flyray.crm.api.CustomerBaseService;
 
 /**
  * 
@@ -129,6 +132,22 @@ public class ActivityServiceImpl extends AbstractBaseService<Activity> implement
 	@Override
 	public Activity queryEntity(Activity activity) {
 		return activityDao.queryEntity(activity);
+	}
+
+	@Override
+	public List<Map<String, Object>> selectByMapKey(Map<String, Object> map) {
+		List<Map<String, Object>> respList = new ArrayList<>();
+		
+		try {
+			Activity activity = (Activity) BeanUtils.mapToObject(map, Activity.class);
+			List<Activity> actList = activityDao.selectByBizKeys(activity);
+			respList = (List<Map<String, Object>>) BeanUtils.objectToMap(actList) ;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return respList;
 	}
 
 }

@@ -25,4 +25,5 @@ public interface InterestGroupService extends BaseService{
 
 	public List<InterestGroup> query(Map<String, Object> queryGroupMap);
 	
+	public List<Map<String, Object>> selectByMapKey(Map<String, Object> map);
 }

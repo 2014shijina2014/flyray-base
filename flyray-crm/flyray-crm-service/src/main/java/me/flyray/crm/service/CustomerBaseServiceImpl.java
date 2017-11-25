@@ -1,6 +1,9 @@
 package me.flyray.crm.service;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -68,6 +71,22 @@ public class CustomerBaseServiceImpl extends AbstractBaseService<CustomerBase> i
 	public CustomerBase queryByCustomerNo(String customerNo) {
 		CustomerBase customerBase = customerBaseDao.queryByCustomerNo(customerNo);
 		return customerBase;
+	}
+
+	@Override
+	public Map<String, Object> selectByCustomerId(Map<String, Object> map) {
+		Map<String, Object> respMap = new HashMap<>();
+		
+		try {
+			CustomerBase customerBase = (CustomerBase) BeanUtils.mapToObject(map, CustomerBase.class);
+			CustomerBase respdto = customerBaseDao.queryByCustomerId(customerBase.getId());
+			respMap = (Map<String, Object>) BeanUtils.objectToMap(respdto);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return respMap;
 	}
 
 }

@@ -2,8 +2,11 @@ package me.flyray.cms.api;
 
 
 import java.util.List;
+import java.util.Map;
 
+import me.flyray.cms.model.ActivityCustomerModel;
 import me.flyray.cms.model.InterestGroupCustomer;
+import me.flyray.cms.model.InterestGroupCustomerModel;
 import me.flyray.common.service.BaseService;
 
 /**
@@ -29,4 +32,15 @@ public interface InterestGroupCustomerService extends BaseService{
 	 * @param interestGroupCustomer
 	 */
 	public void delete(InterestGroupCustomer interestGroupCustomer);
+	
+	/**
+	 * 根据条件查询团队列表及关注团队的人员信息
+	 * @author centerroot
+	 * @time 创建时间:2017年11月21日下午10:54:37
+	 * @param request
+	 * @return
+	 */
+	public List<InterestGroupCustomerModel> queryGroupCustomer(Map<String, Object> request);
+	
+	public List<Map<String, Object>> selectByMapKey(Map<String, Object> map);
 }

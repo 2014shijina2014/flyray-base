@@ -1,6 +1,7 @@
 package me.flyray.cms.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -9,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 import me.flyray.cms.api.InterestGroupService;
 import me.flyray.cms.dao.InterestGroupDao;
+import me.flyray.cms.model.Activity;
 import me.flyray.cms.model.InterestGroup;
 import me.flyray.common.service.AbstractBaseService;
+import me.flyray.common.utils.BeanUtils;
 
 /**
  * 
@@ -37,6 +40,21 @@ public class InterestGroupServiceImpl extends AbstractBaseService<InterestGroup>
 	@Override
 	public List<InterestGroup> query(Map<String, Object> queryGroupMap) {
 		return interestGroupDao.queryList(queryGroupMap);
+	}
+	@Override
+	public List<Map<String, Object>> selectByMapKey(Map<String, Object> map) {
+		List<Map<String, Object>> respList = new ArrayList<>();
+		
+		try {
+			InterestGroup interestGroup = (InterestGroup) BeanUtils.mapToObject(map, InterestGroup.class);
+			List<InterestGroup> actList = interestGroupDao.selectByBizKeys(interestGroup);
+			respList = (List<Map<String, Object>>) BeanUtils.objectToMap(actList) ;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return respList;
 	}
 	
 }

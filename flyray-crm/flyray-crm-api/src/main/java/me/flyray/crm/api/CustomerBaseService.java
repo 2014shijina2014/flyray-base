@@ -1,5 +1,6 @@
 package me.flyray.crm.api;
 
+import java.util.List;
 import java.util.Map;
 
 import me.flyray.common.service.BaseService;
@@ -21,4 +22,6 @@ public interface CustomerBaseService extends BaseService{
 	void delete(Long id);
 	CustomerBase queryByCustomerId(String customerId);
 	CustomerBase queryByCustomerNo(String customerNo);
+	
+	public Map<String, Object> selectByCustomerId(Map<String, Object> map);
 }

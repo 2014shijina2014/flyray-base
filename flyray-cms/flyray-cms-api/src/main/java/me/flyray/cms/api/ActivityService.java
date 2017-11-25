@@ -74,4 +74,13 @@ public interface ActivityService extends BaseService{
 	 * @return
 	 */
 	public Activity queryEntity(Activity activity);
+	
+	/**
+	 * 
+	 * @author centerroot
+	 * @time 创建时间:2017年11月25日上午11:08:03
+	 * @param map
+	 * @return
+	 */
+	public List<Map<String, Object>> selectByMapKey(Map<String, Object> map);
 }
