@@ -3,10 +3,14 @@ $(function () {
         url: '../pay/paySerial/list',
         datatype: "json",
         colModel: [			
-			{ label: 'ID', name: 'id', index: "id", width: 45, key: true },
-			{ label: '支付通道', name: 'payOrderNo', width: 75 },
-			{ label: '支付公司', name: 'payCompanyNo', width: 90 },
-			{ label: '费率', name: 'feeRatio', width: 100 },
+			{ label: '支付流水号', name: 'serialNo', index: "serialNo", width: 45, key: true },
+			{ label: '订单号', name: 'payOrderNo', width: 75 },
+			{ label: '支付渠道号', name: 'payChannelNo', width: 90 },
+			{ label: '支付公司编号', name: 'payCompanyNo', width: 90 },
+			{ label: '交易金额', name: 'payAmt', width: 90 },
+			{ label: '交易手续费', name: 'payFee', width: 90 },
+			{ label: '支付记账状态', name: 'accountStatus', width: 90 },
+			{ label: '支付状态', name: 'payStatus', width: 100 }
         ],
 		viewrecords: true,
         height: 385,

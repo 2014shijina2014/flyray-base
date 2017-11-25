@@ -4,9 +4,14 @@ $(function () {
         datatype: "json",
         colModel: [			
 			{ label: 'ID', name: 'id', index: "id", width: 45, key: true },
-			{ label: '支付通道', name: 'payOrderNo', width: 75 },
-			{ label: '支付公司', name: 'payCompanyNo', width: 90 },
-			{ label: '费率', name: 'feeRatio', width: 100 },
+			{ label: '支付订单号', name: 'payOrderNo', width: 75 },
+			{ label: '退款订单号', name: 'refundOrderNo', width: 90 },
+			{ label: '退款金额', name: 'refundAmt', width: 100 },
+			{ label: '机构编号', name: 'orgNo', width: 100 },
+			{ label: '退款手续费', name: 'refundFee', width: 100 },
+			{ label: '跟支付方式对应', name: 'refundMethod', width: 100 },
+			{ label: '退款原因', name: 'refundReason', width: 100 },
+			{ label: '商户订单号 商户传', name: 'outTradeNo', width: 100 }
         ],
 		viewrecords: true,
         height: 385,
