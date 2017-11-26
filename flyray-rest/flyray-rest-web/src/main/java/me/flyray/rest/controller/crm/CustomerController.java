@@ -40,6 +40,7 @@ import me.flyray.crm.enums.AccountType;
 import me.flyray.crm.model.CustomerAccount;
 import me.flyray.crm.model.CustomerBase;
 import me.flyray.crm.model.CustomerRelations;
+import me.flyray.rest.util.BeanUtil;
 import me.flyray.rest.util.ResponseHelper;
 
 /** 
@@ -239,6 +240,8 @@ public class CustomerController {
 		Map<String, Object> queryUserMap = new HashMap<String, Object>();
 		queryUserMap.put("credential", userMap.get("openId"));
 		Map<String, Object> customerAuth = customerAuthService.queryObject(queryUserMap);
+		logger.info("查实该用户是否被邀请过------{}",customerAuth);
+		logger.info("查实该用户是否被邀请过------{}",customerAuth != null);
 		if (customerAuth != null ) {
 			return ResponseHelper.success(customerAuth,null, "01", "用户已经是会员不能被重复邀请");
 		}
