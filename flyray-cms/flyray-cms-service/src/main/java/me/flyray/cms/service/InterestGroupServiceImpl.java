@@ -47,8 +47,13 @@ public class InterestGroupServiceImpl extends AbstractBaseService<InterestGroup>
 		
 		try {
 			InterestGroup interestGroup = (InterestGroup) BeanUtils.mapToObject(map, InterestGroup.class);
-			List<InterestGroup> actList = interestGroupDao.selectByBizKeys(interestGroup);
-			respList = (List<Map<String, Object>>) BeanUtils.objectToMap(actList) ;
+			List<InterestGroup> groupList = interestGroupDao.selectByBizKeys(interestGroup);
+			if (groupList != null && groupList.size() > 0) {
+				for (int i = 0; i < groupList.size(); i++) {
+					InterestGroup groupItem = groupList.get(i);
+					respList.add(BeanUtils.objectToMap(groupItem));
+				}
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

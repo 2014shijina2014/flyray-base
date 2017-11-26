@@ -68,7 +68,7 @@ public class GroupCustomerController extends AbstractController {
 						for (int j = 0; j < groupcus1List.size(); j++) {
 							InterestGroupCustomerModel groupCustomerModel = new InterestGroupCustomerModel();
 							
-							Map<String, Object> item = (Map<String, Object>) groupcus1List.get(i);
+							Map<String, Object> item = (Map<String, Object>) groupcus1List.get(j);
 							
 							Map<String, Object> cus1map = new HashMap<>();
 							cus1map.put("id", item.get("customerId"));

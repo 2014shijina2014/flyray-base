@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import me.flyray.cms.api.ActivityService;
 import me.flyray.cms.dao.ActivityDao;
 import me.flyray.cms.model.Activity;
+import me.flyray.cms.model.InterestGroupCustomer;
 import me.flyray.common.service.AbstractBaseService;
 import me.flyray.common.utils.BeanUtils;
 import me.flyray.crm.api.CustomerBaseService;
@@ -141,7 +142,12 @@ public class ActivityServiceImpl extends AbstractBaseService<Activity> implement
 		try {
 			Activity activity = (Activity) BeanUtils.mapToObject(map, Activity.class);
 			List<Activity> actList = activityDao.selectByBizKeys(activity);
-			respList = (List<Map<String, Object>>) BeanUtils.objectToMap(actList) ;
+			if (actList != null && actList.size() > 0) {
+				for (int i = 0; i < actList.size(); i++) {
+					Activity actItem = actList.get(i);
+					respList.add(BeanUtils.objectToMap(actItem));
+				}
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

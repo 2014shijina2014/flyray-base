@@ -178,8 +178,13 @@ public class InterestGroupCustomerServiceImpl implements InterestGroupCustomerSe
 		
 		try {
 			InterestGroupCustomer interestGroupCustomer = (InterestGroupCustomer) BeanUtils.mapToObject(map, InterestGroupCustomer.class);
-			List<InterestGroupCustomer> actList = interestGroupCustomerDao.selectByBizKeys(interestGroupCustomer);
-			respList = (List<Map<String, Object>>) BeanUtils.objectToMap(actList) ;
+			List<InterestGroupCustomer> groupCusList = interestGroupCustomerDao.selectByBizKeys(interestGroupCustomer);
+			if (groupCusList != null && groupCusList.size() > 0) {
+				for (int i = 0; i < groupCusList.size(); i++) {
+					InterestGroupCustomer groupCusItem = groupCusList.get(i);
+					respList.add(BeanUtils.objectToMap(groupCusItem));
+				}
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();

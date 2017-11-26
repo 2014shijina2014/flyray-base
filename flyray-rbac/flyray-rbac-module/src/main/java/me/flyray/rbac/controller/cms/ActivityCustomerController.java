@@ -65,7 +65,7 @@ public class ActivityCustomerController extends AbstractController {
 				if(null != actcus1List && actcus1List.size() > 0) {
 					for (int j = 0; j < actcus1List.size(); j++) {
 						ActivityCustomerModel activityCustomerModel = new ActivityCustomerModel();
-						Map<String, Object> item = (Map<String, Object>) actcus1List.get(i);
+						Map<String, Object> item = (Map<String, Object>) actcus1List.get(j);
 						
 						Map<String, Object> cus1map = new HashMap<>();
 						cus1map.put("id", item.get("customerId"));

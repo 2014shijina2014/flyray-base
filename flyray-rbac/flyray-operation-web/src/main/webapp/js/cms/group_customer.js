@@ -1,6 +1,6 @@
 $(function () {
     $("#jqGrid").jqGrid({
-        url: '../cms/group/list',
+        url: '../cms/groupcustomer/list',
         datatype: "json",
         colModel: [			
         	{ label: '团队序号', name: 'groupId', index: "groupId", width: 45, key: true },

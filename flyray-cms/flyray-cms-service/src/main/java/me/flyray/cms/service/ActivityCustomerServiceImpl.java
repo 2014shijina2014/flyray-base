@@ -162,8 +162,13 @@ public class ActivityCustomerServiceImpl implements ActivityCustomerService {
 		
 		try {
 			ActivityCustomer activityCustomer = (ActivityCustomer) BeanUtils.mapToObject(map, ActivityCustomer.class);
-			List<ActivityCustomer> actList = activityCustomerDao.selectByBizKeys(activityCustomer);
-			respList = (List<Map<String, Object>>) BeanUtils.objectToMap(actList) ;
+			List<ActivityCustomer> actcusList = activityCustomerDao.selectByBizKeys(activityCustomer);
+			if (actcusList != null && actcusList.size() > 0) {
+				for (int i = 0; i < actcusList.size(); i++) {
+					ActivityCustomer actCusItem = actcusList.get(i);
+					respList.add(BeanUtils.objectToMap(actCusItem));
+				}
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
