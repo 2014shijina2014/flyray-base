@@ -34,6 +34,10 @@
 		</if>
 	</select>
 	
+	<select id="queryByCustomerAccountNo" resultType="me.flyray.crm.model.CustomerAccount">
+		select * from crm_customer_account where customer_account_no = #{customerAccountNo}
+	</select>
+	
  	<select id="queryTotal" resultType="int">
 		select count(*) from crm_customer_account 
 	</select>
