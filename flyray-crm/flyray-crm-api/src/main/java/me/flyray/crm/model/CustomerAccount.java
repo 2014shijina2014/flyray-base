@@ -1,9 +1,6 @@
 package me.flyray.crm.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-
-import me.flyray.common.model.BaseModel;
 
 /** 
 * @author: bolei
@@ -14,6 +11,11 @@ import me.flyray.common.model.BaseModel;
 public class CustomerAccount implements Serializable{
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
 	 * 客户号
 	 */
 	private String customerId;
@@ -22,7 +24,7 @@ public class CustomerAccount implements Serializable{
 	 * 客户账户号
 	 * 唯一存在
 	 */
-	private String custAccountNo;
+	private String customerAccountNo;
 	
 	/**
 	 *  账户类型 数据库字典表维护 枚举
@@ -52,12 +54,12 @@ public class CustomerAccount implements Serializable{
 		this.customerId = customerId;
 	}
 
-	public String getCustAccountNo() {
-		return custAccountNo;
+	public String getCustomerAccountNo() {
+		return customerAccountNo;
 	}
 
-	public void setCustAccountNo(String custAccountNo) {
-		this.custAccountNo = custAccountNo;
+	public void setCustomerAccountNo(String customerAccountNo) {
+		this.customerAccountNo = customerAccountNo;
 	}
 
 	public String getAccountType() {

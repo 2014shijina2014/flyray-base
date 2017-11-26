@@ -2,8 +2,6 @@ package me.flyray.crm.model;
 
 import java.io.Serializable;
 
-import me.flyray.common.model.BaseModel;
-
 /** 
 * @author: bolei
 * @date：2017年3月6日 下午9:55:17 
@@ -12,6 +10,11 @@ import me.flyray.common.model.BaseModel;
 */
 
 public class CustomerAuth implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 客户（会员）编号

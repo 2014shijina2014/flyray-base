@@ -5,75 +5,54 @@
 <mapper namespace="me.flyray.crm.dao.CustomerAccountJournalDao">
 
 	<select id="queryObject" resultType="me.flyray.crm.model.CustomerAccountJournal">
-		select * from crm_customer_account where id = #{id}
+		select * from crm_customer_account_journal where id = #{id}
 	</select>
 	
 	<select id="queryById" resultType="me.flyray.crm.model.CustomerAccountJournal">
-		select * from crm_customer_account where id = #{id}
+		select * from crm_customer_account_journal where id = #{id}
 	</select>
 
 	<select id="queryList" resultType="me.flyray.crm.model.CustomerAccountJournal">
-		select * from crm_customer_account order by id desc
+		select * from crm_customer_account_journal order by id desc
 		<if test="offset != null and limit != null">
 			limit #{offset}, #{limit}
 		</if>
 	</select>
 	
  	<select id="queryTotal" resultType="int">
-		select count(*) from crm_customer_account 
+		select count(*) from crm_customer_account_journal 
 	</select>
 	
 	<insert id="save" parameterType="me.flyray.crm.model.CustomerAccountJournal" useGeneratedKeys="true" keyProperty="id">
-		insert into crm_customer_account
+		insert into crm_customer_account_journal
 		(
-			`customer_no`, 
-			`cust_name`,
-			`nickname`,
-			`phone`,
-			`sex`,
-			`address`,
-			`age`,
-			`birthday`,
-			`avatar`,
-			`merchant_no`,
-			`org_no`
+			`id`,
+			`Journal_no`,
+			`customer_id`,
+			`customer_account_no`,
+			`amt`,
+			`funds_direction`,
+			`create_time`
 		)
 		values
 		(
-			#{customerNo}, 
-			#{custName},
-			#{nickname},
-			#{phone},
-			#{sex},
-			#{address},
-			#{age},
-			#{birthday},
-			#{avatar},
-			#{merchantNo},
-			#{orgNo}
+			#{id}, 
+			#{JournalNo},
+			#{customerId},
+			#{customerAccountNo},
+			#{amt},
+			#{fundsDirection},
+			#{createTime}
 		)
 	</insert>
 	 
 	<update id="update" parameterType="me.flyray.crm.model.CustomerAccountJournal">
-		update crm_customer_account 
-		<set>
-			<if test="customerNo != null">`customer_no` = #{customerNo}, </if>
-			<if test="custName != null">`cust_name` = #{custName}, </if>
-			<if test="nickname != null">`nickname` = #{nickname}, </if>
-			<if test="phone != null">`phone` = #{phone}, </if>
-			<if test="sex != null">`sex` = #{sex}, </if>
-			<if test="address != null">`address` = #{address}, </if>
-			<if test="age != null">`age` = #{age}, </if>
-			<if test="birthday != null">`birthday` = #{birthday}, </if>
-			<if test="avatar != null">`avatar` = #{avatar}, </if>
-			<if test="merchantNo != null">`merchant_no` = #{merchantNo}, </if>
-			<if test="orgNo != null">`org_no` = #{orgNo}</if>
-		</set>
+		update crm_customer_account_journal 
 		where id = #{id}
 	</update>
 	
 	<delete id="delete">
-		delete from crm_customer_account where id = #{id}
+		delete from crm_customer_account_journal where id = #{id}
 	</delete>
   
 </mapper>

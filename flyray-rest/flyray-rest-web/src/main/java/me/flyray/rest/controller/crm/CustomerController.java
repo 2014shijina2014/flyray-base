@@ -247,15 +247,19 @@ public class CustomerController {
 		//将新用户与邀请人关联
 		//判断邀请人属于哪级分销
 		List<CustomerRelations> customerRelationses = customerRelationsService.queryByCustomerId(inviterId);
+		//相等说明自己邀请自己
+		if(inviterId == customerBase.getId()){
+			return ResponseHelper.success(userMap,null, "00", "邀请成功");
+		}
 		int sz = customerRelationses.size();
 		Date invitedTime = new Date();
+		logger.info("邀请关系层级数------{}",sz);
 		if (sz == 0) {
 			//说明邀请人是顶级分销不是被邀请过的人 受要人是一级分销
 			CustomerRelations invitedCustomer = new CustomerRelations();
 			invitedCustomer.setWxId(orgId);
 			invitedCustomer.setCustomerId(customerBase.getId());
 			invitedCustomer.setFxLevel("1");
-			invitedCustomer.setParentId(Long.valueOf(inviterId));
 			invitedCustomer.setParentId(Long.valueOf(inviterId));
 			invitedCustomer.setInvitedTime(invitedTime);
 			customerRelationsService.insert(invitedCustomer);
@@ -275,7 +279,7 @@ public class CustomerController {
 			ic.setFxLevel("2");
 			ic.setParentId(Long.valueOf(inviterId));
 			ic.setInvitedTime(invitedTime);
-			customerRelationsService.insert(invitedCustomer);
+			customerRelationsService.insert(ic);
 		}else if (sz == 2) {
 			//说明邀请人是二级分销 受邀人是三级分销需要写三条条记录
 			CustomerRelations invitedCustomer = new CustomerRelations();
@@ -299,7 +303,7 @@ public class CustomerController {
 				ic.setCustomerId(customerBase.getId());
 				ic.setParentId(parentId);
 				ic.setInvitedTime(invitedTime);
-				customerRelationsService.insert(invitedCustomer);
+				customerRelationsService.insert(ic);
 			}
 		}else if (sz == 3) {
 			//说明邀请人是三级分销 受邀人是邀请人的一级分销需要写一条记录

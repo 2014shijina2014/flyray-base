@@ -84,8 +84,8 @@ public class CustomerAuthServiceImpl extends AbstractBaseService<CustomerAuth> i
 		customerAccount.setValue("0");
 		long custAccountNoL = SnowFlake.getId();//商户号crc自校验数据 目的防止伪造造成脏数据
 		String custAccountNoStr = String.valueOf(custAccountNoL);
-		String custAccountNo = CRC16M.getCRCNo(custAccountNoStr);
-		customerAccount.setCustAccountNo(custAccountNo);
+		String customerAccountNo = CRC16M.getCRCNo(custAccountNoStr);
+		customerAccount.setCustomerAccountNo(customerAccountNo);
 		customerAccount.setFreezeValue("0");
 		customerAccountService.save(customerAccount);
 		

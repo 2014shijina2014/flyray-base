@@ -1,5 +1,6 @@
 package me.flyray.crm.model;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -9,10 +10,15 @@ import java.util.Date;
 * @description：客户账户流水账（分类账）
 */
 
-public class CustomerAccountJournal {
+public class CustomerAccountJournal implements Serializable{
 	
 	/**
-	 * 客户自增ID
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 流水ID
 	 */
 	private Long id;
 	
@@ -22,7 +28,12 @@ public class CustomerAccountJournal {
 	private String JournalNo;
 	
 	/**
-	 * 账户
+	 * 客户号
+	 */
+	private String customerId;
+	
+	/**
+	 * 客户账户
 	 */
 	private String customerAccountNo;
 	
@@ -87,6 +98,21 @@ public class CustomerAccountJournal {
 
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+
+	public String getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId;
+	}
+
+	@Override
+	public String toString() {
+		return "CustomerAccountJournal [id=" + id + ", JournalNo=" + JournalNo + ", customerId=" + customerId
+				+ ", customerAccountNo=" + customerAccountNo + ", amt=" + amt + ", fundsDirection=" + fundsDirection
+				+ ", createTime=" + createTime + "]";
 	}
 	
 }

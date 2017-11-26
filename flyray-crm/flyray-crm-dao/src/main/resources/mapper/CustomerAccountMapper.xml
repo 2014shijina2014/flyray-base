@@ -9,8 +9,8 @@
 		<if test="customerId != null and customerId != ''">
 			AND customer_id = #{customerId,jdbcType=VARCHAR}
         </if>
-        <if test="custAccountNo != null and custAccountNo != ''">
-			AND cust_account_no = #{custAccountNo,jdbcType=VARCHAR}
+        <if test="customerAccountNo != null and customerAccountNo != ''">
+			AND customer_account_no = #{customerAccountNo,jdbcType=VARCHAR}
         </if>
         <if test="accountType != null and accountType != ''">
 			AND account_type = #{accountType,jdbcType=VARCHAR}
@@ -42,7 +42,7 @@
 		insert into crm_customer_account
 		(
 			`customer_id`, 
-			`cust_account_no`,
+			`customer_account_no`,
 			`account_type`,
 			`value`,
 			`freeze_value`
@@ -50,7 +50,7 @@
 		values
 		(
 			#{customerId}, 
-			#{custAccountNo},
+			#{customerAccountNo},
 			#{accountType},
 			#{value},
 			#{freezeValue}

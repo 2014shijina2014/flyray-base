@@ -41,12 +41,12 @@ public class CustomerAccountServiceImpl extends AbstractBaseService<CustomerAcco
 	@Transactional( rollbackFor={Exception.class})
 	public String openAccount(CustomerAccount customerAccount) {
 		CustomerAccount ca = new CustomerAccount();
-		String custAccountNo = "0ca0"+UUIDTool.getUUID();
-		ca.setCustAccountNo(custAccountNo);
+		String customerAccountNo = "0ca0"+UUIDTool.getUUID();
+		ca.setCustomerAccountNo(customerAccountNo);
 		ca.setFreezeValue("0");
 		ca.setStatus("00");
 		customerAccountDao.save(ca);
-		return custAccountNo;
+		return customerAccountNo;
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class CustomerAccountServiceImpl extends AbstractBaseService<CustomerAcco
 	 */
 	public void accountingTreatment(CustomerAccount customerAccount,String amt, String fundsDirection){
 		//记账明细
-		String custAccountNo = customerAccount.getCustAccountNo();
+		String custAccountNo = customerAccount.getCustomerAccountNo();
 		String journalNo = GenerateSequenceUtil.generateSequenceNo();
 		CustomerAccountJournal customerAccountJournal = new CustomerAccountJournal();
 		customerAccountJournal.setFundsDirection(fundsDirection);
