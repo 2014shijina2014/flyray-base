@@ -20,7 +20,7 @@ public class CustomerAccountJournal implements Serializable{
 	/**
 	 * 流水ID
 	 */
-	private Long id;
+	private String id;
 	
 	/**
 	 * 流水号
@@ -52,11 +52,11 @@ public class CustomerAccountJournal implements Serializable{
 	 */
 	private Date createTime ;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

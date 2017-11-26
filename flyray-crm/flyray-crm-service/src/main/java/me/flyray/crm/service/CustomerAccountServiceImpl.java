@@ -85,7 +85,7 @@ public class CustomerAccountServiceImpl extends AbstractBaseService<CustomerAcco
 		String journalNo = GenerateSequenceUtil.generateSequenceNo();
 		CustomerAccountJournal customerAccountJournal = new CustomerAccountJournal();
 		long id = SnowFlake.getId();//目的防止伪造造成脏数据
-		customerAccountJournal.setId(id);
+		customerAccountJournal.setId(String.valueOf(id));
 		customerAccountJournal.setFundsDirection(fundsDirection);
 		customerAccountJournal.setCustomerAccountNo(custAccountNo);
 		BigDecimal amtDec = new BigDecimal(amt);

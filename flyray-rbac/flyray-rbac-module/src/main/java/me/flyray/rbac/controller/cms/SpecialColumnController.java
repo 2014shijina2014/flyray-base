@@ -58,10 +58,10 @@ public class SpecialColumnController extends AbstractController {
 	 */
 	@RequestMapping("/info/{id}")
 	@RequiresPermissions("cms:specialColumn:info")
-	public R info(@PathVariable("id") Long id){
+	public R info(@PathVariable("id") String id){
 		logger.info("flyray-merchant请求查询专栏信息---请求参数:{}",id);
 		Parameter parameter = new Parameter("specialColumnService", "queryById");
-		parameter.setId(id);
+		parameter.setId(Long.valueOf(id));
 		Map<?, ?> map = apiProvider.execute(parameter).getMap();
 		logger.info("flyray-merchant请求查询专栏信息---返回参数:{}",map);
 		return R.ok().put("specialColumn", map);

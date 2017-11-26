@@ -13,7 +13,7 @@ public class SpecialColumn extends BaseModel {
 	/**
 	 * 跟进算法生成id
 	 */
-	private Long id;
+	private String id;
 	
 	/**
 	 * 专栏名称
@@ -42,11 +42,11 @@ public class SpecialColumn extends BaseModel {
 	
 	private String columnStatus;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
