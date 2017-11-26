@@ -78,23 +78,23 @@ public class CustomerAccountServiceImpl extends AbstractBaseService<CustomerAcco
 	
 	/**
 	 * 账户处理
+	 * customerAccount 对象 accountType customerId 为必传值
 	 */
 	public void accountingTreatment(CustomerAccount customerAccount,String amt, String fundsDirection){
 		//记账明细
-		String custAccountNo = customerAccount.getCustomerAccountNo();
+		CustomerAccount ca = customerAccountDao.queryObject(customerAccount);
 		String journalNo = GenerateSequenceUtil.generateSequenceNo();
 		CustomerAccountJournal customerAccountJournal = new CustomerAccountJournal();
 		long id = SnowFlake.getId();//目的防止伪造造成脏数据
 		customerAccountJournal.setId(String.valueOf(id));
 		customerAccountJournal.setFundsDirection(fundsDirection);
-		customerAccountJournal.setCustomerAccountNo(custAccountNo);
+		customerAccountJournal.setCustomerAccountNo(ca.getCustomerAccountNo());
 		BigDecimal amtDec = new BigDecimal(amt);
 		customerAccountJournal.setAmt(amtDec);
 		customerAccountJournal.setCreateTime(new Date());
 		customerAccountJournal.setJournalNo(journalNo);
 		customerAccountJournalDao.save(customerAccountJournal);
 		//查询该账户下的金额
-		CustomerAccount ca = customerAccountDao.queryByCustomerAccountNo(custAccountNo);
 		if (FundsDirection.CREDITS.getCode() == fundsDirection) {
 			ca.setValue(String.valueOf(new BigDecimal(ca.getValue()).subtract(amtDec)));
 		}else if (FundsDirection.DEBITS.getCode() == fundsDirection) {
