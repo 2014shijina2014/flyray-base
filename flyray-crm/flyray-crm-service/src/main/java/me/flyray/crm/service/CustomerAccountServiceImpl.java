@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import me.flyray.common.service.AbstractBaseService;
 import me.flyray.common.utils.GenerateSequenceUtil;
+import me.flyray.common.utils.SnowFlake;
 import me.flyray.common.utils.UUIDTool;
 import me.flyray.crm.api.CustomerAccountService;
 import me.flyray.crm.dao.CustomerAccountDao;
@@ -83,6 +84,8 @@ public class CustomerAccountServiceImpl extends AbstractBaseService<CustomerAcco
 		String custAccountNo = customerAccount.getCustomerAccountNo();
 		String journalNo = GenerateSequenceUtil.generateSequenceNo();
 		CustomerAccountJournal customerAccountJournal = new CustomerAccountJournal();
+		long id = SnowFlake.getId();//目的防止伪造造成脏数据
+		customerAccountJournal.setId(id);
 		customerAccountJournal.setFundsDirection(fundsDirection);
 		customerAccountJournal.setCustomerAccountNo(custAccountNo);
 		BigDecimal amtDec = new BigDecimal(amt);
