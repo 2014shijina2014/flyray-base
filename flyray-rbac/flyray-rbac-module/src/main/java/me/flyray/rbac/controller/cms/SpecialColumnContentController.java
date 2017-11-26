@@ -67,7 +67,7 @@ private static final Logger logger = LoggerFactory.getLogger(SpecialColumnContro
 		parameter.setId(id);
 		Map<?, ?> map = apiProvider.execute(parameter).getMap();
 		logger.info("flyray-module请求查询专栏信息---返回参数:{}",map);
-		return R.ok().put("payChannel", map);
+		return R.ok().put("specialColumn", map);
 	}
 	
 	@SysLog("保存配置")

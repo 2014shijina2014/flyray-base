@@ -94,17 +94,13 @@ var vm = new Vue({
 			});
 		},
 		getSpecialColumn: function(id){
+			alert(id)
 			$.get("../cms/specialColumnContent/info/"+id, function(r){
 				vm.specialColumn = r.specialColumn;
 			});
 		},
 		reload: function (event) {
 			vm.showList = true;
-			var page = $("#jqGrid").jqGrid('getGridParam','page');
-			$("#jqGrid").jqGrid('setGridParam',{
-                postData:{'columnName': vm.q.columnName},
-                page:page
-            }).trigger("reloadGrid");
 		}
 	}
 });
