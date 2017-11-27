@@ -191,15 +191,15 @@ public class CustomerController {
 		tt.writeImageLocal(avatarPath,bf);
 		//压缩后的头像地址
 		String scaleAvatar = imgPath+ File.separator + "scale-avatar"+customerId+".jpg";
-		ImageHelper.scaleImage(avatarPath, scaleAvatar, 0.2, "JPEG");
+		ImageHelper.scaleImage(avatarPath, scaleAvatar, 0.15, "JPEG");
 		//将头像写入卡片上
 		BufferedImage avatarB = tt.loadImageLocal(scaleAvatar);
 		String avatarPlusImg = imgPath+ File.separator +"resul-"+customerId+".jpg";
-        tt.writeImageLocal(avatarPlusImg, tt.modifyImagetogeter(avatarB, d, 300, 70)); 
+        tt.writeImageLocal(avatarPlusImg, tt.modifyImagetogeter(avatarB, d, 330, 190)); 
         //将昵称写入卡片上
 		BufferedImage avatarPlusB = tt.loadImageLocal(avatarPlusImg);
         String imgAndStr = imgPath+ File.separator +"imgAndStr-"+customerId+".jpg";
-	    tt.writeImageLocal(imgAndStr,tt.modifyImage(avatarPlusB,customerBaseMap.get("nickname"),260,250,fontPath));
+	    tt.writeImageLocal(imgAndStr,tt.modifyImage(avatarPlusB,30,customerBaseMap.get("nickname"),320,320,fontPath));
 	    BufferedImage b = tt.loadImageLocal(imgAndStr);
 	    //将生成的二维码图片压缩成所需比例
 	    String scaleQrcode = imgPath+ File.separator + "scale-qrcode"+customerId+".jpg";
@@ -208,7 +208,7 @@ public class CustomerController {
 	    BufferedImage c = tt.loadImageLocal(scaleQrcode);
         //将多张图片合在一起  
 	    String resultImg = imgPath+ File.separator +"resul-"+customerId+".jpg";
-        tt.writeImageLocal(resultImg, tt.modifyImagetogeter(c, b, 200, 450)); 
+        tt.writeImageLocal(resultImg, tt.modifyImagetogeter(c, b, 235, 750)); 
 		String imgStr = ImageBase64.getImgStr(resultImg);
 		logger.info("查询客户信息------end------{}",resultMap);
 		resultMap.put("img", imgStr);
