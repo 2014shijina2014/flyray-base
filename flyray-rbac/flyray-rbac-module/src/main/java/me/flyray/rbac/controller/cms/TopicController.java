@@ -119,9 +119,9 @@ public class TopicController extends AbstractController {
 	 */
 	@RequestMapping("/info/{topicId}")
 	@RequiresPermissions("cms:topic:info")
-	public R info(@PathVariable("topicId") Long topicId){
+	public R info(@PathVariable("topicId") String topicId){
 		Parameter parameter = new Parameter("topicService", "queryById");
-		parameter.setId(topicId);
+		parameter.setId(Long.valueOf(topicId));
 		Map<?, ?> map1 = apiProvider.execute(parameter).getMap();
 		
 		return R.ok().put("topic", map1);
