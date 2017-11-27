@@ -9,16 +9,16 @@
 	<div v-show="showList">
 		<div class="grid-btn">
 			<div class="form-group col-sm-2">
-				<input type="text" class="form-control" v-model="q.payChannelNo" @keyup.enter="query" placeholder="支付通道">
+				<input type="text" class="form-control" v-model="q.serialNo" @keyup.enter="query" placeholder="支付流水号">
 			</div>
 			<a class="btn btn-default" @click="query">查询</a>
-			#if($shiro.hasPermission("pay:payChannel:save"))
+			#if($shiro.hasPermission("pay:paySerial:save"))
 			<a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
 			#end
-			#if($shiro.hasPermission("pay:payChannel:update"))
+			#if($shiro.hasPermission("pay:paySerial:update"))
 			<a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
 			#end
-			#if($shiro.hasPermission("pay:payChannel:delete"))
+			#if($shiro.hasPermission("pay:paySerial:delete"))
 			<a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
 			#end
 		</div>
@@ -30,22 +30,52 @@
 		<div class="panel-heading">{{title}}</div>
 		<form class="form-horizontal">
 			<div class="form-group">
-			   	<div class="col-sm-2 control-label">支付通道</div>
+			   	<div class="col-sm-2 control-label">支付流水号</div>
 			   	<div class="col-sm-10">
-			      <input type="text" class="form-control" v-model="payChannel.payChannelNo" placeholder="支付通道"/>
+			      <input type="text" class="form-control" v-model="paySerial.serialNo" placeholder="支付流水号"/>
 			    </div>
 			</div>
 			<div class="form-group">
-			   	<div class="col-sm-2 control-label">支付公司</div>
+			   	<div class="col-sm-2 control-label">订单号</div>
 			   	<div class="col-sm-10">
-			      <input type="text" class="form-control" v-model="payChannel.payCompanyNo" placeholder="支付公司"/>
+			      <input type="text" class="form-control" v-model="paySerial.payOrderNo" placeholder="订单号"/>
 			    </div>
 			</div>
 			<div class="form-group">
-			   	<div class="col-sm-2 control-label">费率</div>
+			   	<div class="col-sm-2 control-label">支付渠道号</div>
 			   	<div class="col-sm-10">
-			      <input type="text" class="form-control" v-model="payChannel.feeRatio" placeholder="费率"/>
+			      <input type="text" class="form-control" v-model="paySerial.payChannelNo" placeholder="支付渠道号"/>
 			    </div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label">支付公司编号</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="paySerial.payCompanyNo" placeholder="支付公司编号"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label">交易金额</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="paySerial.payAmt" placeholder="交易金额"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label">交易手续费</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="paySerial.payFee" placeholder="交易手续费"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label">支付记账状态</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="paySerial.accountStatus" placeholder="支付记账状态"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label">支付状态</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="paySerial.payStatus" placeholder="支付状态"/>
+				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-2 control-label"></div> 

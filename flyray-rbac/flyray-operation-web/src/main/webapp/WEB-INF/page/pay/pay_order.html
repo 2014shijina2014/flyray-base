@@ -9,16 +9,16 @@
 	<div v-show="showList">
 		<div class="grid-btn">
 			<div class="form-group col-sm-2">
-				<input type="text" class="form-control" v-model="q.payChannelNo" @keyup.enter="query" placeholder="支付通道">
+				<input type="text" class="form-control" v-model="q.payOrderNo" @keyup.enter="query" placeholder="订单号">
 			</div>
 			<a class="btn btn-default" @click="query">查询</a>
-			#if($shiro.hasPermission("pay:payChannel:save"))
+			#if($shiro.hasPermission("pay:payOrder:save"))
 			<a class="btn btn-primary" @click="add"><i class="fa fa-plus"></i>&nbsp;新增</a>
 			#end
-			#if($shiro.hasPermission("pay:payChannel:update"))
+			#if($shiro.hasPermission("pay:payOrder:update"))
 			<a class="btn btn-primary" @click="update"><i class="fa fa-pencil-square-o"></i>&nbsp;修改</a>
 			#end
-			#if($shiro.hasPermission("pay:payChannel:delete"))
+			#if($shiro.hasPermission("pay:payOrder:delete"))
 			<a class="btn btn-primary" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</a>
 			#end
 		</div>
@@ -30,22 +30,70 @@
 		<div class="panel-heading">{{title}}</div>
 		<form class="form-horizontal">
 			<div class="form-group">
-			   	<div class="col-sm-2 control-label">支付通道</div>
+			   	<div class="col-sm-2 control-label">订单号</div>
 			   	<div class="col-sm-10">
-			      <input type="text" class="form-control" v-model="payChannel.payChannelNo" placeholder="支付通道"/>
+			      <input type="text" class="form-control" v-model="payOrder.payOrderNo" placeholder="订单号"/>
 			    </div>
 			</div>
 			<div class="form-group">
-			   	<div class="col-sm-2 control-label">支付公司</div>
+			   	<div class="col-sm-2 control-label">客户账号</div>
 			   	<div class="col-sm-10">
-			      <input type="text" class="form-control" v-model="payChannel.payCompanyNo" placeholder="支付公司"/>
+			      <input type="text" class="form-control" v-model="payOrder.customerNo" placeholder="客户账号"/>
 			    </div>
 			</div>
 			<div class="form-group">
-			   	<div class="col-sm-2 control-label">费率</div>
+			   	<div class="col-sm-2 control-label">商户账号</div>
 			   	<div class="col-sm-10">
-			      <input type="text" class="form-control" v-model="payChannel.feeRatio" placeholder="费率"/>
+			      <input type="text" class="form-control" v-model="payOrder.payTime" placeholder="商户账号"/>
 			    </div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label">交易时间</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="payOrder.merchantNo" placeholder="交易时间"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label">交易手续费</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="payOrder.payAmt" placeholder="交易手续费"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label">订单描述</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="payOrder.body" placeholder="订单描述"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label">商户订单号</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="payOrder.outTradeNo" placeholder="商户订单号"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label">支付方式</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="payOrder.payMethod" placeholder="支付方式"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label">交易状态</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="payOrder.orderStatus" placeholder="交易状态"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label">机构编号</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="payOrder.orgNo" placeholder="机构编号"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label">已退款金额</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="payOrder.redundedAmt" placeholder="已退款金额"/>
+				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-2 control-label"></div> 
