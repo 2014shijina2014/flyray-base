@@ -1,6 +1,7 @@
 package me.flyray.rbac.controller.cms;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,9 +29,11 @@ public class ActivityController extends AbstractController {
 	@RequiresPermissions("cms:activity:list")
 	public R list(@RequestParam Map<String, Object> params){
 		logger.info("查询团队类别列表请求参数:{}",params);
-		Parameter parameter = new Parameter("activityService", "query");
+		Parameter parameter = new Parameter("activityService", "queryList");
 		//parameter.setMap(getCommonQueryParam());
-		parameter.setMap(params);
+		Map<String,Object> map=new HashMap<>();
+		map.put("activityName", params.get("activityName"));
+        parameter.setMap(map);
 		List<?> list = apiProvider.execute(parameter).getList();
 		int total = list.size();
 		logger.info("团队类别列表查询结果size:{}",total);
