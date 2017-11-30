@@ -72,6 +72,7 @@
 			`create_user_id`,
 			`create_time`,
 			`org_id`,
+			`org_name`,
 			`user_type`
 		)
 		values
@@ -85,6 +86,7 @@
 			#{createUserId},
 			#{createTime}, 
 			#{orgId},
+			#{orgName},
 			#{userType}
 		)
 	</insert>
@@ -97,6 +99,7 @@
 			<if test="email != null">`email` = #{email}, </if>
 			<if test="mobile != null">`mobile` = #{mobile}, </if>
 			<if test="status != null">`status` = #{status}, </if>
+			<if test="orgName != null">`org_name` = #{orgName}, </if>
 		</set>
 		where user_id = #{userId} 
 		<if test="createUserId != null">

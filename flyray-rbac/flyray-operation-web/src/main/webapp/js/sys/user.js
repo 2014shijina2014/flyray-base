@@ -7,6 +7,8 @@ $(function () {
 			{ label: '用户名', name: 'username', width: 75 },
 			{ label: '邮箱', name: 'email', width: 90 },
 			{ label: '手机号', name: 'mobile', width: 100 },
+			{ label: '所属机构ID', name: 'orgId', width: 100 },
+			{ label: '所属机构部门名称', name: 'orgName', width: 100 },
 			{ label: '状态', name: 'status', width: 80, formatter: function(value, options, row){
 				return value === 0 ? 
 					'<span class="label label-danger">禁用</span>' : 
@@ -81,6 +83,7 @@ var vm = new Vue({
                 console.log('node.name')
                 console.log(node.name)
                 vm.user.orgName = node.name;
+                vm.user.orgId = node.orgId;
             })
         },
         orgTree: function(){
@@ -126,11 +129,10 @@ var vm = new Vue({
 			if(userId == null){
 				return ;
 			}
-			
 			vm.showList = false;
             vm.title = "修改";
-			
 			vm.getUser(userId);
+			vm.getOrg();
 			//获取角色信息
 			this.getRoleList();
 		},
@@ -181,6 +183,7 @@ var vm = new Vue({
 			});
 		},
 		getRoleList: function(){
+			console.log(vm.user)
 			$.get("../sys/role/select?orgId="+vm.user.orgId, function(r){
 				vm.roleList = r.list;
 			});
