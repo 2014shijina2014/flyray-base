@@ -30,7 +30,7 @@
 		<div class="panel-heading">{{title}}</div>
 		<form class="form-horizontal">
 			<div class="form-group">
-			   	<div class="col-sm-2 control-label">支付通道</div>
+			   	<div class="col-sm-2 control-label">支付通道编号</div>
 			   	<div class="col-sm-10">
 			      <input type="text" class="form-control" v-model="payChannelConfig.payChannelNo" placeholder="支付通道"/>
 			    </div>
@@ -46,6 +46,30 @@
 			   	<div class="col-sm-10">
 			      <input type="text" class="form-control" v-model="payChannelConfig.orgId" placeholder="组织机构"/>
 			    </div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label">商户号</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="payChannelConfig.merchantId" placeholder="商户号"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label">第三方支付公司商户号</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="payChannelConfig.merAccount" placeholder="第三方支付公司商户号"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label">第三方支付公司商户key</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="payChannelConfig.merKey" placeholder="第三方支付公司商户key"/>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-2 control-label">第三方支付公司商户 签名类型</div>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" v-model="payChannelConfig.singType" placeholder="第三方支付公司商户 签名类型"/>
+				</div>
 			</div>
 			<div class="form-group">
 				<div class="col-sm-2 control-label"></div> 

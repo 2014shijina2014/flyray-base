@@ -7,6 +7,9 @@
 	<select id="queryObject" resultType="me.flyray.pay.model.PayChannelConfig">
 		select * from pay_channel_config where id = #{value}
 	</select>
+	<select id="queryById" resultType="me.flyray.pay.model.PayChannelConfig">
+		select * from pay_channel_config where id = #{value}
+	</select>
 
 	<select id="queryList" resultType="me.flyray.pay.model.PayChannelConfig">
 		select * from pay_channel_config order by id desc

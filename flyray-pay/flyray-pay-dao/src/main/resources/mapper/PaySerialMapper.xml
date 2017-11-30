@@ -7,7 +7,9 @@
 	<select id="queryObject" resultType="me.flyray.pay.model.PaySerial">
 		select * from pay_serial where id = #{value}
 	</select>
-
+	<select id="queryById" resultType="me.flyray.pay.model.PaySerial">
+		select * from pay_serial where id = #{value}
+	</select>
 	<select id="queryList" resultType="me.flyray.pay.model.PaySerial">
 		select * from pay_serial order by id desc
 		<if test="offset != null and limit != null">
@@ -43,6 +45,12 @@
 	
 	<delete id="delete">
 		delete from pay_serial where id = #{value}
+	</delete>
+	<delete id="deleteBatch" parameterType="java.util.List">
+		delete from pay_serial where id in
+		<foreach item="id" collection="list" open="(" separator="," close=")">
+			#{id}
+		</foreach>
 	</delete>
   
 </mapper>
