@@ -28,5 +28,7 @@
     <dubbo:reference id="customerRoleRelationsService" interface="me.flyray.crm.api.CustomerRoleRelationsService"/>
     <!-- 客户扩展信息 -->
     <dubbo:reference id="customerBaseExtendService" interface="me.flyray.crm.api.CustomerBaseExtendService"/>
+	<!-- 客户匿名处理 -->
+    <dubbo:reference id="customerAnonymousService" interface="me.flyray.crm.api.CustomerAnonymousService"/>
 	
 </beans>
