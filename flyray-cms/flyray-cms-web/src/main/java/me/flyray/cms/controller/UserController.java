@@ -1,5 +1,7 @@
 package me.flyray.cms.controller;
 
+import java.math.BigInteger;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,5 +23,10 @@ public class UserController {
 	public void displayAllUser() {
 		cmsUserService.displayAllUser();
 	}
+	
+	public static void main(String[] args) {
+    	BigInteger targetValue = BigInteger.valueOf(1).shiftLeft((256 - 20));
+    	System.out.println(targetValue);
+    }
 
 }

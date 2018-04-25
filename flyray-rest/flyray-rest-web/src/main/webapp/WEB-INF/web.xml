@@ -32,22 +32,40 @@
             <param-value>true</param-value>
         </init-param>
     </filter>
-    <filter>
+    <!-- <filter>
 	    <filter-name>ModifyParametersFilter</filter-name>
 	    <filter-class>me.flyray.rest.filter.ModifyParametersFilter</filter-class>
-	</filter>
+	</filter> -->
+	
+	<filter>  
+      <filter-name>filter</filter-name>  
+      <filter-class>me.flyray.rest.filter.ModifyParametersFilter</filter-class>  
+      <init-param>  
+          <param-name>charset</param-name>  
+          <param-value>UTF-8</param-value>  
+      </init-param>  
+      <init-param>  
+          <param-name>contentType</param-name>  
+          <param-value>text/html;charset=UTF-8</param-value>  
+      </init-param>  
+  </filter>  
+  <filter-mapping>  
+      <filter-name>filter</filter-name>  
+      <!-- * 代表截获所有的请求  或指定请求/test.do  /xxx.do -->  
+      <url-pattern>/*</url-pattern>  
+  </filter-mapping>
     
     <filter-mapping>
         <filter-name>SpringEncodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-    <filter-mapping>
+    <!-- <filter-mapping>
 	    <filter-name>ModifyParametersFilter</filter-name>
 	    <url-pattern>/*</url-pattern>
-	    <!-- 直接从客户端过来的请求以及通过forward过来的请求都要经过该过滤器 -->
+	    直接从客户端过来的请求以及通过forward过来的请求都要经过该过滤器
 	    <dispatcher>REQUEST</dispatcher>
 	    <dispatcher>FORWARD</dispatcher>
-	</filter-mapping>
+	</filter-mapping> -->
     
     <!-- 日志记录 -->
     	<!-- 日志log4j配置文件路径 -->
