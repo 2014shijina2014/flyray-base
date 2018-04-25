@@ -16,8 +16,7 @@ public class ApplyController {
 
 	@RequestMapping(value="/apply", method = RequestMethod.GET)
 	public String index(){ 
-		return "apply";
-	}
+		return "apply";	}
 	
 	@RequestMapping("/applyForProficient"  )  
 	public Map<String,Object> applyForProficient(HttpServletRequest request,HttpServletResponse response) throws IllegalStateException, IOException {
