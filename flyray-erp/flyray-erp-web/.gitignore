@@ -1,8 +1,9 @@
 .DS_Store 
-target/**
-*/target/**
-**/target/**
-*/*/target/**
-/*/*/target/**
-/.svn/**
-target/**
+/target
+*/target
+**/target
+*/*/target
+/*/*/target
+/.svn
+target
+/.settings/
