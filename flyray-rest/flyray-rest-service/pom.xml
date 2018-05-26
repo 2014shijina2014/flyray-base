@@ -88,10 +88,10 @@
             </exclusions>
         </dependency>
 		<dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>zkclient</artifactId>
-            <version>0.8.1-SNAPSHOT</version>
-        </dependency>
+		    <groupId>com.101tec</groupId>
+		    <artifactId>zkclient</artifactId>
+		    <version>0.10</version>
+		</dependency>
         
         <!-- alibaba工具包 -->
 		<dependency>
