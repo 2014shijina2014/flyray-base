@@ -106,9 +106,9 @@
             </exclusions>
         </dependency>
 		<dependency>
-            <groupId>com.alibaba</groupId>
+            <groupId>com.101tec</groupId>
             <artifactId>zkclient</artifactId>
-            <version>0.8.1-SNAPSHOT</version>
+            <version>0.10</version>
         </dependency>
         
 		<dependency>
