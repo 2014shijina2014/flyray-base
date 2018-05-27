@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.http.Consts;
@@ -16,7 +17,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 
-import com.google.common.collect.Lists;  
 
 /** 
 * @author: bolei
@@ -35,7 +35,7 @@ public class HttpClientUtil {
 		//发送Post请求  
 		HttpPost httpPost = new HttpPost("http://localhost:8080/MyWebxTest/getCityByProvinceEname.do");  
 		//设置Post参数  
-		List<NameValuePair> params = Lists.newArrayList();
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("cityEname", "henan"));  
 		String line = null;  
 		try {  
