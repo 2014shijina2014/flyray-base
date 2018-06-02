@@ -1,4 +1,0 @@
-2018年05月27日20:08:46
-1.解决idea项目不能正常启动
-2.解决maven打包成war不能正常启动
-3.一些jar错误依赖导致 NoSuchMethodException  NoClassDefFoundError 等异常

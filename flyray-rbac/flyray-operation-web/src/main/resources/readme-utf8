@@ -1,3 +1,0 @@
-管理后台账号密码都是admin
-注意配置 flyray-common-config 模块的dubbo.properties文件
-修改zookeeper的地址
