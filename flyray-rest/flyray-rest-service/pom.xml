@@ -87,11 +87,18 @@
                 </exclusion>
             </exclusions>
         </dependency>
-		<dependency>
-		    <groupId>com.101tec</groupId>
-		    <artifactId>zkclient</artifactId>
-		    <version>0.10</version>
-		</dependency>
+        
+		<!-- Zookeeper客户端框架 -->
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>2.12.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>2.12.0</version>
+        </dependency>
         
         <!-- alibaba工具包 -->
 		<dependency>

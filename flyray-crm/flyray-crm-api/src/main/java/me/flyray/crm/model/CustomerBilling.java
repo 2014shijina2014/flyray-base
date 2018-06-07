@@ -9,11 +9,16 @@ import java.io.Serializable;
 */
 
 public class CustomerBilling implements Serializable{
-
+	
 	/**
 	 * 自增ID
 	 */
 	private Long id;
+
+	/**
+	 * 自增ID
+	 */
+	private Long order_id;
 	
 	/**
 	 * 账单类型
