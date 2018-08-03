@@ -2,6 +2,8 @@ package me.flyray.crm.service;
 
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
 import me.flyray.crm.api.CustomerAnonymousService;
 
 /** 
@@ -10,6 +12,7 @@ import me.flyray.crm.api.CustomerAnonymousService;
 * @description：类说明 
 */
 
+@Service("customerAnonymousService")
 public class CustomerAnonymousServiceImpl implements CustomerAnonymousService{
 
 	@Override
