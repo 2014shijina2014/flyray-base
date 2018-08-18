@@ -2,7 +2,7 @@
 ![mahua](flyray-doc/logo.jpg)
 　　使用Spring+SpringMVC+Mybatis+dubbox 开发的一套分布式基础框架，提供支付、对账、清结算、客户管理、营销活动、库存管理、搜索模块、rocketmq做统一的消息队列中心
 
-[项目主页](http://www.flyray.me)
+[飞雷开源平台](http://www.flyray.me)
 
 [cms前端工程](https://git.oschina.net/boleixiongdi/flyray-cms-ui)
 
@@ -93,8 +93,9 @@
 ##关于作者
 
 ```javascript
-  var ihubo = {
-    nickName  : "flyray",
-    site : "http://www.flyray.me"
+  var autho = {
+    nickName  : "博羸",
+    site : "http://www.boleixiongdi.com"
   }
+```
 ```
